@@ -16,6 +16,8 @@ require('./customElement/phone/b_select_date');
 require('./customElement/phone/b_select_cascade');
 require('./customElement/phone/b_select_number');
 
+require('./customElement/pc/pagination')
+
 
 
 let loading;
