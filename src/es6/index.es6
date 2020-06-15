@@ -18,6 +18,7 @@ let app = require('./lib/page'),
 
 require('./customElement/pc/pagination');
 require('./customElement/pc/table_list');
+require('./customElement/pc/input');
 
 
 
@@ -36,81 +37,81 @@ let Page = {
         });
     },
     async run(){
-        let table = $('b-table-list').get(0);
-
-        table.setting = {
-            rowHeight:'60',
-            titleRowHeight:'40',
-            titleRowStyle:{background:'red'},
-            rowHoverStyle:{background:'#ccc'},
-            rowNotHoverStyle:{background:'#fff'}
-            // titleRowCssClass:'titleRow'
-        };
-        table.data = [
-            {
-                name:'客户',
-                width:'25%',
-                color:'#ccc',
-                cursor:'pointer',
-                icon:'icon',
-                children:[
-                    {color:'red',key:'a1'},
-                    {color: 'green', key: 'a2'},
-                    {color: 'yellow', key: 'a3'}
-                ]
-            },
-            {
-                name:'交易类型',
-                width:'25%',
-                color:'#ccc',
-                cursor:'pointer',
-                icon:'',
-                children:[
-                    {color:'#000',key:'b1',cursor:'pointer'},
-                    {color:'#ccc',key:'b2'}
-                ]
-            },
-            {
-                name:'金额',
-                width:'25%',
-                color:'#ccc',
-                key:'c',
-                cursor:'pointer',
-                icon:'',
-                children:[]
-            },
-            {
-                name:'操作',
-                width:'25%',
-                color:'#ccc',
-                key:'d',
-                cursor:'pointer',
-                icon:'',
-                children:[]
-            }
-        ];
-
-
-        let data = [
-            {
-                id:1,
-                icon:'http://172.16.21.17:8930//image/apiDoc/jiekouwendang_36.png',
-                a1:'阿道夫就啊看风景阿克索德减肥了卡时间的反馈啦就是打开了飞机阿法快速的反馈及拉萨打飞机拉屎的空间',a2:'a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2',a3:'a3',b1:'b1',b2:'b2',c:'c',d:'d'
-            },
-            {
-                id:2,
-                icon:'http://172.16.21.17:8930//image/apiDoc/jiekouwendang_36.png',
-                a1:'a1111',a2:'a2',a3:'a31111',b1:'b1',b2:'b2',c:'阿道夫看见咖剪短发阿迪时刻减肥卡拉屎的减肥阿道夫看见咖剪短发阿迪时刻减肥卡拉屎的减肥阿道夫看见咖剪短发阿迪时刻减肥卡拉屎的减肥阿道夫看见咖剪短发阿迪时刻减肥卡拉屎的减肥',d:'d'
-            },
-            {
-                id:3,
-                icon:'http://172.16.21.17:8930//image/apiDoc/jiekouwendang_36.png',
-                a1:'a3333',a2:'a2',a3:'a33333',b1:'b1',b2:'b2',c:'c',d:'d'
-            }
-        ];
-
-
-        table.show(data);
+        // let table = $('b-table-list').get(0);
+        //
+        // table.setting = {
+        //     rowHeight:'60',
+        //     titleRowHeight:'40',
+        //     titleRowStyle:{background:'red'},
+        //     rowHoverStyle:{background:'#ccc'},
+        //     rowNotHoverStyle:{background:'#fff'}
+        //     // titleRowCssClass:'titleRow'
+        // };
+        // table.data = [
+        //     {
+        //         name:'客户',
+        //         width:'25%',
+        //         color:'#ccc',
+        //         cursor:'pointer',
+        //         icon:'icon',
+        //         children:[
+        //             {color:'red',key:'a1'},
+        //             {color: 'green', key: 'a2'},
+        //             {color: 'yellow', key: 'a3'}
+        //         ]
+        //     },
+        //     {
+        //         name:'交易类型',
+        //         width:'25%',
+        //         color:'#ccc',
+        //         cursor:'pointer',
+        //         icon:'',
+        //         children:[
+        //             {color:'#000',key:'b1',cursor:'pointer'},
+        //             {color:'#ccc',key:'b2'}
+        //         ]
+        //     },
+        //     {
+        //         name:'金额',
+        //         width:'25%',
+        //         color:'#ccc',
+        //         key:'c',
+        //         cursor:'pointer',
+        //         icon:'',
+        //         children:[]
+        //     },
+        //     {
+        //         name:'操作',
+        //         width:'25%',
+        //         color:'#ccc',
+        //         key:'d',
+        //         cursor:'pointer',
+        //         icon:'',
+        //         children:[]
+        //     }
+        // ];
+        //
+        //
+        // let data = [
+        //     {
+        //         id:1,
+        //         icon:'http://172.16.21.17:8930//image/apiDoc/jiekouwendang_36.png',
+        //         a1:'阿道夫就啊看风景阿克索德减肥了卡时间的反馈啦就是打开了飞机阿法快速的反馈及拉萨打飞机拉屎的空间',a2:'a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2',a3:'a3',b1:'b1',b2:'b2',c:'c',d:'d'
+        //     },
+        //     {
+        //         id:2,
+        //         icon:'http://172.16.21.17:8930//image/apiDoc/jiekouwendang_36.png',
+        //         a1:'a1111',a2:'a2',a3:'a31111',b1:'b1',b2:'b2',c:'阿道夫看见咖剪短发阿迪时刻减肥卡拉屎的减肥阿道夫看见咖剪短发阿迪时刻减肥卡拉屎的减肥阿道夫看见咖剪短发阿迪时刻减肥卡拉屎的减肥阿道夫看见咖剪短发阿迪时刻减肥卡拉屎的减肥',d:'d'
+        //     },
+        //     {
+        //         id:3,
+        //         icon:'http://172.16.21.17:8930//image/apiDoc/jiekouwendang_36.png',
+        //         a1:'a3333',a2:'a2',a3:'a33333',b1:'b1',b2:'b2',c:'c',d:'d'
+        //     }
+        // ];
+        //
+        //
+        // table.show(data);
     }
 };
 
