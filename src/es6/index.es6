@@ -20,6 +20,7 @@ require('./customElement/pc/pagination');
 require('./customElement/pc/table_list');
 require('./customElement/pc/input');
 require('./customElement/pc/input_file');
+require('./customElement/pc/input_date');
 
 
 
