@@ -21,6 +21,7 @@ require('./customElement/pc/table_list');
 require('./customElement/pc/input');
 require('./customElement/pc/input_file');
 require('./customElement/pc/input_date');
+require('./customElement/pc/input_sms');
 
 
 
@@ -40,7 +41,20 @@ let Page = {
     },
     async run(){
         let select = $('b-input').eq(2).get(0);
-        select.selectData = [{value:1,name:1}]
+        select.selectData = [{value:1,name:1}];
+
+
+        let sms = $('b-input-sms').get(0);
+        sms.phoneId = 'phone';
+        sms.countdown = 10;
+        sms.countdownText = '剩${x}秒';
+        sms.smsBtnStyle = {width:'150px',height:'30px',border:'1px solid #ccc',textAlign:'center',color:'#000'};
+        sms.timeBtnStyle = {width:'150px',height:'30px',border:'1px solid #ccc',textAlign:'center',color:'red'};
+        sms.sendFn = function(){
+          setTimeout(function(){
+              sms.sendOk();
+          },3000)
+        };
 
 
         // let table = $('b-table-list').get(0);

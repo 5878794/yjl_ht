@@ -13,8 +13,9 @@ html
 
 
         b-input(name='名字:'
+                id='phone'
                 placeholder='测试。。。'
-                rule='must,min:6'
+                rule='must,phone'
                 type='text'
                 err='错。。。'
                 iconWidth=20
@@ -72,6 +73,15 @@ html
             err='错。。。'
             min='2020-6-3'
             max='2020-6-22'
+            iconWidth=20
+            icon='./image/aa.jpg'
+        )
+
+        b-input-sms(name='名字:'
+            key='ttt'
+            type='sms'
+            err='错。。。'
+            rule='must,min:4,max:4'
             iconWidth=20
             icon='./image/aa.jpg'
         )
