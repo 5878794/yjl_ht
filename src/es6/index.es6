@@ -39,6 +39,10 @@ let Page = {
         });
     },
     async run(){
+        let select = $('b-input').eq(2).get(0);
+        select.selectData = [{value:1,name:1}]
+
+
         // let table = $('b-table-list').get(0);
         //
         // table.setting = {
