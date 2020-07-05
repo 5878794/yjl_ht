@@ -57,5 +57,20 @@ module.exports = {
 		readFileList(dirPath,filesList);
 
 		return filesList;
+	},
+	//获取目录下的一级文件夹
+	getAllDir(dirPath){
+		let back = [],
+			nowDir = fs.readdirSync(dirPath);
+
+		nowDir.map(rs=>{
+			var fullPath = path.join(dirPath, rs);
+			const stat = fs.statSync(fullPath);
+			if (stat.isDirectory()) {
+				back.push(fullPath);
+			}
+		});
+
+		return back;
 	}
 };
