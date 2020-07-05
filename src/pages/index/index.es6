@@ -1,13 +1,13 @@
-let app = require('./lib/page'),
+let app = require('./../../es6/lib/page'),
     // device = require('./lib/device'),
     // getParamFromUrl = require('./lib/fn/getParamFromUrl'),
-    loadFn = require('./lib/ui/loading_old'),
+    loadFn = require('./../../es6/lib/ui/loading_old'),
     // $$ = require('./lib/event/$$'),
     // info = require('./lib/ui/info'),
     // s2t = require('./lib/fn/timeAndStamp'),
     // areaData = require('./lib/code/areaCode'),
     // {ajax,api} = require('./_ajax'),
-    err = require('./lib/fn/errorHandler');
+    err = require('./../../es6/lib/fn/errorHandler');
 
 //
 // require('./lib/jq/check_from');
@@ -16,12 +16,12 @@ let app = require('./lib/page'),
 // require('./customElement/phone/b_select_cascade');
 // require('./customElement/phone/b_select_number');
 
-require('./customElement/pc/pagination');
-require('./customElement/pc/table_list');
-require('./customElement/pc/input');
-require('./customElement/pc/input_file');
-require('./customElement/pc/input_date');
-require('./customElement/pc/input_sms');
+require('./../../es6/customElement/pc/pagination');
+require('./../../es6/customElement/pc/table_list');
+require('./../../es6/customElement/pc/input');
+require('./../../es6/customElement/pc/input_file');
+require('./../../es6/customElement/pc/input_date');
+require('./../../es6/customElement/pc/input_sms');
 
 
 
