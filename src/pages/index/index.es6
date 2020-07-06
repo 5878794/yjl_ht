@@ -22,6 +22,7 @@ require('./../../es6/customElement/pc/input');
 require('./../../es6/customElement/pc/input_file');
 require('./../../es6/customElement/pc/input_date');
 require('./../../es6/customElement/pc/input_sms');
+require('./../../es6/customElement/pc/input_money');
 
 
 

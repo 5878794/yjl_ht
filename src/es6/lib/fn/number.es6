@@ -1,44 +1,25 @@
-//不支持+/-符号
 
 
 
-//数字转货币格式，并保留5位小数
-function toCurrency5(money) {
-    money = money.toString();
-    if (/[^0-9\.]/.test(money)){
-        return '0.00000';
-    }
 
-    money = money.replace(/^(\d*)$/, "$1.");
-    money = (money + "00000").replace(/(\d*\.\d\d\d\d\d)\d*/, "$1");
-    money = money.replace(".", ",");
-    var re = /(\d)(\d{3},)/;
-    while (re.test(money)) {
-        money = money.replace(re, "$1,$2");
-    }
-    money = money.replace(/,(\d\d\d\d\d)$/, ".$1");
+//数字格式化，会返回带逗号的数字格式。
+//number:   number 要格式化的数字
+//digits:   number 小数位数
 
-    return '' + money.replace(/^\./, "0.");
+module.exports = function(number,digits){
+    digits = digits || 2;  //小数位数
+    let option = {
+//          “ decimal”用于纯数字格式。
+//          “ currency”用于货币格式。        数字前面会显示货币符号
+//          “ percent”用于百分比格式化
+//          “ unit”用于单位格式化
+        style: 'decimal',
+        //货币格式中使用的货币。
+        currency: 'CNY',
+        //小数位数
+        minimumFractionDigits:digits,
+        maximumFractionDigits:digits
+    };
+
+    return new Intl.NumberFormat('zh',option).format(number);
 }
-
-//数字转货币格式，并保留2位小数
-function toCurrency2(money) {
-    money = money.toString();
-    if (/[^0-9\.]/.test(money)){
-        return '0.00';
-    }
-
-    money = money.replace(/^(\d*)$/, "$1.");
-    money = (money + "00").replace(/(\d*\.\d\d)\d*/, "$1");
-    money = money.replace(".", ",");
-    var re = /(\d)(\d{3},)/;
-    while (re.test(money)) {
-        money = money.replace(re, "$1,$2");
-    }
-    money = money.replace(/,(\d\d)$/, ".$1");
-
-    return '' + money.replace(/^\./, "0.");
-}
-
-
-module.exports = {toCurrency5,toCurrency2};
