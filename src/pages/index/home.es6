@@ -4,7 +4,7 @@ let app = require('./../../es6/lib/page'),
 	lib = require('./../../es6/lib');
 
 
-
+require('./../../es6/customElement/pc/input_search')
 //     // device = require('./lib/device'),
 //     // getParamFromUrl = require('./lib/fn/getParamFromUrl'),
 //     loadFn = require('./../../es6/lib/ui/loading_old'),
@@ -33,6 +33,18 @@ let Page = {
 	},
 	async run(){
 
+		let search = $('#search').get(0);
+		search.searchFn = function(val){
+			console.log('search:'+val)
+			return new Promise(success=>{
+				setTimeout(function(){
+					success(['1','2','3','4'])
+				},300)
+			})
+		}
+		search.inputFn = function(val){
+			console.log('input:'+val)
+		}
 	}
 };
 
