@@ -3,16 +3,24 @@
 //background: url('../image/Group1x.png?t=@{tt}')
 
 
-.container{
-  width: 100%; background: #f1f0f6;
+.hover{
+  opacity: 0.6;
+  cursor: pointer;
 }
 
-.main{
-  min-width:1200px; margin: 0 auto;
+
+
+.scroll_style1::-webkit-scrollbar {/*滚动条整体样式*/
+  width: 4px;     /*高宽分别对应横竖滚动条的尺寸*/
+  height: 1px;
+}
+.scroll_style1::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
+  border-radius: 10px;
+  //-webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
   background: #fff;
 }
-.test{
-  width:100%;
-  height:100%;
-  display: none;
+.scroll_style1::-webkit-scrollbar-track {/*滚动条里面轨道*/
+  //-webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+  border-radius: 10px;
+  background: #16182d;
 }

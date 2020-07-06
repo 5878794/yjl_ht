@@ -7,104 +7,66 @@ html
         link(rel="stylesheet" type="text/css" href="index.css?t="+tt)
         script(data-src='index.min.js?t='+tt)
 
+        -var child1 = {name:'垫资业务',url:''}
+        -var child2 = {name:'房抵业务',url:''}
+        -var child3 = {name:'员工',url:''}
+        -var child4 = {name:'开单通告',url:''}
+        -var child5 = {name:'通知管理',url:''}
+        -var child6 = {name:'时间流程',url:''}
+        -var child7 = {name:'业务产品',url:''}
+        -var child8 = {name:'权限角色',url:''}
+        -var child9 = {name:'客户来源',url:''}
+        -var child10 = {name:'财务管理',url:''}
+        -var child11 = {name:'退尾款/费用',url:''}
+        -var item1 = {name:'首页',icon:'./image/icon1.png',url:'/index/index.html'};
+        -var item2 = {name:'草稿箱',icon:'./image/icon2.png',url:''};
+        -var item3 = {name:'我的业务',icon:'./image/icon3.png',url:''};
+        -var item4 = {name:'退费退款',icon:'./image/icon4.png',url:''};
+        -var item5 = {name:'审批',icon:'./image/icon5.png',url:''};
+        -var item6 = {name:'权证',icon:'./image/icon6.png',url:''};
+        -var item7 = {name:'贷后',icon:'./image/icon7.png',url:''};
+        -var item8 = {name:'财务',icon:'./image/icon8.png',url:'',children:[child10,child11]};
+        -var item9 = {name:'档案',icon:'./image/icon9.png',url:''};
+        -var item10 = {name:'统计',icon:'./image/icon10.png',url:'',children:[child1,child2]};
+        -var item11 = {name:'综合管理',icon:'./image/icon11.png',url:'',children:[child3,child4,child5]};
+        -var item12 = {name:'设置',icon:'./image/icon12.png',url:'',children:[child6,child7,child8,child9]};
 
+        -var navData = [item1,item2,item3,item4,item5,item6,item7,item8,item9,item10,item11,item12];
     body
 
-        b-input-money(name='money:'
-            id='phone'
-            placeholder='测试。。。'
-            rule='must,phone'
-            type='text'
-            err='错。。。'
-            iconWidth=20
-            icon='./image/aa.jpg'
-        )
 
-        b-input(name='名字1:'
-                id='phone'
-                placeholder='测试。。。'
-                rule='must,phone'
-                type='text'
-                err='错。。。'
-                iconWidth=20
-                icon='./image/aa.jpg'
-        )
-
-        b-input(name='名字:'
-            placeholder='测试。。。'
-            rule='must,min:6'
-            type='password'
-            err='错。。。'
-            iconWidth=20
-            icon='./image/aa.jpg'
-        )
-
-        b-input(name='名字:'
-            placeholder='测试。。。'
-            rule='must,min:6'
-            type='select'
-            err='错。。。'
-            iconWidth=20
-            icon='./image/aa.jpg'
-        )
-
-        b-input(name='名字:'
-            placeholder='测试。。。'
-            rule='must,min:6'
-            type='textarea'
-            err='错。。。'
-            iconWidth=20
-            icon='./image/aa.jpg'
-        )
-
-        b-input(name='名字:'
-            placeholder='测试。。。'
-            rule='must,min:6'
-            type='textarea'
-            err='错。。。'
-            iconWidth=20
-            autoHeight='true'
-            icon='./image/aa.jpg'
-        )
-
-        b-input(name='名字:'
-            placeholder='测试。。。'
-            rule='must,min:6'
-            type='yzm'
-            yzmSrc='#'
-            err='错。。。'
-            iconWidth=20
-            icon='./image/aa.jpg'
-        )
-
-        b-input-file(name='名字:'
-            key='ttt'
-            type='file'
-            err='错。。。'
-            iconWidth=20
-            icon='./image/aa.jpg'
-        )
-
-        b-input-date(name='名字:'
-            key='ttt'
-            type='date'
-            err='错。。。'
-            min='2020-6-3'
-            max='2020-6-22'
-            iconWidth=20
-            icon='./image/aa.jpg'
-        )
-
-        b-input-sms(name='名字:'
-            key='ttt'
-            type='sms'
-            err='错。。。'
-            rule='must,min:4,max:4'
-            iconWidth=20
-            icon='./image/aa.jpg'
-        )
+        div(class='left')
+            div(class='logo box_hcc')
+                img(src='./image/logong.png')
+                span 金盾时贷
+            div(class='menu scroll_style1' id='menu')
+                -for(let i=0,l=navData.length;i<l;i++)
+                    div
+                        -var arrowClass = (navData[i].children)? 'arrow_down' : '';
+                        div(class='box_hcc menu_item __item__' href=navData[i].url)
+                            img(src=navData[i].icon)
+                            span(class=arrowClass)=navData[i].name
+                        -if(navData[i].children)
+                            div(class='menu_children_body hidden')
+                                -var childrenData = navData[i].children;
+                                -for(let z=0,zl=childrenData.length;z<zl;z++)
+                                    div(class='box_hlc menu_item1 __item__' href=childrenData[z].url)=childrenData[z].name
 
 
+
+        div(class='right')
+            div(class='top box_hlc')
+                div(class='boxflex1')
+                    span 成都分公司
+                    a -
+                    span 林妹妹
+                    a , 您好！
+                div(class='top_btn')
+                    span(class='hover' id='mdf_pass') 修改密码
+                    span(class='hover' id='my_2ma') 我的二维码
+                    span(class='hover' id='logout') 退出登录
+            div(class='iframe' id='iframe_body')
+                iframe(src='' name='iframe' id='iframe' frameborder="0" scrolling="auto" seamless='seamless')
 
 
 

@@ -14,7 +14,7 @@ div, p, span, a, ul, li,img{
     -ms-user-select:none;
     -moz-user-select:none;
     -webkit-text-size-adjust: none;
-    font-size: 0.24rem;
+    /*font-size: 0.24rem;*/
 }
 
 
