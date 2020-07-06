@@ -15,6 +15,9 @@ let src = path.join(__dirname,'../src/pages/'),
     pugFiles = fn.getDirFile(src,'pug'),
     allFiles = lessFiles.concat(pugFiles);
 
+let commonLessDir = path.join(__dirname,'../src/less/'),
+    outCommonLess = path.join(__dirname,'../trunk/res/css/common.css');
+
 
 let renderFn = function(){
     fn.dirIsExistOrCreate(trunk);
@@ -68,6 +71,29 @@ let renderFn = function(){
     });
 
 
+    let commonMd5 = '';
+    fs.watch(commonLessDir,async (event,filename)=>{
+        if(filename != 'common.less'){return;}
+
+        let nowFile = path.join(commonLessDir,filename),
+            newFile = outCommonLess,
+            tt = new Date().getTime()
+
+        let currentMd5 = md5(fs.readFileSync(nowFile));
+        if(commonMd5 == currentMd5){
+            return;
+        }else{
+            commonMd5 = currentMd5;
+        }
+
+        let lessCode = fn.readLessFileAndCompile(nowFile,tt);
+        fn.writeFile(newFile,lessCode);
+        console.log("\x1b[34m",newFile);
+
+        //同时更新所有html
+        let cmd = 'node ./cmd/pug.es6'
+        fn.runExec(cmd);
+    });
 
 
 

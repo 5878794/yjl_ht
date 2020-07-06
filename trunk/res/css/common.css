@@ -1,9 +1,1 @@
-.container {
-  width: 100%;
-  background: #f1f0f6;
-}
-.main {
-  min-width: 1200px;
-  margin: 0 auto;
-  background: #fff;
-}
+.container{width:100%;background:#f1f0f6}.main{min-width:1200px;margin:0 auto;background:#fff}.test{width:100%;height:100%;display:none}

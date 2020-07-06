@@ -29,6 +29,6 @@ let renderFn = function(tt){
 
 
 var arguments = process.argv.splice(2);
-arguments = arguments[0] || 123;
+arguments = arguments[0] || new Date().getTime();
 
 renderFn(arguments);

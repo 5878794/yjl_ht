@@ -25,6 +25,15 @@ let renderFn = function(tt){
         let pugCode = fn.readLessFileAndCompile(rs,tt);
         fn.writeFile(newFileSrc,pugCode);
     });
+
+
+    //处理common.less
+    let commonSrc = path.join(__dirname,'../src/less/'),
+        commonNewSrc = path.join(__dirname,'../trunk/res/css/common.css');
+    commonSrc = path.join(commonSrc,'./common.less');
+    let lessCode = fn.readLessFileAndCompile(commonSrc,tt);
+    fn.writeFile(commonNewSrc,lessCode);
+
 };
 
 
