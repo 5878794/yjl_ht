@@ -20,6 +20,7 @@
 		// icon='./image/aa.jpg'      //输入框前面图标地址，及大小  如空不显示icon
 		// iconWidth=20
 		// iconHeight=20
+		// autoHeight=true          //textarea独有，是否自动增高输入框高度
 	// )
 
 
@@ -77,7 +78,19 @@ let createInputDom = {
 	}
 };
 
-
+$.fn.autoHeight = function(){
+	function autoHeight(elem){
+		elem.style.height = 'auto';
+		elem.scrollTop = 0; //防抖动
+		elem.style.height = elem.scrollHeight + 'px';
+	}
+	this.each(function(){
+		autoHeight(this);
+		$(this).on('keyup', function(){
+			autoHeight(this);
+		});
+	});
+}
 
 
 class bInput extends HTMLElement{
@@ -113,6 +126,8 @@ class bInput extends HTMLElement{
 		//icon的宽度
 		this.inputIconWidth = parseInt($(this).attr('iconWidth')) || 20;
 		this.inputIconHeight = parseInt($(this).attr('iconHeight')) || 20;
+		//textarea 是否自动增加高度
+		this.autoHeight = ($(this).attr('autoHeight') == 'true');
 
 
 		//生成的input的样式缓存
@@ -269,6 +284,16 @@ class bInput extends HTMLElement{
 				let textarea = createInputDom.textarea(this.placeholder,this.rule);
 				textarea.css(this.textareaCss);
 				this.inputBodyDom.append(textarea);
+
+
+				if(this.autoHeight){
+					textarea.css({
+						minHeight:this.rowHeight*3+'px',
+						overflow:'hidden',
+						resize:'none'
+					});
+					$(textarea).autoHeight();
+				}
 				break;
 			case 'yzm':
 				let yzm = createInputDom.yzm(this.placeholder,this.rule);
@@ -379,6 +404,8 @@ class bInput extends HTMLElement{
 		}
 
 	}
+
+
 
 }
 
