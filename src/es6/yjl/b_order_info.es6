@@ -139,7 +139,7 @@ class bOrderInfo extends HTMLElement{
 		let body = this.body.find('.row2_cel1'),
 			row1 = this.body.find('.row3').find('.row2_cel1_row1'),
 			row2 = this.body.find('.row3').find('.row2_cel1_row2'),
-			listData = data.mans;
+			listData = data.mans || [];
 
 		listData.map(rs=>{
 			let _row1 = row1.clone().removeClass('hidden'),
