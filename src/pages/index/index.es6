@@ -76,11 +76,7 @@ let Page = {
             let data = $(this).data('data');
             console.log(data);
         });
-        table.body.find('.__key9__').click(function(e){
-            e.stopPropagation();
-            let data = $(this).parent().parent().data('data');
-            console.log(data);
-        });
+
     }
 };
 

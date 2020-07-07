@@ -9,7 +9,8 @@ module.exports = {
 			rowStyle:{background:"#fff",marginBottom:'5px',cursor:'pointer'},
 			celStyle:{padding:'0 10px'},
 			rowHoverStyle:{background:'#fbd6d8'},
-			rowNotHoverStyle:{background:'#fff'}
+			rowNotHoverStyle:{background:'#fff'},
+			noDataHtml:'<div class="box_hcc" style="width:100%;height:100px;font-size:14px;color:#333;">暂无数据</div>'
 		},
 		data:[
 			{
