@@ -5,7 +5,7 @@ module.exports = {
 	index:{
 		setting:{
 			titleRowStyle:{display:'none'},
-			rowHeight:80,
+			rowHeight:70,
 			rowStyle:{background:"#fff",marginBottom:'5px',cursor:'pointer'},
 			celStyle:{padding:'0 10px'},
 			rowHoverStyle:{background:'#fbd6d8'},
@@ -15,44 +15,40 @@ module.exports = {
 			{
 				name:'t1',          //must,标题行名称
 				width:'20%',         //must,cel宽度
-				color:'#ccc',        //must,字体颜色
-									 //key 或 children字段必须出现一个
-				cursor:'',      //是否显示可点击鼠标样式
 				icon:'key1',            //该列是否有图标
+				iconStyle:{width:'24px',height:'24px',marginLeft:'20px',marginRight:'5px'},
 				children:[
-					{color:'#333',key:'key2'},//该列内显示的子数据，竖向排列
-					{color: '#999', key: 'key3'}
+					{style:{color:'#333',fontSize:'14px',lineHeight:'20px'},key:'key2'},//该列内显示的子数据，竖向排列
+					{style:{color:'#999',fontSize:'12px',lineHeight:'20px'}, key: 'key3'}
 				]
 			},
 			{
 				name:'t1',
 				width:'20%',
-				color:'#333',
+				style:{color:'#333',fontSize:'14px'},
 				key:'key4'                //数据对应的key
 			},
 			{
 				name:'t1',
 				width:'20%',
-				color:'#333',
 				children:[
-					{color:'#333',key:'key5'},//该列内显示的子数据，竖向排列
-					{color: '#999', key: 'key6'}
+					{style:{color:'#333',fontSize:'14px',lineHeight:'20px'},key:'key5'},//该列内显示的子数据，竖向排列
+					{style:{color:'#999',fontSize:'12px',lineHeight:'20px'}, key: 'key6'}
 				]
 			},
 			{
 				name:'t1',
 				width:'30%',
-				color:'#333',
 				children:[
-					{color:'#cc9a4a',key:'key7'},//该列内显示的子数据，竖向排列
-					{color: '#999', key: 'key8'}
+					{style:{color:'#cc9a4a',fontSize:'14px',lineHeight:'20px'},key:'key7'},//该列内显示的子数据，竖向排列
+					{style:{color:'#999',fontSize:'12px',lineHeight:'20px'},type:'html', key: 'key8'}
 				]
 			},
 			{
 				name:'t1',
 				width:'10%',
-				color:'#333',
-				icon:'key9'
+				icon:'key9',
+				iconStyle:{width:'26px',height:'26px'}
 			}
 		]
 	}
