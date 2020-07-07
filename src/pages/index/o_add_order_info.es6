@@ -29,49 +29,32 @@ let Page = {
 		});
 	},
 	async run(){
-		// this.setInput();
-		// this.bindEvent();
-
-	},
-	setInput(){
-		let select = $('#select').get(0),
-			name = $('#name').get(0),
-			money = $('#money').get(0);
-
-		select.selectData = [
-			{name:'测试1',value:'1'},
-			{name:'测试2',value:'2'},
-			{name:'测试3',value:'3'}
-		];
-
-		inputStyle.styleFn(select);
-		inputStyle.styleFn(name);
-		inputStyle.styleFn(money);
+		this.setPart1();
 
 
 	},
-	bindEvent(){
-		let btn = $('#submit'),
-			_this = this;
+	setPart1(){
+		let part1 = $('#order_info').get(0);
+		part1.showLevel = 3;
+		part1.data = {
+			money:7000000,
+			type:'房抵',
+			no:'Fd123123123',
+			from:'来自中介',
+			product:'中新银行-理财产品1',
+			productInfo:'产品介绍产品介绍产品介绍产品介绍产品介绍产品介绍产品介绍',
+			mans:[
+				{name:'张三',phone:12312312312,idcard:'123333333333333333',address:'阿打发打发发代付链接撒地方科技傲世狂妃'},
+				{name:'张三(共同)',phone:12312312312,idcard:'123333333333333333',address:'阿打发打发发代付链接撒地方科技傲世狂妃'},
+				{name:'张三(担保)',phone:12312312312,idcard:'123333333333333333',address:'阿打发打发发代付链接撒地方科技傲世狂妃'}
+			],
+			state:'待回款'
+		};
+		part1.click = function(data){
+			console.log(data)
+		}
 
-		btn.click(function(){
 
-			_this.submit().then(rs=>{
-
-			}).catch(e=>{
-				console.log(e)
-
-			})
-		});
-
-
-	},
-	async submit(){
-		let select = await $('#select').get(0).checkPass(),
-			name = await $('#name').get(0).checkPass(),
-			money = await $('#money').get(0).checkPass();
-
-		console.log(select,name,money)
 	}
 };
 
