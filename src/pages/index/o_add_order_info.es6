@@ -12,6 +12,7 @@ require('./../../es6/yjl/b_order_info');
 require('./../../es6/yjl/b-order-history');
 require('./../../es6/yjl/b_follow_record');
 require('./../../es6/yjl/b_title');
+require('./../../es6/yjl/b_title1');
 
 require('./../../es6/customElement/pc/input');
 require('./../../es6/customElement/pc/input_money');
@@ -182,6 +183,11 @@ let Page = {
 		title.clickFn = function(type){
 			console.log(type)
 		};
+
+		let title1 = $('#b_title1').get(0);
+		title1.clickFn = function(obj){
+			console.log(obj);
+		}
 	}
 };
 
