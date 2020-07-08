@@ -188,6 +188,16 @@ let Page = {
 		title1.clickFn = function(obj){
 			console.log(obj);
 		}
+
+
+		let search = $('#b_search').get(0);
+		search.inputData = [
+			{name:'名字',type:'text'},
+			{name:'公司',type:'select',data:[]},
+			{name:'时间',type:'time'},
+			{name:'日期',type:'assTime'},
+			{name:'',type:'search'}
+		]
 	}
 };
 
