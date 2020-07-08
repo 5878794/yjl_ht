@@ -1,4 +1,27 @@
 
+//标题
+// html:
+// 	    b-title(
+// 	        id='b_title'
+// 	        name='测试'           //标题名称
+// 	    )
+//
+//
+// let title = $('#b_title').get(0);
+// title.btnData = [
+// 	{name:'按钮1',type:'btn1',style:{color:'red'}},           //直接点击类按钮
+// 	{name:'添加',type:'btn5',children:[                       //鼠标悬浮出2级菜单按钮
+// 			{name:'动产',type:'btn21'},
+// 			{name:'不动产',type:'btn22'}
+// 		]
+// 	}
+// ];
+// title.clickFn = function(type){                          //按钮点击事件
+// 	console.log(type)                                       //返回点击的按钮type
+// };
+
+
+
 
 
 let addStyleFile = require('../customElement/fn/addStyleFile'),
@@ -70,6 +93,9 @@ class bTitle extends HTMLElement{
 
 		data.map(rs=>{
 			let _item = item.clone().text(rs.name).attr({type:rs.type});
+			if(rs.style){
+				_item.css(rs.style);
+			}
 
 			if(rs.children && rs.children.length !=0){
 				_item.removeClass('hover');

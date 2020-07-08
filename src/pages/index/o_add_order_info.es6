@@ -169,7 +169,7 @@ let Page = {
 
 		let title = $('#b_title').get(0);
 		title.btnData = [
-			{name:'按钮1',type:'btn1'},
+			{name:'按钮1',type:'btn1',style:{color:'red'}},
 			{name:'按钮1',type:'btn2'},
 			{name:'按钮1',type:'btn3'},
 			{name:'按钮1',type:'btn4'},
