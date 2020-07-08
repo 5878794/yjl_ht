@@ -11,6 +11,7 @@ let app = require('./../../es6/lib/page'),
 require('./../../es6/yjl/b_order_info');
 require('./../../es6/yjl/b-order-history');
 require('./../../es6/yjl/b_follow_record');
+require('./../../es6/yjl/b_title');
 
 require('./../../es6/customElement/pc/input');
 require('./../../es6/customElement/pc/input_money');
@@ -164,6 +165,23 @@ let Page = {
 			}
 		];
 		followRecord.data = data1;
+
+
+		let title = $('#b_title').get(0);
+		title.btnData = [
+			{name:'按钮1',type:'btn1'},
+			{name:'按钮1',type:'btn2'},
+			{name:'按钮1',type:'btn3'},
+			{name:'按钮1',type:'btn4'},
+			{name:'添加',type:'btn5',children:[
+					{name:'动产',type:'btn21'},
+					{name:'不动产',type:'btn22'}
+				]
+			}
+		];
+		title.clickFn = function(type){
+			console.log(type)
+		};
 	}
 };
 
