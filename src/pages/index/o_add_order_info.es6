@@ -13,6 +13,7 @@ require('./../../es6/yjl/b-order-history');
 require('./../../es6/yjl/b_follow_record');
 require('./../../es6/yjl/b_title');
 require('./../../es6/yjl/b_title1');
+require('./../../es6/yjl/b-search');
 
 require('./../../es6/customElement/pc/input');
 require('./../../es6/customElement/pc/input_money');
@@ -192,12 +193,15 @@ let Page = {
 
 		let search = $('#b_search').get(0);
 		search.inputData = [
-			{name:'名字',type:'text'},
-			{name:'公司',type:'select',data:[]},
-			{name:'时间',type:'time'},
-			{name:'日期',type:'assTime'},
-			{name:'',type:'search'}
-		]
+			{name:'名字查询:',type:'text',id:'a1'},
+			{name:'公司非:',type:'select',id:'a2',data:[{name:'t1',value:'1'},{name:'t2',value:'2'}]},
+			{name:'时间:',type:'date',id:'a3'},
+			{name:'日期:',type:'assDate',id:['a4','a5']},
+			// {name:'',type:'search',id:'a6'}
+		];
+		search.clickFn = function(rs){
+			console.log(rs);
+		}
 	}
 };
 
