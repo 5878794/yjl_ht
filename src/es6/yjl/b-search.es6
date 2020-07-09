@@ -79,6 +79,7 @@ class bSearch extends HTMLElement{
 
 		if(this.showMoreBtn){
 			btnBody.append(more);
+			btnBody.css({width:'80px'});
 			inputBody.css({height:'50px',overflow:'hidden'});
 		}
 
@@ -89,9 +90,9 @@ class bSearch extends HTMLElement{
 	}
 	createStyle(){
 		let css = [
-			'.body{min-width:1000px;max-width:1600px;width:100%;}',
+			'.body{min-width:980px;max-width:1600px;width:100%;}',
 			'.searchBtn{border-radius:5px;width:60px;height:42px;margin:5px 0;background-color:#5576f0;background-image:url('+searchImgSrc+');background-repeat:no-repeat;background-position:center center;background-size:20px 20px;}',
-			'.btnBody{width:80px;}',
+			'.btnBody{width:60px;}',
 			'.more{font-size:12px;padding-right:20px;position:relative;color:#909192;}',
 			'.more:after{content:"";display:block;position:absolute;right:0;top:50%;width:16px;height:16px;margin-top:-6px;background:url('+arrowImgSrc+') no-repeat center center;background-size:100%;}',
 			'.hideMore:after{transform:rotate(180deg);margin-top:-11px;}',
@@ -137,8 +138,9 @@ class bSearch extends HTMLElement{
 			case 'search':
 				input = `<b-input style="width:${rs.width};" type="text" placeholder="${rs.placeholder || ''}" name="${rs.name}" key="${rs.id}"></b-input>`;
 				input = $(input).get(0);
+				input.nameStyle = {padding:0};
+				input.inputBodyStyle = {background:'#fff'};
 				body.append(input);
-				$(input).css({width:'100%'});
 				this.setInputStyle(input,rs.type);
 				break;
 			case 'text':

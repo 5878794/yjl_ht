@@ -4,7 +4,7 @@ let app = require('./../../es6/lib/page'),
 
 require('./../../es6/all');
 
-
+require('./../../es6/yjl/b-search');
 require('./../../es6/customElement/pc/table_list');
 
 
@@ -24,9 +24,19 @@ let Page = {
         });
     },
     async run(){
+        this.createSearch();
         this.createList();
 
 
+    },
+    createSearch(){
+        let search = $('#search1').get(0);
+        search.inputData = [
+            {name:'',type:'search',id:'search_val',width:'100%',placeholder:'请输入您要搜索的客户名、客户手机号、身份证号、订单号'}
+        ];
+        search.clickFn = function(rs){
+            console.log(rs);
+        }
     },
     createList(){
         let table = $('#table_list').get(0);
