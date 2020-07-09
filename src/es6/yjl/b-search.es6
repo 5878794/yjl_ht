@@ -12,7 +12,7 @@
 // search.inputData = [
 // 	{name:'名字查询:',type:'text',id:'a1',placeholder='',width:'20%'},
 // 	{name:'公司非:',type:'select',id:'a2',data:[{name:'t1',value:'1'},{name:'t2',value:'2'}]},
-// 	{name:'时间:',type:'date',id:'a3'},
+// 	{name:'时间:',type:'date',id:'a3'},   //注意宽度无法低于正常的input值，需要尝试
 // 	{name:'日期:',type:'assDate',id:['a4','a5']},
 // 	// {name:'',type:'search',id:'a6'}      //会占用整行，需要单独使用，有它无其它
 // ];
