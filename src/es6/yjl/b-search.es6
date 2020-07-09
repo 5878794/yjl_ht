@@ -155,7 +155,7 @@ class bSearch extends HTMLElement{
 				this.setInputStyle(input,rs.type);
 				break;
 			case 'date':
-				input = `<b-input-date style="width:${rs.width};" type="date" placeholder="${rs.placeholder || ''}" name="${rs.name}" key="${rs.id}"></b-input-date>`;
+				input = `<b-input-date disabled="disabled" style="width:${rs.width};" type="date" placeholder="${rs.placeholder || ''}" name="${rs.name}" key="${rs.id}"></b-input-date>`;
 				input = $(input).get(0);
 				body.append(input);
 				this.setInputStyle(input,rs.type);
