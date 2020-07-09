@@ -193,11 +193,11 @@ let Page = {
 
 		let search = $('#b_search').get(0);
 		search.inputData = [
-			{name:'名字查询:',type:'text',id:'a1'},
-			{name:'公司非:',type:'select',id:'a2',data:[{name:'t1',value:'1'},{name:'t2',value:'2'}]},
-			{name:'时间:',type:'date',id:'a3'},
-			{name:'日期:',type:'assDate',id:['a4','a5']},
-			// {name:'',type:'search',id:'a6'}
+			// {name:'名字查询:',type:'text',id:'a1',placeholder:'请aaa',width:'40%'},
+			// {name:'公司非:',type:'select',id:'a2',data:[{name:'t1',value:'1'},{name:'t2',value:'2'}]},
+			// {name:'时间:',type:'date',id:'a3'},
+			// {name:'日期:',type:'assDate',id:['a4','a5'],width:'40%'},
+			{name:'',type:'search',id:'a6',width:'100%'}
 		];
 		search.clickFn = function(rs){
 			console.log(rs);

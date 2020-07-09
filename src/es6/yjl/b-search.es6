@@ -10,7 +10,7 @@
 //js：
 // let search = $('#b_search').get(0);
 // search.inputData = [
-// 	{name:'名字查询:',type:'text',id:'a1',placeholder=''},
+// 	{name:'名字查询:',type:'text',id:'a1',placeholder='',width:'20%'},
 // 	{name:'公司非:',type:'select',id:'a2',data:[{name:'t1',value:'1'},{name:'t2',value:'2'}]},
 // 	{name:'时间:',type:'date',id:'a3'},
 // 	{name:'日期:',type:'assDate',id:['a4','a5']},
@@ -135,34 +135,34 @@ class bSearch extends HTMLElement{
 			input = null;
 		switch (type) {
 			case 'search':
-				input = `<b-input type="text" placeholder="${rs.placeholder}" name="${rs.name}" key="${rs.id}"></b-input>`;
+				input = `<b-input style="width:${rs.width};" type="text" placeholder="${rs.placeholder || ''}" name="${rs.name}" key="${rs.id}"></b-input>`;
 				input = $(input).get(0);
 				body.append(input);
 				$(input).css({width:'100%'});
 				this.setInputStyle(input,rs.type);
 				break;
 			case 'text':
-				input = `<b-input type="text" placeholder="${rs.placeholder}" name="${rs.name}" key="${rs.id}"></b-input>`;
+				input = `<b-input style="width:${rs.width};" type="text" placeholder="${rs.placeholder || ''}" name="${rs.name}" key="${rs.id}"></b-input>`;
 				input = $(input).get(0);
 				body.append(input);
 				this.setInputStyle(input,rs.type);
 				break;
 			case 'select':
-				input = `<b-input type="select" name="${rs.name}" key="${rs.id}" placeholder="${rs.placeholder}"></b-input>`;
+				input = `<b-input style="width:${rs.width};" type="select" name="${rs.name}" key="${rs.id}" placeholder="${rs.placeholder || ''}"></b-input>`;
 				input = $(input).get(0);
 				input.selectData = rs.data;
 				body.append(input);
 				this.setInputStyle(input,rs.type);
 				break;
 			case 'date':
-				input = `<b-input-date type="date" placeholder="${rs.placeholder}" name="${rs.name}" key="${rs.id}"></b-input-date>`;
+				input = `<b-input-date style="width:${rs.width};" type="date" placeholder="${rs.placeholder || ''}" name="${rs.name}" key="${rs.id}"></b-input-date>`;
 				input = $(input).get(0);
 				body.append(input);
 				this.setInputStyle(input,rs.type);
 				break;
 			case 'assDate':
-				input = `<b-input-date type="date" placeholder="${rs.placeholder}" name="${rs.name}" key="${rs.id[0]}"></b-input-date>`;
-				let input1 = `<b-input-date type="date" placeholder="${rs.placeholder}" name="—" key="${rs.id[1]}"></b-input-date>`;
+				input = `<b-input-date style="width:${parseInt(rs.width)/2+'%'};" type="date" placeholder="${rs.placeholder || ''}" name="${rs.name}" key="${rs.id[0]}"></b-input-date>`;
+				let input1 = `<b-input-date style="width:${parseInt(rs.width)/2+'%'};" type="date" placeholder="${rs.placeholder || ''}" name="—" key="${rs.id[1]}"></b-input-date>`;
 				input = $(input).get(0);
 				input1 = $(input1).get(0);
 				body.append(input).append(input1);
