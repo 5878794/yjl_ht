@@ -16,23 +16,15 @@ html
             b-win-left
 
         div(class='right')
-            include ../../pug_include/top
+            //- include ../../pug_include/top
+            b-win-top
 
             div(class='iframe scroll_style1' id='iframe_body')
                 div(class='page_body')
                     //- 页面主体开始。。。。。。
 
                     //- 通知部分
-                    div(class='notice box_hlc')
-                        img(src='./image/notice.png')
-                        p 信息播报：
-                        div(class='boxflex1 notice_main')
-                            div(class='notice_scroller box_hlc')
-                                span 恭喜 "打的费"开单......
-                                span 恭喜 "打的费"开单......
-                                span 恭喜 "打的费"开单......
-                                span 恭喜 "打的费"开单......
-                                span 恭喜 "打的费"开单......
+                    b-index-notice(id='notice' class='notice')
 
                     //- 搜索及排名部分
                     div(class='search_main')

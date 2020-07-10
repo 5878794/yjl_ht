@@ -5,6 +5,8 @@ let app = require('./../../es6/lib/page'),
 
 
 require('./../../es6/yjl/b-win-left');
+require('./../../es6/yjl/b-win-top');
+require('./../../es6/yjl/b-index-notice');
 require('./../../es6/yjl/b-search');
 require('./../../es6/customElement/pc/table_list');
 
