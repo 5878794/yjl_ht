@@ -1,4 +1,16 @@
 
+//首页 通知 滚动条
+
+// html:
+// 	b-index-notice(id='notice' class='notice')
+
+//js:
+// 	let notice = $('#notice').get(0);
+// 	notice.showData = [{text:'123',...}];       //text属性必须
+// 	notice.clickFn = function(rs){
+// 		console.log(rs)             //传入的对象
+// 	}
+
 
 let lib = require('../lib');
 
@@ -38,6 +50,8 @@ class bIndexNotice extends HTMLElement{
 		//创建dom
 		this.createElement();
 
+		this.userClickFn = function(){};
+
 		this.shadow.appendChild(this.body.get(0));
 	}
 
@@ -49,7 +63,7 @@ class bIndexNotice extends HTMLElement{
 			p = $('<p>信息播报：</p>'),
 			scrollBody = $('<div class="boxflex1 notice_main"></div>'),
 			scrollDiv = $('<div class="notice_scroller box_hlc"></div>'),
-			list = $('<span>恭喜 "打的费"开单......</span>');
+			list = $('<span class="hover"></span>');
 
 		body.append(img).append(p).append(scrollBody);
 		scrollBody.append(scrollDiv);
@@ -70,6 +84,50 @@ class bIndexNotice extends HTMLElement{
 
 
 		this.cssText = css.join('');
+	}
+
+	createList(data){
+		let body = this.scrollDiv,
+			item = this.item,
+			_this = this;
+
+		body.find('span').unbind('click');
+		body.html('');
+		data.map(rs=>{
+			let _item = item.clone();
+			_item.data({data:rs});
+			_item.text(rs.text);
+
+			_item.click(function(){
+				let data = $(this).data('data');
+				_this.userClickFn(data);
+			});
+			body.append(_item);
+		});
+	}
+
+	set showData(data){
+		if(!data || data.length == 0){
+			return;
+		}
+
+		this.stopAnimate();
+		this.createList(data);
+		setTimeout(()=>{
+			this.startAnimate();
+		},300)
+	}
+	set clickFn(fn){
+		fn = fn || function(){};
+		this.userClickFn = fn;
+	}
+
+	stopAnimate(){
+
+	}
+
+	startAnimate(){
+
 	}
 
 

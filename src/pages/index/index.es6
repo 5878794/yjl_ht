@@ -27,10 +27,18 @@ let Page = {
         });
     },
     async run(){
+        this.createNotice();
         this.createSearch();
         this.createList();
 
 
+    },
+    createNotice(){
+        let notice = $('#notice').get(0);
+        notice.showData = [{text:'撒地方撒地方',id:'2'}];
+        notice.clickFn = function(rs){
+            console.log(rs)
+        }
     },
     createSearch(){
         let search = $('#search1').get(0);
