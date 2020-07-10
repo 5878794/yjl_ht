@@ -13,6 +13,7 @@
 
 
 let lib = require('../lib');
+require('../lib/jq/extend');
 
 
 let addStyleFile = require('../customElement/fn/addStyleFile'),
@@ -79,7 +80,7 @@ class bIndexNotice extends HTMLElement{
 			'.notice p{font-size: 14px; color: #000000; font-weight: bold;}',
 			'.notice_main{position: relative;overflow: hidden;height: 50px;}',
 			'.notice_scroller{position: absolute;left:0; top:0;height: 50px;}',
-			'.notice_scroller spanpadding:0 20px;font-size: 12px;}'
+			'.notice_scroller span{padding:0 20px;font-size: 12px;}'
 		];
 
 
@@ -92,7 +93,7 @@ class bIndexNotice extends HTMLElement{
 			_this = this;
 
 		body.find('span').unbind('click');
-		body.html('');
+		body.html('').addClass('hidden');
 		data.map(rs=>{
 			let _item = item.clone();
 			_item.data({data:rs});
@@ -123,10 +124,44 @@ class bIndexNotice extends HTMLElement{
 	}
 
 	stopAnimate(){
-
+		clearInterval(this.intervalFn);
+		this.intervalFn = null;
+		this.scrollDiv.css({
+			'transition-property': '',
+			'transition-duration': '',
+			'transition-timing-function': '',
+			'will-change': 'auto',
+			'transform-style': '',
+			'backface-visibility': ''
+		});
 	}
 
 	startAnimate(){
+		let width = parseInt(this.scrollDiv.parent().width()),
+			width1 = parseInt(this.scrollDiv.width()),
+			time = (width+width1)*15,
+			_this = this;
+
+		this.scrollDiv.css({
+			transform:'translateX('+width+'px)'
+		}).removeClass('hidden');
+
+		let animateFn = function(){
+			_this.scrollDiv.cssAnimate({
+				transform:'translateX('+-width1+'px)'
+			},time,()=>{
+				_this.scrollDiv.css({
+					transform:'translateX('+width+'px)'
+				});
+			},true,'linear')
+		};
+
+		setTimeout(function(){
+			animateFn();
+			_this.intervalFn = setInterval(()=>{
+				animateFn();
+			},time+3000)
+		},10)
 
 	}
 

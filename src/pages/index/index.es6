@@ -35,7 +35,15 @@ let Page = {
     },
     createNotice(){
         let notice = $('#notice').get(0);
-        notice.showData = [{text:'撒地方撒地方',id:'2'}];
+        notice.showData = [
+            {text:'撒地方撒地方1',id:'2'},
+            {text:'撒地方撒地方2',id:'2'},
+            {text:'撒地方撒地方3',id:'2'},
+            {text:'撒地方撒地方4',id:'2'},
+            {text:'撒地方撒地方5',id:'2'},
+            {text:'撒地方撒地方6',id:'2'},
+            {text:'撒地方撒地方7',id:'2'}
+        ];
         notice.clickFn = function(rs){
             console.log(rs)
         }
