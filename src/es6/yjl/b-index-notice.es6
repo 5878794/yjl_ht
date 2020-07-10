@@ -179,6 +179,12 @@ class bIndexNotice extends HTMLElement{
 				_this.startAnimate();
 			}
 		});
+		window.addEventListener("focus",()=>{
+			_this.startAnimate();
+		});
+		window.addEventListener("blur",()=>{
+			_this.stopAnimate();
+		});
 	}
 
 }
