@@ -174,10 +174,8 @@ class bIndexNotice extends HTMLElement{
 		let _this = this;
 		document.addEventListener('visibilitychange',function(){ //浏览器切换事件
 			if(document.visibilityState=='hidden') { //状态判断
-				console.log('hidden')
 				_this.stopAnimate();
 			}else {
-				console.log('show')
 				_this.startAnimate();
 			}
 		});
