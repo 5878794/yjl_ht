@@ -2,8 +2,9 @@ let app = require('./../../es6/lib/page'),
     lib = require('./../../es6/lib'),
     tableSet = require('./../../es6/tableSetting');
 
-require('./../../es6/all');
 
+
+require('./../../es6/yjl/b-win-left');
 require('./../../es6/yjl/b-search');
 require('./../../es6/customElement/pc/table_list');
 

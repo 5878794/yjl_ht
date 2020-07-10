@@ -37,7 +37,10 @@ let arrowImgSrc = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAA
 class bSearch extends HTMLElement{
 	//元素加入页面回调
 	connectedCallback() {
-
+		let _this = this;
+		setTimeout(function(){
+			_this.body.css({display:'flex'});
+		},0)
 	}
 
 	constructor() {
@@ -68,7 +71,7 @@ class bSearch extends HTMLElement{
 	}
 
 	createElement(){
-		let body = $('<div class="body box_hlt"></div>'),
+		let body = $('<div class="body box_hlt" style="display: none;"></div>'),
 			inputBody= $('<div class="boxflex1 box_hlt box_lines"></div>'),
 			btnBody = $('<div class="box_slt btnBody"></div>'),
 			searchBtn = $('<div class="searchBtn hover"></div>'),
