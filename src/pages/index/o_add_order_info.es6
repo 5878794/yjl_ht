@@ -185,6 +185,16 @@ let Page = {
 			console.log(type)
 		};
 
+		let title2 = $('#b_title2').get(0);
+		title2.btnData = [
+			{name:'添加',type:'btn7',style:{color:'#333'},showHide:{name:'删除',type:'btn8',style:{color:'red'}}}
+		];
+		title2.clickFn = function(type){
+			console.log(type)
+		};
+
+
+
 		let title1 = $('#b_title1').get(0);
 		title1.clickFn = function(obj){
 			console.log(obj);

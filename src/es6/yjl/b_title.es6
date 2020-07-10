@@ -14,7 +14,9 @@
 // 			{name:'动产',type:'btn21'},
 // 			{name:'不动产',type:'btn22'}
 // 		]
-// 	}
+// 	},
+//                                                          //自身切换类型  showHide
+//  {name:'添加',type:'btn7',style:{color:'#333'},showHide:{name:'删除',type:'btn8',style:{color:'red'}}}
 // ];
 // title.clickFn = function(type){                          //按钮点击事件
 // 	console.log(type)                                       //返回点击的按钮type
@@ -101,6 +103,11 @@ class bTitle extends HTMLElement{
 				_item.removeClass('hover');
 				_this.addHoverEvent(_item,rs.children);
 			}else{
+				if(rs.showHide){
+					_item.attr({state:'state1'});
+					_item.data({state2:rs.showHide});
+					_item.data({state1:rs});
+				}
 				_this.addClickEvent(_item);
 			}
 
@@ -131,7 +138,24 @@ class bTitle extends HTMLElement{
 	addClickEvent(_item){
 		let _this = this;
 		_item.click(function(){
-			let type = $(this).attr('type');
+			let type = $(this).attr('type'),
+				state = $(this).attr('state'),
+				state2 = $(this).data('state2'),
+				state1 = $(this).data('state1');
+
+			//是切换类型的按钮
+			if(state){
+				if(state == 'state1'){
+					//切换到state2状态
+					$(this).attr({type:state2.type,state:'state2'});
+					$(this).text(state2.name).css(state2.style);
+				}else{
+					//切换到state1状态
+					$(this).attr({type:state1.type,state:'state1'});
+					$(this).text(state1.name).css(state1.style);
+				}
+			}
+
 			_this.userClickFn(type);
 		});
 	}
