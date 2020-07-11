@@ -40,12 +40,24 @@ class bTitle1 extends HTMLElement{
 
 		this.name = $(this).attr('name') || '';
 		this.hasDel = ($(this).attr('hasDel') == 'true');
+		this.nameStyle = $(this).attr('nameStyle') || '';
 
 		//创建dom
 		this.createElement();
 		this.userClickFn = function(){};
 
 		this.shadow.appendChild(this.body.get(0));
+
+		if(this.nameStyle){
+			let style = this.nameStyle.split(';');
+			let newStyle = {};
+			style.map(rs=>{
+				rs = rs.split(':');
+				newStyle[rs[0]] = rs[1];
+			});
+			console.log(newStyle)
+			this.titleName.css(newStyle);
+		}
 	}
 
 	createElement(){
@@ -57,6 +69,7 @@ class bTitle1 extends HTMLElement{
 		body.append(titleName).append(btnBody);
 
 
+		this.titleName = titleName;
 		this.btnBody = btnBody;
 		this.btn = btn;
 		this.body = body;

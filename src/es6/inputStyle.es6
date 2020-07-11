@@ -55,6 +55,7 @@ module.exports = {
 		});
 		bDate.each(function(){
 			_this.inputStyleFn(this);
+			this.inputBodyStyle = {paddingRight:0};
 		});
 		bTextarea.each(function(){
 			_this.textareaStyleFn(this);
