@@ -1,0 +1,253 @@
+doctype html
+html
+    head
+        //- 交易垫资、非交易垫资   共用页面
+        title 创建新订单
+        include ./../../pug_include/head_pc
+
+        script(data-src='o_add_order_advance.min.js?t='+tt)
+        style.
+            body,html{overflow:auto;}
+
+
+    body
+
+        div(class='openWin_main')
+
+            b-order-info(id='order_info' class='b_order_info')
+
+            div
+                b-title(name='主要抵押物信息')
+                b-title1(name='产权信息')
+                div(class='openWin_input_main box_hlt box_lines')
+                    div(class='openWin_input_item3')
+                        b-input(type='text' err='' name='名称')
+                    div(class='openWin_input_item3')
+                        b-input(type='text' err='' name='产权证号')
+                    div(class='openWin_input_item3')
+                        b-input(type='text' err='' name='面积' unit='㎡')
+                    div(class='openWin_input_item3')
+                        b-input(type='select' err='' name='住宅性质')
+                    div(class='openWin_input_item3')
+                        b-input-date(type='date' err='' name='取得时间')
+
+                b-title1(name='评估信息')
+                div(class='openWin_input_main box_hlt box_lines')
+                    div(class='openWin_input_item3')
+                        b-input(type='text' err='' name='评估总价' unit='元')
+                    div(class='openWin_input_item1')
+                        b-input-file(class='__input_file__' type='file' err='' name='快销总价' unit='(非必填附件)')
+
+
+                b-title1(name='抵押信息')
+                b-title1(name='抵押1')
+                div(class='openWin_input_main box_hlt box_lines')
+                    div(class='openWin_input_item3')
+                        b-input-date(type='date' err='' name='抵押时间')
+                    div(class='openWin_input_item3')
+                        b-input(type='text' err='' name='抵押次数')
+                    div(class='openWin_input_item3')
+                        b-input(type='text' err='' name='抵押权人')
+                    div(class='openWin_input_item3')
+                        b-input-money(err='' name='原贷贷款' unit='万元')
+                    div(class='openWin_input_item3')
+                        b-input-money(err='' name='抵押金额' unit='万元')
+                    div(class='openWin_input_item1')
+                        b-input-file(type='file' err='' name='抵押附件')
+
+
+                b-title1(name='房屋现状')
+                div(class='openWin_input_main box_hlt box_lines')
+                    div(class='openWin_input_item3')
+                        b-input(type='text' err='' name='房龄' unit='年')
+                    div(class='openWin_input_item3')
+                        b-input(type='select' err='' name='朝向')
+                    div(class='openWin_input_item3')
+                        b-input(type='select' err='' name='装修情况')
+                    div(class='openWin_input_item3')
+                        b-input(type='select' err='' name='使用情况')
+                    div(class='openWin_input_item3')
+                        b-input(type='select' err='' name='有无电梯')
+                    div(class='openWin_input_item3')
+                        b-input(type='text' err='' name='总楼层')
+
+
+            div
+                b-title(name='附抵押物信息')
+                b-title1(name='不动产')
+                div(class='openWin_input_main box_hlt box_lines')
+                    div(class='openWin_input_item3')
+                        b-input(type='text' name='名称')
+                    div(class='openWin_input_item3')
+                        b-input(type='text' name='产权证号')
+                    div(class='openWin_input_item3')
+                        b-input(type='text' name='面积' unit='㎡' id='key1' )
+                    div(class='openWin_input_item3')
+                        b-input(type='select' name='住宅性质' id='key1')
+                    div(class='openWin_input_item3')
+                        b-input-date(type='date' name='取得时间' id='key1')
+
+                b-title1(name='动产')
+                div(class='openWin_input_main box_hlt box_lines')
+                    div(class='openWin_input_item3')
+                        b-input(type='text' name='名称')
+                    div(class='openWin_input_item3')
+                        b-input(type='text' name='权益' unit='%')
+                    div(class='openWin_input_item3')
+                        b-input-money(name='评估价值' accuracy='5' unit='万元' id='key1')
+
+            div
+                b-title(name='还款信息' id='')
+                div(class='openWin_input_main box_hlt box_lines')
+                    div(class='openWin_input_item3')
+                        b-input(type='text' name='还款对象')
+                    div(class='openWin_input_item3')
+                        b-input(type='text' name='联系人')
+                    div(class='openWin_input_item3')
+                        b-input(type='text' name='联系电话' id='key1')
+                    div(class='openWin_input_item3')
+                        b-input(type='text' name='还款户名' id='key1')
+                    div(class='openWin_input_item3')
+                        b-input(type='text' name='还款账号' id='key1')
+                    div(class='openWin_input_item3')
+                        b-input(type='text' name='开户行' id='key1')
+
+            div
+                b-title(name='回款信息')
+                div(class='openWin_input_main box_hlt box_lines')
+                    div(class='openWin_input_item3')
+                        b-input(type='text' name='回款对象' id='key1')
+                    div(class='openWin_input_item3')
+                        b-input(type='text' name='联系人' id='key1')
+                    div(class='openWin_input_item3')
+                        b-input(type='text' name='联系电话' id='key1')
+                    div(class='openWin_input_item3')
+                        b-input(type='text' name='批复金额' id='key1' unit='元')
+                    div(class='openWin_input_item3')
+                        b-input(type='text' name='回款账号' id='key1')
+                    div(class='openWin_input_item3')
+                        b-input(type='text' name='开户行' id='key1')
+                    div(class='openWin_input_item3')
+                        b-input(type='text' name='回款户名' id='key1')
+                    div(class='openWin_input_item3')
+                        b-input(type='text' name='回款金额' id='key1' unit='元')
+                    div(class='openWin_input_item3')
+                        //- 非垫资业务没有
+                        //- 资金监管回款/银行贷款回款
+                        b-input(type='select' name='回款方式' id='key1')
+
+            //- 非垫资业务没有
+            div
+                b-title(name='买家信息')
+                div(class='openWin_input_main box_hlt box_lines')
+                    div(class='openWin_input_item3')
+                        b-input(type='text' name='名称' id='key1')
+                    div(class='openWin_input_item3')
+                        b-input(type='text' name='证件编号' id='key1')
+                    div(class='openWin_input_item3')
+                        b-input(type='text' name='电话号码' id='key1')
+                    div(class='openWin_input_item1')
+                        b-input(type='text' name='住址' id='key1')
+
+            //- 非垫资业务没有
+            div
+                b-title(name='交易信息' id='')
+                div(class='openWin_input_main box_hlt box_lines')
+                    div(class='openWin_input_item3')
+                        b-input(type='text' name='成交中介')
+                    div(class='openWin_input_item3')
+                        b-input(type='text' name='中介联系人')
+                    div(class='openWin_input_item3')
+                        b-input(type='text' name='中介电话' id='key1')
+                    div(class='openWin_input_item3')
+                        b-input(type='text' name='成交总价' id='key1')
+                    div(class='openWin_input_item3')
+                        b-input(type='select' name='付款方式' id='key1')
+
+
+            //- 非垫资业务没有
+            div
+                b-title(name='银行监管')
+                b-title1(name='买家')
+                div(class='openWin_input_main box_hlt box_lines')
+                    div(class='openWin_input_item3')
+                        b-input(type='text' name='监管银行')
+                    div(class='openWin_input_item3')
+                        b-input(type='text' name='监管金额' unit='元')
+                    div(class='openWin_input_item3')
+                        b-input(type='text' name='监管账号' id='key1')
+                    div(class='openWin_input_item3')
+                        b-input(type='text' name='户名' id='key1')
+                    div(class='openWin_input_item3')
+                        b-input(type='text' name='开户行' id='key1')
+                b-title1(name='卖家')
+                div(class='openWin_input_main box_hlt box_lines')
+                    div(class='openWin_input_item3')
+                        b-input(type='text' name='监管银行')
+                    div(class='openWin_input_item3')
+                        b-input(type='text' name='监管金额' unit='元')
+                    div(class='openWin_input_item3')
+                        b-input(type='text' name='监管账号' id='key1')
+                    div(class='openWin_input_item3')
+                        b-input(type='text' name='户名' id='key1')
+                    div(class='openWin_input_item3')
+                        b-input(type='text' name='开户行' id='key1')
+
+
+            div
+                b-title(name='垫资比例')
+                div(class='openWin_input_main box_hlt box_lines')
+                    div(class='box_slt' style='margin-top:20px;')
+                        div(class='openWin_advance_row box_hlc')
+                            div 7000000.00000
+                            span /
+                            span (
+                            div 4000000.00000
+                            span +
+                            div 2000000.00000
+                            span )
+                            span &#61;
+                            div(class='openWin_advance_row_rs') 1.111111%
+                        div(class='openWin_advance_row1 box_hlc')
+                            div 申请金额
+                            span /
+                            span (
+                            div 主抵押物评估总价
+                            span +
+                            div 附抵押物评估总价
+                            span )
+
+
+
+            div
+                b-title(name='费用信息')
+                div(class='openWin_input_main box_hlt box_lines' style='background:rgb(250,243,230)')
+                    div(class='openWin_input_item3')
+                        b-input(type='text' name='用款时间' unit='天')
+                    div(class='openWin_input_item3')
+                        b-input(type='text' name='咨询费率' unit='%' disabled='disabled')
+                    div(class='openWin_input_item3')
+                        b-input(type='text' name='咨询费用' unit='元' disabled='disabled')
+                    div(class='openWin_input_item3')
+                        b-input(type='text' name='权证费' unit='元')
+                    div(class='openWin_input_item3')
+                        b-input(type='text' name='服务费率' unit='%')
+                    div(class='openWin_input_item3')
+                        b-input(type='text' name='服务费用' unit='元' disabled='disabled')
+                    div(class='openWin_input_item3')
+                        b-input(type='text' name='优惠费用' unit='元')
+                    div(class='openWin_input_item3')
+                        b-input(type='text' name='费用合计' unit='元' disabled='disabled')
+
+
+            div
+                b-title(name='备注')
+                div(class='openWin_input_main box_hlt box_lines')
+                    div(class='openWin_input_item1')
+                        b-input(type='textarea' autoHeight='true' name='')
+
+
+
+            div(class='openWin_btns box_hcc')
+                div(class='openWin_btn_gray box_hcc hover') 上一步
+                div(class='openWin_btn_blue box_hcc hover') 下一步
