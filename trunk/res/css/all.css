@@ -34,8 +34,8 @@ input,button,select,textarea{
 
 
 .input_disabled{
-    background: #F5F5F5 !important;
-    border-color: #F5F5F5 !important;
+    background: rgb(230,231,232) !important;
+    border-color: rgb(214,213,207) !important;
 }
 
 /*input:disabled{*/

@@ -74,7 +74,7 @@ class bTitle extends HTMLElement{
 	}
 	createStyle(){
 		let css = [
-			'.body{margin-top:20px;min-width:1000px;max-width:1600px;width:100%;height:40px;padding:0 20px;background:#ecf1f9;font-size:14px;color:#333;}',
+			'.body{margin-top:20px;min-width:1000px;max-width:1600px;width:100%;height:40px;padding:0 20px;background:rgb(234,243,251);font-size:14px;color:#333;}',
 			'.titleName{width:400px;font-weight:bold;}',
 			'.btn{color:#3f68ef; font-size:14px; height:40px; padding:0 10px; position:relative;}',
 			'.openDiv{position:absolute;z-index:1;left:0;top:35px;width:120%;background:#fff;box-shadow:0 0 2px #ccc;padding:5px 0;}',

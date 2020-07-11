@@ -1,7 +1,7 @@
 doctype html
 html
     head
-        title 金盾时代-综合业务系统
+        title 创建新订单
         include ./../../pug_include/head_pc
 
         script(data-src='o_add_order.min.js?t='+tt)
@@ -9,7 +9,7 @@ html
 
     body
 
-        div(class='openWin_main')
+        div(class='openWin_main' style='width:500px;min-width:100%;max-width:100%;')
             b-input(id='select' type='select' name='业务方案' key='key1' placeholder='请选择' rule='must' err='请选择业务方案')
             b-input(id='name' type='text' name='客户姓名' key='key2' placeholder='请输入客户姓名' rule='must,min:1,max:20' err='客户姓名长度1-20字符')
             b-input-money(id='money' name='申请金额' accuracy=5 key='key3' placeholder='请输入申请金额' rule='must' err='请输入申请金额')
