@@ -44,11 +44,7 @@ let Page = {
 			{name:'测试3',value:'3'}
 		];
 
-		inputStyle.styleFn(select);
-		inputStyle.styleFn(name);
-		inputStyle.styleFn(money);
-
-
+		inputStyle.set();
 	},
 	bindEvent(){
 		let btn = $('#submit'),

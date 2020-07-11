@@ -15,15 +15,73 @@ html
 
             b-order-info(id='order_info' class='b_order_info')
 
-
-            b-order-history(id='order_history' sort='desc' showOne='true' class='b_order_history')
-            b-follow-record(id='follow_record' sort='desc' showOne='true' class='b_order_history')
-            b-title(id='b_title' name='测试')
-            b-title(id='b_title2' name='测试')
-            b-title1(id='b_title1' name='测试2' hasDel='true')
-            b-title1(id='b_title2' name='测试2')
-            b-search(id='b_search' showMoreBtn='true')
+            div
+                b-title(name='业务来源')
+                div(class='openWin_input_main box_slt box_lines')
+                    div(class='openWin_input_item3')
+                        b-input(type='select' err='请选择业务来源' name='业务来源' id='key1' placeholder='请选择')
 
 
+            b-title(name='订单基本详情')
+            div
+                b-title1(name='主申请人信息')
+                div(class='openWin_input_main box_hlt box_lines')
+                    div(class='openWin_input_item3')
+                        b-input(type='text' err='请输入名称' name='名称' id='key1' placeholder='名称/公司')
+                    div(class='openWin_input_item3')
+                        b-input(type='text' name='证件编号' id='key1' placeholder='身份证号/企业信用代码')
+                    div(class='openWin_input_item3')
+                        b-input(type='text' name='电话号码' id='key1')
+                    div(class='openWin_input_item1')
+                        b-input(type='text' name='住址' id='key1')
+
+            div
+                b-title1(name='紧急联系人')
+                div(id='a')
+                    div(class='openWin_input_main box_hlt box_lines')
+                        div(class='openWin_input_item3')
+                            b-input(type='text' name='申请人' id='key1' placeholder='紧急联系人/（非必填）')
+                        div(class='openWin_input_item3')
+                            b-input(type='text' name='联系电话' id='key1' placeholder='紧急联系人电话/（非必填）')
+
+            div
+                b-title(name='共同申请人信息' id='')
+                b-title1(name='申请人' class='')
+                div(class='openWin_input_main box_hlt box_lines')
+                    div(class='openWin_input_item3')
+                        b-input(type='text' name='名称' id='key1' placeholder='名称/公司')
+                    div(class='openWin_input_item3')
+                        b-input(type='text' name='证件编号' id='key1' placeholder='身份证号/企业信用代码')
+                    div(class='openWin_input_item3')
+                        b-input(type='text' name='电话号码' id='key1')
+                    div(class='openWin_input_item1')
+                        b-input(type='text' name='住址' id='key1')
+
+            div
+                b-title(name='担保人信息' id='')
+                b-title1(name='担保人' class='')
+                div(class='openWin_input_main box_hlt box_lines')
+                    div(class='openWin_input_item3')
+                        b-input(type='text' name='名称' id='key1' placeholder='名称/公司')
+                    div(class='openWin_input_item3')
+                        b-input(type='text' name='证件编号' id='key1' placeholder='身份证号/企业信用代码')
+                    div(class='openWin_input_item3')
+                        b-input(type='text' name='电话号码' id='key1')
+                    div(class='openWin_input_item1')
+                        b-input(type='text' name='住址' id='key1')
 
 
+            div
+                b-title(name='客户资料')
+                div(class='openWin_input_main box_hlt box_lines')
+                    div(class='openWin_input_item1')
+                        b-input-file(type='file' name='身份证上传' id='key1')
+                    div(class='openWin_input_item1')
+                        b-input-file(type='file' name='抵押物证件上传' id='key1')
+                    div(class='openWin_input_item1')
+                        b-input-file(type='file' name='其他报告上传' id='key1')
+
+
+            div(class='openWin_btns box_hcc')
+                div(class='openWin_btn_gray box_hcc hover') 上一步
+                div(class='openWin_btn_blue box_hcc hover') 下一步
