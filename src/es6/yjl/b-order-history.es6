@@ -145,7 +145,7 @@ class bOrderHistory extends HTMLElement{
 		});
 
 
-		if(this.showMore && data.length > 1){
+		if(this.showOne && data.length > 1){
 			let allItem = this.body.find('.item'),
 				showOneFn = function(){
 					allItem.addClass('hidden');

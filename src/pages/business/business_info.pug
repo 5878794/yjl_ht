@@ -1,0 +1,24 @@
+doctype html
+html
+    head
+        title 创建新订单
+        include ./../../pug_include/head_pc
+
+        script(data-src='business_info.min.js?t='+tt)
+        style.
+            body,html{overflow:auto;}
+
+
+    body
+
+        div(class='openWin_main')
+
+            b-order-info(id='order_info' class='b_order_info')
+
+            b-title(name='历史流程')
+            b-order-history(id='history' sort='desc')
+
+
+
+            div(class='openWin_btns box_hcc')
+                div(class='openWin_btn_blue box_hcc hover' id='submit') 确认
