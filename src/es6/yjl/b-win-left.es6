@@ -85,7 +85,8 @@ class bWinLeft extends HTMLElement{
 			item2 = $('<div class="box_hlc menu_item1 __item__"></div>');
 
 
-		body.append(logoBody).append(navBody);
+		// body.append(logoBody).append(navBody);
+		body.append(navBody);
 
 		this.navBody = navBody;
 		this.item = item;
@@ -97,7 +98,7 @@ class bWinLeft extends HTMLElement{
 		let css = [
 			'.logo{width: 100%; height: 80px;font-size: 20px;color: #fff;font-weight: bold;}',
 			'.logo img{display: block;width: 31px;height: 40px;margin-right: 15px;}',
-			'.menu{width: 100%; position: absolute;left:0; top:80px; bottom:0;overflow-y: auto;overflow-x: hidden;padding:5px;}',
+			'.menu{width: 100%; position: absolute;left:0; top:0; bottom:0;overflow-y: auto;overflow-x: hidden;padding:5px;}',
 			'.menu_item{width: 100%;height: 50px;cursor: pointer;padding-left: 10px;border-radius: 5px;}',
 			'.menu_item img{transform: scale(0.8);}',
 			'.menu_item span{width: 110px;padding-left:16px;font-size: 16px;color: #afafb9;position: relative;display: block;}',
