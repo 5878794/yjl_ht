@@ -56,6 +56,7 @@ let Page = {
         };
         let bTitle = $('#btitle').get(0);
         bTitle.titleName = name[param];
+        $('title').text(name[param]);
     },
     setPart1(){
         let part1 = $('#order_info').get(0);
