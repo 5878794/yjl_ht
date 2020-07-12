@@ -74,6 +74,9 @@ let Page = {
         ];
         table.show(tempData);
 
+        table.body.find('.__key6__').each(function(){
+           $(this).addClass('hover');
+        });
         table.body.find('.__key6__').click(function(){
             let data = $(this).parent().data('data');
             console.log(data);
