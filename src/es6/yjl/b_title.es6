@@ -66,6 +66,7 @@ class bTitle extends HTMLElement{
 
 		body.append(titleName).append(btnBody);
 
+		this.titleNameDiv = titleName;
 		this.openDiv = openDiv;
 		this.openList = openDivList;
 		this.btnBody = btnBody;
@@ -163,6 +164,10 @@ class bTitle extends HTMLElement{
 	set clickFn(fn){
 		fn = fn || function(){};
 		this.userClickFn = fn;
+	}
+
+	set titleName(text){
+		this.titleNameDiv.text(text);
 	}
 
 }

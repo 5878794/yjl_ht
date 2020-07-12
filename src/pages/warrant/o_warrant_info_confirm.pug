@@ -1,0 +1,38 @@
+//- --------- 多页面共用 ------------------------
+//- 还款资料确认
+//- 取证、解押  type=1
+//- 过户       type=2
+//- 取证       type=3
+//- 抵押       type=4
+
+doctype html
+html
+    head
+        title 还款资料确认
+        include ./../../pug_include/head_pc
+
+        script(data-src='o_warrant_info_confirm.min.js?t='+tt)
+        style.
+            body,html{overflow:auto;}
+
+
+    body
+
+        div(class='openWin_main')
+            b-order-info(id='order_info')
+            b-title(name='历史流程')
+            b-order-history(id='history' showOne='true' sort='desc')
+
+            b-title(name='还款资料确认' id='btitle')
+            div(class='openWin_input_main box_hlt box_lines')
+                div(class='openWin_input_item1')
+                    b-input(type='textarea' autoHeight='true' name='备注')
+                div(class='openWin_input_item1')
+                    b-input-file(type='file' err='' name='附件')
+
+
+
+
+            div(class='openWin_btns box_hcc')
+                div(class='openWin_btn_gray box_hcc hover' id='cancel') 取消
+                div(class='openWin_btn_blue box_hcc hover' id='submit') 提交

@@ -59,7 +59,8 @@ module.exports = {
 				window.location.pathname.indexOf('approve/o_approve_room')>-1 ||
 				window.location.pathname.indexOf('approve/o_approve_advance')>-1 ||
 				window.location.pathname.indexOf('warrant/o_warrant_mdf_room')>-1 ||
-				window.location.pathname.indexOf('warrant/o_warrant_pay_back')>-1
+				window.location.pathname.indexOf('warrant/o_warrant_pay_back')>-1 ||
+				window.location.pathname.indexOf('warrant/o_warrant_info_confirm')>-1
 
 			){
 				_this.inputFileStyleFn1(this);
@@ -80,7 +81,8 @@ module.exports = {
 				window.location.pathname.indexOf('approve/o_approve_room')>-1 ||
 				window.location.pathname.indexOf('approve/o_approve_advance')>-1 ||
 				window.location.pathname.indexOf('warrant/o_warrant_mdf_room')>-1 ||
-				window.location.pathname.indexOf('warrant/o_warrant_pay_back')>-1
+				window.location.pathname.indexOf('warrant/o_warrant_pay_back')>-1 ||
+				window.location.pathname.indexOf('warrant/o_warrant_info_confirm')>-1
 			){
 				_this.textareaStyleFn1(this);
 			}else{
