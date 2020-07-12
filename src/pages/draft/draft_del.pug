@@ -1,0 +1,20 @@
+doctype html
+html
+    head
+        title 申请删除
+        include ./../../pug_include/head_pc
+
+        script(data-src='draft_del.min.js?t='+tt)
+
+
+    body
+
+        div(class='openWin_main' style='width:500px;min-width:100%;max-width:100%;')
+            b-input(id='info' type='text' name='删除理由' key='key2' placeholder='' rule='must' err='删除理由不能为空')
+
+        div(class='openWin_btns box_hcc')
+            div(class='openWin_btn_blue box_hcc hover' id='submit') 下一步
+
+
+
+
