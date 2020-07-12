@@ -52,5 +52,62 @@ module.exports = {
 				iconStyle:{width:'26px',height:'26px'}
 			}
 		]
+	},
+	draft:{
+		setting:{
+			titleRowStyle:{background:'#fff',marginBottom:'5px',height:'60px'},
+			rowHeight:50,
+			rowStyle:{background:"#fff",marginBottom:'5px'},
+			celStyle:{padding:'0 10px'},
+			rowHoverStyle:{background:'#fbd6d8'},
+			rowNotHoverStyle:{background:'#fff'},
+			noDataHtml:'<div class="box_hcc" style="width:100%;height:100px;font-size:14px;color:#333;">暂无数据</div>'
+		},
+		data:[
+			{
+				name:'客户姓名',
+				width:'15%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key1'                //数据对应的key
+			},
+			{
+				name:'主申请人电话号码',
+				width:'20%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key2'                //数据对应的key
+			},
+			{
+				name:'业务类型',
+				width:'15%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key3'                //数据对应的key
+			},
+			{
+				name:'申请金额',
+				width:'25%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key4'                //数据对应的key
+			},
+			{
+				name:'订单创建时间',
+				width:'15%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key5'                //数据对应的key
+			},
+			{
+				name:'',
+				width:'10%',
+				style:{color:'rgb(86,123,249)',fontSize:'14px',cursor:'pointer'},
+				key:'key6'                //数据对应的key
+			}
+		]
+	},
+
+
+
+
+	set(dom,page){
+		dom.setting = this[page].setting;
+		dom.data = this[page].data;
 	}
-}
+};

@@ -59,8 +59,9 @@ let Page = {
     },
     createList(){
         let table = $('#table_list').get(0);
-        table.setting = tableSet.index.setting;
-        table.data = tableSet.index.data;
+        tableSet.set(table,'index');
+        // table.setting = tableSet.index.setting;
+        // table.data = tableSet.index.data;
 
         //TODO 数据获取
         let tempData = [
