@@ -9,9 +9,9 @@ let addStyleFile = require('../customElement/fn/addStyleFile'),
 
 let navData = [
 	{name:'首页',icon:'../res/image/icon1.png',url:'../index/index.html'},
-	{name:'草稿箱',icon:'../res/image/icon2.png',url:''},
-	{name:'我的业务',icon:'../res/image/icon3.png',url:''},
-	{name:'退费退款',icon:'../res/image/icon4.png',url:''},
+	{name:'草稿箱',icon:'../res/image/icon2.png',url:'../draft/draft.html'},
+	{name:'我的业务',icon:'../res/image/icon3.png',url:'../business/business.html'},
+	{name:'退费退款',icon:'../res/image/icon4.png',url:'../refund/refund.html'},
 	{name:'审批',icon:'../res/image/icon5.png',url:''},
 	{name:'权证',icon:'../res/image/icon6.png',url:''},
 	{name:'贷后',icon:'../res/image/icon7.png',url:''},
