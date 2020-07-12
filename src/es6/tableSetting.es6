@@ -192,7 +192,65 @@ let setting = {
 			}
 		]
 	},
-
+	approve:{
+		setting:defaultSetting,
+		data:[
+			{
+				name:'客户姓名',
+				width:'8%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key1'                //数据对应的key
+			},
+			{
+				name:'经办人',
+				width:'8%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key2'                //数据对应的key
+			},
+			{
+				name:'隶属公司部门',
+				width:'15%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key3'                //数据对应的key
+			},
+			{
+				name:'申请金额',
+				width:'15%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key4'                //数据对应的key
+			},
+			{
+				name:'业务类型',
+				width:'10%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key5'                //数据对应的key
+			},
+			{
+				name:'申请时间',
+				width:'10%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key6'                //数据对应的key
+			},
+			{
+				name:'客户电话号码',
+				width:'12%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key7'                //数据对应的key
+			},
+			{
+				name:'经办人电话',
+				width:'12%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key8'                //数据对应的key
+			},
+			{
+				name:'订单状态',
+				width:'10%',
+				style:{color:'rgb(198,84,98)',fontSize:'14px'},
+				key:'key9'                //数据对应的key
+			}
+		]
+	},
 
 
 	set(dom,page){
