@@ -1,0 +1,31 @@
+doctype html
+html
+    head
+        title 订单基本信息
+        include ./../../pug_include/head_pc
+
+        script(data-src='o_approve_advance.min.js?t='+tt)
+        style.
+            body,html{overflow:auto;}
+
+
+    body
+
+        div(class='openWin_main')
+
+            b-order-info(id='order_info' class='b_order_info')
+
+            b-title(name='历史流程')
+            b-order-history(id='history' sort='desc')
+
+            br
+            div(class='openWin_input_main box_hlt box_lines')
+                div(class='openWin_input_item1')
+                    b-input(type='textarea' autoHeight='true' name='意见')
+                div(class='openWin_input_item1')
+                    b-input-file(class='__input_file__' type='file' err='' name='附件')
+
+            div(class='openWin_btns box_hcc')
+                div(class='openWin_btn_gray box_hcc hover' id='cancel') 取消
+                div(class='openWin_btn_red box_hcc hover' id='back') 驳回
+                div(class='openWin_btn_blue box_hcc hover' id='submit') 提交

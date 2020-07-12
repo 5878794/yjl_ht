@@ -28,6 +28,10 @@ module.exports = {
 		obj.rowHeight = 40;		//textarea 自动*3
 		obj.rowStyle = {padding:'10px 20px'};
 	},
+	textareaStyleFn1(obj){
+		obj.rowHeight = 40;		//textarea 自动*3
+		obj.rowStyle = {padding:'10px 20px 10px 0'};
+	},
 	//搜索框中的设置
 	searchInputStyleFn(obj){
 		obj.rowHeight = 36;
@@ -50,7 +54,11 @@ module.exports = {
 			_this.inputStyleFn(this);
 		});
 		bFile.each(function(){
-			if(window.location.pathname.indexOf('index/o_add_order_advance')>-1){
+			if(
+				window.location.pathname.indexOf('index/o_add_order_advance')>-1 ||
+				window.location.pathname.indexOf('approve/o_approve_room')>-1 ||
+				window.location.pathname.indexOf('approve/o_approve_advance')>-1
+			){
 				_this.inputFileStyleFn1(this);
 			}else{
 				_this.inputFileStyleFn(this);
@@ -65,7 +73,14 @@ module.exports = {
 			this.inputBodyStyle = {paddingRight:0};
 		});
 		bTextarea.each(function(){
-			_this.textareaStyleFn(this);
+			if(
+				window.location.pathname.indexOf('approve/o_approve_room')>-1 ||
+				window.location.pathname.indexOf('approve/o_approve_advance')>-1
+			){
+				_this.textareaStyleFn1(this);
+			}else{
+				_this.textareaStyleFn(this);
+			}
 		});
 	},
 	searchSet(obj){

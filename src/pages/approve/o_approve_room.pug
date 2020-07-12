@@ -1,0 +1,57 @@
+doctype html
+html
+    head
+        title 订单基本信息
+        include ./../../pug_include/head_pc
+
+        script(data-src='o_approve_room.min.js?t='+tt)
+        style.
+            body,html{overflow:auto;}
+
+
+    body
+
+        div(class='openWin_main')
+
+            b-order-info(id='order_info' class='b_order_info')
+
+            b-title(name='历史流程')
+            b-order-history(id='history' sort='desc')
+
+            br
+            div(class='openWin_input_main box_hlt box_lines')
+                div(class='openWin_input_item2')
+                    b-input(type='select' err='' name='机构')
+                div(class='openWin_input_item2')
+                    b-input(type='select' err='' name='产品')
+                div(class='openWin_input_item2')
+
+                div(class='openWin_input_item2 box_slc')
+                    div(class='box_hlc approve_room')
+                        p 最高额度(
+                        span 1,200,000.00000
+                        p ),最小额度(
+                        span 1,200,000.00000
+                        p ),可申请时间
+                        span 120
+                        p 天)
+                    div(class='box_hlc approve_room')
+                        p 成本利率(
+                        span 1.00000
+                        p %/日),成本服务费率(
+                        span 1.00000
+                        p %)
+
+
+
+
+            div(class='openWin_input_main box_hlt box_lines')
+                div(class='openWin_input_item1')
+                    b-input(type='textarea' autoHeight='true' name='意见')
+                div(class='openWin_input_item1')
+                    b-input-file(class='__input_file__' type='file' err='' name='附件')
+
+            div(class='openWin_btns box_hcc')
+                div(class='openWin_btn_gray box_hcc hover' id='cancel') 取消
+                div(class='openWin_btn_red box_hcc hover' id='back') 驳回
+                div(class='openWin_btn_blue box_hcc hover' id='submit') 提交
