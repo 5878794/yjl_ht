@@ -28,7 +28,14 @@ module.exports = {
 		obj.rowHeight = 40;		//textarea 自动*3
 		obj.rowStyle = {padding:'10px 20px'};
 	},
-
+	//搜索框中的设置
+	searchInputStyleFn(obj){
+		obj.rowHeight = 36;
+		obj.nameStyle = {width:'auto',color:'#535353',fontSize:'14px',textAlign:'right'};
+		obj.rowStyle = {paddingRight:'20px'};
+		obj.unitStyle = {fontSize:'12px'};
+		obj.inputBodyStyle = {background:'#fff'};
+	},
 
 
 	set(){
@@ -59,6 +66,23 @@ module.exports = {
 		});
 		bTextarea.each(function(){
 			_this.textareaStyleFn(this);
+		});
+	},
+	searchSet(obj){
+		let bInput = obj.body.find('b-input'),
+			bMoney = obj.body.find('b-input-money'),
+			bDate = obj.body.find('b-input-date'),
+			_this = this;
+
+		bInput.each(function(){
+			_this.searchInputStyleFn(this);
+		});
+		bMoney.each(function(){
+			_this.searchInputStyleFn(this);
+		});
+		bDate.each(function(){
+			_this.searchInputStyleFn(this);
+			this.inputBodyStyle = {paddingRight:0};
 		});
 	}
 };

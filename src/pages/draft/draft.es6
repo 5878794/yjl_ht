@@ -27,7 +27,7 @@ let Page = {
     },
     async run(){
         this.createList();
-
+        this.createPagination();
 
     },
     createList(){
@@ -81,7 +81,8 @@ let Page = {
             let data = $(this).parent().data('data');
             console.log(data);
         });
-
+    },
+    createPagination(){
         let fy = $('#table_pagination').get(0);
         fy.show({
             nowPage: 10,             //当前页码       默认：1

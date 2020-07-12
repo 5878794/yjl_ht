@@ -1,7 +1,17 @@
 
+let defaultSetting = {
+	titleRowStyle:{background:'#fff',marginBottom:'5px',height:'60px'},
+	rowHeight:50,
+	rowStyle:{background:"#fff",marginBottom:'5px'},
+	celStyle:{padding:'0 10px'},
+	rowHoverStyle:{background:'#fbd6d8'},
+	rowNotHoverStyle:{background:'#fff'},
+	noDataHtml:'<div class="box_hcc" style="width:100%;height:100px;font-size:14px;color:#333;">暂无数据</div>'
+};
 
 
-module.exports = {
+
+let setting = {
 	index:{
 		setting:{
 			titleRowStyle:{display:'none'},
@@ -54,15 +64,7 @@ module.exports = {
 		]
 	},
 	draft:{
-		setting:{
-			titleRowStyle:{background:'#fff',marginBottom:'5px',height:'60px'},
-			rowHeight:50,
-			rowStyle:{background:"#fff",marginBottom:'5px'},
-			celStyle:{padding:'0 10px'},
-			rowHoverStyle:{background:'#fbd6d8'},
-			rowNotHoverStyle:{background:'#fff'},
-			noDataHtml:'<div class="box_hcc" style="width:100%;height:100px;font-size:14px;color:#333;">暂无数据</div>'
-		},
+		setting:defaultSetting,
 		data:[
 			{
 				name:'客户姓名',
@@ -102,6 +104,47 @@ module.exports = {
 			}
 		]
 	},
+	business:{
+		setting:defaultSetting,
+		data:[
+			{
+				name:'订单号',
+				width:'20%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key1'                //数据对应的key
+			},
+			{
+				name:'姓名',
+				width:'15%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key2'                //数据对应的key
+			},
+			{
+				name:'产品类型',
+				width:'15%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key3'                //数据对应的key
+			},
+			{
+				name:'申请金额',
+				width:'25%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key4'                //数据对应的key
+			},
+			{
+				name:'订单状态',
+				width:'15%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key5'                //数据对应的key
+			},
+			{
+				name:'操作',
+				width:'10%',
+				style:{color:'rgb(86,123,249)',fontSize:'14px'},
+				key:'key6'                //数据对应的key
+			}
+		]
+	},
 
 
 
@@ -111,3 +154,6 @@ module.exports = {
 		dom.data = this[page].data;
 	}
 };
+
+
+module.exports = setting;

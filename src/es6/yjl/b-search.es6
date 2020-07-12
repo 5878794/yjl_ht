@@ -160,7 +160,7 @@ class bSearch extends HTMLElement{
 				this.setInputStyle(input,rs.type);
 				break;
 			case 'date':
-				input = `<b-input-date disabled="disabled" style="width:${rs.width};" type="date" placeholder="${rs.placeholder || ''}" name="${rs.name}" key="${rs.id}"></b-input-date>`;
+				input = `<b-input-date style="width:${rs.width};" type="date" placeholder="${rs.placeholder || ''}" name="${rs.name}" key="${rs.id}"></b-input-date>`;
 				input = $(input).get(0);
 				body.append(input);
 				this.setInputStyle(input,rs.type);
@@ -178,11 +178,13 @@ class bSearch extends HTMLElement{
 				input1.rowStyle = { 'padding-left': 0 };
 
 				input.changeFn = function(val){
+					console.log(val)
 					input1.min = val;
-				}
+				};
 				input1.changeFn = function(val){
+					console.log(val)
 					input.max = val;
-				}
+				};
 
 				break;
 			default:

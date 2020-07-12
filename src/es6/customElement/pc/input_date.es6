@@ -123,6 +123,10 @@ class BInputDate extends BInput{
 		this.body.find('.__input__').val(val);
 	}
 
+	get value(){
+		return this.body.find('.__input__').val();
+	}
+
 }
 
 
