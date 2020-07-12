@@ -8,6 +8,15 @@ let defaultSetting = {
 	rowNotHoverStyle:{background:'#fff'},
 	noDataHtml:'<div class="box_hcc" style="width:100%;height:100px;font-size:14px;color:#333;">暂无数据</div>'
 };
+let defaultSettingRowCanClick = {
+	titleRowStyle:{background:'#fff',marginBottom:'5px',height:'60px'},
+	rowHeight:50,
+	rowStyle:{background:"#fff",marginBottom:'5px',cursor:'pointer'},
+	celStyle:{padding:'0 10px'},
+	rowHoverStyle:{background:'#fbd6d8'},
+	rowNotHoverStyle:{background:'#fff'},
+	noDataHtml:'<div class="box_hcc" style="width:100%;height:100px;font-size:14px;color:#333;">暂无数据</div>'
+};
 
 
 
@@ -251,6 +260,60 @@ let setting = {
 			}
 		]
 	},
+	warrant:{
+		setting:defaultSettingRowCanClick,
+		data:[
+			{
+				name:'客户姓名',
+				width:'10%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key1'                //数据对应的key
+			},
+			{
+				name:'客户电话',
+				width:'15%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key2'                //数据对应的key
+			},
+			{
+				name:'经办人',
+				width:'10%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key3'                //数据对应的key
+			},
+			{
+				name:'经办人部门',
+				width:'20%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key4'                //数据对应的key
+			},
+			{
+				name:'经办人电话',
+				width:'15%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key5'                //数据对应的key
+			},
+			{
+				name:'业务状态',
+				width:'10%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key6'                //数据对应的key
+			},
+			{
+				name:'到期时间',
+				width:'10%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key7'                //数据对应的key
+			},
+			{
+				name:'剩余天数',
+				width:'10%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key8'                //数据对应的key
+			}
+		]
+	},
+
 
 
 	set(dom,page){

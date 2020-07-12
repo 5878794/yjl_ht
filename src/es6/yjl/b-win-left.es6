@@ -13,7 +13,7 @@ let navData = [
 	{name:'我的业务',icon:'../res/image/icon3.png',url:'../business/business.html'},
 	{name:'退费退款',icon:'../res/image/icon4.png',url:'../refund/refund.html'},
 	{name:'审批',icon:'../res/image/icon5.png',url:'../approve/approve.html'},
-	{name:'权证',icon:'../res/image/icon6.png',url:''},
+	{name:'权证',icon:'../res/image/icon6.png',url:'../warrant/warrant.html'},
 	{name:'贷后',icon:'../res/image/icon7.png',url:''},
 	{name:'财务',icon:'../res/image/icon8.png',url:'',children:[
 		{name:'财务管理',url:''},

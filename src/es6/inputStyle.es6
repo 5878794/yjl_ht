@@ -57,7 +57,10 @@ module.exports = {
 			if(
 				window.location.pathname.indexOf('index/o_add_order_advance')>-1 ||
 				window.location.pathname.indexOf('approve/o_approve_room')>-1 ||
-				window.location.pathname.indexOf('approve/o_approve_advance')>-1
+				window.location.pathname.indexOf('approve/o_approve_advance')>-1 ||
+				window.location.pathname.indexOf('warrant/o_warrant_mdf_room')>-1 ||
+				window.location.pathname.indexOf('warrant/o_warrant_pay_back')>-1
+
 			){
 				_this.inputFileStyleFn1(this);
 			}else{
@@ -75,7 +78,9 @@ module.exports = {
 		bTextarea.each(function(){
 			if(
 				window.location.pathname.indexOf('approve/o_approve_room')>-1 ||
-				window.location.pathname.indexOf('approve/o_approve_advance')>-1
+				window.location.pathname.indexOf('approve/o_approve_advance')>-1 ||
+				window.location.pathname.indexOf('warrant/o_warrant_mdf_room')>-1 ||
+				window.location.pathname.indexOf('warrant/o_warrant_pay_back')>-1
 			){
 				_this.textareaStyleFn1(this);
 			}else{

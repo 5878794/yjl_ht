@@ -1,0 +1,49 @@
+doctype html
+html
+    head
+        title 还款确认
+        include ./../../pug_include/head_pc
+
+        script(data-src='o_warrant_pay_back.min.js?t='+tt)
+        style.
+            body,html{overflow:auto;}
+
+
+    body
+
+        div(class='openWin_main')
+            b-order-info(id='order_info')
+            b-title(name='历史流程')
+            b-order-history(id='history' showOne='true' sort='desc')
+
+            b-title(name='确认还款')
+            div(class='openWin_input_main box_hlt box_lines')
+                div(class='openWin_input_item3')
+                    b-input-money(type='text' name='还款本金' accuracy='5')
+                div(class='openWin_input_item3')
+                    b-input(type='text' name='还款利息')
+                div(class='openWin_input_item3')
+                    b-input(type='text' name='罚息')
+                div(class='openWin_input_item1')
+                    div(class='box_hlc warrant_pay_back')
+                        div 还款合计
+                        p 0.00000
+                div(class='openWin_input_item1')
+                    b-input(type='textarea' autoHeight='true' name='备注')
+                div(class='openWin_input_item1')
+                    b-input-file(type='file' err='' name='附件')
+
+
+            b-title(name='尾款')
+            div(class='openWin_input_main box_hlt box_lines')
+                div(class='openWin_input_item3')
+                    b-input(type='text' name='转回账号')
+                div(class='openWin_input_item3')
+                    b-input(type='text' name='转回户名')
+
+
+
+
+            div(class='openWin_btns box_hcc')
+                div(class='openWin_btn_gray box_hcc hover' id='cancel') 取消
+                div(class='openWin_btn_blue box_hcc hover' id='submit') 提交

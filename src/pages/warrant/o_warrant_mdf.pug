@@ -1,0 +1,86 @@
+doctype html
+html
+    head
+        title 核行修改
+        include ./../../pug_include/head_pc
+
+        script(data-src='o_warrant_mdf.min.js?t='+tt)
+        style.
+            body,html{overflow:auto;}
+
+
+    body
+
+        div(class='openWin_main')
+
+            b-title(name='还款信息')
+            div(class='openWin_input_main box_hlt box_lines')
+                div(class='openWin_input_item3')
+                    b-input(type='text' name='还款对象')
+                div(class='openWin_input_item3')
+                    b-input(type='text' name='联系人')
+                div(class='openWin_input_item3')
+                    b-input(type='text' name='联系电话')
+                div(class='openWin_input_item3')
+                    b-input(type='text' name='还款户名')
+                div(class='openWin_input_item3')
+                    b-input(type='text' name='还款账号')
+                div(class='openWin_input_item3')
+                    b-input(type='text' name='开户行')
+
+
+            b-title(name='回款信息')
+            div(class='openWin_input_main box_hlt box_lines')
+                div(class='openWin_input_item3')
+                    b-input(type='text' name='回款对象')
+                div(class='openWin_input_item3')
+                    b-input(type='text' name='联系人')
+                div(class='openWin_input_item3')
+                    b-input(type='text' name='联系电话')
+                div(class='openWin_input_item3')
+                    b-input-money(type='text' accuracy='5' name='批复金额' unit='元')
+                div(class='openWin_input_item3')
+                    b-input(type='text' name='回款账号')
+                div(class='openWin_input_item3')
+                    b-input(type='text' name='开户行')
+                div(class='openWin_input_item3')
+                    b-input(type='text' name='回款户名')
+                div(class='openWin_input_item3')
+                    b-input-money(type='text' accuracy='5' name='回款金额' unit='元')
+                div(class='openWin_input_item3')
+                    b-input(type='select' name='回款方式')
+
+
+            //- 非垫资 无银行监管
+            b-title(name='银行监管')
+            b-title1(name='买家')
+            div(class='openWin_input_main box_hlt box_lines')
+                div(class='openWin_input_item3')
+                    b-input(type='text' name='监督银行')
+                div(class='openWin_input_item3')
+                    b-input-money(type='text' name='监督金额' accuracy='5' unit='元')
+                div(class='openWin_input_item3')
+                    b-input(type='text' name='监督账号')
+                div(class='openWin_input_item3')
+                    b-input(type='text' name='户名')
+                div(class='openWin_input_item3')
+                    b-input(type='text' name='开户行')
+
+            b-title1(name='卖家')
+            div(class='openWin_input_main box_hlt box_lines')
+                div(class='openWin_input_item3')
+                    b-input(type='text' name='监督银行')
+                div(class='openWin_input_item3')
+                    b-input-money(type='text' name='监督金额' accuracy='5' unit='元')
+                div(class='openWin_input_item3')
+                    b-input(type='text' name='监督账号')
+                div(class='openWin_input_item3')
+                    b-input(type='text' name='户名')
+                div(class='openWin_input_item3')
+                    b-input(type='text' name='开户行')
+
+
+
+            div(class='openWin_btns box_hcc')
+                div(class='openWin_btn_gray box_hcc hover' id='cancel') 取消
+                div(class='openWin_btn_blue box_hcc hover' id='submit') 提交
