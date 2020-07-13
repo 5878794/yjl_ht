@@ -86,7 +86,7 @@ class bFollowRecord extends HTMLElement{
 	}
 	createStyle(){
 		let css = [
-			'.body{min-width:1000px;max-width:1600px;width:100%;}',
+			'.body{margin:10px 0;padding:0 20px;min-width:1000px;max-width:1600px;width:100%;}',
 			'.item{min-height:20px;padding:5px;line-height:20px;background:#e6e7e9;margin-bottom:5px;font-size:12px;color:#333;}',
 			'.no{width:60px;}',
 			'.noDate{font-size:14px; height:30px;}',

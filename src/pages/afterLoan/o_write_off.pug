@@ -1,0 +1,36 @@
+doctype html
+html
+    head
+        title 核销
+        include ./../../pug_include/head_pc
+
+        script(data-src='o_write_off.min.js?t='+tt)
+        style.
+            body,html{overflow:auto;}
+
+
+    body
+
+        div(class='openWin_main autoWidth')
+            div
+                b-title(name='核销')
+                div(class='openWin_input_main box_hlt box_lines')
+                    div(class='openWin_input_item3')
+                        b-input-money(err='' name='剩余本金' disabled='disabled' id='key1' accuracy='5')
+                    div(class='openWin_input_item3')
+                        b-input-money(err='' name='剩余利息' disabled='disabled' accuracy='5' id='key1')
+                    div(class='openWin_input_item3')
+                        b-input-money(err='' name='贷后支出' disabled='disabled' accuracy='5' id='key1')
+                    div(class='openWin_input_item3')
+                        b-input-money(err='' name='核销利息' disabled='disabled' accuracy='5' id='key1')
+                    div(class='openWin_input_item3')
+                        b-input-money(err='' name='核销本金' disabled='disabled' accuracy='5' id='key1')
+                div(class='openWin_input_main box_hlt box_lines')
+                    div(class='openWin_input_item3 warrant_pay_back box_hlc')
+                        div 核销后损益
+                        p 0.00000
+
+
+            div(class='openWin_btns box_hcc')
+                div(class='openWin_btn_gray box_hcc hover') 取消
+                div(class='openWin_btn_blue box_hcc hover') 提交

@@ -193,6 +193,12 @@ class bInput extends HTMLElement{
 			lineHeight:this.userStyle.rowHeight+'px',
 			paddingRight:'10px'
 		});
+		if(this.name.indexOf('<br')>-1){
+			name.css({
+				lineHeight: this.userStyle.rowHeight / 2 + 'px'
+			})
+		}
+
 		inputBody.css({
 			width:'100%'
 		});
@@ -380,6 +386,13 @@ class bInput extends HTMLElement{
 			minHeight:height*3+'px',
 			lineHeight:'120%'
 		});
+
+		if(this.name.indexOf('<br')>-1){
+			this.nameDom.css({
+				lineHeight: height / 2 + 'px'
+			})
+		}
+
 	}
 	//外层dom有border 因此整体高度要比获取多值多2像素
 	get rowHeight(){

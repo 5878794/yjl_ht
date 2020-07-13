@@ -1,0 +1,38 @@
+doctype html
+html
+    head
+        title 展期
+        include ./../../pug_include/head_pc
+
+        script(data-src='o_rollover.min.js?t='+tt)
+        style.
+            body,html{overflow:auto;}
+
+
+    body
+
+        div(class='openWin_main autoWidth')
+            div
+                b-title(name='展期')
+                div(class='openWin_input_main box_hlt box_lines')
+                    div(class='openWin_input_item2 warrant_pay_back box_hlc')
+                        div 放款时间
+                        span 2020-06-11
+                    div(class='openWin_input_item2 warrant_pay_back box_hlc')
+                        div 到期时间
+                        span 2020-11-11
+
+                    div(class='openWin_input_item2')
+                        b-input(type='text' err='' name='展期' id='key1')
+                    div(class='openWin_input_item2')
+
+
+                    div(class='openWin_input_item2 warrant_pay_back box_hlc')
+                        div(style='line-height:18px;') 展期后预期<br/>还款时间
+                        span 2020-11-11
+
+
+
+            div(class='openWin_btns box_hcc')
+                div(class='openWin_btn_gray box_hcc hover') 取消
+                div(class='openWin_btn_blue box_hcc hover') 提交
