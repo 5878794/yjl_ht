@@ -313,7 +313,65 @@ let setting = {
 			}
 		]
 	},
-
+	afterLoan:{
+		setting:defaultSettingRowCanClick,
+		data:[
+			{
+				name:'客户姓名',
+				width:'7%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key1'                //数据对应的key
+			},
+			{
+				name:'申请金额',
+				width:'16%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key2'                //数据对应的key
+			},
+			{
+				name:'业务类型',
+				width:'10%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key3'                //数据对应的key
+			},
+			{
+				name:'出款时间',
+				width:'10%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key4'                //数据对应的key
+			},
+			{
+				name:'预期时间(天)',
+				width:'10%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key5'                //数据对应的key
+			},
+			{
+				name:'客户分类',
+				width:'7%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key6'                //数据对应的key
+			},
+			{
+				name:'剩余本金',
+				width:'16%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key7'                //数据对应的key
+			},
+			{
+				name:'剩余利息',
+				width:'16%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key8'                //数据对应的key
+			},
+			{
+				name:'操作',
+				width:'8%',
+				style:{color:'rgb(86,123,249)',fontSize:'14px'},
+				key:'key9'                //数据对应的key
+			}
+		]
+	},
 
 
 	set(dom,page){
