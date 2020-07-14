@@ -1,0 +1,54 @@
+doctype html
+html
+	head
+		title 房抵分期还款
+		include ./../../pug_include/head_pc
+
+		script(data-src='o_installment_mortgage_repayment.min.js?t='+tt)
+		style.
+			body,html{overflow:auto;}
+
+
+	body
+
+		div(class='openWin_main')
+			div(class='openWin_input_main box_hlt box_lines')
+				div(class='openWin_input_item2')
+					b-input(type='text' disabled='disabled' name='订单编号')
+				div(class='openWin_input_item2')
+					b-input(type='text' disabled='disabled' name='客户姓名')
+				div(class='openWin_input_item2')
+					b-input(type='text' disabled='disabled' name='还款期数')
+				div(class='openWin_input_item2')
+					b-input-date(type='date' disabled='disabled' name='应用日期')
+				div(class='openWin_input_item2')
+					b-input(type='text' disabled='disabled' name='逾期天数')
+				div(class='openWin_input_item2')
+				div(class='openWin_input_item2')
+					b-input-money(accuracy='5' disabled='disabled' name='应还本金')
+				div(class='openWin_input_item2')
+					b-input-money(accuracy='5' disabled='disabled' name='应还利息')
+				div(class='openWin_input_item2')
+					b-input-money(accuracy='5' disabled='disabled' name='罚息')
+				div(class='openWin_input_item2 installment_mortgage_repayment box_hlc')
+					div 应还合计
+					p 888,777.12333
+					span 元
+
+				div(class='installment_mortgage_repayment_line')
+
+			div(class='openWin_input_main box_hlt box_lines')
+				div(class='openWin_input_item2')
+					b-input-money(accuracy='5' name='实还金额')
+				div(class='openWin_input_item2')
+					b-input-money(accuracy='5' disabled='disabled' name='剩余待还')
+				div(class='openWin_input_item1')
+					b-input(type='textarea' name='备注' autoHeight='true')
+				div(class='openWin_input_item1')
+					b-input-file(type='file' name='附件')
+
+
+
+
+			div(class='openWin_btns box_hcc')
+				div(class='openWin_btn_blue box_hcc hover') 提交

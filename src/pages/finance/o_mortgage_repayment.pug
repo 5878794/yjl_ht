@@ -1,0 +1,35 @@
+doctype html
+html
+    head
+        title 房抵还款
+        include ./../../pug_include/head_pc
+
+        script(data-src='o_mortgage_repayment.min.js?t='+tt)
+        style.
+            body,html{overflow:auto;}
+
+
+    body
+
+        div(class='openWin_main')
+
+            b-order-info(id='order_info' class='b_order_info')
+            b-title(name='历史流程')
+            b-order-history(id='history' sort='desc' showOne='true')
+
+            div
+                b-title(name='房抵还款')
+                div(class='openWin_input_main box_hlt box_lines')
+                    b-table-list(id='list' min-width='1200')
+
+                    div(class='mortgage_repayment_total box_hrc')
+                        div(class='mortgage_repayment_total_main box_hrc')
+                            p 待还尾款
+                            span 3000000.0000
+                            div (300000.0000)
+                            p(class='hover' id='back_pay') 还款
+
+
+
+            div(class='openWin_btns box_hcc')
+                div(class='openWin_btn_blue box_hcc hover') 提交

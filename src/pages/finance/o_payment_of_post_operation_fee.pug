@@ -1,0 +1,51 @@
+doctype html
+html
+    head
+        title 业务费后置缴纳确认
+        include ./../../pug_include/head_pc
+
+        script(data-src='o_payment_of_post_operation_fee.min.js?t='+tt)
+        style.
+            body,html{overflow:auto;}
+
+
+    body
+
+        div(class='openWin_main')
+
+            b-order-info(id='order_info' class='b_order_info')
+            b-title(name='历史流程')
+            b-order-history(id='history' sort='desc' showOne='true')
+
+            div
+                b-title(name='业务费后置缴纳')
+                div(class='openWin_input_main box_hlt box_lines')
+                    div(class='openWin_input_item3')
+                        b-input-money(accuracy='5' disabled='disabled' name='居间费')
+                    div(class='openWin_input_item3')
+                        b-input-money(accuracy='5' disabled='disabled' name='服务费')
+                    div(class='openWin_input_item3')
+                        b-input-money(accuracy='5' disabled='disabled' name='咨询费')
+                    div(class='openWin_input_item3')
+                        b-input-money(accuracy='5' disabled='disabled' name='权证费')
+                    div(class='openWin_input_item3')
+                        b-input-money(accuracy='5' disabled='disabled' name='优惠费')
+                    div(class='openWin_input_item3')
+                        b-input-money(accuracy='5' disabled='disabled' name='后置费')
+                    div(class='openWin_input_item3')
+                        b-input-money(accuracy='5' disabled='disabled' name='费用合计')
+
+                div(class='openWin_input_main box_hlt box_lines')
+                    div(class='openWin_input_item3')
+                        b-input-money(accuracy='5' name='缴纳金额')
+                    div(class='openWin_input_item1')
+                        b-input(type='textarea' name='备注' autoHeight='true')
+                    div(class='openWin_input_item1')
+                        b-input-file(type='file' name='附件')
+
+
+
+
+            div(class='openWin_btns box_hcc')
+                div(class='openWin_btn_gray box_hcc hover') 取消
+                div(class='openWin_btn_blue box_hcc hover') 提交

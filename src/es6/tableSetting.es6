@@ -18,6 +18,16 @@ let defaultSettingRowCanClick = {
 	noDataHtml:'<div class="box_hcc" style="width:100%;height:100px;font-size:14px;color:#333;">暂无数据</div>'
 };
 
+let mortgageRepaymentSet = {
+	titleRowStyle:{background:'#e7e7e7',marginBottom:'5px',height:'30px',fontSize:'14px'},
+	rowHeight:30,
+	rowStyle:{background:"#fff",marginBottom:'5px',cursor:'pointer'},
+	celStyle:{padding:'0 10px'},
+	rowHoverStyle:{background:'#fbd6d8'},
+	rowNotHoverStyle:{background:'#fff'},
+	noDataHtml:'<div class="box_hcc" style="width:100%;height:100px;font-size:14px;color:#333;">暂无数据</div>'
+};
+
 
 
 let setting = {
@@ -511,6 +521,61 @@ let setting = {
 				width:'10%',
 				style:{color:'rgb(86,123,249)',fontSize:'14px'},
 				key:'key8'                //数据对应的key
+			}
+		]
+	},
+	mortgage_repayment:{
+		setting:mortgageRepaymentSet,
+		data:[
+			{
+				name:'期数',
+				width:'8%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key1'                //数据对应的key
+			},
+			{
+				name:'还款时间',
+				width:'8%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key2'                //数据对应的key
+			},
+			{
+				name:'归还本金',
+				width:'13%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key3'                //数据对应的key
+			},
+			{
+				name:'咨询费用',
+				width:'13%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key4'                //数据对应的key
+			},
+			{
+				name:'当期合计',
+				width:'13%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key5'                //数据对应的key
+			},
+			{
+				name:'剩余本金',
+				width:'13%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key6'                //数据对应的key
+			},
+			{
+				name:'实际还款时间',
+				width:'8%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key7'                //数据对应的key
+			},
+			{
+				name:'实际还款合计 (逾期费)',
+				width:'24%',
+				children:[
+					{style:{color:'#333',fontSize:'14px',lineHeight:'20px'},key:'key8'},//该列内显示的子数据，竖向排列
+					{style:{color:'red',fontSize:'14px',lineHeight:'20px',paddingLeft:'5px'}, key: 'key9'}
+				]
 			}
 		]
 	},

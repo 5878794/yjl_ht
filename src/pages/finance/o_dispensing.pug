@@ -1,0 +1,50 @@
+doctype html
+html
+    head
+        title 出款
+        include ./../../pug_include/head_pc
+
+        script(data-src='o_dispensing.min.js?t='+tt)
+        style.
+            body,html{overflow:auto;}
+
+
+    body
+
+        div(class='openWin_main')
+
+            b-order-info(id='order_info' class='b_order_info')
+            b-title(name='历史流程')
+            b-order-history(id='history' sort='desc' showOne='true')
+
+            div
+                b-title(name='出款')
+                div(class='openWin_input_main box_hlt box_lines')
+                    div(class='openWin_input_item3')
+                        b-input(type='text' disabled='disabled' name='出款户名')
+                    div(class='openWin_input_item3')
+                        b-input(type='text' disabled='disabled' name='出款账号')
+                    div(class='openWin_input_item3')
+                        b-input(type='text' disabled='disabled' name='开户行')
+                    div(class='openWin_input_item3')
+                        b-input(type='select' name='出款通道')
+                    div(class='openWin_input_item3')
+                    div(class='openWin_input_item3')
+                    div(class='openWin_input_item3')
+                        div(class='box_hlc o_dispensing_info')
+                            p 通道费:
+                            span 0
+                            p 元
+
+                div(class='openWin_input_main box_hlt box_lines')
+                    div(class='openWin_input_item1')
+                        b-input(type='textarea' name='备注' autoHeight='true')
+                    div(class='openWin_input_item1')
+                        b-input-file(type='file' name='附件')
+
+
+
+
+            div(class='openWin_btns box_hcc')
+                div(class='openWin_btn_gray box_hcc hover') 取消
+                div(class='openWin_btn_blue box_hcc hover') 提交
