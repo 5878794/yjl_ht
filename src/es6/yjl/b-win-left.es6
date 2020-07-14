@@ -16,8 +16,8 @@ let navData = [
 	{name:'权证',icon:'../res/image/icon6.png',url:'../warrant/warrant.html'},
 	{name:'贷后',icon:'../res/image/icon7.png',url:'../afterLoan/afterLoan.html'},
 	{name:'财务',icon:'../res/image/icon8.png',url:'',children:[
-		{name:'财务管理',url:''},
-		{name:'退尾款/费用',url:''}
+		{name:'财务管理',url:'../finance/finance.html'},
+		{name:'退尾款/费用',url:'../finance/refund.html'}
 	]},
 	{name:'档案',icon:'../res/image/icon9.png',url:''},
 	{name:'统计',icon:'../res/image/icon10.png',url:'',children:[
@@ -46,6 +46,12 @@ class bWinLeft extends HTMLElement{
 		let _this = this;
 		setTimeout(function(){
 			_this.body.css({display:'flex'});
+
+			//滚动到选中的位置
+			let selectDom = _this.body.find('.select'),
+				top = selectDom.offset().top;
+			_this.body.find('.menu').scrollTop(top);
+
 		},0)
 
 	}
@@ -150,7 +156,6 @@ class bWinLeft extends HTMLElement{
 
 		item.click(function(){
 			let href = $(this).attr('href');
-			console.log(href)
 			if(href!=''){
 				//打开页面
 				lib.pageGoTo(href);
@@ -170,7 +175,9 @@ class bWinLeft extends HTMLElement{
 	}
 
 	chooseNav(){
-		let path = window.location.pathname;
+		let path = window.location.pathname,
+			_this = this;
+
 		//补全path
 		if(path.substr(path.length-1) == '/'){
 			path = path+'index.html';
@@ -181,6 +188,11 @@ class bWinLeft extends HTMLElement{
 			let thisSrc = $(this).attr('href');
 			if(thisSrc.indexOf(path)>-1){
 				$(this).addClass('select');
+
+				//判断是否是子菜单
+				if($(this).parent().hasClass('menu_children_body')){
+					$(this).parent().parent().find('.menu_item').trigger('click');
+				}
 			}
 		})
 	}

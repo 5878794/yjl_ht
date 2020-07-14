@@ -62,8 +62,9 @@ module.exports = {
 				window.location.pathname.indexOf('warrant/o_warrant_pay_back')>-1 ||
 				window.location.pathname.indexOf('warrant/o_warrant_info_confirm')>-1 ||
 				window.location.pathname.indexOf('afterLoan/o_add_after_loan')>-1 ||
-				window.location.pathname.indexOf('afterLoan/o_info')>-1
-
+				window.location.pathname.indexOf('afterLoan/o_info')>-1 ||
+				window.location.pathname.indexOf('finance/o_business_fee_payment')>-1 ||
+				window.location.pathname.indexOf('finance/o_bookkeeping')>-1
 			){
 				_this.inputFileStyleFn1(this);
 			}else{
@@ -86,7 +87,9 @@ module.exports = {
 				window.location.pathname.indexOf('warrant/o_warrant_pay_back')>-1 ||
 				window.location.pathname.indexOf('warrant/o_warrant_info_confirm')>-1 ||
 				window.location.pathname.indexOf('afterLoan/o_add_after_loan')>-1 ||
-				window.location.pathname.indexOf('afterLoan/o_info')>-1
+				window.location.pathname.indexOf('afterLoan/o_info')>-1 ||
+				window.location.pathname.indexOf('finance/o_business_fee_payment')>-1 ||
+				window.location.pathname.indexOf('finance/o_bookkeeping')>-1
 			){
 				_this.textareaStyleFn1(this);
 			}else{
