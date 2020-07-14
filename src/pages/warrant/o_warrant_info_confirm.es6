@@ -39,7 +39,7 @@ let Page = {
     },
     async run(){
         this.setTitleName();
-        inputStyle.set();
+        inputStyle.set(true,true);
         this.addBtnEvent();
         this.setPart1();
         this.setHistory();

@@ -31,7 +31,7 @@ let Page = {
         });
     },
     async run(){
-        inputStyle.set();
+        inputStyle.set(true,true);
         this.setPart1();
         this.setHistory();
         this.addBtnEvent();

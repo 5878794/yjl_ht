@@ -42,7 +42,7 @@ module.exports = {
 	},
 
 
-	set(){
+	set(bFile1,bTextarea1){
 		let bInput = $('b-input'),
 			bFile = $('b-input-file'),
 			bMoney = $('b-input-money'),
@@ -54,18 +54,7 @@ module.exports = {
 			_this.inputStyleFn(this);
 		});
 		bFile.each(function(){
-			if(
-				window.location.pathname.indexOf('index/o_add_order_advance')>-1 ||
-				window.location.pathname.indexOf('approve/o_approve_room')>-1 ||
-				window.location.pathname.indexOf('approve/o_approve_advance')>-1 ||
-				window.location.pathname.indexOf('warrant/o_warrant_mdf_room')>-1 ||
-				window.location.pathname.indexOf('warrant/o_warrant_pay_back')>-1 ||
-				window.location.pathname.indexOf('warrant/o_warrant_info_confirm')>-1 ||
-				window.location.pathname.indexOf('afterLoan/o_add_after_loan')>-1 ||
-				window.location.pathname.indexOf('afterLoan/o_info')>-1 ||
-				window.location.pathname.indexOf('finance/o_business_fee_payment')>-1 ||
-				window.location.pathname.indexOf('finance/o_bookkeeping')>-1
-			){
+			if(bFile1){
 				_this.inputFileStyleFn1(this);
 			}else{
 				_this.inputFileStyleFn(this);
@@ -80,17 +69,7 @@ module.exports = {
 			this.inputBodyStyle = {paddingRight:0};
 		});
 		bTextarea.each(function(){
-			if(
-				window.location.pathname.indexOf('approve/o_approve_room')>-1 ||
-				window.location.pathname.indexOf('approve/o_approve_advance')>-1 ||
-				window.location.pathname.indexOf('warrant/o_warrant_mdf_room')>-1 ||
-				window.location.pathname.indexOf('warrant/o_warrant_pay_back')>-1 ||
-				window.location.pathname.indexOf('warrant/o_warrant_info_confirm')>-1 ||
-				window.location.pathname.indexOf('afterLoan/o_add_after_loan')>-1 ||
-				window.location.pathname.indexOf('afterLoan/o_info')>-1 ||
-				window.location.pathname.indexOf('finance/o_business_fee_payment')>-1 ||
-				window.location.pathname.indexOf('finance/o_bookkeeping')>-1
-			){
+			if(bTextarea1){
 				_this.textareaStyleFn1(this);
 			}else{
 				_this.textareaStyleFn(this);
