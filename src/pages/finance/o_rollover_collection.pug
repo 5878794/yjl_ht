@@ -1,0 +1,61 @@
+doctype html
+html
+    head
+        title 确认展期收款
+        include ./../../pug_include/head_pc
+
+        script(data-src='o_rollover_collection.min.js?t='+tt)
+        style.
+            body,html{overflow:auto;}
+
+
+    body
+
+        div(class='openWin_main')
+
+            b-order-info(id='order_info' class='b_order_info')
+            b-title(name='历史流程')
+            b-order-history(id='history' sort='desc' showOne='true')
+
+            div
+                b-title(name='确认展期收款')
+                div(class='openWin_input_main box_hlt box_lines')
+                    div(class='openWin_input_item3 warrant_pay_back box_hlc')
+                        div 放款时间
+                        span 2011-11-11
+                    div(class='openWin_input_item3 warrant_pay_back box_hlc')
+                        div 到期时间
+                        span 2011-11-11
+                    div(class='openWin_input_item3 warrant_pay_back box_hlc')
+                        div(style='line-height:18px;') 展期后<br/>还款时间
+                        span 2011-11-11
+                    div(class='openWin_input_item3')
+                        b-input(type='text' name='展期')
+                    div(class='openWin_input_item3')
+                    div(class='openWin_input_item3')
+
+                    div(class='openWin_input_item3')
+                        b-input-money(accuracy='5' disabled='disabled' name='展期费')
+                    div(class='openWin_input_item3')
+                        b-input-money(accuracy='5' disabled='disabled' name='服务费')
+                    div(class='openWin_input_item3')
+                        b-input-money(accuracy='5' disabled='disabled' name='咨询费')
+                    div(class='openWin_input_item3')
+                        b-input-money(accuracy='5' disabled='disabled' name='费用合计')
+
+                div(class='openWin_input_main box_hlt box_lines')
+                    div(class='openWin_input_item3')
+                        b-input-money(name='缴纳金额' accuracy='5')
+                    div(class='openWin_input_item3')
+                    div(class='openWin_input_item3')
+                    div(class='openWin_input_item1')
+                        b-input(type='textarea' name='备注' autoHeight='true')
+                    div(class='openWin_input_item1')
+                        b-input-file(type='file' name='附件')
+
+
+
+
+            div(class='openWin_btns box_hcc')
+                div(class='openWin_btn_gray box_hcc hover') 取消
+                div(class='openWin_btn_blue box_hcc hover') 提交
