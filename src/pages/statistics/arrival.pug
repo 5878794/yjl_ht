@@ -1,0 +1,47 @@
+doctype html
+html
+    head
+        title &nbsp;
+        include ./../../pug_include/head_pc
+
+        script(data-src='advance.min.js?t='+tt)
+
+
+    body
+
+
+        div(class='left')
+            //- include ../../pug_include/left
+            b-win-left
+
+        div(class='right')
+            //- include ../../pug_include/top
+            //b-win-top
+
+            div(class='iframe scroll_style1' id='iframe_body')
+                div(class='page_body')
+                    //- 页面主体开始。。。。。。
+
+                    b-nav2(id='nav')
+
+                    //搜索部分
+                    b-search(
+                        id='b_search'
+                    )
+
+                    //汇总
+                    b-statistics(id='statistics' itemWidth='25%')
+
+                    //- 列表部分
+                    div(class='index_list')
+                        b-table-list(id='table_list')
+
+
+
+
+                        b-pagination(id='table_pagination')
+
+
+
+
+

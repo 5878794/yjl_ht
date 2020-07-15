@@ -21,8 +21,8 @@ let navData = [
 	]},
 	{name:'档案',icon:'../res/image/icon9.png',url:'../file/file.html'},
 	{name:'统计',icon:'../res/image/icon10.png',url:'',children:[
-		{name:'垫资业务',url:''},
-		{name:'房抵业务',url:''}
+		{name:'垫资业务',url:'../statistics/advance.html?type=1'},
+		{name:'房抵业务',url:'../statistics/arrival.html?type=1'}
 	]},
 	{name:'综合管理',icon:'../res/image/icon11.png',url:'',children:[
 		{name:'员工',url:''},
