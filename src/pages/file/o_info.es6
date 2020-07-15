@@ -1,0 +1,53 @@
+
+
+
+
+let app = require('./../../es6/lib/page'),
+	lib = require('./../../es6/lib'),
+	inputStyle = require('./../../es6/inputStyle');
+
+
+
+
+require('./../../es6/customElement/pc/input');
+require('./../../es6/customElement/pc/input_date');
+require('./../../es6/customElement/pc/input_file');
+require('./../../es6/customElement/pc/input_search');
+require('./../../es6/customElement/pc/input_money');
+
+
+
+let loading;
+let Page = {
+	init(){
+		// loading = new loadFn();
+		// loading.show('急速加载中');
+		this.run().then(rs=>{
+			// loading.hide();
+		}).catch(rs=>{
+			// err.error(rs);
+			// loading.hide();
+			// app.alert(rs);
+			throw rs;
+		});
+	},
+	async run(){
+		this.setInput();
+
+	},
+	setInput(){
+		inputStyle.set(true,true);
+
+		let file = $('#file').get(0);
+		file.disabled = true;
+		file.showFiles = [
+			'./file.min.js',
+			'../res/image/edit.png'
+		];
+	}
+
+
+};
+
+
+app.run(Page);

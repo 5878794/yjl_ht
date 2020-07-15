@@ -579,6 +579,41 @@ let setting = {
 			}
 		]
 	},
+	file:{
+		setting:defaultSetting,
+		data:[
+			{
+				name:'归档时间',
+				width:'15%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key1'                //数据对应的key
+			},
+			{
+				name:'客户姓名',
+				width:'15%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key2'                //数据对应的key
+			},
+			{
+				name:'位置标签',
+				width:'30%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key3'                //数据对应的key
+			},
+			{
+				name:'订单关联号',
+				width:'25%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key4'                //数据对应的key
+			},
+			{
+				name:'编辑',
+				width:'15%',
+				style:{color:'rgb(86,123,249)',fontSize:'14px'},
+				key:'key5'                //数据对应的key
+			}
+		]
+	},
 
 
 	set(dom,page){

@@ -1,0 +1,36 @@
+doctype html
+html
+    head
+        title 档案入库
+        include ./../../pug_include/head_pc
+
+        script(data-src='o_add.min.js?t='+tt)
+        style.
+            body, html {
+                overflow: auto;
+            }
+
+    body
+
+        div(class='openWin_main' style='width:500px;min-width:100%;max-width:100%;')
+            div(class='openWin_input_main box_hlt box_lines')
+                div(class='openWin_input_item1')
+                    b-input-date(type='date' err='' name='归档时间' disabled='disabled')
+                div(class='openWin_input_item1')
+                    b-input-search(name='关联订单号' id='search')
+                div(class='openWin_input_item1')
+                    b-input(type='text' name='客户姓名' disabled='disabled')
+                div(class='openWin_input_item1')
+                    b-input(type='select' name='档案室')
+                div(class='openWin_input_item1')
+                    b-input(type='text' name='位置标签')
+                div(class='openWin_input_item1')
+                    b-input-file(type='file' name='上传照片')
+
+
+        div(class='openWin_btns box_hcc')
+            div(class='openWin_btn_blue box_hcc hover' id='submit') 入库
+
+
+
+

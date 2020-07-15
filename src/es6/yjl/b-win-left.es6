@@ -19,7 +19,7 @@ let navData = [
 		{name:'财务管理',url:'../finance/finance.html'},
 		{name:'退尾款/费用',url:'../finance/refund.html'}
 	]},
-	{name:'档案',icon:'../res/image/icon9.png',url:''},
+	{name:'档案',icon:'../res/image/icon9.png',url:'../file/file.html'},
 	{name:'统计',icon:'../res/image/icon10.png',url:'',children:[
 		{name:'垫资业务',url:''},
 		{name:'房抵业务',url:''}

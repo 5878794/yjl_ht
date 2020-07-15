@@ -48,6 +48,7 @@ module.exports = {
 			bMoney = $('b-input-money'),
 			bDate = $('b-input-date'),
 			bTextarea = $('b-input[type="textarea"]'),
+			bSearch = $('b-input-search'),
 			_this = this;
 
 		bInput.each(function(){
@@ -74,6 +75,9 @@ module.exports = {
 			}else{
 				_this.textareaStyleFn(this);
 			}
+		});
+		bSearch.each(function(){
+			_this.inputStyleFn(this);
 		});
 	},
 	searchSet(obj){
