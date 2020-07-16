@@ -25,13 +25,13 @@ let navData = [
 		{name:'房抵业务',url:'../statistics/arrival.html?type=1'}
 	]},
 	{name:'综合管理',icon:'../res/image/icon11.png',url:'',children:[
-		{name:'员工',url:''},
-		{name:'开单通告',url:''},
-		{name:'通知管理',url:''}
+		{name:'员工',url:'../management/staff.html'},
+		{name:'通知管理',url:'../management/notice.html'}
 	]},
 	{name:'设置',icon:'../res/image/icon12.png',url:'',children:[
 		{name:'时间流程',url:''},
 		{name:'业务产品',url:''},
+		{name:'开单通告',url:''},
 		{name:'权限角色',url:''},
 		{name:'客户来源',url:''}
 	]}

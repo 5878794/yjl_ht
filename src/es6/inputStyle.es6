@@ -80,14 +80,19 @@ module.exports = {
 			_this.inputStyleFn(this);
 		});
 	},
-	searchSet(obj){
+	searchSet(obj,isSearch){
 		let bInput = obj.body.find('b-input'),
 			bMoney = obj.body.find('b-input-money'),
 			bDate = obj.body.find('b-input-date'),
 			_this = this;
 
 		bInput.each(function(){
-			_this.searchInputStyleFn(this);
+			if(isSearch){
+				obj.rowHeight = 36;
+				obj.inputBodyStyle = {background:'#fff'};
+			}else{
+				_this.searchInputStyleFn(this);
+			}
 		});
 		bMoney.each(function(){
 			_this.searchInputStyleFn(this);
@@ -96,5 +101,7 @@ module.exports = {
 			_this.searchInputStyleFn(this);
 			this.inputBodyStyle = {paddingRight:0};
 		});
+
+
 	}
 };

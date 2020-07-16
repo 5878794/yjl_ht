@@ -1080,6 +1080,76 @@ let setting = {
 			}
 		]
 	},
+	management_staff:{
+		setting:defaultSetting,
+		data:[
+			{
+				name:'姓名',
+				width:'10%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key1'                //数据对应的key
+			},
+			{
+				name:'电话',
+				width:'10%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key2'                //数据对应的key
+			},
+			{
+				name:'住址',
+				width:'45%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key3'                //数据对应的key
+			},
+			{
+				name:'入职时间',
+				width:'15%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key4'                //数据对应的key
+			},
+			{
+				name:'所属部门',
+				width:'20%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key5'                //数据对应的key
+			}
+		]
+	},
+	management_notice:{
+		setting:defaultSetting,
+		data:[
+			{
+				name:'时间',
+				width:'15%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key1'                //数据对应的key
+			},
+			{
+				name:'标题',
+				width:'25%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key2'                //数据对应的key
+			},
+			{
+				name:'内容',
+				width:'40%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key3'                //数据对应的key
+			},
+			{
+				name:'发起人',
+				width:'10%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key4'                //数据对应的key
+			},
+			{
+				name:'操作',
+				width:'10%',
+				style:{color:'red',fontSize:'14px'},
+				key:'key5'                //数据对应的key
+			}
+		]
+	},
 
 	set(dom,page){
 		dom.setting = this[page].setting;

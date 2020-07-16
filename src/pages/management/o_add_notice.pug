@@ -1,0 +1,29 @@
+doctype html
+html
+    head
+        title 通知信息
+        include ./../../pug_include/head_pc
+
+        script(data-src='o_add_notice.min.js?t='+tt)
+        style.
+            body,html{overflow:auto;}
+
+
+    body
+
+        div(class='openWin_main')
+
+            div
+                div(class='openWin_input_main box_hlt box_lines')
+                    div(class='openWin_input_item1')
+                        b-input-date(type='date' name='时间')
+                    div(class='openWin_input_item1')
+                        b-input(type='text' name='标题')
+                    div(class='openWin_input_item1')
+                        b-input(type='textarea' name='公告内容' autoHeight='true')
+                    div(class='openWin_input_item1')
+                        b-input-file(type='text' name='上传照片' fileType='image' err='只能上传图片')
+
+
+            div(class='openWin_btns box_hcc')
+                div(class='openWin_btn_blue box_hcc hover') 提交

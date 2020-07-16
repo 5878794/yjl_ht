@@ -178,11 +178,9 @@ class bSearch extends HTMLElement{
 				input1.rowStyle = { 'padding-left': 0 };
 
 				input.changeFn = function(val){
-					console.log(val)
 					input1.min = val;
 				};
 				input1.changeFn = function(val){
-					console.log(val)
 					input.max = val;
 				};
 
