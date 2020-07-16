@@ -614,7 +614,472 @@ let setting = {
 			}
 		]
 	},
-
+	advance_type1:{
+		setting:defaultSetting,
+		data:[
+			{
+				name:'时间',
+				width:'6%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key1'                //数据对应的key
+			},
+			{
+				name:'出款金额',
+				width:'9.1%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key2'                //数据对应的key
+			},
+			{
+				name:'资金成本',
+				width:'9.1%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key3'                //数据对应的key
+			},
+			{
+				name:'通道成本',
+				width:'9.1%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key4'                //数据对应的key
+			},
+			{
+				name:'咨询费',
+				width:'9.1%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key5'                //数据对应的key
+			},
+			{
+				name:'服务费',
+				width:'9.1%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key6'                //数据对应的key
+			},
+			{
+				name:'权证费',
+				width:'9.1%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key7'                //数据对应的key
+			},
+			{
+				name:'优惠费用',
+				width:'9.1%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key8'                //数据对应的key
+			},
+			{
+				name:'盈亏',
+				width:'9.1%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key9'                //数据对应的key
+			},
+			{
+				name:'退款退费',
+				width:'9.1%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key10'                //数据对应的key
+			},
+			{
+				name:'客户名称',
+				width:'6%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key11'                //数据对应的key
+			},
+			{
+				name:'经办人名称',
+				width:'6%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key12'                //数据对应的key
+			}
+		]
+	},
+	advance_type2:{
+		setting:defaultSetting,
+		data:[
+			{
+				name:'时间',
+				width:'8%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key1'                //数据对应的key
+			},
+			{
+				name:'出款金额',
+				width:'13.6%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key2'                //数据对应的key
+			},
+			{
+				name:'出款笔数',
+				width:'8%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key3'                //数据对应的key
+			},
+			{
+				name:'咨询费',
+				width:'13.6%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key4'                //数据对应的key
+			},
+			{
+				name:'服务费',
+				width:'13.6%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key5'                //数据对应的key
+			},
+			{
+				name:'权证费',
+				width:'13.6%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key6'                //数据对应的key
+			},
+			{
+				name:'优惠费用',
+				width:'13.6%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key7'                //数据对应的key
+			},
+			{
+				name:'客户名称',
+				width:'8%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key8'                //数据对应的key
+			},
+			{
+				name:'经办人名称',
+				width:'8%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key9'                //数据对应的key
+			}
+		]
+	},
+	advance_type3:{
+		setting:defaultSetting,
+		data:[
+			{
+				name:'时间',
+				width:'10%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key1'                //数据对应的key
+			},
+			{
+				name:'订单号',
+				width:'15%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key2'                //数据对应的key
+			},
+			{
+				name:'客户名称',
+				width:'10%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key3'                //数据对应的key
+			},
+			{
+				name:'出款金额',
+				width:'20%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key4'                //数据对应的key
+			},
+			{
+				name:'经办人',
+				width:'10%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key5'                //数据对应的key
+			},
+			{
+				name:'待回款金额',
+				width:'20%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key6'                //数据对应的key
+			},
+			{
+				name:'应回款时间',
+				width:'15%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key7'                //数据对应的key
+			}
+		]
+	},
+	advance_type6:{
+		setting:defaultSetting,
+		data:[
+			{
+				name:'时间',
+				width:'6%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key1'                //数据对应的key
+			},
+			{
+				name:'订单号',
+				width:'10%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key2'                //数据对应的key
+			},
+			{
+				name:'出款金额',
+				width:'12%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key3'                //数据对应的key
+			},
+			{
+				name:'经办人',
+				width:'6%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key4'                //数据对应的key
+			},
+			{
+				name:'借款天数',
+				width:'6%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key5'                //数据对应的key
+			},
+			{
+				name:'咨询费',
+				width:'12%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key6'                //数据对应的key
+			},
+			{
+				name:'服务费',
+				width:'12%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key7'                //数据对应的key
+			},
+			{
+				name:'权证费',
+				width:'12%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key8'                //数据对应的key
+			},
+			{
+				name:'优惠费用',
+				width:'12%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key9'                //数据对应的key
+			},
+			{
+				name:'小计',
+				width:'12%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key10'                //数据对应的key
+			}
+		]
+	},
+	arrival_type1:{
+		setting:defaultSetting,
+		data:[
+			{
+				name:'订单号',
+				width:'12%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key1'                //数据对应的key
+			},
+			{
+				name:'客户姓名',
+				width:'8%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key2'                //数据对应的key
+			},
+			{
+				name:'经办人',
+				width:'8%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key3'                //数据对应的key
+			},
+			{
+				name:'出款金额',
+				width:'12%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key4'                //数据对应的key
+			},
+			{
+				name:'归还本金',
+				width:'12%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key5'                //数据对应的key
+			},
+			{
+				name:'咨询费',
+				width:'12%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key6'                //数据对应的key
+			},
+			{
+				name:'居间费',
+				width:'12%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key7'                //数据对应的key
+			},
+			{
+				name:'优惠费用',
+				width:'12%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key8'                //数据对应的key
+			},
+			{
+				name:'小计',
+				width:'12%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key9'                //数据对应的key
+			}
+		]
+	},
+	arrival_type2:{
+		setting:defaultSetting,
+		data:[
+			{
+				name:'客户姓名',
+				width:'12%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key1'                //数据对应的key
+			},
+			{
+				name:'还款期数',
+				width:'10%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key2'                //数据对应的key
+			},
+			{
+				name:'还款时间',
+				width:'15%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key3'                //数据对应的key
+			},
+			{
+				name:'经办人',
+				width:'13%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key4'                //数据对应的key
+			},
+			{
+				name:'归还本金',
+				width:'25%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key5'                //数据对应的key
+			},
+			{
+				name:'咨询费',
+				width:'25%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key6'                //数据对应的key
+			}
+		]
+	},
+	arrival_type3:{
+		setting:defaultSetting,
+		data:[
+			{
+				name:'客户姓名',
+				width:'12%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key1'                //数据对应的key
+			},
+			{
+				name:'还款期数',
+				width:'10%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key2'                //数据对应的key
+			},
+			{
+				name:'还款时间',
+				width:'15%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key3'                //数据对应的key
+			},
+			{
+				name:'逾期天数',
+				width:'10%',
+				style:{color:'red',fontSize:'14px'},
+				key:'key4'                //数据对应的key
+			},
+			{
+				name:'经办人',
+				width:'13%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key5'                //数据对应的key
+			},
+			{
+				name:'归还本金',
+				width:'20%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key6'                //数据对应的key
+			},
+			{
+				name:'咨询费',
+				width:'20%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key7'                //数据对应的key
+			}
+		]
+	},
+	arrival_type4:{
+		setting:defaultSetting,
+		data:[
+			{
+				name:'客户名称',
+				width:'6%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key1'                //数据对应的key
+			},
+			{
+				name:'经办人',
+				width:'6%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key2'                //数据对应的key
+			},
+			{
+				name:'时间',
+				width:'7%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key3'                //数据对应的key
+			},
+			{
+				name:'订单号',
+				width:'9%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key4'                //数据对应的key
+			},
+			{
+				name:'出款金额',
+				width:'11%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key5'                //数据对应的key
+			},
+			{
+				name:'借款天数',
+				width:'6%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key6'                //数据对应的key
+			},
+			{
+				name:'咨询费',
+				width:'11%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key7'                //数据对应的key
+			},
+			{
+				name:'服务费',
+				width:'11%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key8'                //数据对应的key
+			},
+			{
+				name:'权证费',
+				width:'11%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key9'                //数据对应的key
+			},
+			{
+				name:'优惠费用',
+				width:'11%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key10'                //数据对应的key
+			},
+			{
+				name:'小计',
+				width:'11%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key11'                //数据对应的key
+			}
+		]
+	},
 
 	set(dom,page){
 		dom.setting = this[page].setting;
