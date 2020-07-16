@@ -30,10 +30,14 @@ let navData = [
 	]},
 	{name:'设置',icon:'../res/image/icon12.png',url:'',children:[
 		{name:'时间流程',url:''},
-		{name:'业务产品',url:''},
+		{name:'紧急任务',url:''},
 		{name:'开单通告',url:''},
-		{name:'权限角色',url:''},
-		{name:'客户来源',url:''}
+		{name:'客户来源',url:''},
+		{name:'集团终审',url:''},
+		{name:'业务费',url:''},
+		{name:'通道配置',url:''},
+		{name:'业务产品',url:''},
+		{name:'权限角色',url:''}
 	]}
 ];
 
