@@ -29,7 +29,7 @@ let navData = [
 		{name:'通知管理',url:'../management/notice.html'}
 	]},
 	{name:'设置',icon:'../res/image/icon12.png',url:'',children:[
-		{name:'时间流程',url:''},
+		{name:'时间流程',url:'../setting/businessTime.html'},
 		{name:'紧急任务',url:''},
 		{name:'开单通告',url:''},
 		{name:'客户来源',url:''},
