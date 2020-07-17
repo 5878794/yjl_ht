@@ -22,6 +22,10 @@
 // 	let dom = $('b-switch').get(0);
 // 	dom.val = true;
 // 	dom.checkBgColor = 'red';
+//  dom.changeFn = function(val){
+//                          //this 指向该元素对象
+//                          //返回当前选择状态  true/false
+//  }
 
 
 
@@ -206,7 +210,7 @@ class bSwitch extends HTMLElement{
 
 		$$(this[bodyDom]).myclickok(function(){
 			_this[changeDom]();
-			_this.userChangeFn(_this.val);
+			_this.userChangeFn.call(_this,_this.val);
 		});
 	}
 

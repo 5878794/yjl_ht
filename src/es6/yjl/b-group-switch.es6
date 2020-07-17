@@ -1,6 +1,24 @@
 
 //设置中组 开关
 
+//html:
+// 	b-group-switch(name='审核' id='group4')
+
+//js:
+// 	let group1 = $('#group1').get(0);
+// 	group1.data = [
+// 		{name:'大发大发',value:'3',selected:true,id:1,key:'a1'},
+// 		{name:'大发大发',value:'1',selected:true,id:1,key:'a2'},
+// 		{name:'大发大发',value:'3',selected:true,id:1,key:'a3'},
+// 		{name:'大发大发',value:'4',selected:true,id:1,key:'a4'},
+// 		{name:'大发大发',value:'3',selected:true,id:1,key:'a5'},
+// 		{name:'大发大发',value:'3',selected:true,id:1,key:'a6'},
+// 		{name:'大发大发',value:'3',selected:true,id:1,key:'a7'}
+// 	];
+// 	group1.click = function(data){
+// 		console.log(data);          //返回出入的数据结构
+// 	};
+
 
 
 require('../customElement/pc/input_search');

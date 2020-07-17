@@ -37,7 +37,7 @@ let navData = [
 		{name:'业务费',url:''},
 		{name:'通道配置',url:''},
 		{name:'业务产品',url:''},
-		{name:'权限角色',url:''}
+		{name:'权限角色',url:'../setting/authority_role.html'}
 	]}
 ];
 
