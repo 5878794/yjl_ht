@@ -1,0 +1,40 @@
+doctype html
+html
+    head
+        title 业务产品配置
+        include ./../../pug_include/head_pc
+
+        script(data-src='product_config.min.js?t='+tt)
+
+
+    body
+
+
+        div(class='left')
+            //- include ../../pug_include/left
+            b-win-left
+
+        div(class='right')
+            //- include ../../pug_include/top
+            //b-win-top
+
+            div(class='iframe scroll_style1' style='background:#fff;' id='iframe_body')
+                div(class='page_body')
+                    //- 页面主体开始。。。。。。
+
+                    b-title(name='机构')
+                    b-role-list(name='机构名称' id='list')
+
+                    br
+                    //- 列表部分
+                    div(style='padding:0 20px;width:100%;')
+                        b-title1(name='中新银行产品')
+                        div(class='index_list')
+                            b-table-list(id='table_list')
+
+
+
+
+
+
+

@@ -1,0 +1,24 @@
+doctype html
+html
+    head
+        title 添加
+        include ./../../pug_include/head_pc
+
+        script(data-src='o_add.min.js?t='+tt)
+        style.
+            html,body{overflow: auto;}
+
+    body
+
+        div(class='openWin_main' style='width:500px;min-width:100%;max-width:100%;')
+            div(class='openWin_input_main box_hlt box_lines')
+                div(class='openWin_input_item1')
+                    b-input(type='text' err='' name='渠道名')
+
+
+        div(class='openWin_btns box_hcc')
+            div(class='openWin_btn_blue box_hcc hover' id='submit') 确认
+
+
+
+

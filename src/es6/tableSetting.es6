@@ -30,7 +30,7 @@ let mortgageRepaymentSet = {
 
 let settingChannel = {
 	titleRowStyle:{background:'#efefef',margin:'20px 0 0 0',height:'40px',fontSize:'14px'},
-	rowHeight:40,
+	rowHeight:50,
 	rowStyle:{background:"#fff",'border-bottom':'1px solid #efefef'},
 	celStyle:{padding:'0 10px'},
 	rowHoverStyle:{background:'#fbd6d8'},
@@ -1179,6 +1179,53 @@ let setting = {
 				width:'30%',
 				style:{color:'#333',fontSize:'14px'},
 				key:'key3'                //数据对应的key
+			}
+		]
+	},
+	setting_product:{
+		setting:settingChannel,
+		data:[
+			{
+				name:'产品名称',
+				width:'16%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key1'                //数据对应的key
+			},
+			{
+				name:'产品类型',
+				width:'10%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key2'                //数据对应的key
+			},
+			{
+				name:'额度',
+				width:'22%',
+				style:{color:'#333',fontSize:'14px'},
+				children:[
+					{name:'最小额度',key:'key3',style:{color:'#333',fontSize:'12px'},},
+					{name:'最大额度',key:'key4',style:{color:'#333',fontSize:'12px'},},
+				]
+			},
+			{
+				name:'成本',
+				width:'22%',
+				style:{color:'#333',fontSize:'14px'},
+				children:[
+					{name:'成本费率',key:'key5',style:{color:'#333',fontSize:'12px'},},
+					{name:'服务费',key:'key6',style:{color:'#333',fontSize:'12px'},},
+				]
+			},
+			{
+				name:'可用时间(天)',
+				width:'10%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key7'                //数据对应的key
+			},
+			{
+				name:'',
+				width:'20%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key8'                //数据对应的key
 			}
 		]
 	},
