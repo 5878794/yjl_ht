@@ -8,6 +8,7 @@ let app = require('./../../es6/lib/page'),
 require('./../../es6/yjl/b-win-left');
 require('./../../es6/yjl/b_title');
 require('./../../es6/yjl/b-role-authority');
+require('./../../es6/yjl/b-role-list');
 
 
 let loading;
@@ -25,7 +26,20 @@ let Page = {
 		});
 	},
 	async run(){
+		this.createRoleList();
 		this.createRole();
+
+	},
+	createRoleList(){
+		let list = $('#list').get(0);
+		list.data = [
+			{name:'业务员1',id:1},
+			{name:'业务员2',id:2},
+			{name:'业务员3',id:3}
+		];
+		list.del = function(data){
+			console.log(del);
+		}
 
 	},
 	createRole(){

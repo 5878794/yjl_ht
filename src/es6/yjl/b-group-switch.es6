@@ -135,7 +135,11 @@ class bGroupSwitch extends HTMLElement{
 				_input = $(`<b-input-search rule="must,number" class="boxflex1" name="${rs.name}" key="${rs.key}" unit="天" err="天数必须为正整数"></b-input-search>`).get(0),
 				_switch = $(`<b-switch></b-switch>`).get(0);
 
-			_input.nameStyle = {width:'130px',fontSize:'12px'}
+			_input.inputBodyStyle = {width:'65px'};
+			_input.nameStyle = {fontSize:'12px',width:'auto'};
+			_input.inputBodyDom.removeClass('boxflex1');
+			_input.body.find('.__input__').attr({maxlength:3});
+			_input.nameDom.addClass('boxflex1');
 			_input.value = rs.value || 0;
 			_switch.val = rs.selected;
 			_switch.checkBgColor = '#5576f0';
