@@ -32,8 +32,7 @@ let navData = [
 		{name:'时间流程',url:'../setting/businessTime.html'},
 		{name:'开关设置',url:'../setting/urgent_task.html'},
 		{name:'客户来源',url:'../setting/client_source.html'},
-		{name:'集团终审',url:''},
-		{name:'业务费',url:''},
+		{name:'标准设定',url:'../setting/group_final_review.html'},
 		{name:'通道配置',url:''},
 		{name:'业务产品',url:''},
 		{name:'权限角色',url:'../setting/authority_role.html'}

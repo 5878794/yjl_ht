@@ -1,0 +1,55 @@
+doctype html
+html
+    head
+        title 集团终审条件
+        include ./../../pug_include/head_pc
+
+        script(data-src='group_final_review.min.js?t='+tt)
+        style.
+            .name{font-size:14px;}
+            .btn{font-size:14px;color:#fff;width:60px;height:24px; background:#5576f0;border-radius: 5px;}
+
+
+    body
+
+
+        div(class='left')
+            //- include ../../pug_include/left
+            b-win-left
+
+        div(class='right')
+            //- include ../../pug_include/top
+            //b-win-top
+
+            div(class='iframe scroll_style1' id='iframe_body' style='background:#fff;')
+                div(class='page_body')
+                    //- 页面主体开始。。。。。。
+
+                    b-title(name='集团终审条件')
+                    div(class='openWin_input_main box_slt box_lines')
+                        div(class='openWin_input_item1 box_hlc')
+                            div(class='name') 房抵业务集团终审条件:
+                            b-input-money(id='list' accuracy='5' name='申请金额 ≥' unit='元')
+                            div(class='box_hcc btn hover') 修改
+                        br
+                        div(class='openWin_input_item1 box_hlc')
+                            div(class='name') 垫资业务集团终审条件:
+                            b-input-money(id='list' accuracy='5' name='垫资金额 ≥' unit='元')
+                            div(class='box_hcc btn hover') 修改
+
+                    b-title(name='业务费收费标准')
+                    div(class='openWin_input_main box_slt box_lines')
+                        div(class='openWin_input_item1 box_hlc')
+                            b-input-money(id='list' accuracy='5' name='业务后置服务' unit='元/次')
+                            div(class='box_hcc btn hover') 修改
+                        br
+                        div(class='openWin_input_item1 box_hlc')
+                            b-input-money(id='list' accuracy='5' name='展期服务' unit='元/次')
+                            div(class='box_hcc btn hover') 修改
+
+
+
+
+
+
+
