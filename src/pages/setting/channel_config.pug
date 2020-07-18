@@ -1,0 +1,35 @@
+doctype html
+html
+    head
+        title 通道配置
+        include ./../../pug_include/head_pc
+
+        script(data-src='channel_config.min.js?t='+tt)
+
+
+    body
+
+
+        div(class='left')
+            //- include ../../pug_include/left
+            b-win-left
+
+        div(class='right')
+            //- include ../../pug_include/top
+            //b-win-top
+
+            div(class='iframe scroll_style1' style='background:#fff;' id='iframe_body')
+                div(class='page_body')
+                    //- 页面主体开始。。。。。。
+
+                    b-title(name='通道配置')
+                    //- 列表部分
+                    div(class='index_list')
+                        b-table-list(id='table_list')
+
+
+
+
+
+
+

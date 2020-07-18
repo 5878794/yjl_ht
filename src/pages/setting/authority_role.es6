@@ -38,8 +38,11 @@ let Page = {
 			{name:'业务员3',id:3}
 		];
 		list.del = function(data){
-			console.log(del);
-		}
+			console.log(data);
+		};
+		list.click = function(data){
+			console.log(data);
+		};
 
 	},
 	createRole(){

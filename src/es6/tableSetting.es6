@@ -28,6 +28,15 @@ let mortgageRepaymentSet = {
 	noDataHtml:'<div class="box_hcc" style="width:100%;height:100px;font-size:14px;color:#333;">暂无数据</div>'
 };
 
+let settingChannel = {
+	titleRowStyle:{background:'#efefef',margin:'20px 0 0 0',height:'40px',fontSize:'14px'},
+	rowHeight:40,
+	rowStyle:{background:"#fff",'border-bottom':'1px solid #efefef'},
+	celStyle:{padding:'0 10px'},
+	rowHoverStyle:{background:'#fbd6d8'},
+	rowNotHoverStyle:{background:'#fff'},
+	noDataHtml:'<div class="box_hcc" style="width:100%;height:100px;font-size:14px;color:#333;">暂无数据</div>'
+};
 
 
 let setting = {
@@ -1147,6 +1156,29 @@ let setting = {
 				width:'10%',
 				style:{color:'red',fontSize:'14px'},
 				key:'key5'                //数据对应的key
+			}
+		]
+	},
+	setting_channel:{
+		setting:settingChannel,
+		data:[
+			{
+				name:'客户来源渠道',
+				width:'40%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key1'                //数据对应的key
+			},
+			{
+				name:'渠道费(元/次)',
+				width:'30%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key2'                //数据对应的key
+			},
+			{
+				name:'',
+				width:'30%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'key3'                //数据对应的key
 			}
 		]
 	},

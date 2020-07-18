@@ -52,11 +52,13 @@ class bRoleList extends HTMLElement{
 
         this.name = $(this).attr('name') || '';
         this.userClick = function(){};
+        this.userRowClick = function(){};
         //创建dom
         this.createElement();
 
 
         this.shadow.appendChild(this.body.get(0));
+
 
     }
 
@@ -65,7 +67,7 @@ class bRoleList extends HTMLElement{
             border = $('<div class="border"></div>'),
             title = $('<div class="title box_hlc">'+this.name+'</div>'),
             list = $('<div class="box_slt list"></div>'),
-            item = $('<div class="item box_hlc"></div>'),
+            item = $('<div class="item box_hlc hover"></div>'),
             name = $('<div class="name boxflex1"></div>'),
             btn = $('<div class="btn box_hcc hover">删除</div>');
 
@@ -104,15 +106,37 @@ class bRoleList extends HTMLElement{
         this.userClick = fn;
     }
 
+    set click(fn){
+        fn = fn || function(){};
+        this.userRowClick = fn;
+    }
+
     add(data){
         let body = this.listBody,
-            item = this.item.clone();
+            item = this.item.clone(),
+            _this = this;
 
+        item.data({data:data});
         item.find('.name').text(data.name);
-        item.find('.btn').data({data:data});
+
+        item.find('.btn').click(function(e){
+            e.stopPropagation();
+            let data = $(this).parent().data('data');
+            _this.userClick(data);
+        });
+        item.click(function(){
+            let data = $(this).data('data');
+            _this.userRowClick(data);
+
+            let allRow = body.find('.item');
+            allRow.css({background:'#fff'});
+            $(this).css({background:'#eee'})
+
+        });
 
         body.append(item);
     }
+
 
 }
 
