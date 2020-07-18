@@ -1,0 +1,38 @@
+doctype html
+html
+    head
+        title 紧急任务配置
+        include ./../../pug_include/head_pc
+
+        script(data-src='urgent_task.min.js?t='+tt)
+
+
+    body
+
+
+        div(class='left')
+            //- include ../../pug_include/left
+            b-win-left
+
+        div(class='right')
+            //- include ../../pug_include/top
+            //b-win-top
+
+            div(class='iframe scroll_style1' id='iframe_body' style='background:#fff;')
+                div(class='page_body')
+                    //- 页面主体开始。。。。。。
+
+                    b-title(name='紧急任务锁')
+                    div(class='box_hlc' style='width:100%;padding:0 20px; height:40px;')
+                        div(class='boxflex1' style='font-size:14px;') 是否开启
+                        b-switch(id='task' checkBgColor='#5576f0' style='width:60px;height:24px;')
+
+                    b-title(name='开单公告')
+                    div(class='box_hlc' style='width:100%;padding:0 20px; height:40px;')
+                        div(class='boxflex1' style='font-size:14px;') 是否开启
+                        b-switch(id='task1' checkBgColor='#5576f0' style='width:60px;height:24px;')
+
+
+
+
+
