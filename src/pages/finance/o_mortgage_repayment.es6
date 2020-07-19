@@ -113,6 +113,8 @@ let Page = {
 	createList(){
 		let table = $('#list').get(0);
 		tableSet.set(table,'mortgage_repayment');
+		table.listBody.removeClass('boxflex1');
+		table.rowWidth = 1200;
 
 		//TODO 数据获取
 		let tempData = [
