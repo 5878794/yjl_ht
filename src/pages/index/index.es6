@@ -1,5 +1,6 @@
 let app = require('./../../es6/lib/page'),
     lib = require('./../../es6/lib'),
+    qt = require('./../../es6/qt'),
     tableSet = require('./../../es6/tableSetting');
 
 
