@@ -53,7 +53,7 @@ class bNav2 extends HTMLElement{
 	}
 	createStyle(){
 		let css = [
-			'.body{height:43px;margin:20px 0;max-width:1600px;width:100%;padding:0 20px;background:#fff;}',
+			'.body{height:43px;margin:20px 0;width:100%;padding:0 20px;background:#fff;}',
 			'.item{font-size:14px;color:#aaa;margin:0 20px;height:40px;line-height:40px;border-bottom:3px solid transparent;}',
 			'.body .select{color:#5576f0;border-color:#5576f0;}'
 		];

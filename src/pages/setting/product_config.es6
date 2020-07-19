@@ -47,6 +47,7 @@ let Page = {
     createList1(){
         let table = $('#table_list').get(0);
         tableSet.set(table,'setting_product');
+        table.listBody.removeClass('boxflex1');
 
         //TODO 数据获取
         let tempData = [

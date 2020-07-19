@@ -181,7 +181,7 @@ class bRoleAuthority extends HTMLElement{
 			'.cel2_3,.cel2_4{width:16%;color:#aaa;}',
 			'.cel2_4{border:none;}',
 			'.gray{display:none;}',
-			'b-switch{display:block; width:80%; height:24px;}'
+			'b-switch{display:block; width:60px; height:24px;}'
 		];
 
 		this.cssText = css.join('');

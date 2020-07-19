@@ -82,7 +82,7 @@ class bTitle1 extends HTMLElement{
 	}
 	createStyle(){
 		let css = [
-			'.body{margin:10px 0 0 0;min-width:1000px;max-width:1600px;width:100%;height:30px;padding:0 20px;font-size:14px;color:#333;}',
+			'.body{margin:10px 0 0 0;min-width:1000px;width:100%;height:30px;padding:0 20px;font-size:14px;color:#333;}',
 			'.titleName{width:400px;font-weight:bold;}',
 			'.btn{color:#3f68ef; font-size:14px; height:40px; padding:0 10px; position:relative; color:#c15356;}'
 		];

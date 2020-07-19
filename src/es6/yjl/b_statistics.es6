@@ -58,7 +58,7 @@ class bStatistics extends HTMLElement{
 	}
 	createStyle(){
 		let css = [
-			'.body{margin:20px 0;max-width:1600px;width:100%;padding:0 20px 10px 20px;background:#fff;}',
+			'.body{margin:20px 0;width:100%;padding:0 20px 10px 20px;background:#fff;}',
 			'.title{width:100%;padding:20px 0 0 0;color:#333;font-size:16px;font-weight:bold;}',
 			'.item{font-size:14px;color:#333;padding:5px 10px;}',
 			'.main{width:100%;padding:10px 0;}',

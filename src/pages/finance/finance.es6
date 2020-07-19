@@ -53,6 +53,7 @@ let Page = {
 	createList(){
 		let table = $('#table_list').get(0);
 		tableSet.set(table,'finance');
+		table.rowWidth = 2000;
 
 		//TODO 数据获取
 		let tempData = [

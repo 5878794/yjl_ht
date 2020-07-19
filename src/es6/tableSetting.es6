@@ -1233,6 +1233,13 @@ let setting = {
 	set(dom,page){
 		dom.setting = this[page].setting;
 		dom.data = this[page].data;
+		this.autoHeight(dom);
+	},
+	autoHeight(dom){
+		$('.page_body').addClass('box_slt');
+		$('.index_list').addClass('boxflex1').addClass('box_slt');
+		$(dom).addClass('boxflex1');
+		dom.autoHeight();
 	}
 };
 

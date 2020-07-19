@@ -87,7 +87,7 @@ class bOrderInfo extends HTMLElement{
 	}
 	createStyle(){
 		let css = [
-			'.order_info{min-width:1000px;max-width:1600px;width:100%;}',
+			'.order_info{min-width:1000px;width:100%;}',
 			'.row1,.row2,.row3{width:100%;}',
 			'.row1,.row3{padding-bottom:20px;}',
 			'.row2{padding-bottom:10px;}',

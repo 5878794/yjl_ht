@@ -93,7 +93,7 @@ class bSearch extends HTMLElement{
 	}
 	createStyle(){
 		let css = [
-			'.body{min-width:980px;max-width:1600px;width:100%;}',
+			'.body{min-width:840px;width:100%;}',
 			'.searchBtn{border-radius:5px;width:60px;height:42px;margin:5px 0;background-color:#5576f0;background-image:url('+searchImgSrc+');background-repeat:no-repeat;background-position:center center;background-size:20px 20px;}',
 			'.btnBody{width:60px;}',
 			'.more{font-size:12px;padding-right:20px;position:relative;color:#909192;}',
