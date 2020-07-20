@@ -16,7 +16,7 @@ html
             b-title(name='历史流程')
             b-order-history(id='history' showOne='true' sort='desc')
 
-            b-title(name='核行')
+            b-title(name='核行' id='approved')
             div(class='openWin_input_main box_hlt box_lines')
                 div(class='openWin_input_item1')
                     b-input(type='textarea' autoHeight='true' name='备注')
@@ -26,12 +26,9 @@ html
                     div(class='box_slc approve_room' style='font-size:14px;')
                         p 2020年4月11日,李强将还款账号从12312312903812098390138修改为123910938129831283
 
-            b-title(name='下户')
-            div(class='openWin_input_main box_hlt box_lines')
-                div(class='openWin_input_item1')
-                    b-input(type='textarea' autoHeight='true' name='备注')
-                div(class='openWin_input_item1')
-                    b-input-file(type='file' err='' name='附件')
+            b-title(name='下户' id='shimoto')
+            div(id='shimoto_body')
+
 
 
 
@@ -39,3 +36,14 @@ html
             div(class='openWin_btns box_hcc')
                 div(class='openWin_btn_gray box_hcc hover' id='cancel') 取消
                 div(class='openWin_btn_blue box_hcc hover' id='submit') 提交
+
+
+
+
+        //克隆部分=========================================
+        div(class='hidden')
+            div(class='openWin_input_main box_hlt box_lines' id='shimoto_item')
+                div(class='openWin_input_item1')
+                    b-input(type='textarea' autoHeight='true' name='备注')
+                div(class='openWin_input_item1')
+                    b-input-file(type='file' err='' name='附件')

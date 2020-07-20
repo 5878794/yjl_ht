@@ -27,11 +27,13 @@ module.exports = {
 	textareaStyleFn(obj){
 		if(obj.rowHeight == 40){return;}
 		obj.rowHeight = 40;		//textarea 自动*3
+		obj.nameStyle = {width:'100px',color:'#535353',fontSize:'14px',textAlign:'right'};
 		obj.rowStyle = {padding:'10px 20px'};
 	},
 	textareaStyleFn1(obj){
 		if(obj.rowHeight == 40){return;}
 		obj.rowHeight = 40;		//textarea 自动*3
+		obj.nameStyle = {width:'100px',color:'#535353',fontSize:'14px',textAlign:'right'};
 		obj.rowStyle = {padding:'10px 20px 10px 0'};
 	},
 	//搜索框中的设置

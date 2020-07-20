@@ -4,6 +4,7 @@
 
 let app = require('./../../es6/lib/page'),
     lib = require('./../../es6/lib'),
+    bTitleBtn = require('./../../es6/b_title_btn'),
     inputStyle = require('./../../es6/inputStyle');
 
 
@@ -34,6 +35,7 @@ let Page = {
     },
     async run(){
         inputStyle.set(true,true);
+        this.createBTitlesBtn();
         this.addBtnEvent();
         this.setPart1();
         this.setHistory();
@@ -116,6 +118,13 @@ let Page = {
         cancel.click(function(){
             console.log('cancel')
         });
+    },
+    createBTitlesBtn(){
+        bTitleBtn.addDelFn(
+            $('#final_payment').get(0),
+            $('#final_payment_body'),
+            $('#final_payment_item')
+        )
     }
 
 };

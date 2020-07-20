@@ -4,6 +4,7 @@
 
 let app = require('./../../es6/lib/page'),
     lib = require('./../../es6/lib'),
+    bTitleBtn = require('./../../es6/b_title_btn'),
     inputStyle = require('./../../es6/inputStyle');
 
 
@@ -34,6 +35,7 @@ let Page = {
     },
     async run(){
         inputStyle.set(true,true);
+        this.createBTitlesBtn();
         this.addBtnEvent();
         this.setPart1();
         this.setHistory();
@@ -116,6 +118,25 @@ let Page = {
         cancel.click(function(){
             console.log('cancel')
         });
+    },
+    createBTitlesBtn(){
+        let bTitle = $('#approved').get(0);
+        bTitle.btnData = [
+            {
+                name:'核行修改',
+                type:'mdf',
+                style:{color:'#5576f0'}
+            }
+        ];
+        bTitle.clickFn = function(type){
+            console.log('核行修改');
+        };
+
+        bTitleBtn.addDelFn(
+            $('#shimoto').get(0),
+            $('#shimoto_body'),
+            $('#shimoto_item')
+        )
     }
 
 };

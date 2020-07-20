@@ -34,12 +34,9 @@ html
                     b-input-file(type='file' err='' name='附件')
 
 
-            b-title(name='尾款')
-            div(class='openWin_input_main box_hlt box_lines')
-                div(class='openWin_input_item3')
-                    b-input(type='text' name='转回账号')
-                div(class='openWin_input_item3')
-                    b-input(type='text' name='转回户名')
+            b-title(name='尾款' id='final_payment')
+            div(id='final_payment_body')
+
 
 
 
@@ -47,3 +44,12 @@ html
             div(class='openWin_btns box_hcc')
                 div(class='openWin_btn_gray box_hcc hover' id='cancel') 取消
                 div(class='openWin_btn_blue box_hcc hover' id='submit') 提交
+
+
+        //克隆部分
+        div(class='hidden')
+            div(class='openWin_input_main box_hlt box_lines' id='final_payment_item')
+                div(class='openWin_input_item3')
+                    b-input(type='text' name='转回账号')
+                div(class='openWin_input_item3')
+                    b-input(type='text' name='转回户名')
