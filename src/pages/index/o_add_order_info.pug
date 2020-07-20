@@ -17,9 +17,14 @@ html
 
             div
                 b-title(name='业务来源')
-                div(class='openWin_input_main box_slt box_lines')
+                div(class='openWin_input_main box_hlt box_lines')
                     div(class='openWin_input_item3')
                         b-input(type='select' err='请选择业务来源' name='业务来源' id='key1' placeholder='请选择')
+                    div(class='openWin_input_item3')
+                        //业务来源是其它时候添加这个
+                        b-input(type='text' err='请输入其它来源' name='其它来源' id='key2')
+
+
 
 
             b-title(name='订单基本详情')
