@@ -25,10 +25,12 @@ module.exports = {
 		obj.unitStyle = {fontSize:'12px',position:'absolute',left:0,bottom:0,width:'100%',color:'#999'}
 	},
 	textareaStyleFn(obj){
+		if(obj.rowHeight == 40){return;}
 		obj.rowHeight = 40;		//textarea 自动*3
 		obj.rowStyle = {padding:'10px 20px'};
 	},
 	textareaStyleFn1(obj){
+		if(obj.rowHeight == 40){return;}
 		obj.rowHeight = 40;		//textarea 自动*3
 		obj.rowStyle = {padding:'10px 20px 10px 0'};
 	},
@@ -52,7 +54,9 @@ module.exports = {
 			_this = this;
 
 		bInput.each(function(){
-			_this.inputStyleFn(this);
+			if($(this).attr('type') != 'textarea'){
+				_this.inputStyleFn(this);
+			}
 		});
 		bFile.each(function(){
 			if(bFile1){

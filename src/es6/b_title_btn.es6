@@ -23,7 +23,7 @@ module.exports = {
 				//添加
 				let _item = item.clone().attr({id:''});
 				body.append(_item);
-				inputStyle.set();
+				inputStyle.set(true,true);
 			}else{
 				//删除
 				body.html('');
@@ -57,7 +57,7 @@ module.exports = {
 			};
 
 			body.append(_item);
-			inputStyle.set();
+			inputStyle.set(true,true);
 		};
 	},
 	//添加按钮，按钮带子菜单
@@ -94,7 +94,7 @@ module.exports = {
 			};
 
 			body.append(_item);
-			inputStyle.set();
+			inputStyle.set(true,true);
 		};
 	}
 

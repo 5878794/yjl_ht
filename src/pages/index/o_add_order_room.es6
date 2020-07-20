@@ -33,7 +33,7 @@ let Page = {
         });
     },
     async run(){
-        inputStyle.set();
+        inputStyle.set(true,true);
         this.createBTitlesBtn();
 
 

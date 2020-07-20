@@ -122,7 +122,7 @@ class bTitle extends HTMLElement{
 			list = this.openList;
 		data.map(rs=>{
 			let _list = list.clone().text(rs.name).attr({type:rs.type});
-			this.addClickEvent(_list);
+			this.addClickEvent(_list,body);
 			body.append(_list);
 		});
 
@@ -136,7 +136,7 @@ class bTitle extends HTMLElement{
 
 	}
 
-	addClickEvent(_item){
+	addClickEvent(_item,openDiv){
 		let _this = this;
 		_item.click(function(){
 			let type = $(this).attr('type'),
@@ -158,6 +158,10 @@ class bTitle extends HTMLElement{
 			}
 
 			_this.userClickFn(type);
+
+			if(openDiv){
+				openDiv.addClass('hidden');
+			}
 		});
 	}
 
