@@ -4,6 +4,7 @@
 
 let app = require('./../../es6/lib/page'),
     lib = require('./../../es6/lib'),
+    bTitleBtn = require('./../../es6/b_title_btn'),
     inputStyle = require('./../../es6/inputStyle');
 
 
@@ -33,6 +34,8 @@ let Page = {
     },
     async run(){
         inputStyle.set();
+        this.createBTitlesBtn();
+
 
         this.setPart1();
 
@@ -60,6 +63,14 @@ let Page = {
         // }
 
 
+    },
+    createBTitlesBtn(){
+        bTitleBtn.addLevel2BtnFn(
+            $('#additional_mortgage').get(0),
+            $('#additional_mortgage_body'),
+            $('#additional_mortgage_item1'),
+            $('#additional_mortgage_item2')
+        );
     }
 
 };

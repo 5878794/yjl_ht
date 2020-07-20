@@ -39,28 +39,9 @@ html
 
 
             div
-                b-title(name='附抵押物信息')
-                b-title1(name='不动产')
-                div(class='openWin_input_main box_hlt box_lines')
-                    div(class='openWin_input_item3')
-                        b-input(type='text' name='名称')
-                    div(class='openWin_input_item3')
-                        b-input(type='text' name='产权证号')
-                    div(class='openWin_input_item3')
-                        b-input(type='text' name='面积' unit='㎡' id='key1' )
-                    div(class='openWin_input_item3')
-                        b-input(type='select' name='住宅性质' id='key1')
-                    div(class='openWin_input_item3')
-                        b-input-date(type='date' name='取得时间' id='key1')
+                b-title(name='附抵押物信息' id='additional_mortgage')
+                div(id='additional_mortgage_body')
 
-                b-title1(name='动产')
-                div(class='openWin_input_main box_hlt box_lines')
-                    div(class='openWin_input_item3')
-                        b-input(type='text' name='名称')
-                    div(class='openWin_input_item3')
-                        b-input(type='text' name='权益' unit='%')
-                    div(class='openWin_input_item3')
-                        b-input-money(name='评估价值' accuracy='5' unit='万元' id='key1')
 
             div
                 b-title(name='放款信息' id='')
@@ -105,3 +86,42 @@ html
             div(class='openWin_btns box_hcc')
                 div(class='openWin_btn_gray box_hcc hover') 上一步
                 div(class='openWin_btn_blue box_hcc hover') 下一步
+
+
+
+
+
+
+
+
+
+
+
+
+        //克隆部分=====================================================
+        div(class='hidden')
+            //附抵押物信息
+            div(id='additional_mortgage_item1')
+                b-title1(name='不动产')
+                div(class='openWin_input_main box_hlt box_lines')
+                    div(class='openWin_input_item3')
+                        b-input(type='text' name='名称')
+                    div(class='openWin_input_item3')
+                        b-input(type='text' name='产权证号')
+                    div(class='openWin_input_item3')
+                        b-input(type='text' name='面积' unit='㎡' id='key1' )
+                    div(class='openWin_input_item3')
+                        b-input(type='select' name='住宅性质' id='key1')
+                    div(class='openWin_input_item3')
+                        b-input-date(type='date' name='取得时间' id='key1')
+
+
+            div(id='additional_mortgage_item2')
+                b-title1(name='动产')
+                div(class='openWin_input_main box_hlt box_lines')
+                    div(class='openWin_input_item3')
+                        b-input(type='text' name='名称')
+                    div(class='openWin_input_item3')
+                        b-input(type='text' name='权益' unit='%')
+                    div(class='openWin_input_item3')
+                        b-input-money(name='评估价值' accuracy='5' unit='万元' id='key1')

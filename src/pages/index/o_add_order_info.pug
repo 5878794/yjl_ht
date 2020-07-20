@@ -36,39 +36,21 @@ html
                         b-input(type='text' name='住址' id='key1')
 
             div
-                b-title1(name='紧急联系人')
-                div(id='a')
-                    div(class='openWin_input_main box_hlt box_lines')
-                        div(class='openWin_input_item3')
-                            b-input(type='text' name='申请人' id='key1' placeholder='紧急联系人/（非必填）')
-                        div(class='openWin_input_item3')
-                            b-input(type='text' name='联系电话' id='key1' placeholder='紧急联系人电话/（非必填）')
+                b-title1(name='紧急联系人' id='emergency_contact')
+                div(id='emergency_contact_body')
+
+
+
 
             div
-                b-title(name='共同申请人信息' id='')
-                b-title1(name='申请人' class='')
-                div(class='openWin_input_main box_hlt box_lines')
-                    div(class='openWin_input_item3')
-                        b-input(type='text' name='名称' id='key1' placeholder='名称/公司')
-                    div(class='openWin_input_item3')
-                        b-input(type='text' name='证件编号' id='key1' placeholder='身份证号/企业信用代码')
-                    div(class='openWin_input_item3')
-                        b-input(type='text' name='电话号码' id='key1')
-                    div(class='openWin_input_item1')
-                        b-input(type='text' name='住址' id='key1')
+                b-title(name='共同申请人信息' id='joint_application')
+                div(id='joint_application_body')
+
 
             div
-                b-title(name='担保人信息' id='')
-                b-title1(name='担保人' class='')
-                div(class='openWin_input_main box_hlt box_lines')
-                    div(class='openWin_input_item3')
-                        b-input(type='text' name='名称' id='key1' placeholder='名称/公司')
-                    div(class='openWin_input_item3')
-                        b-input(type='text' name='证件编号' id='key1' placeholder='身份证号/企业信用代码')
-                    div(class='openWin_input_item3')
-                        b-input(type='text' name='电话号码' id='key1')
-                    div(class='openWin_input_item1')
-                        b-input(type='text' name='住址' id='key1')
+                b-title(name='担保人信息' id='guarantor')
+                div(id='guarantor_body')
+
 
 
             div
@@ -85,3 +67,47 @@ html
             div(class='openWin_btns box_hcc')
                 div(class='openWin_btn_gray box_hcc hover') 上一步
                 div(class='openWin_btn_blue box_hcc hover') 下一步
+
+
+
+
+
+
+
+
+
+
+        //克隆部分=====================================================
+        div(class='hidden')
+            //紧急联系人克隆dom
+            div(class='openWin_input_main box_hlt box_lines' id='emergency_contact_item')
+                div(class='openWin_input_item3')
+                    b-input(type='text' name='申请人' id='key1' placeholder='紧急联系人/（非必填）')
+                div(class='openWin_input_item3')
+                    b-input(type='text' name='联系电话' id='key1' placeholder='紧急联系人电话/（非必填）')
+
+            //共同申请人克隆dom
+            div(id='joint_application_item')
+                b-title1(name='申请人')
+                div(class='openWin_input_main box_hlt box_lines')
+                    div(class='openWin_input_item3')
+                        b-input(type='text' name='名称' id='key1' placeholder='名称/公司')
+                    div(class='openWin_input_item3')
+                        b-input(type='text' name='证件编号' id='key1' placeholder='身份证号/企业信用代码')
+                    div(class='openWin_input_item3')
+                        b-input(type='text' name='电话号码' id='key1')
+                    div(class='openWin_input_item1')
+                        b-input(type='text' name='住址' id='key1')
+
+            //担保人克隆dom
+            div(id='guarantor_item')
+                b-title1(name='担保人' class='')
+                div(class='openWin_input_main box_hlt box_lines')
+                    div(class='openWin_input_item3')
+                        b-input(type='text' name='名称' id='key1' placeholder='名称/公司')
+                    div(class='openWin_input_item3')
+                        b-input(type='text' name='证件编号' id='key1' placeholder='身份证号/企业信用代码')
+                    div(class='openWin_input_item3')
+                        b-input(type='text' name='电话号码' id='key1')
+                    div(class='openWin_input_item1')
+                        b-input(type='text' name='住址' id='key1')

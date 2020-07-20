@@ -4,6 +4,7 @@
 
 let app = require('./../../es6/lib/page'),
 	lib = require('./../../es6/lib'),
+	bTitleBtn = require('./../../es6/b_title_btn'),
 	inputStyle = require('./../../es6/inputStyle');
 
 
@@ -33,6 +34,8 @@ let Page = {
 	async run(){
 		inputStyle.set();
 
+		this.createBTitlesBtn();
+
 		this.setPart1();
 
 
@@ -58,6 +61,31 @@ let Page = {
 		// 	console.log(data)
 		// }
 
+
+	},
+
+
+	createBTitlesBtn(){
+		//紧急联系人添加、删除
+		bTitleBtn.addDelFn(
+			$('#emergency_contact').get(0),
+			$('#emergency_contact_body'),
+			$('#emergency_contact_item')
+		);
+
+		//共同申请人信息添加
+		bTitleBtn.addChildDelFn(
+			$('#joint_application').get(0),
+			$('#joint_application_body'),
+			$('#joint_application_item')
+		);
+
+		//担保人信息添加
+		bTitleBtn.addChildDelFn(
+			$('#guarantor').get(0),
+			$('#guarantor_body'),
+			$('#guarantor_item')
+		)
 
 	}
 
