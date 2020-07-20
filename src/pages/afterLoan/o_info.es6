@@ -33,7 +33,7 @@ let Page = {
     },
     async run(){
         inputStyle.set(true,true);
-
+        this.createBTitlesBtn();
         this.setPart1();
         this.setPart2();
 
@@ -81,6 +81,21 @@ let Page = {
         ];
         part2.data = data;
 
+    },
+    createBTitlesBtn(){
+        let btn = $('#mdf').get(0);
+        btn.btnData = [
+            {name:'变更客户资料', type:'btn1', style:{color:'#5576f0'}},
+            {name:'变更还款账号', type:'btn2', style:{color:'#5576f0'}},
+            {name:'新增贷后支出', type:'btn3', style:{color:'#5576f0'}},
+            {name:'核销', type:'btn4', style:{color:'#5576f0'}},
+            {name:'展期', type:'btn5', style:{color:'#5576f0'}},
+            {name:'客户分类', type:'btn6', style:{color:'#5576f0'}}
+        ];
+
+        btn.clickFn = function(type){
+            console.log(type)
+        };
     }
 
 };
