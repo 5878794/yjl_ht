@@ -364,12 +364,13 @@ class bTableList extends HTMLElement{
 			});
 			this.titleBody.css({
 				width:'100%',
-				overflow:'hidden'
+				overflowX:'hidden',
+				overflowY:'scroll'
 			});
 			this.listBody.css({
 				width:'100%',
 				overflowX:'auto',
-				overflowY:'auto'
+				overflowY:'scroll'
 			}).addClass('scroll_style1');
 			this.body.find('.__table_row__').css({
 				minWidth:width+'px'
@@ -387,13 +388,11 @@ class bTableList extends HTMLElement{
 
 	//2个滚动条的联动滚动
 	[addEvent](){
-		console.log(this.addEventRun)
 		if(this.addEventRun){return;}
 		this.addEventRun = true;
 		let _this = this;
 		this.listBody.get(0).addEventListener('scroll',function(e){
 			let left = $(this).scrollLeft();
-			console.log(left)
 			_this.titleBody.scrollLeft(left);
 		},false)
 	}
