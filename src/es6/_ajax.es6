@@ -3,6 +3,22 @@
 
 // let errorHandler = require('./lib/fn/errorHandler');
 
+let qt = require('./qt');
+
+
+window.login = function(){
+	ajax.send([
+		api.login({
+			userName:'test',
+			password:'123456'
+		})
+	]).then(rs=>{
+
+		console.log(rs);
+	})
+};
+
+
 let ajax = {
 	//请求函数主体
 	run(url, data, type, success, error){
@@ -23,11 +39,17 @@ let ajax = {
 			dataType: "json",
 			timeout: 20000,     //20秒
 			headers: {
-				token: window.token || '281a4e8e-495d-4c04-9c0e-10890f884e4d'
+				token: window.token
 			},
 			success: function(rs) {
-				if(rs.state != 1){
-					error(rs.msg);
+				if(rs.code != 200){
+					if(rs.code == 1000){
+						qt.alert('您还未登录或登录已过期！');
+						//关闭所有窗口或进入登录页
+						qt.reLogin();
+					}else{
+						error(rs.data);
+					}
 				}
 
 				success(rs.data);
@@ -68,6 +90,8 @@ let ajax = {
 };
 
 let api = {
+	//登录
+	login:{url:'/api/user/login',type:'post'},
 	//部门信息接口
 	dept_list: {url:'/api/dept/list',type:'get'},
 	dept_add:{url:'/api/dept/addOrUpdate',type:'post'},

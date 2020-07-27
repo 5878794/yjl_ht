@@ -23,6 +23,9 @@ let JD = {
                 bridge.information(msg,title,function(){
                     success();
                 });
+            }else{
+                alert(msg);
+                success();
             }
         });
     },
@@ -35,6 +38,10 @@ let JD = {
                         success();
                     }
                 });
+            }else{
+                if(confirm(msg)){
+                    success();
+                }
             }
         })
     },
@@ -48,6 +55,8 @@ let JD = {
                 type,       //模态[0 = 模态，1 = 非模态]
                 1           //路径模式[0 = 相对，1 = 绝对]
             );
+        }else{
+            window.location.href = url;
         }
     },
     //打开本地页面
@@ -61,6 +70,8 @@ let JD = {
                 type,       //模态[0 = 模态，1 = 非模态]
                 0           //路径模式[0 = 相对，1 = 绝对]
             );
+        }else{
+            window.location.href = url;
         }
     },
     //关闭窗口，在打开页面执行回调函数
@@ -75,6 +86,11 @@ let JD = {
         if(bridge){
             bridge.runJsOnParent(text);
         }
+    },
+
+    //登录过期，重新登录  TODO 等接口
+    reLogin(){
+
     }
 };
 

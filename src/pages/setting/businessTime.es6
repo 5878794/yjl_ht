@@ -1,7 +1,8 @@
 let app = require('./../../es6/lib/page'),
 	lib = require('./../../es6/lib'),
 	tableSet = require('./../../es6/tableSetting'),
-	inputStyle = require('./../../es6/inputStyle');
+	inputStyle = require('./../../es6/inputStyle'),
+	{ajax,api} = require('./../../es6/_ajax');
 
 
 

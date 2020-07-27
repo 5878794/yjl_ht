@@ -6,7 +6,7 @@
 (function(){
 	//服务器地址
 	//开发
-	var serverUrl = '/bens/';
+	var serverUrl = 'https://127.0.0.1';
 
 
 	//正式
