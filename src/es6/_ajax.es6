@@ -6,17 +6,6 @@
 let qt = require('./qt');
 
 
-window.login = function(){
-	ajax.send([
-		api.login({
-			userName:'test',
-			password:'123456'
-		})
-	]).then(rs=>{
-
-		console.log(rs);
-	})
-};
 
 
 let ajax = {
@@ -30,19 +19,24 @@ let ajax = {
 		// data.sign = this.sign(data);
 		// data.ver = SETTING.apiVer;
 
+		if(type=='post'){
+			data = JSON.stringify(data);
+		}
+
+
 		$.ajax({
 			type: type,
 			cache: false,
 			url: url,
 			data: data,
-			//contentType:"application/json",
+			contentType:"application/json",
 			dataType: "json",
 			timeout: 20000,     //20秒
 			headers: {
 				token: window.token
 			},
 			success: function(rs) {
-				if(rs.code != 200){
+				if(rs.code != -1){
 					if(rs.code == 1000){
 						qt.alert('您还未登录或登录已过期！');
 						//关闭所有窗口或进入登录页
@@ -131,7 +125,19 @@ api = new Proxy(api, {
 })
 
 
-
+window.login = function(){
+	ajax.send([
+		api.login({
+			userName:'test',
+			password:'123456'
+		})
+	]).then(rs=>{
+		rs = rs[0];
+		window.token = rs.token;
+	})
+};
+window.ajax = ajax;
+window.api = api;
 
 
 module.exports = {ajax,api};

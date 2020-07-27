@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "all min": "webpack --mode production;tt=$(date +%s);node ./cmd/pug.es6 $tt;node ./cmd/less.es6 $tt;node ./cmd/ver.es6 $tt",
-    "es6-watch": "webpack-dev-server --https  --content-base trunk --inline --hot --devtool inline-source-map",
+    "es6-watch": "webpack-dev-server --http  --content-base trunk --inline --hot --devtool inline-source-map",
     "pug-less-watch": "node ./cmd/less_pug_watch.es6"
   },
   "author": "",
