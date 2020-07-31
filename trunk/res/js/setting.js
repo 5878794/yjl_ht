@@ -6,7 +6,7 @@
 (function(){
 	//服务器地址
 	//开发
-	var serverUrl = 'https://127.0.0.1';
+	var serverUrl = 'http://47.105.184.219:8089';
 
 
 	//正式
