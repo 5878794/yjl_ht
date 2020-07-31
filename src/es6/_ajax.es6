@@ -33,10 +33,12 @@ let ajax = {
 			dataType: "json",
 			timeout: 20000,     //20秒
 			headers: {
-				token: window.token
+				Authorization: window.token
 			},
 			success: async function(rs) {
-				if(rs.code != -1){
+				if(rs.code == 200){
+					success(rs.data);
+				}else{
 					if(rs.code == 1000){
 						await qt.alert('您还未登录或登录已过期！');
 						//关闭所有窗口或进入登录页
@@ -45,9 +47,6 @@ let ajax = {
 						error(rs.data);
 					}
 				}
-
-				success(rs.data);
-
 			},
 			error: function(e) {
 				// errorHandler.ajaxError(type,url,data,e);
