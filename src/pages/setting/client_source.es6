@@ -25,8 +25,18 @@ let Page = {
         });
     },
     async run(){
+        this.addTitleBtn();
         this.createList();
 
+    },
+    addTitleBtn(){
+        let title = $('#b_title').get(0);
+        title.btnData = [
+            {name:'新增',type:'btn1',style:{color:'#5576f0'}}
+        ];
+        title.clickFn = function(){
+            console.log('add');
+        }
     },
     createList(){
         let list = $('#list').get(0);

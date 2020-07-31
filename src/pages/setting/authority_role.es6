@@ -26,9 +26,19 @@ let Page = {
 		});
 	},
 	async run(){
+		this.createBTitlesBtn();
 		this.createRoleList();
 		this.createRole();
 
+	},
+	createBTitlesBtn(){
+		let title = $('#b_title').get(0);
+		title.btnData = [
+			{name:'新增',type:'btn1',style:{color:'#5576f0'}}
+		];
+		title.clickFn = function(){
+			console.log('add');
+		}
 	},
 	createRoleList(){
 		let list = $('#list').get(0);

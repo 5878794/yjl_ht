@@ -5,7 +5,10 @@ html
         include ./../../pug_include/head_pc
 
         script(data-src='product_config.min.js?t='+tt)
-
+        style.
+            .page_body{
+                overflow: auto;
+            }
 
     body
 
@@ -22,12 +25,12 @@ html
                 div(class='page_body')
                     //- 页面主体开始。。。。。。
 
-                    b-title(name='机构')
+                    b-title(name='机构' id='b_title')
                     b-role-list(name='机构名称' id='list')
 
                     br
                     //- 列表部分
-                    div(style='padding:0 20px;width:100%;')
+                    div(style='padding:0 20px;width:100%;' id='list_body')
                         b-title1(name='中新银行产品')
                         div(class='index_list')
                             b-table-list(id='table_list')

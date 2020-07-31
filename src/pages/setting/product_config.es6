@@ -29,9 +29,30 @@ let Page = {
         });
     },
     async run(){
+        this.bindTitleBtn();
         this.createList();
+
+        this.createListTitle();
         this.createList1();
 
+    },
+    createListTitle(){
+        let title = $('#list_body').find('b-title1').get(0);
+        title.btnData = [
+            {name:'新增',type:'btn1',style:{color:'#5576f0'}}
+        ];
+        title.clickFn = function(){
+            console.log('add');
+        };
+    },
+    bindTitleBtn(){
+        let title = $('#b_title').get(0);
+        title.btnData = [
+            {name:'新增',type:'btn1',style:{color:'#5576f0'}}
+        ];
+        title.clickFn = function(){
+            console.log('add');
+        };
     },
     createList(){
         let list = $('#list').get(0);
