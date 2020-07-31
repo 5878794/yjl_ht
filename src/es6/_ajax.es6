@@ -3,7 +3,7 @@
 
 // let errorHandler = require('./lib/fn/errorHandler');
 
-let qt = require('./qt');
+let qt = require('qt.es6');
 
 
 
@@ -35,10 +35,10 @@ let ajax = {
 			headers: {
 				token: window.token
 			},
-			success: function(rs) {
+			success: async function(rs) {
 				if(rs.code != -1){
 					if(rs.code == 1000){
-						qt.alert('您还未登录或登录已过期！');
+						await qt.alert('您还未登录或登录已过期！');
 						//关闭所有窗口或进入登录页
 						qt.reLogin();
 					}else{
@@ -89,7 +89,10 @@ let api = {
 	//部门信息接口
 	dept_list: {url:'/api/dept/list',type:'get'},
 	dept_add:{url:'/api/dept/addOrUpdate',type:'post'},
-	dept_del:{url:'/api/dept/${deptId}',type:'delete'}
+	dept_del:{url:'/api/dept/${deptId}',type:'delete'},
+
+	//角色
+	get_role_list:{url:'/api/role/list',type:'get'}
 };
 
 
@@ -100,6 +103,7 @@ let api = {
 api = new Proxy(api, {
 	get(target, key, receiver) {
 		return function (data) {
+			data = data || {};
 			return new Promise((success, error) => {
 				let url = target[key].url,
 					type = target[key].type || 'post';
@@ -117,27 +121,11 @@ api = new Proxy(api, {
 					delete data[rs];
 				});
 
-
 				ajax.run(url, data, type, success, error);
 			})
 		}
 	}
 })
-
-
-window.login = function(){
-	ajax.send([
-		api.login({
-			userName:'test',
-			password:'123456'
-		})
-	]).then(rs=>{
-		rs = rs[0];
-		window.token = rs.token;
-	})
-};
-window.ajax = ajax;
-window.api = api;
 
 
 module.exports = {ajax,api};

@@ -19,7 +19,7 @@ let JD = {
     alert(msg,title){
         title = title || '系统提示';
         return new Promise(success=>{
-            if(bridge){
+            if(window.bridge){
                 bridge.information(msg,title,function(){
                     success();
                 });
@@ -32,7 +32,7 @@ let JD = {
     confirm(msg,title,btn1Text,btn2Text){
         title = title || '系统提示';
         return new Promise(success=>{
-            if(bridge){
+            if(window.bridge){
                 bridge.warning(msg, title,function (res) {
                     if(res==1){
                         success();
@@ -47,7 +47,7 @@ let JD = {
     },
     //打开窗口 网址
     openUrl(url,width,height,type){
-        if (bridge) {
+        if (window.bridge) {
             bridge.openUrl(
                 url,
                 width,      //窗口宽度
@@ -62,7 +62,7 @@ let JD = {
     //打开本地页面
     openPage(url,width,height,type){
         type = type || 0;
-        if (bridge) {
+        if (window.bridge) {
             bridge.openUrl(
                 url,
                 width,      //窗口宽度
@@ -76,14 +76,14 @@ let JD = {
     },
     //关闭窗口，在打开页面执行回调函数
     closeWin(parentCallBack){
-        if(bridge){
+        if(window.bridge){
             bridge.closeWin();
         }
     },
     //调用父级窗口函数
     //text: 运行的js字符串
     runParentJS(text){
-        if(bridge){
+        if(window.bridge){
             bridge.runJsOnParent(text);
         }
     },

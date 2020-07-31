@@ -1,8 +1,10 @@
 let app = require('./../../es6/lib/page'),
 	lib = require('./../../es6/lib'),
 	tableSet = require('./../../es6/tableSetting'),
+	qt = require('./../../es6/qt'),
+	{ajax,api} = require('./../../es6/_ajax'),
+	all = require('./../../es6/all'),
 	inputStyle = require('./../../es6/inputStyle');
-
 
 
 require('./../../es6/yjl/b-win-left');
@@ -11,22 +13,32 @@ require('./../../es6/yjl/b-role-authority');
 require('./../../es6/yjl/b-role-list');
 
 
-let loading;
+
+
 let Page = {
 	init(){
-		// loading = new loadFn();
-		// loading.show('急速加载中');
+		qt.loading.show('急速加载中');
 		this.run().then(rs=>{
-			// loading.hide();
+			qt.loading.hide();
 		}).catch(rs=>{
 			// err.error(rs);
-			// loading.hide();
-			// app.alert(rs);
-			throw rs;
+			qt.loading.hide();
+			qt.alert(rs);
+			// throw rs;
 		});
 	},
 	async run(){
 		this.createBTitlesBtn();
+
+		//获取用户token等
+		await all.getUserInfo();
+
+		let [data] = await ajax.send([
+			api.get_role_list()
+		]);
+
+		console.log(data);
+
 		this.createRoleList();
 		this.createRole();
 
