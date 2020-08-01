@@ -88,10 +88,13 @@ let api = {
 	//部门信息接口
 	dept_list: {url:'/api/dept/list',type:'get'},
 	dept_add:{url:'/api/dept/addOrUpdate',type:'post'},
-	dept_del:{url:'/api/dept/${deptId}',type:'delete'},
+	dept_del:{url:'/api/dept/{deptId}',type:'delete'},
 
 	//角色
-	get_role_list:{url:'/api/role/list',type:'get'}
+	role_get_list:{url:'/api/role/list',type:'get'},
+	role_add:{url:'/api/role/addOrUpdate',type:'post'},
+	role_del:{url:'/api/role/{roleId}',type:'delete'},
+	role_privilege_list:{url:'/api/role/privilege/list',type:'get'}
 };
 
 

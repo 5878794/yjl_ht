@@ -35,12 +35,12 @@ let JD = {
             if(window.bridge){
                 bridge.warning(msg, title,function (res) {
                     if(res==1){
-                        success();
+                        success(true);
                     }
                 });
             }else{
                 if(confirm(msg)){
-                    success();
+                    success(true);
                 }
             }
         })
@@ -86,6 +86,10 @@ let JD = {
         if(window.bridge){
             bridge.runJsOnParent(text);
         }
+    },
+
+    refreshPage(){
+        window.location.reload();
     },
 
     //登录过期，重新登录  TODO 等接口
