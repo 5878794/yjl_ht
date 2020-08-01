@@ -21,8 +21,23 @@ let all = {
 				error('获取用户信息失败');
 			})
 		});
+	},
+	//获取dom下的所有input的val并表单验证
+	getFromVal(dom){
+		return new Promise(async (success,error)=>{
+			let backData = {};
+			let inputs = dom.find('b-input,b-input-money');
+
+			for(let i=0,l=inputs.length;i<l;i++){
+				let id = inputs.eq(i).attr('id'),
+					val = await inputs.eq(i).get(0).checkPass().catch(e=>{error(e)});
+				backData[id] = val;
+			}
+
+			success(backData);
+		});
 	}
-}
+};
 
 
 

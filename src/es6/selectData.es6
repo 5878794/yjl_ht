@@ -2,7 +2,8 @@
 
 module.exports = {
 	//业务类型、业务方案
-	businessType:[],
+	businessType:[
+	],
 	//业务状态
 	businessState:[],
 	//业务来源
@@ -15,8 +16,11 @@ module.exports = {
 	clientType:[],
 	//到期状态
 	matureState:[],
-	//产品类型
-	productType:[],
+	//产品类型 机构添加产品处
+	productType:[
+		{name:'房抵产品',value:'0'},
+		{name:'垫资产品',value:'1'}
+	],
 	//档案室
 	archivesList:[],
 	//产品来源

@@ -15,6 +15,7 @@
 //     console.log(del);
 // };
 // list.add({name:'ffff',id:4});
+// list.click(fn);
 
 
 

@@ -66,6 +66,18 @@ let Page = {
                     }
                 });
             }
+
+            //机构添加
+            if(type==2){
+                _this.addOrg().then(rs=>{
+                    qt.loading.hide();
+                }).catch(e=>{
+                    qt.loading.hide();
+                    if(typeof e == 'string'){
+                        qt.alert(e);
+                    }
+                });
+            }
         });
     },
 
@@ -79,6 +91,19 @@ let Page = {
         ]);
 
         await qt.alert('角色添加成功！');
+        qt.closeWin();
+    },
+
+    //添加机构
+    async addOrg(){
+        let val = await $('#val').get(0).checkPass();
+        ajax.send([
+            api.org_add({
+                organizationName:val
+            })
+        ]);
+
+        await qt.alert('机构添加成功！');
         qt.closeWin();
     }
 

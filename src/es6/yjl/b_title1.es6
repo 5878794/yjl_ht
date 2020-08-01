@@ -82,7 +82,7 @@ class bTitle1 extends HTMLElement{
 			'.openDiv{position:absolute;z-index:1;left:0;top:35px;width:120%;background:#fff;box-shadow:0 0 2px #ccc;padding:5px 0;}',
 			'.openDivList{height:20px; width:80%; cursor:pointer; margin:0 auto; padding-left:6px; line-height:20px; color:#333; font-size:12px; margin:2px 0;}',
 			'.openDivList:hover{background:#3f68ef;color:#fff;}',
-			'.body{margin:10px 0 0 0;min-width:1000px;width:100%;height:30px;padding:0 20px;font-size:14px;color:#333;}',
+			'.body{margin:10px 0 0 0;width:100%;height:30px;padding:0 20px;font-size:14px;color:#333;}',
 		];
 
 		this.cssText = css.join('');

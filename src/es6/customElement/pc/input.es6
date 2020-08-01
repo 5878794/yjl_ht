@@ -72,7 +72,7 @@ let createInputDom = {
 		selectInput.css({
 			width:'100%',
 			'-webkit-appearance': 'none'
-		})
+		});
 
 		return selectInput;
 	},
@@ -403,6 +403,7 @@ class bInput extends HTMLElement{
 			this.errDom.css({display:'none'});
 
 			if(this.body.checkFrom().errorDom.length == 0){
+				console.log('sucess')
 				success(this.value);
 			}else{
 				this.errDom.css({display:'block'});

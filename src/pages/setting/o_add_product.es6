@@ -4,6 +4,11 @@
 
 let app = require('./../../es6/lib/page'),
     lib = require('./../../es6/lib'),
+    {ajax,api} = require('./../../es6/_ajax'),
+    all = require('./../../es6/all'),
+    qt = require('./../../es6/qt'),
+    selectData = require('./../../es6/selectData'),
+    getUrlParam = require('./../../es6/lib/fn/getParamFromUrl'),
     inputStyle = require('./../../es6/inputStyle');
 
 
@@ -32,8 +37,66 @@ let Page = {
         });
     },
     async run(){
+        let param = getUrlParam();
+        this.id = param.id;
+        this.orgId = param.orgId;
+        this.orgName = param.name;
+
+        await all.getUserInfo();
+
         inputStyle.set(true,true);
 
+        let select = $('#productType').get(0);
+        select.selectData = selectData.productType;
+
+
+        if(this.id || this.id == 0){
+            let [data] = await ajax.send([
+                //TODO 获取单条数据
+                //TODO 表单绑定数据
+            ])
+        }
+
+        this.bindEvent();
+
+    },
+    bindEvent(){
+        let btn = $('#submit'),
+            _this = this;
+        btn.click(function(){
+            qt.loading.show();
+            _this.submit().then(rs=>{
+                qt.loading.hide();
+            }).catch(e=>{
+                qt.loading.hide();
+                if(typeof e == 'string'){
+                    qt.alert(e);
+                }
+            });
+        });
+    },
+    async submit(){
+        let body = $('#form'),
+            formData = await all.getFromVal(body);
+        formData.organizationId = this.orgId;
+        formData.organizationName = this.orgName;
+
+        if(this.id || this.id == 0){
+            formData.id = this.id;
+        }
+
+        await ajax.send([
+            api.org_product_add(formData)
+        ]);
+
+
+        if(this.id || this.id == 0){
+            await qt.alert('修改成功');
+        }else{
+            await qt.alert('添加成功');
+        }
+
+        qt.closeWin();
     }
 
 

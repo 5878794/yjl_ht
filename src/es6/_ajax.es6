@@ -40,7 +40,7 @@ let ajax = {
 					success(rs.data);
 				}else{
 					if(rs.code == 1000){
-						await qt.alert('您还未登录或登录已过期！');
+						error('您还未登录或登录已过期！');
 						//关闭所有窗口或进入登录页
 						qt.reLogin();
 					}else{
@@ -85,16 +85,31 @@ let ajax = {
 let api = {
 	//登录
 	login:{url:'/api/user/login',type:'post'},
-	//部门信息接口
-	dept_list: {url:'/api/dept/list',type:'get'},
-	dept_add:{url:'/api/dept/addOrUpdate',type:'post'},
-	dept_del:{url:'/api/dept/{deptId}',type:'delete'},
+	// //部门信息接口
+	// dept_list: {url:'/api/dept/list',type:'get'},
+	// dept_add:{url:'/api/dept/addOrUpdate',type:'post'},
+	// dept_del:{url:'/api/dept/{deptId}',type:'delete'},
 
 	//角色
 	role_get_list:{url:'/api/role/list',type:'get'},
 	role_add:{url:'/api/role/addOrUpdate',type:'post'},
 	role_del:{url:'/api/role/{roleId}',type:'delete'},
-	role_privilege_list:{url:'/api/role/privilege/list',type:'get'}
+	//有问题这个  TODO
+	role_privilege_list:{url:'/api/role/privilege/list',type:'get'},
+
+
+	//机构
+	org_add:{url:'/api/organization/addOrUpdate',type:'post'},
+	org_del:{url:'/api/organization/{organizationId}',type:'delete'},
+	org_list:{url:'/api/organization/list',type:'get'},
+
+	//机构下的产品
+	org_product_add:{url:'/api/product/addOrUpdate',type:'post'},
+	org_product_del:{url:'/api/product/{productId}',type:'delete'},
+	//TODO 不能获取指定机构下的所有产品
+	//TODO 不能获取指定机构下的指定id的产品
+	org_product_list:{url:'/api/product/list',type:'get'},
+
 };
 
 
