@@ -110,6 +110,17 @@ class bRoleList extends HTMLElement{
     set click(fn){
         fn = fn || function(){};
         this.userRowClick = fn;
+
+    }
+
+    triggerClick(rowNumber){
+        let allItem = this.body.find('.item');
+        let item = allItem.eq(rowNumber);
+        let data = item.data('data');
+        this.userRowClick(data);
+
+        allItem.css({background:'#fff'});
+        item.css({background:'#eee'})
     }
 
     add(data){

@@ -56,9 +56,8 @@ let Page = {
 
         //获取第一个机构下的产品
         if(orgList.length == 0){return;}
-        let firstOrg = orgList[0];
-        this.orgData = firstOrg;
-        await this.showProduct(firstOrg);
+        let orglistDom = $('#list').get(0);
+        orglistDom.triggerClick(0);
     },
     //产品类型字典
     setDist(){
@@ -98,6 +97,7 @@ let Page = {
             }
         };
         list.click = function(data){
+            _this.orgData = data;
             qt.loading.show();
             _this.showProduct(data).then(rs=>{
                 qt.loading.hide();
@@ -130,10 +130,9 @@ let Page = {
         this.createListTitle(title1.get(0),data);
 
         //创建产品列表
-        //TODO 接口不能获取机构下的产品，目前获取的是全部的产品
         let [product] = await ajax.send([
             api.org_product_list({
-                // orgId:data.id,
+                organizationId:data.id,
                 pageNum:1,
                 pageSize:99999
             })
@@ -208,8 +207,10 @@ let Page = {
 
             edit.click(function(){
                 let data = $(this).data('data');
-
+                console.log(data);
+                console.log(_this.orgData)
                 let url = `o_add_product.html?id=${data.id}&orgId=${_this.orgData.id}&name=${_this.orgData.organizationName}`;
+                console.log(url)
                 qt.openPage(
                     url,
                     winSetting.setting_add_product.width,
@@ -242,7 +243,7 @@ let Page = {
         ]);
 
         await qt.alert('删除成功');
-        qt.refreshPage();
+        // qt.refreshPage();
     }
 };
 

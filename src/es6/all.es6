@@ -22,11 +22,17 @@ let all = {
 			})
 		});
 	},
+
+
+	//获取dom下的所有b-input类
+	getInputDom(dom){
+		return 	dom.find('b-input,b-input-money');
+	},
 	//获取dom下的所有input的val并表单验证
 	getFromVal(dom){
 		return new Promise(async (success,error)=>{
 			let backData = {};
-			let inputs = dom.find('b-input,b-input-money');
+			let inputs = this.getInputDom(dom);
 
 			for(let i=0,l=inputs.length;i<l;i++){
 				let id = inputs.eq(i).attr('id'),
@@ -36,6 +42,14 @@ let all = {
 
 			success(backData);
 		});
+	},
+	//dom下的b-input类数据绑定
+	setFromVal(dom,data){
+		let inputs = this.getInputDom(dom);
+		inputs.each(function(){
+			let id = $(this).attr('id');
+			this.value = data[id];
+		})
 	}
 };
 

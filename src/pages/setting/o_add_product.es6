@@ -52,13 +52,21 @@ let Page = {
 
         if(this.id || this.id == 0){
             let [data] = await ajax.send([
-                //TODO 获取单条数据
-                //TODO 表单绑定数据
-            ])
+                api.org_product_list({
+                    id:this.id
+                })
+            ]);
+            data = data.list || [];
+            data = data[0] || {};
+            this.bindData(data);
         }
 
         this.bindEvent();
 
+    },
+    bindData(data){
+        let body = $('#form');
+        all.setFromVal(body,data);
     },
     bindEvent(){
         let btn = $('#submit'),
