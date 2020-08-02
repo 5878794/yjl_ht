@@ -1,5 +1,10 @@
 let app = require('./../../es6/lib/page'),
 	lib = require('./../../es6/lib'),
+	all = require('./../../es6/all'),
+	{ajax,api} = require('./../../es6/_ajax'),
+	qt = require('./../../es6/qt'),
+	pageSizeSetting = require('./../../es6/pageSize'),
+	winSetting = require('./../../es6/winSetting'),
 	tableSet = require('./../../es6/tableSetting'),
 	inputStyle = require('./../../es6/inputStyle');
 
@@ -12,73 +17,129 @@ require('./../../es6/customElement/pc/table_list');
 require('./../../es6/customElement/pc/pagination');
 
 
-
-let loading;
+//TODO 添加接口有问题 页面暂未测试
 let Page = {
 	init(){
-		// loading = new loadFn();
-		// loading.show('急速加载中');
+		qt.loading.show();
 		this.run().then(rs=>{
-			// loading.hide();
+			qt.loading.hide();
 		}).catch(rs=>{
 			// err.error(rs);
-			// loading.hide();
-			// app.alert(rs);
-			throw rs;
+			qt.loading.hide();
+			qt.alert(rs);
 		});
 	},
 	async run(){
+		await all.getUserInfo();
 		this.createSearch();
-		this.createList();
-		this.createPagination();
+		this.bindEvent();
+
+		await this.getData({pageNum:1},true);
+
 
 	},
+	async getData(data,notShowLoading=false){
+		if(!notShowLoading){
+			qt.loading.show();
+		}
+		this.getDataFn(data).then(rs=>{
+			if(!notShowLoading){
+				qt.loading.hide();
+			}
+		}).catch(e=>{
+			if(!notShowLoading){
+				qt.loading.hide();
+			}
+			qt.alert(e);
+		});
+	},
+	async getDataFn(data){
+		let _this = this;
+
+		data.broadType = 0;
+		data.pageSize = pageSizeSetting.management_notice;
+		let [listData] = await ajax.send([
+			api.news_list(data)
+		]);
+		let listNumber = listData.total;
+		listData = listData.list || [];
+
+		this.createList(listData);
+		all.createFY({
+			id:'table_pagination',
+			nowPage:data.pageNum,
+			listLength:listNumber,
+			pageSize:data.pageSize,
+			searchData:data,
+			getDataFn:function(obj){
+				_this.getData(obj);
+			}
+		});
+
+	},
+
+
+	bindEvent(){
+		let btn = $('#add_btn');
+		btn.click(function(){
+			qt.openPage(
+				'./o_add_notice.html',
+				winSetting.management_add_news.width,
+				winSetting.management_add_news.height)
+		});
+	},
 	createSearch(){
-		let search = $('#b_search').get(0);
+		let search = $('#b_search').get(0),
+			_this = this;
+
 		search.inputData = [
-			{name:'',type:'search',id:'a6',placeholder:'请输入你要搜索的通知标题',width:'100%'}
+			{name:'',type:'search',id:'broadTitle',placeholder:'请输入你要搜索的通知标题',width:'100%'}
 		];
 		search.clickFn = function(rs){
-			console.log(rs);    //返回 对应的 {id:value,...}
+			rs.pageNum = 1;
+			_this.getData(rs);
 		};
-
 
 		inputStyle.searchSet(search,'search');
 	},
-	createList(){
+
+
+	createList(data){
 		let table = $('#table_list').get(0);
 		tableSet.set(table,'management_notice');
 
-		//TODO 数据获取
-		let tempData = [
-			{
-				id:1,key1:'2011-11-11',
-				key2:'通知标题通知标题通知标题通知标题',key3:'通知内容通知内容通知内容通知内容通知内容通知内容',key4:'长收纳是',
-				key5:'删除'
-			}
-		];
-		table.show(tempData);
+		data.map(rs=>{
+			rs.del = '删除';
+		});
 
-		table.body.find('.__key5__').each(function(){
+		table.show(data);
+
+		table.body.find('.__del__').each(function(){
 			$(this).addClass('hover');
 		});
-		table.body.find('.__key5__').click(function(){
+		table.body.find('.__del__').click(async function(){
 			let data = $(this).parent().data('data');
-			console.log(data);
+
+			if(await qt.confirm(`您确定要删除新闻:${data.broadTitle}?`)){
+				qt.loading.show();
+				_this.delNews(data).then(rs=>{
+					qt.loading.hide();
+				}).catch(e=>{
+					qt.loading.hide();
+					qt.alert(e);
+				})
+			}
 		});
 	},
-	createPagination(){
-		let fy = $('#table_pagination').get(0);
-		fy.show({
-			nowPage: 10,             //当前页码       默认：1
-			listLength: 149,         //总记录数
-			pageSize: 10             //分页数         默认：10
-		});
-		fy.clickFn = function(n){
-			console.log(n)          //点击事件，返回点击的页码
-		};
-		fy.selectBg = 'rgb(86,123,249)';        //设置当前页码显示的背景色  默认：#cc9800
+	async delNews(data){
+		await ajax.send([
+			api.news_del({
+				roleId:data.id
+			})
+		]);
 
+		qt.alert('删除成功!');
+		qt.refreshPage();
 	}
 };
 

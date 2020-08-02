@@ -25,15 +25,13 @@ require('./../../es6/customElement/pc/input_file');
 let loading;
 let Page = {
 	init(){
-		// loading = new loadFn();
-		// loading.show('急速加载中');
+		qt.loading.show();
 		this.run().then(rs=>{
-			// loading.hide();
+			qt.loading.hide();
 		}).catch(rs=>{
 			// err.error(rs);
-			// loading.hide();
-			// app.alert(rs);
-			throw rs;
+			qt.loading.hide();
+			qt.alert(rs);
 		});
 	},
 	async run(){

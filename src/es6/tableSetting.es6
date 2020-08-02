@@ -1131,31 +1131,31 @@ let setting = {
 				name:'时间',
 				width:'15%',
 				style:{color:'#333',fontSize:'14px'},
-				key:'key1'                //数据对应的key
+				key:'createTime'
 			},
 			{
 				name:'标题',
 				width:'25%',
 				style:{color:'#333',fontSize:'14px'},
-				key:'key2'                //数据对应的key
+				key:'broadTitle'                //数据对应的key
 			},
 			{
 				name:'内容',
 				width:'40%',
 				style:{color:'#333',fontSize:'14px'},
-				key:'key3'                //数据对应的key
+				key:'broadContent'                //数据对应的key
 			},
 			{
 				name:'发起人',
 				width:'10%',
 				style:{color:'#333',fontSize:'14px'},
-				key:'key4'                //数据对应的key
+				key:'broadSignature'                //数据对应的key
 			},
 			{
 				name:'操作',
 				width:'10%',
 				style:{color:'red',fontSize:'14px'},
-				key:'key5'                //数据对应的key
+				key:'del'                //数据对应的key
 			}
 		]
 	},

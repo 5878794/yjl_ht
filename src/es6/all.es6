@@ -82,6 +82,29 @@ let all = {
 			xhr.open("post", serverUrl, true);  //post方式提交，url为服务器请求地址，true该参数规定请求是否异步处理
 			xhr.send(form); //开始上传，发送form数据
 		});
+	},
+	//创建分页
+	createFY(opt){
+		let id = opt.domId,
+			nowPage = opt.nowPage,
+			listLength = opt.listLength,
+			pageSize = opt.pageSize || 20,
+			searchData = opt.searchData || {},
+			getDataFn = opt.getDataFn;
+
+		let fy = $('#'+id).get(0),
+			_this = this;
+
+		fy.show({
+			nowPage: nowPage,             //当前页码       默认：1
+			listLength: listLength,         //总记录数
+			pageSize: pageSize             //分页数         默认：10
+		});
+		fy.clickFn = function(page){
+			searchData.pageNum = page;
+			getDataFn(searchData);
+		};
+		fy.selectBg = 'rgb(86,123,249)';        //设置当前页码显示的背景色  默认：#cc9800
 	}
 };
 
