@@ -42,6 +42,7 @@ class bRoleList extends HTMLElement{
 
         //创建shadow容器
         this.shadow = this.attachShadow({mode: 'open'});
+        this.noDataHtml = '<div class="box_hcc" style="width:100%;height:100px;font-size:14px;color:#333;">暂无数据</div>';
 
         //挂载css
         let all = addStyleFile('../res/css/all.css');
@@ -96,6 +97,11 @@ class bRoleList extends HTMLElement{
 
     set data(data){
         data = data || [];
+
+        if(data.length == 0){
+            this.listBody.html(this.noDataHtml);
+            return;
+        }
 
         data.map(rs=>{
            this.add(rs);

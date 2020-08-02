@@ -1,0 +1,43 @@
+doctype html
+html
+    head
+        title 部门配置
+        include ./../../pug_include/head_pc
+
+        script(data-src='company.min.js?t='+tt)
+        style.
+            .page_body{
+                overflow: auto;
+            }
+
+    body
+
+
+        div(class='left')
+            //- include ../../pug_include/left
+            b-win-left
+
+        div(class='right')
+            //- include ../../pug_include/top
+            //b-win-top
+
+            div(class='iframe scroll_style1' style='background:#fff;' id='iframe_body')
+                div(class='page_body')
+                    //- 页面主体开始。。。。。。
+
+                    b-title(name='公司' id='b_title')
+                    b-role-list(name='公司名称' id='list')
+
+                    br
+                    //- 列表部分
+                    div(style='padding:0 20px;width:100%;' class='hidden' id='list_body')
+                        b-title1(name='部门')
+                        div(class='index_list')
+                            b-role-list(name='部门名称' id='table_list')
+
+
+
+
+
+
+

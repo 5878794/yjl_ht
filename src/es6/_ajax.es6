@@ -106,9 +106,20 @@ let api = {
 	//机构下的产品
 	org_product_add:{url:'/api/product/addOrUpdate',type:'post'},
 	org_product_del:{url:'/api/product/{productId}',type:'delete'},
-	//TODO 不能获取指定机构下的所有产品
-	//TODO 不能获取指定机构下的指定id的产品
 	org_product_list:{url:'/api/product/list',type:'get'},
+
+	//系统配置信息
+	// setting_config:{url:'/api/config/dictionary/list',type:'get'}
+
+	//公司信息
+	company_list:{url:'/api/company/list',type:'get'},
+	company_add:{url:'/api/company/addOrUpdate',type:'post'},
+	company_del:{url:'/api/company/{companyId}',type:'delete'},
+
+	//部门信息
+	department_list:{url:'/api/dept/list',type:'get'},
+	department_add:{url:'/api/dept/addOrUpdate',type:'post'},
+	department_del:{url:'/api/dept/{deptId}',type:'delete'}
 
 };
 
@@ -142,7 +153,9 @@ api = new Proxy(api, {
 			})
 		}
 	}
-})
+});
+
+
 
 
 module.exports = {ajax,api};

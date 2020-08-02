@@ -40,6 +40,7 @@ let Page = {
         let param = getUrlParam(),
             type = param.type,
             name = param.name;
+        this.companyId = param.companyId || null;
 
         await all.getUserInfo();
 
@@ -78,6 +79,30 @@ let Page = {
                     }
                 });
             }
+
+            //公司添加
+            if(type==3){
+                _this.addCompany().then(rs=>{
+                    qt.loading.hide();
+                }).catch(e=>{
+                    qt.loading.hide();
+                    if(typeof e == 'string'){
+                        qt.alert(e);
+                    }
+                });
+            }
+
+            //部门添加
+            if(type==4){
+                _this.addDepartment().then(rs=>{
+                    qt.loading.hide();
+                }).catch(e=>{
+                    qt.loading.hide();
+                    if(typeof e == 'string'){
+                        qt.alert(e);
+                    }
+                });
+            }
         });
     },
 
@@ -104,6 +129,35 @@ let Page = {
         ]);
 
         await qt.alert('机构添加成功！');
+        qt.closeWin();
+    },
+
+
+    //添加公司
+    async addCompany(){
+        let val = await $('#val').get(0).checkPass();
+        ajax.send([
+            api.company_add({
+                companyName:val
+            })
+        ]);
+
+        await qt.alert('公司添加成功！');
+        qt.closeWin();
+    },
+
+
+    //添加部门
+    async addDepartment(){
+        let val = await $('#val').get(0).checkPass();
+        ajax.send([
+            api.department_add({
+                deptName:val,
+                companyId:this.companyId
+            })
+        ]);
+
+        await qt.alert('部门添加成功！');
         qt.closeWin();
     }
 
