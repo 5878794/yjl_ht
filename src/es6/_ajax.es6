@@ -50,6 +50,11 @@ let ajax = {
 			},
 			error: function(e) {
 				// errorHandler.ajaxError(type,url,data,e);
+				if(e.status == 500){
+					error('服务器内部错误！');
+					return;
+				}
+
 
 				if(e.status == 0 && e.statusText == 'timeout'){
 					error('访问人数过多，请稍后访问');
@@ -119,8 +124,12 @@ let api = {
 	//部门信息
 	department_list:{url:'/api/dept/list',type:'get'},
 	department_add:{url:'/api/dept/addOrUpdate',type:'post'},
-	department_del:{url:'/api/dept/{deptId}',type:'delete'}
+	department_del:{url:'/api/dept/{deptId}',type:'delete'},
 
+	//新闻
+	news_list:{url:'/api/system/broad/list',type:'get'},
+	news_add:{url:'/api/system/broad/addOrUpdate',type:'post'},
+	news_del:{url:'/api/system/broad/{roleId}',type:'delete'}
 };
 
 

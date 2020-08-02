@@ -14,16 +14,16 @@ html
         div(class='openWin_main')
 
             div
-                div(class='openWin_input_main box_hlt box_lines')
+                div(class='openWin_input_main box_hlt box_lines' id='form')
                     div(class='openWin_input_item1')
-                        b-input-date(type='date' name='时间')
+                        b-input-date(type='date' id='createTime' name='时间' rule='must' err='请选择时间')
                     div(class='openWin_input_item1')
-                        b-input(type='text' name='标题')
+                        b-input(type='text' name='标题' id='broadTitle' rule='must' err='不能为空')
                     div(class='openWin_input_item1')
-                        b-input(type='textarea' name='公告内容' autoHeight='true')
+                        b-input(type='textarea' id='broadContent' name='公告内容' err='不能为空' autoHeight='true' rule='must')
                     div(class='openWin_input_item1')
-                        b-input-file(type='text' name='上传照片' fileType='image' err='只能上传图片')
+                        b-input-file(type='text' id='attachUrls' name='上传照片' fileType='image' err='只能上传图片')
 
 
             div(class='openWin_btns box_hcc')
-                div(class='openWin_btn_blue box_hcc hover') 提交
+                div(class='openWin_btn_blue box_hcc hover' id='submit') 提交

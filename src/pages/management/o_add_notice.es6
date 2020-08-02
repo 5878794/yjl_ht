@@ -4,6 +4,9 @@
 
 let app = require('./../../es6/lib/page'),
 	lib = require('./../../es6/lib'),
+	all = require('./../../es6/all'),
+	{ajax,api} = require('./../../es6/_ajax'),
+	qt = require('./../../es6/qt'),
 	inputStyle = require('./../../es6/inputStyle');
 
 
@@ -36,7 +39,39 @@ let Page = {
 	async run(){
 		inputStyle.set(true,true);
 
+		await all.getUserInfo();
 
+		let _this = this;
+		$('#submit').click(function(){
+			qt.loading.show();
+			_this.submit().then(rs=>{
+				qt.loading.hide();
+			}).catch(e=>{
+				qt.loading.hide();
+				qt.alert(e);
+			})
+		});
+	},
+
+	//TODO 服务器接口报错，待测试
+	async submit(){
+		let dom = $('#form'),
+			form = await all.getFromVal(dom);
+
+		let files = form.attachUrls;
+		let filesServerUrl = await all.uploadFile(files);
+		filesServerUrl = filesServerUrl.join(',');
+
+		form.attachUrls = filesServerUrl;
+		form.broadType = 0; //手动发布
+		form.status = 1;    //上架
+
+		await ajax.send([
+			api.news_add(form)
+		]);
+
+		await qt.alert('发布成功');
+		qt.closeWin();
 	}
 };
 

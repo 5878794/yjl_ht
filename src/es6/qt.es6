@@ -18,6 +18,10 @@ let JD = {
     },
     alert(msg,title){
         title = title || '系统提示';
+        if(typeof msg != 'string'){
+            console.log(msg);
+            return;
+        }
         return new Promise(success=>{
             if(window.bridge){
                 bridge.information(msg,title,function(){

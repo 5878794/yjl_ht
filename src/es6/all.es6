@@ -26,7 +26,7 @@ let all = {
 
 	//获取dom下的所有b-input类
 	getInputDom(dom){
-		return 	dom.find('b-input,b-input-money');
+		return 	dom.find('b-input,b-input-money,b-input-date,b-input-file');
 	},
 	//获取dom下的所有input的val并表单验证
 	getFromVal(dom){
@@ -50,6 +50,38 @@ let all = {
 			let id = $(this).attr('id');
 			this.value = data[id];
 		})
+	},
+	//上传文件
+	//TODO 服务器地址
+	//TODO 返回报文 返回数组
+	uploadFile(files){
+		let serverUrl = SETTING.serverUrl + '/fileUpload';
+		return new Promise((success,error)=>{
+			if(!files || files.length == 0){
+				success([]);
+				return;
+			}
+
+			let form = new FormData(),
+				xhr = new XMLHttpRequest();
+
+			files.map(file=>{
+				form.append('file',file);
+			});
+
+			xhr.onload =  function(e){
+				let body = e.target.responseText;
+				success(body);
+			};
+			xhr.onerror = function(e){
+				error(e);
+			};
+
+			// xhr.upload.onprogress =  uploadProgress; //上传进度调用方法实现
+
+			xhr.open("post", serverUrl, true);  //post方式提交，url为服务器请求地址，true该参数规定请求是否异步处理
+			xhr.send(form); //开始上传，发送form数据
+		});
 	}
 };
 
