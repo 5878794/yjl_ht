@@ -51,7 +51,7 @@ let Page = {
 		});
 	},
 
-	//TODO 服务器接口报错，待测试
+	//TODO 文件上传接口，待测试
 	async submit(){
 		let dom = $('#form'),
 			form = await all.getFromVal(dom);

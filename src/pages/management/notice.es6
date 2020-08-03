@@ -6,6 +6,7 @@ let app = require('./../../es6/lib/page'),
 	pageSizeSetting = require('./../../es6/pageSize'),
 	winSetting = require('./../../es6/winSetting'),
 	tableSet = require('./../../es6/tableSetting'),
+	stamp2Date = require('./../../es6/lib/fn/timeAndStamp'),
 	inputStyle = require('./../../es6/inputStyle');
 
 
@@ -17,7 +18,7 @@ require('./../../es6/customElement/pc/table_list');
 require('./../../es6/customElement/pc/pagination');
 
 
-//TODO 添加接口有问题 页面暂未测试
+
 let Page = {
 	init(){
 		qt.loading.show();
@@ -66,7 +67,7 @@ let Page = {
 
 		this.createList(listData);
 		all.createFY({
-			id:'table_pagination',
+			domId:'table_pagination',
 			nowPage:data.pageNum,
 			listLength:listNumber,
 			pageSize:data.pageSize,
@@ -110,6 +111,7 @@ let Page = {
 
 		data.map(rs=>{
 			rs.del = '删除';
+			rs.createTime_ = stamp2Date.getDate(rs.createTime);
 		});
 
 		table.show(data);

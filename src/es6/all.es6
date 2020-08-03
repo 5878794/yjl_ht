@@ -95,6 +95,8 @@ let all = {
 		let fy = $('#'+id).get(0),
 			_this = this;
 
+		console.log(fy)
+
 		fy.show({
 			nowPage: nowPage,             //当前页码       默认：1
 			listLength: listLength,         //总记录数

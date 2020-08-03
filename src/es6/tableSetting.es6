@@ -1131,7 +1131,7 @@ let setting = {
 				name:'时间',
 				width:'15%',
 				style:{color:'#333',fontSize:'14px'},
-				key:'createTime'
+				key:'createTime_'
 			},
 			{
 				name:'标题',
