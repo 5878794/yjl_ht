@@ -1,6 +1,11 @@
 let app = require('./../../es6/lib/page'),
     lib = require('./../../es6/lib'),
     tableSet = require('./../../es6/tableSetting'),
+    {ajax,api} = require('./../../es6/_ajax'),
+    all = require('./../../es6/all'),
+    qt = require('./../../es6/qt'),
+    selectData = require('./../../es6/selectData'),
+    winSetting = require('./../../es6/winSetting'),
     inputStyle = require('./../../es6/inputStyle');
 
 
