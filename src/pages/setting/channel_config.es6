@@ -31,7 +31,16 @@ let Page = {
         });
     },
     async run(){
+        await all.getUserInfo();
         this.bindTitleBtn();
+
+        let [data] = await ajax.send([
+            api.setting_config_list({type:6})
+        ]);
+
+        //TODO 添加不到数据，暂时不晓得咋个显示
+        console.log(data);
+
         this.createList();
 
     },
@@ -41,7 +50,9 @@ let Page = {
             {name:'新增',type:'btn1',style:{color:'#5576f0'}}
         ];
         title.clickFn = function(){
-            console.log('add');
+            qt.openPage('o_add_channel.html',
+                winSetting.setting_add_channel.width,
+                winSetting.setting_add_channel.height)
         }
     },
     createList(){
