@@ -114,7 +114,8 @@ let api = {
 	org_product_list:{url:'/api/product/list',type:'get'},
 
 	//系统配置信息
-	setting_config:{url:'/api/config/dictionary/list',type:'get'},
+	setting_config_list:{url:'/api/config/dictionary/list',type:'get'},
+	setting_config_mdf:{url:'/api/config/dictionary/addOrUpdate',type:'post'},
 
 	//公司信息
 	company_list:{url:'/api/company/list',type:'get'},
