@@ -1,8 +1,12 @@
 let app = require('./../../es6/lib/page'),
 	lib = require('./../../es6/lib'),
 	tableSet = require('./../../es6/tableSetting'),
-	inputStyle = require('./../../es6/inputStyle'),
-	{ajax,api} = require('./../../es6/_ajax');
+	{ajax,api} = require('./../../es6/_ajax'),
+	all = require('./../../es6/all'),
+	qt = require('./../../es6/qt'),
+	selectData = require('./../../es6/selectData'),
+	winSetting = require('./../../es6/winSetting'),
+	inputStyle = require('./../../es6/inputStyle');
 
 
 
@@ -26,7 +30,16 @@ let Page = {
 		});
 	},
 	async run(){
+		await all.getUserInfo();
 		this.createGroup();
+
+
+		let [data] = await ajax.send([
+			api.setting_config({
+				type:7
+			})
+		]);
+		console.log(data)
 
 	},
 	createGroup(){
