@@ -129,7 +129,12 @@ let api = {
 	//新闻
 	news_list:{url:'/api/system/broad/list',type:'get'},
 	news_add:{url:'/api/system/broad/addOrUpdate',type:'post'},
-	news_del:{url:'/api/system/broad/{roleId}',type:'delete'}
+	news_del:{url:'/api/system/broad/{roleId}',type:'delete'},
+
+	//员工
+	staff_list:{url:'/api/user/list',type:'get'},
+	staff_add:{url:'/api/user/addOrUpdate',type:'post'},
+	staff_del:{url:'/api/user/{userId}',type:'delete'}
 };
 
 

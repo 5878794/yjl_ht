@@ -4,6 +4,13 @@
 
 let app = require('./../../es6/lib/page'),
 	lib = require('./../../es6/lib'),
+	all = require('./../../es6/all'),
+	{ajax,api} = require('./../../es6/_ajax'),
+	qt = require('./../../es6/qt'),
+	pageSizeSetting = require('./../../es6/pageSize'),
+	winSetting = require('./../../es6/winSetting'),
+	tableSet = require('./../../es6/tableSetting'),
+	stamp2Date = require('./../../es6/lib/fn/timeAndStamp'),
 	inputStyle = require('./../../es6/inputStyle');
 
 
@@ -36,7 +43,23 @@ let Page = {
 	async run(){
 		inputStyle.set(true,true);
 
+		await all.getUserInfo();
 
+		let _this = this;
+		$('#submit').click(function(){
+			qt.loading.show();
+			_this.submit().then(rs=>{
+				qt.loading.hide();
+			}).catch(e=>{
+				qt.loading.hide();
+				qt.alert(e);
+			})
+		});
+	},
+
+	async submit(){
+		let data = await all.getFromVal($('#form'));
+		console.log(data);
 	}
 
 };

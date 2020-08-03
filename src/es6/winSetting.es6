@@ -11,5 +11,7 @@ module.exports = {
 	setting_add_product:{width:600,height:400},
 	//综合管理-新闻添加
 	management_add_news:{width:600,height:400},
+	//综合管理-员工添加
+	management_add_staff:{width:600,height:400},
 
 };
