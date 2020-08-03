@@ -6,7 +6,7 @@ api文档已做接口：
 机构信息接口
 部门信息接口
 系统播报信息接口
-系统配置信息接口  type:7,8
+系统配置信息接口  type:7,8,9,10
 用户相关接口  TODO 有问题
 
 
@@ -14,5 +14,6 @@ api文档已做接口：
 setting-公司部门
 setting-业务产品
 setting-开关设置
+setting-标准设定
 setting-权限角色  (权限未做)
 management-通知
