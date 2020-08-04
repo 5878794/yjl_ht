@@ -21,14 +21,16 @@ require('./../../es6/customElement/pc/pagination');
 
 let Page = {
 	init(){
-		qt.loading.show();
-		this.run().then(rs=>{
-			qt.loading.hide();
-		}).catch(rs=>{
-			// err.error(rs);
-			qt.loading.hide();
-			qt.alert(rs);
-		});
+		// qt.loading.show();
+		// this.run().then(rs=>{
+		// 	qt.loading.hide();
+		// }).catch(rs=>{
+		// 	// err.error(rs);
+		// 	qt.loading.hide();
+		// 	qt.alert(rs);
+		// });
+
+		all.showLoadingRun(this,'run');
 	},
 	async run(){
 		await all.getUserInfo();
@@ -43,7 +45,7 @@ let Page = {
 		if(!notShowLoading){
 			qt.loading.show();
 		}
-		this.getDataFn(data).then(rs=>{
+		await this.getDataFn(data).then(rs=>{
 			if(!notShowLoading){
 				qt.loading.hide();
 			}
@@ -106,7 +108,9 @@ let Page = {
 
 
 	createList(data){
-		let table = $('#table_list').get(0);
+		let table = $('#table_list').get(0),
+			_this = this;
+
 		tableSet.set(table,'management_notice');
 
 		data.map(rs=>{
@@ -123,13 +127,14 @@ let Page = {
 			let data = $(this).parent().data('data');
 
 			if(await qt.confirm(`您确定要删除新闻:${data.broadTitle}?`)){
-				qt.loading.show();
-				_this.delNews(data).then(rs=>{
-					qt.loading.hide();
-				}).catch(e=>{
-					qt.loading.hide();
-					qt.alert(e);
-				})
+				all.showLoadingRun(_this,'delNews',data);
+				// qt.loading.show();
+				// _this.delNews(data).then(rs=>{
+				// 	qt.loading.hide();
+				// }).catch(e=>{
+				// 	qt.loading.hide();
+				// 	qt.alert(e);
+				// })
 			}
 		});
 	},

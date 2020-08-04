@@ -1,6 +1,7 @@
 
 
-let {ajax,api} = require('./_ajax');
+let {ajax,api} = require('./_ajax'),
+	qt = require('./../es6/qt');
 
 
 
@@ -95,7 +96,6 @@ let all = {
 		let fy = $('#'+id).get(0),
 			_this = this;
 
-		console.log(fy)
 
 		fy.show({
 			nowPage: nowPage,             //当前页码       默认：1
@@ -107,6 +107,16 @@ let all = {
 			getDataFn(searchData);
 		};
 		fy.selectBg = 'rgb(86,123,249)';        //设置当前页码显示的背景色  默认：#cc9800
+	},
+	//显示loading并调用指定对象下的函数
+	showLoadingRun(obj,fn,param){
+		qt.loading.show();
+		obj[fn].call(obj,param).then(()=>{
+			qt.loading.hide();
+		}).catch(e=>{
+			qt.loading.hide();
+			qt.alert(e);
+		})
 	}
 };
 
