@@ -21,15 +21,6 @@ require('./../../es6/customElement/pc/pagination');
 
 let Page = {
 	init(){
-		// qt.loading.show();
-		// this.run().then(rs=>{
-		// 	qt.loading.hide();
-		// }).catch(rs=>{
-		// 	// err.error(rs);
-		// 	qt.loading.hide();
-		// 	qt.alert(rs);
-		// });
-
 		all.showLoadingRun(this,'run');
 	},
 	async run(){
@@ -37,26 +28,11 @@ let Page = {
 		this.createSearch();
 		this.bindEvent();
 
-		await this.getData({pageNum:1},true);
+		await this.getData({pageNum:1});
 
 
 	},
-	async getData(data,notShowLoading=false){
-		if(!notShowLoading){
-			qt.loading.show();
-		}
-		await this.getDataFn(data).then(rs=>{
-			if(!notShowLoading){
-				qt.loading.hide();
-			}
-		}).catch(e=>{
-			if(!notShowLoading){
-				qt.loading.hide();
-			}
-			qt.alert(e);
-		});
-	},
-	async getDataFn(data){
+	async getData(data){
 		let _this = this;
 
 		data.broadType = 0;
@@ -75,7 +51,7 @@ let Page = {
 			pageSize:data.pageSize,
 			searchData:data,
 			getDataFn:function(obj){
-				_this.getData(obj);
+				all.showLoadingRun(_this,'getData',obj);
 			}
 		});
 
@@ -100,7 +76,7 @@ let Page = {
 		];
 		search.clickFn = function(rs){
 			rs.pageNum = 1;
-			_this.getData(rs);
+			all.showLoadingRun(_this,'getData',rs);
 		};
 
 		inputStyle.searchSet(search,'search');
@@ -128,13 +104,6 @@ let Page = {
 
 			if(await qt.confirm(`您确定要删除新闻:${data.broadTitle}?`)){
 				all.showLoadingRun(_this,'delNews',data);
-				// qt.loading.show();
-				// _this.delNews(data).then(rs=>{
-				// 	qt.loading.hide();
-				// }).catch(e=>{
-				// 	qt.loading.hide();
-				// 	qt.alert(e);
-				// })
 			}
 		});
 	},
