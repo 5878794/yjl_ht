@@ -1,7 +1,9 @@
 doctype html
 html
+    //- 字典通用页面
+    //- 通过页面参数判断 没参数默认 客户来源渠道
     head
-        title 客户来源渠道
+        title
         include ./../../pug_include/head_pc
 
         script(data-src='client_source.min.js?t='+tt)
@@ -19,12 +21,12 @@ html
             //b-win-top
 
             div(class='iframe scroll_style1' id='iframe_body' style='background:#fff;')
-                div(class='page_body' style='overflow:auto;')
+                div(class='page_body' style='overflow:auto;' id='body')
                     //- 页面主体开始。。。。。。
 
-                    b-title(name='客户来源渠道' id='b_title')
-                    div(class='openWin_input_item1')
-                        b-role-list(id='list' name='客户来源渠道列表')
+                    //b-title(name='客户来源渠道' id='b_title')
+                    //div(class='openWin_input_item1')
+                    //    b-role-list(id='list' name='客户来源渠道列表')
 
 
 

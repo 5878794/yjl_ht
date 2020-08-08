@@ -25,15 +25,7 @@ require('./../../es6/customElement/pc/input_money');
 let loading;
 let Page = {
     init(){
-        qt.loading.show('急速加载中');
-        this.run().then(rs=>{
-            qt.loading.hide();
-        }).catch(rs=>{
-            // err.error(rs);
-            qt.loading.hide();
-            qt.alert(rs);
-            // throw rs;
-        });
+        all.showLoadingRun(this,'run');
     },
     async run(){
         let param = getUrlParam(),
@@ -54,53 +46,29 @@ let Page = {
     bindEvent(type){
         let _this = this;
         $('#submit').click(function(){
-            qt.loading.show();
             //角色添加
             if(type==1){
-                _this.addRole().then(rs=>{
-                    qt.loading.hide();
-                }).catch(e=>{
-                    qt.loading.hide();
-                    if(typeof e == 'string'){
-                        qt.alert(e);
-                    }
-                });
+                all.showLoadingRun(_this,'addRole');
             }
 
             //机构添加
             if(type==2){
-                _this.addOrg().then(rs=>{
-                    qt.loading.hide();
-                }).catch(e=>{
-                    qt.loading.hide();
-                    if(typeof e == 'string'){
-                        qt.alert(e);
-                    }
-                });
+                all.showLoadingRun(_this,'addOrg');
             }
 
             //公司添加
             if(type==3){
-                _this.addCompany().then(rs=>{
-                    qt.loading.hide();
-                }).catch(e=>{
-                    qt.loading.hide();
-                    if(typeof e == 'string'){
-                        qt.alert(e);
-                    }
-                });
+                all.showLoadingRun(_this,'addCompany');
             }
 
             //部门添加
             if(type==4){
-                _this.addDepartment().then(rs=>{
-                    qt.loading.hide();
-                }).catch(e=>{
-                    qt.loading.hide();
-                    if(typeof e == 'string'){
-                        qt.alert(e);
-                    }
-                });
+                all.showLoadingRun(_this,'addDepartment');
+            }
+
+            //客户来源添加
+            if(type==5){
+                all.showLoadingRun(_this,'addClientSource');
             }
         });
     },
@@ -108,7 +76,7 @@ let Page = {
     //角色添加
     async addRole(){
         let val = await $('#val').get(0).checkPass();
-        ajax.send([
+        await ajax.send([
             api.role_add({
                 roleName:val
             })
@@ -121,7 +89,7 @@ let Page = {
     //添加机构
     async addOrg(){
         let val = await $('#val').get(0).checkPass();
-        ajax.send([
+        await ajax.send([
             api.org_add({
                 organizationName:val
             })
@@ -135,7 +103,7 @@ let Page = {
     //添加公司
     async addCompany(){
         let val = await $('#val').get(0).checkPass();
-        ajax.send([
+        await ajax.send([
             api.company_add({
                 companyName:val
             })
@@ -149,7 +117,7 @@ let Page = {
     //添加部门
     async addDepartment(){
         let val = await $('#val').get(0).checkPass();
-        ajax.send([
+        await ajax.send([
             api.department_add({
                 deptName:val,
                 companyId:this.companyId
@@ -158,9 +126,22 @@ let Page = {
 
         await qt.alert('部门添加成功！');
         qt.closeWin();
+    },
+
+
+    //添加客户来源
+    async addClientSource(){
+        let val = await $('#val').get(0).checkPass();
+        await ajax.send([
+            api.setting_config_mdf({
+                type:1,
+                text:val
+            })
+        ]);
+
+        await qt.alert('添加成功！');
+        qt.closeWin();
     }
-
-
 };
 
 

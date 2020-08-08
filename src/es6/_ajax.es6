@@ -120,6 +120,8 @@ let api = {
 
 	//系统配置信息
 	//通道配置 type=6
+	//客户来源渠道 type=1
+	//档案室  type=11
 	setting_config_list:{url:'/api/config/dictionary/listByCondition',type:'get'},
 	setting_config_mdf:{url:'/api/config/dictionary/addOrUpdate',type:'post'},
 	setting_config_del:{url:'/api/config/dictionary/{configId}',type:'delete'},
