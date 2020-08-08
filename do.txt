@@ -11,6 +11,7 @@ api文档已做接口：
 
 
 页面已做：
+setting-客户渠道
 setting-时限流程
 setting-公司部门
 setting-业务产品
