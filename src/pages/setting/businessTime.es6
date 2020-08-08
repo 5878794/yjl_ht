@@ -18,43 +18,84 @@ require('./../../es6/yjl/b-group-switch');
 let loading;
 let Page = {
 	init(){
-		qt.loading.show('急速加载中');
-		this.run().then(rs=>{
-			qt.loading.hide();
-		}).catch(rs=>{
-			// err.error(rs);
-			qt.loading.hide();
-			qt.alert(rs);
-			// throw rs;
-		});
+		all.showLoadingRun(this,'run');
 	},
 	async run(){
 		await all.getUserInfo();
-		this.createGroup();
-
 
 		let [data] = await ajax.send([
-			api.setting_config({
-				type:7
-			})
+			api.data_process_list()
 		]);
-		console.log(data)
+
+		this.createGroup(data);
 
 	},
-	createGroup(){
-		let group1 = $('#group1').get(0);
-		group1.data = [
-			{name:'大发大发',value:'3',selected:true,id:1,key:'a1'},
-			{name:'大发大发',value:'1',selected:true,id:1,key:'a2'},
-			{name:'大发大发',value:'3',selected:true,id:1,key:'a3'},
-			{name:'大发大发',value:'4',selected:true,id:1,key:'a4'},
-			{name:'大发大发',value:'3',selected:true,id:1,key:'a5'},
-			{name:'大发大发',value:'3',selected:true,id:1,key:'a6'},
-			{name:'大发大发',value:'3',selected:true,id:1,key:'a7'}
-		];
-		group1.click = function(data){
-			console.log(data);
+	createGroup(data){
+		let body = $('#body'),
+			_this = this;
+
+		data.map(rs=>{
+			let title = $(`<b-title name="${rs.typeName}"></b-title>`),
+				row = $('<div class="openWin_input_main box_hlt box_lines"></div>'),
+				childData = rs.children;
+			childData = this.handlerChildrenData(childData);
+
+			childData.map(child=>{
+				let groupName = child[0].groupName,
+					div = $(`<div class="openWin_input_item3"></div>`),
+					groupItem = $(`<b-group-switch name="${groupName}"></b-group-switch>`);
+
+				groupItem.get(0).data = child;
+				groupItem.get(0).click = function(data){
+					qt.loading.show();
+					_this.submitMdfData(data).then(rs=>{
+						qt.loading.hide();
+						this.btn.addClass('gray');
+					}).catch(async e=>{
+						qt.loading.hide();
+						await qt.alert(e);
+						qt.refreshPage();
+					});
+				};
+				div.append(groupItem);
+				row.append(div);
+			});
+
+			body.append(title).append(row);
+		});
+
+	},
+	handlerChildrenData(data){
+		let obj = {};
+		data.map(rs=>{
+			if(!obj[rs.groupType]){
+				obj[rs.groupType] = [];
+			}
+
+			rs.name = rs.text;
+			rs.selected = (rs.open==1)? true : false;
+			obj[rs.groupType].push(rs);
+		});
+
+		let backData = [];
+		for(let [key,val] of Object.entries(obj)){
+			backData.push(val);
+		}
+
+		return backData;
+	},
+	async submitMdfData(data){
+		let getData = function(data){
+			let back = [];
+			data.map(rs=>{
+				rs.open = (rs.selected)? 1 : 0;
+				back.push(api.data_process_mdf(rs));
+			});
+			return back;
 		};
+		await ajax.send(getData(data));
+
+		qt.alert('修改成功!');
 	}
 };
 

@@ -104,7 +104,9 @@ let api = {
 	privilege_list:{url:'/api/privilege/tree/{roleId}',type:'get'},
 	privilege_mdf:{url:'/api/role/privilege/{roleId}/add/privileges',type:'post'},
 
-
+	//时间流程
+	data_process_list:{url:'/api/config/dictionary/listForTimeline',type:'get'},
+	data_process_mdf:{url:'/api/config/dictionary/addOrUpdate',type:'post'},
 
 	//机构
 	org_add:{url:'/api/organization/addOrUpdate',type:'post'},
@@ -117,7 +119,8 @@ let api = {
 	org_product_list:{url:'/api/product/list',type:'get'},
 
 	//系统配置信息
-	setting_config_list:{url:'/api/config/dictionary/list',type:'get'},
+	//通道配置 type=6
+	setting_config_list:{url:'/api/config/dictionary/listByCondition',type:'get'},
 	setting_config_mdf:{url:'/api/config/dictionary/addOrUpdate',type:'post'},
 	setting_config_del:{url:'/api/config/dictionary/{configId}',type:'delete'},
 

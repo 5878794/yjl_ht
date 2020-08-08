@@ -26,15 +26,7 @@ require('./../../es6/customElement/pc/input_money');
 let loading;
 let Page = {
     init(){
-        qt.loading.show('急速加载中');
-        this.run().then(rs=>{
-            qt.loading.hide();
-        }).catch(rs=>{
-            // err.error(rs);
-            qt.loading.hide();
-            qt.alert(rs);
-            // throw rs;
-        });
+        all.showLoadingRun(this,'run');
     },
     async run(){
         inputStyle.set(true,true);
@@ -56,7 +48,6 @@ let Page = {
         });
     },
     async submitFn(){
-        //TODO 不晓得提交啥子，服务器500
         let form = await all.getFromVal($('#form'));
         form.type = 6;
 
