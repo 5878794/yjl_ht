@@ -17,6 +17,7 @@ require('./../../es6/yjl/b-role-list');
 
 
 let Page = {
+	nowRoleId:'',
 	init(){
 		qt.loading.show('急速加载中');
 		this.run().then(rs=>{
@@ -34,13 +35,12 @@ let Page = {
 		//获取用户token等
 		await all.getUserInfo();
 
-		let [roleList,privilege] = await ajax.send([
+		let [roleList] = await ajax.send([
 			api.role_get_list({
 				pageNum:1,
 				pageSize:99999
 			})
 		]);
-		//TODO 角色权限列表
 
 		roleList = roleList.list;
 		roleList.map(rs=>{
@@ -48,9 +48,29 @@ let Page = {
 		});
 
 		this.createRoleList(roleList);
-		this.createRole();
+
+		//创建权限列表
+		this.nowRoleId = roleList[0]?.id;
+		let roleDom = $('#list').get(0);
+		roleDom.chooseRowNumber(0);
+		await this.createPrivilegeList();
 
 	},
+	//生成权限列表
+	async createPrivilegeList(){
+		let roleId = this.nowRoleId;
+		if(!roleId){
+			return;
+		}
+
+		//生成权限列表
+		let [privilege] = await ajax.send([
+			api.privilege_list({roleId:roleId})
+		]);
+
+		this.createRole(privilege);
+	},
+
 	//标题添加
 	createBTitlesBtn(){
 		let title = $('#b_title').get(0);
@@ -81,88 +101,40 @@ let Page = {
 			}
 		};
 		list.click = function(data){
-			console.log(data);
+			this.nowRoleId = data.id;
+			all.showLoadingRun(_this,'createPrivilegeList')
+
 		};
 
 	},
-	//创建角色权限列表 TODO
-	createRole(){
-		let role = $('#role').get(0);
-		role.data = [
-			{
-				name:'aaa',
-				children:[
-					{
-						name:'aaa1',
-						children:[
-							{
-								name:'aaa11',
-								type:'公司权限',
-								checked:false
-							},
-							{
-								name:'aaa12',
-								type:'集团权限',
-								checked:true
-							}
-						]
-					},
-					{
-						name:'aaa2',
-						children:[
-							{
-								name:'aaa21',
-								type:'公司权限',
-								checked:false
-							},
-							{
-								name:'aaa22',
-								type:'集团权限',
-								checked:true
-							}
-						]
-					}
-				]
-			},
-			{
-				name:'bbb',
-				children:[
-					{
-						name:'bbb1',
-						children:[
-							{
-								name:'bbb11',
-								type:'公司权限',
-								checked:false
-							},
-							{
-								name:'bbb12',
-								type:'集团权限',
-								checked:true
-							}
-						]
-					},
-					{
-						name:'bbb2',
-						children:[
-							{
-								name:'bbb21',
-								type:'公司权限',
-								checked:false
-							},
-							{
-								name:'bbb22',
-								type:'集团权限',
-								checked:true
-							}
-						]
-					}
-				]
-			}
-		];
-		role.submit = function(data){
-			console.log(data);
+	//创建角色权限列表
+	createRole(data){
+		let role = $('#role').get(0),
+			_this = this;
+
+		role.data = data;
+		role.submit = function(data,switchDom){
+			qt.loading.show();
+			_this.mdfUserRole(data).then(rs=>{
+				qt.loading.hide();
+			}).catch(e=>{
+				switchDom.val = !switchDom.val;
+				data.hasPrivilege = (switchDom.val)? 1 : 0;
+				qt.loading.hide();
+				qt.alert(e);
+			});
 		};
+	},
+	//权限修改
+	async mdfUserRole(data){
+		await ajax.send([
+			api.privilege_mdf({
+				roleId:this.nowRoleId,
+				privileges:data
+			})
+		]);
+
+		qt.alert('修改成功!');
 	},
 
 	//删除角色

@@ -99,8 +99,11 @@ let api = {
 	role_get_list:{url:'/api/role/list',type:'get'},
 	role_add:{url:'/api/role/addOrUpdate',type:'post'},
 	role_del:{url:'/api/role/{roleId}',type:'delete'},
-	//有问题这个  TODO
-	role_privilege_list:{url:'/api/role/privilege/list',type:'get'},
+
+	//权限树
+	privilege_list:{url:'/api/privilege/tree/{roleId}',type:'get'},
+	privilege_mdf:{url:'/api/role/privilege/{roleId}/add/privileges',type:'post'},
+
 
 
 	//机构
