@@ -37,11 +37,10 @@ let Page = {
         let [data] = await ajax.send([
             api.setting_config_list({type:6})
         ]);
+        data = data[0]?.children?? [];
 
-        //TODO 添加不到数据，暂时不晓得咋个显示
-        console.log(data);
 
-        this.createList();
+        this.createList(data);
 
     },
     bindTitleBtn(){
@@ -55,32 +54,13 @@ let Page = {
                 winSetting.setting_add_channel.height)
         }
     },
-    createList(){
-        let table = $('#table_list').get(0);
+    createList(data){
+        let table = $('#table_list').get(0),
+            _this = this;
+
         tableSet.set(table,'setting_channel');
 
-        //TODO 数据获取
-        let tempData = [
-            {
-                id:1,key1:'13182319831123',
-                key2:'张三张三',key3:''
-            },
-            {
-                id:2,key1:'13182319831123',
-                key2:'张三张三',key3:''
-            },
-            {
-                id:3,key1:'13182319831123',
-                key2:'张三张三',key3:''
-            },
-            {
-                id:1,key1:'13182319831123',
-                key2:'张三张三',key3:''
-            }
-
-
-        ];
-        table.show(tempData);
+        table.show(data);
 
         table.body.find('.__key3__').each(function(){
             $(this).addClass('box_hcc').html('');
@@ -112,17 +92,31 @@ let Page = {
                 let type = $(this).data('type'),
                     data = $(this).data('data');
 
-                console.log(type,data);
+                qt.openPage(`o_add_channel.html?id=${data.id}`,
+                    winSetting.setting_add_channel.width,
+                    winSetting.setting_add_channel.height)
             });
 
-            del.click(function(){
+            del.click(async function(){
                 let type = $(this).data('type'),
                     data = $(this).data('data');
 
-                console.log(type,data);
+                if(await qt.confirm(`确认是否要删除：${data.text}`)){
+                    all.showLoadingRun(_this,'delFn',data);
+                }
             });
 
         });
+    },
+    async delFn(data){
+        await ajax.send([
+           api.setting_config_del({
+               configId:data.id
+           })
+        ]);
+
+        qt.alert('删除成功！');
+        qt.refreshPage();
     }
 };
 

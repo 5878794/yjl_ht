@@ -1166,13 +1166,13 @@ let setting = {
 				name:'客户来源渠道',
 				width:'40%',
 				style:{color:'#333',fontSize:'14px'},
-				key:'key1'                //数据对应的key
+				key:'text'                //数据对应的key
 			},
 			{
 				name:'渠道费(元/次)',
 				width:'30%',
 				style:{color:'#333',fontSize:'14px'},
-				key:'key2'                //数据对应的key
+				key:'value'                //数据对应的key
 			},
 			{
 				name:'',
