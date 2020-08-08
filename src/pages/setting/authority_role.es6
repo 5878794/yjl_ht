@@ -130,7 +130,7 @@ let Page = {
 		await ajax.send([
 			api.privilege_mdf({
 				roleId:this.nowRoleId,
-				privileges:data
+				privileges:[data]
 			})
 		]);
 

@@ -20,6 +20,9 @@ require('./../../es6/yjl/b-role-list');
 let TYPEDATA = {
     '1':{
         name:'客户来源'
+    },
+    '11':{
+        name:'档案室'
     }
 };
 
@@ -51,6 +54,13 @@ let Page = {
             data = data[0] || {};
             data = data.children?? [];
         }
+        if(type == 11){
+            [data] = await ajax.send([
+                api.setting_config_list({type:11})
+            ]);
+            data = data[0] || {};
+            data = data.children?? [];
+        }
 
         return data;
     },
@@ -76,7 +86,7 @@ let Page = {
             {name:'新增',type:'btn1',style:{color:'#5576f0'}}
         ];
         dom.clickFn = function(){
-            qt.openPage(`o_add.html?type=5&name=${name}`,
+            qt.openPage(`o_add.html?type=6&name=${name}`,
                 winSetting.setting_add_role.width,
                 winSetting.setting_add_role.height)
         }
@@ -102,7 +112,13 @@ let Page = {
                 })
             ]);
         }
-
+        if(this.type == 11){
+            await ajax.send([
+                api.setting_config_del({
+                    configId:data.id
+                })
+            ]);
+        }
 
 
 

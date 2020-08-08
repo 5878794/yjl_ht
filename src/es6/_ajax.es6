@@ -21,6 +21,7 @@ let ajax = {
 
 		if(type=='post'){
 			data = JSON.stringify(data);
+			console.log(data)
 		}
 
 
@@ -172,6 +173,12 @@ api = new Proxy(api, {
 				delArray.map(rs=>{
 					delete data[rs];
 				});
+
+				//特殊处理不要key的  哎
+				if(key == 'privilege_mdf'){
+					data = data.privileges;
+				}
+
 
 				ajax.run(url, data, type, success, error);
 			})

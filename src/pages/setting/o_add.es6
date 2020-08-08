@@ -70,6 +70,11 @@ let Page = {
             if(type==5){
                 all.showLoadingRun(_this,'addClientSource');
             }
+
+            //档案室
+            if(type==6){
+                all.showLoadingRun(_this,'addArchives');
+            }
         });
     },
 
@@ -135,6 +140,20 @@ let Page = {
         await ajax.send([
             api.setting_config_mdf({
                 type:1,
+                text:val
+            })
+        ]);
+
+        await qt.alert('添加成功！');
+        qt.closeWin();
+    },
+
+    //档案室增加
+    async addArchives(){
+        let val = await $('#val').get(0).checkPass();
+        await ajax.send([
+            api.setting_config_mdf({
+                type:11,
                 text:val
             })
         ]);
