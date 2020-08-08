@@ -53,10 +53,8 @@ let all = {
 		})
 	},
 	//上传文件
-	//TODO 服务器地址
-	//TODO 返回报文 返回数组
 	uploadFile(files){
-		let serverUrl = SETTING.serverUrl + '/fileUpload';
+		let serverUrl = SETTING.serverUrl + '/api/file/upload';
 		return new Promise((success,error)=>{
 			if(!files || files.length == 0){
 				success([]);
@@ -66,13 +64,28 @@ let all = {
 			let form = new FormData(),
 				xhr = new XMLHttpRequest();
 
+
 			files.map(file=>{
-				form.append('file',file);
+				form.append('files',file);
 			});
 
 			xhr.onload =  function(e){
 				let body = e.target.responseText;
-				success(body);
+				body = JSON.parse(body);
+				let code = body.code;
+				// {"code":200,"msg":null,"data":[{"fileName":"files","fileSize":39359,"fileUrl":"328618dd-e368-4e7a-9b86-f5a6c63d6345"}]}
+
+				if(code == 200){
+					let data = body.data,
+						back = [];
+					data.map(rs=>{
+						back.push(rs.fileUrl)
+					});
+
+					success(back)
+				}else{
+					error(body.data);
+				}
 			};
 			xhr.onerror = function(e){
 				error(e);
@@ -80,7 +93,8 @@ let all = {
 
 			// xhr.upload.onprogress =  uploadProgress; //上传进度调用方法实现
 
-			xhr.open("post", serverUrl, true);  //post方式提交，url为服务器请求地址，true该参数规定请求是否异步处理
+			xhr.open("post", serverUrl, true);
+			xhr.setRequestHeader('Authorization',window.token); //post方式提交，url为服务器请求地址，true该参数规定请求是否异步处理
 			xhr.send(form); //开始上传，发送form数据
 		});
 	},
