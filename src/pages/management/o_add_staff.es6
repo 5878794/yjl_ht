@@ -7,6 +7,7 @@ let app = require('./../../es6/lib/page'),
 	all = require('./../../es6/all'),
 	{ajax,api} = require('./../../es6/_ajax'),
 	qt = require('./../../es6/qt'),
+	bindSelectData = require('./../../es6/selectData'),
 	pageSizeSetting = require('./../../es6/pageSize'),
 	winSetting = require('./../../es6/winSetting'),
 	tableSet = require('./../../es6/tableSetting'),
@@ -29,37 +30,31 @@ require('./../../es6/customElement/pc/input_file');
 let loading;
 let Page = {
 	init(){
-		// loading = new loadFn();
-		// loading.show('急速加载中');
-		this.run().then(rs=>{
-			// loading.hide();
-		}).catch(rs=>{
-			// err.error(rs);
-			// loading.hide();
-			// app.alert(rs);
-			throw rs;
-		});
+		all.showLoadingRun(this,'run');
 	},
 	async run(){
 		inputStyle.set(true,true);
 
 		await all.getUserInfo();
 
+
+		await bindSelectData($('#form'));
+
 		let _this = this;
 		$('#submit').click(function(){
-			qt.loading.show();
-			_this.submit().then(rs=>{
-				qt.loading.hide();
-			}).catch(e=>{
-				qt.loading.hide();
-				qt.alert(e);
-			})
+			all.showLoadingRun(_this,'submit');
 		});
 	},
 
 	async submit(){
 		let data = await all.getFromVal($('#form'));
-		console.log(data);
+
+		await ajax.send([
+			api.staff_add(data)
+		]);
+
+		qt.alert('添加成功!');
+		qt.closeWin();
 	}
 
 };

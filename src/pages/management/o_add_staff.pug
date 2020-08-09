@@ -12,33 +12,33 @@ html
     body
 
         div(class='openWin_main')
-
+            //TODO 差紧急联系人、角色、最高学历 id
             div
                 div(class='openWin_input_main box_hlt box_lines' id='form')
                     div(class='openWin_input_item3')
-                        b-input(type='text' name='姓名' id='' rule='must' err='不能为空')
+                        b-input(type='text' name='姓名' id='userName' rule='must' err='不能为空')
                     div(class='openWin_input_item3')
-                        b-input(type='text' name='电话' id='' rule='must,phone' err='不能为空')
+                        b-input(type='text' name='电话' id='mobile' rule='must,phone' err='不能为空')
                     div(class='openWin_input_item3')
-                        b-input(type='select' name='性别' id='' rule='must' err='不能为空')
+                        b-input(type='select' data-bind='gender' name='性别' id='sex' rule='must' err='不能为空')
                     div(class='openWin_input_item3')
-                        b-input(type='text' name='紧急联系人' id='' rule='must' err='不能为空')
+                        b-input(type='text' name='紧急联系人' id='urgentName' rule='must' err='不能为空')
                     div(class='openWin_input_item3')
-                        b-input(type='text' name='紧急电话' id='' rule='must,phone' err='不能为空')
+                        b-input(type='text' name='紧急电话' id='urgentMobile' rule='must,phone' err='不能为空')
                     div(class='openWin_input_item3')
-                        b-input(type='select' name='性别' id='' rule='must' err='不能为空')
+                        b-input(type='select' data-bind='gender' name='性别' id='urgentGender' rule='must' err='不能为空')
                     div(class='openWin_input_item3')
-                        b-input-date(type='date' name='入职日期' id='' rule='must' err='不能为空')
+                        b-input-date(type='date' name='入职日期' id='inductionTime' rule='must' err='不能为空')
                     div(class='openWin_input_item3')
-                        b-input(type='text' name='入职次数' id='' rule='must,number' err='不能为空')
+                        b-input(type='text' name='入职次数' id='inductionCount' rule='must,number' err='不能为空')
                     div(class='openWin_input_item3')
-                        b-input(type='text' name='所属公司' id='' rule='must' err='不能为空')
+                        b-input(type='select' data-bind='company' name='所属公司' data-child='deptId' id='companyId' rule='must' err='不能为空')
                     div(class='openWin_input_item3')
-                        b-input(type='select' name='所属部门' id='' rule='must' err='不能为空')
+                        b-input(type='select' data-bind='department' name='所属部门' id='deptId' rule='must' err='不能为空')
                     div(class='openWin_input_item3')
-                        b-input(type='select' name='拥有角色' id='' rule='must' err='不能为空')
+                        b-input(type='select' data-bind='role' name='拥有角色' id='roleId' rule='must' err='不能为空')
                     div(class='openWin_input_item3')
-                        b-input(type='select' name='最高学历' id='' rule='must' err='不能为空')
+                        b-input(type='select' data-bind='education' name='最高学历' id='xlId' rule='must' err='不能为空')
 
 
 

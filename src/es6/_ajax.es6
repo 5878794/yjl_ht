@@ -144,8 +144,8 @@ let api = {
 
 	//员工
 	staff_list:{url:'/api/user/list',type:'get'},
-	staff_add:{url:'/api/user/addOrUpdate',type:'post'},
-	staff_del:{url:'/api/user/{userId}',type:'delete'}
+	staff_add:{url:'/api/user/addOrUpdate',type:'post'}
+	// staff_del:{url:'/api/user/{userId}',type:'delete'}
 };
 
 

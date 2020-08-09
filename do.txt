@@ -7,16 +7,9 @@ api文档已做接口：
 部门信息接口
 角色权限信息接口
 系统播报信息接口
-系统配置信息接口  type:6,7,8,9,10
+系统配置信息接口  type:1，6,7,8,9,10，11
 
 
 页面已做：
-setting-档案室 (未测试)
-setting-客户渠道
-setting-时限流程
-setting-公司部门
-setting-业务产品
-setting-开关设置
-setting-标准设定
-setting-权限角色
+setting ok
 management-通知

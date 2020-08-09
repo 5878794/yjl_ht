@@ -56,6 +56,7 @@ require('../../lib/jq/check_from');
 let createDom = Symbol(),
 	paramCheck = Symbol(),
 	createInputCss = Symbol(),
+	addEvent = Symbol(),
 	createInput = Symbol.for('createInput');
 
 
@@ -96,7 +97,7 @@ $.fn.autoHeight = function(){
 			autoHeight(this);
 		});
 	});
-}
+};
 
 
 class bInput extends HTMLElement{
@@ -141,6 +142,7 @@ class bInput extends HTMLElement{
 		this.inputCss = {};
 		this.textareaCss = {};
 
+		this.userSetChangeFn = function(){};
 
 		//input附加style
 		this.userStyle = {
@@ -169,12 +171,14 @@ class bInput extends HTMLElement{
 			this.disabled = true;
 		}
 
+
+		this[addEvent]();
 	}
 
 
 	//创建dom
 	[createDom](){
-		$(this).css({display:'block'})
+		$(this).css({display:'block'});
 
 		let dom = $('<div class="box_slt"></div>'),
 			inputBody = $('<div class="box_hlt"></div>'),
@@ -339,6 +343,27 @@ class bInput extends HTMLElement{
 		}
 	}
 
+	//事件监听
+	[addEvent](){
+		let _this = this,
+			childId = $(this).data('child');
+		this.body.find('input').each(function(){
+			this.addEventListener('input',function(){
+				_this.userSetChangeFn(_this.value,childId);
+			},false)
+		});
+		this.body.find('select').each(function(){
+			this.addEventListener('change',function(){
+				_this.userSetChangeFn(_this.value,childId);
+			},false);
+		});
+		this.body.find('textarea').each(function(){
+			this.addEventListener('input',function(){
+				_this.userSetChangeFn(_this.value,childId);
+			},false)
+		});
+	}
+
 
 	//附加style    eg:{color:'red'}
 	set inputStyle(style){
@@ -418,6 +443,7 @@ class bInput extends HTMLElement{
 	//设置select的列表
 	set selectData(data){
 		let select = this.inputBodyDom.find('select');
+		select.find('option').remove();
 		data.map(rs=>{
 			select.append(`<option value="${rs.value}">${rs.name}</option>`);
 		});
@@ -456,7 +482,10 @@ class bInput extends HTMLElement{
 		this.nameDom.text(val);
 	}
 
-
+	set change(fn){
+		fn = fn || function(){};
+		this.userSetChangeFn = fn;
+	}
 
 }
 
