@@ -77,16 +77,29 @@ let dist = {
 
 };
 let distApi = {
-	company:'company_list',
-	department:'department_list',
-	role:'role_get_list'
+	company:{api:'company_list'},
+	department:{api:'department_list'},
+	role:{api:'role_get_list'},
+	archivesList:{api:'setting_config_list',data:{type:11}}
+};
+let getDataFn = {
+	company:function(data){return data.list},
+	department:function(data){return data.list},
+	role:function(data){return data.list},
+	archivesList:function(data){
+		data = data[0] || {};
+		data = data.children || [];
+		return data;
+	}
 };
 let keyChange = {
 	company:{name:'companyName',value:'id'},
 	department:{name:'deptName',value:'id'},
-	role:{name:'roleName',value:'id'}
+	role:{name:'roleName',value:'id'},
+	archivesList:{name:'text',value:'id'}
 };
 
+//级联菜单获取时的参数
 let distApiKey = {
 	department:'companyId'
 };
@@ -94,13 +107,17 @@ let distApiKey = {
 let getChildData = async function(val,id){
 	let bSelect = $('#'+id).get(0),
 		type = $(bSelect).data('bind'),
-		apiName = distApi[type];
+		apiParam = distApi[type],
+		apiName = apiParam.api,
+		param = apiParam.data || {};
 
 	if(!val){
 		bSelect.selectData = dist[type];
 		return;
 	}
-	let param = {pageSize:9999999,pageNum:1};
+
+	param.pageSize = 9999999;
+	param.pageNum = 1;
 	param[distApiKey[type]] = val;
 
 	let [data] = await ajax.send([
@@ -111,7 +128,7 @@ let getChildData = async function(val,id){
 };
 
 let getSelectDataFn = function(type,data){
-	let thisData = data.list,
+	let thisData = getDataFn[type](data),
 		newData = [{name:'请选择',value:''}];
 	thisData.map(rs=>{
 		newData.push({
@@ -128,7 +145,13 @@ let getAndBindDataFromServer = async function(opt){
 		doms = [],
 		types = [];
 	opt.map(rs=>{
-		apis.push(api[rs.api]({pageSize:9999999,pageNum:1}));
+		let apiParam = rs.api,
+			serverUrl = apiParam.api,
+			data = apiParam.data || {};
+		data.pageSize = 9999999;
+		data.pageNum = 1;
+
+		apis.push(api[serverUrl](data));
 		types.push(rs.type);
 		doms.push(rs.dom);
 	});
