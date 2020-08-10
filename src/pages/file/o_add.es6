@@ -1,12 +1,14 @@
-
-
-
-
 let app = require('./../../es6/lib/page'),
 	lib = require('./../../es6/lib'),
+	all = require('./../../es6/all'),
+	{ajax,api} = require('./../../es6/_ajax'),
+	qt = require('./../../es6/qt'),
+	pageSizeSetting = require('./../../es6/pageSize'),
+	winSetting = require('./../../es6/winSetting'),
+	tableSet = require('./../../es6/tableSetting'),
+	stamp2Date = require('./../../es6/lib/fn/timeAndStamp'),
+	selectData = require('./../../es6/selectData'),
 	inputStyle = require('./../../es6/inputStyle');
-
-
 
 
 require('./../../es6/customElement/pc/input');
@@ -17,35 +19,70 @@ require('./../../es6/customElement/pc/input_money');
 
 
 
-let loading;
 let Page = {
 	init(){
-		// loading = new loadFn();
-		// loading.show('急速加载中');
-		this.run().then(rs=>{
-			// loading.hide();
-		}).catch(rs=>{
-			// err.error(rs);
-			// loading.hide();
-			// app.alert(rs);
-			throw rs;
-		});
+		all.showLoadingRun(this,'run');
 	},
 	async run(){
+		await all.getUserInfo();
+
+		await selectData($('#form'));
 		this.setInput();
+		this.bindEvent();
 
 	},
 	setInput(){
 		inputStyle.set(true,true);
 
-		let search = $('#search').get(0);
-		search.searchFn = function(val){
-			console.log('search:'+val);
-			return ['a1','a2','a3'];
+		let search = $('#orderNo').get(0),
+			name = $('#name').get(0),
+			date = $('#createTime').get(0),
+			dateVal = stamp2Date.getDate1(),
+			catchData = {};
+
+		date.value = dateVal;
+
+		search.searchFn = async function(val){
+			let [data] = await ajax.send([
+				api.file_list({orderNo:val})
+			]);
+			data = data.list;
+
+			let backData = [];
+			catchData = {};
+			data.map(rs=>{
+				backData.push(rs.orderNo);
+				let orderNo = rs.orderNo;
+				catchData[orderNo] = rs;
+			});
+
+			return backData;
 		};
 		search.inputFn = function(val){
-			console.log('input:'+val);
+			let data = catchData[val] || {};
+			name.value = data.name || '';
 		};
+	},
+	bindEvent(){
+		let _this = this;
+		$('#submit').click(function(){
+			all.showLoadingRun(_this,'submit');
+		});
+	},
+	async submit(){
+		let form = await all.getFromVal($('#form'));
+		let files = form.attachUrls;
+		let filesServerUrl = await all.uploadFile(files);
+		filesServerUrl = filesServerUrl.join(',');
+
+		form.attachUrls = filesServerUrl;
+
+		await ajax.send([
+			api.file_add(form)
+		]);
+
+		await qt.alert('添加成功!');
+		qt.closeWin();
 	}
 
 

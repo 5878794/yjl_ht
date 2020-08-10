@@ -27,7 +27,7 @@ let all = {
 
 	//获取dom下的所有b-input类
 	getInputDom(dom){
-		return 	dom.find('b-input,b-input-money,b-input-date,b-input-file');
+		return 	dom.find('b-input,b-input-money,b-input-date,b-input-file,b-input-search');
 	},
 	//获取dom下的所有input的val并表单验证
 	getFromVal(dom){
