@@ -102,15 +102,28 @@ let Page = {
 
 		table.body.find('.__key5__').each(function(){
 			$(this).addClass('hover');
-			$(this).click(function(){
+			$(this).click(function(e){
 				let data = $(this).parent().data('data'),
 					id = data.id,
 					state = data.addressStatus;
+				e.stopPropagation();
 
 				if(state == 0){
 					all.showLoadingRun(_this,'fileOut',id);
 				}
 			})
+		});
+
+		table.body.find('.__row__').each(function(){
+			$(this).css({cursor:'pointer'});
+			$(this).click(function(){
+				let data = $(this).data('data'),
+					id = data.id;
+				qt.openPage(
+					'./o_info.html?id='+id,
+					winSetting.file_info.width,
+					winSetting.file_info.height)
+			});
 		});
 	},
 	async fileOut(id){

@@ -261,7 +261,8 @@ class bInputFile extends bInput{
 		div.append(typeDom).append(nameDom);
 
 		nameDom.click(function(){
-			window.open(fileUrl);
+			//TODO 关闭下载
+			// window.open(fileUrl);
 		});
 
 
@@ -422,7 +423,8 @@ class bInputFile extends bInput{
 				div.append(typeDom).append(nameDom);
 
 				nameDom.click(function(){
-					window.open(fileUrl);
+					//TODO 关闭下载
+					// window.open(fileUrl);
 				});
 
 

@@ -131,6 +131,16 @@ let all = {
 			qt.loading.hide();
 			qt.alert(e);
 		})
+	},
+	//获取真实的图片地址
+	getRealImageSrc(data){
+		data = data.split(',');
+		let serverUrl = SETTING.downloadFileUrl,
+			newData = [];
+		data.map(rs=>{
+			newData.push(serverUrl+rs);
+		});
+		return newData;
 	}
 };
 

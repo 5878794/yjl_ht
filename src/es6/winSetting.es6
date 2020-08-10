@@ -18,6 +18,8 @@ module.exports = {
 	management_add_staff:{width:600,height:400},
 	//档案-添加
 	file_add:{width:600,height:400},
+	//档案-详情
+	file_info:{width:600,height:400},
 
 
 };
