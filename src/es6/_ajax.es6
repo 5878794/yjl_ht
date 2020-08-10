@@ -151,8 +151,8 @@ let api = {
 	//档案
 	file_list:{url:'/api/customer/archive/list',type:'get'},
 	file_add:{url:'/api/customer/archive/addOrUpdate',type:'post'},
-	file_del:{url:'/api/customer/archive/{customerArchiveId}',type:'delete'}
-
+	file_del:{url:'/api/customer/archive/{customerArchiveId}',type:'delete'},
+	file_out:{url:'/api/customer/archive/warehouse',type:'post'},
 };
 
 

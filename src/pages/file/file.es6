@@ -51,7 +51,7 @@ let Page = {
 		let listNumber = listData.total;
 		listData = listData.list || [];
 
-		this.createList(listData);
+		await this.createList(listData);
 		all.createFY({
 			domId:'table_pagination',
 			nowPage:data.pageNum,
@@ -64,16 +64,18 @@ let Page = {
 		});
 	},
 	createSearch(){
-		let search = $('#b_search').get(0);
+		let search = $('#b_search').get(0),
+			_this = this;
+
 		search.body.css({
 			minWidth:'auto',
 			maxWidth:'none'
 		});
 		search.inputData = [
-			{name:'客户姓名:',type:'text',id:'a1',width:'30%'},
-			{name:'客户电话:',type:'text',id:'a2',width:'30%'},
-			{name:'档案室:',type:'select',id:'a3',width:'30%',bind:'archivesList'},
-			{name:'日期',type:'assDate',id:['a4','a5'],width:'60%'}
+			{name:'客户姓名:',type:'text',id:'name',width:'30%'},
+			{name:'客户电话:',type:'text',id:'mobile',width:'30%'},
+			{name:'档案室:',type:'select',id:'archiveRoom',width:'30%',bind:'archivesList'},
+			{name:'日期',type:'assDate',id:['startTime','endTime'],width:'60%'}
 		];
 		search.clickFn = function(rs){
 			rs.pageNum = 1;
@@ -83,19 +85,43 @@ let Page = {
 
 		inputStyle.searchSet(search);
 	},
-	createList(data){
-		let table = $('#table_list').get(0);
+	async createList(data){
+		let table = $('#table_list').get(0),
+			_this = this;
+
 		tableSet.set(table,'file');
 
+		let dist = await selectData('fileState') || {};
+		data.map(rs=>{
+			rs.state_ = dist[rs.addressStatus];
+			rs.key5 = (rs.addressStatus == 0)? '出库' : '';
+			rs.createTime_ = stamp2Date.getDate1(rs.createTime);
+		});
 
 		table.show(data);
 
 		table.body.find('.__key5__').each(function(){
 			$(this).addClass('hover');
 			$(this).click(function(){
-				console.log('btn')
+				let data = $(this).parent().data('data'),
+					id = data.id,
+					state = data.addressStatus;
+
+				if(state == 0){
+					all.showLoadingRun(_this,'fileOut',id);
+				}
 			})
 		});
+	},
+	async fileOut(id){
+		await ajax.send([
+			api.file_out({
+				id:id
+			})
+		]);
+
+		await qt.alert('出库申请已提交!');
+		qt.refreshPage();
 	}
 };
 

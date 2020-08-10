@@ -595,31 +595,37 @@ let setting = {
 				name:'归档时间',
 				width:'15%',
 				style:{color:'#333',fontSize:'14px'},
-				key:'key1'                //数据对应的key
+				key:'createTime_'                //数据对应的key
 			},
 			{
 				name:'客户姓名',
 				width:'15%',
 				style:{color:'#333',fontSize:'14px'},
-				key:'key2'                //数据对应的key
+				key:'name'                //数据对应的key
 			},
 			{
 				name:'位置标签',
-				width:'30%',
+				width:'28%',
 				style:{color:'#333',fontSize:'14px'},
-				key:'key3'                //数据对应的key
+				key:'addressTag'                //数据对应的key
 			},
 			{
 				name:'订单关联号',
 				width:'25%',
 				style:{color:'#333',fontSize:'14px'},
-				key:'key4'                //数据对应的key
+				key:'orderNo'                //数据对应的key
+			},
+			{
+				name:'状态',
+				width:'10%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'state_'                //数据对应的key
 			},
 			{
 				name:'编辑',
-				width:'15%',
+				width:'7%',
 				style:{color:'rgb(86,123,249)',fontSize:'14px'},
-				key:'key5'                //数据对应的key
+				key:'key5'
 			}
 		]
 	},

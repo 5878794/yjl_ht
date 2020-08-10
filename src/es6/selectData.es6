@@ -73,7 +73,15 @@ let dist = {
 		{name:'请选择公司',value:''}
 	],
 	//拥有角色
-	role:[]
+	role:[],
+	//档案状态
+	//档案状态 0-已入库 1-申请出库审批中 2-已出库 3-出库申请失败
+	fileState:[
+		{name:'已入库',value:'0'},
+		{name:'出库审批中',value:'1'},
+		{name:'已出库',value:'2'},
+		{name:'申请失败',value:'3'}
+	]
 
 };
 let distApi = {
@@ -165,6 +173,17 @@ let getAndBindDataFromServer = async function(opt){
 };
 
 module.exports = async function(dom){
+	if(typeof dom == 'string'){
+		// 直接返回对应的字典
+		let data = dist[dom];
+		let newData = {};
+		data.map(rs=>{
+			newData[rs.value] = rs.name;
+		});
+		return newData;
+	}
+
+
 	let bSelect =  dom.find('b-input[type="select"]');
 
 	let serverData = [];
