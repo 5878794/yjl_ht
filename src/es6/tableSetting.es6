@@ -1114,7 +1114,7 @@ let setting = {
 				name:'入职时间',
 				width:'15%',
 				style:{color:'#333',fontSize:'14px'},
-				key:'inductionTime'                //数据对应的key
+				key:'inductionTime_'                //数据对应的key
 			},
 			{
 				name:'所属部门',

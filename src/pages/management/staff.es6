@@ -21,43 +21,20 @@ require('./../../es6/customElement/pc/pagination');
 
 let Page = {
 	init(){
-		qt.loading.show();
-		this.run().then(rs=>{
-			qt.loading.hide();
-		}).catch(rs=>{
-			// err.error(rs);
-			qt.loading.hide();
-			qt.alert(rs);
-		});
+		all.showLoadingRun(this,'run');
 	},
 	async run(){
 		await all.getUserInfo();
 		this.createSearch();
 		this.bindEvent();
 
-		await this.getData({pageNum:1},true);
+		await this.getData({pageNum:1});
 
 
 	},
-	async getData(data,notShowLoading=false){
-		if(!notShowLoading){
-			qt.loading.show();
-		}
-		this.getDataFn(data).then(rs=>{
-			if(!notShowLoading){
-				qt.loading.hide();
-			}
-		}).catch(e=>{
-			if(!notShowLoading){
-				qt.loading.hide();
-			}
-			qt.alert(e);
-		});
-	},
-	async getDataFn(data){
+	async getData(data){
 		let _this = this;
 
-		data.broadType = 0;
 		data.pageSize = pageSizeSetting.management_notice;
 		let [listData] = await ajax.send([
 			api.staff_list(data)
@@ -76,7 +53,6 @@ let Page = {
 				_this.getData(obj);
 			}
 		});
-
 	},
 
 
@@ -98,7 +74,7 @@ let Page = {
 		];
 		search.clickFn = function(rs){
 			rs.pageNum = 1;
-			_this.getData(rs);
+			all.showLoadingRun(_this,'getData',rs);
 		};
 
 		inputStyle.searchSet(search,'search');
@@ -110,40 +86,12 @@ let Page = {
 		tableSet.set(table,'management_staff');
 
 		data.map(rs=>{
-			rs.del = '删除';
+			rs.inductionTime_ = stamp2Date.getDate1(rs.inductionTime);
 		});
 
 		table.show(data);
-
-		table.body.find('.__del__').each(function(){
-			$(this).addClass('hover');
-		});
-		table.body.find('.__del__').click(async function(){
-			let data = $(this).parent().data('data');
-
-			if(await qt.confirm(`您确定要删除员工:${data.userName}?`)){
-				qt.loading.show();
-				_this.delNews(data).then(rs=>{
-					qt.loading.hide();
-				}).catch(e=>{
-					qt.loading.hide();
-					qt.alert(e);
-				})
-			}
-		});
-	},
-	async delNews(data){
-		await ajax.send([
-			api.staff_del({
-				userId:data.id
-			})
-		]);
-
-		qt.alert('删除成功!');
-		qt.refreshPage();
 	}
 };
-
 
 
 app.run(Page);
