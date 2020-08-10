@@ -10,7 +10,8 @@ let app = require('./../../es6/lib/page'),
 	selectData = require('./../../es6/selectData'),
 	inputStyle = require('./../../es6/inputStyle');
 
-
+window.ajax = ajax;
+window.api = api;
 
 require('./../../es6/yjl/b-win-left');
 require('./../../es6/yjl/b-win-top');

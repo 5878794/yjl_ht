@@ -4,8 +4,7 @@ let qt = require('./qt'),
 
 let dist = {
 	//业务类型、业务方案
-	businessType:[
-	],
+	businessType:[],
 	//业务状态
 	businessState:[],
 	//业务来源
@@ -45,6 +44,8 @@ let dist = {
 	payBackMethod:[],
 	//付款方式
 	payMethod:[],
+	//退费类型
+	backPayMethod:[],
 	//出款通道
 	payPassage:[],
 	//性别
@@ -88,7 +89,12 @@ let distApi = {
 	company:{api:'company_list'},
 	department:{api:'department_list'},
 	role:{api:'role_get_list'},
-	archivesList:{api:'setting_config_list',data:{type:11}}
+	archivesList:{api:'setting_config_list',data:{type:11}},
+	businessType:{api:'setting_config_list',data:{type:0}},
+	payBackMethod:{api:'setting_config_list',data:{type:2}},
+	payMethod:{api:'setting_config_list',data:{type:3}},
+	residentialNature:{api:'setting_config_list',data:{type:4}},
+	backPayMethod:{api:'setting_config_list',data:{type:5}},
 };
 let getDataFn = {
 	company:function(data){return data.list},
@@ -98,13 +104,43 @@ let getDataFn = {
 		data = data[0] || {};
 		data = data.children || [];
 		return data;
-	}
+	},
+	businessType:function(data){
+		data = data[0] || {};
+		data = data.children || [];
+		return data;
+	},
+	payBackMethod:function(data){
+		data = data[0] || {};
+		data = data.children || [];
+		return data;
+	},
+	payMethod:function(data){
+		data = data[0] || {};
+		data = data.children || [];
+		return data;
+	},
+	residentialNature:function(data){
+		data = data[0] || {};
+		data = data.children || [];
+		return data;
+	},
+	backPayMethod:function(data){
+		data = data[0] || {};
+		data = data.children || [];
+		return data;
+	},
 };
 let keyChange = {
 	company:{name:'companyName',value:'id'},
 	department:{name:'deptName',value:'id'},
 	role:{name:'roleName',value:'id'},
-	archivesList:{name:'text',value:'id'}
+	archivesList:{name:'text',value:'id'},
+	businessType:{name:'text',value:'id'},
+	payBackMethod:{name:'text',value:'id'},
+	payMethod:{name:'text',value:'id'},
+	residentialNature:{name:'text',value:'id'},
+	backPayMethod:{name:'text',value:'id'},
 };
 
 //级联菜单获取时的参数
