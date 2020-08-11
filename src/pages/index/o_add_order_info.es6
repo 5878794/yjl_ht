@@ -1,10 +1,15 @@
-
-
-
-
 let app = require('./../../es6/lib/page'),
 	lib = require('./../../es6/lib'),
+	all = require('./../../es6/all'),
+	{ajax,api} = require('./../../es6/_ajax'),
+	qt = require('./../../es6/qt'),
 	bTitleBtn = require('./../../es6/b_title_btn'),
+	getParamFromUrl = require('./../../es6/lib/fn/getParamFromUrl'),
+	pageSizeSetting = require('./../../es6/pageSize'),
+	selectData = require('./../../es6/selectData'),
+	winSetting = require('./../../es6/winSetting'),
+	tableSet = require('./../../es6/tableSetting'),
+	stamp2Date = require('./../../es6/lib/fn/timeAndStamp'),
 	inputStyle = require('./../../es6/inputStyle');
 
 
@@ -20,25 +25,36 @@ require('./../../es6/customElement/pc/input_file');
 let loading;
 let Page = {
 	init(){
-		// loading = new loadFn();
-		// loading.show('急速加载中');
-		this.run().then(rs=>{
-			// loading.hide();
-		}).catch(rs=>{
-			// err.error(rs);
-			// loading.hide();
-			// app.alert(rs);
-			throw rs;
-		});
+		all.showLoadingRun(this,'run');
 	},
 	async run(){
+		this.id = getParamFromUrl().id;
+		await all.getUserInfo();
 		inputStyle.set(true,true);
-
 		this.createBTitlesBtn();
+		this.btnBindEvent();
+
+
+
 
 		this.setPart1();
 
 
+	},
+	btnBindEvent(){
+		let preBtn = $('#pre'),
+			nextBtn = $('#next'),
+			_this = this;
+
+		preBtn.click(function(){
+			qt.openPage(
+				'./o_add_order.html?id='+_this.id,
+				winSetting.index_add_step1.width,
+				winSetting.index_add_step1.height)
+		});
+		nextBtn.click(function(){
+			all.showLoadingRun(_this,'submitFn');
+		});
 	},
 	setPart1(){
 		let part1 = $('#order_info').get(0);
@@ -64,7 +80,7 @@ let Page = {
 
 	},
 
-
+	//设置标题上的按钮
 	createBTitlesBtn(){
 		//紧急联系人添加、删除
 		bTitleBtn.addDelFn(
@@ -87,6 +103,12 @@ let Page = {
 			$('#guarantor_item')
 		)
 
+	},
+
+
+	async submitFn(){
+		let form = await all.getFromGroupVal($('#form'));
+		console.log(form);
 	}
 
 };

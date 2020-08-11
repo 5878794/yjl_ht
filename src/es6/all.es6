@@ -30,15 +30,35 @@ let all = {
 		return 	dom.find('b-input,b-input-money,b-input-date,b-input-file,b-input-search');
 	},
 	//获取dom下的所有input的val并表单验证
-	getFromVal(dom){
+	getFromVal(dom,key='id'){
 		return new Promise(async (success,error)=>{
 			let backData = {};
 			let inputs = this.getInputDom(dom);
 
 			for(let i=0,l=inputs.length;i<l;i++){
-				let id = inputs.eq(i).attr('id'),
+				let id = inputs.eq(i).attr(key),
 					val = await inputs.eq(i).get(0).checkPass().catch(e=>{error(e)});
 				backData[id] = val;
+			}
+
+			success(backData);
+		});
+	},
+	// 获取dom下的所有input的val并表单验证(含动态添加的)
+	getFromGroupVal(dom){
+		return new Promise(async (success,error)=>{
+			//获取非组下面的数据
+			let backData = await this.getFromVal(dom).catch(e=>{error(e)});
+
+			let groupDom = dom.find('div[group]');
+			for(let i=0,l=groupDom.length;i<l;i++){
+				let thisBody = groupDom.eq(i),
+					groupName = thisBody.attr('group');
+				if(!backData[groupName]){
+					backData[groupName] = [];
+				}
+				let thisData = await this.getFromVal(thisBody,'key').catch(e=>{error(e)});;
+				backData[groupName].push(thisData);
 			}
 
 			success(backData);

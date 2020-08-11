@@ -39,13 +39,14 @@ let Page = {
 	async submit(){
 		let form = await all.getFromVal($('#form'));
 
-		await ajax.send([
+		let [data] = await ajax.send([
 			api.order_add_step1(form)
 		]);
+		let id = data.id;
 
 		await qt.alert('创建订单成功!');
 		qt.openPage(
-			'./o_add_order_info.html',
+			'./o_add_order_info.html?id='+id,
 			winSetting.index_add_step2.width,
 			winSetting.index_add_step2.height);
 		qt.closeWin();
