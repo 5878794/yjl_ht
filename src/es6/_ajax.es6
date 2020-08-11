@@ -158,7 +158,12 @@ let api = {
 	//新建订单
 	order_add_step1:{url:'/api/orderBase/saveOrderBase',type:'post'},
 	order_get_byId:{url:'/api/orderBase/getOrderDetailById/{id}',type:'get'},
-
+	//垫资
+	order_add_step2_dz:{url:'/api/orderBase/saveDzOrderDetail',type:'post'},
+	//非垫资
+	order_add_step2_fdz:{url:'/api/orderBase/saveNotDzOrderDetail',type:'post'},
+	//房抵
+	order_add_step2_fd:{url:'/api/orderBase/saveFdOrderDetail',type:'post'}
 };
 
 
