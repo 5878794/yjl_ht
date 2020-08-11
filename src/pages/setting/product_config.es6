@@ -22,20 +22,12 @@ require('./../../es6/yjl/b-role-list');
 let loading;
 let Page = {
     init(){
-        qt.loading.show('急速加载中');
-        this.run().then(rs=>{
-            qt.loading.hide();
-        }).catch(rs=>{
-            // err.error(rs);
-            qt.loading.hide();
-            qt.alert(rs);
-            // throw rs;
-        });
+        all.showLoadingRun(this,'run');
     },
     async run(){
         await all.getUserInfo();
 
-        this.setDist();
+        await this.setDist();
         this.bindTitleBtn();
 
         //获取机构列表
@@ -59,12 +51,8 @@ let Page = {
         orglistDom.triggerClick(0);
     },
     //产品类型字典
-    setDist(){
-        let productTypeDist = {};
-        selectData.productType.map(rs=>{
-            productTypeDist[rs.value] = rs.name;
-        });
-        this.productTypeDist = productTypeDist;
+    async setDist(){
+        this.productTypeDist = await selectData('productType');
     },
     //机构添加
     bindTitleBtn(){
