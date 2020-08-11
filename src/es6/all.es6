@@ -1,7 +1,8 @@
 
 
 let {ajax,api} = require('./_ajax'),
-	qt = require('./../es6/qt');
+	qt = require('./../es6/qt'),
+	selectData = require('./../es6/selectData');
 
 
 
@@ -38,7 +39,9 @@ let all = {
 			for(let i=0,l=inputs.length;i<l;i++){
 				let id = inputs.eq(i).attr(key),
 					val = await inputs.eq(i).get(0).checkPass().catch(e=>{error(e)});
-				backData[id] = val;
+				if(id){
+					backData[id] = val;
+				}
 			}
 
 			success(backData);
@@ -48,7 +51,7 @@ let all = {
 	getFromGroupVal(dom){
 		return new Promise(async (success,error)=>{
 			//获取非组下面的数据
-			let backData = await this.getFromVal(dom).catch(e=>{error(e)});
+			let backData = await this.getFromVal(dom).catch(e=>{error(e)}) || {};
 
 			let groupDom = dom.find('div[group]');
 			for(let i=0,l=groupDom.length;i<l;i++){
@@ -64,12 +67,48 @@ let all = {
 			success(backData);
 		});
 	},
+	setFromGroupVal(dom,data){
+		//写入非数组内的数据
+		this.setFromVal(dom,data);
+
+		//触发bTitle的点击事件
+		let bTitle = dom.find('b-title[bind-group],b-title1[bind-group]');
+		bTitle.each(function(){
+			let btn = this.body.find('.btn'),
+				type= $(this).data('group'),
+				l = data[type]?.length || 0;
+			for(let i=0;i<l;i++){
+				btn.trigger('click');
+			}
+		});
+
+		//获取生成的dom
+		let doms = dom.find('div[group]'),
+			obj = {};
+		//分组
+		doms.each(function(){
+			let type = $(this).attr('group');
+			if(!obj[type]){obj[type] = []}
+			obj[type].push(this);
+		});
+
+		//写入数据
+		for(let [key,val] of Object.entries(obj)){
+			let nowData = data[key];
+			val.map((rs,i)=>{
+				this.setFromVal($(rs),nowData[i],'key');
+			});
+		}
+
+	},
 	//dom下的b-input类数据绑定
-	setFromVal(dom,data){
+	setFromVal(dom,data,key='id'){
 		let inputs = this.getInputDom(dom);
 		inputs.each(function(){
-			let id = $(this).attr('id');
-			this.value = data[id];
+			let id = $(this).attr(key);
+			if(id){
+				this.value = data[id];
+			}
 		})
 	},
 	//上传文件
@@ -161,6 +200,39 @@ let all = {
 			newData.push(serverUrl+rs);
 		});
 		return newData;
+	},
+	//设置订单顶部数据
+	async setOrderTopData(level,data){
+		let part1 = $('b-order-info').get(0),
+			dist = await selectData('businessType');
+
+		part1.showLevel = level;
+
+		if(level == 1){
+			part1.data = {
+				money:data.applyMoney,
+				type:dist[data.businessKey],
+				no:data.orderNo
+			};
+		}
+
+		// part1.data = {
+		// 	money:700000000,
+		// 	type:'房抵',
+		// 	no:'Fd123123123',
+		// 	from:'来自中介'
+		// 	// product:'中新银行-理财产品1',
+		// 	// productInfo:'产品介绍产品介绍产品介绍产品介绍产品介绍产品介绍产品介绍',
+		// 	// mans:[
+		// 	// 	{name:'张三',phone:12312312312,idcard:'123333333333333333',address:'阿打发打发发代付链接撒地方科技傲世狂妃'},
+		// 	// 	{name:'张三(共同)',phone:12312312312,idcard:'123333333333333333',address:'阿打发打发发代付链接撒地方科技傲世狂妃'},
+		// 	// 	{name:'张三(担保)',phone:12312312312,idcard:'123333333333333333',address:'阿打发打发发代付链接撒地方科技傲世狂妃'}
+		// 	// ],
+		// 	// state:'待回款'
+		// };
+		// // part1.click = function(data){
+		// // 	console.log(data)
+		// // }
 	}
 };
 

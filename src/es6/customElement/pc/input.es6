@@ -455,6 +455,9 @@ class bInput extends HTMLElement{
 
 	set value(val){
 		this.body.find('.__input__').val(val);
+
+		let childId = $(this).data('child');
+		this.userSetChangeFn(val,childId);
 	}
 
 	get key(){

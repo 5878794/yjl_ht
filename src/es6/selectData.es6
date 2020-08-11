@@ -95,6 +95,7 @@ let distApi = {
 	payMethod:{api:'setting_config_list',data:{type:3}},
 	residentialNature:{api:'setting_config_list',data:{type:4}},
 	backPayMethod:{api:'setting_config_list',data:{type:5}},
+	businessFrom:{api:'setting_config_list',data:{type:1}}
 };
 let getDataFn = {
 	company:function(data){return data.list},
@@ -130,6 +131,14 @@ let getDataFn = {
 		data = data.children || [];
 		return data;
 	},
+	businessFrom:function(data){
+		data = data[0] || {};
+		data = data.children || [];
+
+		//添加其他类别
+		data.push({text:'其它',id:'其它'});
+		return data;
+	},
 };
 let keyChange = {
 	company:{name:'companyName',value:'id'},
@@ -141,6 +150,7 @@ let keyChange = {
 	payMethod:{name:'text',value:'id'},
 	residentialNature:{name:'text',value:'id'},
 	backPayMethod:{name:'text',value:'id'},
+	businessFrom:{name:'text',value:'id'},
 };
 
 //级联菜单获取时的参数
@@ -208,13 +218,32 @@ let getAndBindDataFromServer = async function(opt){
 	});
 };
 
+let getServerData = async function(type){
+	let data = dist[type],
+		apiParam = distApi[type];
+	if(data.length==0 && apiParam){
+		let serverUrl = apiParam.api,
+			data = apiParam.data || {};
+		data.pageSize = 9999999;
+		data.pageNum = 1;
+		let [backData] = await ajax.send([api[serverUrl](data)]);
+		backData = getSelectDataFn(type,backData);
+		return backData;
+	}else{
+		return dist[type];
+	}
+};
+
+
 module.exports = async function(dom,needArray){
 	if(typeof dom == 'string'){
 		if(needArray){
-			return dist[dom];
+			return await getServerData(dom);
+			// return dist[dom];
 		}else{
 			// 直接返回对应的字典
-			let data = dist[dom];
+			// let data = dist[dom];
+			let data = await getServerData(dom);
 			let newData = {};
 			data.map(rs=>{
 				newData[rs.value] = rs.name;

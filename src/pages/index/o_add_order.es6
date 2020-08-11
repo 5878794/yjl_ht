@@ -4,6 +4,7 @@ let app = require('./../../es6/lib/page'),
 	{ajax,api} = require('./../../es6/_ajax'),
 	qt = require('./../../es6/qt'),
 	pageSizeSetting = require('./../../es6/pageSize'),
+	getParamFromUrl = require('./../../es6/lib/fn/getParamFromUrl'),
 	selectData = require('./../../es6/selectData'),
 	winSetting = require('./../../es6/winSetting'),
 	tableSet = require('./../../es6/tableSetting'),
@@ -23,9 +24,21 @@ let Page = {
 		all.showLoadingRun(this,'run');
 	},
 	async run(){
-		await all.getUserInfo();
+		this.id = getParamFromUrl().id;
+
 		inputStyle.set();
+		await all.getUserInfo();
 		await selectData($('#form'));
+
+
+		if(this.id || this.id == 0){
+			//获取订单数据
+			let [data] = await ajax.send([
+				api.order_get_byId({id:this.id})
+			]);
+			await all.setFromVal($('#form'),data);
+		}
+
 		this.bindEvent();
 	},
 	bindEvent(){
@@ -38,6 +51,9 @@ let Page = {
 	},
 	async submit(){
 		let form = await all.getFromVal($('#form'));
+		if(this.id || this.id ==0){
+			form.id = this.id;
+		}
 
 		let [data] = await ajax.send([
 			api.order_add_step1(form)

@@ -156,7 +156,9 @@ let api = {
 
 
 	//新建订单
-	order_add_step1:{url:'/api/orderBase/saveOrderBase',type:'post'}
+	order_add_step1:{url:'/api/orderBase/saveOrderBase',type:'post'},
+	order_get_byId:{url:'/api/orderBase/getOrderDetailById/{id}',type:'get'},
+
 };
 
 

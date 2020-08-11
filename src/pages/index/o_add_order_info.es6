@@ -12,7 +12,7 @@ let app = require('./../../es6/lib/page'),
 	stamp2Date = require('./../../es6/lib/fn/timeAndStamp'),
 	inputStyle = require('./../../es6/inputStyle');
 
-
+window.all = all;
 
 require('./../../es6/yjl/b_order_info');
 require('./../../es6/yjl/b_title');
@@ -22,28 +22,34 @@ require('./../../es6/customElement/pc/input_file');
 
 
 
-let loading;
 let Page = {
 	init(){
 		all.showLoadingRun(this,'run');
 	},
 	async run(){
 		this.id = getParamFromUrl().id;
-		await all.getUserInfo();
 		inputStyle.set(true,true);
+		await all.getUserInfo();
+
 		this.createBTitlesBtn();
+
+		await selectData($('#form'));
 		this.btnBindEvent();
 
 
-
-
-		this.setPart1();
+		let [data] = await ajax.send([
+			api.order_get_byId({id:this.id})
+		]);
+		await all.setFromGroupVal($('#form'),data);
+		await all.setOrderTopData(1,data);
 
 
 	},
 	btnBindEvent(){
 		let preBtn = $('#pre'),
 			nextBtn = $('#next'),
+			select = $('#businessType').find('b-input'),
+			other = $('#other'),
 			_this = this;
 
 		preBtn.click(function(){
@@ -55,29 +61,15 @@ let Page = {
 		nextBtn.click(function(){
 			all.showLoadingRun(_this,'submitFn');
 		});
-	},
-	setPart1(){
-		let part1 = $('#order_info').get(0);
-		part1.showLevel = 1;
-		part1.data = {
-			money:7000000,
-			type:'房抵',
-			no:'Fd123123123',
-			from:'来自中介'
-			// product:'中新银行-理财产品1',
-			// productInfo:'产品介绍产品介绍产品介绍产品介绍产品介绍产品介绍产品介绍',
-			// mans:[
-			// 	{name:'张三',phone:12312312312,idcard:'123333333333333333',address:'阿打发打发发代付链接撒地方科技傲世狂妃'},
-			// 	{name:'张三(共同)',phone:12312312312,idcard:'123333333333333333',address:'阿打发打发发代付链接撒地方科技傲世狂妃'},
-			// 	{name:'张三(担保)',phone:12312312312,idcard:'123333333333333333',address:'阿打发打发发代付链接撒地方科技傲世狂妃'}
-			// ],
-			// state:'待回款'
-		};
-		// part1.click = function(data){
-		// 	console.log(data)
-		// }
 
-
+		select.get(0).change = function(val){
+			if(val=='其它'){
+				other.removeClass('hidden');
+			}else{
+				other.addClass('hidden');
+				other.find('b-input').get(0).value = '';
+			}
+		}
 	},
 
 	//设置标题上的按钮
@@ -109,6 +101,9 @@ let Page = {
 	async submitFn(){
 		let form = await all.getFromGroupVal($('#form'));
 		console.log(form);
+
+
+
 	}
 
 };
