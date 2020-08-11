@@ -20,6 +20,10 @@ module.exports = {
 	file_add:{width:600,height:400},
 	//档案-详情
 	file_info:{width:600,height:400},
+	//首页-添加订单 step1
+	index_add_step1:{width:600,height:400},
+	//            step2
+	index_add_step2:{width:600,height:400},
 
 
 };

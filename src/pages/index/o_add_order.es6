@@ -1,11 +1,14 @@
-
-
-
-
 let app = require('./../../es6/lib/page'),
 	lib = require('./../../es6/lib'),
+	all = require('./../../es6/all'),
+	{ajax,api} = require('./../../es6/_ajax'),
+	qt = require('./../../es6/qt'),
+	pageSizeSetting = require('./../../es6/pageSize'),
+	selectData = require('./../../es6/selectData'),
+	winSetting = require('./../../es6/winSetting'),
+	tableSet = require('./../../es6/tableSetting'),
+	stamp2Date = require('./../../es6/lib/fn/timeAndStamp'),
 	inputStyle = require('./../../es6/inputStyle');
-
 
 
 
@@ -17,57 +20,35 @@ require('./../../es6/customElement/pc/input_money');
 let loading;
 let Page = {
 	init(){
-		// loading = new loadFn();
-		// loading.show('急速加载中');
-		this.run().then(rs=>{
-			// loading.hide();
-		}).catch(rs=>{
-			// err.error(rs);
-			// loading.hide();
-			// app.alert(rs);
-			throw rs;
-		});
+		all.showLoadingRun(this,'run');
 	},
 	async run(){
-		this.setInput();
-		this.bindEvent();
-
-	},
-	setInput(){
-		let select = $('#select').get(0),
-			name = $('#name').get(0),
-			money = $('#money').get(0);
-
-		select.selectData = [
-			{name:'测试1',value:'1'},
-			{name:'测试2',value:'2'},
-			{name:'测试3',value:'3'}
-		];
-
+		await all.getUserInfo();
 		inputStyle.set();
+		await selectData($('#form'));
+		this.bindEvent();
 	},
 	bindEvent(){
 		let btn = $('#submit'),
 			_this = this;
 
 		btn.click(function(){
-
-			_this.submit().then(rs=>{
-
-			}).catch(e=>{
-				console.log(e)
-
-			})
+			all.showLoadingRun(_this,'submit');
 		});
-
-
 	},
 	async submit(){
-		let select = await $('#select').get(0).checkPass(),
-			name = await $('#name').get(0).checkPass(),
-			money = await $('#money').get(0).checkPass();
+		let form = await all.getFromVal($('#form'));
 
-		console.log(select,name,money)
+		await ajax.send([
+			api.order_add_step1(form)
+		]);
+
+		await qt.alert('创建订单成功!');
+		qt.openPage(
+			'./o_add_order_info.html',
+			winSetting.index_add_step2.width,
+			winSetting.index_add_step2.height);
+		qt.closeWin();
 	}
 };
 

@@ -1,7 +1,13 @@
 let app = require('./../../es6/lib/page'),
     lib = require('./../../es6/lib'),
+    all = require('./../../es6/all'),
+    {ajax,api} = require('./../../es6/_ajax'),
     qt = require('./../../es6/qt'),
-    tableSet = require('./../../es6/tableSetting');
+    pageSizeSetting = require('./../../es6/pageSize'),
+    winSetting = require('./../../es6/winSetting'),
+    tableSet = require('./../../es6/tableSetting'),
+    stamp2Date = require('./../../es6/lib/fn/timeAndStamp'),
+    inputStyle = require('./../../es6/inputStyle');
 
 
 
@@ -16,24 +22,34 @@ require('./../../es6/customElement/pc/table_list');
 let loading;
 let Page = {
     init(){
-        // loading = new loadFn();
-        // loading.show('急速加载中');
-        this.run().then(rs=>{
-            // loading.hide();
-        }).catch(rs=>{
-            // err.error(rs);
-            // loading.hide();
-            // app.alert(rs);
-            throw rs;
-        });
+        all.showLoadingRun(this,'run');
     },
     async run(){
+        await all.getUserInfo();
+
         this.createNotice();
         this.createSearch();
         this.createList();
 
+        this.btnBindEvent();
+    },
+    btnBindEvent(){
+        let add = $('#add_order'),
+            sort = $('#show_ph');
+
+        add.click(function(){
+            qt.openPage(
+                './o_add_order.html',
+                winSetting.index_add_step1.width,
+                winSetting.index_add_step1.height)
+        });
+
+        sort.click(function(){
+            //TODO
+        })
 
     },
+
     createNotice(){
         let notice = $('#notice').get(0);
         notice.showData = [

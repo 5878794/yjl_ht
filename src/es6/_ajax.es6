@@ -153,6 +153,10 @@ let api = {
 	file_add:{url:'/api/customer/archive/addOrUpdate',type:'post'},
 	file_del:{url:'/api/customer/archive/{customerArchiveId}',type:'delete'},
 	file_out:{url:'/api/customer/archive/warehouse',type:'post'},
+
+
+	//新建订单
+	order_add_step1:{url:'/api/orderBase/saveOrderBase',type:'post'}
 };
 
 
