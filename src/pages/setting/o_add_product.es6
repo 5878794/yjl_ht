@@ -22,18 +22,9 @@ require('./../../es6/customElement/pc/input_money');
 
 
 
-let loading;
 let Page = {
     init(){
-        qt.loading.show('急速加载中');
-        this.run().then(rs=>{
-            qt.loading.hide();
-        }).catch(rs=>{
-            // err.error(rs);
-            qt.loading.hide();
-            qt.alert(rs);
-            // throw rs;
-        });
+        all.showLoadingRun(this,'run');
     },
     async run(){
         let param = getUrlParam();
@@ -46,7 +37,7 @@ let Page = {
         inputStyle.set(true,true);
 
         let select = $('#productType').get(0);
-        select.selectData = selectData.productType;
+        select.selectData = await selectData('productType',true);
 
 
         if(this.id || this.id == 0){
@@ -71,15 +62,7 @@ let Page = {
         let btn = $('#submit'),
             _this = this;
         btn.click(function(){
-            qt.loading.show();
-            _this.submit().then(rs=>{
-                qt.loading.hide();
-            }).catch(e=>{
-                qt.loading.hide();
-                if(typeof e == 'string'){
-                    qt.alert(e);
-                }
-            });
+            all.showLoadingRun(_this,'submit')
         });
     },
     async submit(){

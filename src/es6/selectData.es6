@@ -208,15 +208,19 @@ let getAndBindDataFromServer = async function(opt){
 	});
 };
 
-module.exports = async function(dom){
+module.exports = async function(dom,needArray){
 	if(typeof dom == 'string'){
-		// 直接返回对应的字典
-		let data = dist[dom];
-		let newData = {};
-		data.map(rs=>{
-			newData[rs.value] = rs.name;
-		});
-		return newData;
+		if(needArray){
+			return dist[dom];
+		}else{
+			// 直接返回对应的字典
+			let data = dist[dom];
+			let newData = {};
+			data.map(rs=>{
+				newData[rs.value] = rs.name;
+			});
+			return newData;
+		}
 	}
 
 
