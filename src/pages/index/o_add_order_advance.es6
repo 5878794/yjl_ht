@@ -40,9 +40,10 @@ let Page = {
         this.type =param.type;
         this.checkType();
 
+        await all.getUserInfo();
         await selectData($('#form'));
 
-        await all.getUserInfo();
+
         //获取订单详情
         let [data] = await ajax.send([
             api.order_get_byId({id:this.id})

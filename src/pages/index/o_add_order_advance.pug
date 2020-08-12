@@ -92,7 +92,7 @@ html
                     div(class='openWin_input_item3 __fdz_no__')
                         //- 非垫资业务没有
                         //- 资金监管回款/银行贷款回款
-                        b-input(type='select' name='回款方式' id='key1')
+                        b-input(type='select' name='回款方式' id='key1' data-bind='payBackMethod')
 
             //- 非垫资业务没有
             div(class='__fdz_no__')
@@ -120,7 +120,7 @@ html
                     div(class='openWin_input_item3')
                         b-input(type='text' name='成交总价' id='key1')
                     div(class='openWin_input_item3')
-                        b-input(type='select' name='付款方式' id='key1')
+                        b-input(type='select' name='付款方式' data-bind='payMethod' id='key1')
 
 
             //- 非垫资业务没有
