@@ -40,6 +40,7 @@ let Page = {
 		let [data] = await ajax.send([
 			api.order_get_byId({id:this.id})
 		]);
+		this.orderNo = data.orderNo;
 		this.type = data.businessKey;
 
 		await this.backDataToForm(data);
@@ -133,12 +134,14 @@ let Page = {
 		let form = await all.getFromGroupVal($('#form'));
 
 		form.id = this.id;
+		form.orderNo = this.orderNo;
 		//处理主申请人信息
 		form.mainOrderApplyInfo = {
 			name: form.name,
 			mobile: form.mobile,
 			address: form.address,
-			cardNo: form.cardNo
+			cardNo: form.cardNo,
+			applyType:1
 		};
 
 		delete form.name;

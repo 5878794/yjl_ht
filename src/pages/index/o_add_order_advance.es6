@@ -1,10 +1,18 @@
 
 
 
-
 let app = require('./../../es6/lib/page'),
     lib = require('./../../es6/lib'),
+    all = require('./../../es6/all'),
+    {ajax,api} = require('./../../es6/_ajax'),
+    qt = require('./../../es6/qt'),
     bTitleBtn = require('./../../es6/b_title_btn'),
+    getParamFromUrl = require('./../../es6/lib/fn/getParamFromUrl'),
+    pageSizeSetting = require('./../../es6/pageSize'),
+    selectData = require('./../../es6/selectData'),
+    winSetting = require('./../../es6/winSetting'),
+    tableSet = require('./../../es6/tableSetting'),
+    stamp2Date = require('./../../es6/lib/fn/timeAndStamp'),
     inputStyle = require('./../../es6/inputStyle');
 
 
@@ -22,46 +30,25 @@ require('./../../es6/customElement/pc/input_file');
 let loading;
 let Page = {
     init(){
-        // loading = new loadFn();
-        // loading.show('急速加载中');
-        this.run().then(rs=>{
-            // loading.hide();
-        }).catch(rs=>{
-            // err.error(rs);
-            // loading.hide();
-            // app.alert(rs);
-            throw rs;
-        });
+        all.showLoadingRun(this,'run');
     },
     async run(){
         inputStyle.set(true,true);
         this.createBTitlesBtn();
+        let param = getParamFromUrl();
+        this.id = param.id;
+        this.type =param.type;
+        this.checkType();
 
+        await all.getUserInfo();
+        //获取订单详情
+        let [data] = await ajax.send([
+            api.order_get_byId({id:this.id})
+        ]);
+        console.log(data);
 
-        this.setPart1();
-
-    },
-    setPart1(){
-        let part1 = $('#order_info').get(0);
-        part1.showLevel = 2;
-        part1.data = {
-            money:7000000,
-            type:'交易垫资',
-            no:'Fd123123123',
-            from:'来自中介',
-            product:'中新银行-理财产品1',
-            productInfo:'产品介绍产品介绍产品介绍产品介绍产品介绍产品介绍产品介绍',
-            mans:[
-                {name:'张三',phone:12312312312,idcard:'123333333333333333',address:'阿打发打发发代付链接撒地方科技傲世狂妃'},
-                {name:'张三(共同)',phone:12312312312,idcard:'123333333333333333',address:'阿打发打发发代付链接撒地方科技傲世狂妃'},
-                {name:'张三(担保)',phone:12312312312,idcard:'123333333333333333',address:'阿打发打发发代付链接撒地方科技傲世狂妃'}
-            ]
-            // state:'待回款'
-        };
-        // part1.click = function(data){
-        // 	console.log(data)
-        // }
-
+        await this.backDataToForm(data);
+        await all.setOrderTopData(2,data);
 
     },
     createBTitlesBtn(){
@@ -83,7 +70,21 @@ let Page = {
             $('#additional_mortgage_item1'),
             $('#additional_mortgage_item2')
         );
+    },
+    checkType(){
+        let type = this.type;
+
+        if(type == 3){
+            //非交易垫资 没有这些
+            $('.__fdz_no__').remove();
+
+        }
+    },
+    //数据回填
+    async backDataToForm(data){
+
     }
+
 
 };
 

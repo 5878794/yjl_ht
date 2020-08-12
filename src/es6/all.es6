@@ -213,35 +213,32 @@ let all = {
 	//设置订单顶部数据
 	async setOrderTopData(level,data){
 		let part1 = $('b-order-info').get(0),
-			dist = await selectData('businessType');
+			dist = await selectData('businessType'),
+			distForm = await selectData('businessFrom');
 
 		part1.showLevel = level;
 
-		if(level == 1){
-			part1.data = {
-				money:data.applyMoney,
-				type:dist[data.businessKey],
-				no:data.orderNo
-			};
+		let backData = {};
+		if(level >= 1){
+			backData.money = data.applyMoney;
+			backData.type = dist[data.businessKey];
+			backData.no = data.orderNo;
+		}
+		if(level >= 2){
+			backData.from = '来自'+distForm[data.businessSourceKey];
+			//TODO
+			backData.mans = [
+				{name:'张三',phone:12312312312,idcard:'123333333333333333',address:'阿打发打发发代付链接撒地方科技傲世狂妃'},
+				{name:'张三(共同)',phone:12312312312,idcard:'123333333333333333',address:'阿打发打发发代付链接撒地方科技傲世狂妃'},
+				{name:'张三(担保)',phone:12312312312,idcard:'123333333333333333',address:'阿打发打发发代付链接撒地方科技傲世狂妃'}
+			];
+		}
+		if(level >= 3){
+
 		}
 
-		// part1.data = {
-		// 	money:700000000,
-		// 	type:'房抵',
-		// 	no:'Fd123123123',
-		// 	from:'来自中介'
-		// 	// product:'中新银行-理财产品1',
-		// 	// productInfo:'产品介绍产品介绍产品介绍产品介绍产品介绍产品介绍产品介绍',
-		// 	// mans:[
-		// 	// 	{name:'张三',phone:12312312312,idcard:'123333333333333333',address:'阿打发打发发代付链接撒地方科技傲世狂妃'},
-		// 	// 	{name:'张三(共同)',phone:12312312312,idcard:'123333333333333333',address:'阿打发打发发代付链接撒地方科技傲世狂妃'},
-		// 	// 	{name:'张三(担保)',phone:12312312312,idcard:'123333333333333333',address:'阿打发打发发代付链接撒地方科技傲世狂妃'}
-		// 	// ],
-		// 	// state:'待回款'
-		// };
-		// // part1.click = function(data){
-		// // 	console.log(data)
-		// // }
+
+		part1.data = backData;
 	}
 };
 

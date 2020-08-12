@@ -36,7 +36,11 @@ let Page = {
 			let [data] = await ajax.send([
 				api.order_get_byId({id:this.id})
 			]);
+			this.orderNo = data.orderNo;
 			await all.setFromVal($('#form'),data);
+
+			//如果已生成不能修改业务类型
+			$('#businessKey').get(0).disabled = true;
 		}
 
 		this.bindEvent();
@@ -53,6 +57,9 @@ let Page = {
 		let form = await all.getFromVal($('#form'));
 		if(this.id || this.id ==0){
 			form.id = this.id;
+		}
+		if(this.orderNo){
+			form.orderNo = this.orderNo;
 		}
 
 		let [data] = await ajax.send([
