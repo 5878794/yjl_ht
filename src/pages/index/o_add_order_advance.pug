@@ -12,7 +12,7 @@ html
 
     body
 
-        div(class='openWin_main')
+        div(class='openWin_main' id='form')
 
             b-order-info(id='order_info' class='b_order_info')
 
@@ -27,7 +27,7 @@ html
                     div(class='openWin_input_item3')
                         b-input(type='text' err='' name='面积' unit='㎡')
                     div(class='openWin_input_item3')
-                        b-input(type='select' err='' name='住宅性质')
+                        b-input(type='select' err='' data-bind='residentialNature' name='住宅性质')
                     div(class='openWin_input_item3')
                         b-input-date(type='date' err='' name='取得时间')
 

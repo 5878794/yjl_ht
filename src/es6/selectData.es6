@@ -30,8 +30,15 @@ let dist = {
 	agencyFrom:[],
 	//产品名称
 	productList:[],
-	//住宅性质   住宅、公寓、商业、别墅、厂房
-	residentialNature:[],
+	//住宅性质 不动产性质    1:住宅 2:公寓 3:商业 4:别墅 5:厂房
+	residentialNature:[
+		{name:'请选择',value:''},
+		{name:'住宅',value:'1'},
+		{name:'公寓',value:'2'},
+		{name:'商业',value:'3'},
+		{name:'别墅',value:'4'},
+		{name:'厂房',value:'5'}
+	],
 	//朝向
 	houseOrientation:[],
 	//装修情况   精装、简装、毛坯
@@ -259,7 +266,7 @@ module.exports = async function(dom,needArray){
 	bSelect.each(function(){
 		let type = $(this).data('bind'),
 			child = $(this).data('child'),
-			data = dist[type],
+			data = dist[type] || [],
 			api = distApi[type];
 
 		if(data.length==0 && api){
