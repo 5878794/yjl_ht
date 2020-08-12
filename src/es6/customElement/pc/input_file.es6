@@ -290,6 +290,7 @@ class bInputFile extends bInput{
 			fontSize:'12px',
 			position:'absolute',
 			left:0,bottom:0,
+			'z-index':10,
 			cursor:'pointer'
 		});
 		$(input).addClass('hidden');

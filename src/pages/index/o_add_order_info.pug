@@ -19,10 +19,10 @@ html
                 b-title(name='业务来源')
                 div(class='openWin_input_main box_hlt box_lines')
                     div(class='openWin_input_item3' id='businessType')
-                        b-input(type='select' err='请选择业务来源' rule='must' data-bind='businessFrom' name='业务来源' id='businessSource' placeholder='请选择')
+                        b-input(type='select' err='请选择业务来源' rule='must' data-bind='businessFrom' name='业务来源' id='businessSourceKey' placeholder='请选择')
                     div(class='openWin_input_item3 hidden' id='other')
                         //业务来源是其它时候添加这个
-                        b-input(type='text' err='请输入其它来源' name='其它来源' id='key2')
+                        b-input(type='text' err='请输入其它来源' name='其它来源' id='businessSource')
 
 
 
@@ -32,28 +32,28 @@ html
                 b-title1(name='主申请人信息')
                 div(class='openWin_input_main box_hlt box_lines')
                     div(class='openWin_input_item3')
-                        b-input(type='text' err='不能为空' rule='must' name='名称' id='clientName' placeholder='名称/公司')
+                        b-input(type='text' err='不能为空' rule='must' name='名称' id='name' placeholder='名称/公司')
                     div(class='openWin_input_item3')
-                        b-input(type='text' name='证件编号' err='不能为空' rule='must' id='key1' placeholder='身份证号/企业信用代码')
+                        b-input(type='text' name='证件编号' err='不能为空' rule='must' id='cardNo' placeholder='身份证号/企业信用代码')
                     div(class='openWin_input_item3')
-                        b-input(type='text' name='电话号码' id='key1' err='不能为空' rule='must')
+                        b-input(type='text' name='电话号码' id='mobile' err='不能为空' rule='must')
                     div(class='openWin_input_item1')
-                        b-input(type='text' name='住址' id='key1' err='不能为空' rule='must')
+                        b-input(type='text' name='住址' id='address' err='不能为空' rule='must')
 
             div
-                b-title1(name='紧急联系人' id='emergency_contact' bind-group="a")
+                b-title1(name='紧急联系人' id='emergency_contact' bind-group="urgentApplyInfoList")
                 div(id='emergency_contact_body')
 
 
 
 
             div
-                b-title(name='共同申请人信息' id='joint_application' bind-group="b")
+                b-title(name='共同申请人信息' id='joint_application' bind-group="commonOrderApplyInfoList")
                 div(id='joint_application_body')
 
 
             div
-                b-title(name='担保人信息' id='guarantor' bind-group="c")
+                b-title(name='担保人信息' id='guarantor' bind-group="guaranteeInfoList")
                 div(id='guarantor_body')
 
 
@@ -62,11 +62,11 @@ html
                 b-title(name='客户资料')
                 div(class='openWin_input_main box_hlt box_lines')
                     div(class='openWin_input_item1')
-                        b-input-file(type='file' name='身份证' id='key1' err='不能为空' rule='must')
+                        b-input-file(type='file' name='身份证' id='attachUrls1' err='不能为空' rule='must')
                     div(class='openWin_input_item1')
-                        b-input-file(type='file' name='抵押物证件' id='key1' err='不能为空')
+                        b-input-file(type='file' name='抵押物证件' id='attachUrls2' err='不能为空')
                     div(class='openWin_input_item1')
-                        b-input-file(type='file' name='其他报告' id='key1' err='不能为空')
+                        b-input-file(type='file' name='其他报告' id='attachUrls3' err='不能为空')
 
 
             div(class='openWin_btns box_hcc')
@@ -85,34 +85,40 @@ html
         //克隆部分=====================================================
         div(class='hidden')
             //紧急联系人克隆dom
-            div(class='openWin_input_main box_hlt box_lines' id='emergency_contact_item' group='a')
+            div(class='openWin_input_main box_hlt box_lines' id='emergency_contact_item' group='urgentApplyInfoList')
                 div(class='openWin_input_item3')
-                    b-input(type='text' name='申请人' key='a' placeholder='紧急联系人/（非必填）' err='不能为空' rule='must')
+                    b-input(type='text' name='申请人' key='name' placeholder='紧急联系人/（非必填）' err='不能为空' rule='must')
                 div(class='openWin_input_item3')
-                    b-input(type='text' name='联系电话' key='b' placeholder='紧急联系人电话/（非必填）' err='不能为空' rule='must')
+                    b-input(type='text' name='联系电话' key='mobile' placeholder='紧急联系人电话/（非必填）' err='不能为空' rule='must')
+                div(class='openWin_input_item3 hidden')
+                    b-input(type='text' key='applyType' value='4')
 
             //共同申请人克隆dom
-            div(id='joint_application_item' group='b')
+            div(id='joint_application_item' group='commonOrderApplyInfoList')
                 b-title1(name='申请人')
                 div(class='openWin_input_main box_hlt box_lines')
                     div(class='openWin_input_item3')
-                        b-input(type='text' name='名称' key='a' placeholder='名称/公司' err='不能为空' rule='must')
+                        b-input(type='text' name='名称' key='name' placeholder='名称/公司' err='不能为空' rule='must')
                     div(class='openWin_input_item3')
-                        b-input(type='text' name='证件编号' key='b' placeholder='身份证号/企业信用代码' err='不能为空' rule='must')
+                        b-input(type='text' name='证件编号' key='cardNo' placeholder='身份证号/企业信用代码' err='不能为空' rule='must')
                     div(class='openWin_input_item3')
-                        b-input(type='text' name='电话号码' key='c' err='不能为空' rule='must')
+                        b-input(type='text' name='电话号码' key='mobile' err='不能为空' rule='must')
                     div(class='openWin_input_item1')
-                        b-input(type='text' name='住址' key='d' err='不能为空' rule='must')
+                        b-input(type='text' name='住址' key='address' err='不能为空' rule='must')
+                    div(class='openWin_input_item3 hidden')
+                        b-input(type='text' key='applyType' value='2')
 
             //担保人克隆dom
-            div(id='guarantor_item' group='c')
+            div(id='guarantor_item' group='guaranteeInfoList')
                 b-title1(name='担保人' class='')
                 div(class='openWin_input_main box_hlt box_lines')
                     div(class='openWin_input_item3')
-                        b-input(type='text' name='名称' key='a' placeholder='名称/公司' err='不能为空' rule='must')
+                        b-input(type='text' name='名称' key='name' placeholder='名称/公司' err='不能为空' rule='must')
                     div(class='openWin_input_item3')
-                        b-input(type='text' name='证件编号' key='b' placeholder='身份证号/企业信用代码' err='不能为空' rule='must')
+                        b-input(type='text' name='证件编号' key='cardNo' placeholder='身份证号/企业信用代码' err='不能为空' rule='must')
                     div(class='openWin_input_item3')
-                        b-input(type='text' name='电话号码' key='c' err='不能为空' rule='must')
+                        b-input(type='text' name='电话号码' key='mobile' err='不能为空' rule='must')
                     div(class='openWin_input_item1')
-                        b-input(type='text' name='住址' key='d' err='不能为空' rule='must')
+                        b-input(type='text' name='住址' key='address' err='不能为空' rule='must')
+                    div(class='openWin_input_item3 hidden')
+                        b-input(type='text' key='applyType' value='3')

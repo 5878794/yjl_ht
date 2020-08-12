@@ -63,7 +63,7 @@ let Page = {
 		});
 
 		select.get(0).change = function(val){
-			if(val=='其它'){
+			if(val=='-1'){
 				other.removeClass('hidden');
 			}else{
 				other.addClass('hidden');
@@ -98,13 +98,61 @@ let Page = {
 	},
 
 
-	async submitFn(){
+	async submitFn() {
 		let form = await all.getFromGroupVal($('#form'));
-		console.log(form);
 
+		form.id = this.id;
+		//处理主申请人信息
+		form.mainOrderApplyInfo = {
+			name: form.name,
+			mobile: form.mobile,
+			address: form.address,
+			cardNo: form.cardNo
+		};
 
+		delete form.name;
+		delete form.mobile;
+		delete form.address;
+		delete form.cardNo;
+
+		//上传图片
+		let files1 = form.attachUrls1,
+			files2 = form.attachUrls2,
+			files3 = form.attachUrls3;
+		let filesServerUrl1 = await all.uploadFile(files1),
+			filesServerUrl2 = await all.uploadFile(files2),
+			filesServerUrl3 = await all.uploadFile(files3);
+		filesServerUrl1 = filesServerUrl1.join(',');
+		filesServerUrl2 = filesServerUrl2.join(',');
+		filesServerUrl3 = filesServerUrl3.join(',');
+
+		delete form.attachUrls1;
+		delete form.attachUrls2;
+		delete form.attachUrls3;
+
+		form.orderClientMaterialList = [
+			{
+				attachType: '1',
+				attachUrls: filesServerUrl1
+			},
+			{
+				attachType: '2',
+				attachUrls: filesServerUrl2
+			},
+			{
+				attachType: '3',
+				attachUrls: filesServerUrl3
+			}
+		];
+
+		let [data] = await ajax.send([
+			api.order_add_step2(form)
+		]);
+
+		console.log(data);
 
 	}
+
 
 };
 

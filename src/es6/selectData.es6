@@ -136,7 +136,7 @@ let getDataFn = {
 		data = data.children || [];
 
 		//添加其他类别
-		data.push({text:'其它',id:'其它'});
+		data.push({text:'其它',id:'-1'});
 		return data;
 	},
 };
