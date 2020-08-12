@@ -166,6 +166,9 @@ class bInput extends HTMLElement{
 		this.inputBodyDom.append(this.unitDom);
 		this.shadow.appendChild(this.body.get(0));
 
+		if(this.type == 'file'){
+			this.unitDom.addClass('hidden');
+		}
 
 		if($(this).attr('disabled') == 'disabled'){
 			this.disabled = true;

@@ -19,7 +19,7 @@ html
                 b-title(name='业务来源')
                 div(class='openWin_input_main box_hlt box_lines')
                     div(class='openWin_input_item3' id='businessType')
-                        b-input(type='select' err='请选择业务来源' rule='must' data-bind='businessFrom' name='业务来源' id='key1' placeholder='请选择')
+                        b-input(type='select' err='请选择业务来源' rule='must' data-bind='businessFrom' name='业务来源' id='businessSource' placeholder='请选择')
                     div(class='openWin_input_item3 hidden' id='other')
                         //业务来源是其它时候添加这个
                         b-input(type='text' err='请输入其它来源' name='其它来源' id='key2')
@@ -32,7 +32,7 @@ html
                 b-title1(name='主申请人信息')
                 div(class='openWin_input_main box_hlt box_lines')
                     div(class='openWin_input_item3')
-                        b-input(type='text' err='不能为空' rule='must' name='名称' id='key1' placeholder='名称/公司')
+                        b-input(type='text' err='不能为空' rule='must' name='名称' id='clientName' placeholder='名称/公司')
                     div(class='openWin_input_item3')
                         b-input(type='text' name='证件编号' err='不能为空' rule='must' id='key1' placeholder='身份证号/企业信用代码')
                     div(class='openWin_input_item3')
