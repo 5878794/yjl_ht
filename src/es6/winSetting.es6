@@ -24,6 +24,9 @@ module.exports = {
 	index_add_step1:{width:600,height:400},
 	//            step2
 	index_add_step2:{width:600,height:400},
-
+	//            房抵
+	o_add_order_room:{width:600,height:400},
+	//            垫资、非交易垫资
+	o_add_order_advance:{width:600,height:400}
 
 };

@@ -40,10 +40,41 @@ let Page = {
 		let [data] = await ajax.send([
 			api.order_get_byId({id:this.id})
 		]);
-		await all.setFromGroupVal($('#form'),data);
+		this.type = data.businessKey;
+
+		await this.backDataToForm(data);
 		await all.setOrderTopData(1,data);
 
 
+	},
+	async backDataToForm(data){
+
+		//处理主申请人信息
+		let mainOrderApplyInfo = data.mainOrderApplyInfo || {};
+		data.name = mainOrderApplyInfo.name;
+		data.mobile = mainOrderApplyInfo.mobile;
+		data.address = mainOrderApplyInfo.address;
+		data.cardNo = mainOrderApplyInfo.cardNo;
+
+		//处理附件信息
+		let files = data.orderClientMaterialList || [];
+		files.map(rs=>{
+			if(rs.attachType == 1){
+				// data.attachUrls1 = rs.attachUrls;
+				$('#attachUrls1').get(0).showFiles = all.getRealImageSrc(rs.attachUrls);
+			}
+			if(rs.attachType == 2){
+				// data.attachUrls2 = rs.attachUrls;
+				$('#attachUrls2').get(0).showFiles = all.getRealImageSrc(rs.attachUrls);
+			}
+			if(rs.attachType == 3){
+				// data.attachUrls3 = rs.attachUrls;
+				$('#attachUrls3').get(0).showFiles = all.getRealImageSrc(rs.attachUrls);
+			}
+		});
+
+		//赋值
+		await all.setFromGroupVal($('#form'),data);
 	},
 	btnBindEvent(){
 		let preBtn = $('#pre'),
@@ -116,12 +147,27 @@ let Page = {
 		delete form.cardNo;
 
 		//上传图片
+		//待上传的
 		let files1 = form.attachUrls1,
 			files2 = form.attachUrls2,
-			files3 = form.attachUrls3;
+			files3 = form.attachUrls3,
+			//已上传的
+			files1Upload = $('#attachUrls1').get(0).getUploadedValue,
+			files2Upload = $('#attachUrls2').get(0).getUploadedValue,
+			files3Upload = $('#attachUrls3').get(0).getUploadedValue;
+		//上传
 		let filesServerUrl1 = await all.uploadFile(files1),
 			filesServerUrl2 = await all.uploadFile(files2),
 			filesServerUrl3 = await all.uploadFile(files3);
+		//获取已上传的文件名
+		files1Upload = all.getServerFilename(files1Upload);
+		files2Upload = all.getServerFilename(files2Upload);
+		files3Upload = all.getServerFilename(files3Upload);
+		//合并数据
+		filesServerUrl1 = filesServerUrl1.concat(files1Upload);
+		filesServerUrl2 = filesServerUrl2.concat(files2Upload);
+		filesServerUrl3 = filesServerUrl3.concat(files3Upload);
+
 		filesServerUrl1 = filesServerUrl1.join(',');
 		filesServerUrl2 = filesServerUrl2.join(',');
 		filesServerUrl3 = filesServerUrl3.join(',');
@@ -149,8 +195,29 @@ let Page = {
 			api.order_add_step2(form)
 		]);
 
-		console.log(data);
+		await qt.alert('基础信息提交成功！');
+		//判断打开哪个业务的
 
+		if(this.type == 1){
+			//房抵
+			qt.openPage(
+				'./o_add_order_room.html?id='+this.id,
+				winSetting.o_add_order_room.width,
+				winSetting.o_add_order_room.height);
+		}else if(this.type==2){
+			//交易垫资
+			qt.openPage(
+				'./o_add_order_advance.html?id='+this.id+'&type=2',
+				winSetting.o_add_order_advance.width,
+				winSetting.o_add_order_advance.height);
+		}else{
+			//非交易垫资
+			qt.openPage(
+				'./o_add_order_advance.html?id='+this.id+'&type=3',
+				winSetting.o_add_order_advance.width,
+				winSetting.o_add_order_advance.height);
+		}
+		qt.closeWin();
 	}
 
 

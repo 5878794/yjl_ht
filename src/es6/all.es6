@@ -75,7 +75,7 @@ let all = {
 		let bTitle = dom.find('b-title[bind-group],b-title1[bind-group]');
 		bTitle.each(function(){
 			let btn = this.body.find('.btn'),
-				type= $(this).data('group'),
+				type= $(this).attr('bind-group'),
 				l = data[type]?.length || 0;
 			for(let i=0;i<l;i++){
 				btn.trigger('click');
@@ -200,6 +200,15 @@ let all = {
 			newData.push(serverUrl+rs);
 		});
 		return newData;
+	},
+	//获取服务器文件名
+	getServerFilename(files){
+		let backData = [];
+		files.map(rs=>{
+			let fileName = rs.substr(rs.lastIndexOf('/')+1);
+			backData.push(fileName);
+		});
+		return backData;
 	},
 	//设置订单顶部数据
 	async setOrderTopData(level,data){
