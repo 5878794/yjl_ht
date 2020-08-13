@@ -1,6 +1,7 @@
 
 
-let inputStyle = require('./../es6/inputStyle');
+let inputStyle = require('./../es6/inputStyle'),
+	selectData = require('./selectData');
 
 module.exports = {
 	//自身点击添加变成删除按钮
@@ -18,10 +19,11 @@ module.exports = {
 			}
 		];
 
-		btn.clickFn = function(type){
+		btn.clickFn = async function(type){
 			if(type=='add'){
 				//添加
 				let _item = item.clone().attr({id:''});
+				await selectData(_item);
 				body.append(_item);
 				inputStyle.set(true,true);
 			}else{
@@ -40,7 +42,7 @@ module.exports = {
 			}
 		];
 
-		btn.clickFn = function(){
+		btn.clickFn = async function(){
 			let _item = item.clone().attr({id:''}),
 				title1 = _item.find('b-title1').get(0),
 				body1 = $(title1).parent();
@@ -56,8 +58,10 @@ module.exports = {
 				body1.remove();
 			};
 
+			await selectData(_item);
 			body.append(_item);
 			inputStyle.set(true,true);
+
 		};
 	},
 	//添加按钮，按钮带子菜单
@@ -70,7 +74,7 @@ module.exports = {
 			}
 		];
 
-		btn.clickFn = function(type){
+		btn.clickFn = async function(type){
 			let _item;
 			if(type=='btn1'){
 				_item = item1.clone().attr({id:''});
@@ -93,6 +97,7 @@ module.exports = {
 				body1.remove();
 			};
 
+			await selectData(_item);
 			body.append(_item);
 			inputStyle.set(true,true);
 		};
