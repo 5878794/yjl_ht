@@ -51,7 +51,7 @@ let createInput = Symbol.for('createInput'),
 class BInputNumber extends BInput{
 	constructor(props) {
 		super(props);
-
+		this.userSetMoneyChangeFn = function(){};
 		this[addEvent]();
 	}
 
@@ -67,7 +67,8 @@ class BInputNumber extends BInput{
 	[addEvent](){
 		let input = this.inputBodyDom.find('.__input__').get(0),
 			hidden = this.inputBodyDom.find('.__hidden_input__').get(0),
-			accuracy = parseInt($(this).attr('accuracy'));
+			accuracy = parseInt($(this).attr('accuracy')),
+			_this = this;
 		accuracy = (accuracy || accuracy == 0)? accuracy : 2;
 
 		input.addEventListener('blur',function(e){
@@ -76,6 +77,7 @@ class BInputNumber extends BInput{
 			val = (val=='NaN')? '' : val;
 			this.value = val;
 			hidden.value = val.replace(/\,/ig,'');
+			_this.userSetMoneyChangeFn(hidden.value);
 		},false)
 
 	}
@@ -94,6 +96,11 @@ class BInputNumber extends BInput{
 		val = val.replace(/\,/ig,'');
 		this.body.find('.__hidden_input__').val(val);
 
+	}
+
+	set change(fn){
+		fn = fn || function(){};
+		this.userSetMoneyChangeFn = fn;
 	}
 
 

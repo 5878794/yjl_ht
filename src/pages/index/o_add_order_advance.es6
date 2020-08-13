@@ -12,6 +12,7 @@ let app = require('./../../es6/lib/page'),
     selectData = require('./../../es6/selectData'),
     winSetting = require('./../../es6/winSetting'),
     moneyFormat = require('./../../es6/lib/fn/number'),
+    watchDom = require('./../../es6/lib/fn/watchDom'),
     tableSet = require('./../../es6/tableSetting'),
     stamp2Date = require('./../../es6/lib/fn/timeAndStamp'),
     inputStyle = require('./../../es6/inputStyle');
@@ -39,6 +40,7 @@ let Page = {
         this.id = param.id;
         this.type =param.type;
         this.checkType();
+
 
         await all.getUserInfo();
         await selectData($('#form'));
@@ -100,14 +102,73 @@ let Page = {
             val1Dom = body.find('.__data1'),
             val2Dom = body.find('.__data2'),
             val3Dom = body.find('.__data3'),
-            val1 = moneyFormat(this.orderData.applyMoney,5);
+            val4Dom = body.find('.__data4'),
+            mainDom = $('#orderMortgageExtendAssessment_evaluationPrice'),
+            listenerDom = $('#additional_mortgage_body'),
+            val1 = this.orderData?.applyMoney??0,
+            val2,
+            val3;
 
-        val1Dom.text(val1);
+        val1Dom.text(moneyFormat(val1,5));     //贷款金额
+        // val2Dom.text('0.00000');    //主抵押物品
+        // val3Dom.text('0.00000');    //副抵押物品
+        // val4Dom.text(moneyFormat(val1/100,5));             //比率
+
+
 
         //主抵押物
-        $('#orderMortgageExtendAssessment_evaluationPrice').get(0).change = function(val){
-            console.log(val);
+        let changeFn1 = function(){
+            let val = mainDom.get(0).value;
+            //万元转元
+            val = val*10000;
+            val2 = val;
+            val2Dom.text(moneyFormat(val,5));
+            changeFn2();
+        };
+
+        //副抵押物
+        let changeFn = function(){
+            let total = 0;
+            listenerDom.find('b-input-money[key="evaluationValue"]').each(function(){
+                let value = this.value * 1;
+                total = total + value;
+            });
+            //万元转元
+            total = total * 10000;
+            val3 = total;
+            val3Dom.text(moneyFormat(total,5));
+            changeFn2();
+        };
+        //计算平均值
+        let changeFn2 = function(){
+            console.log(val1,val2,val3)
+            let val = val1/(val2+val3)*100 || 0;
+            val4Dom.text(moneyFormat(val,5)+'%');
         }
+
+        changeFn1();
+        changeFn();
+
+
+        //监听 动产 不动产 变动
+        watchDom(listenerDom.get(0),function(e){
+            e = e[0];
+            if(e.addedNodes.length != 0){
+                //添加dom
+                for(let i=0,l=e.addedNodes.length;i<l;i++){
+                    let thisDom = e.addedNodes[i];
+                    thisDom = $(thisDom).find('b-input-money[key="evaluationValue"]').eq(0).get(0);
+                    if(thisDom){
+                        thisDom.change = function(){
+                            changeFn();
+                        }
+                    }
+                }
+            }
+        })
+        //主抵押物
+        mainDom.get(0).change = changeFn1;
+
 
     },
     //自动计算部分 费用部分
