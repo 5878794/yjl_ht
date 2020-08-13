@@ -67,7 +67,8 @@ class BInputNumber extends BInput{
 	[addEvent](){
 		let input = this.inputBodyDom.find('.__input__').get(0),
 			hidden = this.inputBodyDom.find('.__hidden_input__').get(0),
-			accuracy = parseInt($(this).attr('accuracy')) || 2;
+			accuracy = parseInt($(this).attr('accuracy'));
+		accuracy = (accuracy || accuracy == 0)? accuracy : 2;
 
 		input.addEventListener('blur',function(e){
 			let val = this.value.replace(/\,/ig,'');
@@ -84,7 +85,8 @@ class BInputNumber extends BInput{
 	}
 
 	set value(val){
-		let accuracy = parseInt($(this).attr('accuracy')) || 2;
+		let accuracy = parseInt($(this).attr('accuracy'));
+		accuracy = (accuracy || accuracy == 0)? accuracy : 2;
 		val = val.toString();
 		val = val.replace(/\,/ig,'');
 		val = numberFormat(val,accuracy);

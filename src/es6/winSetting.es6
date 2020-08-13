@@ -27,6 +27,8 @@ module.exports = {
 	//            房抵
 	o_add_order_room:{width:600,height:400},
 	//            垫资、非交易垫资
-	o_add_order_advance:{width:600,height:400}
+	o_add_order_advance:{width:600,height:400},
+	//            预览
+	index_add_step4:{width:600,height:400},
 
 };

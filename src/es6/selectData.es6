@@ -39,14 +39,38 @@ let dist = {
 		{name:'别墅',value:'4'},
 		{name:'厂房',value:'5'}
 	],
-	//朝向
-	houseOrientation:[],
+	//朝向   东，南，西，北，南北，东西，东南，西南，东北，西北
+	houseOrientation:[
+		{name:'请选择',value:''},
+		{name:'东',value:'东'},
+		{name:'南',value:'南'},
+		{name:'西',value:'西'},
+		{name:'北',value:'北'},
+		{name:'东南',value:'东南'},
+		{name:'西南',value:'西南'},
+		{name:'东北',value:'东北'},
+		{name:'西北',value:'西北'}
+	],
 	//装修情况   精装、简装、毛坯
-	decorationState:[],
+	decorationState:[
+		{name:'请选择',value:''},
+		{name:'精装',value:'精装'},
+		{name:'简装',value:'简装'},
+		{name:'毛坯',value:'毛坯'}
+	],
 	//使用情况   自住、出租、空置
-	houseUseState:[],
+	houseUseState:[
+		{name:'请选择',value:''},
+		{name:'自住',value:'自住'},
+		{name:'出租',value:'出租'},
+		{name:'空置',value:'空置'}
+	],
 	//有无电梯
-	hasElevator:[],
+	hasElevator:[
+		{name:'请选择',value:''},
+		{name:'有',value:'有'},
+		{name:'无',value:'无'},
+	],
 	//回款方式
 	payBackMethod:[],
 	//付款方式

@@ -337,7 +337,9 @@ class bInputFile extends bInput{
 			files.push(this.files[0])
 		});
 
-		return files;
+		let uploaded = this.getUploadedValue;
+
+		return files.concat(uploaded);
 	}
 
 	set disabled(state){

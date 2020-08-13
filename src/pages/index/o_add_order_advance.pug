@@ -25,16 +25,19 @@ html
                     div(class='openWin_input_item3')
                         b-input(type='text' err='不能为空' rule='must' id='mainMortgagePropertyRight_idCard' name='产权证号')
                     div(class='openWin_input_item3')
-                        b-input(type='text' err='不能为空' rule='must' id='mainMortgagePropertyRight_area' name='面积' unit='㎡')
+                        b-input-money(type='text' err='不能为空' rule='must' id='mainMortgagePropertyRight_area' name='面积' unit='㎡')
                     div(class='openWin_input_item3')
                         b-input(type='select' err='不能为空' rule='must' id='mainMortgagePropertyRight_type' data-bind='residentialNature' name='住宅性质')
                     div(class='openWin_input_item3')
                         b-input-date(type='date' rule='must' id='mainMortgagePropertyRight_getTime' err='不能为空' name='取得时间')
+                    div(class='openWin_input_item3 hidden')
+                        b-input(type='text' id='mainMortgagePropertyRight_category' value='0')
+
 
                 b-title1(name='评估信息')
                 div(class='openWin_input_main box_hlt box_lines')
                     div(class='openWin_input_item3')
-                        b-input(type='text' err='' name='评估总价' id='orderMortgageExtendAssessment_evaluationPrice' rule='must' err='不能为空' unit='万元')
+                        b-input-money(name='评估总价' id='orderMortgageExtendAssessment_evaluationPrice' accuracy='5' rule='must' err='不能为空' unit='万元')
                     div(class='openWin_input_item1')
                         b-input-file(class='__input_file__' type='file' id='orderMortgageExtendAssessment_attachUrls' name='快销总价' unit='(非必填附件)')
 
@@ -80,7 +83,7 @@ html
                     div(class='openWin_input_item3')
                         b-input(id='orderReturnRepayment_contactMobile' type='text' name='联系电话' rule='must' err='不能为空')
                     div(class='openWin_input_item3')
-                        b-input(id='orderReturnRepayment_replyMoney' type='text' name='批复金额' rule='must' err='不能为空' unit='元')
+                        b-input-money(id='orderReturnRepayment_replyMoney' accuracy='5' name='批复金额' rule='must' err='不能为空' unit='元')
                     div(class='openWin_input_item3')
                         b-input(id='orderReturnRepayment_bankNo' type='text' name='回款账号' rule='must' err='不能为空')
                     div(class='openWin_input_item3')
@@ -88,7 +91,7 @@ html
                     div(class='openWin_input_item3')
                         b-input(id='orderReturnRepayment_bankName' type='text' name='回款户名' rule='must' err='不能为空')
                     div(class='openWin_input_item3')
-                        b-input(id='orderReturnRepayment_returnMoney' type='text' name='回款金额' rule='must' err='不能为空' unit='元')
+                        b-input-money(id='orderReturnRepayment_returnMoney' accuracy='5' name='回款金额' rule='must' err='不能为空' unit='元')
                     div(class='openWin_input_item3 __fdz_no__')
                         //- 非垫资业务没有
                         //- 资金监管回款/银行贷款回款
@@ -131,7 +134,7 @@ html
                     div(class='openWin_input_item3')
                         b-input(id='buyerBankSupervision_supervisionBank' type='text' name='监管银行' rule='must' err='不能为空')
                     div(class='openWin_input_item3')
-                        b-input(id='buyerBankSupervision_supervisionMoney' type='text' name='监管金额' unit='元' rule='must' err='不能为空')
+                        b-input-money(id='buyerBankSupervision_supervisionMoney' accuracy='5' name='监管金额' unit='元' rule='must' err='不能为空')
                     div(class='openWin_input_item3')
                         b-input(id='buyerBankSupervision_bankNo' type='text' name='监管账号' rule='must' err='不能为空')
                     div(class='openWin_input_item3')
@@ -146,7 +149,7 @@ html
                     div(class='openWin_input_item3')
                         b-input(id='sellerBankSupervision_supervisionBank' type='text' name='监管银行' rule='must' err='不能为空')
                     div(class='openWin_input_item3')
-                        b-input(id='sellerBankSupervision_supervisionMoney' type='text' name='监管金额' unit='元' rule='must' err='不能为空')
+                        b-input-money(id='sellerBankSupervision_supervisionMoney' accuracy='5' name='监管金额' unit='元' rule='must' err='不能为空')
                     div(class='openWin_input_item3')
                         b-input(id='sellerBankSupervision_bankNo' type='text' name='监管账号' rule='must' err='不能为空')
                     div(class='openWin_input_item3')
@@ -161,13 +164,13 @@ html
                 b-title(name='垫资比例')
                 div(class='openWin_input_main box_hlt box_lines')
                     div(class='box_slt' style='margin-top:20px;')
-                        div(class='openWin_advance_row box_hlc')
-                            div 7000000.00000
+                        div(class='openWin_advance_row box_hlc' id='dzbl')
+                            div(class='__data1')
                             span /
                             span (
-                            div 4000000.00000
+                            div(class='__data2')
                             span +
-                            div 2000000.00000
+                            div(class='__data3')
                             span )
                             span &#61;
                             div(class='openWin_advance_row_rs') 1.111111%
@@ -188,19 +191,19 @@ html
                     div(class='openWin_input_item3')
                         b-input(id='orderRateInfo_period' type='text' name='用款时间' unit='天' rule='must' err='不能为空')
                     div(class='openWin_input_item3')
-                        b-input(id='orderRateInfo_consultationRate' type='text' name='咨询费率' unit='%' disabled='disabled')
+                        b-input-money(id='orderRateInfo_consultationRate' name='咨询费率' unit='%' disabled='disabled')
                     div(class='openWin_input_item3')
-                        b-input(id='orderRateInfo_consultationFee' type='text' name='咨询费用' unit='元' disabled='disabled')
+                        b-input-money(id='orderRateInfo_consultationFee' accuracy='5' name='咨询费用' unit='元' disabled='disabled')
                     div(class='openWin_input_item3')
-                        b-input(id='orderRateInfo_warrantFee' type='text' name='权证费' unit='元' rule='must' err='不能为空')
+                        b-input-money(id='orderRateInfo_warrantFee' accuracy='5' name='权证费' unit='元' rule='must' err='不能为空')
                     div(class='openWin_input_item3')
-                        b-input(id='orderRateInfo_serviceRate' type='text' name='服务费率' unit='%' rule='must' err='不能为空')
+                        b-input-money(id='orderRateInfo_serviceRate' name='服务费率' unit='%' rule='must' err='不能为空')
                     div(class='openWin_input_item3')
-                        b-input(id='orderRateInfo_serviceFee' type='text' name='服务费用' unit='元' disabled='disabled')
+                        b-input-money(id='orderRateInfo_serviceFee' accuracy='5' name='服务费用' unit='元' disabled='disabled')
                     div(class='openWin_input_item3')
-                        b-input(id='orderRateInfo_preferentialFee' type='text' name='优惠费用' unit='元' rule='must' err='不能为空')
+                        b-input-money(id='orderRateInfo_preferentialFee' accuracy='5' name='优惠费用' unit='元' rule='must' err='不能为空')
                     div(class='openWin_input_item3')
-                        b-input(id='orderRateInfo_totalCost' type='text' name='费用合计' unit='元' disabled='disabled')
+                        b-input-money(id='orderRateInfo_totalCost' accuracy='5' name='费用合计' unit='元' disabled='disabled')
 
 
             div
@@ -212,8 +215,8 @@ html
 
 
             div(class='openWin_btns box_hcc')
-                div(class='openWin_btn_gray box_hcc hover') 上一步
-                div(class='openWin_btn_blue box_hcc hover') 下一步
+                div(class='openWin_btn_gray box_hcc hover' id='pre') 上一步
+                div(class='openWin_btn_blue box_hcc hover' id='next') 下一步
 
 
 
@@ -231,24 +234,24 @@ html
                     div(class='openWin_input_item3')
                         b-input(key='mortgagee' type='text' err='不能为空' rule='must' name='抵押权人')
                     div(class='openWin_input_item3')
-                        b-input-money(key='loanPrice' err='不能为空' rule='must' name='原贷贷款' unit='万元')
+                        b-input-money(key='loanPrice' accuracy='5' err='不能为空' rule='must' name='原贷贷款' unit='万元')
                     div(class='openWin_input_item3')
-                        b-input-money(key='mortgagePrice' err='不能为空' rule='must' name='抵押金额' unit='万元')
+                        b-input-money(key='mortgagePrice' accuracy='5' err='不能为空' rule='must' name='抵押金额' unit='万元')
                     div(class='openWin_input_item1')
                         b-input-file(key='attachUrls' type='file' err='不能为空' rule='must' name='抵押附件')
 
             //房屋信息
             div(class='openWin_input_main box_hlt box_lines' id='room_info_item' group='orderMortgageExtendHouseList')
                 div(class='openWin_input_item3')
-                    b-input(key='age' type='text' err='不能为空' rule='must' name='房龄' unit='年')
+                    b-input-money(key='age' accuracy='0'  err='不能为空' rule='must' name='房龄' unit='年')
                 div(class='openWin_input_item3')
-                    b-input(key='direct' type='select' err='不能为空' rule='must' name='朝向')
+                    b-input(key='direct' type='select' err='不能为空' data-bind='houseOrientation' rule='must' name='朝向')
                 div(class='openWin_input_item3')
-                    b-input(key='decoration' type='select' err='不能为空' rule='must' name='装修情况')
+                    b-input(key='decoration' type='select' err='不能为空' data-bind='decorationState' rule='must' name='装修情况')
                 div(class='openWin_input_item3')
-                    b-input(key='usage' type='select' err='不能为空' rule='must' name='使用情况')
+                    b-input(key='usage' type='select' err='不能为空' data-bind='houseUseState' rule='must' name='使用情况')
                 div(class='openWin_input_item3')
-                    b-input(key='elevator' type='select' err='不能为空' rule='must' name='有无电梯')
+                    b-input(key='elevator' type='select' err='不能为空' data-bind='hasElevator' rule='must' name='有无电梯')
                 div(class='openWin_input_item3')
                     b-input(key='floor' type='text' err='不能为空' rule='must' name='总楼层')
 
@@ -262,9 +265,9 @@ html
                     div(class='openWin_input_item3')
                         b-input(key='idCard' type='text' name='产权证号' err='不能为空' rule='must')
                     div(class='openWin_input_item3')
-                        b-input(key='area' type='text' name='面积' unit='㎡' err='不能为空' rule='must' )
+                        b-input-money(key='area' type='text' name='面积' unit='㎡' err='不能为空' rule='must' )
                     div(class='openWin_input_item3')
-                        b-input(key='type' type='select' name='住宅性质' err='不能为空' rule='must')
+                        b-input(key='type' type='select' name='住宅性质' data-bind='residentialNature' err='不能为空' rule='must')
                     div(class='openWin_input_item3')
                         b-input-date(key='getTime' type='date' name='取得时间' err='不能为空' rule='must')
                     div(class='openWin_input_item3 hidden')
@@ -277,7 +280,7 @@ html
                     div(class='openWin_input_item3')
                         b-input(key='name' type='text' name='名称' err='不能为空' rule='must')
                     div(class='openWin_input_item3')
-                        b-input(key='percent' type='text' name='权益' unit='%' err='不能为空' rule='must')
+                        b-input-money(key='percent' name='权益' unit='%' err='不能为空' rule='must')
                     div(class='openWin_input_item3')
                         b-input-money(key='evaluationValue' name='评估价值' accuracy='5' unit='万元' err='不能为空' rule='must')
                     div(class='openWin_input_item3 hidden')

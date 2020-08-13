@@ -123,10 +123,15 @@ let all = {
 			let form = new FormData(),
 				xhr = new XMLHttpRequest();
 
-
+			let uploaded = [];
 			files.map(file=>{
-				form.append('files',file);
+				if(typeof file == 'string'){
+					uploaded.push(file);
+				}else{
+					form.append('files',file);
+				}
 			});
+			uploaded = this.getServerFilename(uploaded);
 
 			xhr.onload =  function(e){
 				let body = e.target.responseText;
@@ -141,7 +146,7 @@ let all = {
 						back.push(rs.fileUrl)
 					});
 
-					success(back)
+					success(back.concat(uploaded));
 				}else{
 					error(body.data);
 				}
@@ -239,6 +244,74 @@ let all = {
 
 
 		part1.data = backData;
+	},
+
+	//临时赋值测试接口
+	tempSetVal(){
+		let text = $('b-input[type="text"]'),
+			select = $('b-input[type="select"]'),
+			money = $('b-input-money'),
+			date = $('b-input-date'),
+			file = $('b-input-file'),
+			textarea = $('b-input[type="textarea"]'),
+			n=  0;
+
+		text.each(function(){
+			if($(this).parent().hasClass('hidden')){
+
+			}else{
+				n++;
+				this.value = n;
+			}
+		});
+		select.each(function(){
+			let selected = this.body.find('option').eq(1).attr('value');
+			this.value = selected;
+		});
+		money.each(function(){
+			n++;
+			this.value = n;
+		});
+		textarea.each(function(){
+			n++;
+			this.value = n;
+		});
+		date.each(function(){
+			let data = '2020-11-11';
+			this.value = data;
+		});
+		file.each(function(){
+			n++;
+			this.showFiles = ["http://"+n+'.jpg']
+		});
+	},
+
+	sleep(ms){
+		return new Promise(success=>{
+			setTimeout(function(){
+				success();
+			},ms)
+		})
+	},
+
+	//提交时对象中参数带_的 在包裹一层对象
+	//订单提交第3步用
+	handlerFromDataByObj(data){
+		let backData = {};
+		for(let [key,val] of Object.entries(data)){
+			if(key.indexOf('_')>-1){
+				key = key.split('_');
+				let obj = key[0],
+					thisKey = key[1];
+
+				if(!backData[obj]){backData[obj] = {}}
+				backData[obj][thisKey] = val;
+			}else{
+				backData[key] = val;
+			}
+		}
+
+		return backData;
 	}
 };
 

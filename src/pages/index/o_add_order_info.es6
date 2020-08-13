@@ -153,23 +153,11 @@ let Page = {
 		//待上传的
 		let files1 = form.attachUrls1,
 			files2 = form.attachUrls2,
-			files3 = form.attachUrls3,
-			//已上传的
-			files1Upload = $('#attachUrls1').get(0).getUploadedValue,
-			files2Upload = $('#attachUrls2').get(0).getUploadedValue,
-			files3Upload = $('#attachUrls3').get(0).getUploadedValue;
+			files3 = form.attachUrls3;
 		//上传
 		let filesServerUrl1 = await all.uploadFile(files1),
 			filesServerUrl2 = await all.uploadFile(files2),
 			filesServerUrl3 = await all.uploadFile(files3);
-		//获取已上传的文件名
-		files1Upload = all.getServerFilename(files1Upload);
-		files2Upload = all.getServerFilename(files2Upload);
-		files3Upload = all.getServerFilename(files3Upload);
-		//合并数据
-		filesServerUrl1 = filesServerUrl1.concat(files1Upload);
-		filesServerUrl2 = filesServerUrl2.concat(files2Upload);
-		filesServerUrl3 = filesServerUrl3.concat(files3Upload);
 
 		filesServerUrl1 = filesServerUrl1.join(',');
 		filesServerUrl2 = filesServerUrl2.join(',');
