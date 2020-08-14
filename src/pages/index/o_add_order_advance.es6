@@ -93,7 +93,47 @@ let Page = {
     },
     //数据回填
     async backDataToForm(data){
+        //处理对象中 子元素是对象的键
+        for(let [key,val] of Object.entries(data)){
+            if($.isObject(val)){
+                for(let [key1,val1] of Object.entries(val)){
+                    data[key+'_'+key1] = val1;
+                }
+            }
+        }
 
+        //处理动产 不动产数据
+        let tempData = data.additionalMortgagePropertyRightList??[],
+            dcData = [],
+            bdcData = [];
+        tempData.map(rs=>{
+            //不动产
+            if(rs.category == 1){bdcData.push(rs);}
+            //动产
+            if(rs.category == 2){dcData.push(rs);}
+        });
+        data.additionalMortgagePropertyRightList1 = bdcData;
+        data.additionalMortgagePropertyRightList2 = dcData;
+
+        //赋值
+        await all.setFromGroupVal($('#form'),data);
+
+
+        //处理文件
+        //评估信息
+        let files = data.orderMortgageExtendAssessment?.attachUrls??'';
+        if(files){
+            files = all.getRealImageSrc(files);
+            $('#orderMortgageExtendAssessment_attachUrls').get(0).showFiles = files;
+        }
+        //抵押信息
+        let dyData = data.orderMortgageExtendMortgageList??[],
+            doms = $('#mortgage_info_body').find('b-input-file');
+        dyData.map((rs,i)=>{
+            let thisFiles = rs.attachUrls??'';
+            thisFiles = all.getRealImageSrc(thisFiles);
+            doms.eq(i).get(0).showFiles = thisFiles;
+        })
     },
     //自动计算部分 垫资比例计算
     inputEventBind1(){
@@ -141,7 +181,6 @@ let Page = {
         };
         //计算平均值
         let changeFn2 = function(){
-            console.log(val1,val2,val3)
             let val = val1/(val2+val3)*100 || 0;
             val4Dom.text(moneyFormat(val,5)+'%');
         }
@@ -173,8 +212,52 @@ let Page = {
     },
     //自动计算部分 费用部分
     inputEventBind2(){
-        //费用部分
+        let //咨询费率
+            dom_zxfl = $('#orderRateInfo_consultationRate').get(0),
+            //用款时间
+            dom_date = $('#orderRateInfo_period').get(0),
+            //咨询费
+            dom_zxf = $('#orderRateInfo_consultationFee').get(0),
+            //服务费率
+            dom_fwfl = $('#orderRateInfo_serviceRate').get(0),
+            //服务费
+            dom_fwf = $('#orderRateInfo_serviceFee').get(0),
+            //权证费
+            dom_qzf = $('#orderRateInfo_warrantFee').get(0),
+            //优惠费
+            dom_yhf = $('#orderRateInfo_preferentialFee').get(0),
+            //合计
+            dom_total = $('#orderRateInfo_totalCost').get(0),
+            _this = this;
 
+
+
+        let run = function(){
+            //费用部分
+            // 咨询费率（管理员配置，%，只读）
+            //TODO
+            dom_zxfl.value = moneyFormat(1,2);
+
+            // 咨询费（申请金额*用款时间*咨询费率，不低于3000）、
+            let applicationMoney = _this.orderData?.applyMoney??0,
+                advisoryMoney =  applicationMoney*dom_date.value*dom_zxfl.value/100;
+            advisoryMoney = (advisoryMoney<3000)? 3000 : advisoryMoney;
+            dom_zxf.value = moneyFormat(advisoryMoney,5);
+
+            // 服务费（申请金额*用款时间*服务费率）、
+            let serviceFee = applicationMoney*dom_date.value*dom_fwfl.value/100;
+            dom_fwf.value = moneyFormat(serviceFee,5);
+
+            //费用合计
+            let total = dom_zxf.value*1 + dom_fwf.value*1 + dom_qzf.value*1 - dom_yhf.value*1;
+            dom_total.value = moneyFormat(total,5);
+        }
+        run();
+
+        dom_date.change = function(){run();};
+        dom_qzf.change = function(){run();};
+        dom_yhf.change = function(){run();};
+        dom_fwfl.change = function(){run();};
     },
     btnEventBind(){
         let _this = this;
@@ -189,16 +272,6 @@ let Page = {
         });
     },
     async submitFn(){
-        //TODO temp
-        $('#mortgage_info').get(0).body.find('.btn').trigger('click');
-        $('#mortgage_info').get(0).body.find('.btn').trigger('click');
-        $('#room_info').get(0).body.find('.btn').trigger('click');
-        $('#additional_mortgage').get(0).body.find('div[type="btn1"]').trigger('click');
-        $('#additional_mortgage').get(0).body.find('div[type="btn2"]').trigger('click');
-        await all.sleep(1000);
-        all.tempSetVal();
-        //TODO temp end
-
         //获取表单数据
         let form = await all.getFromGroupVal($('#form'));
         form = all.handlerFromDataByObj(form);

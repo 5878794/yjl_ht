@@ -87,6 +87,7 @@ class BInputNumber extends BInput{
 	}
 
 	set value(val){
+		val = val || 0;
 		let accuracy = parseInt($(this).attr('accuracy'));
 		accuracy = (accuracy || accuracy == 0)? accuracy : 2;
 		val = val.toString();

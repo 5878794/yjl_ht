@@ -19,11 +19,11 @@ module.exports = {
 			}
 		];
 
-		btn.clickFn = async function(type){
+		btn.clickFn = function(type){
 			if(type=='add'){
 				//添加
 				let _item = item.clone().attr({id:''});
-				await selectData(_item);
+				selectData(_item);
 				body.append(_item);
 				inputStyle.set(true,true);
 			}else{
@@ -42,7 +42,7 @@ module.exports = {
 			}
 		];
 
-		btn.clickFn = async function(){
+		btn.clickFn = function(){
 			let _item = item.clone().attr({id:''}),
 				title1 = _item.find('b-title1').get(0),
 				body1 = $(title1).parent();
@@ -58,7 +58,7 @@ module.exports = {
 				body1.remove();
 			};
 
-			await selectData(_item);
+			selectData(_item);
 			body.append(_item);
 			inputStyle.set(true,true);
 
@@ -74,7 +74,7 @@ module.exports = {
 			}
 		];
 
-		btn.clickFn = async function(type){
+		btn.clickFn = function(type){
 			let _item;
 			if(type=='btn1'){
 				_item = item1.clone().attr({id:''});
@@ -97,7 +97,7 @@ module.exports = {
 				body1.remove();
 			};
 
-			await selectData(_item);
+			selectData(_item);
 			body.append(_item);
 			inputStyle.set(true,true);
 		};

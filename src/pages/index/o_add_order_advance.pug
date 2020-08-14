@@ -121,7 +121,7 @@ html
                     div(class='openWin_input_item3')
                         b-input(id='orderTrade_contactMobile' type='text' name='中介电话' rule='must' err='不能为空')
                     div(class='openWin_input_item3')
-                        b-input(id='orderTrade_dealIntermediary' type='text' name='成交总价' rule='must' err='不能为空')
+                        b-input-money(id='orderTrade_dealIntermediary' accuracy='5' name='成交总价' unit='元' rule='must' err='不能为空')
                     div(class='openWin_input_item3')
                         b-input(id='orderTrade_paymentMethodType' type='select' name='付款方式' data-bind='payMethod' rule='must' err='不能为空')
 
@@ -189,7 +189,7 @@ html
                 b-title(name='费用信息')
                 div(class='openWin_input_main box_hlt box_lines' style='background:rgb(250,243,230)')
                     div(class='openWin_input_item3')
-                        b-input(id='orderRateInfo_period' type='text' name='用款时间' unit='天' rule='must' err='不能为空')
+                        b-input-money(id='orderRateInfo_period' accuracy='0' name='用款时间' unit='天' rule='must' err='不能为空')
                     div(class='openWin_input_item3')
                         b-input-money(id='orderRateInfo_consultationRate' name='咨询费率' unit='%' disabled='disabled')
                     div(class='openWin_input_item3')

@@ -67,24 +67,44 @@ let all = {
 			success(backData);
 		});
 	},
-	setFromGroupVal(dom,data){
+	async setFromGroupVal(dom,data){
 		//写入非数组内的数据
 		this.setFromVal(dom,data);
 
 		//触发bTitle的点击事件
-		let bTitle = dom.find('b-title[bind-group],b-title1[bind-group]');
+		let bTitle = dom.find('b-title[bind-group],b-title1[bind-group],b-title[bind-group1],b-title[bind-group2]');
 		bTitle.each(function(){
-			let btn = this.body.find('.btn'),
-				type= $(this).attr('bind-group'),
-				l = data[type]?.length || 0;
-			for(let i=0;i<l;i++){
-				btn.trigger('click');
+			if($(this).attr('bind-group')){
+				let btn = this.body.find('.btn'),
+					type= $(this).attr('bind-group'),
+					l = data[type]?.length || 0;
+				for(let i=0;i<l;i++){
+					btn.trigger('click');
+				}
+			}
+			if($(this).attr('bind-group1')){
+				let btn = this.body.find('div[type="btn1"]'),
+					type= $(this).attr('bind-group1'),
+					l = data[type]?.length || 0;
+				for(let i=0;i<l;i++){
+					btn.trigger('click');
+				}
+			}
+			if($(this).attr('bind-group2')){
+				let btn = this.body.find('div[type="btn2"]'),
+					type= $(this).attr('bind-group2'),
+					l = data[type]?.length || 0;
+				for(let i=0;i<l;i++){
+					btn.trigger('click');
+				}
 			}
 		});
+
 
 		//获取生成的dom
 		let doms = dom.find('div[group]'),
 			obj = {};
+
 		//分组
 		doms.each(function(){
 			let type = $(this).attr('group');
