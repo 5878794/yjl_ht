@@ -18,6 +18,11 @@ let JD = {
     },
     alert(msg,title){
         title = title || '系统提示';
+
+        //表单验证出错
+        if(msg.dom){
+            msg = '提交数据有误，请检查！';
+        }
         if(typeof msg != 'string'){
             console.log(msg);
             return;

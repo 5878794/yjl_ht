@@ -4,7 +4,18 @@
 
 let app = require('./../../es6/lib/page'),
     lib = require('./../../es6/lib'),
+    all = require('./../../es6/all'),
+    {ajax,api} = require('./../../es6/_ajax'),
+    qt = require('./../../es6/qt'),
     bTitleBtn = require('./../../es6/b_title_btn'),
+    getParamFromUrl = require('./../../es6/lib/fn/getParamFromUrl'),
+    pageSizeSetting = require('./../../es6/pageSize'),
+    selectData = require('./../../es6/selectData'),
+    winSetting = require('./../../es6/winSetting'),
+    moneyFormat = require('./../../es6/lib/fn/number'),
+    watchDom = require('./../../es6/lib/fn/watchDom'),
+    tableSet = require('./../../es6/tableSetting'),
+    stamp2Date = require('./../../es6/lib/fn/timeAndStamp'),
     inputStyle = require('./../../es6/inputStyle');
 
 
@@ -18,51 +29,44 @@ require('./../../es6/customElement/pc/input_date');
 
 
 
-let loading;
 let Page = {
     init(){
-        // loading = new loadFn();
-        // loading.show('急速加载中');
-        this.run().then(rs=>{
-            // loading.hide();
-        }).catch(rs=>{
-            // err.error(rs);
-            // loading.hide();
-            // app.alert(rs);
-            throw rs;
-        });
+        all.showLoadingRun(this,'run');
     },
     async run(){
         inputStyle.set(true,true);
         this.createBTitlesBtn();
+        let param = getParamFromUrl();
+        this.id = param.id;
 
+        await all.getUserInfo();
+        await selectData($('#form'));
 
-        this.setPart1();
+        //获取订单详情
+        let [data] = await ajax.send([
+            api.order_get_byId({id:this.id})
+        ]);
+        this.orderNo = data.orderNo;
+        this.orderData = data;
+        console.log(data);
 
+        this.btnEventBind();
+        await this.backDataToForm(data);
+        this.inputEventBind2();
+        await all.setOrderTopData(2,data);
 
     },
-    setPart1(){
-        let part1 = $('#order_info').get(0);
-        part1.showLevel = 2;
-        part1.data = {
-            money:7000000,
-            type:'房抵',
-            no:'Fd123123123',
-            from:'来自中介',
-            product:'中新银行-理财产品1',
-            productInfo:'产品介绍产品介绍产品介绍产品介绍产品介绍产品介绍产品介绍',
-            mans:[
-            	{name:'张三',phone:12312312312,idcard:'123333333333333333',address:'阿打发打发发代付链接撒地方科技傲世狂妃'},
-            	{name:'张三(共同)',phone:12312312312,idcard:'123333333333333333',address:'阿打发打发发代付链接撒地方科技傲世狂妃'},
-            	{name:'张三(担保)',phone:12312312312,idcard:'123333333333333333',address:'阿打发打发发代付链接撒地方科技傲世狂妃'}
-            ]
-            // state:'待回款'
-        };
-        // part1.click = function(data){
-        // 	console.log(data)
-        // }
-
-
+    btnEventBind(){
+        let _this = this;
+        $('#pre').click(function(){
+            qt.openPage(
+                './o_add_order_info.html?id='+_this.id,
+                winSetting.index_add_step2.width,
+                winSetting.index_add_step2.height)
+        });
+        $('#next').click(function(){
+            all.showLoadingRun(_this,'submitFn');
+        });
     },
     createBTitlesBtn(){
         bTitleBtn.addLevel2BtnFn(
@@ -70,6 +74,104 @@ let Page = {
             $('#additional_mortgage_body'),
             $('#additional_mortgage_item1'),
             $('#additional_mortgage_item2')
+        );
+    },
+    inputEventBind2(){
+        let //借款额度
+            applyMoney = this.orderData?.applyMoney??0,
+            //逾期费率
+            dom_yqfl = $('#orderRateInfo_overdueRate').get(0),
+            //用款时间
+            dom_date = $('#orderRateInfo_period').get(0),
+            //咨询费
+            dom_zxf = $('#orderRateInfo_consultationFee').get(0),
+            //权证费
+            dom_qzf = $('#orderRateInfo_warrantFee').get(0),
+            //优惠费
+            dom_yhf = $('#orderRateInfo_preferentialFee').get(0),
+            //合计
+            dom_total = $('#orderRateInfo_totalCost').get(0),
+            //咨询费率
+            dom_zxfl = $('#orderRateInfo_consultationRate').get(0);
+
+
+        let fn = function(){
+            // 咨询费率（管理员配置，%，只读）
+            //TODO
+            dom_zxfl.value = moneyFormat(1,2);
+            // 逾期费率（固定0.15%,按日计算当期应还金额）、
+            dom_yqfl.value = 0.15;
+            // 咨询费（申请金额*用款时间*咨询费率，不低于3000）、
+            let advisoryMoney =  applyMoney*dom_date.value*30*dom_zxfl.value/100;
+            advisoryMoney = (advisoryMoney<3000)? 3000 : advisoryMoney;
+            dom_zxf.value = moneyFormat(advisoryMoney,5);
+            // 费用合计、
+            let total = dom_zxf.value*1 + dom_qzf.value*1 - dom_yhf.value*1;
+            dom_total.value = moneyFormat(total,5);
+        };
+        fn();
+
+        dom_date.change = function(){fn();};
+        dom_qzf.change = function(){fn();};
+        dom_yhf.change = function(){fn();};
+    },
+    async backDataToForm(data){
+        //用款时间 天转周期
+        let number = data.orderRateInfo?.period??0;
+        if(number){
+            data.orderRateInfo.period = parseInt(number/30);
+        }
+        //处理对象中 子元素是对象的键
+        for(let [key,val] of Object.entries(data)){
+            if($.isObject(val)){
+                for(let [key1,val1] of Object.entries(val)){
+                    data[key+'_'+key1] = val1;
+                }
+            }
+        }
+
+        //处理动产 不动产数据
+        let tempData = data.additionalMortgagePropertyRightList??[],
+            dcData = [],
+            bdcData = [];
+        tempData.map(rs=>{
+            //不动产
+            if(rs.category == 1){bdcData.push(rs);}
+            //动产
+            if(rs.category == 2){dcData.push(rs);}
+        });
+        data.additionalMortgagePropertyRightList1 = bdcData;
+        data.additionalMortgagePropertyRightList2 = dcData;
+
+        //赋值
+        await all.setFromGroupVal($('#form'),data);
+    },
+    async submitFn(){
+
+        //获取表单数据
+        let form = await all.getFromGroupVal($('#form'));
+        form = all.handlerFromDataByObj(form);
+        //用款时间转天
+        let number = form.orderRateInfo?.period??0;
+        form.orderRateInfo.period = number*30;
+
+
+        form.additionalMortgagePropertyRightList = form.additionalMortgagePropertyRightList1??[].concat(form.additionalMortgagePropertyRightList2??[]);
+        delete form.additionalMortgagePropertyRightList1;
+        delete form.additionalMortgagePropertyRightList2;
+        form.id = this.id;
+        form.orderNo = this.orderNo;
+
+        await ajax.send([
+            api.order_add_step3(form)
+        ]);
+
+        await qt.alert('保存成功!');
+        qt.openPage(
+            //TODO 定单最终页面预览
+            './o_add_order_view.html?id='+this.id,
+            winSetting.index_add_step4.width,
+            winSetting.index_add_step4.height
         );
     }
 
