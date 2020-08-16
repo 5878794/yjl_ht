@@ -75,13 +75,26 @@ let Page = {
         table.body.find('.__key6__').each(function(){
            $(this).addClass('hover');
         });
-        table.body.find('.__key6__').click(function(){
+        table.body.find('.__key6__').click(function(e){
+            e.stopPropagation();
             let data = $(this).parent().data('data'),
                 id = data.id;
             qt.openPage(
                 './draft_del.html?id='+id,
                 winSetting.draft_del.width,
                 winSetting.draft_del.height)
+        });
+
+        table.body.find('.__row__').each(function(){
+            $(this).css({cursor:'pointer'});
+            $(this).click(function(){
+                let data= $(this).data('data'),
+                    id = data.id;
+                qt.openPage(
+                    '../index/o_add_order.html?id='+id,
+                    winSetting.index_add_step1.width,
+                    winSetting.index_add_step1.height)
+            });
         });
     }
 };
