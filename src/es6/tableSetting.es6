@@ -98,31 +98,31 @@ let setting = {
 				name:'客户姓名',
 				width:'15%',
 				style:{color:'#333',fontSize:'14px'},
-				key:'key1'                //数据对应的key
+				key:'clientName'                //数据对应的key
 			},
 			{
 				name:'主申请人电话号码',
 				width:'20%',
 				style:{color:'#333',fontSize:'14px'},
-				key:'key2'                //数据对应的key
+				key:'phone_'                //数据对应的key
 			},
 			{
 				name:'业务类型',
 				width:'15%',
 				style:{color:'#333',fontSize:'14px'},
-				key:'key3'                //数据对应的key
+				key:'businessKey_'                //数据对应的key
 			},
 			{
 				name:'申请金额',
 				width:'25%',
 				style:{color:'#333',fontSize:'14px'},
-				key:'key4'                //数据对应的key
+				key:'applyMoney_'                //数据对应的key
 			},
 			{
 				name:'订单创建时间',
 				width:'15%',
 				style:{color:'#333',fontSize:'14px'},
-				key:'key5'                //数据对应的key
+				key:'createTime_'                //数据对应的key
 			},
 			{
 				name:'',

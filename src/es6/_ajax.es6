@@ -155,11 +155,18 @@ let api = {
 	file_out:{url:'/api/customer/archive/warehouse',type:'post'},
 
 
-	//新建订单
+	//订单
 	order_add_step1:{url:'/api/orderBase/saveOrderBase',type:'post'},
 	order_add_step2:{url:'/api/orderBase/saveOrderPersonInfo',type:'post'},
 	order_add_step3:{url:'/api/orderBase/saveOrderOtherDetail',type:'post'},
 	order_get_byId:{url:'/api/orderBase/getOrderDetailById/{id}',type:'get'},
+
+	//草稿箱 我的业务
+	//isDraft = true //草稿箱
+	//          false //我的业务
+	my_order:{url:'/api/orderBase/list',type:'get'},
+	my_order_del:{url:'/api/orderBase/deletedOrderDetailById/{id}',type:'get'},
+
 
 };
 

@@ -30,5 +30,7 @@ module.exports = {
 	o_add_order_advance:{width:600,height:400},
 	//            预览
 	index_add_step4:{width:600,height:400},
+	//草稿箱-删除订单
+	draft_del:{width:600,height:400},
 
 };

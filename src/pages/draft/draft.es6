@@ -1,6 +1,15 @@
 let app = require('./../../es6/lib/page'),
     lib = require('./../../es6/lib'),
-    tableSet = require('./../../es6/tableSetting');
+    all = require('./../../es6/all'),
+    {ajax,api} = require('./../../es6/_ajax'),
+    qt = require('./../../es6/qt'),
+    pageSizeSetting = require('./../../es6/pageSize'),
+    winSetting = require('./../../es6/winSetting'),
+    tableSet = require('./../../es6/tableSetting'),
+    stamp2Date = require('./../../es6/lib/fn/timeAndStamp'),
+    moneyFormat = require('./../../es6/lib/fn/number'),
+    selectData = require('./../../es6/selectData'),
+    inputStyle = require('./../../es6/inputStyle');
 
 
 
@@ -11,89 +20,69 @@ require('./../../es6/customElement/pc/pagination');
 
 
 
-let loading;
 let Page = {
     init(){
-        // loading = new loadFn();
-        // loading.show('急速加载中');
-        this.run().then(rs=>{
-            // loading.hide();
-        }).catch(rs=>{
-            // err.error(rs);
-            // loading.hide();
-            // app.alert(rs);
-            throw rs;
-        });
+        all.showLoadingRun(this,'run');
     },
+    businessDist:[],
     async run(){
-        this.createList();
-        this.createPagination();
+        await all.getUserInfo();
+
+        this.businessDist = await selectData('businessType');
+
+        await this.getData({pageNum:1});
 
     },
-    createList(){
+    async getData(data){
+        let _this = this;
+
+        data.isDraft = true;
+        data.pageSize = pageSizeSetting.management_notice;
+        let [listData] = await ajax.send([
+            api.my_order(data)
+        ]);
+        let listNumber = listData.total;
+        listData = listData.list || [];
+
+        this.createList(listData);
+        all.createFY({
+            domId:'table_pagination',
+            nowPage:data.pageNum,
+            listLength:listNumber,
+            pageSize:data.pageSize,
+            searchData:data,
+            getDataFn:function(obj){
+                all.showLoadingRun(_this,'getData',obj);
+            }
+        });
+
+    },
+    createList(data){
         let table = $('#table_list').get(0);
         tableSet.set(table,'draft');
 
-        //TODO 数据获取
-        let tempData = [
-            {
-                id:1,key1:'张三',
-                key2:'12312312312',key3:'房抵',key4:'2,000,000',
-                key5:'2020-11-11',key6:'删除'
-            },
-            {
-                id:1,key1:'张三',
-                key2:'12312312312',key3:'房抵',key4:'2,000,000',
-                key5:'2020-11-11',key6:'删除'
-            },
-            {
-                id:1,key1:'张三',
-                key2:'12312312312',key3:'房抵',key4:'2,000,000',
-                key5:'2020-11-11',key6:'删除'
-            },
-            {
-                id:1,key1:'张三',
-                key2:'12312312312',key3:'房抵',key4:'2,000,000',
-                key5:'2020-11-11',key6:'删除'
-            },
-            {
-                id:1,key1:'张三',
-                key2:'12312312312',key3:'房抵',key4:'2,000,000',
-                key5:'2020-11-11',key6:'删除'
-            },
-            {
-                id:1,key1:'张三',
-                key2:'12312312312',key3:'房抵',key4:'2,000,000',
-                key5:'2020-11-11',key6:'删除'
-            },
-            {
-                id:1,key1:'张三',
-                key2:'12312312312',key3:'房抵',key4:'2,000,000',
-                key5:'2020-11-11',key6:'删除'
-            }
-        ];
-        table.show(tempData);
+        data.map(rs=>{
+            rs.key6 = '删除';
+            rs.createTime_ = stamp2Date.getDate1(rs.stamp2Date);
+            rs.applyMoney_ = moneyFormat(rs.applyMoney,5);
+            rs.businessKey_ = this.businessDist[rs.businessKey];
+            //TODO 未返回对应的key
+            rs.phone_ = '接口 无key';
+        });
+
+        table.show(data);
 
         table.body.find('.__key6__').each(function(){
            $(this).addClass('hover');
         });
         table.body.find('.__key6__').click(function(){
-            let data = $(this).parent().data('data');
-            console.log(data);
+            let data = $(this).parent().data('data'),
+                id = data.id;
+            qt.openPage(
+                './draft_del.html?id='+id,
+                winSetting.draft_del.width,
+                winSetting.draft_del.height)
         });
-    },
-    createPagination(){
-        let fy = $('#table_pagination').get(0);
-        fy.show({
-            nowPage: 10,             //当前页码       默认：1
-            listLength: 149,         //总记录数
-            pageSize: 10             //分页数         默认：10
-        });
-        fy.clickFn = function(n){
-            console.log(n)          //点击事件，返回点击的页码
-        };
-        fy.selectBg = 'rgb(86,123,249)';        //设置当前页码显示的背景色  默认：#cc9800
-
     }
 };
 
