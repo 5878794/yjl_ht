@@ -174,6 +174,9 @@ let api = {
 	my_order_del:{url:'/api/orderBase/deletedOrderDetailById/{id}',type:'get'},
 
 
+	//退费退款 列表
+	refund_list:{url:'/api/orderRefund/list',type:'get'},
+	refund_submit:{url:'/api/tkOrderFlow/zhiXingReturnApply',type:'post'},
 };
 
 

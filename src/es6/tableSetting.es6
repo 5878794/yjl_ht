@@ -180,37 +180,37 @@ let setting = {
 				name:'退费类型',
 				width:'15%',
 				style:{color:'#333',fontSize:'14px'},
-				key:'key1'                //数据对应的key
+				key:'refundTypeKey_'                //数据对应的key
 			},
 			{
 				name:'客户姓名',
 				width:'10%',
 				style:{color:'#333',fontSize:'14px'},
-				key:'key2'                //数据对应的key
+				key:'clientName'                //数据对应的key
 			},
 			{
 				name:'客户电话',
 				width:'15%',
 				style:{color:'#333',fontSize:'14px'},
-				key:'key3'                //数据对应的key
+				key:'clientPhone_'                //数据对应的key
 			},
 			{
 				name:'业务类型',
 				width:'10%',
 				style:{color:'#333',fontSize:'14px'},
-				key:'key4'                //数据对应的key
+				key:'businessKey_'                //数据对应的key
 			},
 			{
 				name:'申请金额',
 				width:'25%',
 				style:{color:'#333',fontSize:'14px'},
-				key:'key5'                //数据对应的key
+				key:'applyMoney_'                //数据对应的key
 			},
 			{
 				name:'退费金额',
 				width:'15%',
 				style:{color:'#333',fontSize:'14px'},
-				key:'key6'                //数据对应的key
+				key:'refundMoney_'                //数据对应的key
 			},
 			{
 				name:'',
