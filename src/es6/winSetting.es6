@@ -32,5 +32,7 @@ module.exports = {
 	index_add_step4:{width:600,height:400},
 	//草稿箱-删除订单
 	draft_del:{width:600,height:400},
+	//我的业务-查看详情
+	business_info:{width:600,height:400},
 
 };

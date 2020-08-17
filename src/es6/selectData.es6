@@ -9,8 +9,14 @@ let dist = {
 	businessState:[],
 	//业务来源
 	businessFrom:[],
-	//订单状态    全部、未出款、已出款、已完成
-	orderState:[],
+	//订单状态    0:初始状态 1-审批中 2-审批通过 3-审批失败
+	orderState:[
+		{name:'请选择',value:''},
+		{name:'初始状态',value:'0'},
+		{name:'审批中',value:'1'},
+		{name:'审批通过',value:'2'},
+		{name:'审批失败',value:'3'},
+	],
 	//订单是否完结    （全部、已完结、未完结）
 	orderEnd:[],
 	//客户分类
@@ -209,10 +215,10 @@ let getChildData = async function(val,id){
 		api[apiName](param)
 	]);
 
-	bSelect.selectData = getSelectDataFn(type,data);
+	bSelect.selectData = getSelectDataFn(type,data,true);
 };
 
-let getSelectDataFn = function(type,data){
+let getSelectDataFn = function(type,data,notCatch){
 	let thisData = getDataFn[type](data),
 		newData = [{name:'请选择',value:''}];
 	thisData.map(rs=>{
@@ -221,6 +227,11 @@ let getSelectDataFn = function(type,data){
 			value:rs[keyChange[type].value]
 		});
 	});
+
+	//缓存数据
+	if(!notCatch){
+		dist[type] = newData;
+	}
 
 	return newData;
 };

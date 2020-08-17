@@ -139,31 +139,31 @@ let setting = {
 				name:'订单号',
 				width:'20%',
 				style:{color:'#333',fontSize:'14px'},
-				key:'key1'                //数据对应的key
+				key:'orderNo'                //数据对应的key
 			},
 			{
 				name:'姓名',
 				width:'15%',
 				style:{color:'#333',fontSize:'14px'},
-				key:'key2'                //数据对应的key
+				key:'clientName'                //数据对应的key
 			},
 			{
 				name:'产品类型',
 				width:'15%',
 				style:{color:'#333',fontSize:'14px'},
-				key:'key3'                //数据对应的key
+				key:'businessKey_'                //数据对应的key
 			},
 			{
 				name:'申请金额',
 				width:'25%',
 				style:{color:'#333',fontSize:'14px'},
-				key:'key4'                //数据对应的key
+				key:'applyMoney_'                //数据对应的key
 			},
 			{
 				name:'订单状态',
 				width:'15%',
 				style:{color:'#333',fontSize:'14px'},
-				key:'key5'                //数据对应的key
+				key:'orderStatus_'                //数据对应的key
 			},
 			{
 				name:'操作',

@@ -160,6 +160,12 @@ let api = {
 	order_add_step2:{url:'/api/orderBase/saveOrderPersonInfo',type:'post'},
 	order_add_step3:{url:'/api/orderBase/saveOrderOtherDetail',type:'post'},
 	order_get_byId:{url:'/api/orderBase/getOrderDetailById/{id}',type:'get'},
+	//订单最终提交
+	//房抵
+	order_submit:{url:'/api/fdOrderFlow/zhixingSubmitOrder',type:'post'},
+	//垫资
+	order_submit1:{url:'',type:''},
+
 
 	//草稿箱 我的业务
 	//isDraft = true //草稿箱
