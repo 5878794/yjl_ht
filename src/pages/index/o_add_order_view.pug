@@ -1,0 +1,226 @@
+doctype html
+html
+    head
+        title 订单详情
+        include ./../../pug_include/head_pc
+
+        script(data-src='o_add_order_view.min.js?t='+tt)
+        style.
+            body,html{overflow:auto;}
+            .openWin_input_main{
+                font-size:14px;
+            }
+            .openWin_input_item3,
+            .openWin_input_item1{
+                padding:10px;
+            }
+            .openWin_input_main p{
+                display: inline-block;
+                color:#aaa;
+                padding-right:10px;
+            }
+            .openWin_input_main span{
+                display: block;
+                color:#333;
+            }
+            .openWin_input_main a{
+                width: 100px; height: 100px; border:1px solid #333;
+            }
+            .openWin_input_main a img{
+                display: block;
+            }
+            .files__ p{
+                width: 120px;
+            }
+
+    body
+
+        div(class='openWin_main' id='form')
+
+            b-title(name='订单信息')
+            div(class='openWin_input_main box_hlt box_lines')
+                div(class='openWin_input_item3 box_hlt')
+                    p 业务方案
+                    span(class='boxflex1' key='businessKey') 阿斯顿发就啊可激发思考的肌肤阿斯顿发就撒开的肌肤可撒的肌肤阿斯顿了飞机阿斯顿可激发可撒迳到
+                div(class='openWin_input_item3 box_hlt')
+                    p 客户姓名
+                    span(key='clientName' class='boxflex1')
+                div(class='openWin_input_item3 box_hlt')
+                    p 申请金额
+                    span(key='applyMoney' class='boxflex1')
+
+
+
+
+
+            b-title(name='业务来源')
+            div(class='openWin_input_main box_hlt box_lines')
+                div(class='openWin_input_item3 box_hlt')
+                    p 业务来源
+                    span(key='businessSourceKey' class='boxflex1')
+                div(class='openWin_input_item3 box_hlt')
+                    p 其它来源
+                    span(key='businessSource' class='boxflex1')
+
+
+
+
+
+            b-title(name='订单基本详情')
+            b-title1(name='主申请人信息')
+            div(class='openWin_input_main box_hlt box_lines')
+                div(class='openWin_input_item3 box_hlt')
+                    p 名称
+                    span(key='name' class='boxflex1')
+                div(class='openWin_input_item3 box_hlt')
+                    p 证件编号
+                    span(key='cardNo' class='boxflex1')
+                div(class='openWin_input_item3 box_hlt')
+                    p 电话号码
+                    span(key='mobile' class='boxflex1')
+                div(class='openWin_input_item1 box_hlt')
+                    p 住址
+                    span(key='address' class='boxflex1')
+
+
+
+
+
+            b-title1(name='紧急联系人' bind-group="urgentApplyInfoList")
+            //多个
+            div(id='emergency_contact_body')
+                div(class='openWin_input_main box_hlt box_lines')
+                    div(class='openWin_input_item3 box_hlt')
+                        p 申请人
+                        span(key='name' class='boxflex1')
+                    div(class='openWin_input_item3 box_hlt')
+                        p 联系电话
+                        span(key='mobile' class='boxflex1')
+
+
+
+
+
+
+            b-title(name='共同申请人信息' bind-group="commonOrderApplyInfoList")
+            //多个
+            div(id='joint_application_body')
+                b-title1(name='申请人')
+                div(class='openWin_input_main box_hlt box_lines')
+                    div(class='openWin_input_item3 box_hlt')
+                        p 名称
+                        span(key='name' class='boxflex1')
+                    div(class='openWin_input_item3 box_hlt')
+                        p 证件编号
+                        span(key='cardNo' class='boxflex1')
+                    div(class='openWin_input_item3 box_hlt')
+                        p 电话号码
+                        span(key='mobile' class='boxflex1')
+                    div(class='openWin_input_item1 box_hlt')
+                        p 住址
+                        span(key='address' class='boxflex1')
+
+
+
+
+            b-title(name='担保人信息' bind-group="guaranteeInfoList")
+            //多个
+            div(id='guarantor_body')
+                b-title1(name='担保人' class='')
+                div(class='openWin_input_main box_hlt box_lines')
+                    div(class='openWin_input_item3 box_hlt')
+                        p 名称
+                        span(key='name' class='boxflex1')
+                    div(class='openWin_input_item3 box_hlt')
+                        p 证件编号
+                        span(key='cardNo' class='boxflex1')
+                    div(class='openWin_input_item3 box_hlt')
+                        p 电话号码
+                        span(key='mobile' class='boxflex1')
+                    div(class='openWin_input_item1 box_hlt')
+                        p 住址
+                        span(key='address' class='boxflex1')
+
+
+
+            b-title(name='客户资料')
+            div(class='openWin_input_main box_hlt box_lines files__')
+                div(class='openWin_input_item1 box_hlt')
+                    p 身份证
+                    span(key='attachUrls1' class='boxflex1 box_hlt box_lines')
+                        a(class='box_hcc')
+                            img(src='./image/add.png')
+                div(class='openWin_input_item1 box_hlt')
+                    p 抵押物证件
+                    span(key='attachUrls2' class='boxflex1 box_hlt box_lines')
+                div(class='openWin_input_item1 box_hlt')
+                    p 其他报告
+                    span(key='attachUrls3' class='boxflex1 box_hlt box_lines')
+
+
+
+            //垫资、非垫资
+            div
+                b-title(name='主要抵押物信息')
+                b-title1(name='产权信息')
+                div(class='openWin_input_main box_hlt box_lines')
+                    div(class='openWin_input_item3 box_hlt')
+                        p 名称
+                        span(key='mainMortgagePropertyRight_name' class='boxflex1')
+                    div(class='openWin_input_item3 box_hlt')
+                        p 产权证号
+                        span(key='mainMortgagePropertyRight_idCard' class='boxflex1')
+                    div(class='openWin_input_item3 box_hlt')
+                        p 面积
+                        span(key='mainMortgagePropertyRight_area' class='boxflex1' unit='㎡')
+                    div(class='openWin_input_item3 box_hlt')
+                        p 住宅性质
+                        span(key='mainMortgagePropertyRight_type' class='boxflex1')
+                    div(class='openWin_input_item3 box_hlt')
+                        p 取得时间
+                        span(key='mainMortgagePropertyRight_getTime' class='boxflex1')
+
+
+
+                b-title1(name='评估信息')
+                div(class='openWin_input_main box_hlt box_lines')
+                    div(class='openWin_input_item1 box_hlt')
+                        p 评估总价
+                        span(key='orderMortgageExtendAssessment_evaluationPrice' class='boxflex1' unit='万元')
+                    div(class='openWin_input_item1 box_hlt')
+                        p 快销总价
+                        span(key='orderMortgageExtendAssessment_attachUrls' class='boxflex1')
+                            a(class='box_hcc')
+                                img(src='./image/add.png')
+
+
+                b-title1(name='抵押信息' bind-group='orderMortgageExtendMortgageList')
+                //多个
+                div(id='mortgage_info_body' )
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
