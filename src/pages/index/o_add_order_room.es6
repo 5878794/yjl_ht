@@ -168,8 +168,7 @@ let Page = {
 
         await qt.alert('保存成功!');
         qt.openPage(
-            //TODO 定单最终页面预览
-            './o_add_order_view.html?id='+this.id,
+            './o_add_order_view.html?id='+this.id+'&state=1',
             winSetting.index_add_step4.width,
             winSetting.index_add_step4.height
         );

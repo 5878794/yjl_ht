@@ -300,7 +300,7 @@ let Page = {
 
         await qt.alert('保存成功!');
         qt.openPage(
-            './o_add_order_view.html?id='+this.id,
+            './o_add_order_view.html?id='+this.id+'&state=1',
             winSetting.index_add_step4.width,
             winSetting.index_add_step4.height
         );
