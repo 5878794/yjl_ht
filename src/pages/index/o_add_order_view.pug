@@ -159,8 +159,9 @@ html
 
 
 
+
             //垫资、非垫资
-            div
+            div(class='__dz_fdz__')
                 b-title(name='主要抵押物信息')
                 b-title1(name='产权信息')
                 div(class='openWin_input_main box_hlt box_lines')
@@ -197,6 +198,386 @@ html
                 b-title1(name='抵押信息' bind-group='orderMortgageExtendMortgageList')
                 //多个
                 div(id='mortgage_info_body' )
+                    b-title1(name='抵押' nameStyle='color:rgb(83,83,83);font-weight: normal;')
+                    div(class='openWin_input_main box_hlt box_lines')
+                        div(class='openWin_input_item3 box_hlt')
+                            p 抵押时间
+                            span(key='mortgageTime' class='boxflex1')
+                        div(class='openWin_input_item3 box_hlt')
+                            p 抵押次数
+                            span(key='mortgageCount' class='boxflex1')
+                        div(class='openWin_input_item3 box_hlt')
+                            p 抵押权人
+                            span(key='mortgagee' class='boxflex1')
+                        div(class='openWin_input_item3 box_hlt')
+                            p 原贷贷款
+                            span(key='loanPrice' class='boxflex1' unit='万元')
+                        div(class='openWin_input_item3 box_hlt')
+                            p 抵押金额
+                            span(key='mortgagePrice' class='boxflex1' unit='万元')
+                        div(class='openWin_input_item1 box_hlt')
+                            p 抵押附件
+                            span(key='attachUrls' class='boxflex1')
+                                a(class='box_hcc')
+                                    img(src='./image/add.png')
+
+
+
+
+
+                b-title1(name='房屋现状' id='room_info' bind-group='orderMortgageExtendHouseList')
+                //多个
+                div(id='room_info_body')
+                    div(class='openWin_input_main box_hlt box_lines')
+                        div(class='openWin_input_item3 box_hlt')
+                            p 房龄
+                            span(key='age' class='boxflex1' unit='年')
+                        div(class='openWin_input_item3 box_hlt')
+                            p 朝向
+                            span(key='direct' class='boxflex1')
+                        div(class='openWin_input_item3 box_hlt')
+                            p 装修情况
+                            span(key='decoration' class='boxflex1')
+                        div(class='openWin_input_item3 box_hlt')
+                            p 使用情况
+                            span(key='useCase' class='boxflex1')
+                        div(class='openWin_input_item3 box_hlt')
+                            p 有无电梯
+                            span(key='elevator' class='boxflex1')
+                        div(class='openWin_input_item3 box_hlt')
+                            p 总楼层
+                            span(key='floor' class='boxflex1')
+
+
+
+
+                b-title(name='附抵押物信息' id='additional_mortgage' bind-group1='additionalMortgagePropertyRightList1' bind-group2='additionalMortgagePropertyRightList2')
+                //多个
+                div(id='additional_mortgage_body')
+                    b-title1(name='不动产')
+                    div(class='openWin_input_main box_hlt box_lines')
+                        div(class='openWin_input_item3 box_hlt')
+                            p 名称
+                            span(key='name' class='boxflex1')
+                        div(class='openWin_input_item3 box_hlt')
+                            p 产权证号
+                            span(key='idCard' class='boxflex1')
+                        div(class='openWin_input_item3 box_hlt')
+                            p 面积
+                            span(key='area' class='boxflex1' unit='㎡')
+                        div(class='openWin_input_item3 box_hlt')
+                            p 住宅性质
+                            span(key='type' class='boxflex1')
+                        div(class='openWin_input_item3 box_hlt')
+                            p 取得时间
+                            span(key='getTime' class='boxflex1')
+
+                    b-title1(name='动产')
+                    div(class='openWin_input_main box_hlt box_lines')
+                        div(class='openWin_input_item3 box_hlt')
+                            p 名称
+                            span(key='name' class='boxflex1')
+                        div(class='openWin_input_item3 box_hlt')
+                            p 权益
+                            span(key='percent' class='boxflex1' unit='%')
+                        div(class='openWin_input_item3 box_hlt')
+                            p 评估价值
+                            span(key='evaluationValue' class='boxflex1' unit='万元')
+
+
+
+
+
+
+
+
+                b-title(name='还款信息')
+                div(class='openWin_input_main box_hlt box_lines')
+                    div(class='openWin_input_item3 box_hlt')
+                        p 还款对象
+                        span(key='orderRepayment_repaymentTarget' class='boxflex1')
+                    div(class='openWin_input_item3 box_hlt')
+                        p 联系人
+                        span(key='orderRepayment_contactPerson' class='boxflex1')
+                    div(class='openWin_input_item3 box_hlt')
+                        p 联系电话
+                        span(key='orderRepayment_contactMobile' class='boxflex1')
+                    div(class='openWin_input_item3 box_hlt')
+                        p 还款户名
+                        span(key='orderRepayment_bankName' class='boxflex1')
+                    div(class='openWin_input_item3 box_hlt')
+                        p 还款账号
+                        span(key='orderRepayment_bankNo' class='boxflex1')
+                    div(class='openWin_input_item3 box_hlt')
+                        p 开户行
+                        span(key='orderRepayment_openBank' class='boxflex1')
+
+
+                b-title(name='回款信息')
+                div(class='openWin_input_main box_hlt box_lines')
+                    div(class='openWin_input_item3 box_hlt')
+                        p 回款对象
+                        span(key='orderReturnRepayment_returnTarget' class='boxflex1')
+                    div(class='openWin_input_item3 box_hlt')
+                        p 联系人
+                        span(key='orderReturnRepayment_contactPerson' class='boxflex1')
+                    div(class='openWin_input_item3 box_hlt')
+                        p 联系电话
+                        span(key='orderReturnRepayment_contactMobile' class='boxflex1')
+                    div(class='openWin_input_item3 box_hlt')
+                        p 批复金额
+                        span(key='orderReturnRepayment_replyMoney' class='boxflex1' unit='元')
+                    div(class='openWin_input_item3 box_hlt')
+                        p 回款账号
+                        span(key='orderReturnRepayment_bankNo' class='boxflex1')
+                    div(class='openWin_input_item3 box_hlt')
+                        p 开户行
+                        span(key='orderReturnRepayment_openBank' class='boxflex1')
+                    div(class='openWin_input_item3 box_hlt')
+                        p 回款户名
+                        span(key='orderReturnRepayment_bankName' class='boxflex1')
+                    div(class='openWin_input_item3 box_hlt')
+                        p 回款金额
+                        span(key='orderReturnRepayment_returnMoney' class='boxflex1' unit='元')
+                    //- 非垫资业务没有
+                    div(class='openWin_input_item3 box_hlt __fdz_no__')
+                        p 回款方式
+                        span(key='orderReturnRepayment_returnModeType' class='boxflex1' unit='元')
+
+
+
+                //- 非垫资业务没有
+                div(class='__fdz_no__')
+                    b-title(name='买家信息')
+                    div(class='openWin_input_main box_hlt box_lines')
+                        div(class='openWin_input_item3 box_hlt')
+                            p 名称
+                            span(key='orderBuyer_name' class='boxflex1')
+                        div(class='openWin_input_item3 box_hlt')
+                            p 证件编号
+                            span(key='orderBuyer_idCard' class='boxflex1')
+                        div(class='openWin_input_item3 box_hlt')
+                            p 电话号码
+                            span(key='orderBuyer_mobile' class='boxflex1')
+                        div(class='openWin_input_item1 box_hlt')
+                            p 住址
+                            span(key='orderBuyer_address' class='boxflex1')
+
+
+
+                //- 非垫资业务没有
+                div(class='__fdz_no__')
+                    b-title(name='交易信息' id='')
+                    div(class='openWin_input_main box_hlt box_lines')
+                        div(class='openWin_input_item3 box_hlt')
+                            p 成交中介
+                            span(key='orderTrade_dealIntermediary' class='boxflex1')
+                        div(class='openWin_input_item3 box_hlt')
+                            p 中介联系人
+                            span(key='orderTrade_contactPerson' class='boxflex1')
+                        div(class='openWin_input_item3 box_hlt')
+                            p 中介电话
+                            span(key='orderTrade_contactMobile' class='boxflex1')
+                        div(class='openWin_input_item3 box_hlt')
+                            p 成交总价
+                            span(key='orderTrade_dealIntermediary' class='boxflex1' unit='元')
+                        div(class='openWin_input_item3 box_hlt')
+                            p 付款方式
+                            span(key='orderTrade_paymentMethodType' class='boxflex1')
+
+
+
+                //- 非垫资业务没有
+                div(class='__fdz_no__')
+                    b-title(name='银行监管')
+                    b-title1(name='买家')
+                    div(class='openWin_input_main box_hlt box_lines')
+                        div(class='openWin_input_item3 box_hlt')
+                            p 监管银行
+                            span(key='buyerBankSupervision_supervisionBank' class='boxflex1')
+                        div(class='openWin_input_item3 box_hlt')
+                            p 监管金额
+                            span(key='buyerBankSupervision_supervisionMoney' class='boxflex1' unit='元')
+                        div(class='openWin_input_item3 box_hlt')
+                            p 监管账号
+                            span(key='buyerBankSupervision_bankNo' class='boxflex1')
+                        div(class='openWin_input_item3 box_hlt')
+                            p 户名
+                            span(key='buyerBankSupervision_bankName' class='boxflex1')
+                        div(class='openWin_input_item3 box_hlt')
+                            p 开户行
+                            span(key='buyerBankSupervision_openBank' class='boxflex1')
+                    b-title1(name='卖家')
+                    div(class='openWin_input_main box_hlt box_lines')
+                        div(class='openWin_input_item3 box_hlt')
+                            p 监管银行
+                            span(key='sellerBankSupervision_supervisionBank' class='boxflex1')
+                        div(class='openWin_input_item3 box_hlt')
+                            p 监管金额
+                            span(key='sellerBankSupervision_supervisionMoney' class='boxflex1' unit='元')
+                        div(class='openWin_input_item3 box_hlt')
+                            p 监管账号
+                            span(key='sellerBankSupervision_bankNo' class='boxflex1')
+                        div(class='openWin_input_item3 box_hlt')
+                            p 户名
+                            span(key='sellerBankSupervision_bankName' class='boxflex1')
+                        div(class='openWin_input_item3 box_hlt')
+                            p 开户行
+                            span(key='sellerBankSupervision_openBank' class='boxflex1')
+
+
+                b-title(name='费用信息')
+                div(class='openWin_input_main box_hlt box_lines')
+                    div(class='openWin_input_item3 box_hlt')
+                        p 用款时间
+                        span(key='orderRateInfo_period' class='boxflex1' unit='天')
+                    div(class='openWin_input_item3 box_hlt')
+                        p 咨询费率
+                        span(key='orderRateInfo_consultationRate' class='boxflex1' unit='%')
+                    div(class='openWin_input_item3 box_hlt')
+                        p 咨询费用
+                        span(key='orderRateInfo_consultationFee' class='boxflex1' unit='元')
+                    div(class='openWin_input_item3 box_hlt')
+                        p 权证费
+                        span(key='orderRateInfo_warrantFee' class='boxflex1' unit='元')
+                    div(class='openWin_input_item3 box_hlt')
+                        p 服务费率
+                        span(key='orderRateInfo_serviceRate' class='boxflex1' unit='%')
+                    div(class='openWin_input_item3 box_hlt')
+                        p 服务费用
+                        span(key='orderRateInfo_serviceFee' class='boxflex1' unit='元')
+                    div(class='openWin_input_item3 box_hlt')
+                        p 优惠费用
+                        span(key='orderRateInfo_preferentialFee' class='boxflex1' unit='元')
+                    div(class='openWin_input_item3 box_hlt')
+                        p 费用合计
+                        span(key='orderRateInfo_totalCost' class='boxflex1' unit='元')
+
+
+
+            //房抵
+            div(class='__fd__')
+                b-title(name='房抵信息')
+                div(class='openWin_input_main box_hlt box_lines')
+                    div(class='openWin_input_item1 box_hlt')
+                        p 借款用途
+                        span(key='purpose' class='boxflex1')
+
+                b-title(name='主要抵押物信息')
+                div(class='openWin_input_main box_hlt box_lines')
+                    div(class='openWin_input_item3 box_hlt')
+                        p 名称
+                        span(key='mainMortgagePropertyRight_name' class='boxflex1')
+                    div(class='openWin_input_item3 box_hlt')
+                        p 产权证号
+                        span(key='mainMortgagePropertyRight_idCard' class='boxflex1')
+                    div(class='openWin_input_item3 box_hlt')
+                        p 面积
+                        span(key='mainMortgagePropertyRight_area' class='boxflex1' unit='㎡')
+                    div(class='openWin_input_item3 box_hlt')
+                        p 住宅性质
+                        span(key='mainMortgagePropertyRight_type' class='boxflex1')
+                    div(class='openWin_input_item3 box_hlt')
+                        p 取得时间
+                        span(key='mainMortgagePropertyRight_getTime' class='boxflex1')
+
+
+                b-title(name='附抵押物信息' id='additional_mortgage')
+                //多个
+                div(id='additional_mortgage_body')
+                    b-title1(name='不动产')
+                    div(class='openWin_input_main box_hlt box_lines')
+                        div(class='openWin_input_item3 box_hlt')
+                            p 名称
+                            span(key='name' class='boxflex1')
+                        div(class='openWin_input_item3 box_hlt')
+                            p 产权证号
+                            span(key='idCard' class='boxflex1')
+                        div(class='openWin_input_item3 box_hlt')
+                            p 面积
+                            span(key='area' class='boxflex1' unit='㎡')
+                        div(class='openWin_input_item3 box_hlt')
+                            p 住宅性质
+                            span(key='type' class='boxflex1')
+                        div(class='openWin_input_item3 box_hlt')
+                            p 取得时间
+                            span(key='getTime' class='boxflex1')
+
+                    b-title1(name='动产')
+                    div(class='openWin_input_main box_hlt box_lines')
+                        div(class='openWin_input_item3 box_hlt')
+                            p 名称
+                            span(key='name' class='boxflex1')
+                        div(class='openWin_input_item3 box_hlt')
+                            p 权益
+                            span(key='percent' class='boxflex1' unit='%')
+                        div(class='openWin_input_item3 box_hlt')
+                            p 评估价值
+                            span(key='evaluationValue' class='boxflex1' unit='万元')
+
+
+
+                b-title(name='放款信息' id='')
+                div(class='openWin_input_main box_hlt box_lines')
+                    div(class='openWin_input_item3 box_hlt')
+                        p 放款户名
+                        span(key='orderClientBankAccount_bankName' class='boxflex1')
+                    div(class='openWin_input_item3 box_hlt')
+                        p 放款账号
+                        span(key='orderClientBankAccount_bankNo' class='boxflex1')
+                    div(class='openWin_input_item3 box_hlt')
+                        p 开户行
+                        span(key='orderClientBankAccount_openBank' class='boxflex1')
+                b-title(name='费用信息')
+                div(class='openWin_input_main box_hlt box_lines')
+                    div(class='openWin_input_item3 box_hlt')
+                        p 用款时间
+                        span(key='orderRateInfo_period' class='boxflex1' unit='期(30天/期)')
+                    div(class='openWin_input_item3 box_hlt')
+                        p 咨询费率
+                        span(key='orderRateInfo_consultationRate' class='boxflex1' unit='%')
+                    div(class='openWin_input_item3 box_hlt')
+                        p 咨询费用
+                        span(key='orderRateInfo_consultationFee' class='boxflex1' unit='元')
+                    div(class='openWin_input_item3 box_hlt')
+                        p 权证费
+                        span(key='orderRateInfo_warrantFee' class='boxflex1' unit='元')
+                    div(class='openWin_input_item3 box_hlt')
+                        p 逾期费率
+                        span(key='orderRateInfo_overdueRate' class='boxflex1' unit='%/日')
+                    div(class='openWin_input_item3 box_hlt')
+                    div(class='openWin_input_item3 box_hlt')
+                        p 优惠费用
+                        span(key='orderRateInfo_preferentialFee' class='boxflex1' unit='元')
+                    div(class='openWin_input_item3 box_hlt')
+                        p 费用合计
+                        span(key='orderRateInfo_totalCost' class='boxflex1' unit='元')
+
+
+
+            b-title(name='备注')
+            div(class='openWin_input_main box_hlt box_lines')
+                div(class='openWin_input_item3 box_hlt')
+                    p
+                    span(key='remark' class='boxflex1')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
