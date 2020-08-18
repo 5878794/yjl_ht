@@ -23,7 +23,7 @@ let Page = {
 		let param = getParamFromUrl();
 		this.id = param.id;
 		this.state = param.state || 0;
-
+		this.btnEventBind();
 		await all.getUserInfo();
 
 		let [data] = await ajax.send([
@@ -33,7 +33,7 @@ let Page = {
 
 		this.showHideDom();
 
-		this.btnEventBind();
+
 
 
 		//TODO 数据绑定
