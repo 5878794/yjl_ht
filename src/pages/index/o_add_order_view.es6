@@ -218,6 +218,7 @@ let Page = {
 
 		this.bindDataFn($('#part2'),data);
 	},
+	//房抵
 	async bindData3(data){
 		//住宅性质
 		let dist = await selectData('residentialNature') || {};
@@ -248,6 +249,7 @@ let Page = {
 		this.bindDataFn($('#part3'),data);
 		this.bindDataFn($('#part4'),data);
 	},
+	//垫资、非垫资
 	async bindData4(data){
 		//住宅性质
 		let dist = await selectData('residentialNature') || {};
