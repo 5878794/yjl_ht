@@ -167,11 +167,13 @@ let Page = {
 			nowData.map(rs=>{
 				let _item = item.clone().attr({id:''}).removeClass('hidden');
 				_item.find('span').each(function(){
-					let key = $(this).attr('key');
+					let key = $(this).attr('key'),
+						unit = $(this).attr('unit') || '';
 					if($(this).hasClass('_files_')){
 						addFile($(this),rs);
 					}else{
-						$(this).text(rs[key]??'');
+						let val = rs[key] || '';
+						$(this).text(val+' '+unit);
 					}
 				});
 				body.append(_item);
@@ -254,6 +256,10 @@ let Page = {
 		//付款方式
 		let dist2 = await selectData('payMethod')??{};
 
+		//处理主要抵押物信息
+		data.mainMortgagePropertyRight = data.mainMortgagePropertyRight??{};
+		data.mainMortgagePropertyRight.type = dist[data.mainMortgagePropertyRight.type] || '';
+		data.mainMortgagePropertyRight.getTime = stamp2Date.getDate1(data.mainMortgagePropertyRight.getTime || '');
 
 		//垫资
 		//评估信息 快消总价 orderMortgageExtendAssessment_attachUrls
@@ -262,6 +268,7 @@ let Page = {
 		//垫资-抵押
 		let dy = data.orderMortgageExtendMortgageList??[];
 		dy.map(rs=>{
+			rs.mortgageTime = stamp2Date.getDate1(rs.mortgageTime || '');
 			rs.attachUrls = all.getRealImageSrc(rs.attachUrls);
 		});
 
