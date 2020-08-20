@@ -32,6 +32,7 @@ let Page = {
 			api.order_get_byId({id:this.id})
 		]);
 		this.type = data.businessKey;
+		this.orderNo = data.orderNo;
 
 		this.showHideDom();
 
@@ -246,6 +247,11 @@ let Page = {
 		data.additionalMortgagePropertyRightList2 = data2;
 
 
+		//用款时间  要除30
+		data.orderRateInfo = data.orderRateInfo??{};
+		data.orderRateInfo.period = parseInt(data.orderRateInfo.period/30);
+
+
 		this.bindDataFn($('#part3'),data);
 		this.bindDataFn($('#part4'),data);
 	},
@@ -307,7 +313,28 @@ let Page = {
 	},
 	//生成订单
 	async submit(){
+		if(this.type == 1) {
+			//房抵
+			await ajax.send([
+				api.order_submit({
+					fdZhiXingSubmitOrderRo:{
+						orderNo:this.orderNo
+					}
+				})
+			]);
+		}else{
+			//垫资
+			await ajax.send([
+				api.order_submit1({
+					auditOrderRo:{
+						orderNo:this.orderNo
+					}
+				})
+			]);
+		}
 
+		await qt.alert('订单创建成功!');
+		qt.closeWin();
 	}
 
 

@@ -275,7 +275,9 @@ let Page = {
         //获取表单数据
         let form = await all.getFromGroupVal($('#form'));
         form = all.handlerFromDataByObj(form);
-        form.additionalMortgagePropertyRightList = form.additionalMortgagePropertyRightList1??[].concat(form.additionalMortgagePropertyRightList2??[]);
+        form.additionalMortgagePropertyRightList1 = form.additionalMortgagePropertyRightList1??[];
+        form.additionalMortgagePropertyRightList2 = form.additionalMortgagePropertyRightList2??[];
+        form.additionalMortgagePropertyRightList = form.additionalMortgagePropertyRightList1?.concat(form.additionalMortgagePropertyRightList2);
         delete form.additionalMortgagePropertyRightList1;
         delete form.additionalMortgagePropertyRightList2;
         form.id = this.id;

@@ -155,8 +155,9 @@ let Page = {
         let number = form.orderRateInfo?.period??0;
         form.orderRateInfo.period = number*30;
 
-
-        form.additionalMortgagePropertyRightList = form.additionalMortgagePropertyRightList1??[].concat(form.additionalMortgagePropertyRightList2??[]);
+        form.additionalMortgagePropertyRightList1 = form.additionalMortgagePropertyRightList1??[];
+        form.additionalMortgagePropertyRightList2 = form.additionalMortgagePropertyRightList2??[];
+        form.additionalMortgagePropertyRightList = form.additionalMortgagePropertyRightList1?.concat(form.additionalMortgagePropertyRightList2);
         delete form.additionalMortgagePropertyRightList1;
         delete form.additionalMortgagePropertyRightList2;
         form.id = this.id;
