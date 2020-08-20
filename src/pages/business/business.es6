@@ -102,22 +102,25 @@ let Page = {
         table.body.find('.__key6__').each(function(){
             $(this).addClass('hover');
         });
-        table.body.find('.__key6__').click(function(){
+        table.body.find('.__key6__').click(function(e){
+            e.stopPropagation();
             let data = $(this).parent().data('data'),
-                id = data.id;
+                id = data.id,
+                orderNo = data.orderNo;
 
             qt.openPage(
-                './business_info.html?id='+id,
+                './business_info.html?id='+id+'&orderNo='+orderNo,
                 winSetting.business_info.width,
                 winSetting.business_info.height)
         });
         table.body.find('.__row__').css({cursor:'pointer'});
         table.body.find('.__row__').click(function(){
             let data = $(this).data('data'),
-                id = data.id;
+                id = data.id,
+                orderNo = data.orderNo;
 
             qt.openPage(
-                './business_info.html?id='+id,
+                './business_info.html?id='+id+'&orderNo='+orderNo,
                 winSetting.business_info.width,
                 winSetting.business_info.height)
         });

@@ -303,6 +303,54 @@ let all = {
 		part1.data = backData;
 	},
 
+	//设置订单历史流程
+	//TODO
+	async setOrderHistoryData(data){
+		let history = $('#history').get(0);
+		data = [
+			{
+				no:'1',
+				name:'创建计划',
+				state:true,
+				info:'同意',
+				img:['https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1594181331374&di=cf77ff4f40436b635d59c92f8076c4b8&imgtype=0&src=http%3A%2F%2Fspider.nosdn.127.net%2Fbf695201a8eade248b9362bda0bdb446.jpeg','https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1594181331374&di=cf77ff4f40436b635d59c92f8076c4b8&imgtype=0&src=http%3A%2F%2Fspider.nosdn.127.net%2Fbf695201a8eade248b9362bda0bdb446.jpeg'],
+				date:'2020-11-11',
+				user:'张三'
+			},
+			{
+				no:'1',
+				name:'创建计划',
+				state:true,
+				info:'同意',
+				img:['https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1594181331374&di=cf77ff4f40436b635d59c92f8076c4b8&imgtype=0&src=http%3A%2F%2Fspider.nosdn.127.net%2Fbf695201a8eade248b9362bda0bdb446.jpeg','https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1594181331374&di=cf77ff4f40436b635d59c92f8076c4b8&imgtype=0&src=http%3A%2F%2Fspider.nosdn.127.net%2Fbf695201a8eade248b9362bda0bdb446.jpeg'],
+				date:'2020-11-11',
+				user:'张三'
+			},
+			{
+				no:'1',
+				name:'创建计划',
+				state:false,
+				info:'同意',
+				img:['https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1594181331374&di=cf77ff4f40436b635d59c92f8076c4b8&imgtype=0&src=http%3A%2F%2Fspider.nosdn.127.net%2Fbf695201a8eade248b9362bda0bdb446.jpeg','https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1594181331374&di=cf77ff4f40436b635d59c92f8076c4b8&imgtype=0&src=http%3A%2F%2Fspider.nosdn.127.net%2Fbf695201a8eade248b9362bda0bdb446.jpeg'],
+				date:'2020-11-11',
+				user:'张三'
+			},
+			{
+				no:'1',
+				name:'创建计划',
+				state:true,
+				info:'同意',
+				img:[],
+				date:'2020-11-11',
+				user:'张三'
+			}
+		];
+		history.data = data;
+		history.imgClick = function(rs){
+			console.log(rs);        //图片点击返回当前图片路径
+		}
+	},
+
 
 
 	//临时赋值测试接口
