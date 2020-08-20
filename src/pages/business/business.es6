@@ -50,7 +50,6 @@ let Page = {
         let listNumber = listData.total;
         listData = listData.list || [];
 
-        console.log(listData)
 
         this.createList(listData);
         all.createFY({
@@ -93,7 +92,7 @@ let Page = {
         data.map(rs=>{
            rs.businessKey_ = this.productTypeDist[rs.businessKey];
            rs.applyMoney_ = moneyFormat(rs.applyMoney,5);
-           rs.orderStatus_ = this.orderStateDist[rs.orderFlowStatus];
+           rs.orderStatus_ = this.orderStateDist[rs.orderStatus];
            rs.key6 = '查看详情';
         });
 
