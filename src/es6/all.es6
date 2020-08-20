@@ -238,8 +238,8 @@ let all = {
 	//设置订单顶部数据
 	async setOrderTopData(level,data){
 		let part1 = $('b-order-info').get(0),
-			dist = await selectData('businessType'),
-			distForm = await selectData('businessFrom');
+			dist = await selectData('businessType') || {},
+			distForm = await selectData('businessFrom') || {};
 
 		part1.showLevel = level;
 
@@ -251,15 +251,40 @@ let all = {
 		}
 		if(level >= 2){
 			backData.from = '来自'+distForm[data.businessSourceKey];
-			//TODO
-			backData.mans = [
-				{name:'张三',phone:12312312312,idcard:'123333333333333333',address:'阿打发打发发代付链接撒地方科技傲世狂妃'},
-				{name:'张三(共同)',phone:12312312312,idcard:'123333333333333333',address:'阿打发打发发代付链接撒地方科技傲世狂妃'},
-				{name:'张三(担保)',phone:12312312312,idcard:'123333333333333333',address:'阿打发打发发代付链接撒地方科技傲世狂妃'}
-			];
+
+			let //主申请人
+				mainMan = data.mainOrderApplyInfo??{},
+				//共同申请人
+				commonMan = data.commonOrderApplyInfoList??[],
+				//担保人
+				guaranteeMan = data.guaranteeInfoList??[],
+				allMan = [];
+
+			allMan.push(mainMan);
+
+			commonMan.map(rs=>{
+				allMan.push(rs);
+			});
+			guaranteeMan.map(rs=>{
+				allMan.push(rs);
+			});
+
+			//数据处理
+			allMan.map(rs=>{
+				if(rs.applyType == 2){
+					rs.name = rs.name+'(共同)'
+				}
+				if(rs.applyType == 3){
+					rs.name = rs.name+'(担保)'
+				}
+				rs.phone = rs.mobile;
+				rs.idcard = rs.cardNo;
+			});
+
+			backData.mans = allMan;
 		}
 		if(level >= 3){
-
+			//TODO
 		}
 
 
