@@ -2,6 +2,7 @@
 
 let {ajax,api} = require('./_ajax'),
 	qt = require('./../es6/qt'),
+	winSetting = require('./../es6/winSetting'),
 	selectData = require('./../es6/selectData');
 
 
@@ -239,7 +240,8 @@ let all = {
 	async setOrderTopData(level,data){
 		let part1 = $('b-order-info').get(0),
 			dist = await selectData('businessType') || {},
-			distForm = await selectData('businessFrom') || {};
+			distForm = await selectData('businessFrom') || {},
+			orderState = await selectData('orderState') || {};
 
 		part1.showLevel = level;
 
@@ -284,12 +286,24 @@ let all = {
 			backData.mans = allMan;
 		}
 		if(level >= 3){
-			//TODO
+			backData.state = orderState[data.orderStatus];
+			backData.id = data.id;
+
+			part1.click = function(data){
+				let id = data.id;
+				qt.openPage(
+					'../index/o_add_order_view.html?id='+id,
+					winSetting.index_add_step4.width,
+					winSetting.index_add_step4.height
+				);
+			}
 		}
 
 
 		part1.data = backData;
 	},
+
+
 
 	//临时赋值测试接口
 	tempSetVal(){
