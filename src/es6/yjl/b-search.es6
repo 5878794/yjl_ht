@@ -153,8 +153,9 @@ class bSearch extends HTMLElement{
 				this.setInputStyle(input,rs.type);
 				break;
 			case 'select':
-				let bind = (rs.bind)? 'data-bind="'+rs.bind+'"' : '';
-				input = `<b-input style="width:${rs.width};" ${bind} type="select" name="${rs.name}" key="${rs.id}" placeholder="${rs.placeholder || ''}"></b-input>`;
+				let bind = (rs.bind)? 'data-bind="'+rs.bind+'"' : '',
+					child = (rs.child)? 'data-child="'+rs.child+'"' : '';
+				input = `<b-input style="width:${rs.width};" ${bind} ${child} type="select" name="${rs.name}" key="${rs.id}" placeholder="${rs.placeholder || ''}"></b-input>`;
 				input = $(input).get(0);
 				input.selectData = rs.data || [];
 				body.append(input);

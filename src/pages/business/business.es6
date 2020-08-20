@@ -51,6 +51,8 @@ let Page = {
         let listNumber = listData.total;
         listData = listData.list || [];
 
+        console.log(listData)
+
         this.createList(listData);
         all.createFY({
             domId:'table_pagination',
@@ -68,14 +70,13 @@ let Page = {
         let search = $('#b_search').get(0),
             _this = this;
 
-        //TODO 少字段
         search.inputData = [
             {name:'客户姓名:',type:'text',id:'clientName',width:'30%'},
-            {name:'客户电话:',type:'text',id:'clientPhone',width:'30%'},
+            {name:'客户电话:',type:'text',id:'clientMobile',width:'30%'},
             {name:'业务类型:',type:'select',id:'businessKey',width:'30%',bind:'businessType'},   //注意宽度无法低于正常的input值，需要尝试
-            {name:'所属公司:',type:'select',id:'a4',width:'25%',bind:'company'},
-            {name:'经办人',type:'text',id:'createName',width:'25%'},
-            {name:'日期',type:'assDate',id:['startTime','endTime'],width:'50%'}
+            {name:'所属公司:',type:'select',id:'companyId',width:'25%',bind:'company',child:'operationId'},
+            {name:'经办人',type:'select',id:'operationId',width:'25%',bind:'manager'},
+            {name:'日期',type:'assDate',id:['operationStartTime','operationEndTime'],width:'50%'}
         ];
         search.clickFn = function(rs){
             rs.pageNum = 1;
@@ -93,7 +94,7 @@ let Page = {
         data.map(rs=>{
            rs.businessKey_ = this.productTypeDist[rs.businessKey];
            rs.applyMoney_ = moneyFormat(rs.applyMoney,5);
-           rs.orderStatus_ = this.orderStateDist[rs.orderStatus];
+           rs.orderStatus_ = this.orderStateDist[rs.orderFlowStatus];
            rs.key6 = '查看详情';
         });
 
@@ -110,7 +111,16 @@ let Page = {
                 './business_info.html?id='+id,
                 winSetting.business_info.width,
                 winSetting.business_info.height)
+        });
+        table.body.find('.__row__').css({cursor:'pointer'});
+        table.body.find('.__row__').click(function(){
+            let data = $(this).data('data'),
+                id = data.id;
 
+            qt.openPage(
+                './business_info.html?id='+id,
+                winSetting.business_info.width,
+                winSetting.business_info.height)
         });
     }
 };

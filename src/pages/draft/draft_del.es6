@@ -51,10 +51,10 @@ let Page = {
         await ajax.send([
             api.my_order_del({
                 id:this.id,
-                //TODO 删除理由 服务器未给key
-                info:info
+                deletedReason:info
             })
         ]);
+
 
         await qt.alert('删除成功!');
         qt.closeWin();

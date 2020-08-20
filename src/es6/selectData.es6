@@ -119,6 +119,10 @@ let dist = {
 		{name:'出库审批中',value:'1'},
 		{name:'已出库',value:'2'},
 		{name:'申请失败',value:'3'}
+	],
+	//经办人
+	manager:[
+		{name:'请选择公司',value:''}
 	]
 
 };
@@ -132,7 +136,8 @@ let distApi = {
 	payMethod:{api:'setting_config_list',data:{type:3}},
 	residentialNature:{api:'setting_config_list',data:{type:4}},
 	backPayMethod:{api:'setting_config_list',data:{type:5}},
-	businessFrom:{api:'setting_config_list',data:{type:1}}
+	businessFrom:{api:'setting_config_list',data:{type:1}},
+	manager:{api:'staff_list'}
 };
 let getDataFn = {
 	company:function(data){return data.list},
@@ -176,6 +181,10 @@ let getDataFn = {
 		data.push({text:'其它',id:'-1'});
 		return data;
 	},
+	manager:function(data){
+		data = data.list || [];
+		return data;
+	},
 };
 let keyChange = {
 	company:{name:'companyName',value:'id'},
@@ -188,16 +197,23 @@ let keyChange = {
 	residentialNature:{name:'text',value:'id'},
 	backPayMethod:{name:'text',value:'id'},
 	businessFrom:{name:'text',value:'id'},
+	manager:{name:'userName',value:'id'}
 };
 
 //级联菜单获取时的参数
 let distApiKey = {
-	department:'companyId'
+	department:'companyId',
+	//TODO 员工列表 根据公司id查寻的key待定
+	manager:'companyId'
 };
 
 let getChildData = async function(val,id){
-	let bSelect = $('#'+id).get(0),
-		type = $(bSelect).data('bind'),
+	let bSelect = $('#'+id).get(0);
+	if(!bSelect){
+		bSelect = $('b-search').get(0).body.find('b-input[key="'+id+'"]').get(0);
+	}
+
+	let	type = $(bSelect).data('bind'),
 		apiParam = distApi[type],
 		apiName = apiParam.api,
 		param = apiParam.data || {};

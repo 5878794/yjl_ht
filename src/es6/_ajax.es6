@@ -170,8 +170,8 @@ let api = {
 	//草稿箱 我的业务
 	//isDraft = true //草稿箱
 	//          false //我的业务
-	my_order:{url:'/api/orderBase/list',type:'get'},
-	my_order_del:{url:'/api/orderBase/deletedOrderDetailById/{id}',type:'get'},
+	my_order:{url:'/api/myOrder/list',type:'get'},
+	my_order_del:{url:'/api/orderBase/deletedOrderDetailById',type:'post'},
 
 
 	//退费退款 列表
