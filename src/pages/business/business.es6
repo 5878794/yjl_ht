@@ -43,7 +43,6 @@ let Page = {
     async getData(data){
         let _this = this;
 
-        data.isDraft = false;
         data.pageSize = pageSizeSetting.management_notice;
         let [listData] = await ajax.send([
             api.my_order(data)

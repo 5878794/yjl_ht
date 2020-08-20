@@ -203,7 +203,6 @@ let keyChange = {
 //级联菜单获取时的参数
 let distApiKey = {
 	department:'companyId',
-	//TODO 员工列表 根据公司id查寻的key待定
 	manager:'companyId'
 };
 
