@@ -233,13 +233,13 @@ let setting = {
 				name:'经办人',
 				width:'8%',
 				style:{color:'#333',fontSize:'14px'},
-				key:'createName'                //数据对应的key
+				key:'operationName'                //数据对应的key
 			},
 			{
 				name:'隶属公司部门',
 				width:'15%',
 				style:{color:'#333',fontSize:'14px'},
-				key:'departName_'                //数据对应的key
+				key:'deptName'                //数据对应的key
 			},
 			{
 				name:'申请金额',
@@ -257,7 +257,7 @@ let setting = {
 				name:'申请时间',
 				width:'10%',
 				style:{color:'#333',fontSize:'14px'},
-				key:'createTime_'                //数据对应的key
+				key:'applyTime_'                //数据对应的key
 			},
 			{
 				name:'客户电话号码',
@@ -269,7 +269,7 @@ let setting = {
 				name:'经办人电话',
 				width:'12%',
 				style:{color:'#333',fontSize:'14px'},
-				key:'createPhone_'                //数据对应的key
+				key:'operationMobile'                //数据对应的key
 			},
 			{
 				name:'订单状态',

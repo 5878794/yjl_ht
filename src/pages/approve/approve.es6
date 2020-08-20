@@ -30,7 +30,11 @@ let Page = {
         await all.getUserInfo();
         this.createSearch();
 
+
         this.businessDist = await selectData('businessType');
+        this.orderStateDist = await selectData('orderState');
+
+
         await selectData($('#b_search').get(0).body);
 
         await this.getData({pageNum:1});
@@ -61,13 +65,12 @@ let Page = {
     },
     createSearch(){
         let search = $('#b_search').get(0);
-        //TODO
         search.inputData = [
             {name:'客户姓名:',type:'text',id:'clientName',width:'30%'},
             {name:'客户电话:',type:'text',id:'clientMobile',width:'30%'},
             {name:'业务类型:',type:'select',id:'businessKey',width:'30%',bind:'businessType'},
-            {name:'所属公司:',type:'select',id:'a4',width:'25%',bind:'company'},
-            {name:'经办人:',type:'text',id:'a5',width:'25%'},
+            {name:'所属公司:',type:'select',id:'companyId',width:'25%',bind:'company',child:'operationId'},
+            {name:'经办人:',type:'select',id:'operationId',width:'25%',bind:'manager'},
             {name:'日期',type:'assDate',id:['auditTimeStart','auditTimeEnd'],width:'50%'}
 
         ];
@@ -84,30 +87,40 @@ let Page = {
         tableSet.set(table,'approve');
 
         data.map(rs=>{
-            //隶属公司部门
-            rs.departName_ = '';
             //申请金额
-            rs.applyMoney_ = '';
+            rs.applyMoney_ = moneyFormat(rs.applyMoney,5);
             //业务类型
-            rs.businessKey_ = '';
+            rs.businessKey_ = this.businessDist[rs.businessKey];
             //申请时间
-            rs.createTime_ = '';
-            //客户电话号码
-            rs.clientPhone_ = '';
-            //经办人电话
-            rs.createPhone_ = '';
+            rs.applyTime_ = stamp2Date.getDate1(rs.applyTime);
+            //客户电话号码 TODO
+            rs.clientPhone_ = '接口未返回';
             //订单状态
-            rs.orderStatus_ = '';
+            rs.orderStatus_ = this.orderStateDist[rs.orderStatus];
         });
 
         table.show(data);
 
-        table.body.find('.__key7__').each(function(){
-            $(this).addClass('hover');
-        });
-        table.body.find('.__key7__').click(function(){
-            let data = $(this).parent().data('data');
-            console.log(data);
+        table.body.find('.__row__').css({cursor:'pointer'})
+        table.body.find('.__row__').click(function(){
+            let data = $(this).data('data'),
+                id = data.id,
+                orderNo = data.orderNo,
+                orderType = data.businessKey;
+
+            if(orderType == 1){
+                //房抵
+                qt.openPage(
+                    './o_approve_room.html?id='+id+'&orderNo='+orderNo,
+                    winSetting.o_approve_room.width,
+                    winSetting.o_approve_room.height)
+            }else{
+                //垫资 非垫资
+                qt.openPage(
+                    './o_approve_advance.html?id='+id+'&orderNo='+orderNo,
+                    winSetting.o_approve_advance.width,
+                    winSetting.o_approve_advance.height)
+            }
         });
     }
 };

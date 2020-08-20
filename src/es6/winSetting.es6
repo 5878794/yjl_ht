@@ -34,5 +34,9 @@ module.exports = {
 	draft_del:{width:600,height:400},
 	//我的业务-查看详情
 	business_info:{width:600,height:400},
+	//审批-打开房抵
+	o_approve_room:{width:600,height:400},
+	//审批-打开垫资、非垫资
+	o_approve_advance:{width:600,height:400},
 
 };
