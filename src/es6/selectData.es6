@@ -9,13 +9,21 @@ let dist = {
 	businessState:[],
 	//业务来源
 	businessFrom:[],
-	//订单状态    0:初始状态 1-审批中 2-审批通过 3-审批失败
+	//订单状态
+// 	AUDIT_WAIT(0,"未提交(草稿)"),
+// AUDIT_ING(1,"审批中（未出款）"),
+// 	AUDIT_CHUKUAN(2,"已出款"),
+// 	AUDIT_NO_PASS(3,"审核不通过"),
+// 	AUDIT_DELETED_ING(88,"删除审批中"),
+// 	AUDIT_FINISH(99,"已完成");
 	orderState:[
 		{name:'请选择',value:''},
-		{name:'初始状态',value:'0'},
+		{name:'未提交',value:'0'},
 		{name:'审批中',value:'1'},
-		{name:'审批通过',value:'2'},
-		{name:'审批失败',value:'3'},
+		{name:'已出款',value:'2'},
+		{name:'审核不通过',value:'3'},
+		{name:'删除审批中',value:'88'},
+		{name:'已完成',value:'99'},
 	],
 	//订单是否完结    （全部、已完结、未完结）
 	orderEnd:[],
