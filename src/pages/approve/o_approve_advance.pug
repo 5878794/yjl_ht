@@ -19,11 +19,11 @@ html
             b-order-history(id='history' sort='desc')
 
             br
-            div(class='openWin_input_main box_hlt box_lines')
+            div(class='openWin_input_main box_hlt box_lines' id='form')
                 div(class='openWin_input_item1')
-                    b-input(type='textarea' autoHeight='true' name='意见')
+                    b-input(type='textarea' id='auditOpinion' autoHeight='true' name='意见' placeholder='非必填')
                 div(class='openWin_input_item1')
-                    b-input-file(class='__input_file__' type='file' err='' name='附件')
+                    b-input-file(class='__input_file__' type='file' id='attachUrls' unit='非必填' name='附件')
 
             div(class='openWin_btns box_hcc')
                 div(class='openWin_btn_gray box_hcc hover' id='cancel') 取消

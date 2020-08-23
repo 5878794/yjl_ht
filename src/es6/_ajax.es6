@@ -10,20 +10,17 @@ let qt = require('qt.es6');
 
 let ajax = {
 	//请求函数主体
-	run(url, data, type, success, error){
+	run(url, data, header, type, success, error){
 		url = SETTING.serverUrl + url;
 
-		//预约挂号特有
-		// data.token = this.token;
-		// data.userToken = this.userToken;
-		// data.sign = this.sign(data);
-		// data.ver = SETTING.apiVer;
 
 		if(type=='post'){
 			data = JSON.stringify(data);
 			console.log(data)
 		}
 
+		header = header?? {};
+		header.Authorization = window.token;
 
 		$.ajax({
 			type: type,
@@ -33,9 +30,7 @@ let ajax = {
 			contentType:"application/json",
 			dataType: "json",
 			timeout: 20000,     //20秒
-			headers: {
-				Authorization: window.token
-			},
+			headers: header,
 			success: async function(rs) {
 				if(rs.code == 200){
 					success(rs.data);
@@ -182,6 +177,8 @@ let api = {
 
 	//审批
 	approve_list:{url:'/api/orderAuditCenter/list',type:'get'},
+	approve_room:{url:'/api/fdOrderFlow/auditOrder',type:'post'},
+	approve_advance:{url:'/api/dzOrderFlow/auditOrder',type:'post'}
 };
 
 
@@ -193,6 +190,12 @@ api = new Proxy(api, {
 	get(target, key, receiver) {
 		return function (data) {
 			data = data || {};
+
+			let header = {};
+			if(data.currentNodeKey){
+				header.currentNodeKey = data.currentNodeKey;
+			}
+
 			return new Promise((success, error) => {
 				let url = target[key].url,
 					type = target[key].type || 'post';
@@ -216,7 +219,7 @@ api = new Proxy(api, {
 				}
 
 
-				ajax.run(url, data, type, success, error);
+				ajax.run(url, data, header, type, success, error);
 			})
 		}
 	}

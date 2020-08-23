@@ -299,13 +299,19 @@ let all = {
 			}
 		}
 
+		//TODO
+		if(level >= 4){
+			backData.product = '中新银行-理财产品1';
+			backData.productInfo = '产品介绍产品介绍产品介绍产品介绍产品介绍产品介绍产品介绍';
+		}
+
 
 		part1.data = backData;
 	},
 
 	//设置订单历史流程
 	//TODO
-	async setOrderHistoryData(data){
+	async setOrderHistoryData(data,autoHide){
 		let history = $('#history').get(0);
 		data = [
 			{

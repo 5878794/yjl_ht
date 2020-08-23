@@ -456,8 +456,12 @@ class bInput extends HTMLElement{
 		let select = this.inputBodyDom.find('select');
 		select.find('option').remove();
 		data.map(rs=>{
-			select.append(`<option value="${rs.value}">${rs.name}</option>`);
+			let dom = $(`<option value="${rs.value}">${rs.name}</option>`);
+			dom.data({data:rs});
+			select.append(dom);
 		});
+		let childId = $(this).data('child');
+		this.userSetChangeFn(this.value,childId);
 	}
 
 	get value(){

@@ -131,6 +131,7 @@ class bInputFile extends bInput{
 		if(this.unit){
 			this.unitDom.removeClass('hidden');
 			div.append(this.unitDom);
+			this.unitDom.css({textAlign:'center',padding:0});
 		}
 
 		this.fileBtn = div;

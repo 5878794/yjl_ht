@@ -101,23 +101,24 @@ let Page = {
 
         table.show(data);
 
-        table.body.find('.__row__').css({cursor:'pointer'})
+        table.body.find('.__row__').css({cursor:'pointer'});
         table.body.find('.__row__').click(function(){
             let data = $(this).data('data'),
                 id = data.id,
                 orderNo = data.orderNo,
+                currentNodeKey = data.currentNodeKey,
                 orderType = data.businessKey;
 
             if(orderType == 1){
                 //房抵
                 qt.openPage(
-                    './o_approve_room.html?id='+id+'&orderNo='+orderNo,
+                    `./o_approve_room.html?id=${id}&orderNo=${orderNo}&currentNodeKey=${currentNodeKey}`,
                     winSetting.o_approve_room.width,
                     winSetting.o_approve_room.height)
             }else{
                 //垫资 非垫资
                 qt.openPage(
-                    './o_approve_advance.html?id='+id+'&orderNo='+orderNo,
+                    `./o_approve_advance.html?id=${id}&orderNo=${orderNo}&currentNodeKey=${currentNodeKey}`,
                     winSetting.o_approve_advance.width,
                     winSetting.o_approve_advance.height)
             }

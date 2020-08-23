@@ -43,7 +43,9 @@ let dist = {
 	//来源机构
 	agencyFrom:[],
 	//产品名称
-	productList:[],
+	productList:[
+		{name:'请选择机构',value:''},
+	],
 	//住宅性质 不动产性质    1:住宅 2:公寓 3:商业 4:别墅 5:厂房
 	residentialNature:[
 		{name:'请选择',value:''},
@@ -145,7 +147,9 @@ let distApi = {
 	residentialNature:{api:'setting_config_list',data:{type:4}},
 	backPayMethod:{api:'setting_config_list',data:{type:5}},
 	businessFrom:{api:'setting_config_list',data:{type:1}},
-	manager:{api:'staff_list'}
+	manager:{api:'staff_list'},
+	agencyFrom:{api:'org_list'},
+	productList:{api:'org_product_list'}
 };
 let getDataFn = {
 	company:function(data){return data.list},
@@ -193,6 +197,14 @@ let getDataFn = {
 		data = data.list || [];
 		return data;
 	},
+	agencyFrom:function(data){
+		data = data.list || [];
+		return data;
+	},
+	productList:function(data){
+		data = data.list || [];
+		return data;
+	}
 };
 let keyChange = {
 	company:{name:'companyName',value:'id'},
@@ -205,13 +217,16 @@ let keyChange = {
 	residentialNature:{name:'text',value:'id'},
 	backPayMethod:{name:'text',value:'id'},
 	businessFrom:{name:'text',value:'id'},
-	manager:{name:'userName',value:'id'}
+	manager:{name:'userName',value:'id'},
+	agencyFrom:{name:'organizationName',value:'id'},
+	productList:{name:'productName',value:'id'}
 };
 
 //级联菜单获取时的参数
 let distApiKey = {
 	department:'companyId',
-	manager:'companyId'
+	manager:'companyId',
+	productList:'organizationId'
 };
 
 let getChildData = async function(val,id){
@@ -247,7 +262,8 @@ let getSelectDataFn = function(type,data,notCatch){
 	thisData.map(rs=>{
 		newData.push({
 			name:rs[keyChange[type].name],
-			value:rs[keyChange[type].value]
+			value:rs[keyChange[type].value],
+			data:rs
 		});
 	});
 

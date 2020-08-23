@@ -11,7 +11,7 @@ html
 
     body
 
-        div(class='openWin_main')
+        div(class='openWin_main' id='form')
 
             b-order-info(id='order_info' class='b_order_info')
 
@@ -21,25 +21,25 @@ html
             br
             div(class='openWin_input_main box_hlt box_lines')
                 div(class='openWin_input_item2')
-                    b-input(type='select' err='' name='机构')
+                    b-input(type='select' err='不能为空' id='organizationId' name='机构' data-bind='agencyFrom' data-child='productId')
                 div(class='openWin_input_item2')
-                    b-input(type='select' err='' name='产品')
+                    b-input(type='select' err='不能为空' id='productId' name='产品' data-bind='productList')
                 div(class='openWin_input_item2')
 
-                div(class='openWin_input_item2 box_slc')
+                div(class='openWin_input_item2 box_slc hidden' id='productInfo')
                     div(class='box_hlc approve_room')
                         p 最高额度(
-                        span 1,200,000.00000
+                        span
                         p ),最小额度(
-                        span 1,200,000.00000
+                        span
                         p ),可申请时间
-                        span 120
+                        span
                         p 天)
                     div(class='box_hlc approve_room')
                         p 成本利率(
-                        span 1.00000
+                        span
                         p %/日),成本服务费率(
-                        span 1.00000
+                        span
                         p %)
 
 
@@ -47,9 +47,9 @@ html
 
             div(class='openWin_input_main box_hlt box_lines')
                 div(class='openWin_input_item1')
-                    b-input(type='textarea' autoHeight='true' name='意见')
+                    b-input(type='textarea' autoHeight='true' id='auditOpinion' name='意见' placeholder='非必填')
                 div(class='openWin_input_item1')
-                    b-input-file(class='__input_file__' type='file' err='' name='附件')
+                    b-input-file(class='__input_file__' id='attachUrls' type='file' unit='非必填' err='' name='附件')
 
             div(class='openWin_btns box_hcc')
                 div(class='openWin_btn_gray box_hcc hover' id='cancel') 取消
