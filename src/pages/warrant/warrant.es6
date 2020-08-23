@@ -28,11 +28,36 @@ let Page = {
     async run(){
         await all.getUserInfo();
         this.createSearch();
+
+        this.orderStateDist = await selectData('orderState');
+
         await selectData($('#b_search').get(0).body);
+        await this.getData({pageNum:1});
 
 
-        this.createList();
-        this.createPagination();
+
+    },
+    async getData(data){
+        let _this = this;
+
+        data.pageSize = pageSizeSetting.management_notice;
+        let [listData] = await ajax.send([
+            api.warrant_list(data)
+        ]);
+        let listNumber = listData.total;
+        listData = listData.list || [];
+
+        this.createList(listData);
+        all.createFY({
+            domId:'table_pagination',
+            nowPage:data.pageNum,
+            listLength:listNumber,
+            pageSize:data.pageSize,
+            searchData:data,
+            getDataFn:function(obj){
+                all.showLoadingRun(_this,'getData',obj);
+            }
+        });
 
     },
     createSearch(){
@@ -46,71 +71,36 @@ let Page = {
             {name:'经办人',type:'select',id:'operationId',width:'30%',bind:'manager1'}
         ];
         search.clickFn = function(rs){
-            console.log(rs);    //返回 对应的 {id:value,...}
+            rs.pageNum = 1;
+            all.showLoadingRun(_this,'getData',rs);
         };
 
 
         inputStyle.searchSet(search);
     },
-    createList(){
+    createList(data){
         let table = $('#table_list').get(0);
         tableSet.set(table,'warrant');
 
-        //TODO 数据获取
-        let tempData = [
-            {
-                id:1,key1:'张三',
-                key2:'12312312312',key3:'张四',key4:'电放费公司-财务部',
-                key5:'12312312312',key6:'业务状态所属',key7:'2011-11-11',key8:'5天'
-            },
-            {
-                id:1,key1:'张三',
-                key2:'12312312312',key3:'张四',key4:'电放费公司-财务部',
-                key5:'12312312312',key6:'业务状态所属',key7:'2011-11-11',key8:'5天'
-            },
-            {
-                id:1,key1:'张三',
-                key2:'12312312312',key3:'张四',key4:'电放费公司-财务部',
-                key5:'12312312312',key6:'业务状态所属',key7:'2011-11-11',key8:'5天'
-            },
-            {
-                id:1,key1:'张三',
-                key2:'12312312312',key3:'张四',key4:'电放费公司-财务部',
-                key5:'12312312312',key6:'业务状态所属',key7:'2011-11-11',key8:'5天'
-            },
-            {
-                id:1,key1:'张三',
-                key2:'12312312312',key3:'张四',key4:'电放费公司-财务部',
-                key5:'12312312312',key6:'业务状态所属',key7:'2011-11-11',key8:'5天'
-            },
-            {
-                id:1,key1:'张三',
-                key2:'12312312312',key3:'张四',key4:'电放费公司-财务部',
-                key5:'12312312312',key6:'业务状态所属',key7:'2011-11-11',key8:'5天'
-            }
+        data.map(rs=>{
+            rs.orderStatus_ = this.orderStateDist[rs.orderStatus];
+            rs.dealTime_ = stamp2Date.getDate1(rs.dealTime);
+            rs.remainderDays_ = (rs.remainderDays)? rs.remainderDays+'天' : '';
+        });
 
-
-        ];
-        table.show(tempData);
+        table.show(data);
 
 
         table.body.find('.__row__').click(function(){
-            let data = $(this).data('data');
+            let data = $(this).data('data'),
+                id = data.id,
+                orderNo = data.orderNo,
+                currentNodeKey = data.currentNodeKey,
+                orderType = data.businessKey;
+
+
             console.log(data);
         });
-    },
-    createPagination(){
-        let fy = $('#table_pagination').get(0);
-        fy.show({
-            nowPage: 10,             //当前页码       默认：1
-            listLength: 149,         //总记录数
-            pageSize: 10             //分页数         默认：10
-        });
-        fy.clickFn = function(n){
-            console.log(n)          //点击事件，返回点击的页码
-        };
-        fy.selectBg = 'rgb(86,123,249)';        //设置当前页码显示的背景色  默认：#cc9800
-
     }
 };
 

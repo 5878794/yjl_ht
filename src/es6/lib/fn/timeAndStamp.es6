@@ -67,7 +67,10 @@ let getDate = function (b) {
 	return year + "-" + month + "-" + date;
 };
 let getDate1 = function (b) {
-	b = b || new Date().getTime();
+	if(!b){
+		return '';
+	}
+	// b = b || new Date().getTime();
 	var a = new Date(b);
 	var year = a.getFullYear();
 	var month = parseInt(a.getMonth()) + 1;

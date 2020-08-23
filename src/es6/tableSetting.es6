@@ -286,49 +286,49 @@ let setting = {
 				name:'客户姓名',
 				width:'10%',
 				style:{color:'#333',fontSize:'14px'},
-				key:'key1'                //数据对应的key
+				key:'clientName'                //数据对应的key
 			},
 			{
 				name:'客户电话',
 				width:'15%',
 				style:{color:'#333',fontSize:'14px'},
-				key:'key2'                //数据对应的key
+				key:'mainApplyPersonMobile'                //数据对应的key
 			},
 			{
 				name:'经办人',
 				width:'10%',
 				style:{color:'#333',fontSize:'14px'},
-				key:'key3'                //数据对应的key
+				key:'operationName'                //数据对应的key
 			},
 			{
 				name:'经办人部门',
 				width:'20%',
 				style:{color:'#333',fontSize:'14px'},
-				key:'key4'                //数据对应的key
+				key:'deptName'                //数据对应的key
 			},
 			{
 				name:'经办人电话',
 				width:'15%',
 				style:{color:'#333',fontSize:'14px'},
-				key:'key5'                //数据对应的key
+				key:'operationMobile'                //数据对应的key
 			},
 			{
 				name:'业务状态',
 				width:'10%',
 				style:{color:'#333',fontSize:'14px'},
-				key:'key6'                //数据对应的key
+				key:'orderStatus_'                //数据对应的key
 			},
 			{
 				name:'到期时间',
 				width:'10%',
 				style:{color:'#333',fontSize:'14px'},
-				key:'key7'                //数据对应的key
+				key:'dealTime_'                //数据对应的key
 			},
 			{
 				name:'剩余天数',
 				width:'10%',
 				style:{color:'#333',fontSize:'14px'},
-				key:'key8'                //数据对应的key
+				key:'remainderDays_'                //数据对应的key
 			}
 		]
 	},

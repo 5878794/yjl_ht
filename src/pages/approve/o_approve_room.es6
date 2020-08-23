@@ -38,6 +38,8 @@ let Page = {
         this.orderNo = param.orderNo;
         this.currentNodeKey = param.currentNodeKey;
 
+        this.checkNeedProduct();
+
         await all.getUserInfo();
         await selectData($('#form'));
         let [data,history] = await ajax.send([
@@ -49,6 +51,11 @@ let Page = {
         this.addBtnEvent();
 
         this.addChangeEvent();
+    },
+    checkNeedProduct(){
+        if(this.currentNodeKey != 'FANG_DI_JILING_AUDIT'){
+            $('#choose_product').remove();
+        }
     },
     addChangeEvent(){
        let bSelect = $('#productId').get(0),

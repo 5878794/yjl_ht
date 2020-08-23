@@ -178,7 +178,10 @@ let api = {
 	//审批
 	approve_list:{url:'/api/orderAuditCenter/list',type:'get'},
 	approve_room:{url:'/api/fdOrderFlow/auditOrder',type:'post'},
-	approve_advance:{url:'/api/dzOrderFlow/auditOrder',type:'post'}
+	approve_advance:{url:'/api/dzOrderFlow/auditOrder',type:'post'},
+
+	//权证
+	warrant_list:{url:'/api/warrant/list',type:'get'}
 };
 
 
