@@ -19,6 +19,8 @@ let all = {
 			]).then(rs=>{
 				rs = rs[0];
 				window.token = rs.token;
+				window.companyId = rs.companyId;
+
 				success();
 			}).catch(e=>{
 				error('获取用户信息失败');

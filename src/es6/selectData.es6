@@ -25,6 +25,14 @@ let dist = {
 		{name:'删除审批中',value:'88'},
 		{name:'已完成',value:'99'},
 	],
+	orderState1:[
+		{name:'请选择',value:''},
+		{name:'审批中',value:'1'},
+		{name:'已出款',value:'2'},
+		{name:'审核不通过',value:'3'},
+		{name:'删除审批中',value:'88'},
+		{name:'已完成',value:'99'},
+	],
 	//订单是否完结    （全部、已完结、未完结）
 	orderEnd:[],
 	//客户分类
@@ -120,6 +128,7 @@ let dist = {
 	department:[
 		{name:'请选择公司',value:''}
 	],
+	myDepartment:[],
 	//拥有角色
 	role:[],
 	//档案状态
@@ -133,6 +142,10 @@ let dist = {
 	//经办人
 	manager:[
 		{name:'请选择公司',value:''}
+	],
+	//部门-经办人
+	manager1:[
+		{name:'请选择部门',value:''}
 	]
 
 };
@@ -148,8 +161,10 @@ let distApi = {
 	backPayMethod:{api:'setting_config_list',data:{type:5}},
 	businessFrom:{api:'setting_config_list',data:{type:1}},
 	manager:{api:'staff_list'},
+	manager1:{api:'staff_list'},
 	agencyFrom:{api:'org_list'},
-	productList:{api:'org_product_list'}
+	productList:{api:'org_product_list'},
+	myDepartment:{api:'department_list',data:{companyId:window.companyId}},
 };
 let getDataFn = {
 	company:function(data){return data.list},
@@ -197,6 +212,10 @@ let getDataFn = {
 		data = data.list || [];
 		return data;
 	},
+	manager1:function(data){
+		data = data.list || [];
+		return data;
+	},
 	agencyFrom:function(data){
 		data = data.list || [];
 		return data;
@@ -204,7 +223,11 @@ let getDataFn = {
 	productList:function(data){
 		data = data.list || [];
 		return data;
-	}
+	},
+	myDepartment:function(data){
+		data = data.list || [];
+		return data;
+	},
 };
 let keyChange = {
 	company:{name:'companyName',value:'id'},
@@ -218,14 +241,17 @@ let keyChange = {
 	backPayMethod:{name:'text',value:'id'},
 	businessFrom:{name:'text',value:'id'},
 	manager:{name:'userName',value:'id'},
+	manager1:{name:'userName',value:'id'},
 	agencyFrom:{name:'organizationName',value:'id'},
-	productList:{name:'productName',value:'id'}
+	productList:{name:'productName',value:'id'},
+	myDepartment:{name:'deptName',value:'id'},
 };
 
 //级联菜单获取时的参数
 let distApiKey = {
 	department:'companyId',
 	manager:'companyId',
+	manager1:'parentId',
 	productList:'organizationId'
 };
 

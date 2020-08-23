@@ -1,6 +1,14 @@
 let app = require('./../../es6/lib/page'),
     lib = require('./../../es6/lib'),
+    all = require('./../../es6/all'),
+    {ajax,api} = require('./../../es6/_ajax'),
+    qt = require('./../../es6/qt'),
+    pageSizeSetting = require('./../../es6/pageSize'),
+    winSetting = require('./../../es6/winSetting'),
     tableSet = require('./../../es6/tableSetting'),
+    selectData = require('./../../es6/selectData'),
+    moneyFormat = require('./../../es6/lib/fn/number'),
+    stamp2Date = require('./../../es6/lib/fn/timeAndStamp'),
     inputStyle = require('./../../es6/inputStyle');
 
 
@@ -13,22 +21,16 @@ require('./../../es6/customElement/pc/pagination');
 
 
 
-let loading;
 let Page = {
     init(){
-        // loading = new loadFn();
-        // loading.show('急速加载中');
-        this.run().then(rs=>{
-            // loading.hide();
-        }).catch(rs=>{
-            // err.error(rs);
-            // loading.hide();
-            // app.alert(rs);
-            throw rs;
-        });
+        all.showLoadingRun(this,'run');
     },
     async run(){
+        await all.getUserInfo();
         this.createSearch();
+        await selectData($('#b_search').get(0).body);
+
+
         this.createList();
         this.createPagination();
 
@@ -36,12 +38,12 @@ let Page = {
     createSearch(){
         let search = $('#b_search').get(0);
         search.inputData = [
-            {name:'客户姓名:',type:'text',id:'a1',width:'25%'},
-            {name:'客户电话:',type:'text',id:'a2',width:'25%'},
-            {name:'业务类型:',type:'select',id:'a3',width:'25%',data:[{name:'请选择',value:''}]},   //注意宽度无法低于正常的input值，需要尝试
-            {name:'订单状态:',type:'select',id:'a4',width:'25%',data:[{name:'请选择',value:''}]},
-            {name:'所属部门',type:'select',id:'a5',width:'30%',data:[{name:'请选择',value:''}]},
-            {name:'经办人',type:'select',id:'a6',width:'30%',data:[{name:'请选择',value:''}]}
+            {name:'客户姓名:',type:'text',id:'clientName',width:'25%'},
+            {name:'客户电话:',type:'text',id:'clientMobile',width:'25%'},
+            {name:'业务类型:',type:'select',id:'businessKey',width:'25%',bind:'businessType'},   //注意宽度无法低于正常的input值，需要尝试
+            {name:'订单状态:',type:'select',id:'orderStatus',width:'25%',bind:'orderState1'},
+            {name:'所属部门',type:'select',id:'deptId',width:'30%',bind:'myDepartment',child:'operationId'},
+            {name:'经办人',type:'select',id:'operationId',width:'30%',bind:'manager1'}
         ];
         search.clickFn = function(rs){
             console.log(rs);    //返回 对应的 {id:value,...}
