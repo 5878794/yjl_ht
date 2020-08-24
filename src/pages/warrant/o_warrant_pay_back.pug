@@ -11,7 +11,7 @@ html
 
     body
 
-        div(class='openWin_main')
+        div(class='openWin_main' id='form')
             b-order-info(id='order_info')
             b-title(name='历史流程')
             b-order-history(id='history' showOne='true' sort='desc')
@@ -19,19 +19,20 @@ html
             b-title(name='确认还款')
             div(class='openWin_input_main box_hlt box_lines')
                 div(class='openWin_input_item3')
-                    b-input-money(type='text' name='还款本金' accuracy='5')
+                    b-input-money(name='还款本金' accuracy='5' rule='must' err='不能为空' unit='元')
                 div(class='openWin_input_item3')
-                    b-input(type='text' name='还款利息')
+                    b-input-money(name='还款利息' accuracy='5' rule='must' err='不能为空' unit='元')
                 div(class='openWin_input_item3')
-                    b-input(type='text' name='罚息')
+                    b-input-money(name='罚息' accuracy='5' rule='must' err='不能为空' unit='元')
                 div(class='openWin_input_item1')
                     div(class='box_hlc warrant_pay_back')
                         div 还款合计
-                        p 0.00000
+                        //- 还款合计=还款本金+还款利息+罚息
+                        p(id='total') 0.00000
                 div(class='openWin_input_item1')
-                    b-input(type='textarea' autoHeight='true' name='备注')
+                    b-input(id='auditOpinion' type='textarea' autoHeight='true' name='备注' placeholder='非必填')
                 div(class='openWin_input_item1')
-                    b-input-file(type='file' err='' name='附件')
+                    b-input-file(id='attachUrls' type='file' err='' name='附件' unit='非必填' )
 
 
             b-title(name='尾款' id='final_payment')
