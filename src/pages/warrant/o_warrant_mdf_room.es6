@@ -48,12 +48,20 @@ let Page = {
         ]);
         this.orderType = data.businessKey;
 
-        //TODO
-        // 变更记录 暂无接口
-        // this.addHistory(['aaa']);
-
         await all.setOrderTopData(4,data);
         await all.setOrderHistoryData(history,true);
+
+
+        if(this.orderType == 1){
+            //房抵
+
+        }else{
+            //非房抵 显示核行
+            $('#fd_not').removeClass('hidden');
+            //TODO
+            // 变更记录 暂无接口
+            // this.addHistory(['aaa']);
+        }
 
 
         this.createBTitlesBtn();
