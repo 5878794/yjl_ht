@@ -91,9 +91,11 @@ let JD = {
     },
     //调用父级窗口函数
     //text: 运行的js字符串
-    runParentJS(text){
+    runParentJS(functionName,data){
+        let cmd = `window.${functionName}(${JSON.stringify(data)})`;
+        console.log(cmd);
         if(window.bridge){
-            bridge.runJsOnParent(text);
+            bridge.runJsOnParent(cmd);
         }
     },
 

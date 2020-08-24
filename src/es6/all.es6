@@ -20,6 +20,7 @@ let all = {
 				rs = rs[0];
 				window.token = rs.token;
 				window.companyId = rs.companyId;
+				window.userName = rs.userName;
 
 				success();
 			}).catch(e=>{

@@ -101,8 +101,7 @@ let Page = {
             let id = rs.key,
                 name = $('#'+id).attr('name');
 
-            let newText = `${date},$$$将${name}从 "${rs.oldValue}"修改为"${rs.newValue}"`;
-            newText = newText.replace('$$$','${name}');
+            let newText = `${date},${window.userName}将${name}从 "${rs.oldValue}"修改为"${rs.newValue}"`;
             text.push(newText);
         })
 
@@ -132,7 +131,13 @@ let Page = {
         ]);
 
         await qt.alert('提交成功!');
-        qt.closeWin();
+
+        if(changeData.length!=0){
+            qt.runParentJS('showText',changeData);
+        }
+        setTimeout(function(){
+            qt.closeWin();
+        },300)
     }
 
 };
