@@ -182,10 +182,12 @@ let api = {
 
 	//权证
 	warrant_list:{url:'/api/warrant/list',type:'get'},
-	//下户 -房抵
+		//下户 -房抵
 	warrant_shimoto_room:{url:'/api/fdOrderFlow/quanZhengXiaHu',type:'post'},
-	//下户 -垫资、非垫资
+		//下户 -垫资、非垫资
 	warrant_shimoto_dz:{url:'/api/dzOrderFlow/quanZhengZhiXingXiaHu',type:'post'},
+		//核行修改
+	warrant_approved_mdf:{url:'/api/warrant/heHangEdit',type:'post'},
 };
 
 
