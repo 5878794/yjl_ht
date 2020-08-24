@@ -98,6 +98,7 @@ let Page = {
         form.orderNo = this.orderNo;
         form.currentNodeKey = this.currentNodeKey;
 
+        console.log(form)
         //TODO pug中的key 数据提交
 
         // await ajax.send([
