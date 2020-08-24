@@ -38,5 +38,7 @@ module.exports = {
 	o_approve_room:{width:600,height:400},
 	//审批-打开垫资、非垫资
 	o_approve_advance:{width:600,height:400},
+	//无指定流程页面 通用
+	publish_review:{width:600,height:400},
 
 };

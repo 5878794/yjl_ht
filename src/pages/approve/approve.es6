@@ -9,6 +9,7 @@ let app = require('./../../es6/lib/page'),
     selectData = require('./../../es6/selectData'),
     moneyFormat = require('./../../es6/lib/fn/number'),
     stamp2Date = require('./../../es6/lib/fn/timeAndStamp'),
+    processToPageDist = require('./../../es6/processToPage'),
     inputStyle = require('./../../es6/inputStyle');
 
 
@@ -107,21 +108,17 @@ let Page = {
                 id = data.id,
                 orderNo = data.orderNo,
                 currentNodeKey = data.currentNodeKey,
-                orderType = data.businessKey;
 
-            if(orderType == 1){
-                //房抵
+                //根据节点状态获取跳转的页面
+                pageInfo = processToPageDist[currentNodeKey]??{},
+                url = pageInfo.url,
+                title = pageInfo.title;
+
                 qt.openPage(
-                    `./o_approve_room.html?id=${id}&orderNo=${orderNo}&currentNodeKey=${currentNodeKey}`,
-                    winSetting.o_approve_room.width,
-                    winSetting.o_approve_room.height)
-            }else{
-                //垫资 非垫资
-                qt.openPage(
-                    `./o_approve_advance.html?id=${id}&orderNo=${orderNo}&currentNodeKey=${currentNodeKey}`,
-                    winSetting.o_approve_advance.width,
-                    winSetting.o_approve_advance.height)
-            }
+                    `${url}?id=${id}&orderNo=${orderNo}&currentNodeKey=${currentNodeKey}&title=${title}`,
+                    winSetting.publish_review.width,
+                    winSetting.publish_review.height)
+
         });
     }
 };

@@ -8,6 +8,7 @@ let app = require('./../../es6/lib/page'),
     tableSet = require('./../../es6/tableSetting'),
     selectData = require('./../../es6/selectData'),
     moneyFormat = require('./../../es6/lib/fn/number'),
+    processToPageDist = require('./../../es6/processToPage'),
     stamp2Date = require('./../../es6/lib/fn/timeAndStamp'),
     inputStyle = require('./../../es6/inputStyle');
 
@@ -29,7 +30,7 @@ let Page = {
         await all.getUserInfo();
         this.createSearch();
 
-        this.orderStateDist = await selectData('orderState');
+        this.orderStateDist = await selectData('orderState') || {};
 
         await selectData($('#b_search').get(0).body);
         await this.getData({pageNum:1});
@@ -96,10 +97,16 @@ let Page = {
                 id = data.id,
                 orderNo = data.orderNo,
                 currentNodeKey = data.currentNodeKey,
-                orderType = data.businessKey;
 
+                //根据节点状态获取跳转的页面
+                pageInfo = processToPageDist[currentNodeKey]??{},
+                url = pageInfo.url,
+                title = pageInfo.title;
 
-            console.log(data);
+            qt.openPage(
+                `${url}?id=${id}&orderNo=${orderNo}&currentNodeKey=${currentNodeKey}&title=${title}`,
+                winSetting.publish_review.width,
+                winSetting.publish_review.height)
         });
     }
 };
