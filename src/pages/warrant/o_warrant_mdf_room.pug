@@ -11,7 +11,7 @@ html
 
     body
 
-        div(class='openWin_main')
+        div(class='openWin_main' id='form')
             b-order-info(id='order_info')
             b-title(name='历史流程')
             b-order-history(id='history' showOne='true' sort='desc')
@@ -19,10 +19,10 @@ html
             b-title(name='核行' id='approved')
             div(class='openWin_input_main box_hlt box_lines')
                 div(class='openWin_input_item1')
-                    b-input(type='textarea' autoHeight='true' name='备注')
+                    b-input(type='textarea' autoHeight='true' id='auditOpinion' name='备注' placeholder='非必填')
                 div(class='openWin_input_item1')
-                    b-input-file(type='file' err='' name='附件')
-                div(class='openWin_input_item1')
+                    b-input-file(type='file' name='附件' unit='非必填' id='attachUrls')
+                div(class='openWin_input_item1' id='window_add')
                     div(class='box_slc approve_room' style='font-size:14px;')
                         p 2020年4月11日,李强将还款账号从12312312903812098390138修改为123910938129831283
 
@@ -44,6 +44,6 @@ html
         div(class='hidden')
             div(class='openWin_input_main box_hlt box_lines' id='shimoto_item')
                 div(class='openWin_input_item1')
-                    b-input(type='textarea' autoHeight='true' name='备注')
+                    b-input(type='textarea' autoHeight='true' placeholder='非必填' name='备注' id='auditOpinion2')
                 div(class='openWin_input_item1')
-                    b-input-file(type='file' err='' name='附件')
+                    b-input-file(type='file' err='' name='附件' unit='非必填' id='attachUrls2')

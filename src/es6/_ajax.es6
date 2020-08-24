@@ -181,7 +181,11 @@ let api = {
 	approve_advance:{url:'/api/dzOrderFlow/auditOrder',type:'post'},
 
 	//权证
-	warrant_list:{url:'/api/warrant/list',type:'get'}
+	warrant_list:{url:'/api/warrant/list',type:'get'},
+	//下户 -房抵
+	warrant_shimoto_room:{url:'/api/fdOrderFlow/quanZhengXiaHu',type:'post'},
+	//下户 -垫资、非垫资
+	warrant_shimoto_dz:{url:'/api/dzOrderFlow/quanZhengZhiXingXiaHu',type:'post'},
 };
 
 
