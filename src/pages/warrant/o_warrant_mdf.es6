@@ -122,12 +122,17 @@ let Page = {
 
         //获取变更的数据列表
         let changeData = this.getChangeData(this.oldValue,form);
-        //TODO 未提交
-        console.log(changeData)
 
         //提交
         await ajax.send([
-            api.warrant_approved_mdf(newObj)
+            api.warrant_approved_mdf(newObj),
+            api.order_change_submit({
+                orderChangeInfoEntity:{
+                    changeInfo:changeData,
+                    orderNo:this.orderNo,
+                    type:1   // 类型 1-核行修改 2-变更客户资料 3-变更还款账号
+                }
+            })
         ]);
 
         await qt.alert('提交成功!');

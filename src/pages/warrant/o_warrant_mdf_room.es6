@@ -58,9 +58,14 @@ let Page = {
         }else{
             //非房抵 显示核行
             $('#fd_not').removeClass('hidden');
-            //TODO
-            // 变更记录 暂无接口
-            // this.addHistory(['aaa']);
+            let [changeData] = await ajax.send([
+               api.order_change_list({
+                   type:1,      //1-核行修改 2-变更客户资料 3-变更还款账号
+                   orderNo:this.orderNo
+               })
+            ]);
+            //TODO 未测试
+            this.addHistory(changeData);
         }
 
 
