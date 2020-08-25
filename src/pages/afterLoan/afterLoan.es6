@@ -64,14 +64,14 @@ let Page = {
         let search = $('#b_search').get(0),
             _this = this;
 
-        //TODO 差 客户分类、产品类型
+        //TODO 差 客户分类
         search.inputData = [
             {name:'客户分类:',type:'select',id:'clientCategory',width:'30%',data:[{name:'请选择',value:''}]},
             {name:'到期状态:',type:'select',id:'expireStatus',width:'30%',bind:'expireStatus'},
             {name:'最后跟进时间:',type:'date',id:'lastFollowUpTime',width:'30%'},
             {name:'客户姓名:',type:'text',id:'clientName',width:'30%'},
             {name:'客户电话:',type:'text',id:'clientMobile',width:'30%'},
-            {name:'产品类型',type:'select',id:'productId',width:'30%',data:[{name:'请选择',value:''}]}
+            {name:'业务类型',type:'select',id:'productId',width:'30%',bind:'businessType'}
 
         ];
         search.clickFn = function(rs){
