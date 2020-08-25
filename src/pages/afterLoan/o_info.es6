@@ -4,6 +4,7 @@ let app = require('./../../es6/lib/page'),
     {ajax,api} = require('./../../es6/_ajax'),
     qt = require('./../../es6/qt'),
     pageSizeSetting = require('./../../es6/pageSize'),
+    getParamFromUrl = require('./../../es6/lib/fn/getParamFromUrl'),
     winSetting = require('./../../es6/winSetting'),
     tableSet = require('./../../es6/tableSetting'),
     selectData = require('./../../es6/selectData'),
@@ -29,71 +30,182 @@ let Page = {
     },
     async run(){
         inputStyle.set(true,true);
+        let param = getParamFromUrl();
+        this.id = param.id;
+        this.orderNo = param.orderNo;
+        this.currentNodeKey = param.currentNodeKey;
+        this.clientCategory = param.clientCategory;//客户分类
+        this.addBtnEvent();
+
+        await all.getUserInfo();
+        this.clientCategoryDist = await selectData('clientType',true);
         this.createBTitlesBtn();
-        this.setPart1();
-        this.setPart2();
+
+
+        let [data,changeList,record] = await ajax.send([
+            api.order_get_byId({id:this.id}),
+            api.order_change_list({
+                orderNo:this.orderNo,
+                type:2
+            })
+            //TODO 无跟进记录接口
+        ]);
+        await all.setOrderTopData(4,data);
+        await all.setRecordData(record);
+
+        //TODO
+        changeList = ['2020年4月11日,李强将还款账号从12312312903812098390138修改为123910938129831283']
+        this.addHistory(changeList);
 
     },
-    setPart1(){
-        let part1 = $('#order_info').get(0);
-        part1.showLevel = 3;
-        part1.data = {
-            money:7000000,
-            type:'房抵',
-            no:'Fd123123123',
-            from:'来自中介',
-            product:'中新银行-理财产品1',
-            productInfo:'产品介绍产品介绍产品介绍产品介绍产品介绍产品介绍产品介绍',
-            mans:[
-            	{name:'张三',phone:12312312312,idcard:'123333333333333333',address:'阿打发打发发代付链接撒地方科技傲世狂妃'},
-            	{name:'张三(共同)',phone:12312312312,idcard:'123333333333333333',address:'阿打发打发发代付链接撒地方科技傲世狂妃'},
-            	{name:'张三(担保)',phone:12312312312,idcard:'123333333333333333',address:'阿打发打发发代付链接撒地方科技傲世狂妃'}
-            ],
-            state:'待回款1'
-        };
-        // part1.click = function(data){
-        // 	console.log(data)
-        // }
+    addBtnEvent(){
+        let submit = $('#submit'),
+            cancel = $('#cancel'),
+            date = $('.__date__'),
+            _this = this;
 
+        let nowData = new Date().getTime();
+        nowData = stamp2Date.getDate1(nowData);
+        date.eq(0).get(0).value = nowData;
 
-    },
-    setPart2(){
-        let part2 = $('#record').get(0);
-        let data = [
-            {
-                no:'1',
-                info:'同意',
-                img:['https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1594181331374&di=cf77ff4f40436b635d59c92f8076c4b8&imgtype=0&src=http%3A%2F%2Fspider.nosdn.127.net%2Fbf695201a8eade248b9362bda0bdb446.jpeg','https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1594181331374&di=cf77ff4f40436b635d59c92f8076c4b8&imgtype=0&src=http%3A%2F%2Fspider.nosdn.127.net%2Fbf695201a8eade248b9362bda0bdb446.jpeg'],
-                date:'2020-11-11',
-                user:'张三'
-            },
-            {
-                no:'1',
-                info:'同意',
-                img:['https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1594181331374&di=cf77ff4f40436b635d59c92f8076c4b8&imgtype=0&src=http%3A%2F%2Fspider.nosdn.127.net%2Fbf695201a8eade248b9362bda0bdb446.jpeg','https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1594181331374&di=cf77ff4f40436b635d59c92f8076c4b8&imgtype=0&src=http%3A%2F%2Fspider.nosdn.127.net%2Fbf695201a8eade248b9362bda0bdb446.jpeg'],
-                date:'2020-11-11',
-                user:'张三'
-            }
-        ];
-        part2.data = data;
-
+        submit.click(function(){
+            all.showLoadingRun(_this,'submitFn',1);
+        });
+        cancel.click(function(){
+            qt.closeWin();
+        });
     },
     createBTitlesBtn(){
-        let btn = $('#mdf').get(0);
+        let btn = $('#mdf').get(0),
+            _this = this;
+
+        let type = this.clientCategory,
+            dist = this.clientCategoryDist,
+            newDist = [];
+
+        dist.map(rs=>{
+            let name = (rs.value == type)? rs.name+'(当前)' : rs.name;
+
+            newDist.push({
+                name:name,
+                type:rs.value
+            });
+        });
+        newDist.shift();
+
+
         btn.btnData = [
             {name:'变更客户资料', type:'btn1', style:{color:'#5576f0'}},
             {name:'变更还款账号', type:'btn2', style:{color:'#5576f0'}},
             {name:'新增贷后支出', type:'btn3', style:{color:'#5576f0'}},
             {name:'核销', type:'btn4', style:{color:'#5576f0'}},
             {name:'展期', type:'btn5', style:{color:'#5576f0'}},
-            {name:'客户分类', type:'btn6', style:{color:'#5576f0'}}
+            {name:'客户分类', style:{color:'#5576f0'},children:newDist}
         ];
 
-        btn.clickFn = function(type){
-            console.log(type)
+
+
+        btn.clickFn = async function(type){
+            if(type=='btn1'){
+                //变更客户资料
+                qt.openPage(
+                    `./o_mdf_user_info.html?id=${_this.id}&orderNo=${_this.orderNo}&currentNodeKey=${_this.currentNodeKey}&clientCategory=${_this.clientCategory}`,
+                    winSetting.o_mdf_user_info.width,
+                    winSetting.o_mdf_user_info.height)
+                return;
+            }
+
+            if(type=='btn2'){
+                //变更还款账号
+                qt.openPage(
+                    `./o_mdf_repayment_account.html?id=${_this.id}&orderNo=${_this.orderNo}&currentNodeKey=${_this.currentNodeKey}&clientCategory=${_this.clientCategory}`,
+                    winSetting.o_mdf_repayment_account.width,
+                    winSetting.o_mdf_repayment_account.height)
+                return;
+            }
+
+            if(type=='btn3'){
+                //新增贷后支出
+                qt.openPage(
+                    `./o_add_after_loan.html?id=${_this.id}&orderNo=${_this.orderNo}&currentNodeKey=${_this.currentNodeKey}&clientCategory=${_this.clientCategory}`,
+                    winSetting.o_add_after_loan.width,
+                    winSetting.o_add_after_loan.height)
+                return;
+            }
+
+            if(type=='btn4'){
+                //核销
+                qt.openPage(
+                    `./o_write_off.html?id=${_this.id}&orderNo=${_this.orderNo}&currentNodeKey=${_this.currentNodeKey}&clientCategory=${_this.clientCategory}`,
+                    winSetting.o_write_off.width,
+                    winSetting.o_write_off.height)
+                return;
+            }
+
+            if(type=='btn5'){
+                //展期
+                qt.openPage(
+                    `./o_rollover.html?id=${_this.id}&orderNo=${_this.orderNo}&currentNodeKey=${_this.currentNodeKey}&clientCategory=${_this.clientCategory}`,
+                    winSetting.o_rollover.width,
+                    winSetting.o_rollover.height)
+                return;
+            }
+
+            //客户分类
+            all.showLoadingRun(_this,'submitClientType',type);
+
         };
+    },
+    //提交客户分类
+    async submitClientType(type){
+        if(type != this.clientCategory){
+            let date = new Date().getTime();
+            date = stamp2Date.getDate1(date);
+            let changeText =  `${date},${window.userName}将客户分类从 "${this.clientCategory??'无'}"修改为"${type}"`;
+
+            //TODO 提交变更记录
+
+
+            //界面显示历史记录
+            this.addHistory([changeText]);
+        }
+
+
+        //TODO ajax 客户分类
+
+
+
+
+
+        this.clientCategory = type;
+        this.createBTitlesBtn();
+    },
+    async submitFn(state){
+        let form = await all.getFromGroupVal($('#form')),
+            uploaded = await all.uploadFile(form.attachUrls);
+        form.attachUrls = uploaded.join(',');
+
+        form.auditStatus = state;
+        form.orderNo = this.orderNo;
+        form.currentNodeKey = this.currentNodeKey;
+
+
+        //TODO 提交数据
+        console.log(form)
+    },
+    addHistory(data){
+        let body = $('#window_add');
+
+        data.map(rs=>{
+            let p = $('<p>'+rs+'</p>');
+            body.append(p);
+        });
     }
 
+};
+window.showText = function(text){
+    text = JSON.parse(text);
+    Page.addHistory([text]);
 };
 
 

@@ -42,5 +42,15 @@ module.exports = {
 	publish_review:{width:600,height:400},
 	//贷后-详情
 	afterLoan_o_info:{width:600,height:400},
+	//贷后-变更客户资料
+	o_mdf_user_info:{width:600,height:400},
+	//贷后-变更还款账号
+	o_mdf_repayment_account:{width:600,height:400},
+	//贷后-新增贷后支出
+	o_add_after_loan:{width:600,height:400},
+	//贷后-核销
+	o_write_off:{width:600,height:400},
+	//贷后-展期
+	o_rollover:{width:600,height:400},
 
 };

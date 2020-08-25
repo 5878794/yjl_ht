@@ -17,23 +17,23 @@ html
             b-follow-record(id='record' sort='desc' showOne='true'  class='b_order_info')
 
             b-title(name='变更' id='mdf')
-            div(class='box_slc after_loan_list' style='font-size:14px;')
-                p 2020年4月11日,李强将还款账号从12312312903812098390138修改为123910938129831283
-                p 2020年4月11日,李强将还款账号从12312312903812098390138修改为123910938129831283
+            div(class='box_slc after_loan_list' style='font-size:14px;' id='window_add')
+                //- p 2020年4月11日,李强将还款账号从12312312903812098390138修改为123910938129831283
+                //- p 2020年4月11日,李强将还款账号从12312312903812098390138修改为123910938129831283
 
             b-title1(name='贷后跟进')
-            div(class='openWin_input_main box_hlt box_lines')
+            div(class='openWin_input_main box_hlt box_lines' id='form')
                 div(class='openWin_input_item3')
-                    b-input-date(type='date' disabled='disabled' err='' name='时间' id='key1')
+                    b-input-date(type='date' class='__date__' disabled='disabled' err='' name='时间' id='key1')
                 div(class='openWin_input_item3')
                 div(class='openWin_input_item3')
                 div(class='openWin_input_item1')
-                    b-input(type='textarea' err='' name='跟进记录' id='key1')
+                    b-input(type='textarea' name='跟进记录' id='auditOpinion' placeholder='非必填')
                 div(class='openWin_input_item1')
-                    b-input-file(name='附件' err='' id='key2' type='file')
+                    b-input-file(name='附件' id='attachUrls' type='file' unit='非必填')
 
 
 
             div(class='openWin_btns box_hcc')
-                div(class='openWin_btn_gray box_hcc hover') 取消
-                div(class='openWin_btn_blue box_hcc hover') 提交
+                div(class='openWin_btn_gray box_hcc hover' id='cancel') 取消
+                div(class='openWin_btn_blue box_hcc hover' id='submit') 提交

@@ -359,7 +359,28 @@ let all = {
 			console.log(rs);        //图片点击返回当前图片路径
 		}
 	},
-
+	//设置订单跟进记录
+	//TODO
+	async setRecordData(data){
+		let part2 = $('#record').get(0);
+		data = [
+			{
+				no:'1',
+				info:'同意',
+				img:['https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1594181331374&di=cf77ff4f40436b635d59c92f8076c4b8&imgtype=0&src=http%3A%2F%2Fspider.nosdn.127.net%2Fbf695201a8eade248b9362bda0bdb446.jpeg','https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1594181331374&di=cf77ff4f40436b635d59c92f8076c4b8&imgtype=0&src=http%3A%2F%2Fspider.nosdn.127.net%2Fbf695201a8eade248b9362bda0bdb446.jpeg'],
+				date:'2020-11-11',
+				user:'张三'
+			},
+			{
+				no:'1',
+				info:'同意',
+				img:['https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1594181331374&di=cf77ff4f40436b635d59c92f8076c4b8&imgtype=0&src=http%3A%2F%2Fspider.nosdn.127.net%2Fbf695201a8eade248b9362bda0bdb446.jpeg','https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1594181331374&di=cf77ff4f40436b635d59c92f8076c4b8&imgtype=0&src=http%3A%2F%2Fspider.nosdn.127.net%2Fbf695201a8eade248b9362bda0bdb446.jpeg'],
+				date:'2020-11-11',
+				user:'张三'
+			}
+		];
+		part2.data = data;
+	},
 
 
 	//临时赋值测试接口

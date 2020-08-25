@@ -36,7 +36,14 @@ let dist = {
 	//订单是否完结    （全部、已完结、未完结）
 	orderEnd:[],
 	//客户分类
-	clientType:[],
+	clientType:[
+		{name:'请选择',value:''},
+		{name:'A类',value:'A'},
+		{name:'B类',value:'B'},
+		{name:'C类',value:'C'},
+		{name:'D类',value:'D'},
+		{name:'E类',value:'E'}
+	],
 	//产品类型 机构添加产品处
 	productType:[
 		{name:'房抵产品',value:'0'},

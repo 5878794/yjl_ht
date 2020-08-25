@@ -64,9 +64,8 @@ let Page = {
         let search = $('#b_search').get(0),
             _this = this;
 
-        //TODO 差 客户分类
         search.inputData = [
-            {name:'客户分类:',type:'select',id:'clientCategory',width:'30%',data:[{name:'请选择',value:''}]},
+            {name:'客户分类:',type:'select',id:'clientCategory',width:'30%',bind:'clientType'},
             {name:'到期状态:',type:'select',id:'expireStatus',width:'30%',bind:'expireStatus'},
             {name:'最后跟进时间:',type:'date',id:'lastFollowUpTime',width:'30%'},
             {name:'客户姓名:',type:'text',id:'clientName',width:'30%'},
@@ -106,10 +105,11 @@ let Page = {
             let data = $(this).data('data'),
                 id = data.id,
                 orderNo = data.orderNo,
+                clientCategory = data.clientCategory,
                 currentNodeKey = data.currentNodeKey;
 
             qt.openPage(
-                `./o_info.html?id=${id}&orderNo=${orderNo}&currentNodeKey=${currentNodeKey}`,
+                `./o_info.html?id=${id}&orderNo=${orderNo}&currentNodeKey=${currentNodeKey}&clientCategory=${clientCategory}`,
                 winSetting.afterLoan_o_info.width,
                 winSetting.afterLoan_o_info.height)
         });
