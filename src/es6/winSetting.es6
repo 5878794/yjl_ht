@@ -40,5 +40,7 @@ module.exports = {
 	o_approve_advance:{width:600,height:400},
 	//无指定流程页面 通用
 	publish_review:{width:600,height:400},
+	//贷后-详情
+	afterLoan_o_info:{width:600,height:400},
 
 };

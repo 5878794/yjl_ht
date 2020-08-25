@@ -106,17 +106,12 @@ let Page = {
             let data = $(this).data('data'),
                 id = data.id,
                 orderNo = data.orderNo,
-                currentNodeKey = data.currentNodeKey,
-
-                //根据节点状态获取跳转的页面
-                pageInfo = processToPageDist[currentNodeKey]??{},
-                url = pageInfo.url,
-                title = pageInfo.title;
+                currentNodeKey = data.currentNodeKey;
 
             qt.openPage(
-                `${url}?id=${id}&orderNo=${orderNo}&currentNodeKey=${currentNodeKey}&title=${title}`,
-                winSetting.publish_review.width,
-                winSetting.publish_review.height)
+                `./o_info.html?id=${id}&orderNo=${orderNo}&currentNodeKey=${currentNodeKey}`,
+                winSetting.afterLoan_o_info.width,
+                winSetting.afterLoan_o_info.height)
         });
 
     },
