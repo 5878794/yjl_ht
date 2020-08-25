@@ -161,7 +161,7 @@ let api = {
 	order_submit:{url:'/api/fdOrderFlow/zhixingSubmitOrder',type:'post'},
 	//垫资
 	order_submit1:{url:'/api/dzOrderFlow/zhixingSubmitOrder',type:'post'},
-	//资料信息变更
+	//资料信息变更   （type= 1-核行修改 2-变更客户资料 3-变更还款账号)
 	order_change_submit:{url:'/api/orderChangeInfo/saveOrderChangeInfo',type:'post'},
 	order_change_list:{url:'/api/orderChangeInfo/list',type:'get'},
 
