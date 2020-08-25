@@ -188,6 +188,8 @@ let api = {
 	warrant_shimoto_dz:{url:'/api/dzOrderFlow/quanZhengZhiXingXiaHu',type:'post'},
 		//核行修改
 	warrant_approved_mdf:{url:'/api/warrant/heHangEdit',type:'post'},
+		//还款确认
+	warrant_pay_back:{url:'/api/dzOrderFlow/quanZhengRepaymentConfirm',type:'post'},
 };
 
 

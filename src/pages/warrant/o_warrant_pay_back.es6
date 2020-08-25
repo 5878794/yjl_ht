@@ -90,22 +90,35 @@ let Page = {
 
     },
     async submitFn(state){
-        let form = await all.getFromVal($('#form')),
+        let form = await all.getFromVal($('#form')) || {},
             uploaded = await all.uploadFile(form.attachUrls);
+
+        //处理key中有"_"转对象
+        let delKeys = [];
+        for(let [key,val] of Object.entries(form)){
+            if(key.indexOf('_')>-1){
+                let keys = key.split('_'),
+                    key1 = keys[0],
+                    key2 = keys[1];
+                form[key1] = form[key1]??{};
+                form[key1][key2] = val;
+                delKeys.push(key);
+            }
+        }
+        delKeys.map(rs=>{
+            delete form[rs];
+        })
 
         form.attachUrls = uploaded.join(',');
         form.auditStatus = state;
         form.orderNo = this.orderNo;
         form.currentNodeKey = this.currentNodeKey;
 
-        console.log(form)
-        //TODO pug中的key 数据提交
-
-        // await ajax.send([
-        //     api.approve_advance(form)
-        // ]);
-        // await qt.alert('提交成功！');
-        // qt.closeWin();
+        await ajax.send([
+            api.warrant_pay_back(form)
+        ]);
+        await qt.alert('提交成功！');
+        qt.closeWin();
     }
 
 };
