@@ -193,6 +193,10 @@ let api = {
 	warrant_approved_mdf:{url:'/api/warrant/heHangEdit',type:'post'},
 		//还款确认
 	warrant_pay_back:{url:'/api/dzOrderFlow/quanZhengRepaymentConfirm',type:'post'},
+
+
+	//贷后
+	afterLoan_list:{url:'/api/loanAfterOrder/list',type:'get'},
 };
 
 

@@ -339,49 +339,49 @@ let setting = {
 				name:'客户姓名',
 				width:'7%',
 				style:{color:'#333',fontSize:'14px'},
-				key:'key1'                //数据对应的key
+				key:'clientName'                //数据对应的key
 			},
 			{
 				name:'申请金额',
 				width:'16%',
 				style:{color:'#333',fontSize:'14px'},
-				key:'key2'                //数据对应的key
+				key:'applyMoney_'                //数据对应的key
 			},
 			{
 				name:'业务类型',
 				width:'10%',
 				style:{color:'#333',fontSize:'14px'},
-				key:'key3'                //数据对应的key
+				key:'businessKey_'                //数据对应的key
 			},
 			{
 				name:'出款时间',
 				width:'10%',
 				style:{color:'#333',fontSize:'14px'},
-				key:'key4'                //数据对应的key
+				key:'outMoneyTime_'                //数据对应的key
 			},
 			{
-				name:'预期时间(天)',
+				name:'逾期时间(天)',
 				width:'10%',
 				style:{color:'#333',fontSize:'14px'},
-				key:'key5'                //数据对应的key
+				key:'overdueDays'                //数据对应的key
 			},
 			{
 				name:'客户分类',
 				width:'7%',
 				style:{color:'#333',fontSize:'14px'},
-				key:'key6'                //数据对应的key
+				key:'clientCategory'                //数据对应的key
 			},
 			{
 				name:'剩余本金',
 				width:'16%',
 				style:{color:'#333',fontSize:'14px'},
-				key:'key7'                //数据对应的key
+				key:'remainPrincipal_'                //数据对应的key
 			},
 			{
 				name:'剩余利息',
 				width:'16%',
 				style:{color:'#333',fontSize:'14px'},
-				key:'key8'                //数据对应的key
+				key:'remainInterest_'                //数据对应的key
 			},
 			{
 				name:'操作',

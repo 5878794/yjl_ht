@@ -37,8 +37,6 @@ let dist = {
 	orderEnd:[],
 	//客户分类
 	clientType:[],
-	//到期状态
-	matureState:[],
 	//产品类型 机构添加产品处
 	productType:[
 		{name:'房抵产品',value:'0'},
@@ -146,7 +144,15 @@ let dist = {
 	//部门-经办人
 	manager1:[
 		{name:'请选择部门',value:''}
+	],
+	//到期状态(1-已逾期、2-即将到期（5天内到期）)
+	expireStatus:[
+		{name:'请选择',value:''},
+		{name:'已逾期',value:'1'},
+		{name:'即将到期(5天内到期）',value:'2'}
 	]
+
+
 
 };
 let distApi = {
