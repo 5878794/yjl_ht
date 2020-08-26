@@ -209,6 +209,9 @@ let api = {
 	afterLoan_change_repayment_account:{url:'/api/loanAfterOrder/changeRepaymentInfo',type:'post'},
 		//新增支出
 	afterLoan_add_expenditure:{url:'/api/dhZcOrderFlow/daiHouAddZhiChu',type:'post'},
+		//核销
+	afterLoan_write_off:{url:'/api/hxDdOrderFlow/daiHouHeXiaoApply',type:'post'},
+
 };
 
 

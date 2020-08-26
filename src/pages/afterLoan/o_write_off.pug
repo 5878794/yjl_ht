@@ -14,7 +14,7 @@ html
         div(class='openWin_main autoWidth')
             div
                 b-title(name='核销')
-                div(class='openWin_input_main box_hlt box_lines')
+                div(class='openWin_input_main box_hlt box_lines' id='form')
                     div(class='openWin_input_item3')
                         b-input-money(err='' name='剩余本金' disabled='disabled' id='key1' accuracy='5')
                     div(class='openWin_input_item3')
@@ -32,5 +32,5 @@ html
 
 
             div(class='openWin_btns box_hcc')
-                div(class='openWin_btn_gray box_hcc hover') 取消
-                div(class='openWin_btn_blue box_hcc hover') 提交
+                div(class='openWin_btn_gray box_hcc hover' id='cancel') 取消
+                div(class='openWin_btn_blue box_hcc hover' id='submit') 提交
