@@ -82,11 +82,11 @@ let Page = {
 
         data.map(rs=>{
             //退费类型
-            rs.refundTypeKey_ = this.refundDist(rs.refundTypeKey);
+            rs.refundTypeKey_ = this.refundDist[rs.refundTypeKey];
             //电话
             rs.clientPhone_ = rs.mainApplyMobile;
             //业务类型
-            rs.businessKey_ = this.businessDist(rs.businessKey);
+            rs.businessKey_ = this.businessDist[rs.businessKey];
             //申请金额
             rs.applyMoney_ = moneyFormat(rs.applyMoney,5);
             //退费金额
