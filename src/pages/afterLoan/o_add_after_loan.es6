@@ -56,10 +56,22 @@ let Page = {
         form.orderNo = this.orderNo;
         form.currentNodeKey = this.currentNodeKey;
 
+        let val = form.disburseMoney,
+            nowDate = new Date().getTime();
+        nowDate = stamp2Date.getDate1(nowDate);
+        let change = `${nowDate},${window.userName}添加贷后支出金额为"${val}"`;
+        await ajax.send([
+            api.order_change_submit({
+                changeInfo:[change],
+                orderNo:this.orderNo,
+                type:2   // 类型 1-核行 2-贷后
+            }),
+            api.afterLoan_add_expenditure(form)
+        ])
+        qt.runParentJS('showText',[change]);
 
-        let change = '';
-
-        console.log(form)
+        await qt.alert('操作成功!');
+        qt.closeWin();
     }
 
 };
