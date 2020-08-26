@@ -371,19 +371,34 @@ let all = {
 			{
 				no:'1',
 				info:'同意',
-				img:['https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1594181331374&di=cf77ff4f40436b635d59c92f8076c4b8&imgtype=0&src=http%3A%2F%2Fspider.nosdn.127.net%2Fbf695201a8eade248b9362bda0bdb446.jpeg','https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1594181331374&di=cf77ff4f40436b635d59c92f8076c4b8&imgtype=0&src=http%3A%2F%2Fspider.nosdn.127.net%2Fbf695201a8eade248b9362bda0bdb446.jpeg'],
+				img:['../res/image/icon1.png','../res/css/all.css'],
 				date:'2020-11-11',
 				user:'张三'
 			},
 			{
 				no:'1',
 				info:'同意',
-				img:['https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1594181331374&di=cf77ff4f40436b635d59c92f8076c4b8&imgtype=0&src=http%3A%2F%2Fspider.nosdn.127.net%2Fbf695201a8eade248b9362bda0bdb446.jpeg','https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1594181331374&di=cf77ff4f40436b635d59c92f8076c4b8&imgtype=0&src=http%3A%2F%2Fspider.nosdn.127.net%2Fbf695201a8eade248b9362bda0bdb446.jpeg'],
 				date:'2020-11-11',
 				user:'张三'
 			}
 		];
 		part2.data = data;
+		part2.imgClick = function(rs){
+			// console.log(rs);        //图片点击返回当前图片路径
+			rs = rs.toLowerCase();
+			let fileType = rs.split('.');
+			fileType = fileType[fileType.length-1];
+			let imageType = ['png','jpeg','jpg'];
+
+			if(imageType.indexOf(fileType)>-1){
+				//图片
+				let a = new showBigImg({imgs:[rs]});
+				a.showImg(0);   //0为初始显示第几张，需要自己算是点的第几张图片
+			}else{
+				//不是图片 TODO 下载功能
+				console.log(rs)
+			}
+		}
 	},
 
 
