@@ -207,6 +207,8 @@ let api = {
 	afterLoan_follow_up_list:{url:'/api/orderLoanFollowRecord/list',type:'get'},
 		//还款账户 变更
 	afterLoan_change_repayment_account:{url:'/api/loanAfterOrder/changeRepaymentInfo',type:'post'},
+		//新增支出
+	afterLoan_add_expenditure:{url:'/api/dhZcOrderFlow/daiHouAddZhiChu',type:'post'},
 };
 
 
