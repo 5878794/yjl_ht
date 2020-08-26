@@ -213,6 +213,10 @@ let api = {
 	afterLoan_write_off:{url:'/api/hxDdOrderFlow/daiHouHeXiaoApply',type:'post'},
 		//展期
 	afterLoan_rollover:{url:'/api/zqOrderFlow/daiHouAddZhiChu',type:'post'},
+
+
+	//财务
+	finance_list:{url:'/api/financeOrder/list',type:'get'},
 };
 
 
