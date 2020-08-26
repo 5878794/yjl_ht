@@ -106,6 +106,10 @@ let JD = {
     //登录过期，重新登录  TODO 等接口
     reLogin(){
 
+    },
+    //下载文件  TODO 等接口
+    downloadFile(url){
+
     }
 };
 

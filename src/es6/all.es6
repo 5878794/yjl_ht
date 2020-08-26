@@ -303,10 +303,20 @@ let all = {
 			}
 		}
 
-		//TODO
 		if(level >= 4){
-			backData.product = '中新银行-理财产品1';
-			backData.productInfo = '产品介绍产品介绍产品介绍产品介绍产品介绍产品介绍产品介绍';
+			if(data.productId){
+				let productId = data.productId;
+				let [productInfo] = await ajax.send([
+					api.org_product_list({id:productId})
+				]);
+				productInfo = productInfo.list??[];
+				productInfo = productInfo[0];
+
+				if(productInfo){
+					backData.product = productInfo.organizationName+'-'+productInfo.productName;
+					backData.productInfo = `最小额度${productInfo.minMoney}元<br/>最大额度${productInfo.maxMoney}元<br/>成本费率${productInfo.castRate}%<br/>服务费${productInfo.castServiceRate}元<br/>可用时间${productInfo.applyTime}天`;
+				}
+			}
 		}
 
 
