@@ -338,7 +338,8 @@ let all = {
 				name:rs.nodeName,
 				state:(rs.auditStatus==1),
 				info:rs.auditOpinion,
-				img:this.getRealImageSrc(rs.attachUrls),
+				// img:this.getRealImageSrc(rs.attachUrls),
+				img:['../res/image/icon1.png','../res/css/all.css'],
 				date:stamp2Date.getDate1(rs.createTime),
 				user:'张三'
 			})
@@ -347,8 +348,19 @@ let all = {
 		history.data = newData;
 		history.imgClick = function(rs){
 			// console.log(rs);        //图片点击返回当前图片路径
-			let a = new showBigImg({imgs:[rs]});
-			a.showImg(0);   //0为初始显示第几张，需要自己算是点的第几张图片
+			rs = rs.toLowerCase();
+			let fileType = rs.split('.');
+			fileType = fileType[fileType.length-1];
+			let imageType = ['png','jpeg','jpg'];
+
+			if(imageType.indexOf(fileType)>-1){
+				//图片
+				let a = new showBigImg({imgs:[rs]});
+				a.showImg(0);   //0为初始显示第几张，需要自己算是点的第几张图片
+			}else{
+				//不是图片 TODO 下载功能
+				console.log(rs)
+			}
 		}
 	},
 	//设置订单跟进记录
