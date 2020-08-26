@@ -14,15 +14,15 @@ html
         div(class='openWin_main autoWidth')
             div
                 b-title(name='变更还款账号')
-                div(class='openWin_input_main box_hlt box_lines')
+                div(class='openWin_input_main box_hlt box_lines' id='form')
                     div(class='openWin_input_item1')
-                        b-input(type='text' err='' name='还款账户' id='key1')
+                        b-input(type='text' err='' name='还款账户' id='bankName')
                     div(class='openWin_input_item1')
-                        b-input(type='text' err='' name='还款账号' id='key1')
+                        b-input(type='text' err='' name='还款账号' id='bankNo')
                     div(class='openWin_input_item1')
-                        b-input(type='text' err='' name='开户行' id='key1')
+                        b-input(type='text' err='' name='开户行' id='openBank')
 
 
             div(class='openWin_btns box_hcc')
-                div(class='openWin_btn_gray box_hcc hover') 取消
-                div(class='openWin_btn_blue box_hcc hover') 提交
+                div(class='openWin_btn_gray box_hcc hover' id='cancel') 取消
+                div(class='openWin_btn_blue box_hcc hover' id='submit') 提交

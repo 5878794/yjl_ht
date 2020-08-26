@@ -205,6 +205,8 @@ let api = {
 	afterLoan_follow_up_save:{url:'/api/orderLoanFollowRecord/saveOrderChangeInfo',type:'post'},
 		//跟进信息 获取列表
 	afterLoan_follow_up_list:{url:'/api/orderLoanFollowRecord/list',type:'get'},
+		//还款账户 变更
+	afterLoan_change_repayment_account:{url:'/api/loanAfterOrder/changeRepaymentInfo',type:'post'},
 };
 
 
