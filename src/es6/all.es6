@@ -338,8 +338,8 @@ let all = {
 				name:rs.nodeName,
 				state:(rs.auditStatus==1),
 				info:rs.auditOpinion,
-				// img:this.getRealImageSrc(rs.attachUrls),
-				img:['../res/image/icon1.png','../res/css/all.css'],
+				img:this.getRealImageSrc(rs.attachUrls),
+				// img:['../res/image/icon1.png','../res/css/all.css'],
 				date:stamp2Date.getDate1(rs.createTime),
 				user:'张三'
 			})
