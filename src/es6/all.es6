@@ -4,6 +4,7 @@ let {ajax,api} = require('./_ajax'),
 	qt = require('./../es6/qt'),
 	winSetting = require('./../es6/winSetting'),
 	stamp2Date = require('./../es6/lib/fn/timeAndStamp'),
+	showBigImg = require('./../es6/lib/ui/showBigPicture'),
 	selectData = require('./../es6/selectData');
 
 
@@ -227,7 +228,9 @@ let all = {
 		let serverUrl = SETTING.downloadFileUrl,
 			newData = [];
 		data.map(rs=>{
-			newData.push(serverUrl+rs);
+			if(rs){
+				newData.push(serverUrl+rs);
+			}
 		});
 		return newData;
 	},
@@ -324,50 +327,28 @@ let all = {
 	},
 
 	//设置订单历史流程
-	//TODO
+	//TODO  差操作人，数据待验证
 	async setOrderHistoryData(data,autoHide){
 		let history = $('#history').get(0);
-		data = [
-			{
-				no:'1',
-				name:'创建计划',
-				state:true,
-				info:'同意',
-				img:['https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1594181331374&di=cf77ff4f40436b635d59c92f8076c4b8&imgtype=0&src=http%3A%2F%2Fspider.nosdn.127.net%2Fbf695201a8eade248b9362bda0bdb446.jpeg','https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1594181331374&di=cf77ff4f40436b635d59c92f8076c4b8&imgtype=0&src=http%3A%2F%2Fspider.nosdn.127.net%2Fbf695201a8eade248b9362bda0bdb446.jpeg'],
-				date:'2020-11-11',
+		history.showOne = autoHide??false;
+		let newData = [];
+		data.map((rs,i)=>{
+			newData.push({
+				no:i+1,
+				name:rs.nodeName,
+				state:(rs.auditStatus==1),
+				info:rs.auditOpinion,
+				img:this.getRealImageSrc(rs.attachUrls),
+				date:stamp2Date.getDate1(rs.createTime),
 				user:'张三'
-			},
-			{
-				no:'1',
-				name:'创建计划',
-				state:true,
-				info:'同意',
-				img:['https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1594181331374&di=cf77ff4f40436b635d59c92f8076c4b8&imgtype=0&src=http%3A%2F%2Fspider.nosdn.127.net%2Fbf695201a8eade248b9362bda0bdb446.jpeg','https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1594181331374&di=cf77ff4f40436b635d59c92f8076c4b8&imgtype=0&src=http%3A%2F%2Fspider.nosdn.127.net%2Fbf695201a8eade248b9362bda0bdb446.jpeg'],
-				date:'2020-11-11',
-				user:'张三'
-			},
-			{
-				no:'1',
-				name:'创建计划',
-				state:false,
-				info:'同意',
-				img:['https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1594181331374&di=cf77ff4f40436b635d59c92f8076c4b8&imgtype=0&src=http%3A%2F%2Fspider.nosdn.127.net%2Fbf695201a8eade248b9362bda0bdb446.jpeg','https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1594181331374&di=cf77ff4f40436b635d59c92f8076c4b8&imgtype=0&src=http%3A%2F%2Fspider.nosdn.127.net%2Fbf695201a8eade248b9362bda0bdb446.jpeg'],
-				date:'2020-11-11',
-				user:'张三'
-			},
-			{
-				no:'1',
-				name:'创建计划',
-				state:true,
-				info:'同意',
-				img:[],
-				date:'2020-11-11',
-				user:'张三'
-			}
-		];
-		history.data = data;
+			})
+		});
+
+		history.data = newData;
 		history.imgClick = function(rs){
-			console.log(rs);        //图片点击返回当前图片路径
+			// console.log(rs);        //图片点击返回当前图片路径
+			let a = new showBigImg({imgs:[rs]});
+			a.showImg(0);   //0为初始显示第几张，需要自己算是点的第几张图片
 		}
 	},
 	//设置订单跟进记录
