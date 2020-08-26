@@ -211,7 +211,8 @@ let api = {
 	afterLoan_add_expenditure:{url:'/api/dhZcOrderFlow/daiHouAddZhiChu',type:'post'},
 		//核销
 	afterLoan_write_off:{url:'/api/hxDdOrderFlow/daiHouHeXiaoApply',type:'post'},
-
+		//展期
+	afterLoan_rollover:{url:'/api/zqOrderFlow/daiHouAddZhiChu',type:'post'},
 };
 
 
