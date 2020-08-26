@@ -3,6 +3,7 @@
 let {ajax,api} = require('./_ajax'),
 	qt = require('./../es6/qt'),
 	winSetting = require('./../es6/winSetting'),
+	stamp2Date = require('./../es6/lib/fn/timeAndStamp'),
 	selectData = require('./../es6/selectData');
 
 
@@ -449,6 +450,32 @@ let all = {
 		}
 
 		return backData;
+	},
+	//获取输入框中修改过的数据
+	getChangeData(oldData,newData){
+		let changeDta = [];
+		for(let [key,val] of Object.entries(newData)){
+			if(oldData[key] != newData[key]){
+				changeDta.push({
+					key:key,
+					oldValue:oldData[key],
+					newValue:newData[key]
+				})
+			}
+		}
+
+		let text = [],
+			nowStamp = new Date().getTime(),
+			date = stamp2Date.getDate1(nowStamp);
+		changeDta.map(rs=>{
+			let id = rs.key,
+				name = $('#'+id).attr('name');
+
+			let newText = `${date},${window.userName}将${name}从 "${rs.oldValue}"修改为"${rs.newValue}"`;
+			text.push(newText);
+		})
+
+		return text;
 	}
 };
 

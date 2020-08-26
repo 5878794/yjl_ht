@@ -47,8 +47,10 @@ let Page = {
             api.order_change_list({
                 orderNo:this.orderNo,
                 type:2
+            }),
+            api.afterLoan_follow_up_list({
+                orderNo:this.orderNo
             })
-            //TODO 无跟进记录接口
         ]);
         await all.setOrderTopData(4,data);
         await all.setRecordData(record);
@@ -158,24 +160,30 @@ let Page = {
     },
     //提交客户分类
     async submitClientType(type){
-        if(type != this.clientCategory){
-            let date = new Date().getTime();
-            date = stamp2Date.getDate1(date);
-            let changeText =  `${date},${window.userName}将客户分类从 "${this.clientCategory??'无'}"修改为"${type}"`;
+        if(type == this.clientCategory){return;}
 
-            //TODO 提交变更记录
+        await ajax.send([
+            api.afterLoan_change_user_type({
+                orderNo:this.orderNo,
+                category:type
+            })
+        ]);
 
+        let date = new Date().getTime();
+        date = stamp2Date.getDate1(date);
+        let changeText =  `${date},${window.userName}将客户分类从 "${this.clientCategory??'无'}"修改为"${type}"`;
 
-            //界面显示历史记录
-            this.addHistory([changeText]);
-        }
+        await ajax.send([
+            api.order_change_submit({
+                changeInfo:[changeText],
+                orderNo:this.orderNo,
+                type:2   // 类型 1-核行 2-贷后
+            })
+        ])
 
-
-        //TODO ajax 客户分类
-
-
-
-
+        //界面显示历史记录
+        this.addHistory([changeText]);
+        await qt.alert('操作成功！');
 
         this.clientCategory = type;
         this.createBTitlesBtn();
@@ -190,8 +198,12 @@ let Page = {
         form.currentNodeKey = this.currentNodeKey;
 
 
-        //TODO 提交数据
-        console.log(form)
+        await ajax.send([
+           api.afterLoan_follow_up_save(form)
+        ]);
+
+       await qt.alert('保存成功!');
+       qt.closeWin();
     },
     addHistory(data){
         let body = $('#window_add');

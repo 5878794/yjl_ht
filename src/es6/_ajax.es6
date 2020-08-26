@@ -40,7 +40,7 @@ let ajax = {
 						//关闭所有窗口或进入登录页
 						qt.reLogin();
 					}else{
-						error(rs.msg);
+						error(rs.msg || '服务器内部错误，请稍后在试！');
 					}
 				}
 			},
@@ -197,6 +197,14 @@ let api = {
 
 	//贷后
 	afterLoan_list:{url:'/api/loanAfterOrder/list',type:'get'},
+		//客户分类 变更
+	afterLoan_change_user_type:{url:'/api/loanAfterOrder/changeClientCategory',type:'post'},
+		//客户信息 变更
+	afterLoan_change_user_info:{url:'/api/loanAfterOrder/changeClientInfo',type:'post'},
+		//跟进信息 保存
+	afterLoan_follow_up_save:{url:'/api/orderLoanFollowRecord/saveOrderChangeInfo',type:'post'},
+		//跟进信息 获取列表
+	afterLoan_follow_up_list:{url:'/api/orderLoanFollowRecord/list',type:'get'},
 };
 
 

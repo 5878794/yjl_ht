@@ -81,33 +81,6 @@ let Page = {
             qt.closeWin();
         });
     },
-    //获取修改过的数据
-    getChangeData(oldData,newData){
-        let changeDta = [];
-        for(let [key,val] of Object.entries(newData)){
-            if(oldData[key] != newData[key]){
-                changeDta.push({
-                    key:key,
-                    oldValue:oldData[key],
-                    newValue:newData[key]
-                })
-            }
-        }
-
-        let text = [],
-            nowStamp = new Date().getTime(),
-            date = stamp2Date.getDate1(nowStamp);
-        changeDta.map(rs=>{
-            let id = rs.key,
-                name = $('#'+id).attr('name');
-
-            let newText = `${date},${window.userName}将${name}从 "${rs.oldValue}"修改为"${rs.newValue}"`;
-            text.push(newText);
-        })
-
-        return text;
-
-    },
     async submitFn(){
         let form = await all.getFromGroupVal($('#form')),
             newObj = {};
@@ -121,17 +94,15 @@ let Page = {
         }
 
         //获取变更的数据列表
-        let changeData = this.getChangeData(this.oldValue,form);
+        let changeData = all.getChangeData(this.oldValue,form);
 
         //提交
         await ajax.send([
             api.warrant_approved_mdf(newObj),
             api.order_change_submit({
-                orderChangeInfoEntity:{
-                    changeInfo:changeData,
-                    orderNo:this.orderNo,
-                    type:1   // 类型 1-核行修改 2-变更客户资料 3-变更还款账号
-                }
+                changeInfo:changeData,
+                orderNo:this.orderNo,
+                type:1   // 类型 1-核行修改 2-贷后
             })
         ]);
 
