@@ -217,6 +217,7 @@ let all = {
 		qt.loading.show();
 		obj[fn].call(obj,param).then(()=>{
 			$('#iframe_body').css({display:'block'});
+			$('.openWin_main').css({display:'block'});
 			qt.loading.hide();
 		}).catch(e=>{
 			qt.loading.hide();
