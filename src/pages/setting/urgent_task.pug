@@ -10,27 +10,27 @@ html
     body
 
 
-        div(class='left')
+        //div(class='left')
             //- include ../../pug_include/left
             b-win-left
 
-        div(class='right')
+        //div(class='right')
             //- include ../../pug_include/top
             //b-win-top
 
-            div(class='iframe scroll_style1' id='iframe_body' style='background:#fff;')
-                div(class='page_body' style='overflow:auto;')
-                    //- 页面主体开始。。。。。。
+        div(class='iframe scroll_style1' id='iframe_body' style='background:#fff;')
+            div(class='page_body' style='overflow:auto;')
+                //- 页面主体开始。。。。。。
 
-                    b-title(name='紧急任务锁')
-                    div(class='box_hlc' style='width:100%;padding:0 20px; height:40px;')
-                        div(class='boxflex1' style='font-size:14px;') 是否开启
-                        b-switch(id='task' checkBgColor='#5576f0' style='width:60px;height:24px;')
+                b-title(name='紧急任务锁')
+                div(class='box_hlc' style='width:100%;padding:0 20px; height:40px;')
+                    div(class='boxflex1' style='font-size:14px;') 是否开启
+                    b-switch(id='task' checkBgColor='#5576f0' style='width:60px;height:24px;')
 
-                    b-title(name='开单公告')
-                    div(class='box_hlc' style='width:100%;padding:0 20px; height:40px;')
-                        div(class='boxflex1' style='font-size:14px;') 是否开启
-                        b-switch(id='notice' checkBgColor='#5576f0' style='width:60px;height:24px;')
+                b-title(name='开单公告')
+                div(class='box_hlc' style='width:100%;padding:0 20px; height:40px;')
+                    div(class='boxflex1' style='font-size:14px;') 是否开启
+                    b-switch(id='notice' checkBgColor='#5576f0' style='width:60px;height:24px;')
 
 
 

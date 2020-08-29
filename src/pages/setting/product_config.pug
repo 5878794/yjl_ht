@@ -13,27 +13,27 @@ html
     body
 
 
-        div(class='left')
+        //div(class='left')
             //- include ../../pug_include/left
             b-win-left
 
-        div(class='right')
+        //div(class='right')
             //- include ../../pug_include/top
             //b-win-top
 
-            div(class='iframe scroll_style1' style='background:#fff;' id='iframe_body')
-                div(class='page_body')
-                    //- 页面主体开始。。。。。。
+        div(class='iframe scroll_style1' style='background:#fff;' id='iframe_body')
+            div(class='page_body')
+                //- 页面主体开始。。。。。。
 
-                    b-title(name='机构' id='b_title')
-                    b-role-list(name='机构名称' id='list')
+                b-title(name='机构' id='b_title')
+                b-role-list(name='机构名称' id='list')
 
-                    br
-                    //- 列表部分
-                    div(style='padding:0 20px;width:100%;' class='hidden' id='list_body')
-                        b-title1(name='中新银行产品')
-                        div(class='index_list')
-                            b-table-list(id='table_list')
+                br
+                //- 列表部分
+                div(style='padding:0 20px;width:100%;' class='hidden' id='list_body')
+                    b-title1(name='中新银行产品')
+                    div(class='index_list')
+                        b-table-list(id='table_list')
 
 
 

@@ -9,46 +9,46 @@ html
 
     body
 
-        div(class='left')
+        //div(class='left')
             //- include ../../pug_include/left
             b-win-left
 
-        div(class='right')
+        //div(class='right')
             //- include ../../pug_include/top
             //b-win-top
 
-            div(class='iframe scroll_style1' id='iframe_body')
-                div(class='page_body')
-                    //- 页面主体开始。。。。。。
+        div(class='iframe scroll_style1' id='iframe_body')
+            div(class='page_body')
+                //- 页面主体开始。。。。。。
 
-                    //搜索部分
-                    b-search(
-                        id='b_search'
-                        showMoreBtn='true'
-                    )
+                //搜索部分
+                b-search(
+                    id='b_search'
+                    showMoreBtn='true'
+                )
 
-                    div(class='afterLoan_info box_slc')
-                        div(class='afterLoan_info_title') 汇总
-                        div(class='box_hcc afterLoan_info_main' id='total')
-                            div(class='openWin_input_item3 box_hlc')
-                                div 单数：
-                                span 10000
-                            div(class='openWin_input_item3 box_hcc')
-                                div 剩余本金：
-                                span 10000.00000
-                            div(class='openWin_input_item3 box_hrc')
-                                div 剩余利息：
-                                span 10000.00000
-
-
+                div(class='afterLoan_info box_slc')
+                    div(class='afterLoan_info_title') 汇总
+                    div(class='box_hcc afterLoan_info_main' id='total')
+                        div(class='openWin_input_item3 box_hlc')
+                            div 单数：
+                            span 10000
+                        div(class='openWin_input_item3 box_hcc')
+                            div 剩余本金：
+                            span 10000.00000
+                        div(class='openWin_input_item3 box_hrc')
+                            div 剩余利息：
+                            span 10000.00000
 
 
-                    //- 列表部分
-                    div(class='index_list')
-                        b-table-list(id='table_list')
 
 
-                        b-pagination(id='table_pagination')
+                //- 列表部分
+                div(class='index_list')
+                    b-table-list(id='table_list')
+
+
+                    b-pagination(id='table_pagination')
 
 
 

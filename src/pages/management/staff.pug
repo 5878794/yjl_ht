@@ -10,31 +10,31 @@ html
     body
 
 
-        div(class='left')
+        //div(class='left')
             //- include ../../pug_include/left
             b-win-left
 
-        div(class='right')
+        //div(class='right')
             //- include ../../pug_include/top
             //b-win-top
 
-            div(class='iframe scroll_style1' id='iframe_body')
-                div(class='page_body')
-                    //- 页面主体开始。。。。。。
+        div(class='iframe scroll_style1' id='iframe_body')
+            div(class='page_body')
+                //- 页面主体开始。。。。。。
 
-                    //搜索部分
-                    div(class='box_hlc' style='width:100%')
-                        b-search(id='b_search' class='boxflex1')
-                        div(class='add_btn box_hcc hover' id='add_btn' style='position: relative;top: -5px;')
-                            img(src='../index/image/add.png')
-                            span 添加成员
+                //搜索部分
+                div(class='box_hlc' style='width:100%')
+                    b-search(id='b_search' class='boxflex1')
+                    div(class='add_btn box_hcc hover' id='add_btn' style='position: relative;top: -5px;')
+                        img(src='../index/image/add.png')
+                        span 添加成员
 
-                    //- 列表部分
-                    div(class='index_list')
-                        b-table-list(id='table_list')
+                //- 列表部分
+                div(class='index_list')
+                    b-table-list(id='table_list')
 
 
-                        b-pagination(id='table_pagination')
+                    b-pagination(id='table_pagination')
 
 
 

@@ -10,30 +10,30 @@ html
     body
 
 
-        div(class='left')
+        //div(class='left')
             //- include ../../pug_include/left
             b-win-left
 
-        div(class='right')
+        //div(class='right')
             //- include ../../pug_include/top
             //b-win-top
 
-            div(class='iframe scroll_style1' id='iframe_body')
-                div(class='page_body')
-                    //- 页面主体开始。。。。。。
+        div(class='iframe scroll_style1' id='iframe_body')
+            div(class='page_body')
+                //- 页面主体开始。。。。。。
 
-                    //搜索部分
-                    b-search(
-                        id='b_search'
-                        showMoreBtn='true'
-                    )
+                //搜索部分
+                b-search(
+                    id='b_search'
+                    showMoreBtn='true'
+                )
 
-                    //- 列表部分
-                    div(class='index_list')
-                        b-table-list(id='table_list')
+                //- 列表部分
+                div(class='index_list')
+                    b-table-list(id='table_list')
 
 
-                        b-pagination(id='table_pagination')
+                    b-pagination(id='table_pagination')
 
 
 

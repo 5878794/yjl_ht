@@ -51,10 +51,10 @@ class bWinLeft extends HTMLElement{
 		setTimeout(function(){
 			_this.body.css({display:'flex'});
 
-			//滚动到选中的位置
-			let selectDom = _this.body.find('.select'),
-				top = selectDom.offset().top;
-			_this.body.find('.menu').scrollTop(top);
+			// //滚动到选中的位置
+			// let selectDom = _this.body.find('.select'),
+			// 	top = selectDom.offset().top;
+			// _this.body.find('.menu').scrollTop(top);
 
 		},0)
 
@@ -62,7 +62,6 @@ class bWinLeft extends HTMLElement{
 
 	constructor() {
 		super();
-
 		this.body = null;
 
 		//创建shadow容器
@@ -81,7 +80,7 @@ class bWinLeft extends HTMLElement{
 		this.createElement();
 		this.createList();
 		this.addEvent();
-		this.chooseNav();
+		// this.chooseNav();
 
 		this.shadow.appendChild(this.body.get(0));
 	}
@@ -153,16 +152,22 @@ class bWinLeft extends HTMLElement{
 
 			body.append(_item);
 		});
+
+		body.find('.__item__').eq(0).addClass('select');
 	}
 
 	addEvent(){
-		let item = this.body.find('.__item__');
+		let item = this.body.find('.__item__'),
+			_this = this;
 
 		item.click(function(){
 			let href = $(this).attr('href');
 			if(href!=''){
 				//打开页面
-				lib.pageGoTo(href);
+				// lib.pageGoTo(href);
+				item.removeClass('select');
+				$(this).addClass('select');
+				_this.openIframePage(href);
 			}
 
 			let child = $(this).parent().find('.menu_children_body');
@@ -202,6 +207,12 @@ class bWinLeft extends HTMLElement{
 				}
 			}
 		})
+	}
+
+
+	openIframePage(href){
+		let iframe = $(this).parent().parent().find('#win_right');
+		iframe.get(0).src = href;
 	}
 
 }

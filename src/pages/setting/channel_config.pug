@@ -10,22 +10,22 @@ html
     body
 
 
-        div(class='left')
+        //div(class='left')
             //- include ../../pug_include/left
             b-win-left
 
-        div(class='right')
+        //div(class='right')
             //- include ../../pug_include/top
             //b-win-top
 
-            div(class='iframe scroll_style1' style='background:#fff;' id='iframe_body')
-                div(class='page_body' style='overflow:auto;')
-                    //- 页面主体开始。。。。。。
+        div(class='iframe scroll_style1' style='background:#fff;' id='iframe_body')
+            div(class='page_body' style='overflow:auto;')
+                //- 页面主体开始。。。。。。
 
-                    b-title(name='通道配置' id='b_title')
-                    //- 列表部分
-                    div(class='index_list')
-                        b-table-list(id='table_list')
+                b-title(name='通道配置' id='b_title')
+                //- 列表部分
+                div(class='index_list')
+                    b-table-list(id='table_list')
 
 
 

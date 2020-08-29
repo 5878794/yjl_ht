@@ -2,7 +2,9 @@
 //注意:注入咯全局变量 tt = 编译时的时间戳
 //background: url('../image/Group1x.png?t=@{tt}')
 
-
+#iframe_body{
+  display: none;
+}
 
 //.scroll_style1::-webkit-scrollbar {/*滚动条整体样式*/
 //  width: 4px;     /*高宽分别对应横竖滚动条的尺寸*/
@@ -127,10 +129,14 @@ html,body{
 //}
 
 
-
-.right{
+.win_right{
   position: absolute;
   left:200px; right:0; top:0; bottom:0;
+}
+.right{
+  position: absolute;
+  left:0; right:0; top:0; bottom:0;
+  display: none;
 }
 
 //.top{

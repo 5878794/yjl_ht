@@ -10,27 +10,27 @@ html
     body
 
 
-        div(class='left')
+        //div(class='left')
             //- include ../../pug_include/left
             b-win-left
 
-        div(class='right')
+        //div(class='right')
             //- include ../../pug_include/top
             //b-win-top
 
-            div(class='iframe scroll_style1' id='iframe_body' style='background:#fff;')
-                div(class='page_body' style='overflow:auto;')
-                    //- 页面主体开始。。。。。。
+        div(class='iframe scroll_style1' id='iframe_body' style='background:#fff;')
+            div(class='page_body' style='overflow:auto;')
+                //- 页面主体开始。。。。。。
 
-                    b-title(name='权限角色配置' id='b_title')
-                    div(class='openWin_input_main box_hlt box_lines')
-                        div(class='openWin_input_item3')
-                            //用户列表
-                            b-role-list(id='list' name='角色')
+                b-title(name='权限角色配置' id='b_title')
+                div(class='openWin_input_main box_hlt box_lines')
+                    div(class='openWin_input_item3')
+                        //用户列表
+                        b-role-list(id='list' name='角色')
 
-                        div(class='openWin_input_item2_')
-                            //权限列表
-                            b-role-authority(id='role' name='业务员角色')
+                    div(class='openWin_input_item2_')
+                        //权限列表
+                        b-role-authority(id='role' name='业务员角色')
 
 
 
