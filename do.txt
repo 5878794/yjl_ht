@@ -27,20 +27,4 @@ api文档已做接口：
 审批 ok （差 列表差字段）
 权证 ok
 贷后 ok
-
-
-
-
-
-bug：
-
-Request URL: http://47.105.184.219:8089/api/orderChangeInfo/saveOrderChangeInfo
-request:   {"changeInfo":["2020-08-26,test将住址从 \"新地址3\"修改为\"新地址4\""],"orderNo":"JYDZ202008181501245684","type":2}
-response:  {"code":-1,"msg":null,"data":null}
-
-
-贷后-跟进记录列表   返回的数据差  操作人的名字字段
-贷后-核销 差初始数据   见效果图
-贷后-展期 差初始数据   放款时间，到期时间
-财务-退款退费列表  api没看到
-财务-财务管理     api差查询条件 字段，具体见效果图
+财务 退费、退款列表 功能     一堆TODO没的接口

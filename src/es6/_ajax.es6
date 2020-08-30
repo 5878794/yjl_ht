@@ -223,6 +223,10 @@ let api = {
 	finance_pay_back_submit:{url:'/api/dzOrderFlow/caiWuHuiKuanConfirm',type:'post'},
 		//记账页面  费用信息
 	finance_bookkeeping_cost_info:{url:'/api/financeOrder/getBookingInfoByOrderNo/{orderNo}',type:'get'},
+		//业务费缴纳 费用信息
+	finance_business_cost_info:{url:'/api/financeOrder/getYeWuFeeInfoByOrderNo/{orderNo}',type:'get'},
+		//房抵 分期还款详情
+	finance_Installment_info:{url:'/api/financeOrder/getRepaymentPlanDetailByOrderNo',type:'get'},
 };
 
 

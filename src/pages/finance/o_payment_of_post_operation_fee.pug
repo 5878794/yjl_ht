@@ -17,7 +17,7 @@ html
             b-title(name='历史流程')
             b-order-history(id='history' sort='desc' showOne='true')
 
-            div
+            div(id='form')
                 b-title(name='业务费后置缴纳')
                 div(class='openWin_input_main box_hlt box_lines')
                     div(class='openWin_input_item3')
@@ -39,13 +39,13 @@ html
                     div(class='openWin_input_item3')
                         b-input-money(accuracy='5' name='缴纳金额')
                     div(class='openWin_input_item1')
-                        b-input(type='textarea' name='备注' autoHeight='true')
+                        b-input(id='auditOpinion' type='textarea' placeholder='非必填' name='备注' autoHeight='true')
                     div(class='openWin_input_item1')
-                        b-input-file(type='file' name='附件')
+                        b-input-file(id='attachUrls' type='file' name='附件' unit='非必填')
 
 
 
 
             div(class='openWin_btns box_hcc')
-                div(class='openWin_btn_gray box_hcc hover') 取消
-                div(class='openWin_btn_blue box_hcc hover') 提交
+                div(class='openWin_btn_gray box_hcc hover' id='cancel') 取消
+                div(class='openWin_btn_blue box_hcc hover' id='submit') 提交

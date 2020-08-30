@@ -52,5 +52,7 @@ module.exports = {
 	o_write_off:{width:600,height:400},
 	//贷后-展期
 	o_rollover:{width:600,height:400},
+	//财务-后置缴费
+	o_payment_of_post_operation_fee:{width:600,height:400},
 
 };

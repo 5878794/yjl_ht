@@ -173,6 +173,7 @@ let distApi = {
 	residentialNature:{api:'setting_config_list',data:{type:4}},
 	backPayMethod:{api:'setting_config_list',data:{type:5}},
 	businessFrom:{api:'setting_config_list',data:{type:1}},
+	payPassage:{api:'setting_config_list',data:{type:6}},
 	manager:{api:'staff_list'},
 	manager1:{api:'staff_list'},
 	agencyFrom:{api:'org_list'},
@@ -194,6 +195,11 @@ let getDataFn = {
 		return data;
 	},
 	payBackMethod:function(data){
+		data = data[0] || {};
+		data = data.children || [];
+		return data;
+	},
+	payPassage:function(data){
 		data = data[0] || {};
 		data = data.children || [];
 		return data;
@@ -248,6 +254,7 @@ let keyChange = {
 	role:{name:'roleName',value:'id'},
 	archivesList:{name:'text',value:'id'},
 	businessType:{name:'text',value:'key'},
+	payPassage:{name:'text',value:'key'},
 	payBackMethod:{name:'text',value:'key'},
 	payMethod:{name:'text',value:'id'},
 	residentialNature:{name:'text',value:'id'},

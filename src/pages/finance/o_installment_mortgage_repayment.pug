@@ -11,44 +11,46 @@ html
 
 	body
 
-		div(class='openWin_main')
+		div(class='openWin_main' id='form')
 			div(class='openWin_input_main box_hlt box_lines')
 				div(class='openWin_input_item2')
-					b-input(type='text' disabled='disabled' name='订单编号')
+					b-input(id='orderNo' type='text' disabled='disabled' name='订单编号')
 				div(class='openWin_input_item2')
-					b-input(type='text' disabled='disabled' name='客户姓名')
+					b-input(id='clientName' type='text' disabled='disabled' name='客户姓名')
 				div(class='openWin_input_item2')
-					b-input(type='text' disabled='disabled' name='还款期数')
+					b-input(id='planNumber' type='text' disabled='disabled' name='还款期数')
 				div(class='openWin_input_item2')
-					b-input-date(type='date' disabled='disabled' name='应用日期')
+					b-input-date(id='repaymentTime_' type='date' disabled='disabled' name='应还日期')
 				div(class='openWin_input_item2')
-					b-input(type='text' disabled='disabled' name='逾期天数')
+					b-input(id='overdueDays' type='text' disabled='disabled' name='逾期天数')
 				div(class='openWin_input_item2')
 				div(class='openWin_input_item2')
-					b-input-money(accuracy='5' disabled='disabled' name='应还本金')
+					b-input-money(id='repaymentPrincipal' accuracy='5' disabled='disabled' name='应还本金')
 				div(class='openWin_input_item2')
-					b-input-money(accuracy='5' disabled='disabled' name='应还利息')
+					b-input-money(id='repaymentInterest' accuracy='5' disabled='disabled' name='应还利息')
 				div(class='openWin_input_item2')
-					b-input-money(accuracy='5' disabled='disabled' name='罚息')
+					b-input-money(id='penaltyInterest' accuracy='5' disabled='disabled' name='罚息')
 				div(class='openWin_input_item2 installment_mortgage_repayment box_hlc')
 					div 应还合计
-					p 888,777.12333
+					p(id='total')
 					span 元
 
 				div(class='installment_mortgage_repayment_line')
 
 			div(class='openWin_input_main box_hlt box_lines')
 				div(class='openWin_input_item2')
-					b-input-money(accuracy='5' name='实还金额')
+					//TODO id
+					b-input-money(accuracy='5' name='实还金额' rule='must' err='不能为空')
 				div(class='openWin_input_item2')
+					//TODO id
 					b-input-money(accuracy='5' disabled='disabled' name='剩余待还')
 				div(class='openWin_input_item1')
-					b-input(type='textarea' name='备注' autoHeight='true')
+					b-input(id='auditOpinion' type='textarea' name='备注' autoHeight='true' placeholder='非必填')
 				div(class='openWin_input_item1')
-					b-input-file(type='file' name='附件')
+					b-input-file(id='attachUrls' type='file' name='附件' unit='非必填')
 
 
 
 
 			div(class='openWin_btns box_hcc')
-				div(class='openWin_btn_blue box_hcc hover') 提交
+				div(class='openWin_btn_blue box_hcc hover' id='submit') 提交

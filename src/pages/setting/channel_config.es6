@@ -20,15 +20,7 @@ require('./../../es6/yjl/b_title');
 let loading;
 let Page = {
     init(){
-        qt.loading.show('急速加载中');
-        this.run().then(rs=>{
-            qt.loading.hide();
-        }).catch(rs=>{
-            // err.error(rs);
-            qt.loading.hide();
-            qt.alert(rs);
-            // throw rs;
-        });
+        all.showLoadingRun(this,'run')
     },
     async run(){
         await all.getUserInfo();

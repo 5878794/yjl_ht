@@ -19,32 +19,34 @@ html
 
             div
                 b-title(name='出款')
-                div(class='openWin_input_main box_hlt box_lines')
+                div(class='openWin_input_main box_hlt box_lines' id='form')
                     div(class='openWin_input_item3')
-                        b-input(type='text' disabled='disabled' name='出款户名')
+                        b-input(id='bankName' type='text' disabled='disabled' name='出款户名')
                     div(class='openWin_input_item3')
-                        b-input(type='text' disabled='disabled' name='出款账号')
+                        b-input(id='bankNo' type='text' disabled='disabled' name='出款账号')
                     div(class='openWin_input_item3')
-                        b-input(type='text' disabled='disabled' name='开户行')
+                        b-input(id='openBank' type='text' disabled='disabled' name='开户行')
                     div(class='openWin_input_item3')
-                        b-input(type='select' name='出款通道')
+                        b-input(id='loanPassageway' type='select' name='出款通道' data-bind='payPassage' rule='must' err='不能为空')
                     div(class='openWin_input_item3')
                     div(class='openWin_input_item3')
+                    div(class='hidden')
+                        b-input-money(id='loanPassagewayFee' accuracy='5')
                     div(class='openWin_input_item3')
                         div(class='box_hlc o_dispensing_info')
                             p 通道费:
-                            span 0
+                            span(id='loanPassagewayFee_') 0
                             p 元
 
-                div(class='openWin_input_main box_hlt box_lines')
-                    div(class='openWin_input_item1')
-                        b-input(type='textarea' name='备注' autoHeight='true')
-                    div(class='openWin_input_item1')
-                        b-input-file(type='file' name='附件')
+                    div(class='openWin_input_main box_hlt box_lines')
+                        div(class='openWin_input_item1')
+                            b-input(id='auditOpinion' type='textarea' name='备注' placeholder='非必填' autoHeight='true')
+                        div(class='openWin_input_item1')
+                            b-input-file(id='attachUrls' type='file' name='附件' unit='非必填')
 
 
 
 
             div(class='openWin_btns box_hcc')
-                div(class='openWin_btn_gray box_hcc hover') 取消
-                div(class='openWin_btn_blue box_hcc hover') 提交
+                div(class='openWin_btn_gray box_hcc hover' id='cancel') 取消
+                div(class='openWin_btn_blue box_hcc hover' id='submit') 提交
