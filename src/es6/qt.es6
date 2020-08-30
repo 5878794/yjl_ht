@@ -70,6 +70,7 @@ let JD = {
     },
     //打开本地页面
     openPage(url,width,height,type){
+        console.log('%c 打开iframe页面:'+url,'color:red;');
         type = type || 0;
         if (window.bridge) {
             bridge.openUrl(

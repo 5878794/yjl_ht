@@ -62,7 +62,7 @@ let Page = {
         let change = `${nowDate},${window.userName}添加贷后支出金额为"${val}"`;
         await ajax.send([
             api.order_change_submit({
-                changeInfo:[change],
+                changeInfoList:[change],
                 orderNo:this.orderNo,
                 type:2   // 类型 1-核行 2-贷后
             }),

@@ -100,7 +100,7 @@ let Page = {
         await ajax.send([
             api.warrant_approved_mdf(newObj),
             api.order_change_submit({
-                changeInfo:changeData,
+                changeInfoList:changeData,
                 orderNo:this.orderNo,
                 type:1   // 类型 1-核行修改 2-贷后
             })

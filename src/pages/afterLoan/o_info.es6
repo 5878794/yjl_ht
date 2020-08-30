@@ -175,7 +175,7 @@ let Page = {
 
         await ajax.send([
             api.order_change_submit({
-                changeInfo:[changeText],
+                changeInfoList:[changeText],
                 orderNo:this.orderNo,
                 type:2   // 类型 1-核行 2-贷后
             })

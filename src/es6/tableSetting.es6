@@ -398,85 +398,85 @@ let setting = {
 				name:'订单号',
 				width:'7%',
 				style:{color:'#333',fontSize:'14px'},
-				key:'key1'                //数据对应的key
+				key:'orderNo'                //数据对应的key
 			},
 			{
 				name:'客户姓名',
 				width:'5%',
 				style:{color:'#333',fontSize:'14px'},
-				key:'key2'                //数据对应的key
+				key:'clientName'                //数据对应的key
 			},
 			{
 				name:'经办人',
 				width:'5%',
 				style:{color:'#333',fontSize:'14px'},
-				key:'key3'                //数据对应的key
+				key:'operationName'                //数据对应的key
 			},
 			{
 				name:'经办人电话',
 				width:'7%',
 				style:{color:'#333',fontSize:'14px'},
-				key:'key4'                //数据对应的key
+				key:'operationMobile'                //数据对应的key
 			},
 			{
 				name:'业务类型',
 				width:'7%',
 				style:{color:'#333',fontSize:'14px'},
-				key:'key5'                //数据对应的key
+				key:'businessKey_'                //数据对应的key
 			},
 			{
 				name:'申请金额',
 				width:'8%',
 				style:{color:'#333',fontSize:'14px'},
-				key:'key6'                //数据对应的key
+				key:'applyMoney_'                //数据对应的key
 			},
 			{
 				name:'咨询费',
 				width:'8%',
 				style:{color:'#333',fontSize:'14px'},
-				key:'key7'                //数据对应的key
+				key:'consultationFee_'                //数据对应的key
 			},
 			{
 				name:'服务费',
 				width:'8%',
 				style:{color:'#333',fontSize:'14px'},
-				key:'key8'                //数据对应的key
+				key:'serviceFee_'                //数据对应的key
 			},
 			{
 				name:'权证费',
 				width:'8%',
 				style:{color:'#333',fontSize:'14px'},
-				key:'key9'                //数据对应的key
+				key:'warrantFee_'                //数据对应的key
 			},
 			{
 				name:'优惠费用',
 				width:'8%',
 				style:{color:'rgb(198,84,98)',fontSize:'14px'},
-				key:'key10'                //数据对应的key
+				key:'preferentialFee_'                //数据对应的key
 			},
 			{
 				name:'已收小记',
 				width:'8%',
 				style:{color:'#333',fontSize:'14px'},
-				key:'key11'                //数据对应的key
+				key:'totalCost_'                //数据对应的key
 			},
 			{
 				name:'费用退补',
 				width:'8%',
 				style:{color:'rgb(198,84,98)',fontSize:'14px'},
-				key:'key12'                //数据对应的key
+				key:'compensationRefundFee_'                //数据对应的key
 			},
 			{
 				name:'业务状态',
 				width:'7%',
 				style:{color:'#333',fontSize:'14px'},
-				key:'key13'                //数据对应的key
+				key:'orderStatus_'                //数据对应的key
 			},
 			{
 				name:'到期时间',
 				width:'6%',
 				style:{color:'#333',fontSize:'14px'},
-				key:'key14'                //数据对应的key
+				key:'expireTime_'                //数据对应的key
 			}
 		]
 	},

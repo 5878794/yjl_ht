@@ -26,9 +26,11 @@ let Page = {
     },
     async run(){
         await all.getUserInfo();
+        this.createSearch();
+
 
         this.createNotice();
-        this.createSearch();
+
         this.createList();
 
         this.btnBindEvent();
