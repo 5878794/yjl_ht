@@ -217,6 +217,12 @@ let api = {
 
 	//财务
 	finance_list:{url:'/api/financeOrder/list',type:'get'},
+		//垫资回款-获取剩余本金
+	finance_get_remaining_principal:{url:'/api/financeOrder/getLeftPrincipalTotalByOrderNo/{orderNo}',type:'get'},
+		//垫资回款提交
+	finance_pay_back_submit:{url:'/api/dzOrderFlow/caiWuHuiKuanConfirm',type:'post'},
+		//记账页面  费用信息
+	finance_bookkeeping_cost_info:{url:'/api/financeOrder/getBookingInfoByOrderNo/{orderNo}',type:'get'},
 };
 
 
