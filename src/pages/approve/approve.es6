@@ -103,16 +103,13 @@ let Page = {
         table.show(data);
 
         table.body.find('.__row__').css({cursor:'pointer'});
-        table.body.find('.__row__').click(function(){
+        table.body.find('.__row__').click(async function(){
             let data = $(this).data('data'),
                 id = data.id,
                 orderNo = data.orderNo,
                 currentNodeKey = data.currentNodeKey,
-
                 //根据节点状态获取跳转的页面
-                pageInfo = processToPageDist[currentNodeKey]??{},
-                url = pageInfo.url,
-                title = pageInfo.title;
+                {url,title} = await processToPageDist(currentNodeKey);
 
                 qt.openPage(
                     `${url}?id=${id}&orderNo=${orderNo}&currentNodeKey=${currentNodeKey}&title=${title}`,

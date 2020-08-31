@@ -42,6 +42,9 @@
 // FANG_DI 房抵 FANG_DI_CAIWU_YEWUFEI_PAYMENT_CONFIRM 财务-确认业务费缴纳
 // FANG_DI 房抵 FANG_DI_DINGDAN_FINISH_SYSTEM 系统-订单完成
 
+let qt = require('./qt');
+
+
 let key = [
 	// {name:'DIAN_ZI_ZHIXING_SUBMIT_ORDER',value:'',info:'执行-提交订单'},
 	{name:'DIAN_ZI_JILING_AUDIT',value:'../approve/o_approve_advance.html',info:'经理-部门初审'},
@@ -99,7 +102,21 @@ key.map(rs=>{
 });
 
 
-module.exports = key1;
+module.exports = function(currentNodeKey){
+	return new Promise(success=>{
+		let obj = key1[currentNodeKey];
+
+		if(obj){
+			let	url = obj.url,
+				title = obj.title;
+
+			success({url,title});
+		}else{
+			qt.alert('流程节点信息错误！');
+			console.log('%c 当前节点名:'+currentNodeKey,'color:red;')
+		}
+	})
+};
 
 
 
