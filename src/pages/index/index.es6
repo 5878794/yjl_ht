@@ -50,7 +50,7 @@ let Page = {
             // 无龙虎榜权限：点击跳转到“我的业务”，并设置条件时间范围为当月，状态为已完成
             //TODO
 
-            let canView = true;
+            let canView = false;
 
             if(canView){
                 qt.openPage(
@@ -65,10 +65,8 @@ let Page = {
                 parent.window.chooseNav('business.html');
 
                 //页面跳转
-                qt.openPage(
-                    `../business/business.html?sDay=${sDay}&eDay=${eDay}&state=${state}`,
-                    winSetting.sort.width,
-                    winSetting.sort.height)
+                let url = `../business/business.html?sDay=${sDay}&eDay=${eDay}&state=${state}`;
+                parent.window.iframeOpen(url);
             }
         })
 
