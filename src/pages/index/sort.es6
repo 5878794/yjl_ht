@@ -25,9 +25,22 @@ let Page = {
 	},
 	async run(){
 		await all.getUserInfo();
+
+		//TODO 根据权限判断获取数据
+
+		this.bindTitle();
+
 		await this.getData({pageNum:1});
 
 
+	},
+	bindTitle(){
+		//部门权限显示: xx公司xx部门
+		//公司权限显示: xx公司
+		//集团权限显示： 删除这个dom
+
+		let dom = $('#title1');
+		dom.text('xx公司xx部门');
 	},
 	async getData(data){
 		let _this = this;
@@ -66,7 +79,7 @@ let Page = {
 		]
 
 		data.map((rs,i)=>{
-			rs.no = i;
+			rs.no = i+1;
 
 
 		});
