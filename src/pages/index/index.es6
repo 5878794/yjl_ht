@@ -47,7 +47,29 @@ let Page = {
         });
 
         sort.click(function(){
+            // 无龙虎榜权限：点击跳转到“我的业务”，并设置条件时间范围为当月，状态为已完成
             //TODO
+
+            let canView = true;
+
+            if(canView){
+                qt.openPage(
+                    './sort.html',
+                    winSetting.sort.width,
+                    winSetting.sort.height)
+            }else{
+                let [sDay,eDay] = stamp2Date.getNowMonthDay(),
+                    state = 99;     //订单完成状态
+
+                //右侧菜单选中 我的业务 business.html
+                parent.window.chooseNav('business.html');
+
+                //页面跳转
+                qt.openPage(
+                    `../business/business.html?sDay=${sDay}&eDay=${eDay}&state=${state}`,
+                    winSetting.sort.width,
+                    winSetting.sort.height)
+            }
         })
 
     },

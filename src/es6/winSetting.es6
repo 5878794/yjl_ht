@@ -58,5 +58,6 @@ module.exports = {
 	o_installment_mortgage_repayment:{width:600,height:400},
 	//财务-房抵分期还尾款
 	o_last_installment_mortgage_repayment:{width:600,height:400},
-
+	//首页-龙虎榜
+	sort:{width:600,height:400},
 };

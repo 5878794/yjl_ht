@@ -6,6 +6,7 @@ let app = require('./../../es6/lib/page'),
     pageSizeSetting = require('./../../es6/pageSize'),
     winSetting = require('./../../es6/winSetting'),
     tableSet = require('./../../es6/tableSetting'),
+    getParamFromUrl = require('./../../es6/lib/fn/getParamFromUrl'),
     selectData = require('./../../es6/selectData'),
     moneyFormat = require('./../../es6/lib/fn/number'),
     stamp2Date = require('./../../es6/lib/fn/timeAndStamp'),
@@ -34,10 +35,27 @@ let Page = {
         this.createSearch();
         await selectData($('#b_search').get(0).body);
 
+        let param = getParamFromUrl(),
+            sDay = param.sDay,
+            eDay = param.eDay,
+            state = param.state;
+
         this.orderStateDist = await selectData('orderState');
         this.productTypeDist = await selectData("businessType");
 
-        await this.getData({pageNum:1});
+
+        let searchData = {pageNum:1};
+        if(sDay || eDay || state){
+            let search = $('#b_search').get(0).body;
+            search.find('b-input-date[key="operationStartTime"]').get(0).value = sDay;
+            search.find('b-input-date[key="operationEndTime"]').get(0).value = eDay;
+            search.find('b-input[key="orderStatus"]').get(0).value = state;
+
+            searchData.operationStartTime = sDay;
+            searchData.operationEndTime = eDay;
+            searchData.orderStatus = state;
+        }
+        await this.getData(searchData);
 
     },
     async getData(data){

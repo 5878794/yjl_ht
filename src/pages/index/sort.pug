@@ -1,0 +1,42 @@
+doctype html
+html
+    head
+        title 通知管理
+        include ./../../pug_include/head_pc
+
+        script(data-src='sort.min.js?t='+tt)
+
+
+    body
+
+
+        //div(class='left')
+            //- include ../../pug_include/left
+            b-win-left
+
+        //div(class='right')
+            //- include ../../pug_include/top
+            //b-win-top
+
+        div(class='iframe scroll_style1' id='iframe_body')
+            div(class='page_body')
+                //- 页面主体开始。。。。。。
+
+                div(class='title') 金盾时代业绩龙虎榜
+
+                //部门权限显示: xx公司xx部门
+                //公司权限显示: xx公司
+                //集团权限显示： 删除这个dom
+                div(class='title1' id='title1')
+
+                //- 列表部分
+                div(class='index_list')
+                    b-table-list(id='table_list')
+
+
+
+
+
+
+
+

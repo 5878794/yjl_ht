@@ -183,22 +183,13 @@ class bWinLeft extends HTMLElement{
 		});
 	}
 
-	chooseNav(){
-		let path = window.location.pathname,
-			_this = this;
-
-		//补全path
-		if(path.substr(path.length-1) == '/'){
-			path = path+'index.html';
-		}
-
-		path = path + window.location.search;
-
+	chooseNav(path){
 		let allItem = this.body.find('.__item__');
+		allItem.removeClass('select');
 		allItem.each(function(){
 			let thisSrc = $(this).attr('href');
 			thisSrc = thisSrc.substr(2);
-			if(thisSrc == path){
+			if(thisSrc.indexOf(path)>-1){
 				$(this).addClass('select');
 
 				//判断是否是子菜单

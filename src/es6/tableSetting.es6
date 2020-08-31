@@ -1235,6 +1235,93 @@ let setting = {
 			}
 		]
 	},
+	sort_department:{
+		setting:defaultSetting,
+		data:[
+			{
+				name:'排名',
+				width:'20%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'no'
+			},
+			{
+				name:'姓名',
+				width:'30%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'name'                //数据对应的key
+			},
+			{
+				name:'业绩',
+				width:'50%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'money'                //数据对应的key
+			}
+		]
+	},
+	sort_company:{
+		setting:defaultSetting,
+		data:[
+			{
+				name:'排名',
+				width:'10%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'no'
+			},
+			{
+				name:'部门',
+				width:'20%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'department'
+			},
+			{
+				name:'姓名',
+				width:'20%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'name'                //数据对应的key
+			},
+			{
+				name:'业绩',
+				width:'50%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'money'                //数据对应的key
+			}
+		]
+	},
+	sort_group:{
+		setting:defaultSetting,
+		data:[
+			{
+				name:'排名',
+				width:'10%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'no'
+			},
+			{
+				name:'公司',
+				width:'20%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'company'
+			},
+			{
+				name:'部门',
+				width:'20%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'department'
+			},
+			{
+				name:'姓名',
+				width:'20%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'name'                //数据对应的key
+			},
+			{
+				name:'业绩',
+				width:'30%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'money'                //数据对应的key
+			}
+		]
+	},
 
 	set(dom,page){
 		dom.setting = this[page].setting;
