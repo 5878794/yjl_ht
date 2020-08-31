@@ -227,6 +227,8 @@ let api = {
 	finance_business_cost_info:{url:'/api/financeOrder/getYeWuFeeInfoByOrderNo/{orderNo}',type:'get'},
 		//房抵 分期还款详情
 	finance_Installment_info:{url:'/api/financeOrder/getRepaymentPlanDetailByOrderNo',type:'get'},
+		//房抵 分期还款列表
+	finance_Installment_list:{url:'/api/financeOrder/getRepaymentPlanListByOrderNo/{orderNo}',type:'get'},
 };
 
 

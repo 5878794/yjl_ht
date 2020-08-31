@@ -37,97 +37,106 @@ let Page = {
 		this.currentNodeKey = param.currentNodeKey;
 
 		await all.getUserInfo();
-		let [data,history] = await ajax.send([
+		let [data,history,list] = await ajax.send([
 			api.order_get_byId({id:this.id}),
-			api.order_get_history_byOrderNo({orderNo:this.orderNo})
+			api.order_get_history_byOrderNo({orderNo:this.orderNo}),
+			api.finance_Installment_list({orderNo:this.orderNo})
 		]);
 		await all.setOrderTopData(4,data);
 		await all.setOrderHistoryData(history,true);
 
-
-
-		//TODO
-		this.createList();
+		this.createList(list);
+		//TODO 无数据
+		this.bindTotalData({a:3000,b:2000});
 		this.addBtnEvent();
 	},
+	bindTotalData(data){
+		let dom = $('#total_wk'),
+			wkDom = dom.find('span'),
+			yqfDom = dom.find('div');
+		//尾款
+		wkDom.text(moneyFormat(data.a,5));
+		//预期
+		yqfDom.text('('+moneyFormat(data.b,5)+')');
 
-	createList(){
-		let table = $('#list').get(0);
+	},
+	createList(data){
+		let table = $('#list').get(0),
+			_this = this;
+
 		tableSet.set(table,'mortgage_repayment');
 		table.listBody.removeClass('boxflex1');
 		table.rowWidth = 1200;
 
-		//TODO 数据获取
-		let tempData = [
-			{
-				id:1,key1:'333',
-				key2:'2020-11-11',key3:'3,000,000,000.00000',key4:'3,000,000,000.00000',
-				key5:'3,000,000,000.00000',key6:'3,000,000,000.00000',
-				key7:'2011-11-11',key8:'300,000,000.00000',key9:'300,000,000.00000'
-			},
-			{
-				id:1,key1:'333',
-				key2:'2020-11-11',key3:'3,000,000,000.00000',key4:'3,000,000,000.00000',
-				key5:'3,000,000,000.00000',key6:'3,000,000,000.00000',
-				key7:'2011-11-11',key8:'300,000,000.00000',key9:'300,000,000.00000'
-			},
-			{
-				id:1,key1:'333',
-				key2:'2020-11-11',key3:'3,000,000,000.00000',key4:'3,000,000,000.00000',
-				key5:'3,000,000,000.00000',key6:'3,000,000,000.00000',
-				key7:'2011-11-11',key8:'',key9:''
-			},
-			{
-				id:1,key1:'333',
-				key2:'2020-11-11',key3:'3,000,000,000.00000',key4:'3,000,000,000.00000',
-				key5:'3,000,000,000.00000',key6:'3,000,000,000.00000',
-				key7:'2011-11-11',key8:'',key9:''
-			},
-			{
-				id:1,key1:'333',
-				key2:'2020-11-11',key3:'3,000,000,000.00000',key4:'3,000,000,000.00000',
-				key5:'3,000,000,000.00000',key6:'3,000,000,000.00000',
-				key7:'2011-11-11',key8:'',key9:''
-			}
-		];
-		table.show(tempData);
+		data.map(rs=>{
+			//还款时间
+			rs.repaymentTime_ = stamp2Date.getDate1(rs.repaymentTime);
+			//归还本金
+			rs.repaymentPrincipal_ = moneyFormat(rs.repaymentPrincipal,5);
+			//咨询费用
+			rs.consultationFee_ = moneyFormat(rs.consultationFee,5);
+			//当期合计
+			rs.actualRepaymentFee_ = moneyFormat(rs.actualRepaymentFee,5);
+			//剩余本金
+			rs.leftPrincipal_ = moneyFormat(rs.leftPrincipal,5);
+			//实际还款时间
+			rs.actualRepaymentTime_ = stamp2Date.getDate1(rs.actualRepaymentTime);
+			//实际还款合计
+			rs.actualRepaymentFeeTotal_ = moneyFormat(rs.actualRepaymentFeeTotal,5);
+			//逾期费
+			rs.overdueFee_ = moneyFormat(rs.overdueFee,5);
+		})
+
+
+		table.show(data);
 
 
 		let addBtn = false;
-		table.body.find('.__key9__').each(function(){
+		table.body.find('.__overdueFee___').each(function(){
 			let body = $(this).parent(),
 				data = body.parent().data('data');
 			body.removeClass('box_scc').addClass('box_hcc');
 			body.find('div').css({width:'auto'});
-
-			if(data.key9){
-				$(this).text('('+data.key9+')');
+			if(data.overdueFee_){
+				$(this).text('('+data.overdueFee_+')');
 			}
 
 
 			if(!addBtn){
-				if(!data.key8){
+				if(!data.actualRepaymentFeeTotal_){
 					addBtn = true;
 					$(this).text('提交还款').css({
 						color:'rgb(86,123,249)'
 					}).addClass('hover');
 
 					$(this).click(function(){
-						console.log('提交还款')
+						qt.openPage(
+							`./o_installment_mortgage_repayment.html?id=${_this.id}&orderNo=${_this.orderNo}&currentNodeKey=${_this.currentNodeKey}`,
+							winSetting.o_installment_mortgage_repayment.width,
+							winSetting.o_installment_mortgage_repayment.height)
 					});
 				}
 			}
 		});
 
-		table.body.find('.__key6__').click(function(){
-			let data = $(this).parent().data('data');
-			console.log(data);
-		});
+		table.body.find('.__row__').css({
+			cursor:'default'
+		})
 	},
 	addBtnEvent(){
-		let btn = $('#back_pay');
+		let btn = $('#back_pay'),
+			close = $('#submit'),
+			_this = this;
+
 		btn.click(function(){
-			console.log('还款')
+			qt.openPage(
+				`./o_last_installment_mortgage_repayment.html?id=${_this.id}&orderNo=${_this.orderNo}&currentNodeKey=${_this.currentNodeKey}`,
+				winSetting.o_last_installment_mortgage_repayment.width,
+				winSetting.o_last_installment_mortgage_repayment.height)
+		});
+
+		close.click(function(){
+			qt.closeWin();
 		});
 	}
 

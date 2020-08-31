@@ -540,50 +540,50 @@ let setting = {
 				name:'期数',
 				width:'8%',
 				style:{color:'#333',fontSize:'14px'},
-				key:'key1'                //数据对应的key
+				key:'planNumber'                //数据对应的key
 			},
 			{
 				name:'还款时间',
 				width:'8%',
 				style:{color:'#333',fontSize:'14px'},
-				key:'key2'                //数据对应的key
+				key:'repaymentTime_'                //数据对应的key
 			},
 			{
 				name:'归还本金',
 				width:'13%',
 				style:{color:'#333',fontSize:'14px'},
-				key:'key3'                //数据对应的key
+				key:'repaymentPrincipal_'                //数据对应的key
 			},
 			{
 				name:'咨询费用',
 				width:'13%',
 				style:{color:'#333',fontSize:'14px'},
-				key:'key4'                //数据对应的key
+				key:'consultationFee_'                //数据对应的key
 			},
 			{
 				name:'当期合计',
 				width:'13%',
 				style:{color:'#333',fontSize:'14px'},
-				key:'key5'                //数据对应的key
+				key:'actualRepaymentFee_'                //数据对应的key
 			},
 			{
 				name:'剩余本金',
 				width:'13%',
 				style:{color:'#333',fontSize:'14px'},
-				key:'key6'                //数据对应的key
+				key:'leftPrincipal_'                //数据对应的key
 			},
 			{
 				name:'实际还款时间',
 				width:'8%',
 				style:{color:'#333',fontSize:'14px'},
-				key:'key7'                //数据对应的key
+				key:'actualRepaymentTime_'                //数据对应的key
 			},
 			{
 				name:'实际还款合计 (逾期费)',
 				width:'24%',
 				children:[
-					{style:{color:'#333',fontSize:'14px',lineHeight:'20px'},key:'key8'},//该列内显示的子数据，竖向排列
-					{style:{color:'red',fontSize:'14px',lineHeight:'20px',paddingLeft:'5px'}, key: 'key9'}
+					{style:{color:'#333',fontSize:'14px',lineHeight:'20px'},key:'actualRepaymentFeeTotal_'},//该列内显示的子数据，竖向排列
+					{style:{color:'red',fontSize:'14px',lineHeight:'20px',paddingLeft:'5px'}, key: 'overdueFee_'}
 				]
 			}
 		]

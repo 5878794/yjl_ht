@@ -54,5 +54,9 @@ module.exports = {
 	o_rollover:{width:600,height:400},
 	//财务-后置缴费
 	o_payment_of_post_operation_fee:{width:600,height:400},
+	//财务-房抵分期还款
+	o_installment_mortgage_repayment:{width:600,height:400},
+	//财务-房抵分期还尾款
+	o_last_installment_mortgage_repayment:{width:600,height:400},
 
 };
