@@ -39,13 +39,13 @@ let Page = {
 		this.addBtnEvent();
 		await all.getUserInfo();
 
-		//TODO 接口未写
 
-		// let [data] = await ajax.send([
-		// 	api.finance_Installment_info({orderNo:this.orderNo})
-		// ]);
+		let [data] = await ajax.send([
+			api.finance_final_installment_info({orderNo:this.orderNo})
+		]);
 
-
+		all.setFromVal($('#form'),data);
+		$('#total').text(moneyFormat(data.repaymentFeeTotal,5));
 
 
 	},

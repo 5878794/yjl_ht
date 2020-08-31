@@ -22,30 +22,32 @@ html
                 div(class='openWin_input_main box_hlt box_lines')
                     div(class='openWin_input_item3 warrant_pay_back box_hlc')
                         div 放款时间
-                        span 2011-11-11
+                        span(id='s_time') 2011-11-11
                     div(class='openWin_input_item3 warrant_pay_back box_hlc')
                         div 到期时间
-                        span 2011-11-11
+                        span(id='e_time') 2011-11-11
                     div(class='openWin_input_item3 warrant_pay_back box_hlc')
                         div(style='line-height:18px;') 展期后<br/>还款时间
-                        span 2011-11-11
+                        span(id='end_time') 2011-11-11
                     div(class='openWin_input_item3')
-                        b-input(type='text' name='展期')
+                        //TODO
+                        b-input(id='todo' type='text' class='__zq__' name='展期' rule='must' err='不能为空')
                     div(class='openWin_input_item3')
                     div(class='openWin_input_item3')
 
                     div(class='openWin_input_item3')
-                        b-input-money(accuracy='5' disabled='disabled' name='展期费')
+                        b-input-money(id='zhanQiFee' accuracy='5' disabled='disabled' name='展期费')
                     div(class='openWin_input_item3')
-                        b-input-money(accuracy='5' disabled='disabled' name='服务费')
+                        b-input-money(id='serviceFee' accuracy='5' disabled='disabled' name='服务费')
                     div(class='openWin_input_item3')
-                        b-input-money(accuracy='5' disabled='disabled' name='咨询费')
+                        b-input-money(id='consultationFee' accuracy='5' disabled='disabled' name='咨询费')
                     div(class='openWin_input_item3')
-                        b-input-money(accuracy='5' disabled='disabled' name='费用合计')
+                        b-input-money(id='totalCost' accuracy='5' disabled='disabled' name='费用合计')
 
                 div(class='openWin_input_main box_hlt box_lines')
                     div(class='openWin_input_item3')
-                        b-input-money(name='缴纳金额' accuracy='5')
+                        //TODO
+                        b-input-money(id='todo' name='缴纳金额' accuracy='5' unit='元' rule='must' err='不能为空')
                     div(class='openWin_input_item3')
                     div(class='openWin_input_item3')
                     div(class='openWin_input_item1')

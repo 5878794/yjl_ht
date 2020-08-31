@@ -229,6 +229,13 @@ let api = {
 	finance_Installment_info:{url:'/api/financeOrder/getRepaymentPlanDetailByOrderNo',type:'get'},
 		//房抵 分期还款列表
 	finance_Installment_list:{url:'/api/financeOrder/getRepaymentPlanListByOrderNo/{orderNo}',type:'get'},
+		//获取后置业务费信息
+	finance_rear_business_info:{url:'/api/financeOrder/getYeWuFeePostPositionInfoByOrderNo/{orderNo}',type:'get'},
+		//房抵 分期还款尾款信息
+	finance_final_installment_info:{url:'/api/financeOrder/getRePaymentBalanceInfo',type:'get'},
+		//展期信息
+	finance_rollover_info:{url:'/api/financeOrder/getZhanQiRepaymentInfoByOrderNo/{orderNo}',type:'get'},
+
 };
 
 

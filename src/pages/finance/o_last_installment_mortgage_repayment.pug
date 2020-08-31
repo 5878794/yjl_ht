@@ -4,7 +4,7 @@ html
 		title 房抵分期待还尾款
 		include ./../../pug_include/head_pc
 
-		script(data-src='o_installment_mortgage_repayment.min.js?t='+tt)
+		script(data-src='o_last_installment_mortgage_repayment.min.js?t='+tt)
 		style.
 			body,html{overflow:auto;}
 
@@ -14,19 +14,20 @@ html
 		div(class='openWin_main' id='form')
 			div(class='openWin_input_main box_hlt box_lines')
 				div(class='openWin_input_item2')
-					b-input-money(accuracy='5' disabled='disabled' name='应还本金' unit='元')
+					b-input-money(id='repaymentPrincipal' accuracy='5' disabled='disabled' name='应还本金' unit='元')
 				div(class='openWin_input_item2')
-					b-input-money(accuracy='5' disabled='disabled' name='应还罚息' unit='元')
+					b-input-money(id='penaltyInterest' accuracy='5' disabled='disabled' name='应还罚息' unit='元')
 				div(class='openWin_input_item2 installment_mortgage_repayment box_hlc' )
 					div 应还合计
-					p(id='total') 888,777.12333
+					p(id='total')
 					span 元
 
 				div(class='installment_mortgage_repayment_line')
 
 			div(class='openWin_input_main box_hlt box_lines')
 				div(class='openWin_input_item2')
-					b-input-money(accuracy='5' name='实还金额' rule='must' err='不能为空' unit='元')
+					//TODO id
+					b-input-money(id='' accuracy='5' name='实还金额' rule='must' err='不能为空' unit='元')
 				div(class='openWin_input_item1')
 					b-input(id='auditOpinion' type='textarea' name='备注' autoHeight='true' placeholder='非必填')
 				div(class='openWin_input_item1')

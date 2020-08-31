@@ -37,16 +37,17 @@ let Page = {
 		this.currentNodeKey = param.currentNodeKey;
 
 		await all.getUserInfo();
-		let [data,history] = await ajax.send([
+		let [data,history,info] = await ajax.send([
 			api.order_get_byId({id:this.id}),
-			api.order_get_history_byOrderNo({orderNo:this.orderNo})
+			api.order_get_history_byOrderNo({orderNo:this.orderNo}),
+			api.finance_rear_business_info({orderNo:this.orderNo})
 		]);
 		await all.setOrderTopData(4,data);
 		await all.setOrderHistoryData(history,true);
 
 		this.addBtnEvent();
 
-		//TODO 获取数据
+		all.setFromVal($('#form'),info);
 
 	},
 	addBtnEvent(){

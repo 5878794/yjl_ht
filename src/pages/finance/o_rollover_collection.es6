@@ -42,17 +42,29 @@ let Page = {
 		let [data,history,money] = await ajax.send([
 			api.order_get_byId({id:this.id}),
 			api.order_get_history_byOrderNo({orderNo:this.orderNo}),
-			api.finance_get_remaining_principal({orderNo:this.orderNo})
+			api.finance_rollover_info({orderNo:this.orderNo})
 		]);
 		await all.setOrderTopData(4,data);
 		await all.setOrderHistoryData(history,true);
 
 
 		this.addBtnEvent();
+		this.bindData(money);
 
 
-		//TODO 初始数据绑定
+	},
+	bindData(money){
+		all.setFromVal($('#form'),money??{});
+		$('#s_time').text(stamp2Date(money?.loanTime));
+		$('#e_time').text(stamp2Date(money?.expireTime));
+		$('#end_time').text(stamp2Date(money?.expireTime));
 
+		let zq = $('.__zq__').eq(0);
+
+		//TODO 计算展期后的到期时间
+		zq.get(0).change = function(){
+			console.log(val);
+		};
 	},
 	addBtnEvent(){
 		let submit = $('#submit'),
