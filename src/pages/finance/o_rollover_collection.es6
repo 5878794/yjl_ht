@@ -55,16 +55,9 @@ let Page = {
 	},
 	bindData(money){
 		all.setFromVal($('#form'),money??{});
-		$('#s_time').text(stamp2Date(money?.loanTime));
-		$('#e_time').text(stamp2Date(money?.expireTime));
-		$('#end_time').text(stamp2Date(money?.expireTime));
-
-		let zq = $('.__zq__').eq(0);
-
-		//TODO 计算展期后的到期时间
-		zq.get(0).change = function(){
-			console.log(val);
-		};
+		$('#s_time').text(stamp2Date.getDate1(money?.loanTime) || '暂无');
+		$('#e_time').text(stamp2Date.getDate1(money?.expireTime) || '暂无');
+		$('#end_time').text(stamp2Date.getDate1(money?.lastRepaymentTime) || '暂无');
 	},
 	addBtnEvent(){
 		let submit = $('#submit'),
