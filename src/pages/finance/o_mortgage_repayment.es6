@@ -45,9 +45,8 @@ let Page = {
 		await all.setOrderTopData(4,data);
 		await all.setOrderHistoryData(history,true);
 
-		this.createList(list);
-		//TODO 无数据
-		this.bindTotalData({a:3000,b:2000});
+		this.createList(list.orderRepaymentPlanInfoVoList || []);
+		this.bindTotalData(list);
 		this.addBtnEvent();
 	},
 	bindTotalData(data){
@@ -55,9 +54,9 @@ let Page = {
 			wkDom = dom.find('span'),
 			yqfDom = dom.find('div');
 		//尾款
-		wkDom.text(moneyFormat(data.a,5));
+		wkDom.text(moneyFormat(data.returnBalanceTotal??0,5));
 		//预期
-		yqfDom.text('('+moneyFormat(data.b,5)+')');
+		yqfDom.text('('+moneyFormat(data.overdueTotalFee??0,5)+')');
 
 	},
 	createList(data){
