@@ -108,9 +108,13 @@ let JD = {
     reLogin(){
 
     },
-    //下载文件  TODO 等接口
+    //下载文件
     downloadFile(url){
-
+        let fileName = url.substr(url.lastIndexOf('/')+1);
+        console.log('download:'+fileName);
+        if (bridge) {
+            bridge.download(url, fileName);
+        }
     }
 };
 
