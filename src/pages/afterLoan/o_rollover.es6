@@ -36,10 +36,12 @@ let Page = {
         this.addEventBind();
         await all.getUserInfo();
 
-        //TODO 初始数据没的接口
+        let [data] = await ajax.send([
+            api.afterLoan_rollover_info({orderNo:this.orderNo})
+        ]);
 
-        let startDate = '2011-11-11',
-            endDate = '2011-11-12';
+        let startDate = stamp2Date.getDate1(data.loanTime) || '无数据',
+            endDate = stamp2Date.getDate1(data.expireTime) || '无数据';
         this.bindPageData(startDate,endDate);
 
     },
