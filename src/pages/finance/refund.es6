@@ -1,6 +1,15 @@
 let app = require('./../../es6/lib/page'),
 	lib = require('./../../es6/lib'),
+	all = require('./../../es6/all'),
+	{ajax,api} = require('./../../es6/_ajax'),
+	qt = require('./../../es6/qt'),
+	pageSizeSetting = require('./../../es6/pageSize'),
+	processToPageDist = require('./../../es6/processToPage'),
+	moneyFormat = require('./../../es6/lib/fn/number'),
+	winSetting = require('./../../es6/winSetting'),
 	tableSet = require('./../../es6/tableSetting'),
+	stamp2Date = require('./../../es6/lib/fn/timeAndStamp'),
+	selectData = require('./../../es6/selectData'),
 	inputStyle = require('./../../es6/inputStyle');
 
 
@@ -13,105 +22,98 @@ require('./../../es6/customElement/pc/pagination');
 
 
 
-let loading;
 let Page = {
 	init(){
-		// loading = new loadFn();
-		// loading.show('急速加载中');
-		this.run().then(rs=>{
-			// loading.hide();
-		}).catch(rs=>{
-			// err.error(rs);
-			// loading.hide();
-			// app.alert(rs);
-			throw rs;
-		});
+		all.showLoadingRun(this,'run');
 	},
 	async run(){
+		await all.getUserInfo();
 		this.createSearch();
-		this.createList();
-		this.createPagination();
+		await selectData($('#b_search').get(0).body);
 
+		this.refundTypeDist = await selectData('backPayMethod') || {};
+		this.businessDist = await selectData('businessType') || {};
+
+		await this.getData({pageNum:1});
+
+	},
+	async getData(data){
+		let _this = this;
+
+		data.pageSize = pageSizeSetting.management_notice;
+		let [listData] = await ajax.send([
+			api.finance_refund_list(data)
+		]);
+		let listNumber = listData.total;
+		listData = listData.list || [];
+
+		await this.createList(listData);
+		all.createFY({
+			domId:'table_pagination',
+			nowPage:data.pageNum,
+			listLength:listNumber,
+			pageSize:data.pageSize,
+			searchData:data,
+			getDataFn:function(obj){
+				all.showLoadingRun(_this,'getData',obj);
+			}
+		});
 	},
 	createSearch(){
 		let search = $('#b_search').get(0);
 		search.inputData = [
-			{name:'客户姓名:',type:'text',id:'a1',width:'30%'},
-			{name:'客户电话:',type:'text',id:'a2',width:'30%'}
+			{name:'客户姓名:',type:'text',id:'clientName',width:'30%'},
+			{name:'客户电话:',type:'text',id:'clientMobile',width:'30%'}
 		];
 		search.clickFn = function(rs){
-			console.log(rs);    //返回 对应的 {id:value,...}
+			rs.pageNum = 1;
+			all.showLoadingRun(_this,'getData',rs);
 		};
 
 
 		inputStyle.searchSet(search);
 	},
-	createList(){
+	createList(data){
 		let table = $('#table_list').get(0);
 		tableSet.set(table,'finance_refund');
 
-		//TODO 数据获取
-		let tempData = [
-			{
-				id:1,key1:'退服务费',
-				key2:'张三张三',key3:'12312312312',key4:'张三张三',
-				key5:'12312312312',key6:'非交易垫资',key7:'3,000,000,000.00000',key8:'查看详情'
-			},
-			{
-				id:1,key1:'退服务费',
-				key2:'张三张三',key3:'12312312312',key4:'张三张三',
-				key5:'12312312312',key6:'非交易垫资',key7:'3,000,000,000.00000',key8:'查看详情'
-			},
-			{
-				id:1,key1:'退服务费',
-				key2:'张三张三',key3:'12312312312',key4:'张三张三',
-				key5:'12312312312',key6:'非交易垫资',key7:'3,000,000,000.00000',key8:'查看详情'
-			},
-			{
-				id:1,key1:'退服务费',
-				key2:'张三张三',key3:'12312312312',key4:'张三张三',
-				key5:'12312312312',key6:'非交易垫资',key7:'3,000,000,000.00000',key8:'查看详情'
-			},
-			{
-				id:1,key1:'退服务费',
-				key2:'张三张三',key3:'12312312312',key4:'张三张三',
-				key5:'12312312312',key6:'非交易垫资',key7:'3,000,000,000.00000',key8:'查看详情'
-			},
-			{
-				id:1,key1:'退服务费',
-				key2:'张三张三',key3:'12312312312',key4:'张三张三',
-				key5:'12312312312',key6:'非交易垫资',key7:'3,000,000,000.00000',key8:'查看详情'
-			},
-			{
-				id:1,key1:'退服务费',
-				key2:'张三张三',key3:'12312312312',key4:'张三张三',
-				key5:'12312312312',key6:'非交易垫资',key7:'3,000,000,000.00000',key8:'查看详情'
-			}
+		data.map(rs=>{
+			//退费类型
+			rs.refundTypeKey_ = this.refundTypeDist[rs.refundTypeKey];
+			//业务类型
+			rs.businessKey_ = this.businessDist[rs.businessKey];
+			//退费金额
+			rs.refundMoney_ = moneyFormat(rs.refundMoney,5);
 
-
-		];
-		table.show(tempData);
-
-		table.body.find('.__key8__').each(function(){
-			$(this).addClass('hover');
+			rs.key8 = '查看详情';
 		});
+
+		table.show(data);
+
+		table.body.find('.__key8__').addClass('hover');
+		table.body.find('.__row__').css({cursor:'pointer'});
 		table.body.find('.__row__').click(function(){
-			let data = $(this).data('data');
-			console.log(data);
-		});
-	},
-	createPagination(){
-		let fy = $('#table_pagination').get(0);
-		fy.show({
-			nowPage: 10,             //当前页码       默认：1
-			listLength: 149,         //总记录数
-			pageSize: 10             //分页数         默认：10
-		});
-		fy.clickFn = function(n){
-			console.log(n)          //点击事件，返回点击的页码
-		};
-		fy.selectBg = 'rgb(86,123,249)';        //设置当前页码显示的背景色  默认：#cc9800
+			let data = $(this).data('data'),
+				type = data.refundTypeKey,
+				id = data.id,
+				orderNo = data.orderNo;
 
+			if(type == 1){
+				//退尾款
+				let url = `./o_last_refund.html?orderNo=${orderNo}&id=${id}`;
+				qt.openPage(
+					url,
+					winSetting.o_last_refund.width,
+					winSetting.o_last_refund.height)
+			}else{
+				//退费用
+				let url = `./o_Refund.html?orderNo=${orderNo}&id=${id}`;
+				qt.openPage(
+					url,
+					winSetting.o_Refund.width,
+					winSetting.o_Refund.height)
+			}
+		});
 	}
 };
 

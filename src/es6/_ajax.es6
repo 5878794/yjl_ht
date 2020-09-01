@@ -235,6 +235,8 @@ let api = {
 	finance_final_installment_info:{url:'/api/financeOrder/getRePaymentBalanceInfo',type:'get'},
 		//展期信息
 	finance_rollover_info:{url:'/api/financeOrder/getZhanQiRepaymentInfoByOrderNo/{orderNo}',type:'get'},
+	//财务 退费退款列表
+	finance_refund_list:{url:'/api/financeOrder/getFinanceOrderRefundlist',type:'get'},
 
 };
 
