@@ -60,8 +60,6 @@ module.exports = {
 	o_last_installment_mortgage_repayment:{width:600,height:400},
 	//首页-龙虎榜
 	sort:{width:600,height:400},
-	//退尾款
-	o_last_refund:{width:600,height:400},
-	//退费用
+	//退费用(尾款、服务费)
 	o_Refund:{width:600,height:400},
 };

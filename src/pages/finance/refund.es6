@@ -96,23 +96,17 @@ let Page = {
 			let data = $(this).data('data'),
 				type = data.refundTypeKey,
 				id = data.id,
+				currentNodeKey = data.currentNodeKey,
 				orderNo = data.orderNo;
 
-			if(type == 1){
-				//退尾款
-				let url = `./o_last_refund.html?orderNo=${orderNo}&id=${id}`;
-				qt.openPage(
-					url,
-					winSetting.o_last_refund.width,
-					winSetting.o_last_refund.height)
-			}else{
-				//退费用
-				let url = `./o_Refund.html?orderNo=${orderNo}&id=${id}`;
-				qt.openPage(
-					url,
-					winSetting.o_Refund.width,
-					winSetting.o_Refund.height)
-			}
+
+			let url = `./o_Refund.html?orderNo=${orderNo}&id=${id}&currentNodeKey=${currentNodeKey}&type=${type}`;
+			qt.openPage(
+				url,
+				winSetting.o_Refund.width,
+				winSetting.o_Refund.height
+			)
+
 		});
 	}
 };
