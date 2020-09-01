@@ -69,25 +69,20 @@ let Page = {
 		form.attachUrls = uploaded.join(',');
 		form.auditStatus = state;
 		form.orderNo = this.orderNo;
+		form.currentNodeKey = this.currentNodeKey;
 
 		delete form.bankName;
 		delete form.bankNo;
 		delete form.openBank;
 
+		//退费类型 1-退尾款 2-退服务费
+		form.refundTypeKey = this.type;
 
-		//TODO
-		//根绝this.type的值判断提交不同的接口
-		//1：退款   2：退费用
-
-		console.log(form);
-		// form.currentNodeKey = this.currentNodeKey;
-
-
-		// await ajax.send([
-		// 	api.approve_advance(form)
-		// ]);
-		// await qt.alert('提交成功！');
-		// qt.closeWin();
+		await ajax.send([
+			api.finance_refund_submit(form)
+		]);
+		await qt.alert('提交成功！');
+		qt.closeWin();
 
 	}
 

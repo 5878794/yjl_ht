@@ -237,7 +237,8 @@ let api = {
 	finance_rollover_info:{url:'/api/financeOrder/getZhanQiRepaymentInfoByOrderNo/{orderNo}',type:'get'},
 	//财务 退费退款列表
 	finance_refund_list:{url:'/api/financeOrder/getFinanceOrderRefundlist',type:'get'},
-
+		//财务 退款提交
+	finance_refund_submit:{url:'/api/tkOrderFlow/zhiXingReturnApply',type:'post'},
 };
 
 
