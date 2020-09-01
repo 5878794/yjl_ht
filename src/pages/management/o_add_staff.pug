@@ -12,7 +12,6 @@ html
     body
 
         div(class='openWin_main')
-            //TODO 差紧急联系人、角色、最高学历、地址 id
             div
                 div(class='openWin_input_main box_hlt box_lines' id='form')
                     div(class='openWin_input_item3')
@@ -28,6 +27,7 @@ html
                     div(class='openWin_input_item3')
                         b-input(type='text' name='紧急电话' id='urgentMobile' rule='must,phone' err='不能为空')
                     div(class='openWin_input_item3')
+                        //TODO 紧急联系人性别
                         b-input(type='select' data-bind='gender' name='性别' id='urgentGender' rule='must' err='不能为空')
                     div(class='openWin_input_item3')
                         b-input-date(type='date' name='入职日期' id='inductionTime' rule='must' err='不能为空')
@@ -38,8 +38,10 @@ html
                     div(class='openWin_input_item3')
                         b-input(type='select' data-bind='department' name='所属部门' id='deptId' rule='must' err='不能为空')
                     div(class='openWin_input_item3')
+                        //TODO id
                         b-input(type='select' data-bind='role' name='拥有角色' id='roleId' rule='must' err='不能为空')
                     div(class='openWin_input_item3')
+                        //TODO id
                         b-input(type='select' data-bind='education' name='最高学历' id='xlId' rule='must' err='不能为空')
 
 

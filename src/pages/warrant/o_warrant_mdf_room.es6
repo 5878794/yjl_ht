@@ -64,8 +64,12 @@ let Page = {
                    orderNo:this.orderNo
                })
             ]);
-            //TODO 未测试
-            this.addHistory(changeData);
+
+            let newData = [];
+            changeData.map(rs=>{
+                newData.push(rs.changeInfo);
+            })
+            this.addHistory(newData);
         }
 
 
