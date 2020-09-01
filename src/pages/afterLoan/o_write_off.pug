@@ -16,19 +16,19 @@ html
                 b-title(name='核销')
                 div(class='openWin_input_main box_hlt box_lines' id='form')
                     div(class='openWin_input_item3')
-                        b-input-money(err='' name='剩余本金' disabled='disabled' id='key1' accuracy='5')
+                        b-input-money(id='remainInterest' name='剩余本金' disabled='disabled' accuracy='5')
                     div(class='openWin_input_item3')
-                        b-input-money(err='' name='剩余利息' disabled='disabled' accuracy='5' id='key1')
+                        b-input-money(id='remainPrincipal' name='剩余利息' disabled='disabled' accuracy='5')
                     div(class='openWin_input_item3')
-                        b-input-money(err='' name='贷后支出' disabled='disabled' accuracy='5' id='key1')
+                        b-input-money(id='disburseMoney' name='贷后支出' disabled='disabled' accuracy='5')
                     div(class='openWin_input_item3')
-                        b-input-money(err='' name='核销利息' disabled='disabled' accuracy='5' id='key1')
+                        b-input-money(id='heXiaoInterest' name='核销利息' disabled='disabled' accuracy='5')
                     div(class='openWin_input_item3')
-                        b-input-money(err='' name='核销本金' disabled='disabled' accuracy='5' id='key1')
+                        b-input-money(id='heXiaoPrincipal' name='核销本金' disabled='disabled' accuracy='5')
                 div(class='openWin_input_main box_hlt box_lines')
                     div(class='openWin_input_item3 warrant_pay_back box_hlc')
                         div 核销后损益
-                        p 0.00000
+                        p(id='sy') 0.00000
 
 
             div(class='openWin_btns box_hcc')

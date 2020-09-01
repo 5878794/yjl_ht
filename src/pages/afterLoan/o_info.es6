@@ -55,9 +55,12 @@ let Page = {
         await all.setOrderTopData(4,data);
         await all.setRecordData(record);
 
-        //TODO
-        changeList = ['2020年4月11日,李强将还款账号从12312312903812098390138修改为123910938129831283']
-        this.addHistory(changeList);
+        let newChangeList = [];
+        changeList.map(rs=>{
+            newChangeList.push(rs.changeInfo);
+        })
+
+        this.addHistory(newChangeList);
 
     },
     addBtnEvent(){

@@ -35,8 +35,13 @@ let Page = {
         this.addEventBind();
         await all.getUserInfo();
 
-        //TODO 初始数据没的接口
+        let [data] = await ajax.send([
+            api.afterLoan_write_off_info({orderNo:this.orderNo})
+        ]);
+        all.setFromVal($('#form'),data);
 
+        //TODO 核销后损益
+        $('#sy').text(moneyFormat(1,5));
 
     },
     addEventBind(){
