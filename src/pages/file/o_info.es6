@@ -27,7 +27,6 @@ require('./../../es6/customElement/pc/input_money');
 
 
 //TODO 下面的历史记录没做
-//TODO 文件不能分辨类型
 let Page = {
 	init(){
 		all.showLoadingRun(this,'run');

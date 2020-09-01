@@ -112,7 +112,7 @@ let JD = {
     downloadFile(url){
         let fileName = url.substr(url.lastIndexOf('/')+1);
         console.log('download:'+fileName);
-        if (bridge) {
+        if (window.bridge) {
             bridge.download(url, fileName);
         }
     }

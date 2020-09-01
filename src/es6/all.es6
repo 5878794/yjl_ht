@@ -360,30 +360,24 @@ let all = {
 				let a = new showBigImg({imgs:[rs]});
 				a.showImg(0);   //0为初始显示第几张，需要自己算是点的第几张图片
 			}else{
-				//不是图片 TODO 下载功能
+				//不是图片
+				qt.downloadFile(rs);
 				console.log(rs)
 			}
 		}
 	},
 	//设置订单跟进记录
-	//TODO
 	async setRecordData(data){
 		let part2 = $('#record').get(0);
-		data = [
-			{
-				no:'1',
-				info:'同意',
-				img:['../res/image/icon1.png','../res/css/all.css'],
-				date:'2020-11-11',
-				user:'张三'
-			},
-			{
-				no:'1',
-				info:'同意',
-				date:'2020-11-11',
-				user:'张三'
-			}
-		];
+
+		data.map((rs,i)=>{
+			rs.no = i+1;
+			rs.info = rs.content;
+			rs.img = this.getRealImageSrc(rs.attachUrls);
+			rs.date = stamp2Date.getDate1(rs.createTime);
+			rs.user = rs.createName;
+		});
+
 		part2.data = data;
 		part2.imgClick = function(rs){
 			// console.log(rs);        //图片点击返回当前图片路径
@@ -397,8 +391,8 @@ let all = {
 				let a = new showBigImg({imgs:[rs]});
 				a.showImg(0);   //0为初始显示第几张，需要自己算是点的第几张图片
 			}else{
-				//不是图片 TODO 下载功能
-				console.log(rs)
+				//不是图片
+				qt.downloadFile(rs);
 			}
 		}
 	},

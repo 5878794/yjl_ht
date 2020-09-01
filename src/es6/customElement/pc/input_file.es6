@@ -48,7 +48,8 @@
 
 let bInput = require('./input'),
 	getImageFitSize = require('../../lib/fn/getImageFitSize'),
-	showBigImage = require('../../lib/ui/showBigPicture');
+	showBigImage = require('../../lib/ui/showBigPicture'),
+	qt = require('../../qt');
 
 let createInput = Symbol.for('createInput'),
 	mdfStyle = Symbol(),
@@ -263,8 +264,7 @@ class bInputFile extends bInput{
 		div.append(typeDom).append(nameDom);
 
 		nameDom.click(function(){
-			//TODO 关闭下载
-			// window.open(fileUrl);
+			qt.downloadFile(fileUrl);
 		});
 
 
@@ -422,6 +422,7 @@ class bInputFile extends bInput{
 					fileName = rs.substr(rs.lastIndexOf('/')+1);
 				div.removeClass('box_scc').addClass('box_slt');
 				nameDom.addClass('hover');
+				nameDom.attr({fileUrl:fileUrl});
 
 				typeDom.css({
 					padding:'0 5px',
@@ -441,7 +442,8 @@ class bInputFile extends bInput{
 				div.append(typeDom).append(nameDom);
 
 				nameDom.click(function(){
-					//TODO 关闭下载
+					let url = $(this).attr('fileUrl');
+					qt.downloadFile(url);
 					// window.open(fileUrl);
 				});
 
