@@ -145,6 +145,7 @@ class bInput extends HTMLElement{
 		this.textareaCss = {};
 
 		this.userSetChangeFn = function(){};
+		this.childSelectSetValueFn = function(){};
 
 		//input附加style
 		this.userStyle = {
@@ -155,7 +156,7 @@ class bInput extends HTMLElement{
 			nameWidth:100,      //标题字段宽度
 			rowHeight:30        //行高
 		};
-
+		this.setSelectListNumber = 0;
 
 		//创建shadow容器
 		this.shadow = this.attachShadow({mode: 'open'});
@@ -462,6 +463,23 @@ class bInput extends HTMLElement{
 		});
 		let childId = $(this).data('child');
 		this.userSetChangeFn(this.value,childId);
+
+		this.setSelectListNumber = this.setSelectListNumber + 1;
+		if(this.setSelectListNumber == this.traggerNumber){
+			this.childSelectSetValueFn();
+		}
+	}
+
+	//级联菜单的初始赋值
+	childSelectSetValue(fn,number){
+		fn = fn??function(){};
+		number = number??3;
+		//一般是第3次改变select的选择数组时触发
+		//第一次 正常生成列表
+		//第二次 正常设置初始值
+		//第三次 列表跟随父级选择变化
+		this.traggerNumber = number;
+		this.childSelectSetValueFn = fn;
 	}
 
 	get value(){

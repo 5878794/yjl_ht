@@ -91,6 +91,7 @@ let Page = {
 
 		table.show(data);
 
+		table.body.find('.__row__').css({cursor:'pointer'});
 		table.body.find('.__row__').click(function(){
 			let data = $(this).data('data'),
 				id = data.id;

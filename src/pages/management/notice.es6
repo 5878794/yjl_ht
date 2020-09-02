@@ -97,13 +97,15 @@ let Page = {
 		table.show(data);
 
 		table.body.find('.__del__').addClass('hover');
-		table.body.find('.__del__').click(async function(){
+		table.body.find('.__del__').click(async function(e){
+			e.stopPropagation();
 			let data = $(this).parent().data('data');
 
 			if(await qt.confirm(`您确定要删除新闻:${data.broadTitle}?`)){
 				all.showLoadingRun(_this,'delNews',data);
 			}
 		});
+		table.body.find('.__row__').css({cursor:'pointer'});
 		table.body.find('.__row__').click(function(){
 			let data = $(this).data('data'),
 				id = data.id;

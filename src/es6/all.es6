@@ -148,6 +148,29 @@ let all = {
 			}
 		})
 	},
+	//dom下的b-input类数据绑定 带级联select
+	setFromValAndChildSelect(dom,data,key='id'){
+		let inputs = this.getInputDom(dom),
+			childSelectIds = [];
+		inputs.each(function(){
+			let id = $(this).attr(key),
+				childSelectId = $(this).data('child');
+			if(id){
+				this.value = data[id];
+			}
+			if(childSelectId){
+				childSelectIds.push(childSelectId);
+			}
+		});
+
+		//级联子select事件
+		childSelectIds.map(rs=>{
+			let dom = $('#'+rs).get(0);
+			dom.childSelectSetValue(function(){
+				dom.value = data[rs];
+			},3);
+		});
+	},
 	//上传文件
 	uploadFile(files){
 		let serverUrl = SETTING.serverUrl + '/api/file/upload';

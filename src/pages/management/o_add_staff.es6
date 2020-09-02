@@ -49,8 +49,7 @@ let Page = {
 			data = data.list??[];
 			data = data[0]??{};
 
-			all.setFromVal($('#form'),data);
-			console.log(data);
+			all.setFromValAndChildSelect($('#form'),data);
 		}
 
 
