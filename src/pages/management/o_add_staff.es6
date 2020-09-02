@@ -8,6 +8,7 @@ let app = require('./../../es6/lib/page'),
 	{ajax,api} = require('./../../es6/_ajax'),
 	qt = require('./../../es6/qt'),
 	bindSelectData = require('./../../es6/selectData'),
+	getParamFromUrl = require('./../../es6/lib/fn/getParamFromUrl'),
 	pageSizeSetting = require('./../../es6/pageSize'),
 	winSetting = require('./../../es6/winSetting'),
 	tableSet = require('./../../es6/tableSetting'),
@@ -33,12 +34,25 @@ let Page = {
 		all.showLoadingRun(this,'run');
 	},
 	async run(){
+		let param = getParamFromUrl();
+		this.id = param.id;
+
 		inputStyle.set(true,true);
 
 		await all.getUserInfo();
-
-
 		await bindSelectData($('#form'));
+
+		if(this.id){
+			let [data] = await ajax.send([
+				api.staff_list({id:this.id})
+			]);
+			data = data.list??[];
+			data = data[0]??{};
+
+			all.setFromVal($('#form'),data);
+			console.log(data);
+		}
+
 
 		let _this = this;
 		$('#submit').click(function(){
@@ -48,6 +62,10 @@ let Page = {
 
 	async submit(){
 		let data = await all.getFromVal($('#form'));
+
+		if(this.id){
+			data.id = this.id;
+		}
 
 		await ajax.send([
 			api.staff_add(data)

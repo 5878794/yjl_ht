@@ -90,6 +90,16 @@ let Page = {
 		});
 
 		table.show(data);
+
+		table.body.find('.__row__').click(function(){
+			let data = $(this).data('data'),
+				id = data.id;
+
+			qt.openPage(
+				'./o_add_staff.html?id='+id,
+				winSetting.management_add_staff.width,
+				winSetting.management_add_staff.height)
+		})
 	}
 };
 
