@@ -23,6 +23,7 @@ require('./../../es6/customElement/pc/table_list');
 
 
 let Page = {
+    userLock:false,
     init(){
         all.showLoadingRun(this,'run');
     },
@@ -30,6 +31,13 @@ let Page = {
         await all.getUserInfo();
         this.btnBindEvent();
         this.createSearch();
+
+        let [data] = await ajax.send([
+            api.index_sort_number()
+        ]);
+        //TODO 未测试这个接口
+        let myNumber = data.ranking || '';
+        $('#number_').text(myNumber);
 
         //TODO 通知获取、权限控制
         this.createNotice();
@@ -42,26 +50,26 @@ let Page = {
     },
     async getData(data){
 
-        data.pageSize = pageSizeSetting.management_notice;
-        let [listData,number] = await ajax.send([
-            api.index_list(data),
-            api.index_sort_number()
+        data.pageSize = 9999999;
+        let [listData] = await ajax.send([
+            api.index_list(data)
         ]);
         listData = listData.list || [];
 
-
-
         this.createList(listData);
-        //TODO 未测试这个接口
-        let myNumber = number.ranking || '';
-        $('#number_').text(myNumber);
+
 
     },
     btnBindEvent(){
         let add = $('#add_order'),
-            sort = $('#show_ph');
+            sort = $('#show_ph'),
+            _this = this;
 
         add.click(function(){
+            if(_this.userLock){
+                qt.alert('您有即将到期的待处理任务未处理！');
+                return;
+            }
             qt.openPage(
                 './o_add_order.html',
                 winSetting.index_add_step1.width,
@@ -69,6 +77,10 @@ let Page = {
         });
 
         sort.click(function(){
+            if(_this.userLock){
+                qt.alert('您有即将到期的待处理任务未处理！');
+                return;
+            }
             // 无龙虎榜权限：点击跳转到“我的业务”，并设置条件时间范围为当月，状态为已完成
             //TODO
 
@@ -129,6 +141,7 @@ let Page = {
         // table.setting = tableSet.index.setting;
         // table.data = tableSet.index.data;
 
+        let userLock = false;
         data.map(rs=>{
             //图标  TODO 需要判断类型
             rs.icon_ = '../res/image/index_state1.png';
@@ -153,7 +166,14 @@ let Page = {
             }
             html +=  '<span>(当前'+rs.currentNodeName+')</span>';
             rs.remainTime_ = html;
-        })
+
+
+            if(rs.remainTime == 0){
+                userLock = true;
+            }
+        });
+        this.userLock = userLock;
+        parent.window.userLock(userLock);
 
 
         // let tempData = [

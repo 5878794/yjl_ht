@@ -1,6 +1,7 @@
 
 
-let lib = require('../lib');
+let lib = require('../lib'),
+	qt = require('../qt');
 
 
 let addStyleFile = require('../customElement/fn/addStyleFile'),
@@ -202,9 +203,19 @@ class bWinLeft extends HTMLElement{
 
 
 	openIframePage(href){
+		if(this.canNotClick){
+			qt.alert('您有即将到期的待处理任务未处理!');
+			return;
+		}
+
 		let iframe = $(this).parent().parent().find('#win_right');
 		console.log('%c 打开页面:'+href,'color:red;')
 		iframe.get(0).src = href;
+	}
+
+
+	set userLock(state){
+		this.canNotClick = state;
 	}
 
 }
