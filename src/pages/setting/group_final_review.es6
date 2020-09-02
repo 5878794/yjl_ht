@@ -23,18 +23,22 @@ let Page = {
     async run(){
         await all.getUserInfo();
 
-        let [data1,data2] = await ajax.send([
+        let [data1,data2,data3] = await ajax.send([
             api.setting_config_list({type:9}),
-            api.setting_config_list({type:10})
+            api.setting_config_list({type:10}),
+            api.setting_config_list({type:20})
         ]);
 
         data1 = data1[0] || {};
         data2 = data2[0] || {};
+        data3 = data3[0] || {};
         data1 = data1.children || [];
         data2 = data2.children || [];
+        data3 = data3.children || [];
 
         this.groupData = data1;
         this.businessData = data2;
+        this.zxfl = data3;
 
         this.bindData();
         this.setInputNameStyle();
@@ -50,6 +54,7 @@ let Page = {
     bindData(){
         let body1 = $('#body1'),
             body2 = $('#body2'),
+            body3 = $('#body3'),
             item = $('#item'),
             _this = this,
             getItem = function(data,nameKey,unit,nameText){
@@ -74,6 +79,11 @@ let Page = {
             let _item = getItem(rs,'text','元/次','');
             body2.append(_item);
             body2.append('<br/>');
+        });
+        this.zxfl.map(rs=>{
+            let _item = getItem(rs,'typeName','%','');
+            body3.append(_item);
+            body3.append('<br/>');
         });
     },
     submit(obj){

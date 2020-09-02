@@ -93,7 +93,7 @@ let Page = {
 			}
 		};
 		list.click = function(data){
-			this.nowRoleId = data.id;
+			_this.nowRoleId = data.id;
 			all.showLoadingRun(_this,'createPrivilegeList')
 
 		};
