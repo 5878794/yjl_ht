@@ -6,7 +6,10 @@ let app = require('./../../es6/lib/page'),
     pageSizeSetting = require('./../../es6/pageSize'),
     winSetting = require('./../../es6/winSetting'),
     tableSet = require('./../../es6/tableSetting'),
+    selectData = require('./../../es6/selectData'),
+    moneyFormat = require('./../../es6/lib/fn/number'),
     stamp2Date = require('./../../es6/lib/fn/timeAndStamp'),
+    processToPageDist = require('./../../es6/processToPage'),
     inputStyle = require('./../../es6/inputStyle');
 
 
@@ -19,21 +22,40 @@ require('./../../es6/customElement/pc/table_list');
 
 
 
-let loading;
 let Page = {
     init(){
         all.showLoadingRun(this,'run');
     },
     async run(){
         await all.getUserInfo();
+        this.btnBindEvent();
         this.createSearch();
 
-
+        //TODO 通知获取、权限控制
         this.createNotice();
 
-        this.createList();
+        this.orderStateDist = await selectData('orderState1');
+        this.businessDist = await selectData('businessType');
 
-        this.btnBindEvent();
+        await this.getData({pageNum:1});
+
+    },
+    async getData(data){
+
+        data.pageSize = pageSizeSetting.management_notice;
+        let [listData,number] = await ajax.send([
+            api.index_list(data),
+            api.index_sort_number()
+        ]);
+        listData = listData.list || [];
+
+
+
+        this.createList(listData);
+        //TODO 未测试这个接口
+        let myNumber = number.ranking || '';
+        $('#number_').text(myNumber);
+
     },
     btnBindEvent(){
         let add = $('#add_order'),
@@ -88,61 +110,67 @@ let Page = {
         }
     },
     createSearch(){
-        let search = $('#search1').get(0);
+        let search = $('#search1').get(0),
+            _this = this;
+
         search.inputData = [
-            {name:'',type:'search',id:'search_val',width:'100%',placeholder:'请输入您要搜索的客户名、客户手机号、身份证号、订单号'}
+            {name:'',type:'search',id:'searchKey',width:'100%',placeholder:'请输入您要搜索的客户名、客户手机号、身份证号、订单号'}
         ];
         search.clickFn = function(rs){
-            console.log(rs);
-        }
+            rs.pageNum = 1;
+            all.showLoadingRun(_this,'getData',rs);
+        };
+
+        inputStyle.searchSet(search);
     },
-    createList(){
+    createList(data){
         let table = $('#table_list').get(0);
         tableSet.set(table,'index');
         // table.setting = tableSet.index.setting;
         // table.data = tableSet.index.data;
 
-        //TODO 数据获取
-        let tempData = [
-            {
-                id:1,key1:'../res/image/index_state1.png',
-                key2:'网叉叉',key3:'待审核',key4:'12312312312',
-                key5:'非电子交易',key6:'2020-05-01',key7:'100,100',
-                key8:'<p>剩余<span style="color:red;">5</span>天（当前还款状态）</p>',
-                key9:'../res/image/edit.png'
-            },
-            {
-                id:2,key1:'../res/image/index_state1.png',
-                key2:'网叉叉',key3:'待审核',key4:'12312312312',
-                key5:'非电子交易',key6:'2020-05-01',key7:'100,100',
-                key8:'剩余5天（当前还款状态）',
-                key9:'../res/image/edit.png'
-            },
-            {
-                id:3,key1:'../res/image/index_state1.png',
-                key2:'网叉叉',key3:'待审核',key4:'12312312312',
-                key5:'非电子交易',key6:'2020-05-01',key7:'100,100',
-                key8:'剩余5天（当前还款状态）',
-                key9:'../res/image/edit.png'
-            }, {
-                id:4,key1:'../res/image/index_state1.png',
-                key2:'网叉叉',key3:'待审核',key4:'12312312312',
-                key5:'非电子交易',key6:'2020-05-01',key7:'100,100',
-                key8:'剩余5天（当前还款状态）',
-                key9:'../res/image/edit.png'
-            },
-            {
-                id:5,key1:'../res/image/index_state1.png',
-                key2:'网叉叉',key3:'待审核',key4:'12312312312',
-                key5:'非电子交易',key6:'2020-05-01',key7:'100,100',
-                key8:'剩余5天（当前还款状态）',
-                key9:'../res/image/edit.png'
+        data.map(rs=>{
+            //图标  TODO 需要判断类型
+            rs.icon_ = '../res/image/index_state1.png';
+            //订单状态
+            rs.orderStatus_ = this.orderStateDist[rs.orderStatus];
+            //客户联系电话 TODO
+            rs.phone_ = '接口未返回';
+            //业务类型
+            rs.businessKey_ = this.businessDist[rs.businessKey];
+            //创建时间
+            rs.createTime_ = stamp2Date.getDate1(rs.createTime);
+            //申请金额
+            rs.applyMoney_ = moneyFormat(rs.applyMoney,5);
+            //剩余时间 当前订单流程状态
+            let html = '';
+            if(rs.remainTime){
+                if(parseInt(rs.remainTime) > 0){
+                    html = '<span>剩余<a style="color:red;">'+rs.remainTime+'</a>天</span>';
+                }else{
+                    html = '<span>逾期<a style="color:red;">'+rs.remainTime+'</a>天</span>';
+                }
             }
-        ];
-        table.show(tempData);
+            html +=  '<span>(当前'+rs.currentNodeName+')</span>';
+            rs.remainTime_ = html;
+        })
+
+
+        // let tempData = [
+        //     {
+        //         id:1,key1:'../res/image/index_state1.png',
+        //         key2:'网叉叉',key3:'待审核',key4:'12312312312',
+        //         key5:'非电子交易',key6:'2020-05-01',key7:'100,100',
+        //         key8:'<p>剩余<span style="color:red;">5</span>天（当前还款状态）</p>',
+        //         key9:'../res/image/edit.png'
+        //     }
+        // ];
+        table.show(data);
 
         table.body.find('.__row__').click(function(){
             let data = $(this).data('data');
+
+            //TODO 页面跳转
             console.log(data);
         });
 

@@ -54,33 +54,33 @@ let setting = {
 			{
 				name:'t1',          //must,标题行名称
 				width:'20%',         //must,cel宽度
-				icon:'key1',            //该列是否有图标
+				icon:'icon_',            //该列是否有图标
 				iconStyle:{width:'24px',height:'24px',marginLeft:'20px',marginRight:'5px'},
 				children:[
-					{style:{color:'#333',fontSize:'14px',lineHeight:'20px'},key:'key2'},//该列内显示的子数据，竖向排列
-					{style:{color:'#999',fontSize:'12px',lineHeight:'20px'}, key: 'key3'}
+					{style:{color:'#333',fontSize:'14px',lineHeight:'20px'},key:'clientName'},//该列内显示的子数据，竖向排列
+					{style:{color:'#999',fontSize:'12px',lineHeight:'20px'}, key: 'orderStatus_'}
 				]
 			},
 			{
 				name:'t1',
 				width:'20%',
 				style:{color:'#333',fontSize:'14px'},
-				key:'key4'                //数据对应的key
+				key:'phone_'                //数据对应的key
 			},
 			{
 				name:'t1',
 				width:'20%',
 				children:[
-					{style:{color:'#333',fontSize:'14px',lineHeight:'20px'},key:'key5'},//该列内显示的子数据，竖向排列
-					{style:{color:'#999',fontSize:'12px',lineHeight:'20px'}, key: 'key6'}
+					{style:{color:'#333',fontSize:'14px',lineHeight:'20px'},key:'businessKey_'},//该列内显示的子数据，竖向排列
+					{style:{color:'#999',fontSize:'12px',lineHeight:'20px'}, key: 'createTime_'}
 				]
 			},
 			{
 				name:'t1',
 				width:'30%',
 				children:[
-					{style:{color:'#cc9a4a',fontSize:'14px',lineHeight:'20px'},key:'key7'},//该列内显示的子数据，竖向排列
-					{style:{color:'#999',fontSize:'12px',lineHeight:'20px'},type:'html', key: 'key8'}
+					{style:{color:'#cc9a4a',fontSize:'14px',lineHeight:'20px'},key:'applyMoney_'},//该列内显示的子数据，竖向排列
+					{style:{color:'#999',fontSize:'12px',lineHeight:'20px'},type:'html', key: 'remainTime_'}
 				]
 			},
 			{
