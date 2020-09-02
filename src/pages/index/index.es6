@@ -35,7 +35,6 @@ let Page = {
         let [data] = await ajax.send([
             api.index_sort_number()
         ]);
-        //TODO 未测试这个接口
         let myNumber = data.ranking || '';
         $('#number_').text(myNumber);
 
@@ -54,8 +53,7 @@ let Page = {
         let [listData] = await ajax.send([
             api.index_list(data)
         ]);
-        listData = listData.list || [];
-
+        listData = listData || [];
         this.createList(listData);
 
 
@@ -143,6 +141,7 @@ let Page = {
 
         let userLock = false;
         data.map(rs=>{
+            rs.key9 = '../res/image/edit.png';
             //图标  TODO 需要判断类型
             rs.icon_ = '../res/image/index_state1.png';
             //订单状态
@@ -168,7 +167,7 @@ let Page = {
             rs.remainTime_ = html;
 
 
-            if(rs.remainTime == 0){
+            if(rs.remainTime <= 0){
                 userLock = true;
             }
         });
