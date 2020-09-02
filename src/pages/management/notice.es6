@@ -96,9 +96,7 @@ let Page = {
 
 		table.show(data);
 
-		table.body.find('.__del__').each(function(){
-			$(this).addClass('hover');
-		});
+		table.body.find('.__del__').addClass('hover');
 		table.body.find('.__del__').click(async function(){
 			let data = $(this).parent().data('data');
 
@@ -106,6 +104,14 @@ let Page = {
 				all.showLoadingRun(_this,'delNews',data);
 			}
 		});
+		table.body.find('.__row__').click(function(){
+			let data = $(this).data('data'),
+				id = data.id;
+			qt.openPage(
+				'./o_add_notice.html?id='+id,
+				winSetting.management_add_news.width,
+				winSetting.management_add_news.height)
+		})
 	},
 	async delNews(data){
 		await ajax.send([

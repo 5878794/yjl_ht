@@ -6,6 +6,7 @@ let app = require('./../../es6/lib/page'),
 	lib = require('./../../es6/lib'),
 	all = require('./../../es6/all'),
 	{ajax,api} = require('./../../es6/_ajax'),
+	getParamFromUrl = require('./../../es6/lib/fn/getParamFromUrl'),
 	qt = require('./../../es6/qt'),
 	inputStyle = require('./../../es6/inputStyle');
 
@@ -27,20 +28,32 @@ let Page = {
 		all.showLoadingRun(this,'run');
 	},
 	async run(){
+		let param = getParamFromUrl();
+		this.id = param.id;
 		inputStyle.set(true,true);
 
 		await all.getUserInfo();
 
+		if(this.id){
+			let [data] = await ajax.send([
+				api.news_list({id:this.id})
+			]);
+			data = data.list??[];
+			data = data[0]??{};
+
+			this.bindData(data);
+		}
+
 		let _this = this;
 		$('#submit').click(function(){
-			qt.loading.show();
-			_this.submit().then(rs=>{
-				qt.loading.hide();
-			}).catch(e=>{
-				qt.loading.hide();
-				qt.alert(e);
-			})
+			all.showLoadingRun(_this,'submit');
 		});
+	},
+	bindData(data){
+		all.setFromVal($('#form'),data);
+
+		let imgs = all.getRealImageSrc(data.attachUrls);
+		$('#attachUrls').get(0).showFiles =imgs;
 	},
 
 	async submit(){
@@ -54,6 +67,11 @@ let Page = {
 		form.attachUrls = filesServerUrl;
 		form.broadType = 0; //手动发布
 		form.status = 1;    //上架
+
+		if(this.id){
+			form.id = this.id;
+		}
+
 
 		await ajax.send([
 			api.news_add(form)
