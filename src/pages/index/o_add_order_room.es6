@@ -43,12 +43,18 @@ let Page = {
         await selectData($('#form'));
 
         //获取订单详情
-        let [data] = await ajax.send([
-            api.order_get_byId({id:this.id})
+        let [data,zxfl] = await ajax.send([
+            api.order_get_byId({id:this.id}),
+            api.setting_config_list({type:20})
         ]);
         this.orderNo = data.orderNo;
         this.orderData = data;
-        console.log(data);
+
+        zxfl = zxfl[0]??{};
+        zxfl = zxfl.children??[];
+        zxfl = zxfl[0]??{};
+        zxfl = zxfl.value;
+        this.zxfl = zxfl;
 
         this.btnEventBind();
         await this.backDataToForm(data);
@@ -92,13 +98,13 @@ let Page = {
             //合计
             dom_total = $('#orderRateInfo_totalCost').get(0),
             //咨询费率
-            dom_zxfl = $('#orderRateInfo_consultationRate').get(0);
+            dom_zxfl = $('#orderRateInfo_consultationRate').get(0),
+            _this = this;
 
 
         let fn = function(){
             // 咨询费率（管理员配置，%，只读）
-            //TODO
-            dom_zxfl.value = moneyFormat(1,2);
+            dom_zxfl.value = moneyFormat(_this.zxfl,2);
             // 逾期费率（固定0.15%,按日计算当期应还金额）、
             dom_yqfl.value = 0.15;
             // 咨询费（申请金额*用款时间*咨询费率，不低于3000）、

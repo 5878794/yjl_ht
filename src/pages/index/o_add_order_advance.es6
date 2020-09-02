@@ -47,12 +47,18 @@ let Page = {
 
 
         //获取订单详情
-        let [data] = await ajax.send([
-            api.order_get_byId({id:this.id})
+        let [data,zxfl] = await ajax.send([
+            api.order_get_byId({id:this.id}),
+            api.setting_config_list({type:20})
         ]);
         this.orderNo = data.orderNo;
         this.orderData = data;
-        console.log(data);
+
+        zxfl = zxfl[0]??{};
+        zxfl = zxfl.children??[];
+        zxfl = zxfl[0]??{};
+        zxfl = zxfl.value;
+        this.zxfl = zxfl;
 
 
         this.btnEventBind();
@@ -235,8 +241,7 @@ let Page = {
         let run = function(){
             //费用部分
             // 咨询费率（管理员配置，%，只读）
-            //TODO
-            dom_zxfl.value = moneyFormat(1,2);
+            dom_zxfl.value = moneyFormat(_this.zxfl,2);
 
             // 咨询费（申请金额*用款时间*咨询费率，不低于3000）、
             let applicationMoney = _this.orderData?.applyMoney??0,
