@@ -115,6 +115,14 @@ let JD = {
         if (window.bridge) {
             bridge.download(url, fileName);
         }
+    },
+    //获取用户信息
+    getUserInfo(){
+        return new Promise(success=>{
+            bridge.localData('userinfo', function (res) {
+                success(res);
+            });
+        })
     }
 };
 
