@@ -101,6 +101,25 @@ let Page = {
 
 		table.show(data);
 
+
+		// {name:'已入库',value:'0'},
+		// {name:'出库审批中',value:'1'},
+		// {name:'已出库',value:'2'},
+		// {name:'申请失败',value:'3'}
+		table.body.find('.__state___').find('div').each(function(){
+			let data = $(this).parent().parent().data(),
+				state = data.addressStatus;
+			if(state == 0){
+				$(this).css({color:'green'});
+			}else if(state == 1){
+				$(this).css({color:'blue'});
+			}else if(state == 2){
+				$(this).css({color:'#999'});
+			}else{
+				$(this).css({color:'red'});
+			}
+		});
+
 		table.body.find('.__key5__').each(function(){
 			$(this).addClass('hover');
 			$(this).click(function(e){

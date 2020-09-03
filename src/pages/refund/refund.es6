@@ -91,6 +91,8 @@ let Page = {
             rs.applyMoney_ = moneyFormat(rs.applyMoney,5);
             //退费金额
             rs.refundMoney_ = moneyFormat(rs.refundMoney,5);
+
+            //TODO 申请（蓝色）、审核中（红色）
             rs.key7 = '申请';
         });
 
