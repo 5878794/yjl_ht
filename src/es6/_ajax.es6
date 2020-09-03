@@ -296,6 +296,19 @@ api = new Proxy(api, {
 });
 
 
+//节点提交。。。。
+let nodeKeySubmit = function(url,data){
+	data = data || {};
+
+	let header = {};
+	if(data.currentNodeKey){
+		header.currentNodeKey = data.currentNodeKey;
+	}
+	return new Promise((success, error) => {
+		let type = 'post';
+		ajax.run(url, data, header, type, success, error);
+	})
+};
 
 
-module.exports = {ajax,api};
+module.exports = {ajax,api,nodeKeySubmit};
