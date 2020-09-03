@@ -188,7 +188,6 @@ class bRoleAuthority extends HTMLElement{
 					_item.find('.cel2_1').text(name);
 				}
 				_item.find('.cel2_2').text(child.privilegeName);
-				//TODO remark字段待定
 				_item.find('.cel2_3').text(child.remark);
 
 				let _switch = $(`<b-switch></b-switch>`).get(0);
