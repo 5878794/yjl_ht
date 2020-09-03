@@ -38,7 +38,7 @@ let Page = {
         this.orderNo = param.orderNo;
         this.currentNodeKey = param.currentNodeKey;
 
-        this.checkNeedProduct();
+
 
         await all.getUserInfo();
         await selectData($('#form'));
@@ -50,18 +50,22 @@ let Page = {
         await all.setOrderHistoryData(history,true);
         this.addBtnEvent();
 
-        this.addChangeEvent();
+        if(this.currentNodeKey != 'FANG_DI_JILING_AUDIT'){
+            this.checkNeedProduct();
+        }else{
+            this.addChangeEvent();
+        }
     },
     checkNeedProduct(){
-        if(this.currentNodeKey != 'FANG_DI_JILING_AUDIT'){
-            $('#choose_product').remove();
-        }
+        $('#choose_product').remove();
     },
     addChangeEvent(){
        let bSelect = $('#productId').get(0),
            dom = $('#productInfo'),
            info = dom.find('span');
 
+       console.log('start')
+        console.log(bSelect);
        bSelect.change = function(e){
            let selected = this.body.find('option:selected'),
                data = selected.data('data');
@@ -77,6 +81,7 @@ let Page = {
                dom.addClass('hidden');
            }
        };
+       console.log('end')
     },
     addBtnEvent(){
         let submit = $('#submit'),
