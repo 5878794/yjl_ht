@@ -21,6 +21,27 @@ require('./../../es6/yjl/b-search');
 require('./../../es6/customElement/pc/table_list');
 
 
+let icon = {
+    //垫资
+    DIAN:'../res/image/index/dz.png',
+    //房抵
+    FANG:'../res/image/index/fd.png',
+    //退款
+    TUI:'../res/image/index/tk.png',
+    //贷后
+    DAIHOU:'../res/image/index/dh.png',
+    //展期
+    ZHAN:'../res/image/index/zq.png',
+    //订单删除
+    DINGDAN:'../res/image/index/sc.png',
+    //核销
+    HEXIAO:'../res/image/index/hx.png',
+    //出库
+    CHU:'../res/image/index/ck.png'
+};
+
+
+
 
 let Page = {
     userLock:false,
@@ -142,12 +163,14 @@ let Page = {
         let userLock = false;
         data.map(rs=>{
             rs.key9 = '../res/image/edit.png';
-            //图标  TODO 需要判断类型
-            rs.icon_ = '../res/image/index_state1.png';
+            //图标
+            let nodeName = rs.currentNodeKey;
+            nodeName = nodeName.split('_')[0]??'';
+            rs.icon_ = icon[nodeName]??'';
             //订单状态
             rs.orderStatus_ = this.orderStateDist[rs.orderStatus];
-            //客户联系电话 TODO
-            rs.phone_ = '接口未返回';
+            //客户联系电话
+            rs.phone_ = rs.mobile;
             //业务类型
             rs.businessKey_ = this.businessDist[rs.businessKey];
             //创建时间

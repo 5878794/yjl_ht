@@ -38,10 +38,34 @@ let Page = {
         let [data] = await ajax.send([
             api.afterLoan_write_off_info({orderNo:this.orderNo})
         ]);
+        data.heXiaoInterest = 0;
+        data.heXiaoPrincipal = 0;
         all.setFromVal($('#form'),data);
 
-        //TODO 核销后损益
-        $('#sy').text(moneyFormat(1,5));
+        this.bindInput();
+
+    },
+    bindInput(){
+        let input1 = $('#heXiaoInterest').get(0),
+            input2 = $('#heXiaoPrincipal').get(0);
+
+        let setFn = function(){
+            let val1 = input1.value,
+                val2 = input2.value,
+                total = val1*1 + val2*1;
+            console.log(val1,val2,total)
+
+            $('#sy').text(moneyFormat(total,5));
+        };
+
+
+        input1.change = function(){
+            setFn();
+        };
+        input2.change = function(){
+            setFn();
+        };
+
 
     },
     addEventBind(){
@@ -57,7 +81,8 @@ let Page = {
         });
     },
     async submitFn(state){
-        let form = {};
+        let form = await all.getFromVal($('#form'));
+        console.log(form)
         form.auditStatus = state;
         form.orderNo = this.orderNo;
         form.currentNodeKey = this.currentNodeKey;

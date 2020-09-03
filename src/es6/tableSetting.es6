@@ -55,7 +55,7 @@ let setting = {
 				name:'t1',          //must,标题行名称
 				width:'20%',         //must,cel宽度
 				icon:'icon_',            //该列是否有图标
-				iconStyle:{width:'24px',height:'24px',marginLeft:'20px',marginRight:'5px'},
+				iconStyle:{width:'36px',height:'36px',marginLeft:'20px',marginRight:'5px'},
 				children:[
 					{style:{color:'#333',fontSize:'14px',lineHeight:'20px'},key:'clientName'},//该列内显示的子数据，竖向排列
 					{style:{color:'#999',fontSize:'12px',lineHeight:'20px'}, key: 'orderStatus_'}
