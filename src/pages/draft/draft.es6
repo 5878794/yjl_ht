@@ -62,6 +62,7 @@ let Page = {
         tableSet.set(table,'draft');
 
         data.map(rs=>{
+            //TODO 删除 正在申请删除（灰色）
             rs.key6 = '删除';
             rs.createTime_ = stamp2Date.getDate1(rs.stamp2Date);
             rs.applyMoney_ = moneyFormat(rs.applyMoney,5);

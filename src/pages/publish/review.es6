@@ -38,6 +38,10 @@ let Page = {
 		this.orderNo = param.orderNo;
 		this.currentNodeKey = param.currentNodeKey;
 
+		if(window.location.href.indexOf('overSingle') > -1){
+			$('#back').remove();
+		}
+
 		await all.getUserInfo();
 		let [data,history] = await ajax.send([
 			api.order_get_byId({id:this.id}),
@@ -54,16 +58,16 @@ let Page = {
 	},
 	addBtnEvent(){
 		let submit = $('#submit'),
-			// back = $('#back'),
+			back = $('#back'),
 			cancel = $('#cancel'),
 			_this = this;
 
 		submit.click(function(){
 			all.showLoadingRun(_this,'submitFn','1');
 		});
-		// back.click(function(){
-		// 	all.showLoadingRun(_this,'submitFn','0');
-		// });
+		back.click(function(){
+			all.showLoadingRun(_this,'submitFn','0');
+		});
 		cancel.click(function(){
 			qt.closeWin();
 		});
