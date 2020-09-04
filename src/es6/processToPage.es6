@@ -73,6 +73,8 @@ let key = [
 	// {name:'DINGDAN_SHANCHU_SHANCHU_SYSTEM',value:'',info:'系统-删除',api:''},
 
 
+
+	// /api/hxDdOrderFlow/auditOrder  核销-审核订单流程  //TODO 未找到节点 接口未调用
 	{name:'HEXIAO_DINGDAN_DAIHOU_HEXIAO_APPLY',value:'../afterLoan/o_write_off.html',info:'贷后-申请核销',api:'/api/hxDdOrderFlow/daiHouHeXiaoApply'},
 	{name:'HEXIAO_DINGDAN_JITUAN_HEXIAO_AUDIT_1',value:'../afterLoan/o_write_off1.html',info:'集团-核销初审',api:'/api/hxDdOrderFlow/jiTuanHeXiaoAuditOne'},
 	{name:'HEXIAO_DINGDAN_GONGSI_HEXIAO_AUDIT',value:'../afterLoan/o_write_off1.html',info:'公司-核销审核',api:'/api/hxDdOrderFlow/gongSiHeXiaoAudit'},
