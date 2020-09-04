@@ -28,4 +28,81 @@ TODO
 
 权限控制---咋个搞
 
+====================================
+//afterLoan
+o_add_after_loan
+o_info
+o_mdf_repayment_account
+o_mdf_user_info
+o_rollover
+    o_write_off
+    o_write_off1
+    o_write_off2
 
+
+======================================
+//approve
+o_approve_advance
+o_approve_room
+
+
+======================================
+//business
+business_info
+
+======================================
+//draft
+draft_del
+
+
+======================================
+//file
+o_add
+o_info
+
+======================================
+//finance
+o_advance_payment
+o_bookkeeping
+o_business_fee_payment
+o_dispensing
+o_installment_mortgage_repayment
+o_last_installment_mortgage_repayment
+o_mortgage_repayment
+o_payment_of_post_operation_fee
+o_Refund
+o_rollover_collection
+
+
+======================================
+//index
+o_add_order
+o_add_order_advance
+o_add_order_info
+o_add_order_room
+o_add_order_view
+sort
+
+
+======================================
+//management
+o_add_notice
+o_add_staff
+
+
+
+======================================
+//publish
+    review
+overSingle
+
+
+======================================
+//refund
+
+
+======================================
+//warrant
+o_warrant_mdf
+o_warrant_mdf_room
+o_warrant_pay_back
