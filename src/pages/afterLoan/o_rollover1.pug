@@ -1,0 +1,54 @@
+doctype html
+html
+    head
+        title 展期
+        include ./../../pug_include/head_pc
+
+        script(data-src='o_rollover1.min.js?t='+tt)
+        style.
+            body,html{overflow:auto;}
+
+
+    body
+
+        div(class='openWin_main autoWidth')
+            br
+            br
+            b-order-info(id='order_info' class='b_order_info')
+
+            b-title(name='历史流程')
+            b-order-history(id='history' showOne='true' sort='desc')
+
+            br
+
+
+            div
+                b-title(name='展期')
+                div(class='openWin_input_main box_hlt box_lines' id='form')
+                    div(class='openWin_input_item2 warrant_pay_back box_hlc')
+                        div 放款时间
+                        span(id='fk_date') 2020-06-11
+                    div(class='openWin_input_item2 warrant_pay_back box_hlc')
+                        div 到期时间
+                        span(id='dq_date') 2020-11-11
+
+                    div(class='openWin_input_item2')
+                        b-input(type='text' name='展期' value=0 id='exhibitionPeriod' unit='天' disabled='disabled' rule='must,number' err='只能输入正整数')
+                    div(class='openWin_input_item2')
+
+
+                    div(class='openWin_input_item2 warrant_pay_back box_hlc')
+                        div(style='line-height:18px;') 展期后预期<br/>还款时间
+                        span(id='end_date') 2020-11-11
+
+                    div(class='openWin_input_item1')
+                        b-input(type='textarea' name='备注' id='auditOpinion' placeholder='非必填')
+                    div(class='openWin_input_item1')
+                        b-input-file(name='附件' id='attachUrls' type='file' unit='非必填')
+
+
+
+            div(class='openWin_btns box_hcc')
+                div(class='openWin_btn_gray box_hcc hover' id='cancel') 取消
+                div(class='openWin_btn_red box_hcc hover' id='back') 驳回
+                div(class='openWin_btn_blue box_hcc hover' id='submit') 提交

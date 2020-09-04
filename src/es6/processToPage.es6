@@ -62,10 +62,10 @@ let key = [
 	// {name:'DAIHOU_ZHICHU_ADD_ZHICHU_SYSTEM',value:'',info:'系统-新增支出',api:''},
 
 
-	{name:'ZHAN_QI_DAIHOU_ZHANQI_APPLY',value:'',info:'贷后-展期申请',api:'/api/zqOrderFlow/daiHouAddZhiChu'},
-	{name:'ZHAN_QI_JITUAN_ZHANQI_AUDIT',value:'',info:'集团-展期审核',api:'/api/zqOrderFlow/jiTuanZhanQiAudit'},
-	{name:'ZHAN_QI_CAIWU_ZHANQI_SHOUKUAN_CONFIRM',value:'',info:'财务-展期收款确认',api:'/api/zqOrderFlow/caiWuZhanQiShoukKuanConfirm'},
-	{name:'ZHAN_QI_ZHANQI_SYSTEM',value:'',info:'系统-展期',api:''},
+	{name:'ZHAN_QI_DAIHOU_ZHANQI_APPLY',value:'../afterLoan/o_rollover.html',info:'贷后-展期申请',api:'/api/zqOrderFlow/daiHouAddZhiChu'},
+	{name:'ZHAN_QI_JITUAN_ZHANQI_AUDIT',value:'../afterLoan/o_rollover1.html',info:'集团-展期审核',api:'/api/zqOrderFlow/jiTuanZhanQiAudit'},
+	{name:'ZHAN_QI_CAIWU_ZHANQI_SHOUKUAN_CONFIRM',value:'../finance/o_rollover_collection.html',info:'财务-展期收款确认',api:'/api/zqOrderFlow/caiWuZhanQiShoukKuanConfirm'},
+	// {name:'ZHAN_QI_ZHANQI_SYSTEM',value:'',info:'系统-展期',api:''},
 
 
 	// {name:'DINGDAN_SHANCHU_ZHIXING_SHANCHU_APPLY',value:'',info:'执行-删除申请',api:'/api/ddScOrderFlow/zhiXingShanChuApply'},
@@ -83,11 +83,11 @@ let key = [
 	// {name:'HEXIAO_DINGDAN_HEXIAO_SYSTEM',value:'',info:'系统-核销',api:''},
 
 
-	{name:'CHU_KU_DANGAN_CHUKU_APPLY',value:'',info:'档案-出库申请',api:'/api/ckOrderFlow/dangAnChuKuApply'},
-	{name:'CHU_KU_FENGKONG_CHUKU_AUDIT',value:'',info:'风控-出库审核',api:'/api/ckOrderFlow/fengKongChuKuAudit'},
-	{name:'CHU_KU_CAIWU_CHUKU_OVER_ORDER',value:'',info:'财务-出库过单',api:'/api/ckOrderFlow/caiWuChuKuOverOrder'},
-	{name:'CHU_KU_JITUAN_CHUKU_OVER_ORDER',value:'',info:'集团-出库过单',api:'/api/ckOrderFlow/jiTuanChukuOverOrder'},
-	{name:'CHU_KU_CHUKU_SYSTEM',value:'',info:'系统-出库',api:''}
+	{name:'CHU_KU_DANGAN_CHUKU_APPLY',value:'../file/o_info1.html',info:'档案-出库申请',api:'/api/ckOrderFlow/dangAnChuKuApply'},
+	{name:'CHU_KU_FENGKONG_CHUKU_AUDIT',value:'../file/o_info2.html',info:'风控-出库审核',api:'/api/ckOrderFlow/fengKongChuKuAudit'},
+	{name:'CHU_KU_CAIWU_CHUKU_OVER_ORDER',value:'../publish/overSingle.html',info:'财务-出库过单',api:'/api/ckOrderFlow/caiWuChuKuOverOrder'},
+	{name:'CHU_KU_JITUAN_CHUKU_OVER_ORDER',value:'../publish/overSingle.html',info:'集团-出库过单',api:'/api/ckOrderFlow/jiTuanChukuOverOrder'},
+	// {name:'CHU_KU_CHUKU_SYSTEM',value:'',info:'系统-出库',api:''}
 
 
 

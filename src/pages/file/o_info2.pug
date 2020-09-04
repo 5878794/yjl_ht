@@ -1,0 +1,43 @@
+doctype html
+html
+    head
+        title 出库审核
+        include ./../../pug_include/head_pc
+
+        script(data-src='o_info2.min.js?t='+tt)
+        style.
+            body, html {
+                overflow: auto;
+            }
+
+    body
+
+        div(class='openWin_main' style='width:500px;min-width:100%;max-width:100%;')
+            div(class='openWin_input_main box_hlt box_lines' id='from')
+                div(class='openWin_input_item1')
+                    b-input-date(type='date' id='createTime' name='归档时间' disabled='disabled')
+                div(class='openWin_input_item1')
+                    b-input(type='text' name='关联订单号' id='orderNo' disabled='disabled')
+                div(class='openWin_input_item1')
+                    b-input(type='text' name='客户姓名' id='name' disabled='disabled')
+                div(class='openWin_input_item1')
+                    b-input(type='text' name='档案室' id='archiveRoom' disabled='disabled')
+                div(class='openWin_input_item1')
+                    b-input(type='text' name='位置标签' id='addressTag' disabled='disabled')
+                div(class='openWin_input_item1')
+                    b-input-file(type='file' name='上传照片' id='file')
+
+                div(class='openWin_input_item1')
+                    b-input(type='textarea' name='备注' id='auditOpinion' placeholder='非必填')
+                div(class='openWin_input_item1')
+                    b-input-file(name='附件' id='attachUrls' type='file' unit='非必填')
+
+
+
+            div(class='openWin_btns box_hcc')
+                div(class='openWin_btn_red box_hcc hover' id='back') 驳回
+                div(class='openWin_btn_blue box_hcc hover' id='submit') 提交
+
+
+
+
