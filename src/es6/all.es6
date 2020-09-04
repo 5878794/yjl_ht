@@ -533,7 +533,8 @@ let all = {
 		let formDom = param.formDom,
 			orderNo = param.orderNo,
 			state = param.state,
-			currentNodeKey = param.currentNodeKey;
+			currentNodeKey = param.currentNodeKey,
+			addFn = param.addFn ||function(){};
 
 		let form = await this.getFromVal(formDom),
 			uploaded = await this.uploadFile(form.attachUrls);
@@ -549,6 +550,8 @@ let all = {
 		await ajax.send([
 			nodeKeySubmit(api,form)
 		]);
+
+		await addFn();
 
 		await qt.alert('操作成功!');
 		qt.closeWin();

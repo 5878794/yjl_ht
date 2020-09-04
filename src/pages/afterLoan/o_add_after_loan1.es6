@@ -37,6 +37,19 @@ let Page = {
         this.addEventBind();
         await all.getUserInfo();
 
+        //TODO 差获取初始数据 注意id是变更过的
+        let [data2,history] = await ajax.send([
+            api.order_get_byId({id:this.id}),
+            api.order_get_history_byOrderNo({orderNo:this.orderNo})
+        ]);
+        await all.setOrderTopData(4,data2);
+        await all.setOrderHistoryData(history,true);
+
+        this.bindData();
+    },
+    //TODO
+    bindData(){
+        $('#attachUrls_').get(0).disabled = 'disabled'
     },
     addEventBind(){
         let submit = $('#submit'),
@@ -48,21 +61,7 @@ let Page = {
                 formDom:$('#form'),
                 orderNo:_this.orderNo,
                 state:1,
-                currentNodeKey:_this.currentNodeKey,
-                addFn:async function(form){
-                    let val = form.disburseMoney,
-                        nowDate = new Date().getTime();
-                    nowDate = stamp2Date.getDate1(nowDate);
-                    let change = `${nowDate},${window.userName}添加贷后支出金额为"${val}"`;
-                    await ajax.send([
-                        api.order_change_submit({
-                            changeInfoList:[change],
-                            orderNo:this.orderNo,
-                            type:2   // 类型 1-核行 2-贷后
-                        }),
-                    ]);
-                    qt.runParentJS('showText',[change]);
-                }
+                currentNodeKey:_this.currentNodeKey
             });
         });
         cancel.click(function(){

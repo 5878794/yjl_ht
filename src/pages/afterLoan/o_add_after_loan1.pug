@@ -1,0 +1,42 @@
+doctype html
+html
+    head
+        title 新增贷后支出
+        include ./../../pug_include/head_pc
+
+        script(data-src='o_add_after_loan1.min.js?t='+tt)
+        style.
+            body,html{overflow:auto;}
+
+
+    body
+
+        div(class='openWin_main autoWidth')
+            br
+            br
+            b-order-info(id='order_info' class='b_order_info')
+
+            b-title(name='历史流程')
+            b-order-history(id='history' showOne='true' sort='desc')
+
+            br
+
+
+            div
+                b-title(name='贷后支出')
+                div(class='openWin_input_main box_hlt box_lines' id='form')
+                    div(class='openWin_input_item1')
+                        b-input-money(err='' name='支出金额' disabled='disabled' id='disburseMoney_' accuracy='5' unit='元')
+                    div(class='openWin_input_item1')
+                        b-input(type='textarea' autoHeight='true' disabled='disabled' err='' name='备注' id='auditOpinion_')
+                    div(class='openWin_input_item1')
+                        b-input-file(type='file' err='' name='附件' disabled='disabled' id='attachUrls_')
+                    div(class='openWin_input_item1')
+                        b-input(type='textarea' autoHeight='true' err='' name='备注' id='auditOpinion')
+                    div(class='openWin_input_item1')
+                        b-input-file(type='file' err='' name='附件' id='attachUrls')
+
+
+            div(class='openWin_btns box_hcc')
+                div(class='openWin_btn_gray box_hcc hover' id='cancel') 取消
+                div(class='openWin_btn_blue box_hcc hover' id='submit') 提交

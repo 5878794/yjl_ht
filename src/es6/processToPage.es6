@@ -57,9 +57,9 @@ let key = [
 	{name:'TUI_KUAN_RETURN_MONEY_SYSTEM',value:'',info:'系统-退款',api:''},
 
 
-	{name:'DAIHOU_ZHICHU_DAIHOU_ADD_ZHICHU',value:'',info:'贷后-新增支出',api:'/api/dhZcOrderFlow/daiHouAddZhiChu'},
-	{name:'DAIHOU_ZHICHU_CAIWU_ZHICHU_OVER_ORDER',value:'',info:'财务-贷后支出过单',api:'/api/dhZcOrderFlow/caiWuZhiChuOverOrder'},
-	{name:'DAIHOU_ZHICHU_ADD_ZHICHU_SYSTEM',value:'',info:'系统-新增支出',api:''},
+	{name:'DAIHOU_ZHICHU_DAIHOU_ADD_ZHICHU',value:'../afterLoan/o_add_after_loan.html',info:'贷后-新增支出',api:'/api/dhZcOrderFlow/daiHouAddZhiChu'},
+	{name:'DAIHOU_ZHICHU_CAIWU_ZHICHU_OVER_ORDER',value:'../afterLoan/o_add_after_loan1.html',info:'财务-贷后支出过单',api:'/api/dhZcOrderFlow/caiWuZhiChuOverOrder'},
+	// {name:'DAIHOU_ZHICHU_ADD_ZHICHU_SYSTEM',value:'',info:'系统-新增支出',api:''},
 
 
 	{name:'ZHAN_QI_DAIHOU_ZHANQI_APPLY',value:'',info:'贷后-展期申请',api:'/api/zqOrderFlow/daiHouAddZhiChu'},
