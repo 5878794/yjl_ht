@@ -17,7 +17,11 @@ TODO
 员工添加 差字段  紧急联系人性别，拥有角色id，最高学历   management/o_add_staff.html  接口：/api/user/addOrUpdate
 
 
-
+退尾款、退服务费 触发放到列表上咯 需要加节点流程key  同时需要增加字段标注是否已申请退款
+财务的退款流程 都不能区分 是退款还是退费哈。。。只有申请退款的时候知道
+/api/tkOrderFlow/caiWuReturnMoney  财务 退款流程  //TODO 如何区分是退尾款还是退费用
+/api/tkOrderFlow/auditOrder  退款-审核订单流程  //TODO 未找到节点 接口未调用
+/api/hxDdOrderFlow/auditOrder  核销-审核订单流程  //TODO 未找到节点 接口未调用
 档案 出库已有接口（根流程接口不同？？？？）
 档案列表中增加 订单id，流程节点key   （新增页面需要）
 贷后支出过单  差初始数据（新增页面）
