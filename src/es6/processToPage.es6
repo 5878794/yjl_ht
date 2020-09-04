@@ -73,12 +73,12 @@ let key = [
 	// {name:'DINGDAN_SHANCHU_SHANCHU_SYSTEM',value:'',info:'系统-删除',api:''},
 
 
-	{name:'HEXIAO_DINGDAN_DAIHOU_HEXIAO_APPLY',value:'',info:'贷后-申请核销',api:'/api/hxDdOrderFlow/daiHouHeXiaoApply'},
-	{name:'HEXIAO_DINGDAN_JITUAN_HEXIAO_AUDIT_1',value:'',info:'集团-核销初审',api:'/api/hxDdOrderFlow/jiTuanHeXiaoAuditOne'},
-	{name:'HEXIAO_DINGDAN_GONGSI_HEXIAO_AUDIT',value:'',info:'公司-核销审核',api:'/api/hxDdOrderFlow/gongSiHeXiaoAudit'},
-	{name:'HEXIAO_DINGDAN_JITUAN_HEXIAO_AUDIT_2',value:'',info:'集团-核销终审',api:'/api/hxDdOrderFlow/jiTuanHeXiaoAuditTwo'},
-	{name:'HEXIAO_DINGDAN_CAIWU_HEXIAO_OVER_ORDER',value:'../afterLoan/o_write_off.html',info:'财务-核销过单',api:'/api/hxDdOrderFlow/caiWuHeXiaoOverOrder'},
-	{name:'HEXIAO_DINGDAN_HEXIAO_SYSTEM',value:'',info:'系统-核销',api:''},
+	{name:'HEXIAO_DINGDAN_DAIHOU_HEXIAO_APPLY',value:'../afterLoan/o_write_off.html',info:'贷后-申请核销',api:'/api/hxDdOrderFlow/daiHouHeXiaoApply'},
+	{name:'HEXIAO_DINGDAN_JITUAN_HEXIAO_AUDIT_1',value:'../afterLoan/o_write_off1.html',info:'集团-核销初审',api:'/api/hxDdOrderFlow/jiTuanHeXiaoAuditOne'},
+	{name:'HEXIAO_DINGDAN_GONGSI_HEXIAO_AUDIT',value:'../afterLoan/o_write_off1.html',info:'公司-核销审核',api:'/api/hxDdOrderFlow/gongSiHeXiaoAudit'},
+	{name:'HEXIAO_DINGDAN_JITUAN_HEXIAO_AUDIT_2',value:'../afterLoan/o_write_off1.html',info:'集团-核销终审',api:'/api/hxDdOrderFlow/jiTuanHeXiaoAuditTwo'},
+	{name:'HEXIAO_DINGDAN_CAIWU_HEXIAO_OVER_ORDER',value:'../afterLoan/o_write_off2.html',info:'财务-核销过单',api:'/api/hxDdOrderFlow/caiWuHeXiaoOverOrder'},
+	// {name:'HEXIAO_DINGDAN_HEXIAO_SYSTEM',value:'',info:'系统-核销',api:''},
 
 
 	{name:'CHU_KU_DANGAN_CHUKU_APPLY',value:'',info:'档案-出库申请',api:'/api/ckOrderFlow/dangAnChuKuApply'},

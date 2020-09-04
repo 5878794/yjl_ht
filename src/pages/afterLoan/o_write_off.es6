@@ -15,7 +15,8 @@ let app = require('./../../es6/lib/page'),
     inputStyle = require('./../../es6/inputStyle');
 
 
-
+require('./../../es6/yjl/b_order_info');
+require('./../../es6/yjl/b-order-history');
 require('./../../es6/yjl/b_title');
 require('./../../es6/customElement/pc/input');
 require('./../../es6/customElement/pc/input_file');
@@ -35,6 +36,18 @@ let Page = {
         inputStyle.set(true,true);
         this.addEventBind();
         await all.getUserInfo();
+
+
+        if($('#order_info').length != 0){
+            let [data2,history] = await ajax.send([
+                api.order_get_byId({id:this.id}),
+                api.order_get_history_byOrderNo({orderNo:this.orderNo})
+            ]);
+            await all.setOrderTopData(4,data2);
+            await all.setOrderHistoryData(history,true);
+        }
+
+
 
         let [data] = await ajax.send([
             api.afterLoan_write_off_info({orderNo:this.orderNo})

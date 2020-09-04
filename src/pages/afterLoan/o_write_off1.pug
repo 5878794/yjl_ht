@@ -1,6 +1,7 @@
 doctype html
 html
     head
+        //- 带历史记录 带驳回
         title 核销
         include ./../../pug_include/head_pc
 
@@ -12,6 +13,14 @@ html
     body
 
         div(class='openWin_main autoWidth')
+            br
+            br
+            b-order-info(id='order_info' class='b_order_info')
+
+            b-title(name='历史流程')
+            b-order-history(id='history' showOne='true' sort='desc')
+
+            br
             div(id='form')
                 b-title(name='核销')
                 div(class='openWin_input_main box_hlt box_lines')
@@ -39,5 +48,5 @@ html
 
             div(class='openWin_btns box_hcc')
                 div(class='openWin_btn_gray box_hcc hover' id='cancel') 取消
-                    div(class='openWin_btn_gray box_hcc hover' id='back') 驳回
+                div(class='openWin_btn_red box_hcc hover' id='back') 驳回
                 div(class='openWin_btn_blue box_hcc hover' id='submit') 提交

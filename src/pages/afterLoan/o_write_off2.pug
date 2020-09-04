@@ -1,6 +1,7 @@
 doctype html
 html
     head
+        //- 带历史记录
         title 核销
         include ./../../pug_include/head_pc
 
@@ -10,8 +11,16 @@ html
 
 
     body
-
         div(class='openWin_main autoWidth')
+            br
+            br
+            b-order-info(id='order_info' class='b_order_info')
+
+            b-title(name='历史流程')
+            b-order-history(id='history' showOne='true' sort='desc')
+
+            br
+
             div(id='form')
                 b-title(name='核销')
                 div(class='openWin_input_main box_hlt box_lines')
@@ -29,6 +38,11 @@ html
                     div(class='openWin_input_item3 warrant_pay_back box_hlc')
                         div 核销后损益
                         p(id='sy') 0.00000
+
+                    div(class='openWin_input_item1')
+                        b-input(type='textarea' name='备注' id='auditOpinion' placeholder='非必填')
+                    div(class='openWin_input_item1')
+                        b-input-file(name='附件' id='attachUrls' type='file' unit='非必填')
 
 
 

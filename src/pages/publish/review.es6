@@ -4,7 +4,7 @@
 let app = require('./../../es6/lib/page'),
 	lib = require('./../../es6/lib'),
 	all = require('./../../es6/all'),
-	{ajax,api,nodeKeySubmit} = require('./../../es6/_ajax'),
+	{ajax,api} = require('./../../es6/_ajax'),
 	qt = require('./../../es6/qt'),
 	pageSizeSetting = require('./../../es6/pageSize'),
 	getParamFromUrl = require('./../../es6/lib/fn/getParamFromUrl'),
