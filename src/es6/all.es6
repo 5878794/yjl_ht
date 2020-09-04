@@ -1,10 +1,11 @@
 
 
-let {ajax,api} = require('./_ajax'),
+let {ajax,api,nodeKeySubmit} = require('./_ajax'),
 	qt = require('./../es6/qt'),
 	winSetting = require('./../es6/winSetting'),
 	stamp2Date = require('./../es6/lib/fn/timeAndStamp'),
 	showBigImg = require('./../es6/lib/ui/showBigPicture'),
+	processToPageDist = require('./../es6/processToPage'),
 	selectData = require('./../es6/selectData');
 
 
@@ -524,6 +525,33 @@ let all = {
 		})
 
 		return text;
+	},
+
+
+	//流程统一提交方法
+	async reviewSubmit(param){
+		let formDom = param.formDom,
+			orderNo = param.orderNo,
+			state = param.state,
+			currentNodeKey = param.currentNodeKey;
+
+		let form = await this.getFromVal(formDom),
+			uploaded = await this.uploadFile(form.attachUrls);
+
+		form.attachUrls = uploaded.join(',');
+		form.auditStatus = state;
+		form.orderNo = orderNo;
+		form.currentNodeKey = currentNodeKey;
+
+
+		let {api} = await processToPageDist(currentNodeKey);
+
+		await ajax.send([
+			nodeKeySubmit(api,form)
+		]);
+
+		await qt.alert('操作成功!');
+		qt.closeWin();
 	}
 };
 

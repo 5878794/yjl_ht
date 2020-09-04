@@ -4,7 +4,7 @@
 let app = require('./../../es6/lib/page'),
 	lib = require('./../../es6/lib'),
 	all = require('./../../es6/all'),
-	{ajax,api} = require('./../../es6/_ajax'),
+	{ajax,api,nodeKeySubmit} = require('./../../es6/_ajax'),
 	qt = require('./../../es6/qt'),
 	pageSizeSetting = require('./../../es6/pageSize'),
 	getParamFromUrl = require('./../../es6/lib/fn/getParamFromUrl'),
@@ -38,9 +38,6 @@ let Page = {
 		this.orderNo = param.orderNo;
 		this.currentNodeKey = param.currentNodeKey;
 
-		if(window.location.href.indexOf('overSingle') > -1){
-			$('#back').remove();
-		}
 
 		await all.getUserInfo();
 		let [data,history] = await ajax.send([
@@ -63,32 +60,45 @@ let Page = {
 			_this = this;
 
 		submit.click(function(){
-			all.showLoadingRun(_this,'submitFn','1');
+			all.showLoadingRun(all,'reviewSubmit',{
+				formDom:$('#form'),
+				orderNo:_this.orderNo,
+				state:1,
+				currentNodeKey:_this.currentNodeKey
+			});
 		});
 		back.click(function(){
-			all.showLoadingRun(_this,'submitFn','0');
+			all.showLoadingRun(all,'reviewSubmit',{
+				formDom:$('#form'),
+				orderNo:_this.orderNo,
+				state:0,
+				currentNodeKey:_this.currentNodeKey
+			});
 		});
 		cancel.click(function(){
 			qt.closeWin();
 		});
-	},
-	async submitFn(state){
-		let form = await all.getFromVal($('#form')),
-			uploaded = await all.uploadFile(form.attachUrls);
-
-		form.attachUrls = uploaded.join(',');
-		form.auditStatus = state;
-		form.orderNo = this.orderNo;
-		form.currentNodeKey = this.currentNodeKey;
-
-
-		await ajax.send([
-			api.approve_advance(form)
-		]);
-		await qt.alert('提交成功！');
-		qt.closeWin();
-
 	}
+	// ,
+	// async submitFn(state){
+	// 	let form = await all.getFromVal($('#form')),
+	// 		uploaded = await all.uploadFile(form.attachUrls);
+	//
+	// 	form.attachUrls = uploaded.join(',');
+	// 	form.auditStatus = state;
+	// 	form.orderNo = this.orderNo;
+	// 	form.currentNodeKey = this.currentNodeKey;
+	//
+	//
+	// 	let {api} = await processToPageDist(this.currentNodeKey);
+	//
+	// 	await ajax.send([
+	// 		nodeKeySubmit(api,form)
+	// 	]);
+	//
+	// 	await qt.alert('操作成功!');
+	// 	qt.closeWin();
+	// }
 
 };
 

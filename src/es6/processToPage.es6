@@ -68,16 +68,16 @@ let key = [
 	{name:'ZHAN_QI_ZHANQI_SYSTEM',value:'',info:'系统-展期',api:''},
 
 
-	{name:'DINGDAN_SHANCHU_ZHIXING_SHANCHU_APPLY',value:'',info:'执行-删除申请',api:'/api/ddScOrderFlow/zhiXingShanChuApply'},
-	{name:'DINGDAN_SHANCHU_FENGKONG_AUDIT',value:'',info:'风控-审核',api:'/api/ddScOrderFlow/fengKongAudit'},
-	{name:'DINGDAN_SHANCHU_SHANCHU_SYSTEM',value:'',info:'系统-删除',api:''},
+	// {name:'DINGDAN_SHANCHU_ZHIXING_SHANCHU_APPLY',value:'',info:'执行-删除申请',api:'/api/ddScOrderFlow/zhiXingShanChuApply'},
+	{name:'DINGDAN_SHANCHU_FENGKONG_AUDIT',value:'../publish/review.html',info:'风控-审核',api:'/api/ddScOrderFlow/fengKongAudit'},
+	// {name:'DINGDAN_SHANCHU_SHANCHU_SYSTEM',value:'',info:'系统-删除',api:''},
 
 
 	{name:'HEXIAO_DINGDAN_DAIHOU_HEXIAO_APPLY',value:'',info:'贷后-申请核销',api:'/api/hxDdOrderFlow/daiHouHeXiaoApply'},
 	{name:'HEXIAO_DINGDAN_JITUAN_HEXIAO_AUDIT_1',value:'',info:'集团-核销初审',api:'/api/hxDdOrderFlow/jiTuanHeXiaoAuditOne'},
 	{name:'HEXIAO_DINGDAN_GONGSI_HEXIAO_AUDIT',value:'',info:'公司-核销审核',api:'/api/hxDdOrderFlow/gongSiHeXiaoAudit'},
 	{name:'HEXIAO_DINGDAN_JITUAN_HEXIAO_AUDIT_2',value:'',info:'集团-核销终审',api:'/api/hxDdOrderFlow/jiTuanHeXiaoAuditTwo'},
-	{name:'HEXIAO_DINGDAN_CAIWU_HEXIAO_OVER_ORDER',value:'',info:'财务-核销过单',api:'/api/hxDdOrderFlow/caiWuHeXiaoOverOrder'},
+	{name:'HEXIAO_DINGDAN_CAIWU_HEXIAO_OVER_ORDER',value:'../afterLoan/o_write_off.html',info:'财务-核销过单',api:'/api/hxDdOrderFlow/caiWuHeXiaoOverOrder'},
 	{name:'HEXIAO_DINGDAN_HEXIAO_SYSTEM',value:'',info:'系统-核销',api:''},
 
 
@@ -97,23 +97,29 @@ let key1 = {};
 key.map(rs=>{
 	key1[rs.name] = {
 		url:rs.value,
-		title:rs.info
+		title:rs.info,
+		api:rs.api
 	};
 });
 
 
 module.exports = function(currentNodeKey){
-	return new Promise(success=>{
+	return new Promise((success,error)=>{
 		let obj = key1[currentNodeKey];
 
-		if(obj && obj.url){
+		if(obj && obj.url && obj.api){
 			let	url = obj.url,
-				title = obj.title;
+				title = obj.title,
+				api = obj.api;
 
-			success({url,title});
+			success({url,title,api});
 		}else{
-			qt.alert('流程节点信息错误！');
+			// qt.alert('流程节点信息错误！');
+			error('流程节点信息错误');
 			console.log('%c 当前节点名:'+currentNodeKey,'color:red;')
+			console.log('%c 当前页面:'+obj.url,'color:red;')
+			console.log('%c 当前提交api:'+obj.api,'color:red;')
+			console.log('请检查配置文件 processToPage.es6')
 		}
 	})
 };

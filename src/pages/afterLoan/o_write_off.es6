@@ -18,6 +18,7 @@ let app = require('./../../es6/lib/page'),
 
 require('./../../es6/yjl/b_title');
 require('./../../es6/customElement/pc/input');
+require('./../../es6/customElement/pc/input_file');
 require('./../../es6/customElement/pc/input_money');
 
 
@@ -31,7 +32,7 @@ let Page = {
         this.id = param.id;
         this.orderNo = param.orderNo;
         this.currentNodeKey = param.currentNodeKey;
-        inputStyle.set();
+        inputStyle.set(true,true);
         this.addEventBind();
         await all.getUserInfo();
 
@@ -70,30 +71,50 @@ let Page = {
     },
     addEventBind(){
         let submit = $('#submit'),
+            back = $('#back'),
             cancel = $('#cancel'),
             _this = this;
 
         submit.click(function(){
-            all.showLoadingRun(_this,'submitFn',1);
+            all.showLoadingRun(all,'reviewSubmit',{
+                formDom:$('#form'),
+                orderNo:_this.orderNo,
+                state:1,
+                currentNodeKey:_this.currentNodeKey
+            });
+        });
+        back.click(function(){
+            all.showLoadingRun(all,'reviewSubmit',{
+                formDom:$('#form'),
+                orderNo:_this.orderNo,
+                state:0,
+                currentNodeKey:_this.currentNodeKey
+            });
         });
         cancel.click(function(){
             qt.closeWin();
         });
-    },
-    async submitFn(state){
-        let form = await all.getFromVal($('#form'));
-        console.log(form)
-        form.auditStatus = state;
-        form.orderNo = this.orderNo;
-        form.currentNodeKey = this.currentNodeKey;
-
-        await ajax.send([
-            api.afterLoan_write_off(form)
-        ]);
-
-        await qt.alert('操作成功!');
-        qt.closeWin();
     }
+    // ,
+    // async submitFn(state){
+    //     let form = await all.getFromVal($('#form')),
+    //         uploaded = await all.uploadFile(form.attachUrls);
+    //
+    //     form.attachUrls = uploaded.join(',');
+    //     form.auditStatus = state;
+    //     form.orderNo = this.orderNo;
+    //     form.currentNodeKey = this.currentNodeKey;
+    //
+    //
+    //     let {api} = await processToPageDist(this.currentNodeKey);
+    //
+    //     await ajax.send([
+    //         nodeKeySubmit(api,form)
+    //     ]);
+    //
+    //     await qt.alert('操作成功!');
+    //     qt.closeWin();
+    // }
 
 };
 
