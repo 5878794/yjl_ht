@@ -26,8 +26,8 @@ let key = [
 	{name:'DIAN_ZI_QUANZHENG_AGAIN_DIYA',value:'../publish/review.html',info:'权证-再抵押',api:'/api/dzOrderFlow/quanZhengAgainDiYa'},
 		{name:'DIAN_ZI_DIAN_ZI_CAIWU_HUIKUAN_CONFIRM',value:'',info:'财务-回款确认',api:'/api/dzOrderFlow/caiWuHuiKuanConfirm'},
 	{name:'DIAN_ZI_CAIWU_YEWUFEI_PAYMENT_CONFIRM',value:'../finance/o_business_fee_payment.html',info:'财务-业务费确认缴纳',api:'/api/dzOrderFlow/caiWuYeWuFeiPaymentConfirm'},
-		{name:'DIAN_ZI_ZILIUCHENG_ZHANQI',value:'',info:'子流程-展期',api:''},
-		{name:'DIAN_ZI_DINGDAN_FINISH_SYSTEM',value:'',info:'系统-订单完成',api:''},
+		// {name:'DIAN_ZI_ZILIUCHENG_ZHANQI',value:'',info:'子流程-展期',api:''},
+		// {name:'DIAN_ZI_DINGDAN_FINISH_SYSTEM',value:'',info:'系统-订单完成',api:''},
 
 	// {name:'FANG_DI_ZHIXING_SUBMIT_ORDER',value:'',info:'执行-提交订单'},
 	{name:'FANG_DI_JILING_AUDIT',value:'../approve/o_approve_room.html',info:'经理-部门初审',api:'/api/fdOrderFlow/auditOrder'},
