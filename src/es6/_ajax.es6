@@ -88,7 +88,8 @@ let api = {
 	index_list:{url:'/api/home/searchOrder',type:'get'},
 		//排名、角色权限
 	index_sort_number:{url:'/api/home/getRoleAndRanking',type:'get'},
-
+		//龙虎榜
+	index_sort_list:{url:'/api/home/rankingList',type:'get'},
 
 	//登录
 	login:{url:'/api/user/login',type:'post'},

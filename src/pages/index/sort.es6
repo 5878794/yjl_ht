@@ -46,18 +46,16 @@ let Page = {
 		let _this = this;
 
 		data.broadType = 0;
-		data.pageSize = pageSizeSetting.management_notice;
+		data.pageSize = 999999;
 
-		//TODO
 
-		// let [listData] = await ajax.send([
-			// api.news_list(data)
-		// ]);
+		let [listData] = await ajax.send([
+			api.index_sort_list(data)
+		]);
 
-		// listData = listData.list || [];
+		listData = listData.list || [];
 
-		// this.createList(listData);
-		this.createList();
+		this.createList(listData);
 	},
 
 
@@ -72,15 +70,17 @@ let Page = {
 
 		tableSet.set(table,'sort_department');
 
-		data=[
-			{name:'的说法',money:'123123'},
-			{name:'的说法2',money:'1231234'},
-			{name:'的说法1',money:'1231233'},
-		]
+		// data=[
+		// 	{name:'的说法',money:'123123'},
+		// 	{name:'的说法2',money:'1231234'},
+		// 	{name:'的说法1',money:'1231233'},
+		// ]
 
+		//TODO 无业绩字段 无权限判断
 		data.map((rs,i)=>{
-			rs.no = i+1;
-
+			rs.no = rs.ranking;
+			rs.name = rs.userName;
+			rs.money = '';
 
 		});
 
