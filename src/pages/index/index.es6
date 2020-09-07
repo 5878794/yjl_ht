@@ -74,7 +74,7 @@ let Page = {
         let [listData] = await ajax.send([
             api.index_list(data)
         ]);
-        listData = listData || [];
+        listData = listData.list || [];
         this.createList(listData);
 
 
@@ -161,6 +161,7 @@ let Page = {
         // table.data = tableSet.index.data;
 
         let userLock = false;
+        console.log(data)
         data.map(rs=>{
             rs.key9 = '../res/image/edit.png';
             //图标
@@ -209,11 +210,20 @@ let Page = {
         // ];
         table.show(data);
 
-        table.body.find('.__row__').click(function(){
-            let data = $(this).data('data');
+        table.body.find('.__row__').click(async function(){
+            let data = $(this).data('data'),
+                id = data.id,
+                orderNo = data.orderNo,
+                currentNodeKey = data.currentNodeKey,
 
-            //TODO 页面跳转
-            console.log(data);
+                //根据节点状态获取跳转的页面
+                {url,title} = await processToPageDist(currentNodeKey);
+
+
+            qt.openPage(
+                `${url}?id=${id}&orderNo=${orderNo}&currentNodeKey=${currentNodeKey}&title=${title}`,
+                winSetting.publish_review.width,
+                winSetting.publish_review.height)
         });
 
     }
