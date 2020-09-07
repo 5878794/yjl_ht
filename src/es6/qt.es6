@@ -116,6 +116,9 @@ let JD = {
     //下载文件
     downloadFile(url){
         let fileName = url.substr(url.lastIndexOf('/')+1);
+        // let serverUrl = SETTING.downloadFileUrl;
+        // fileName = serverUrl + fileName;
+
         console.log('download:'+fileName);
         if (window.bridge) {
             bridge.download(url, fileName);

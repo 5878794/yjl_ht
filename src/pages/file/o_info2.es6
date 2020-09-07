@@ -56,8 +56,8 @@ let Page = {
 
 		let file = $('#file').get(0),
 			srcs = all.getRealImageSrc(data);
-		file.disabled = true;
 		file.showFiles = srcs;
+		file.disabled = true;
 	},
 
 	addBtnEvent(){

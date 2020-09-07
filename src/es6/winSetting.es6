@@ -51,18 +51,20 @@ let DIST = {
 module.exports = {
 	//通用
 	publish(url){
+
 		let nowPath = window.location.pathname;
 		nowPath = nowPath.split('\/')[1]??'';
 
 		let newUrl = url.split('\/'),
 			newPath = [];
+
 		if(url.indexOf('..\/')>-1){
 			newPath.push(newUrl[1]);
 			let fileName = newUrl[2].split('.');
 			newPath.push(fileName[0]);
 		}else{
 			newPath.push(nowPath);
-			let fileName = newUrl[2].split('.');
+			let fileName = newUrl[1].split('.');
 			newPath.push(fileName[0]);
 		}
 
