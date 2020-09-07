@@ -31,22 +31,25 @@ let key = [
 
 	// {name:'FANG_DI_ZHIXING_SUBMIT_ORDER',value:'',info:'执行-提交订单'},
 	{name:'FANG_DI_JILING_AUDIT',value:'../approve/o_approve_room.html',info:'经理-部门初审',api:'/api/fdOrderFlow/auditOrder'},
-	{name:'FANG_DI_FENGKONG_AUDIT_1',value:'../publish/review.html',info:'风控-初审',api:''},
+	{name:'FANG_DI_FENGKONG_AUDIT_1',value:'../publish/review.html',info:'风控-初审',api:'/api/dzOrderFlow/auditOrder'},
 	{name:'FANG_DI_QUANZHENG_AUDIT',value:'../warrant/o_warrant_mdf_room.html',info:'权证-下户',api:'/api/fdOrderFlow/quanZhengXiaHu'},
-	{name:'FANG_DI_GONGSI_AUDIT',value:'../publish/review.html',info:'公司-终审',api:''},
-	{name:'FANG_DI_JITUAN_AUDIT',value:'../publish/review.html',info:'集团-终审',api:''},
-		{name:'FANG_DI_ZHIXING_SUBMIT_CONTRACT',value:'',info:'执行-提交合同',api:'/api/fdOrderFlow/zhiXingSubmitContract'},
-	{name:'FANG_DI_QUANZHENG_DIYA',value:'../publish/review.html',info:'权证-抵押',api:'/api/fdOrderFlow/quanZhengDiYa'},
-		{name:'FANG_DI_DANGAN_RUKU',value:'',info:'档案-入库',api:'/api/fdOrderFlow/dangAnRuKu'},
+	{name:'FANG_DI_GONGSI_AUDIT',value:'../publish/review.html',info:'公司-终审',api:'/api/dzOrderFlow/auditOrder'},
+	{name:'FANG_DI_JITUAN_AUDIT',value:'../publish/review.html',info:'集团-终审',api:'/api/dzOrderFlow/auditOrder'},
+	{name:'FANG_DI_ZHIXING_SUBMIT_CONTRACT',value:'../publish/overSingle.html',info:'执行-提交合同',api:'/api/dzOrderFlow/auditOrder',api1:'/api/dzOrderFlow/auditOrder',api1:'/api/fdOrderFlow/zhiXingSubmitContract'},
+	{name:'FANG_DI_QUANZHENG_DIYA',value:'../publish/overSingle.html',info:'权证-抵押',api:'/api/dzOrderFlow/auditOrder',api1:'/api/fdOrderFlow/quanZhengDiYa'},
+	//TODO 跳转档案新增？？？
+	{name:'FANG_DI_DANGAN_RUKU',value:'',info:'档案-入库',api:'/api/fdOrderFlow/dangAnRuKu'},
 	{name:'FANG_DI_CAIWU_CONFIRM',value:'../finance/o_business_fee_payment.html',info:'财务-确认业务费缴纳',api:'/api/fdOrderFlow/caiWuConfirm'},
-		{name:'FANG_DI_ZHIXING_CHUKUAN_SUBMIT',value:'',info:'执行-出款申请',api:'/api/fdOrderFlow/zhiXingChuKuanSubmit'},
+	{name:'FANG_DI_ZHIXING_CHUKUAN_SUBMIT',value:'../publish/overSingle.html',info:'执行-出款申请',api:'/api/dzOrderFlow/auditOrder',api1:'/api/fdOrderFlow/zhiXingChuKuanSubmit'},
 	{name:'FANG_DI_CAIWU_CHUKUAN_BOOKING',value:'../finance/o_bookkeeping.html',info:'财务-出款记账',api:'/api/fdOrderFlow/caiWuChuKuanBooking'},
-		{name:'FANG_DI_FENGKONG_CHUKUAN_OVER_ORDER',value:'',info:'风控-出款过单',api:'/api/fdOrderFlow/fengKongChuKuanOverOrder'},
+	{name:'FANG_DI_FENGKONG_CHUKUAN_OVER_ORDER',value:'../publish/overSingle.html',info:'风控-出款过单',api:'/api/dzOrderFlow/auditOrder',api1:'/api/fdOrderFlow/fengKongChuKuanOverOrder'},
 	{name:'FANG_DI_CAIWU_CHUKUAN',value:'../finance/o_dispensing.html',info:'财务-出款',api:'/api/fdOrderFlow/caiWuChuKuan'},
+	//TODO 分成3类？？？
 	{name:'FANG_DI_CAIWU_REPAYMENT_CONFIRM',value:'../finance/o_mortgage_repayment.html',info:'财务-确认还款',api:'/api/fdOrderFlow/caiWuRepaymentConfirm'},
+	//TODO 分成房抵尾款、房抵分期 2种？？？
 	{name:'FANG_DI_CAIWU_REPAYMENT_BOOKING',value:'../finance/o_bookkeeping.html',info:'财务-还款记账',api:'/api/fdOrderFlow/caiWuRepaymentBooking'},
 	{name:'FANG_DI_CAIWU_YEWUFEI_PAYMENT_CONFIRM',value:'../finance/o_business_fee_payment.html',info:'财务-确认业务费缴纳',api:'/api/fdOrderFlow/caiWuConfirm'},
-		{name:'FANG_DI_DINGDAN_FINISH_SYSTEM',value:'',info:'系统-订单完成',api:''},
+		// {name:'FANG_DI_DINGDAN_FINISH_SYSTEM',value:'',info:'系统-订单完成',api:''},
 
 	//TODO   /api/tkOrderFlow/auditOrder  退款-审核订单流程  未找到节点
 	{name:'TUI_KUAN_ZHIXING_RETURN_APPLY',value:'',info:'执行-申请退款',api:'/api/tkOrderFlow/zhiXingReturnApply'},
