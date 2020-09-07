@@ -14,7 +14,6 @@ TODO
 订单历史记录  接口里面差操作人名字   all.es6
 审批 列表  接口差字段：客户联系电话       approve/approve.html    接口：/api/orderAuditCenter/list
 草稿箱 列表  接口差字段：主申请人电话     draft/draft.html      接口：/api/myOrder/list
-员工添加 差字段  紧急联系人性别，拥有角色id，最高学历   management/o_add_staff.html  接口：/api/user/addOrUpdate
 
 
 退尾款、退服务费 触发放到列表上咯 需要加节点流程key  同时需要增加字段标注是否已申请退款
