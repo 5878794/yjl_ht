@@ -167,6 +167,7 @@ class bRoleAuthority extends HTMLElement{
 				_this.listBody1.find('div').removeClass('select');
 				$(this).addClass('select');
 				_this.showLevel2(child,data);
+				_this.reSetTableStyle();
 			});
 		});
 
@@ -226,6 +227,17 @@ class bRoleAuthority extends HTMLElement{
 	set submit(fn){
 		fn = fn || function(){};
 		this.userClick = fn;
+	}
+
+	//自动判断列表2边的高度，并自适应
+	reSetTableStyle(){
+		let body = this.body.find('.listBody'),
+			left = this.body.find('.cel1'),
+			right = this.body.find('.cel2'),
+			leftHeight = left.find('.item1').length * 40,
+			rightHeight = right.height(),
+			bodyHeight = (leftHeight>rightHeight)? leftHeight : rightHeight;
+		body.css({height:bodyHeight+'px'});
 	}
 }
 
