@@ -1,7 +1,82 @@
 
 
+let DIST = {
+	'afterLoan/o_add_after_loan':{w:'800',h:'520'},
+	'afterLoan/o_add_after_loan1':{w:'800',h:'600'},
+	'afterLoan/o_info':{w:'1200',h:'600'},
+	'afterLoan/o_mdf_repayment_account':{w:'800',h:'360'},
+	'afterLoan/o_mdf_user_info':{w:'800',h:'430'},
+	'afterLoan/o_rollover':{w:'800',h:'340'},
+	'afterLoan/o_rollover1':{w:'1200',h:'600'},
+	'afterLoan/o_write_off':{w:'1200',h:'370'},
+	'afterLoan/o_write_off1':{w:'1200',h:'600'},
+	'afterLoan/o_write_off2':{w:'1200',h:'600'},
+	'approve/o_approve_advance':{w:'1200',h:'600'},
+	'approve/o_approve_room':{w:'1200',h:'600'},
+	'business/business_info':{w:'1200',h:'600'},
+	'draft/draft_del':{w:'800',h:'200'},
+	'file/o_add':{w:'800',h:'520'},
+	'file/o_info':{w:'800',h:'600'},
+	'file/o_info1':{w:'800',h:'600'},
+	'file/o_info2':{w:'800',h:'600'},
+	'finance/o_advance_payment':{w:'1200',h:'600'},
+	'finance/o_bookkeeping':{w:'1200',h:'600'},
+	'finance/o_business_fee_payment':{w:'1200',h:'600'},
+	'finance/o_dispensing':{w:'1200',h:'600'},
+	'finance/o_installment_mortgage_repayment':{w:'1200',h:'600'},
+	'finance/o_last_installment_mortgage_repayment':{w:'1200',h:'600'},
+	'finance/o_mortgage_repayment':{w:'1200',h:'600'},
+	'finance/o_payment_of_post_operation_fee':{w:'1200',h:'600'},
+	'finance/o_Refund':{w:'1200',h:'600'},
+	'finance/o_rollover_collection':{w:'1200',h:'600'},
+	'index/o_add_order':{w:'800',h:'300'},
+	'index/o_add_order_advance':{w:'1200',h:'600'},
+	'index/o_add_order_info':{w:'1200',h:'600'},
+	'index/o_add_order_room':{w:'1200',h:'600'},
+	'index/o_add_order_view':{w:'1200',h:'600'},
+	'index/sort':{w:'1200',h:'600'},
+	'management/o_add_notice':{w:'800',h:'550'},
+	'management/o_add_staff':{w:'1200',h:'440'},
+	'publish/overSingle':{w:'1200',h:'600'},
+	'publish/review':{w:'1200',h:'600'},
+	'setting/o_add':{w:'800',h:'220'},
+	'setting/o_add_channel':{w:'800',h:'280'},
+	'setting/o_add_product':{w:'800',h:'570'},
+	'warrant/o_warrant_mdf':{w:'1200',h:'600'},
+	'warrant/o_warrant_mdf_room':{w:'1200',h:'600'},
+	'warrant/o_warrant_pay_back':{w:'1200',h:'600'}
+};
+
 
 module.exports = {
+	//通用
+	publish(url){
+		let nowPath = window.location.pathname;
+		nowPath = nowPath.split('\/')[1]??'';
+
+		let newUrl = url.split('\/'),
+			newPath = [];
+		if(url.indexOf('..\/')>-1){
+			newPath.push(newUrl[1]);
+			let fileName = newUrl[2].split('.');
+			newPath.push(fileName[0]);
+		}else{
+			newPath.push(nowPath);
+			let fileName = newUrl[2].split('.');
+			newPath.push(fileName[0]);
+		}
+
+		newPath = newPath[0]+'/'+newPath[1];
+		newPath = DIST[newPath];
+
+		return {
+			newWidth:newPath.w,
+			newHeight:newPath.h
+		};
+	},
+
+
+
 	//设置-角色添加
 	//设置-机构添加
 	//设置-公司添加
@@ -67,5 +142,7 @@ module.exports = {
 	//首页-龙虎榜
 	sort:{width:600,height:400},
 	//退费用(尾款、服务费)
-	o_Refund:{width:1200,height:600},
+	o_Refund:{width:1200,height:600}
+
+
 };

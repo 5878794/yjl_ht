@@ -1,7 +1,8 @@
 
 
 
-let loadFn = require('./lib/ui/loading_old');
+let loadFn = require('./lib/ui/loading_old'),
+    winSettingSize = require('./winSetting');
 
 let JD = {
     loading:{
@@ -68,15 +69,19 @@ let JD = {
             window.location.href = url;
         }
     },
-    //打开本地页面
+    //打开本地页面  width,height 废弃
     openPage(url,width,height,type){
+        //width,height 废弃
         console.log('%c 打开iframe页面:'+url,'color:red;');
         type = type || 0;
+
+        let {newWidth,newHeight} = winSettingSize.publish(url);
+
         if (window.bridge) {
             bridge.openUrl(
                 url,
-                width,      //窗口宽度
-                height,     //窗口高度
+                newWidth,      //窗口宽度
+                newHeight,     //窗口高度
                 type,       //模态[0 = 模态，1 = 非模态]
                 0           //路径模式[0 = 相对，1 = 绝对]
             );
