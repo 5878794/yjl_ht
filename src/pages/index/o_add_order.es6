@@ -69,7 +69,7 @@ let Page = {
 
 		await qt.alert('创建订单成功!');
 		qt.openPage(
-			'./o_add_order_info.html?id='+id,
+			'../index/o_add_order_info.html?id='+id,
 			winSetting.index_add_step2.width,
 			winSetting.index_add_step2.height);
 		qt.closeWin();

@@ -37,7 +37,7 @@ let Page = {
 		let btn = $('#add_btn');
 		btn.click(function(){
 			qt.openPage(
-				'./o_add.html',
+				'../file/o_add.html',
 				winSetting.file_add.width,
 				winSetting.file_add.height)
 		});
@@ -140,7 +140,7 @@ let Page = {
 				let data = $(this).data('data'),
 					id = data.id;
 				qt.openPage(
-					'./o_info.html?id='+id,
+					'../file/o_info.html?id='+id,
 					winSetting.file_info.width,
 					winSetting.file_info.height)
 			});

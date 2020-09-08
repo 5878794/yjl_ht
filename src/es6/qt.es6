@@ -4,6 +4,8 @@
 let loadFn = require('./lib/ui/loading_old'),
     winSettingSize = require('./winSetting');
 
+
+
 let JD = {
     loading:{
         obj:null,
@@ -29,6 +31,7 @@ let JD = {
             return;
         }
         return new Promise(success=>{
+            window.bridge = window.bridge ?? top.bridge;
             if(window.bridge){
                 bridge.information(msg,title,function(){
                     success();
@@ -42,6 +45,7 @@ let JD = {
     confirm(msg,title,btn1Text,btn2Text){
         title = title || '系统提示';
         return new Promise(success=>{
+            window.bridge = window.bridge ?? top.bridge;
             if(window.bridge){
                 bridge.warning(msg, title,function (res) {
                     if(res==1){
@@ -57,6 +61,7 @@ let JD = {
     },
     //打开窗口 网址
     openUrl(url,width,height,type){
+        window.bridge = window.bridge ?? top.bridge;
         if (window.bridge) {
             bridge.openUrl(
                 url,
@@ -72,11 +77,11 @@ let JD = {
     //打开本地页面  width,height 废弃
     openPage(url,width,height,type){
         //width,height 废弃
-        console.log('%c 打开iframe页面:'+url,'color:red;');
+        console.log('%c 打开弹窗页面:'+url,'color:red;');
         type = type || 0;
 
         let {newWidth,newHeight} = winSettingSize.publish(url);
-
+        window.bridge = window.bridge ?? top.bridge;
         if (window.bridge) {
             bridge.openUrl(
                 url,
@@ -91,6 +96,7 @@ let JD = {
     },
     //关闭窗口，在打开页面执行回调函数
     closeWin(parentCallBack){
+        window.bridge = window.bridge ?? top.bridge;
         if(window.bridge){
             bridge.closeWin();
         }
@@ -99,7 +105,7 @@ let JD = {
     //text: 运行的js字符串
     runParentJS(functionName,data){
         let cmd = `window.${functionName}(${JSON.stringify(data)})`;
-        console.log(cmd);
+        window.bridge = window.bridge ?? top.bridge;
         if(window.bridge){
             bridge.runJsOnParent(cmd);
         }
@@ -119,7 +125,7 @@ let JD = {
         // let serverUrl = SETTING.downloadFileUrl;
         // fileName = serverUrl + fileName;
 
-        console.log('download:'+fileName);
+        window.bridge = window.bridge ?? top.bridge;
         if (window.bridge) {
             bridge.download(url, fileName);
         }
@@ -127,6 +133,7 @@ let JD = {
     //获取用户信息
     getUserInfo(){
         return new Promise(success=>{
+            window.bridge = window.bridge ?? top.bridge;
             bridge.localData('userinfo', function (res) {
                 success(res);
             });
@@ -135,6 +142,7 @@ let JD = {
     //获取及时信息
     getNews(){
         return new Promise(success=>{
+            window.bridge = window.bridge ?? top.bridge;
             window.qtNews = function(rs){
                 success(rs);
             };

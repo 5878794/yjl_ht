@@ -114,7 +114,7 @@ let Page = {
             if(type=='btn1'){
                 //变更客户资料
                 qt.openPage(
-                    `./o_mdf_user_info.html?id=${_this.id}&orderNo=${_this.orderNo}&currentNodeKey=${_this.currentNodeKey}&clientCategory=${_this.clientCategory}`,
+                    `../afterLoan/o_mdf_user_info.html?id=${_this.id}&orderNo=${_this.orderNo}&currentNodeKey=${_this.currentNodeKey}&clientCategory=${_this.clientCategory}`,
                     winSetting.o_mdf_user_info.width,
                     winSetting.o_mdf_user_info.height)
                 return;
@@ -123,7 +123,7 @@ let Page = {
             if(type=='btn2'){
                 //变更还款账号
                 qt.openPage(
-                    `./o_mdf_repayment_account.html?id=${_this.id}&orderNo=${_this.orderNo}&currentNodeKey=${_this.currentNodeKey}&clientCategory=${_this.clientCategory}`,
+                    `../afterLoan/o_mdf_repayment_account.html?id=${_this.id}&orderNo=${_this.orderNo}&currentNodeKey=${_this.currentNodeKey}&clientCategory=${_this.clientCategory}`,
                     winSetting.o_mdf_repayment_account.width,
                     winSetting.o_mdf_repayment_account.height)
                 return;
@@ -132,7 +132,7 @@ let Page = {
             if(type=='btn3'){
                 //新增贷后支出
                 qt.openPage(
-                    `./o_add_after_loan.html?id=${_this.id}&orderNo=${_this.orderNo}&currentNodeKey=${_this.currentNodeKey}&clientCategory=${_this.clientCategory}`,
+                    `../afterLoan/o_add_after_loan.html?id=${_this.id}&orderNo=${_this.orderNo}&currentNodeKey=${_this.currentNodeKey}&clientCategory=${_this.clientCategory}`,
                     winSetting.o_add_after_loan.width,
                     winSetting.o_add_after_loan.height)
                 return;
@@ -141,7 +141,7 @@ let Page = {
             if(type=='btn4'){
                 //核销
                 qt.openPage(
-                    `./o_write_off.html?id=${_this.id}&orderNo=${_this.orderNo}&currentNodeKey=${_this.currentNodeKey}&clientCategory=${_this.clientCategory}`,
+                    `../afterLoan/o_write_off.html?id=${_this.id}&orderNo=${_this.orderNo}&currentNodeKey=${_this.currentNodeKey}&clientCategory=${_this.clientCategory}`,
                     winSetting.o_write_off.width,
                     winSetting.o_write_off.height)
                 return;
@@ -150,7 +150,7 @@ let Page = {
             if(type=='btn5'){
                 //展期
                 qt.openPage(
-                    `./o_rollover.html?id=${_this.id}&orderNo=${_this.orderNo}&currentNodeKey=${_this.currentNodeKey}&clientCategory=${_this.clientCategory}`,
+                    `../afterLoan/o_rollover.html?id=${_this.id}&orderNo=${_this.orderNo}&currentNodeKey=${_this.currentNodeKey}&clientCategory=${_this.clientCategory}`,
                     winSetting.o_rollover.width,
                     winSetting.o_rollover.height)
                 return;

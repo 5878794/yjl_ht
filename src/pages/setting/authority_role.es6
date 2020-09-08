@@ -70,7 +70,7 @@ let Page = {
 			{name:'新增',type:'btn1',style:{color:'#5576f0'}}
 		];
 		title.clickFn = function(){
-			qt.openPage('o_add.html?name=角色名&type=1',
+			qt.openPage('../setting/o_add.html?name=角色名&type=1',
 				winSetting.setting_add_role.width,
 				winSetting.setting_add_role.height)
 		}

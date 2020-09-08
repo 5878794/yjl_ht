@@ -8,11 +8,12 @@ let {ajax,api,nodeKeySubmit} = require('./_ajax'),
 	processToPageDist = require('./../es6/processToPage'),
 	selectData = require('./../es6/selectData');
 
-
+window.bridge = window.bridge ?? top.bridge;
 
 //获取用户信息
 let all = {
 	getUserInfo(){
+		window.bridge = window.bridge ?? top.bridge;
 		if(window.bridge){
 			return new Promise(success=>{
 				qt.getUserInfo().then(rs=>{
@@ -44,6 +45,7 @@ let all = {
 	},
 	//获取通知信息
 	getNews(){
+		window.bridge = window.bridge ?? top.bridge;
 		if(window.bridge){
 			return new Promise(success=>{
 				qt.getNews().then(rs=>{

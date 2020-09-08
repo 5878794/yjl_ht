@@ -109,7 +109,7 @@ let Page = {
                 currentNodeKey = data.currentNodeKey;
 
             qt.openPage(
-                `./o_info.html?id=${id}&orderNo=${orderNo}&currentNodeKey=${currentNodeKey}&clientCategory=${clientCategory}`,
+                `../afterLoan/o_info.html?id=${id}&orderNo=${orderNo}&currentNodeKey=${currentNodeKey}&clientCategory=${clientCategory}`,
                 winSetting.afterLoan_o_info.width,
                 winSetting.afterLoan_o_info.height)
         });

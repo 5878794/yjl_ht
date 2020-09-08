@@ -86,7 +86,7 @@ let Page = {
             {name:'新增',type:'btn1',style:{color:'#5576f0'}}
         ];
         dom.clickFn = function(){
-            qt.openPage(`o_add.html?type=6&name=${name}`,
+            qt.openPage(`../setting/o_add.html?type=6&name=${name}`,
                 winSetting.setting_add_role.width,
                 winSetting.setting_add_role.height)
         }

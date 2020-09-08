@@ -61,7 +61,7 @@ let Page = {
             {name:'新增',type:'btn1',style:{color:'#5576f0'}}
         ];
         title.clickFn = function(){
-            qt.openPage('o_add.html?name=机构名&type=2',
+            qt.openPage('../setting/o_add.html?name=机构名&type=2',
                 winSetting.setting_add_role.width,
                 winSetting.setting_add_role.height)
         };
@@ -142,7 +142,7 @@ let Page = {
             {name:'新增',type:'btn1',style:{color:'#5576f0'}}
         ];
         title.clickFn = function(){
-            let url = `o_add_product.html?orgId=${data.id}&name=${data.organizationName}`;
+            let url = `../setting/o_add_product.html?orgId=${data.id}&name=${data.organizationName}`;
             qt.openPage(
                 url,
                 winSetting.setting_add_product.width,
@@ -196,7 +196,7 @@ let Page = {
                 let data = $(this).data('data');
                 console.log(data);
                 console.log(_this.orgData)
-                let url = `o_add_product.html?id=${data.id}&orgId=${_this.orgData.id}&name=${_this.orgData.organizationName}`;
+                let url = `../setting/o_add_product.html?id=${data.id}&orgId=${_this.orgData.id}&name=${_this.orgData.organizationName}`;
                 console.log(url)
                 qt.openPage(
                     url,

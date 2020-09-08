@@ -86,7 +86,7 @@ let Page = {
 
 		preBtn.click(function(){
 			qt.openPage(
-				'./o_add_order.html?id='+_this.id,
+				'../index/o_add_order.html?id='+_this.id,
 				winSetting.index_add_step1.width,
 				winSetting.index_add_step1.height)
 		});
@@ -192,19 +192,19 @@ let Page = {
 		if(this.type == 1){
 			//房抵
 			qt.openPage(
-				'./o_add_order_room.html?id='+this.id,
+				'../index/o_add_order_room.html?id='+this.id,
 				winSetting.o_add_order_room.width,
 				winSetting.o_add_order_room.height);
 		}else if(this.type==2){
 			//交易垫资
 			qt.openPage(
-				'./o_add_order_advance.html?id='+this.id+'&type=2',
+				'../index/o_add_order_advance.html?id='+this.id+'&type=2',
 				winSetting.o_add_order_advance.width,
 				winSetting.o_add_order_advance.height);
 		}else{
 			//非交易垫资
 			qt.openPage(
-				'./o_add_order_advance.html?id='+this.id+'&type=3',
+				'../index/o_add_order_advance.html?id='+this.id+'&type=3',
 				winSetting.o_add_order_advance.width,
 				winSetting.o_add_order_advance.height);
 		}

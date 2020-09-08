@@ -102,7 +102,7 @@ let Page = {
 				orderNo = data.orderNo;
 
 
-			let url = `./o_Refund.html?orderNo=${orderNo}&id=${id}&currentNodeKey=${currentNodeKey}&type=${type}`;
+			let url = `../finance/o_Refund.html?orderNo=${orderNo}&id=${id}&currentNodeKey=${currentNodeKey}&type=${type}`;
 			qt.openPage(
 				url,
 				winSetting.o_Refund.width,

@@ -127,7 +127,7 @@ let Page = {
                 orderNo = data.orderNo;
 
             qt.openPage(
-                './business_info.html?id='+id+'&orderNo='+orderNo,
+                '../business/business_info.html?id='+id+'&orderNo='+orderNo,
                 winSetting.business_info.width,
                 winSetting.business_info.height)
         });
@@ -138,7 +138,7 @@ let Page = {
                 orderNo = data.orderNo;
 
             qt.openPage(
-                './business_info.html?id='+id+'&orderNo='+orderNo,
+                '../business/business_info.html?id='+id+'&orderNo='+orderNo,
                 winSetting.business_info.width,
                 winSetting.business_info.height)
         });

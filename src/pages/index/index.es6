@@ -90,7 +90,7 @@ let Page = {
                 return;
             }
             qt.openPage(
-                './o_add_order.html',
+                '../index/o_add_order.html',
                 winSetting.index_add_step1.width,
                 winSetting.index_add_step1.height)
         });
@@ -107,7 +107,7 @@ let Page = {
 
             if(canView){
                 qt.openPage(
-                    './sort.html',
+                    '../index/sort.html',
                     winSetting.sort.width,
                     winSetting.sort.height)
             }else{

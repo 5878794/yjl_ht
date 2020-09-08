@@ -70,7 +70,7 @@ let Page = {
 
 		back.click(function(){
 			qt.openPage(
-				`./o_payment_of_post_operation_fee.html?id=${_this.id}&orderNo=${_this.orderNo}&currentNodeKey=${_this.currentNodeKey}`,
+				`../finance/o_payment_of_post_operation_fee.html?id=${_this.id}&orderNo=${_this.orderNo}&currentNodeKey=${_this.currentNodeKey}`,
 				winSetting.o_payment_of_post_operation_fee.width,
 				winSetting.o_payment_of_post_operation_fee.height)
 		});

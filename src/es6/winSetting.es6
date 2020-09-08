@@ -53,8 +53,8 @@ module.exports = {
 	publish(url){
 
 		let nowPath = window.location.pathname;
-		nowPath = nowPath.split('\/')[1]??'';
-
+		nowPath = nowPath.split('\/');
+		nowPath = nowPath[nowPath.length-2]??'';
 		let newUrl = url.split('\/'),
 			newPath = [];
 
@@ -67,6 +67,7 @@ module.exports = {
 			let fileName = newUrl[1].split('.');
 			newPath.push(fileName[0]);
 		}
+
 
 		newPath = newPath[0]+'/'+newPath[1];
 		newPath = DIST[newPath];

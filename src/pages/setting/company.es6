@@ -55,7 +55,7 @@ let Page = {
 			{name:'新增',type:'btn1',style:{color:'#5576f0'}}
 		];
 		title.clickFn = function(){
-			qt.openPage('o_add.html?name=公司名&type=3',
+			qt.openPage('../setting/o_add.html?name=公司名&type=3',
 				winSetting.setting_add_role.width,
 				winSetting.setting_add_role.height)
 		};
@@ -155,7 +155,7 @@ let Page = {
 			{name:'新增',type:'btn1',style:{color:'#5576f0'}}
 		];
 		title.clickFn = function(){
-			qt.openPage('o_add.html?name=部门名&type=4&companyId='+data.id,
+			qt.openPage('../setting/o_add.html?name=部门名&type=4&companyId='+data.id,
 				winSetting.setting_add_role.width,
 				winSetting.setting_add_role.height)
 		};

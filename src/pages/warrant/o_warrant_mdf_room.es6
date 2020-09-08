@@ -101,7 +101,7 @@ let Page = {
         ];
         bTitle.clickFn = function(){
             qt.openPage(
-                `./o_warrant_mdf.html?id=${_this.id}&orderNo=${_this.orderNo}&currentNodeKey=${_this.currentNodeKey}&type=${_this.orderType}`,
+                `../warrant/o_warrant_mdf.html?id=${_this.id}&orderNo=${_this.orderNo}&currentNodeKey=${_this.currentNodeKey}&type=${_this.orderType}`,
                 winSetting.publish_review.width,
                 winSetting.publish_review.height)
         };

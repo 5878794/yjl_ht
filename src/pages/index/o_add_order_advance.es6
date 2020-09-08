@@ -268,7 +268,7 @@ let Page = {
         let _this = this;
         $('#pre').click(function(){
             qt.openPage(
-                './o_add_order_info.html?id='+_this.id,
+                '../index/o_add_order_info.html?id='+_this.id,
                 winSetting.index_add_step2.width,
                 winSetting.index_add_step2.height)
         });
@@ -307,7 +307,7 @@ let Page = {
 
         await qt.alert('保存成功!');
         qt.openPage(
-            './o_add_order_view.html?id='+this.id+'&state=1',
+            '../index/o_add_order_view.html?id='+this.id+'&state=1',
             winSetting.index_add_step4.width,
             winSetting.index_add_step4.height
         );

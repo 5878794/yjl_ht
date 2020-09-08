@@ -62,7 +62,7 @@ let Page = {
 		let btn = $('#add_btn');
 		btn.click(function(){
 			qt.openPage(
-				'./o_add_notice.html',
+				'../management/o_add_notice.html',
 				winSetting.management_add_news.width,
 				winSetting.management_add_news.height)
 		});
@@ -110,7 +110,7 @@ let Page = {
 			let data = $(this).data('data'),
 				id = data.id;
 			qt.openPage(
-				'./o_add_notice.html?id='+id,
+				'../management/o_add_notice.html?id='+id,
 				winSetting.management_add_news.width,
 				winSetting.management_add_news.height)
 		})

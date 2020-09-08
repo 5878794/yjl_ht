@@ -60,7 +60,7 @@ let Page = {
 		let btn = $('#add_btn');
 		btn.click(function(){
 			qt.openPage(
-				'./o_add_staff.html',
+				'../management/o_add_staff.html',
 				winSetting.management_add_staff.width,
 				winSetting.management_add_staff.height)
 		});
@@ -97,7 +97,7 @@ let Page = {
 				id = data.id;
 
 			qt.openPage(
-				'./o_add_staff.html?id='+id,
+				'../management/o_add_staff.html?id='+id,
 				winSetting.management_add_staff.width,
 				winSetting.management_add_staff.height)
 		})

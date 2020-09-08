@@ -110,7 +110,7 @@ let Page = {
 
 					$(this).click(function(){
 						qt.openPage(
-							`./o_installment_mortgage_repayment.html?id=${_this.id}&orderNo=${_this.orderNo}&currentNodeKey=${_this.currentNodeKey}`,
+							`../finance/o_installment_mortgage_repayment.html?id=${_this.id}&orderNo=${_this.orderNo}&currentNodeKey=${_this.currentNodeKey}`,
 							winSetting.o_installment_mortgage_repayment.width,
 							winSetting.o_installment_mortgage_repayment.height)
 					});
@@ -129,7 +129,7 @@ let Page = {
 
 		btn.click(function(){
 			qt.openPage(
-				`./o_last_installment_mortgage_repayment.html?id=${_this.id}&orderNo=${_this.orderNo}&currentNodeKey=${_this.currentNodeKey}`,
+				`../finance/o_last_installment_mortgage_repayment.html?id=${_this.id}&orderNo=${_this.orderNo}&currentNodeKey=${_this.currentNodeKey}`,
 				winSetting.o_last_installment_mortgage_repayment.width,
 				winSetting.o_last_installment_mortgage_repayment.height)
 		});

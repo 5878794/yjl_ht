@@ -22,6 +22,15 @@ window.userLock = function(state){
 
 let Page = {
 	init(){
+		// let qtJsSrc = $('#qt').attr('src'),
+		// 	iframeWindow = $('#win_right').get(0).contentWindow;
+		//
+		// let script = document.createElement('script');
+		// script.src = qtJsSrc;
+		// script.onload = function(){
+		// 	qweb_load();
+		// };
+		// iframeWindow.$('body').append(script);
 	}
 };
 

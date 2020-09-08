@@ -81,7 +81,7 @@ let Page = {
             let data = $(this).parent().data('data'),
                 id = data.id;
             qt.openPage(
-                './draft_del.html?id='+id,
+                '../draft/draft_del.html?id='+id,
                 winSetting.draft_del.width,
                 winSetting.draft_del.height)
         });

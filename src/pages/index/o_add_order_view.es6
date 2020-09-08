@@ -75,7 +75,7 @@ let Page = {
 		let _this = this;
 		$('#pre').click(function(){
 			qt.openPage(
-				'./o_add_order.html?id='+_this.id,
+				'../index/o_add_order.html?id='+_this.id,
 				winSetting.index_add_step1.width,
 				winSetting.index_add_step1.height)
 		});

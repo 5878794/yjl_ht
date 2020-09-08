@@ -41,7 +41,7 @@ let Page = {
             {name:'新增',type:'btn1',style:{color:'#5576f0'}}
         ];
         title.clickFn = function(){
-            qt.openPage('o_add_channel.html',
+            qt.openPage('../setting/o_add_channel.html',
                 winSetting.setting_add_channel.width,
                 winSetting.setting_add_channel.height)
         }
@@ -84,7 +84,7 @@ let Page = {
                 let type = $(this).data('type'),
                     data = $(this).data('data');
 
-                qt.openPage(`o_add_channel.html?id=${data.id}`,
+                qt.openPage(`../setting/o_add_channel.html?id=${data.id}`,
                     winSetting.setting_add_channel.width,
                     winSetting.setting_add_channel.height)
             });
