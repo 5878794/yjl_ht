@@ -91,6 +91,7 @@ let api = {
 		//龙虎榜
 	index_sort_list:{url:'/api/home/rankingList',type:'get'},
 
+
 	//登录
 	login:{url:'/api/user/login',type:'post'},
 	// //部门信息接口

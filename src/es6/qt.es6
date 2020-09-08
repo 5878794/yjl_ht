@@ -131,6 +131,17 @@ let JD = {
                 success(res);
             });
         })
+    },
+    //获取及时信息
+    getNews(){
+        return new Promise(success=>{
+            window.qtNews = function(rs){
+                success(rs);
+            };
+            if (bridge) {
+                bridge.startBroadList('qtNews', 0);
+            }
+        });
     }
 };
 

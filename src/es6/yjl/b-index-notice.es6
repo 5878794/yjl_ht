@@ -12,7 +12,8 @@
 // 	}
 
 
-let lib = require('../lib');
+let lib = require('../lib'),
+	jsAnimate = require('../lib/fn/jsAnimate');
 require('../lib/jq/extend');
 
 
@@ -54,11 +55,19 @@ class bIndexNotice extends HTMLElement{
 		this.userClickFn = function(){};
 
 		this.shadow.appendChild(this.body.get(0));
-
+		this.canRun = false;
+		this.animateTime = parseInt($(this).attr('animateTime'));
+		this.animateFn = null;
+		this.addAnimateFn();
 		this.addEvent();
 	}
 
-
+	getAnimateWidth(){
+		let bodyWidth = parseInt(this.scrollDiv.parent().width()),
+			scrollerWidth = parseInt(this.scrollDiv.width());
+		this.animateWidth = bodyWidth + scrollerWidth;
+		this.scrollerWidth = scrollerWidth;
+	}
 
 	createElement(){
 		let body = $('<div class="notice box_hlc" style="display: none;"></div>'),
@@ -89,13 +98,41 @@ class bIndexNotice extends HTMLElement{
 		this.cssText = css.join('');
 	}
 
+	run(val){
+		let _this = this;
+		let width = _this.animateWidth * (1-val) - _this.scrollerWidth;
+		// console.log(val,width)
+		_this.scrollDiv.css({
+			transform:'translateX('+width+'px)'
+		});
+	}
+	addAnimateFn(){
+		let _this = this;
+		this.animateFn = new jsAnimate({
+			start:0,                  //@param:number   初始位置
+			end:1,                    //@param:number   结束位置
+			time:this.animateTime,                 //@param:number   动画执行时间  ms
+			type:"Linear",             //@param:str      tween动画类别,默认：Linear 详见函数内tween函数
+			class:"Linear",           //@param:str      tween动画方式,默认：easeIn 详见函数内tween函数
+			stepFn:function(val){     //@param:fn       每步执行函数,返回当前属性值
+				_this.run(val);
+			},
+			endFn:function(){         //@param:fn       动画结束执行
+
+			},
+			alternate:false,          //@param:boolean  动画结束时是否反向运行，默认：false
+			infinite:true            //@param:boolean  动画是否循环执行，默认：false
+										// 设置该参数endFn将失效
+		})
+	}
+
 	createList(data){
 		let body = this.scrollDiv,
 			item = this.item,
 			_this = this;
 
 		body.find('span').unbind('click');
-		body.html('').addClass('hidden');
+		body.html('');
 		data.map(rs=>{
 			let _item = item.clone();
 			_item.data({data:rs});
@@ -111,80 +148,43 @@ class bIndexNotice extends HTMLElement{
 
 	set showData(data){
 		if(!data || data.length == 0){
+			this.scrollDiv.text('暂无通知！');
 			return;
 		}
+		this.canRun = true;
 
-		this.stopAnimate();
-		this.createList(data);
-		setTimeout(()=>{
-			this.startAnimate();
-		},300)
+		let _this =this;
+		setTimeout(function(){
+			if(_this.animateFn){
+				_this.animateFn.stop();
+			}
+			_this.createList(data);
+			_this.getAnimateWidth();
+			_this.animateFn.restart();
+		},300);
+
+
 	}
 	set clickFn(fn){
 		fn = fn || function(){};
 		this.userClickFn = fn;
 	}
 
-	stopAnimate(){
-		if(this.intervalFn){
-			clearInterval(this.intervalFn);
-			this.intervalFn = null;
-		}
-
-		this.scrollDiv.css({
-			'transition-property': '',
-			'transition-duration': '',
-			'transition-timing-function': '',
-			'will-change': 'auto',
-			'transform-style': '',
-			'backface-visibility': ''
-		});
-	}
-
-	startAnimate(){
-		let width = parseInt(this.scrollDiv.parent().width()),
-			width1 = parseInt(this.scrollDiv.width()),
-			time = (width+width1)*15,
-			_this = this;
-
-		this.scrollDiv.css({
-			transform:'translateX('+width+'px)'
-		}).removeClass('hidden');
-
-		let animateFn = function(){
-			_this.scrollDiv.cssAnimate({
-				transform:'translateX('+-width1+'px)'
-			},time,()=>{
-				_this.scrollDiv.css({
-					transform:'translateX('+width+'px)'
-				});
-			},true,'linear')
-		};
-
-		setTimeout(function(){
-			animateFn();
-			_this.intervalFn = setInterval(()=>{
-				animateFn();
-			},time+3000)
-		},10)
-
-	}
 
 	addEvent(){
 		let _this = this;
-		document.addEventListener('visibilitychange',function(){ //浏览器切换事件
-			if(document.visibilityState=='hidden') { //状态判断
-				_this.stopAnimate();
-			}else {
-				_this.startAnimate();
-			}
+
+
+		$(window).resize(function(){
+			_this.getAnimateWidth();
 		});
-		window.addEventListener("focus",()=>{
-			_this.startAnimate();
-		});
-		window.addEventListener("blur",()=>{
-			_this.stopAnimate();
-		});
+
+
+		this.scrollDiv.hover(function(){
+			_this.animateFn.stop();
+		},function(){
+			_this.animateFn.play();
+		})
 	}
 
 }

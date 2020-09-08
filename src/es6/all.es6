@@ -42,6 +42,31 @@ let all = {
 			});
 		}
 	},
+	//获取通知信息
+	getNews(){
+		if(window.bridge){
+			return new Promise(success=>{
+				qt.getNews().then(rs=>{
+					success(rs);
+				})
+			})
+		}else{
+			return new Promise((success,error)=>{
+				ajax.send([
+					api.news_list({
+						pageNum:1,
+						pageSize:5
+					})
+				]).then(rs=>{
+					success(rs);
+				}).catch(e=>{
+					console.log('获取通知信息失败！');
+					qt.alert('获取通知信息失败!');
+					success({});
+				})
+			});
+		}
+	},
 
 
 	//获取dom下的所有b-input类

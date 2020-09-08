@@ -59,8 +59,8 @@ let Page = {
         let myNumber = data.ranking || '';
         $('#number_').text(myNumber);
 
-        //TODO 通知获取、权限控制
-        this.createNotice();
+        //TODO 权限控制
+        this.createNoticeFn();
 
         this.orderStateDist = await selectData('orderState1');
         this.businessDist = await selectData('businessType');
@@ -125,19 +125,50 @@ let Page = {
 
     },
 
-    createNotice(){
+    createNoticeFn(){
+        let _this =this;
+        setInterval(function(){
+            _this.createNotice();
+        },10000);
+        _this.createNotice();
+    },
+    oldNews:{},
+    async createNotice(){
+        let data = await all.getNews();
+        data = data[0]??{};
+        data = data.list || [];
+
+        let showTexts = [],
+            nowDataById = {};
+        data.map(rs=>{
+            showTexts.push({
+                text:rs.broadTitle,
+                id:rs.id,
+                data:rs
+            });
+            nowDataById[rs.id] = rs;
+        });
+
+        //判断是否有更新的新闻
+        let old = this.oldNews,
+            hasNew = false;
+        data.map(rs=>{
+            let id = rs.id;
+            if(!old[id]){
+                hasNew = true;
+            }
+        });
+
+        this.oldNews = nowDataById;
+        if(!hasNew){return;}
+
+
         let notice = $('#notice').get(0);
-        notice.showData = [
-            {text:'撒地方撒地方1',id:'2'},
-            {text:'撒地方撒地方2',id:'2'},
-            {text:'撒地方撒地方3',id:'2'},
-            {text:'撒地方撒地方4',id:'2'},
-            {text:'撒地方撒地方5',id:'2'},
-            {text:'撒地方撒地方6',id:'2'},
-            {text:'撒地方撒地方7',id:'2'}
-        ];
+        notice.showData = showTexts;
         notice.clickFn = function(rs){
-            console.log(rs)
+            let data = rs.data;
+            //TODO 打开详情页面
+            console.log(data)
         }
     },
     createSearch(){
@@ -161,7 +192,6 @@ let Page = {
         // table.data = tableSet.index.data;
 
         let userLock = false;
-        console.log(data)
         data.map(rs=>{
             rs.key9 = '../res/image/edit.png';
             //图标
