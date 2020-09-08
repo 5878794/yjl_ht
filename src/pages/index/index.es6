@@ -129,7 +129,7 @@ let Page = {
         let _this =this;
         setInterval(function(){
             _this.createNotice();
-        },10000);
+        },60000);
         _this.createNotice();
     },
     oldNews:{},

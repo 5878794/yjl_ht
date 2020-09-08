@@ -90,7 +90,7 @@ class bIndexNotice extends HTMLElement{
 			'.notice img{display: block;width: 24px;height: 20px;margin-right: 10px;}',
 			'.notice p{font-size: 14px; color: #000000; font-weight: bold;}',
 			'.notice_main{position: relative;overflow: hidden;height: 50px;}',
-			'.notice_scroller{position: absolute;left:0; top:0;height: 50px;}',
+			'.notice_scroller{position: absolute;left:0; top:0;height: 50px;font-size: 12px;}',
 			'.notice_scroller span{padding:0 20px;font-size: 12px;}'
 		];
 
