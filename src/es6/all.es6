@@ -26,6 +26,7 @@ let all = {
 		}else{
 			return new Promise((success,error)=>{
 				ajax.send([
+					//TODO 用户名 密码
 					api.login({
 						userName:'test',
 						password:'123456'

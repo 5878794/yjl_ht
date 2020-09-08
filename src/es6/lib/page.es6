@@ -14,6 +14,7 @@ let device = require("./device"),
     init = Symbol("init"),
     run = Symbol('run'),
     $$ = require('./event/$$'),
+    qtWebReady = Symbol('qtWebReady'),
     pageReady = Symbol("pageReady"),
     appReady = Symbol("appReady"),
     needWeChatApi = Symbol("needWeChatApi"),
@@ -110,6 +111,7 @@ let page = {
         await Promise.all([
             this[pageReady](),
             this[weChatReady](),
+            this[qtWebReady](),
             this[loadScripts](SETTING.needLoadOtherJsList)
         ]);
 
@@ -179,6 +181,22 @@ let page = {
             //     success();
             // });
         })
+    },
+    //qt的浏览器ready
+    [qtWebReady](){
+        return new Promise(success=>{
+           if(window.location.href.indexOf('file:\/\/\/')>-1){
+               if(top.qweb_load){
+                   success();
+               }else{
+                   top.qweb_load = function(){
+                       success();
+                   }
+               }
+            }else{
+               success();
+           }
+        });
     },
     //加载配置文件、字典等
     [loadScripts](src=[]){
