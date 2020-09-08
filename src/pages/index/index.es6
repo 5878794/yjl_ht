@@ -135,9 +135,7 @@ let Page = {
     oldNews:{},
     async createNotice(){
         let data = await all.getNews();
-        data = data[0]??{};
         data = data.list || [];
-
         let showTexts = [],
             nowDataById = {};
         data.map(rs=>{
@@ -160,6 +158,7 @@ let Page = {
         });
 
         this.oldNews = nowDataById;
+
         if(!hasNew){return;}
 
 

@@ -60,6 +60,7 @@ let all = {
 						pageSize:5
 					})
 				]).then(rs=>{
+					rs = rs[0];
 					success(rs);
 				}).catch(e=>{
 					console.log('获取通知信息失败！');

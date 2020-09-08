@@ -23,8 +23,7 @@ let device = require("./device"),
     autoSaveUrlParam = Symbol("autoSaveUrlParam"),
     base64Fn = require('./fn/base64'),
     myFetch = require('./resLoader/myFetch'),
-    signPage = require('../lib/signPage/b_page_rout'),
-    errorHandler = require('../lib/fn/errorHandler');
+    signPage = require('../lib/signPage/b_page_rout');
 
 require('./jq/extend');
 
@@ -807,7 +806,7 @@ page[init](function(){
         console.log("初始化完成");
     }
 }).catch(async e=>{
-    errorHandler.error(e);
+    // errorHandler.error(e);
     if(page[isDebug]){
         console.log(e);
         await page.alert("网络连接出现了一点问题，请重新尝试");

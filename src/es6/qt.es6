@@ -33,7 +33,7 @@ let JD = {
         return new Promise(success=>{
             window.bridge = window.bridge ?? top.bridge;
             if(window.bridge){
-                bridge.information(msg,title,function(){
+                window.bridge.information(msg,title,function(){
                     success();
                 });
             }else{
@@ -47,7 +47,7 @@ let JD = {
         return new Promise(success=>{
             window.bridge = window.bridge ?? top.bridge;
             if(window.bridge){
-                bridge.warning(msg, title,function (res) {
+                window.bridge.warning(msg, title,function (res) {
                     if(res==1){
                         success(true);
                     }
@@ -63,7 +63,7 @@ let JD = {
     openUrl(url,width,height,type){
         window.bridge = window.bridge ?? top.bridge;
         if (window.bridge) {
-            bridge.openUrl(
+            window.bridge.openUrl(
                 url,
                 width,      //窗口宽度
                 height,     //窗口高度
@@ -83,7 +83,7 @@ let JD = {
         let {newWidth,newHeight} = winSettingSize.publish(url);
         window.bridge = window.bridge ?? top.bridge;
         if (window.bridge) {
-            bridge.openUrl(
+            window.bridge.openUrl(
                 url,
                 newWidth,      //窗口宽度
                 newHeight,     //窗口高度
@@ -98,7 +98,7 @@ let JD = {
     closeWin(parentCallBack){
         window.bridge = window.bridge ?? top.bridge;
         if(window.bridge){
-            bridge.closeWin();
+            window.bridge.closeWin();
         }
     },
     //调用父级窗口函数
@@ -107,7 +107,7 @@ let JD = {
         let cmd = `window.${functionName}(${JSON.stringify(data)})`;
         window.bridge = window.bridge ?? top.bridge;
         if(window.bridge){
-            bridge.runJsOnParent(cmd);
+            window.bridge.runJsOnParent(cmd);
         }
     },
 
@@ -127,14 +127,15 @@ let JD = {
 
         window.bridge = window.bridge ?? top.bridge;
         if (window.bridge) {
-            bridge.download(url, fileName);
+            window.bridge.download(url, fileName);
         }
     },
     //获取用户信息
     getUserInfo(){
         return new Promise(success=>{
             window.bridge = window.bridge ?? top.bridge;
-            bridge.localData('userinfo', function (res) {
+            window.bridge.localData('userinfo', function (res) {
+                console.log('back userInfo');
                 success(res);
             });
         })
@@ -143,11 +144,11 @@ let JD = {
     getNews(){
         return new Promise(success=>{
             window.bridge = window.bridge ?? top.bridge;
-            window.qtNews = function(rs){
+            top.qtNews = function(rs){
                 success(rs);
             };
-            if (bridge) {
-                bridge.startBroadList('qtNews', 0);
+            if (window.bridge) {
+                window.bridge.startBroadList('qtNews', 0);
             }
         });
     }
