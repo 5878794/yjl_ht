@@ -17,7 +17,8 @@ let all = {
 		if(window.bridge){
 			return new Promise(success=>{
 				qt.getUserInfo().then(rs=>{
-					rs = rs??{};
+					rs = rs??'{}';
+					rs = JSON.parse(rs);
 					window.token = rs.token;
 					window.companyId = rs.companyId;
 					window.userName = rs.userName;
@@ -34,9 +35,9 @@ let all = {
 					})
 				]).then(rs=>{
 					rs = rs[0];
-					window.token = rs.token;
-					window.companyId = rs.companyId;
-					window.userName = rs.userName;
+					top.token = rs.token;
+					top.companyId = rs.companyId;
+					top.userName = rs.userName;
 
 					success();
 				}).catch(e=>{

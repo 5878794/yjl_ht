@@ -179,6 +179,7 @@ let Page = {
             winSetting.index_add_step4.width,
             winSetting.index_add_step4.height
         );
+        qt.closeWin();
     }
 
 };
