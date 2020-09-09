@@ -61,7 +61,12 @@ let Page = {
 			_this = this;
 
 		submit.click(function(){
-			all.showLoadingRun(_this,'submitFn','1');
+			all.showLoadingRun(all,'reviewSubmit',{
+				formDom:$('#form'),
+				orderNo:_this.orderNo,
+				state:1,
+				currentNodeKey:_this.currentNodeKey
+			});
 		});
 
 		cancel.click(function(){
@@ -74,26 +79,26 @@ let Page = {
 				winSetting.o_payment_of_post_operation_fee.width,
 				winSetting.o_payment_of_post_operation_fee.height)
 		});
-	},
-	async submitFn(state){
-		let form = await all.getFromVal($('#form')),
-			uploaded = await all.uploadFile(form.attachUrls);
-
-		form.attachUrls = uploaded.join(',');
-		form.auditStatus = state;
-		form.orderNo = this.orderNo;
-		form.currentNodeKey = this.currentNodeKey;
-
-		console.log(form);
-
-		//TODO 不晓得接口调哪个
-
-		// await ajax.send([
-		// 	api.finance_pay_back_submit(form)
-		// ]);
-		// await qt.alert('提交成功！');
-		// qt.closeWin();
 	}
+	// ,
+	// async submitFn(state){
+	// 	let form = await all.getFromVal($('#form')),
+	// 		uploaded = await all.uploadFile(form.attachUrls);
+	//
+	// 	form.attachUrls = uploaded.join(',');
+	// 	form.auditStatus = state;
+	// 	form.orderNo = this.orderNo;
+	// 	form.currentNodeKey = this.currentNodeKey;
+	//
+	// 	console.log(form);
+	//
+	//
+	// 	// await ajax.send([
+	// 	// 	api.finance_pay_back_submit(form)
+	// 	// ]);
+	// 	// await qt.alert('提交成功！');
+	// 	// qt.closeWin();
+	// }
 
 };
 

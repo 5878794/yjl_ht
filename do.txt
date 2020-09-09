@@ -1,7 +1,14 @@
+差的页面
 
-首页 ok （差 首页）
-审批 ok （差 列表差字段）
-财务 退费、退款列表 功能     一堆TODO没的接口
+通知弹出窗口  开单通知、信息通知
+修改密码
+
+
+
+房抵分期还款  对应的节点还是单独的接口
+finance/o_last_installment_mortgage_repayment
+finance/o_installment_mortgage_repayment
+finance/o_payment_of_post_operation_fee
 
 
 TODO
