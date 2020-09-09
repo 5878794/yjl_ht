@@ -136,6 +136,7 @@ let JD = {
             window.bridge = window.bridge ?? top.bridge;
             window.bridge.localData('userinfo', function (res) {
                 console.log('back userInfo');
+                console.log(res)
                 success(res);
             });
         })

@@ -186,11 +186,25 @@ let page = {
     [qtWebReady](){
         return new Promise(success=>{
            if(window.location.href.indexOf('file:\/\/\/')>-1){
-               if(top.qweb_load){
-                   success();
-               }else{
+               //主窗口
+               if(window === top){
                    top.qweb_load = function(){
+                       top.qtIsLoaded = true;
+                       if(top.qweb_load_iframe){
+                           top.qweb_load_iframe();
+                       }
                        success();
+                   }
+               //iframe窗口
+               }else{
+                   //已经loaded
+                   if(top.qtIsLoaded){
+                       success();
+                   }else{
+                       //还在加载
+                       top.qweb_load_iframe = function(){
+                            success();
+                       }
                    }
                }
             }else{

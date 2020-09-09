@@ -17,6 +17,7 @@ let all = {
 		if(window.bridge){
 			return new Promise(success=>{
 				qt.getUserInfo().then(rs=>{
+					rs = rs??{};
 					window.token = rs.token;
 					window.companyId = rs.companyId;
 					window.userName = rs.userName;
