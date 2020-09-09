@@ -44,22 +44,22 @@ TODO
 
 ====================================
 //afterLoan
-    o_add_after_loan
-    o_add_after_loan1
+o_add_after_loan
+o_add_after_loan1
     o_info
     o_mdf_repayment_account
     o_mdf_user_info
-    o_rollover
-    o_rollover1
-    o_write_off
-    o_write_off1
-    o_write_off2
+o_rollover
+o_rollover1
+o_write_off
+o_write_off1
+o_write_off2
 
 
 ======================================
 //approve
-o_approve_advance（准备废弃）
-    o_approve_room
+    o_approve_advance（准备废弃）
+o_approve_room
 
 
 ======================================
@@ -75,21 +75,21 @@ o_approve_advance（准备废弃）
 //file
     o_add
     o_info
-    o_info1
-    o_info2
+o_info1
+o_info2
 
 ======================================
 //finance
-    o_advance_payment
-    o_bookkeeping
-    o_business_fee_payment
-    o_dispensing
+o_advance_payment
+o_bookkeeping
+o_business_fee_payment
+o_dispensing
     o_installment_mortgage_repayment
     o_last_installment_mortgage_repayment
-    o_mortgage_repayment
+o_mortgage_repayment
     o_payment_of_post_operation_fee
     o_Refund
-    o_rollover_collection
+o_rollover_collection
 
 
 ======================================
@@ -111,8 +111,8 @@ o_approve_advance（准备废弃）
 
 ======================================
 //publish
-    review
-    overSingle
+review
+overSingle
 
 
 ======================================
@@ -123,4 +123,4 @@ o_approve_advance（准备废弃）
 //warrant
     o_warrant_mdf
     o_warrant_mdf_room
-    o_warrant_pay_back
+o_warrant_pay_back

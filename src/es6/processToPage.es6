@@ -30,11 +30,16 @@ let key = [
 	//TODO 未找到 /api/dzOrderFlow/quanZhengRepaymentDataConfirm 权证-还款资料确认流程  通用过单模块
 		// {name:'DIAN_ZI_DINGDAN_FINISH_SYSTEM',value:'',info:'系统-订单完成',api:''},
 
+
+
+
+
+
+
 	// {name:'FANG_DI_ZHIXING_SUBMIT_ORDER',value:'',info:'执行-提交订单'},
 		{name:'FANG_DI_JILING_AUDIT',value:'../approve/o_approve_room.html',info:'经理-部门初审',api:'/api/fdOrderFlow/auditOrder'},
 		{name:'FANG_DI_FENGKONG_AUDIT_1',value:'../publish/review.html',info:'风控-初审',api:'/api/fdOrderFlow/auditOrder'},
-	//TODO 改成通用过单？？？ 改咯页面无用咯。。。
-	{name:'FANG_DI_QUANZHENG_AUDIT',value:'../warrant/o_warrant_mdf_room.html',info:'权证-下户',api:'/api/fdOrderFlow/quanZhengXiaHu'},
+		{name:'FANG_DI_QUANZHENG_AUDIT',value:'../warrant/o_warrant_mdf_room.html',info:'权证-下户',api:'/api/fdOrderFlow/quanZhengXiaHu'},
 		{name:'FANG_DI_GONGSI_AUDIT',value:'../publish/review.html',info:'公司-终审',api:'/api/fdOrderFlow/auditOrder'},
 		{name:'FANG_DI_JITUAN_AUDIT',value:'../publish/review.html',info:'集团-终审',api:'/api/fdOrderFlow/auditOrder'},
 		{name:'FANG_DI_ZHIXING_SUBMIT_CONTRACT',value:'../publish/overSingle.html',info:'执行-提交合同',api:'/api/fdOrderFlow/auditOrder',api:'/api/fdOrderFlow/zhiXingSubmitContract'},
@@ -62,6 +67,10 @@ let key = [
 	// TODO 业务费后置缴纳    /finance/o_payment_of_post_operation_fee.html
 
 
+
+
+
+
 	//TODO   /api/tkOrderFlow/auditOrder  退款-审核订单流程  未找到节点
 	{name:'TUI_KUAN_ZHIXING_RETURN_APPLY',value:'',info:'执行-申请退款',api:'/api/tkOrderFlow/zhiXingReturnApply'},
 	{name:'TUI_KUAN_GONGSI_AUDIT',value:'',info:'公司-审核',api:'/api/tkOrderFlow/gongSiAudit'},
@@ -72,9 +81,16 @@ let key = [
 	// {name:'TUI_KUAN_RETURN_MONEY_SYSTEM',value:'',info:'系统-退款',api:''},
 
 
+
+
+
+
 	{name:'DAIHOU_ZHICHU_DAIHOU_ADD_ZHICHU',value:'../afterLoan/o_add_after_loan.html',info:'贷后-新增支出',api:'/api/dhZcOrderFlow/daiHouAddZhiChu'},
 	{name:'DAIHOU_ZHICHU_CAIWU_ZHICHU_OVER_ORDER',value:'../afterLoan/o_add_after_loan1.html',info:'财务-贷后支出过单',api:'/api/dhZcOrderFlow/caiWuZhiChuOverOrder'},
 	// {name:'DAIHOU_ZHICHU_ADD_ZHICHU_SYSTEM',value:'',info:'系统-新增支出',api:''},
+
+
+
 
 
 	{name:'ZHAN_QI_DAIHOU_ZHANQI_APPLY',value:'../afterLoan/o_rollover.html',info:'贷后-展期申请',api:'/api/zqOrderFlow/daiHouAddZhiChu'},
@@ -83,9 +99,14 @@ let key = [
 	// {name:'ZHAN_QI_ZHANQI_SYSTEM',value:'',info:'系统-展期',api:''},
 
 
+
+
+
 	// {name:'DINGDAN_SHANCHU_ZHIXING_SHANCHU_APPLY',value:'',info:'执行-删除申请',api:'/api/ddScOrderFlow/zhiXingShanChuApply'},
 	{name:'DINGDAN_SHANCHU_FENGKONG_AUDIT',value:'../publish/review.html',info:'风控-审核',api:'/api/ddScOrderFlow/fengKongAudit'},
 	// {name:'DINGDAN_SHANCHU_SHANCHU_SYSTEM',value:'',info:'系统-删除',api:''},
+
+
 
 
 
@@ -96,6 +117,9 @@ let key = [
 	{name:'HEXIAO_DINGDAN_JITUAN_HEXIAO_AUDIT_2',value:'../afterLoan/o_write_off1.html',info:'集团-核销终审',api:'/api/hxDdOrderFlow/jiTuanHeXiaoAuditTwo'},
 	{name:'HEXIAO_DINGDAN_CAIWU_HEXIAO_OVER_ORDER',value:'../afterLoan/o_write_off2.html',info:'财务-核销过单',api:'/api/hxDdOrderFlow/caiWuHeXiaoOverOrder'},
 	// {name:'HEXIAO_DINGDAN_HEXIAO_SYSTEM',value:'',info:'系统-核销',api:''},
+
+
+
 
 
 	{name:'CHU_KU_DANGAN_CHUKU_APPLY',value:'../file/o_info1.html',info:'档案-出库申请',api:'/api/ckOrderFlow/dangAnChuKuApply'},
