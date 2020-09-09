@@ -2,7 +2,7 @@
 
 let DIST = {
 	'afterLoan/o_add_after_loan':{w:'800',h:'550'},
-	'afterLoan/o_add_after_loan1':{w:'800',h:'600'},
+	'afterLoan/o_add_after_loan1':{w:'1200',h:'600'},
 	'afterLoan/o_info':{w:'1200',h:'600'},
 	'afterLoan/o_mdf_repayment_account':{w:'800',h:'390'},
 	'afterLoan/o_mdf_user_info':{w:'800',h:'460'},
