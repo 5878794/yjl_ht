@@ -68,7 +68,8 @@ let Page = {
             qt.openPage(
                 '../index/o_add_order_info.html?id='+_this.id,
                 winSetting.index_add_step2.width,
-                winSetting.index_add_step2.height)
+                winSetting.index_add_step2.height);
+            qt.closeWin();
         });
         $('#next').click(function(){
             all.showLoadingRun(_this,'submitFn');

@@ -59,7 +59,8 @@ let Page = {
 
     },
     createSearch(){
-        let search = $('#b_search').get(0);
+        let search = $('#b_search').get(0),
+            _this = this;
 
         //TODO
         search.inputData = [

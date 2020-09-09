@@ -264,7 +264,8 @@ class bInputFile extends bInput{
 		div.append(typeDom).append(nameDom);
 
 		nameDom.click(function(){
-			qt.downloadFile(fileUrl);
+			qt.alert('文件"'+fileName+'"还未上传，不能预览。');
+			// qt.downloadFile(fileUrl);
 		});
 
 

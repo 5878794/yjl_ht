@@ -317,6 +317,7 @@ let Page = {
 	//搜索条
 	createSearch(){
 		let search = $('#b_search').get(0),
+			_this = this,
 			searchData = SETTINGDATA[this.page]['type'+this.type].search;
 
 		if(searchData.length == 0){

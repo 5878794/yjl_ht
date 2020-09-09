@@ -65,7 +65,9 @@ let Page = {
 
     },
     createSearch(){
-        let search = $('#b_search').get(0);
+        let search = $('#b_search').get(0),
+            _this = this;
+
         search.inputData = [
             {name:'客户姓名:',type:'text',id:'clientName',width:'30%'},
             {name:'客户电话:',type:'text',id:'clientMobile',width:'30%'},

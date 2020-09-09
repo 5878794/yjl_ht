@@ -27,17 +27,17 @@ let all = {
 			})
 		}else{
 			return new Promise((success,error)=>{
+				//TODO 用户名 密码
 				ajax.send([
-					//TODO 用户名 密码
 					api.login({
 						userName:'test',
 						password:'123456'
 					})
 				]).then(rs=>{
 					rs = rs[0];
-					top.token = rs.token;
-					top.companyId = rs.companyId;
-					top.userName = rs.userName;
+					window.token = rs.token;
+					window.companyId = rs.companyId;
+					window.userName = rs.userName;
 
 					success();
 				}).catch(e=>{
