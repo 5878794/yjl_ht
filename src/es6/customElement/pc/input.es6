@@ -72,6 +72,7 @@ let createInputDom = {
 
 		selectInput.css({
 			width:'100%',
+			paddingRight:'30px',
 			'-webkit-appearance': 'none'
 		});
 
@@ -266,7 +267,8 @@ class bInput extends HTMLElement{
 			height:this.userStyle.rowHeight+'px',
 			lineHeight:this.userStyle.rowHeight+'px',
 			background:'none',
-			border:'none'
+			border:'none',
+			fontSize:'12px'
 		};
 
 		this.textareaCss = {
@@ -275,7 +277,8 @@ class bInput extends HTMLElement{
 			lineHeight:'120%',
 			background:'none',
 			border:'none',
-			padding:'10px 0'
+			padding:'10px 0',
+			fontSize:'12px'
 		};
 	}
 
@@ -315,7 +318,7 @@ class bInput extends HTMLElement{
 				});
 				this.inputBodyDom.css({
 					position:'relative',
-					'padding-right':'30px'
+					'padding-right':'0px'
 				}).append(div);
 
 
