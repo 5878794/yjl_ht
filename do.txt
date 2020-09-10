@@ -1,5 +1,4 @@
-差的页面
-
+TODO
 通知弹出窗口  开单通知、信息通知
 修改密码
 滚动条不见咯 hover才显示 (又有咯？？？？)
@@ -9,14 +8,7 @@
 订单创建  要控制  类型
 
 
-//房抵分期还款  对应的节点还是单独的接口
-//finance/o_last_installment_mortgage_repayment
-//finance/o_installment_mortgage_repayment
-//finance/o_payment_of_post_operation_fee
 
-
-TODO
-流程节点对应页面  及页面提交
 
 
 
@@ -26,19 +18,21 @@ TODO
 草稿箱 列表  接口差字段：主申请人电话     draft/draft.html      接口：/api/myOrder/list
 
 
-退尾款、退服务费 触发放到列表上咯 需要加节点流程key  同时需要增加字段标注是否已申请退款
-/api/tkOrderFlow/caiWuReturnMoney  财务 退款流程  //分成2个流程咯
-档案 出库已有接口  用界面上的接口
-档案列表中增加 订单id，流程节点key   （新增页面需要）
+放抵还款  需要扯分成  还分期、还尾款
+退尾款、退服务费 需要增加字段标注是否已申请退款
+
+登录信息 返回 加  用户权限信息（属于公司权限还是。。） 创建订单权限
+用户修改密码接口
+
+档案审核新增页面 差初始数据（新增页面）
 贷后支出过单  差初始数据（新增页面）
 集团展期审核  差初始数据（新增页面）
+
 汇总数据  无      afterLoan/afterLoan.html
 档案详情  /file/o_info.html    下面的历史记录
 统计模块 所有接口
 龙虎榜。无业绩字段。  如何判断是属于集团权限、公司权限还是部门权限
 
-
-退费退款 模块 接口貌似不对（列表和申请退款）
 
 
 权限控制---咋个搞
