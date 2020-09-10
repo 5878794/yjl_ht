@@ -26,8 +26,8 @@ let key = [
 		{name:'DIAN_ZI_QUANZHENG_AGAIN_DIYA',value:'../publish/overSingle.html',info:'权证-再抵押',api:'/api/dzOrderFlow/quanZhengAgainDiYa'},
 		{name:'DIAN_ZI_DIAN_ZI_CAIWU_HUIKUAN_CONFIRM',value:'../finance/o_advance_payment.html',info:'财务-回款确认',api:'/api/dzOrderFlow/caiWuHuiKuanConfirm'},
 		{name:'DIAN_ZI_CAIWU_YEWUFEI_PAYMENT_CONFIRM',value:'../finance/o_business_fee_payment.html',info:'财务-业务费确认缴纳',api:'/api/dzOrderFlow/caiWuYeWuFeiPaymentConfirm'},
+		{name:'DIAN_ZI_QUANZHENG_REPAYMENT_DATA_CONFIRM',value:'../publish/overSingle.html',info:'权证-还款资料确认流程',api:'/api/dzOrderFlow/quanZhengRepaymentDataConfirm'},
 	// {name:'DIAN_ZI_ZILIUCHENG_ZHANQI',value:'',info:'子流程-展期',api:''},
-	//TODO 未找到 /api/dzOrderFlow/quanZhengRepaymentDataConfirm 权证-还款资料确认流程  通用过单模块
 		// {name:'DIAN_ZI_DINGDAN_FINISH_SYSTEM',value:'',info:'系统-订单完成',api:''},
 
 
@@ -44,41 +44,42 @@ let key = [
 		{name:'FANG_DI_JITUAN_AUDIT',value:'../publish/review.html',info:'集团-终审',api:'/api/fdOrderFlow/auditOrder'},
 		{name:'FANG_DI_ZHIXING_SUBMIT_CONTRACT',value:'../publish/overSingle.html',info:'执行-提交合同',api:'/api/fdOrderFlow/auditOrder',api:'/api/fdOrderFlow/zhiXingSubmitContract'},
 		{name:'FANG_DI_QUANZHENG_DIYA',value:'../publish/overSingle.html',info:'权证-抵押',api:'/api/fdOrderFlow/quanZhengDiYa'},
-	//TODO 跳转档案新增？？？
-	{name:'FANG_DI_DANGAN_RUKU',value:'',info:'档案-入库',api:'/api/fdOrderFlow/dangAnRuKu'},
+		{name:'FANG_DI_DANGAN_RUKU',value:'../file/o_add.html',info:'档案-入库',api:'/api/fdOrderFlow/dangAnRuKu'},
 		{name:'FANG_DI_CAIWU_CONFIRM',value:'../finance/o_business_fee_payment.html',info:'财务-确认业务费缴纳',api:'/api/fdOrderFlow/caiWuConfirm'},
 		{name:'FANG_DI_ZHIXING_CHUKUAN_SUBMIT',value:'../publish/overSingle.html',info:'执行-出款申请',api:'/api/fdOrderFlow/zhiXingChuKuanSubmit'},
 		{name:'FANG_DI_CAIWU_CHUKUAN_BOOKING',value:'../finance/o_bookkeeping.html',info:'财务-出款记账',api:'/api/fdOrderFlow/caiWuChuKuanBooking'},
 		{name:'FANG_DI_FENGKONG_CHUKUAN_OVER_ORDER',value:'../publish/overSingle.html',info:'风控-出款过单',api:'/api/fdOrderFlow/fengKongChuKuanOverOrder'},
 		{name:'FANG_DI_CAIWU_CHUKUAN',value:'../finance/o_dispensing.html',info:'财务-出款',api:'/api/fdOrderFlow/caiWuChuKuan'},
-	//TODO 分成3类？？？
-	//finance/o_mortgage_repayment    房抵还款
-	//finance/o_installment_mortgage_repayment      房抵分期还款
-	//finance/o_last_installment_mortgage_repayment  房抵分期待还尾款
-	{name:'FANG_DI_CAIWU_REPAYMENT_CONFIRM',value:'../finance/o_mortgage_repayment.html',info:'财务-确认还款',api:'/api/fdOrderFlow/caiWuRepaymentConfirm'},
-	//TODO 分成房抵尾款、房抵分期 2种？？？
+		{name:'FANG_DI_CAIWU_REPAYMENT_CONFIRM',value:'../finance/o_mortgage_repayment.html',info:'财务-确认还款',api:'/api/fdOrderFlow/caiWuRepaymentConfirm'},
+	//TODO 分成房抵尾款、房抵分期 2种
 	//finance/o_installment_mortgage_repayment1   房抵分期还款记账
 	//finance/o_last_installment_mortgage_repayment1  房抵尾款还款记账
 	{name:'FANG_DI_CAIWU_REPAYMENT_BOOKING',value:'../finance/o_bookkeeping.html',info:'财务-还款记账',api:'/api/fdOrderFlow/caiWuRepaymentBooking'},
-	//TODO 不晓得是哪个页面  貌似有个 但是key不同
-	{name:'FANG_DI_CAIWU_YEWUFEI_PAYMENT_CONFIRM',value:'../finance/o_business_fee_payment.html',info:'财务-确认业务费缴纳',api:'/api/fdOrderFlow/caiWuConfirm'},
+		{name:'FANG_DI_CAIWU_YEWUFEI_PAYMENT_CONFIRM',value:'../finance/o_payment_of_post_operation_fee.html',info:'财务-确认后置业务费缴纳',api:'/api/fdOrderFlow/caiWuYeWuFeiPaymentConfirm'},
 		// {name:'FANG_DI_DINGDAN_FINISH_SYSTEM',value:'',info:'系统-订单完成',api:''},
-	// TODO /api/fdOrderFlow/caiWuYeWuFeiPaymentConfirm  财务-业务费缴纳确认流程 未找到对应节点
-	// TODO 业务费后置缴纳    /finance/o_payment_of_post_operation_fee.html
 
 
 
 
 
 
-	//TODO   /api/tkOrderFlow/auditOrder  退款-审核订单流程  未找到节点
+
+
+
+
+	{name:'TUI_FEI_ZHIXING_RETURN_APPLY',value:'',info:'执行-申请退款',api:'/api/tfOrderFlow/zhiXingReturnApply'},
+	{name:'TUI_FEI_GONGSI_AUDIT',value:'',info:'公司-审核',api:'/api/tfOrderFlow/gongSiAudit'},
+	{name:'TUI_FEI_CAIWU_BOOKING',value:'',info:'财务-记账',api:'/api/tfOrderFlow/caiWuBooking'},
+	{name:'TUI_FEI_CAIWU_RETURN_MONEY',value:'',info:'公司-过单',api:'/api/tfOrderFlow/gongSiOverOrder'},
+	{name:'TUI_FEI_RETURN_MONEY_SYSTEM',value:'../finance/o_Refund.html',info:'财务-退款',api:'/api/tfOrderFlow/caiWuReturnMoney'},
+
+
+
 	{name:'TUI_KUAN_ZHIXING_RETURN_APPLY',value:'',info:'执行-申请退款',api:'/api/tkOrderFlow/zhiXingReturnApply'},
 	{name:'TUI_KUAN_GONGSI_AUDIT',value:'',info:'公司-审核',api:'/api/tkOrderFlow/gongSiAudit'},
 	{name:'TUI_KUAN_CAIWU_BOOKING',value:'',info:'财务-记账',api:'/api/tkOrderFlow/caiWuBooking'},
 	{name:'TUI_KUAN_GONGSI_OVER_ORDER',value:'',info:'公司-过单',api:'/api/tkOrderFlow/gongSiOverOrder'},
-	//TODO 有问题  提交参数有    refundTypeKey   1-退尾款 2-退服务费
 	{name:'TUI_KUAN_CAIWU_RETURN_MONEY',value:'../finance/o_Refund.html',info:'财务-退款',api:'/api/tkOrderFlow/caiWuReturnMoney'},
-	// {name:'TUI_KUAN_RETURN_MONEY_SYSTEM',value:'',info:'系统-退款',api:''},
 
 
 
@@ -110,7 +111,6 @@ let key = [
 
 
 
-	// /api/hxDdOrderFlow/auditOrder  核销-审核订单流程  //TODO 未找到节点 接口未调用
 	{name:'HEXIAO_DINGDAN_DAIHOU_HEXIAO_APPLY',value:'../afterLoan/o_write_off.html',info:'贷后-申请核销',api:'/api/hxDdOrderFlow/daiHouHeXiaoApply'},
 	{name:'HEXIAO_DINGDAN_JITUAN_HEXIAO_AUDIT_1',value:'../afterLoan/o_write_off1.html',info:'集团-核销初审',api:'/api/hxDdOrderFlow/jiTuanHeXiaoAuditOne'},
 	{name:'HEXIAO_DINGDAN_GONGSI_HEXIAO_AUDIT',value:'../afterLoan/o_write_off1.html',info:'公司-核销审核',api:'/api/hxDdOrderFlow/gongSiHeXiaoAudit'},

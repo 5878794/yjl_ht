@@ -2,13 +2,17 @@
 
 通知弹出窗口  开单通知、信息通知
 修改密码
+滚动条不见咯 hover才显示 (又有咯？？？？)
 
 
+权限 我的业务  集团权限 才显示公司选项
+订单创建  要控制  类型
 
-房抵分期还款  对应的节点还是单独的接口
-finance/o_last_installment_mortgage_repayment
-finance/o_installment_mortgage_repayment
-finance/o_payment_of_post_operation_fee
+
+//房抵分期还款  对应的节点还是单独的接口
+//finance/o_last_installment_mortgage_repayment
+//finance/o_installment_mortgage_repayment
+//finance/o_payment_of_post_operation_fee
 
 
 TODO
@@ -23,11 +27,8 @@ TODO
 
 
 退尾款、退服务费 触发放到列表上咯 需要加节点流程key  同时需要增加字段标注是否已申请退款
-财务的退款流程 都不能区分 是退款还是退费哈。。。只有申请退款的时候知道
-/api/tkOrderFlow/caiWuReturnMoney  财务 退款流程  //TODO 如何区分是退尾款还是退费用
-/api/tkOrderFlow/auditOrder  退款-审核订单流程  //TODO 未找到节点 接口未调用
-/api/hxDdOrderFlow/auditOrder  核销-审核订单流程  //TODO 未找到节点 接口未调用
-档案 出库已有接口（根流程接口不同？？？？）
+/api/tkOrderFlow/caiWuReturnMoney  财务 退款流程  //分成2个流程咯
+档案 出库已有接口  用界面上的接口
 档案列表中增加 订单id，流程节点key   （新增页面需要）
 贷后支出过单  差初始数据（新增页面）
 集团展期审核  差初始数据（新增页面）

@@ -1,10 +1,20 @@
 //垫资业务、房抵业务  及其子页面公用js
 
+
+
 let app = require('./../../es6/lib/page'),
 	lib = require('./../../es6/lib'),
+	all = require('./../../es6/all'),
+	{ajax,api} = require('./../../es6/_ajax'),
+	qt = require('./../../es6/qt'),
+	pageSizeSetting = require('./../../es6/pageSize'),
+	urlParam = require('./../../es6/lib/fn/getParamFromUrl'),
+	winSetting = require('./../../es6/winSetting'),
 	tableSet = require('./../../es6/tableSetting'),
-	inputStyle = require('./../../es6/inputStyle'),
-	urlParam = require('./../../es6/lib/fn/getParamFromUrl');
+	selectData = require('./../../es6/selectData'),
+	moneyFormat = require('./../../es6/lib/fn/number'),
+	stamp2Date = require('./../../es6/lib/fn/timeAndStamp'),
+	inputStyle = require('./../../es6/inputStyle');
 
 
 
@@ -279,7 +289,6 @@ const SETTINGDATA = {
 };
 
 
-let loading;
 let Page = {
 	type:1,
 	init(){
@@ -290,16 +299,7 @@ let Page = {
 		this.page = page;
 
 
-		// loading = new loadFn();
-		// loading.show('急速加载中');
-		this.run().then(rs=>{
-			// loading.hide();
-		}).catch(rs=>{
-			// err.error(rs);
-			// loading.hide();
-			// app.alert(rs);
-			throw rs;
-		});
+		all.showLoadingRun(this,'run');
 	},
 	async run(){
 		this.createNav();

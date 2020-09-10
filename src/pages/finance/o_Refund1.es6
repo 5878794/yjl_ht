@@ -45,13 +45,16 @@ let Page = {
 		await all.setOrderTopData(4,data);
 		await all.setOrderHistoryData(history,true);
 
-		let info = data.orderRepayment;
-		all.setFromVal($('#form'),info);
+		//TODO 获取初始数据
 
 		this.addBtnEvent();
+
+
+		$('#attachUrls_').get(0).disabled = true;
 	},
 	addBtnEvent(){
 		let submit = $('#submit'),
+			back = $('#back'),
 			cancel = $('#cancel'),
 			_this = this;
 
@@ -60,6 +63,14 @@ let Page = {
 				formDom:$('#form'),
 				orderNo:_this.orderNo,
 				state:1,
+				currentNodeKey:_this.currentNodeKey
+			});
+		});
+		back.click(function(){
+			all.showLoadingRun(all,'reviewSubmit',{
+				formDom:$('#form'),
+				orderNo:_this.orderNo,
+				state:0,
 				currentNodeKey:_this.currentNodeKey
 			});
 		});
