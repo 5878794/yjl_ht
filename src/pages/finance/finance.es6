@@ -116,7 +116,7 @@ let Page = {
 			}
 		});
 
-		table.body.find('.__row__').addClass('hover');
+		// table.body.find('.__row__').addClass('hover');
 		table.body.find('.__row__').click(async function(){
 			let data = $(this).data('data'),
 				id = data.id,
