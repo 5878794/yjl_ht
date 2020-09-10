@@ -70,7 +70,7 @@ module.exports = {
 
 
 		newPath = newPath[0]+'/'+newPath[1];
-		newPath = DIST[newPath];
+		newPath = DIST[newPath]?? {w:1200,h:600};
 
 		return {
 			newWidth:newPath.w,
