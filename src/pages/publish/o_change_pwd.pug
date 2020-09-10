@@ -1,0 +1,28 @@
+doctype html
+html
+    head
+        title 修改密码
+        include ./../../pug_include/head_pc
+
+        script(data-src='o_change_pwd.min.js?t='+tt)
+        style.
+            body,html{overflow:auto;}
+
+
+    body
+
+        div(class='openWin_main')
+            b-title(name='修改密码' id='btitle')
+            //TODO id
+            div(class='openWin_input_main box_hlt box_lines' id='form')
+                div(class='openWin_input_item1')
+                    b-input(type='password' id='password' name='当前密码' placeholder='请输入当前密码' rule='must,str,min:6,max:18' err='请输入6-18位字母数字组合的密码')
+                div(class='openWin_input_item1')
+                    b-input(type='password' id='password1' name='新密码' placeholder='请输入新密码' rule='must,str,min:6,max:18' err='请输入6-18位字母数字组合的密码')
+                div(class='openWin_input_item1')
+                    b-input(type='password' id='password2' name='密码确认' placeholder='请再次输入新密码' rule='must,str,min:6,max:18' err='请输入6-18位字母数字组合的密码')
+
+
+
+            div(class='openWin_btns box_hcc')
+                div(class='openWin_btn_blue box_hcc hover' id='submit') 修改
