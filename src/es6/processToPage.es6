@@ -66,19 +66,19 @@ let key = [
 
 
 
-
-	{name:'TUI_FEI_ZHIXING_RETURN_APPLY',value:'',info:'执行-申请退款',api:'/api/tfOrderFlow/zhiXingReturnApply'},
-	{name:'TUI_FEI_GONGSI_AUDIT',value:'',info:'公司-审核',api:'/api/tfOrderFlow/gongSiAudit'},
-	{name:'TUI_FEI_CAIWU_BOOKING',value:'',info:'财务-记账',api:'/api/tfOrderFlow/caiWuBooking'},
-	{name:'TUI_FEI_CAIWU_RETURN_MONEY',value:'',info:'公司-过单',api:'/api/tfOrderFlow/gongSiOverOrder'},
+	//列表上处理
+	// {name:'TUI_FEI_ZHIXING_RETURN_APPLY',value:'',info:'执行-申请退款',api:'/api/tfOrderFlow/zhiXingReturnApply'},
+	{name:'TUI_FEI_GONGSI_AUDIT',value:'../finance/o_Refund2.html',info:'公司-审核',api:'/api/tfOrderFlow/gongSiAudit'},
+	{name:'TUI_FEI_CAIWU_BOOKING',value:'../finance/o_Refund1.html',info:'财务-记账',api:'/api/tfOrderFlow/caiWuBooking'},
+	{name:'TUI_FEI_CAIWU_RETURN_MONEY',value:'../finance/o_Refund1.html',info:'公司-过单',api:'/api/tfOrderFlow/gongSiOverOrder'},
 	{name:'TUI_FEI_RETURN_MONEY_SYSTEM',value:'../finance/o_Refund.html',info:'财务-退款',api:'/api/tfOrderFlow/caiWuReturnMoney'},
 
 
-
-	{name:'TUI_KUAN_ZHIXING_RETURN_APPLY',value:'',info:'执行-申请退款',api:'/api/tkOrderFlow/zhiXingReturnApply'},
-	{name:'TUI_KUAN_GONGSI_AUDIT',value:'',info:'公司-审核',api:'/api/tkOrderFlow/gongSiAudit'},
-	{name:'TUI_KUAN_CAIWU_BOOKING',value:'',info:'财务-记账',api:'/api/tkOrderFlow/caiWuBooking'},
-	{name:'TUI_KUAN_GONGSI_OVER_ORDER',value:'',info:'公司-过单',api:'/api/tkOrderFlow/gongSiOverOrder'},
+	//列表上处理
+	// {name:'TUI_KUAN_ZHIXING_RETURN_APPLY',value:'',info:'执行-申请退款',api:'/api/tkOrderFlow/zhiXingReturnApply'},
+	{name:'TUI_KUAN_GONGSI_AUDIT',value:'../finance/o_Refund2.html',info:'公司-审核',api:'/api/tkOrderFlow/gongSiAudit'},
+	{name:'TUI_KUAN_CAIWU_BOOKING',value:'../finance/o_Refund1.html',info:'财务-记账',api:'/api/tkOrderFlow/caiWuBooking'},
+	{name:'TUI_KUAN_GONGSI_OVER_ORDER',value:'../finance/o_Refund1.html',info:'公司-过单',api:'/api/tkOrderFlow/gongSiOverOrder'},
 	{name:'TUI_KUAN_CAIWU_RETURN_MONEY',value:'../finance/o_Refund.html',info:'财务-退款',api:'/api/tkOrderFlow/caiWuReturnMoney'},
 
 
