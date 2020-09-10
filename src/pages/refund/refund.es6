@@ -94,27 +94,42 @@ let Page = {
             rs.refundMoney_ = moneyFormat(rs.refundMoney,5);
 
             //TODO 申请（蓝色）、审核中（红色）
+            //替换为  退款、正在申请退尾款/退费用 （灰色） TODO
             rs.key7 = '申请';
         });
 
         table.show(data);
 
         table.body.find('.__key7__').each(function(){
-            $(this).addClass('hover');
+            if($(this).text() == '申请'){
+                $(this).addClass('hover');
+            }
         });
         table.body.find('.__key7__').click(function(){
+            if($(this).text() != '申请'){return;}
             let data = $(this).parent().data('data'),
-                id = data.orderNo;
+                orderNo = data.orderNo,
+                type = data.refundTypeKey;
 
-            all.showLoadingRun(_this,'submit',id);
+            all.showLoadingRun(_this,'submit',{orderNo,type});
         });
     },
-    async submit(orderNo){
-        await ajax.send([
-            api.refund_submit({
-                orderNo:orderNo
-            })
-        ]);
+    async submit(opt){
+        // 退费类型 1-退尾款 2-退服务费
+        if(opt.type == 1){
+            await ajax.send([
+                api.refund_submit({
+                    orderNo:opt.orderNo
+                })
+            ]);
+        }else{
+            await ajax.send([
+                api.refund_submit_tf({
+                    orderNo:opt.orderNo
+                })
+            ]);
+        }
+
 
         await qt.alert('申请成功!');
         qt.refreshPage();

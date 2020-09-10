@@ -183,7 +183,11 @@ let api = {
 
 	//退费退款 列表
 	refund_list:{url:'/api/orderRefund/list',type:'get'},
+		//退款
 	refund_submit:{url:'/api/tkOrderFlow/zhiXingReturnApply',type:'post'},
+		//退费用
+	refund_submit_tf:{url:'/api/tfOrderFlow/zhiXingReturnApply',type:'post'},
+
 
 
 	//审批
@@ -249,8 +253,7 @@ let api = {
 	finance_rollover_info:{url:'/api/financeOrder/getZhanQiRepaymentInfoByOrderNo/{orderNo}',type:'get'},
 	//财务 退费退款列表
 	finance_refund_list:{url:'/api/financeOrder/getFinanceOrderRefundlist',type:'get'},
-		//财务 退款提交
-	finance_refund_submit:{url:'/api/tkOrderFlow/zhiXingReturnApply',type:'post'},
+
 };
 
 

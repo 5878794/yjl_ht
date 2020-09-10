@@ -87,8 +87,8 @@ let Page = {
 			//退费金额
 			rs.refundMoney_ = moneyFormat(rs.refundMoney,5);
 
-			//替换为  退款、正在申请退尾款/退费用 （灰色） TODO
-			//1-退尾款 2-退服务费 //TODO 无法判断是否已申请退款
+
+			//1-退尾款 2-退服务费
 			rs.key8 = (rs.refundTypeKey == 1)? '退尾款' : '退服务费';
 		});
 
