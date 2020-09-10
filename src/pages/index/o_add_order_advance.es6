@@ -295,6 +295,7 @@ let Page = {
         pg_files = await all.uploadFile(pg_files);
         form.orderMortgageExtendAssessment.attachUrls = pg_files.join(',');
         //抵押 文件
+        form.orderMortgageExtendMortgageList = form.orderMortgageExtendMortgageList??[];
         for(let i=0,l=form.orderMortgageExtendMortgageList.length;i<l;i++){
             let this_files = form.orderMortgageExtendMortgageList[i].attachUrls;
             this_files = await all.uploadFile(this_files);
