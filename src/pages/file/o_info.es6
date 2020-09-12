@@ -32,11 +32,14 @@ let Page = {
 		all.showLoadingRun(this,'run');
 	},
 	async run(){
-		let id = gerParamFromUrl().id;
+		let param = gerParamFromUrl();
+
+		this.id = param.id;
+		this.state = param.state;
 
 		await all.getUserInfo();
 		let [data] = await ajax.send([
-			api.file_list({id:id})
+			api.file_list({id:this.id})
 		]);
 		data = data.list || [];
 		data = data[0] || {};
@@ -45,18 +48,52 @@ let Page = {
 
 		this.setInput(data.attachUrls);
 
+
+		//根据状态控制是否可编辑 state =0 可编辑
+		this.useState(this.state);
+
+		let _this = this;
 		$('#submit').click(function(){
+			all.showLoadingRun(_this,'submit');
+		});
+		$('#close').click(function(){
 			qt.closeWin();
 		});
+	},
+	useState(state){
+		//未出库
+		if(state == 0){
+			$('#archiveRoom').get(0).disabled = true;
+			$('#addressTag').get(0).disabled = true;
+			$('#attachUrls').get(0).disabled = true;
+		}else{
+			$('#submit').remove();
+		}
 	},
 	setInput(data){
 		inputStyle.set(true,true);
 
-		let file = $('#file').get(0),
+		let file = $('#attachUrls').get(0),
 			srcs = all.getRealImageSrc(data);
 
 		file.showFiles = srcs;
-		file.disabled = true;
+	},
+	async submit(){
+		let form = await all.getFromVal($('#from'));
+		let files = form.attachUrls;
+		let filesServerUrl = await all.uploadFile(files);
+		filesServerUrl = filesServerUrl.join(',');
+
+		form.id = this.id;
+
+		form.attachUrls = filesServerUrl;
+
+		await ajax.send([
+			api.file_add(form)
+		]);
+
+		await qt.alert('修改成功!');
+		qt.closeWin();
 	}
 
 

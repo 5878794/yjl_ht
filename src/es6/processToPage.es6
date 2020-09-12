@@ -8,8 +8,8 @@ let key = [
 		{name:'DIAN_ZI_FENGKONG_AUDIT_1',value:'../publish/review.html',info:'风控-初审',api:'/api/dzOrderFlow/auditOrder'},
 		{name:'DIAN_ZI_QUANZHENG_AUDIT',value:'../publish/overSingle.html',info:'权证-执行下户',api:'/api/dzOrderFlow/quanZhengZhiXingXiaHu'},
 		{name:'DIAN_ZI_FENGKONG_AUDIT_2',value:'../publish/review.html',info:'风控-复审',api:'/api/dzOrderFlow/auditOrder'},
-		{name:'DIAN_ZI_GONGSI_AUDIT',value:'../publish/review.html',info:'公司-终审',api:'/api/dzOrderFlow/auditOrder'},
-		{name:'DIAN_ZI_JITUAN_AUDIT',value:'../publish/review.html',info:'集团-终审',api:'/api/dzOrderFlow/auditOrder'},
+		{name:'DIAN_ZI_GONGSI_AUDIT',value:'../publish/review.html',info:'公司-终审',api:'/api/dzOrderFlow/gongSiAudit'},
+		{name:'DIAN_ZI_JITUAN_AUDIT',value:'../publish/review.html',info:'集团-终审',api:'/api/dzOrderFlow/jiTuanAudit'},
 		{name:'DIAN_ZI_ZHIXING_SUBMIT_CONTRACT',value:'../publish/overSingle.html',info:'执行-提交合同',api:'/api/dzOrderFlow/zhiXingSubmitContract'},
 		{name:'DIAN_ZI_CAIWU_CONFIRM',value:'../finance/o_business_fee_payment.html',info:'财务-确认业务费缴纳',api:'/api/dzOrderFlow/caiWuConfirm'},
 		{name:'DIAN_ZI_ZHIXING_CHUKUAN_SUBMIT',value:'../publish/overSingle.html',info:'执行-出款申请',api:'/api/dzOrderFlow/zhiXingChuKuanSubmit'},
@@ -58,11 +58,13 @@ let key = [
 		// {name:'FANG_DI_DINGDAN_FINISH_SYSTEM',value:'',info:'系统-订单完成',api:''},
 
 
-	//TODO api
-	{name:'FENQI_HUANKUAN_REPAYMENT_APPLY',value:'..finance/o_installment_mortgage_repayment.html',info:'分期还款申请',api:''},
-	{name:'FENQI_HUANKUAN_REPAYMENT_BOOKING',value:'..finance/o_installment_mortgage_repayment1.html',info:'分期还款记账',api:''},
-	{name:'HUAN_WEIKUAN_REPAYMENT_APPLY',value:'..finance/o_last_installment_mortgage_repayment.html',info:'还尾款申请',api:''},
-	{name:'HUAN_WEIKUAN_RETURN_REPAYMENT_BOOKING',value:'..finance/o_last_installment_mortgage_repayment1.html',info:'还尾款记账',api:''},
+
+
+
+	{name:'FENQI_HUANKUAN_REPAYMENT_APPLY',value:'..finance/o_installment_mortgage_repayment.html',info:'分期还款申请',api:'/api/fqHkOrderFlow/submitRepaymentApply'},
+	{name:'FENQI_HUANKUAN_REPAYMENT_BOOKING',value:'..finance/o_installment_mortgage_repayment1.html',info:'分期还款记账',api:'/api/fqHkOrderFlow/repaymentBooking'},
+	{name:'HUAN_WEIKUAN_REPAYMENT_APPLY',value:'..finance/o_last_installment_mortgage_repayment.html',info:'还尾款申请',api:'/api/hwkOrderFlow/submitRepaymentApply'},
+	{name:'HUAN_WEIKUAN_RETURN_REPAYMENT_BOOKING',value:'..finance/o_last_installment_mortgage_repayment1.html',info:'还尾款记账',api:'/api/hwkOrderFlow/repaymentBooking'},
 
 
 

@@ -62,7 +62,12 @@ let Page = {
         let myNumber = data.ranking || '';
         $('#number_').text(myNumber);
 
-        //TODO 权限控制
+        //TODO 权限控制 用户信息里面
+    // @ApiModelProperty(value = "权限类型 0:无 1:个人权限 2:部门权限 3:公司权限 4:集团权限")
+    //     private Integer orderSearchPrivilegeType = 0;
+    //
+    // @ApiModelProperty(value = "权限类型 0:无 1:房抵 2:垫资 3:垫资+垫资")
+    //     private Integer orderCreatePrivilegeType = 0;
         this.createNoticeFn();
 
         this.orderStateDist = await selectData('orderState1');

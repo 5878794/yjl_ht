@@ -7,7 +7,7 @@ let app = require('./../../es6/lib/page'),
 	all = require('./../../es6/all'),
 	{ajax,api} = require('./../../es6/_ajax'),
 	qt = require('./../../es6/qt'),
-	gerParamFromUrl = require('./../../es6/lib/fn/getParamFromUrl'),
+	getParamFromUrl = require('./../../es6/lib/fn/getParamFromUrl'),
 	pageSizeSetting = require('./../../es6/pageSize'),
 	winSetting = require('./../../es6/winSetting'),
 	tableSet = require('./../../es6/tableSetting'),
@@ -38,11 +38,16 @@ let Page = {
 
 		await all.getUserInfo();
 		let [data] = await ajax.send([
-			api.file_list({orderNo:orderNo})
+			api.file_list({orderNo:this.orderNo})
 		]);
 		data = data.list || [];
-		data = data[0] || {};
+		data = data[0];
 
+		if(!data){
+			await qt.alert('未找到入库信息');
+			qt.closeWin();
+			return;
+		}
 
 		all.setFromVal($('#from'),data);
 
@@ -51,6 +56,7 @@ let Page = {
 		this.addBtnEvent();
 	},
 	setInput(data){
+		console.log(data)
 		inputStyle.set(true,true);
 
 		let file = $('#file').get(0),

@@ -129,7 +129,7 @@ let Page = {
 				e.stopPropagation();
 
 				if(state == 0){
-					all.showLoadingRun(_this,'fileOut',id);
+					all.showLoadingRun(_this,'fileOut',data);
 				}
 			})
 		});
@@ -140,21 +140,31 @@ let Page = {
 				let data = $(this).data('data'),
 					id = data.id;
 				qt.openPage(
-					'../file/o_info.html?id='+id,
+					'../file/o_info.html?id='+id+'&state='+data.addressStatus,
 					winSetting.file_info.width,
 					winSetting.file_info.height)
 			});
 		});
 	},
-	async fileOut(id){
-		await ajax.send([
-			api.file_out({
-				id:id
-			})
-		]);
+	async fileOut(data){
+		let id = data.orderId,
+			orderNo = data.orderNo,
+			currentNodeKey = 'CHU_KU_DANGAN_CHUKU_APPLY';
 
-		await qt.alert('出库申请已提交!');
-		qt.refreshPage();
+		qt.openPage(
+			`../file/o_info1.html?id=${id}&orderNo=${orderNo}&currentNodeKey=${currentNodeKey}`,
+			winSetting.file_info.width,
+			winSetting.file_info.height)
+
+
+		// await ajax.send([
+		// 	api.file_out({
+		// 		id:id
+		// 	})
+		// ]);
+		//
+		// await qt.alert('出库申请已提交!');
+		// qt.refreshPage();
 	}
 };
 
