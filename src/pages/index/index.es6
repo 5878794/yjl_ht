@@ -63,11 +63,6 @@ let Page = {
         $('#number_').text(myNumber);
 
         //TODO 权限控制 用户信息里面
-    // @ApiModelProperty(value = "权限类型 0:无 1:个人权限 2:部门权限 3:公司权限 4:集团权限")
-    //     private Integer orderSearchPrivilegeType = 0;
-    //
-    // @ApiModelProperty(value = "权限类型 0:无 1:房抵 2:垫资 3:垫资+垫资")
-    //     private Integer orderCreatePrivilegeType = 0;
         this.createNoticeFn();
 
         this.orderStateDist = await selectData('orderState1');
@@ -109,10 +104,13 @@ let Page = {
                 qt.alert('您有即将到期的待处理任务未处理！');
                 return;
             }
-            // 无龙虎榜权限：点击跳转到“我的业务”，并设置条件时间范围为当月，状态为已完成
-            //TODO
 
-            let canView = true;
+
+            // 无龙虎榜权限：点击跳转到“我的业务”，并设置条件时间范围为当月，状态为已完成
+            let canView = false;
+            if(window.orderSearchPrivilegeType >= 2){
+                canView = true;
+            }
 
             if(canView){
                 qt.openPage(

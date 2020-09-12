@@ -6,6 +6,7 @@ let app = require('./../../es6/lib/page'),
 	pageSizeSetting = require('./../../es6/pageSize'),
 	winSetting = require('./../../es6/winSetting'),
 	tableSet = require('./../../es6/tableSetting'),
+	moneyFormat = require('./../../es6/lib/fn/number'),
 	stamp2Date = require('./../../es6/lib/fn/timeAndStamp'),
 	inputStyle = require('./../../es6/inputStyle');
 
@@ -26,10 +27,10 @@ let Page = {
 	async run(){
 		await all.getUserInfo();
 
-		//TODO 根据权限判断获取数据
+		//0:无 1:个人权限 2:部门权限 3:公司权限 4:集团权限"
+		this.type = window.orderSearchPrivilegeType;
 
 		this.bindTitle();
-
 		await this.getData({pageNum:1});
 
 
@@ -39,8 +40,22 @@ let Page = {
 		//公司权限显示: xx公司
 		//集团权限显示： 删除这个dom
 
-		let dom = $('#title1');
-		dom.text('xx公司xx部门');
+		let dom = $('#title1'),
+			companyName = window.userInfo?.companyName,
+			departName = window.userInfo?.deptName;
+
+		//部门
+		if(this.type == 2){
+			dom.text(companyName+'公司'+departName+'部门');
+		}
+		//公司
+		if(this.type == 3){
+			dom.text(companyName+'公司');
+		}
+		//集团
+		if(this.type == 4){
+			dom.text('');
+		}
 	},
 	async getData(data){
 		let _this = this;
@@ -55,7 +70,12 @@ let Page = {
 
 		listData = listData.list || [];
 
+
+
 		this.createList(listData);
+
+
+
 	},
 
 
@@ -64,23 +84,22 @@ let Page = {
 		let table = $('#table_list').get(0),
 			_this = this;
 
-		//部门 sort_department
-		//公司 sort_company
-		//集团 sort_group
+		//部门 sort_department    2
+		//公司 sort_company       3
+		//集团 sort_group         4
+		let tableColSetting = (this.type==2)? 'sort_department' :
+								(this.type==3)? 'sort_company' :
+												'sort_group';
 
-		tableSet.set(table,'sort_department');
+		tableSet.set(table,tableColSetting);
 
-		// data=[
-		// 	{name:'的说法',money:'123123'},
-		// 	{name:'的说法2',money:'1231234'},
-		// 	{name:'的说法1',money:'1231233'},
-		// ]
 
-		//TODO 无业绩字段 无权限判断
 		data.map((rs,i)=>{
 			rs.no = rs.ranking;
 			rs.name = rs.userName;
-			rs.money = '';
+			rs.company = rs.companyName;
+			rs.department = rs.deptName;
+			rs.money = moneyFormat(rs.salePrice,5);
 
 		});
 

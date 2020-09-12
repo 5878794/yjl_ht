@@ -8,6 +8,7 @@
 
 module.exports = function(number,digits){
     digits = (digits || digits==0)? digits : 2;  //小数位数
+    number = number??0;
     let option = {
 //          “ decimal”用于纯数字格式。
 //          “ currency”用于货币格式。        数字前面会显示货币符号
