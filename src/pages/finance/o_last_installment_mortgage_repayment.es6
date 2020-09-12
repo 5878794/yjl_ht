@@ -58,7 +58,7 @@ let Page = {
 		});
 	},
 	async submitFn(state){
-		let form = await all.getFromVal($('#form')),
+		let form = await all.getFromVal($('#submitForm')),
 			uploaded = await all.uploadFile(form.attachUrls);
 
 		form.attachUrls = uploaded.join(',');
@@ -68,13 +68,11 @@ let Page = {
 
 		console.log(form);
 
-		//TODO
-
-		// await ajax.send([
-		// 	api.finance_pay_back_submit(form)
-		// ]);
-		// await qt.alert('提交成功！');
-		// qt.closeWin();
+		await ajax.send([
+			api.fd_wk_pay_back(form)
+		]);
+		await qt.alert('提交成功！');
+		qt.closeWin();
 	}
 
 };

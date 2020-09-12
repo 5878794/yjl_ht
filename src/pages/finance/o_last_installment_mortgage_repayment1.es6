@@ -46,14 +46,23 @@ let Page = {
 		await all.setOrderTopData(4,data2);
 		await all.setOrderHistoryData(history,true);
 
-		//TODO 新增页面  差获取初始数据接口
-		// let [data] = await ajax.send([
-		// 	api.finance_final_installment_info({orderNo:this.orderNo})
-		// ]);
+		let [data] = await ajax.send([
+			api.finance_getRePaymentBalanceInfo({orderNo:this.orderNo})
+		]);
+		data.auditOpinion_ = data.auditOpinion;
+		data.attachUrls_ = data.attachUrls;
+		delete data.attachUrls;
+		delete data.auditOpinion;
 
-		// all.setFromVal($('#form'),data);
-		// $('#total').text(moneyFormat(data.repaymentFeeTotal,5));
+		all.setFromVal($('#form'),data);
+		$('#total').text(moneyFormat(data.repaymentFeeTotal,5));
 
+
+		let files = data.attachUrls_??'';
+		if(files){
+			files = all.getRealImageSrc(files);
+			$('#attachUrls_').get(0).showFiles = files;
+		}
 		$('#attachUrls_').get(0).disabled = true;
 	},
 	addBtnEvent(){
@@ -63,7 +72,7 @@ let Page = {
 
 		submit.click(function(){
 			all.showLoadingRun(all,'reviewSubmit',{
-				formDom:$('#form'),
+				formDom:$('#submitForm'),
 				orderNo:_this.orderNo,
 				state:1,
 				currentNodeKey:_this.currentNodeKey

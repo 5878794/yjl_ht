@@ -35,7 +35,7 @@ let Page = {
 		this.orderNo = param.orderNo;
 		this.currentNodeKey = param.currentNodeKey;
 
-		this.addBtnEvent();
+
 		await all.getUserInfo();
 		let [data] = await ajax.send([
 			api.finance_Installment_info({orderNo:this.orderNo})
@@ -47,18 +47,34 @@ let Page = {
 		let totalDom = $('#total');
 		totalDom.text(moneyFormat(data.repaymentFeeTotal,5));
 
+		this.addBtnEvent();
 
 	},
 	addBtnEvent(){
 		let submit = $('#submit'),
-			_this = this;
+			bInput = $('#actualRepaymentFee'),
+			sydh = $('#sydh'),
+			_this = this,
+			fn = function(){
+				let val = bInput.get(0).value,
+					total = $('#total').text(),
+					nowValue = total-val;
+
+				sydh.get(0).value = nowValue;
+			};
+		fn();
+
+		bInput.get(0).change = function(val){
+			fn();
+		};
 
 		submit.click(function(){
 			all.showLoadingRun(_this,'submitFn','1');
 		});
-	},
+	}
+	,
 	async submitFn(state){
-		let form = await all.getFromVal($('#form')),
+		let form = await all.getFromVal($('#subForm')),
 			uploaded = await all.uploadFile(form.attachUrls);
 
 		form.attachUrls = uploaded.join(',');
@@ -66,15 +82,12 @@ let Page = {
 		form.orderNo = this.orderNo;
 		form.currentNodeKey = this.currentNodeKey;
 
-		console.log(form);
 
-		//TODO
-
-		// await ajax.send([
-		// 	api.finance_pay_back_submit(form)
-		// ]);
-		// await qt.alert('提交成功！');
-		// qt.closeWin();
+		await ajax.send([
+			api.fd_fq_pay_back(form)
+		]);
+		await qt.alert('提交成功！');
+		qt.closeWin();
 	}
 
 };

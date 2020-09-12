@@ -46,10 +46,13 @@ let Page = {
 		await all.setOrderHistoryData(history,true);
 
 
-		//TODO 新增页面  差获取初始数据接口
 		let [data] = await ajax.send([
-			api.finance_Installment_info({orderNo:this.orderNo})
+			api.finance_getRepaymentPlanDetailBookingByOrderNo({orderNo:this.orderNo})
 		]);
+		data.auditOpinion_ = data.auditOpinion;
+		data.attachUrls_ = data.attachUrls;
+		delete data.attachUrls;
+		delete data.auditOpinion;
 
 		data.repaymentTime_ = stamp2Date.getDate1(data.repaymentTime);
 		all.setFromVal($('#form'),data);
@@ -58,6 +61,11 @@ let Page = {
 		totalDom.text(moneyFormat(data.repaymentFeeTotal,5));
 
 
+		let files = data.attachUrls_??'';
+		if(files){
+			files = all.getRealImageSrc(files);
+			$('#attachUrls_').get(0).showFiles = files;
+		}
 		$('#attachUrls_').get(0).disabled = true;
 	},
 	addBtnEvent(){
@@ -67,7 +75,7 @@ let Page = {
 
 		submit.click(function(){
 			all.showLoadingRun(all,'reviewSubmit',{
-				formDom:$('#form'),
+				formDom:$('#submitForm'),
 				orderNo:_this.orderNo,
 				state:1,
 				currentNodeKey:_this.currentNodeKey

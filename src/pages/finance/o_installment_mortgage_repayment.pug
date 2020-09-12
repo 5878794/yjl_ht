@@ -37,13 +37,11 @@ html
 
 				div(class='installment_mortgage_repayment_line')
 
-			div(class='openWin_input_main box_hlt box_lines')
+			div(class='openWin_input_main box_hlt box_lines' id='subForm')
 				div(class='openWin_input_item2')
-					//TODO id
-					b-input-money(accuracy='5' name='实还金额' rule='must' err='不能为空')
+					b-input-money(id='actualRepaymentFee' accuracy='5' name='实还金额' rule='must' err='不能为空')
 				div(class='openWin_input_item2')
-					//TODO id
-					b-input-money(accuracy='5' disabled='disabled' name='剩余待还')
+					b-input-money(id='sydh' accuracy='5' disabled='disabled' name='剩余待还')
 				div(class='openWin_input_item1')
 					b-input(id='auditOpinion' type='textarea' name='备注' autoHeight='true' placeholder='非必填')
 				div(class='openWin_input_item1')

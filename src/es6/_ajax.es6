@@ -256,9 +256,19 @@ let api = {
 	finance_final_installment_info:{url:'/api/financeOrder/getRePaymentBalanceInfo',type:'get'},
 		//展期信息
 	finance_rollover_info:{url:'/api/financeOrder/getZhanQiRepaymentInfoByOrderNo/{orderNo}',type:'get'},
+		//还尾款审核 初始数据获取
+	finance_getRePaymentBalanceInfo:{url:'/api/financeOrder/getRePaymentBalanceInfoBooking',type:'get'},
+		//还分期审核 初始数据获取
+	finance_getRepaymentPlanDetailBookingByOrderNo:{url:'/api/financeOrder/getRepaymentPlanDetailBookingByOrderNo',type:'get'},
+
 	//财务 退费退款列表
 	finance_refund_list:{url:'/api/financeOrder/getFinanceOrderRefundlist',type:'get'},
 
+
+	//房抵 分期还款申请
+	fd_fq_pay_back:{url:'/api/fqHkOrderFlow/submitRepaymentApply',type:'post'},
+	//房抵 尾款还款申请
+	fd_wk_pay_back:{url:'/api/hwkOrderFlow/submitRepaymentApply',type:'post'},
 };
 
 
