@@ -92,7 +92,12 @@ let Page = {
                 qt.alert('您有即将到期的待处理任务未处理！');
                 return;
             }
-            console.log(123)
+
+            if(window.orderCreatePrivilegeType == 0){
+                qt.alert('您没有创建订单的权限！');
+                return;
+            }
+
             qt.openPage(
                 '../index/o_add_order.html',
                 winSetting.index_add_step1.width,

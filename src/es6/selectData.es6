@@ -3,6 +3,7 @@ let qt = require('./qt'),
 	{ajax,api} = require('./_ajax');
 
 let dist = {
+	businessTypeIndex:[],
 	//业务类型、业务方案
 	businessType:[],
 	//业务状态
@@ -168,6 +169,7 @@ let distApi = {
 	role:{api:'role_get_list'},
 	archivesList:{api:'setting_config_list',data:{type:11}},
 	businessType:{api:'setting_config_list',data:{type:0}},
+	businessTypeIndex:{api:'setting_config_list',data:{type:0}},
 	payBackMethod:{api:'setting_config_list',data:{type:2}},
 	payMethod:{api:'setting_config_list',data:{type:3}},
 	residentialNature:{api:'setting_config_list',data:{type:4}},
@@ -193,6 +195,31 @@ let getDataFn = {
 		data = data[0] || {};
 		data = data.children || [];
 		return data;
+	},
+	businessTypeIndex:function(data){
+		//type类型//0:无 1:房抵 2:垫资 3:房抵+垫资"
+		let type = window.orderCreatePrivilegeType;
+		data = data[0] || {};
+		data = data.children || [];
+
+		let newData = {};
+		data.map(rs=>{
+			//1房抵 2垫资 3非交易垫资
+			newData[rs.key] = rs;
+		});
+
+		if(type==0){
+			return [];
+		}
+		if(type==1){
+			return [newData['1']];
+		}
+		if(type==2){
+			return [newData['2'],newData['3']]
+		}
+
+		return data;
+
 	},
 	payBackMethod:function(data){
 		data = data[0] || {};
@@ -254,6 +281,7 @@ let keyChange = {
 	role:{name:'roleName',value:'id'},
 	archivesList:{name:'text',value:'key'},
 	businessType:{name:'text',value:'key'},
+	businessTypeIndex:{name:'text',value:'key'},
 	payPassage:{name:'text',value:'key'},
 	payBackMethod:{name:'text',value:'key'},
 	payMethod:{name:'text',value:'key'},

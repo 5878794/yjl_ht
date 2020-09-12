@@ -86,15 +86,32 @@ let Page = {
         let search = $('#b_search').get(0),
             _this = this;
 
-        search.inputData = [
-            {name:'客户姓名:',type:'text',id:'clientName',width:'25%'},
-            {name:'客户电话:',type:'text',id:'clientMobile',width:'25%'},
-            {name:'业务类型:',type:'select',id:'businessKey',width:'25%',bind:'businessType'},   //注意宽度无法低于正常的input值，需要尝试
-            {name:'订单状态:',type:'select',id:'orderStatus',width:'25%',bind:'orderState1'},
-            {name:'所属公司:',type:'select',id:'companyId',width:'25%',bind:'company',child:'operationId'},
-            {name:'经办人',type:'select',id:'operationId',width:'25%',bind:'manager'},
-            {name:'日期',type:'assDate',id:['operationStartTime','operationEndTime'],width:'50%'}
-        ];
+        let userInfo = window.userInfo??{},
+            //0:无 1:个人权限 2:部门权限 3:公司权限 4:集团权限"
+            userRole = userInfo.orderSearchPrivilegeType,
+            searchList;
+
+        if(userRole == 4){
+            searchList = [
+                {name:'客户姓名:',type:'text',id:'clientName',width:'25%'},
+                {name:'客户电话:',type:'text',id:'clientMobile',width:'25%'},
+                {name:'业务类型:',type:'select',id:'businessKey',width:'25%',bind:'businessType'},   //注意宽度无法低于正常的input值，需要尝试
+                {name:'订单状态:',type:'select',id:'orderStatus',width:'25%',bind:'orderState1'},
+                {name:'所属公司:',type:'select',id:'companyId',width:'25%',bind:'company',child:'operationId'},
+                {name:'经办人',type:'select',id:'operationId',width:'25%',bind:'manager'},
+                {name:'日期',type:'assDate',id:['operationStartTime','operationEndTime'],width:'50%'}
+            ];
+        }else{
+            searchList = [
+                {name:'客户姓名:',type:'text',id:'clientName',width:'25%'},
+                {name:'客户电话:',type:'text',id:'clientMobile',width:'25%'},
+                {name:'业务类型:',type:'select',id:'businessKey',width:'25%',bind:'businessType'},   //注意宽度无法低于正常的input值，需要尝试
+                {name:'订单状态:',type:'select',id:'orderStatus',width:'25%',bind:'orderState1'},
+                {name:'日期',type:'assDate',id:['operationStartTime','operationEndTime'],width:'50%'}
+            ]
+        }
+
+        search.inputData = searchList;
         search.clickFn = function(rs){
             rs.pageNum = 1;
             all.showLoadingRun(_this,'getData',rs);
