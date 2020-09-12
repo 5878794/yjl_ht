@@ -45,11 +45,27 @@ let Page = {
 		await all.setOrderTopData(4,data);
 		await all.setOrderHistoryData(history,true);
 
-		//TODO 获取初始数据
+		let [data2] = await ajax.send([
+			api.finance_refund_info({
+				orderNo:this.orderNo,
+				currentNodeKey:this.currentNodeKey
+			})
+		]);
+		data2.auditOpinion_ = data2.auditOpinion??'';
+		data2.attachUrls_ = data2.attachUrls??'';
+		delete data2.attachUrls;
+		delete data2.auditOpinion;
+
+		all.setFromVal($('#form'),data2);
 
 		this.addBtnEvent();
 
 
+		let files = data.attachUrls_??'';
+		if(files){
+			files = all.getRealImageSrc(files);
+			$('#attachUrls_').get(0).showFiles = files;
+		}
 		$('#attachUrls_').get(0).disabled = true;
 	},
 	addBtnEvent(){
@@ -60,7 +76,7 @@ let Page = {
 
 		submit.click(function(){
 			all.showLoadingRun(all,'reviewSubmit',{
-				formDom:$('#form'),
+				formDom:$('#submitForm'),
 				orderNo:_this.orderNo,
 				state:1,
 				currentNodeKey:_this.currentNodeKey
@@ -68,7 +84,7 @@ let Page = {
 		});
 		back.click(function(){
 			all.showLoadingRun(all,'reviewSubmit',{
-				formDom:$('#form'),
+				formDom:$('#submitForm'),
 				orderNo:_this.orderNo,
 				state:0,
 				currentNodeKey:_this.currentNodeKey

@@ -263,6 +263,8 @@ let api = {
 
 	//财务 退费退款列表
 	finance_refund_list:{url:'/api/financeOrder/getFinanceOrderRefundlist',type:'get'},
+		//财务 退款、退费详细信息
+	finance_refund_info:{url:'/api/orderRefund/getOrderRefundByOrderNo',type:'get'},
 
 
 	//房抵 分期还款申请
