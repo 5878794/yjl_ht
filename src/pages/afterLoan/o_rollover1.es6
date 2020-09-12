@@ -35,17 +35,18 @@ let Page = {
         this.orderNo = param.orderNo;
         this.currentNodeKey = param.currentNodeKey;
         inputStyle.set(true,true);
-        this.addEventBind();
+
         await all.getUserInfo();
 
-        //TODO 新增页面  无展期天数
         let [data] = await ajax.send([
-            api.afterLoan_rollover_info({orderNo:this.orderNo})
+            api.afterLoan_group_rollover_info({orderNo:this.orderNo})
         ]);
+        console.log(data);
 
         let startDate = stamp2Date.getDate1(data.loanTime) || '无数据',
             endDate = stamp2Date.getDate1(data.expireTime) || '无数据';
         this.bindPageData(startDate,endDate);
+
 
         let [data2,history] = await ajax.send([
             api.order_get_byId({id:this.id}),
@@ -54,29 +55,32 @@ let Page = {
         await all.setOrderTopData(4,data2);
         await all.setOrderHistoryData(history,true);
 
+        //绑定输入的
+        this.addEventBind(data.exhibitionPeriod);
     },
     bindPageData(startDate,endDate){
         $('#fk_date').text(startDate);
         $('#dq_date').text(endDate);
         $('#end_date').text(endDate);
     },
-    addEventBind(){
+    addEventBind(day){
         let submit = $('#submit'),
             back = $('#back'),
             cancel = $('#cancel'),
-            bInput = $('#exhibitionPeriod').get(0),
+            bInput = $('#exhibitionPeriod_').get(0),
             startDate = $('#dq_date'),
             endDate = $('#end_date'),
             dayStamp = 1000*60*60*24,
             _this = this;
 
-        bInput.change = function(val){
-            let startStamp = startDate.text();
-            startStamp = new Date(startStamp).getTime();
-            let endStamp = startStamp + parseInt(val)*dayStamp;
-            endStamp = stamp2Date.getDate1(endStamp);
-            endDate.text(endStamp);
-        };
+
+        bInput.value = day;
+        let startStamp = startDate.text();
+        startStamp = new Date(startStamp).getTime();
+        let endStamp = startStamp + parseInt(day)*dayStamp;
+        endStamp = stamp2Date.getDate1(endStamp);
+        endDate.text(endStamp);
+
 
         submit.click(function(){
             all.showLoadingRun(all,'reviewSubmit',{

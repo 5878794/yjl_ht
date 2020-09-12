@@ -37,18 +37,26 @@ let Page = {
         this.addEventBind();
         await all.getUserInfo();
 
-        //TODO 差获取初始数据 注意id是变更过的
-        let [data2,history] = await ajax.send([
+        let [data2,history,info] = await ajax.send([
             api.order_get_byId({id:this.id}),
-            api.order_get_history_byOrderNo({orderNo:this.orderNo})
+            api.order_get_history_byOrderNo({orderNo:this.orderNo}),
+            api.afterLoan_pay_info({orderNo:this.orderNo})
         ]);
         await all.setOrderTopData(4,data2);
         await all.setOrderHistoryData(history,true);
 
-        this.bindData();
+        this.bindData(info);
     },
-    //TODO
-    bindData(){
+    bindData(data){
+        $('#disburseMoney_').get(0).value = moneyFormat(data.disburseMoney,5);
+        $('#auditOpinion_').get(0).value = data.auditOpinion;
+
+
+        let files = data.attachUrls??'';
+        if(files){
+            files = all.getRealImageSrc(files);
+            $('#attachUrls_').get(0).showFiles = files;
+        }
         $('#attachUrls_').get(0).disabled = 'disabled'
     },
     addEventBind(){

@@ -230,6 +230,10 @@ let api = {
 	afterLoan_rollover:{url:'/api/zqOrderFlow/daiHouAddZhiChu',type:'post'},
 		//展期 初始数据
 	afterLoan_rollover_info:{url:'/api/loanAfterOrder/getInitZhanQiDataByOrderNo/{orderNo}',type:'get'},
+		//贷后支出过单信息查询
+	afterLoan_pay_info:{url:'/api/loanAfterOrder/getOrderLoanDisburseRecordByOrderNo/{orderNo}',type:'get'},
+		//集团展期审核初始化数据
+	afterLoan_group_rollover_info:{url:'/api/orderExhibitionPeriodRecord/getOrderExhibitionPeriodRecordByOrderNo/{orderNo}',type:'get'},
 
 
 	//财务
