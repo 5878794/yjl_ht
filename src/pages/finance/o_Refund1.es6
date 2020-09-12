@@ -51,22 +51,10 @@ let Page = {
 				currentNodeKey:this.currentNodeKey
 			})
 		]);
-		data2.auditOpinion_ = data2.auditOpinion??'';
-		data2.attachUrls_ = data2.attachUrls??'';
-		delete data2.attachUrls;
-		delete data2.auditOpinion;
 
 		all.setFromVal($('#form'),data2);
 
 		this.addBtnEvent();
-
-
-		let files = data.attachUrls_??'';
-		if(files){
-			files = all.getRealImageSrc(files);
-			$('#attachUrls_').get(0).showFiles = files;
-		}
-		$('#attachUrls_').get(0).disabled = true;
 	},
 	addBtnEvent(){
 		let submit = $('#submit'),

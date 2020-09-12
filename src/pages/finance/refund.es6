@@ -89,7 +89,8 @@ let Page = {
 
 
 			//1-退尾款 2-退服务费
-			rs.key8 = (rs.refundTypeKey == 1)? '退尾款' : '退服务费';
+			// rs.key8 = (rs.refundTypeKey == 1)? '退尾款' : '退服务费';
+			rs.key8 = '退款';
 		});
 
 		table.show(data);

@@ -158,6 +158,15 @@ let dist = {
 		{name:'请选择',value:''},
 		{name:'已逾期',value:'1'},
 		{name:'即将到期(5天内到期）',value:'2'}
+	],
+
+	//退款、退费状态
+	//0:初始状态 1-审批中 2-审批通过 3-审批失败
+	refundState:[
+		{name:'申请',value:'0'},
+		{name:'审批中',value:'1'},
+		{name:'审批通过',value:'2'},
+		{name:'审批失败',value:'3'}
 	]
 
 

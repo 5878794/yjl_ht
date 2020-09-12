@@ -32,7 +32,7 @@ let Page = {
 
         this.refundDist = await selectData('backPayMethod');
         this.businessDist = await selectData('businessType');
-
+        this.refundStateDist = await selectData('refundState');
         await this.getData({pageNum:1});
     },
     async getData(data){
@@ -62,10 +62,9 @@ let Page = {
         let search = $('#b_search').get(0),
             _this = this;
 
-        //TODO
         search.inputData = [
-            {name:'客户姓名:',type:'text',id:'a1',width:'30%'},
-            {name:'客户电话:',type:'text',id:'a2',width:'30%'}
+            {name:'客户姓名:',type:'text',id:'clientName',width:'30%'},
+            {name:'客户电话:',type:'text',id:'clientMobile',width:'30%'}
         ];
         search.clickFn = function(rs){
             rs.pageNum = 1;
@@ -93,23 +92,32 @@ let Page = {
             //退费金额
             rs.refundMoney_ = moneyFormat(rs.refundMoney,5);
 
-            //TODO 申请（蓝色）、审核中（红色）
-            //替换为  退款、正在申请退尾款/退费用 （灰色） TODO
-            rs.key7 = '申请';
+
+            //refundStatus
+            //0:初始状态 1-审批中 2-审批通过 3-审批失败
+            rs.key7 = this.refundStateDist[rs.refundStatus];
         });
 
         table.show(data);
 
         table.body.find('.__key7__').each(function(){
-            if($(this).text() == '申请'){
+            let data = $(this).parent().data('data');
+
+            if(data.refundStatus == 0){
                 $(this).addClass('hover');
+            }else{
+                $(this).find('div').css({color:'#ccc'});
             }
         });
         table.body.find('.__key7__').click(function(){
-            if($(this).text() != '申请'){return;}
             let data = $(this).parent().data('data'),
                 orderNo = data.orderNo,
-                type = data.refundTypeKey;
+                type = data.refundTypeKey,
+                state = data.refundStatus;
+
+            if(state != 0){
+                return;
+            }
 
             all.showLoadingRun(_this,'submit',{orderNo,type});
         });
