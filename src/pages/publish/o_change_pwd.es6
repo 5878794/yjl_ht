@@ -30,7 +30,7 @@ let Page = {
 		all.showLoadingRun(this,'run');
 	},
 	async run(){
-
+		await all.getUserInfo();
 		inputStyle.set(true,true);
 
 		this.addBtnEvent();
@@ -44,11 +44,20 @@ let Page = {
 		});
 	},
 	async submit(){
-		//TODO
 		let form = await all.getFromVal($('#form'));
-		console.log(form);
 
-		//TODO 检查2次输入的密码是否一样
+		if($('#password').get(0).value != $('#password_re').get(0).value){
+			throw('您2次输入的密码不一致');
+			return;
+		}
+		delete form.password_re;
+
+		await ajax.send([
+			api.staff_mdf_pwd(form)
+		]);
+
+		await qt.alert('密码修改成功!');
+		qt.closeWin();
 	}
 
 
