@@ -36,6 +36,12 @@ let Page = {
 		this.orderNo = param.orderNo;
 		this.currentNodeKey = param.currentNodeKey;
 
+		if(!this.orderNo){
+			await qt.alert('订单号不存在！');
+			qt.closeWin();
+			return;
+		}
+
 		await all.getUserInfo();
 		let [data] = await ajax.send([
 			api.file_list({orderNo:this.orderNo})
@@ -56,7 +62,6 @@ let Page = {
 		this.addBtnEvent();
 	},
 	setInput(data){
-		console.log(data)
 		inputStyle.set(true,true);
 
 		let file = $('#file').get(0),

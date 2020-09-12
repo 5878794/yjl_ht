@@ -63,11 +63,12 @@ let Page = {
 	useState(state){
 		//未出库
 		if(state == 0){
+			$('#close').remove();
+		}else{
+			$('#submit').remove();
 			$('#archiveRoom').get(0).disabled = true;
 			$('#addressTag').get(0).disabled = true;
 			$('#attachUrls').get(0).disabled = true;
-		}else{
-			$('#submit').remove();
 		}
 	},
 	setInput(data){

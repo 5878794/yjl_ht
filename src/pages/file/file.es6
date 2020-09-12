@@ -139,6 +139,7 @@ let Page = {
 			$(this).click(function(){
 				let data = $(this).data('data'),
 					id = data.id;
+				console.log(data.addressStatus)
 				qt.openPage(
 					'../file/o_info.html?id='+id+'&state='+data.addressStatus,
 					winSetting.file_info.width,
