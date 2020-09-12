@@ -395,7 +395,6 @@ let all = {
 	},
 
 	//设置订单历史流程
-	//TODO  差操作人，数据待验证
 	async setOrderHistoryData(data,autoHide){
 		let history = $('#history').get(0);
 		history.showOne = autoHide??false;
@@ -409,7 +408,7 @@ let all = {
 				img:this.getRealImageSrc(rs.attachUrls),
 				// img:['../res/image/icon1.png','../res/css/all.css'],
 				date:stamp2Date.getDate1(rs.createTime),
-				user:'张三'
+				user:rs.auditUserName
 			})
 		});
 

@@ -51,15 +51,18 @@ let key = [
 		{name:'FANG_DI_FENGKONG_CHUKUAN_OVER_ORDER',value:'../publish/overSingle.html',info:'风控-出款过单',api:'/api/fdOrderFlow/fengKongChuKuanOverOrder'},
 		{name:'FANG_DI_CAIWU_CHUKUAN',value:'../finance/o_dispensing.html',info:'财务-出款',api:'/api/fdOrderFlow/caiWuChuKuan'},
 		{name:'FANG_DI_CAIWU_REPAYMENT_CONFIRM',value:'../finance/o_mortgage_repayment.html',info:'财务-确认还款',api:'/api/fdOrderFlow/caiWuRepaymentConfirm'},
-	//TODO 分成房抵尾款、房抵分期 2种
 	//finance/o_installment_mortgage_repayment1   房抵分期还款记账
 	//finance/o_last_installment_mortgage_repayment1  房抵尾款还款记账
-	{name:'FANG_DI_CAIWU_REPAYMENT_BOOKING',value:'../finance/o_bookkeeping.html',info:'财务-还款记账',api:'/api/fdOrderFlow/caiWuRepaymentBooking'},
+	// {name:'FANG_DI_CAIWU_REPAYMENT_BOOKING',value:'../finance/o_bookkeeping.html',info:'财务-还款记账',api:'/api/fdOrderFlow/caiWuRepaymentBooking'},
 		{name:'FANG_DI_CAIWU_YEWUFEI_PAYMENT_CONFIRM',value:'../finance/o_payment_of_post_operation_fee.html',info:'财务-确认后置业务费缴纳',api:'/api/fdOrderFlow/caiWuYeWuFeiPaymentConfirm'},
 		// {name:'FANG_DI_DINGDAN_FINISH_SYSTEM',value:'',info:'系统-订单完成',api:''},
 
 
-
+	//TODO api
+	{name:'FENQI_HUANKUAN_REPAYMENT_APPLY',value:'..finance/o_installment_mortgage_repayment.html',info:'分期还款申请',api:''},
+	{name:'FENQI_HUANKUAN_REPAYMENT_BOOKING',value:'..finance/o_installment_mortgage_repayment1.html',info:'分期还款记账',api:''},
+	{name:'HUAN_WEIKUAN_REPAYMENT_APPLY',value:'..finance/o_last_installment_mortgage_repayment.html',info:'还尾款申请',api:''},
+	{name:'HUAN_WEIKUAN_RETURN_REPAYMENT_BOOKING',value:'..finance/o_last_installment_mortgage_repayment1.html',info:'还尾款记账',api:''},
 
 
 

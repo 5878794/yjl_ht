@@ -96,8 +96,8 @@ let Page = {
             rs.businessKey_ = this.businessDist[rs.businessKey];
             //申请时间
             rs.applyTime_ = stamp2Date.getDate1(rs.applyTime);
-            //客户电话号码 TODO
-            rs.clientPhone_ = '接口未返回';
+            //客户电话号码
+            rs.clientPhone_ = rs.mainApplyPersonMobile;
             //订单状态
             rs.orderStatus_ = this.orderStateDist[rs.orderStatus];
         });

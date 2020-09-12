@@ -67,8 +67,7 @@ let Page = {
             rs.createTime_ = stamp2Date.getDate1(rs.stamp2Date);
             rs.applyMoney_ = moneyFormat(rs.applyMoney,5);
             rs.businessKey_ = this.businessDist[rs.businessKey];
-            //TODO 未返回对应的key
-            rs.phone_ = '接口 无key';
+            rs.phone_ = rs.mainApplyPersonMobile;
         });
 
         table.show(data);

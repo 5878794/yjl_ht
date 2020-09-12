@@ -31,19 +31,18 @@ let Page = {
 		all.showLoadingRun(this,'run');
 	},
 	async run(){
-		let id = gerParamFromUrl().id;
+		let param = getParamFromUrl();
+		this.id = param.id;
+		this.orderNo = param.orderNo;
+		this.currentNodeKey = param.currentNodeKey;
 
 		await all.getUserInfo();
 		let [data] = await ajax.send([
-			api.file_list({id:id})
+			api.file_list({orderNo:this.orderNo})
 		]);
 		data = data.list || [];
 		data = data[0] || {};
 
-		//TODO 订单id还未返回,节点名称未返回
-		this.orderId = data.orderId;
-		this.orderNo = data.orderNo;
-		this.currentNodeKey = data.currentNodeKey;
 
 		all.setFromVal($('#from'),data);
 
@@ -68,7 +67,7 @@ let Page = {
 		let orderNoDom = $('#orderNo');
 		orderNoDom.click(function(){
 			qt.openPage(
-				'../index/o_add_order_view.html?id='+_this.orderId,
+				'../index/o_add_order_view.html?id='+_this.id,
 				winSetting.index_add_step4.width,
 				winSetting.index_add_step4.height
 			);

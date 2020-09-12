@@ -37,7 +37,10 @@ let icon = {
     //核销
     HEXIAO:'../res/image/index/hx.png',
     //出库
-    CHU:'../res/image/index/ck.png'
+    CHU:'../res/image/index/ck.png',
+    //还款（房抵撤分出来的）
+    FENQI:'../res/image/index/fd.png',
+    HUAN:'../res/image/index/fd.png'
 };
 
 
