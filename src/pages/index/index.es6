@@ -176,9 +176,25 @@ let Page = {
         let notice = $('#notice').get(0);
         notice.showData = showTexts;
         notice.clickFn = function(rs){
-            let data = rs.data;
-            //TODO 打开详情页面
-            console.log(data)
+            let data = rs.data,
+                //0 通知  1 开单通告
+                type = data.broadType;
+
+            console.log(data);
+            if(type == 0){
+                let id = data.id;
+                qt.openPage(`../publish/o_news.html?id=${id}`);
+            }else{
+                let title = data.broadContent,
+                    companyName = data.companyName??'',
+                    departName = data.deptName??'',
+                    info = companyName+departName,
+                    date = data.createTime??'',
+                    userName = data.userName??' ',
+                    money = data.orderMoney??0;
+                let url = `../publish/o_news1.html?info=${info}&date=${date}&username=${userName}&money=${money}`;
+                qt.openPage(url);
+            }
         }
     },
     createSearch(){

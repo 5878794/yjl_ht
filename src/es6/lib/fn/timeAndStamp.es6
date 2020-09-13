@@ -3,7 +3,8 @@ let device = require('../device');
 
 //stamp2time和time2stamp   2个时间转换的毫秒数会被忽略。
 let getDateTime = function(b){
-	b = b || new Date().getTime();
+	// b = b || new Date().getTime();
+	if(!b){return ''};
 	var a = new Date(parseInt(b));
 	var year=a.getFullYear();
 	var month=parseInt(a.getMonth())+1;
