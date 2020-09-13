@@ -219,7 +219,9 @@ let Page = {
 
 };
 window.showText = function(text){
-    text = JSON.parse(text);
+    // console.log(text);
+    // console.log(typeof text);
+    // text = JSON.parse(text);
     Page.addHistory([text]);
 };
 

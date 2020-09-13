@@ -62,6 +62,7 @@ let all = {
 		if(window.bridge){
 			return new Promise(success=>{
 				qt.getNews().then(rs=>{
+					rs = JSON.parse(rs);
 					success(rs);
 				})
 			})

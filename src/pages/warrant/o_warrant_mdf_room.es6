@@ -155,7 +155,7 @@ let Page = {
 
 
 window.showText = function(text){
-    text = JSON.parse(text);
+    // text = JSON.parse(text);
     Page.addHistory([text]);
 };
 

@@ -78,9 +78,10 @@ let JD = {
     openPage(url,width,height,type){
         //width,height 废弃
         console.log('%c 打开弹窗页面:'+url,'color:red;');
-        type = type || 0;
+        type = type || 1;
 
         let {newWidth,newHeight} = winSettingSize.publish(url);
+        console.log('%c 大小:w:'+newWidth+'  h:'+newHeight,'color:red;');
         window.bridge = window.bridge ?? top.bridge;
         if (window.bridge) {
             window.bridge.openUrl(
@@ -104,6 +105,8 @@ let JD = {
     //调用父级窗口函数
     //text: 运行的js字符串
     runParentJS(functionName,data){
+        console.log('parent window run data')
+        console.log(JSON.stringify(data));
         let cmd = `window.${functionName}(${JSON.stringify(data)})`;
         window.bridge = window.bridge ?? top.bridge;
         if(window.bridge){
@@ -115,9 +118,11 @@ let JD = {
         window.location.reload();
     },
 
-    //登录过期，重新登录  TODO 等接口
+    //登录过期，重新登录
     reLogin(){
-
+        if(window.bridge){
+            window.bridge.reload();
+        }
     },
     //下载文件
     downloadFile(url){
@@ -145,13 +150,12 @@ let JD = {
     getNews(){
         return new Promise(success=>{
             window.bridge = window.bridge ?? top.bridge;
-            top.qtNews = function(rs){
-                success(rs);
-            };
-            if (window.bridge) {
-                window.bridge.startBroadList('qtNews', 0);
-            }
-        });
+            window.bridge.localData('BroadList', function (res) {
+                console.log('back broadList');
+                console.log(res)
+                success(res);
+            });
+        })
     }
 };
 

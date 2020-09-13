@@ -76,7 +76,7 @@ let Page = {
                     orderNo:this.orderNo,
                     type:2   // 类型 1-核行 2-贷后
                 })
-            ])
+            ]);
             qt.runParentJS('showText',changeText);
         }
 
