@@ -29,6 +29,15 @@ let device = require("./device"),
 require('./jq/extend');
 
 
+let topQtIsLoaded = false;
+if(window === top){
+    window.qweb_load = function(){
+        window.topQtIsLoaded = true;
+        window.qtIsLoaded = true;
+    };
+}
+
+
 let path = require('path');
 window.path = path;
 
@@ -188,12 +197,16 @@ let page = {
            if(window.location.href.indexOf('file:\/\/\/')>-1){
                //主窗口
                if(window === top){
-                   top.qweb_load = function(){
-                       top.qtIsLoaded = true;
-                       if(top.qweb_load_iframe){
-                           top.qweb_load_iframe();
-                       }
+                   if(window.topQtIsLoaded){
                        success();
+                   }else{
+                       top.qweb_load = function(){
+                           top.qtIsLoaded = true;
+                           if(top.qweb_load_iframe){
+                               top.qweb_load_iframe();
+                           }
+                           success();
+                       }
                    }
                //iframe窗口
                }else{
