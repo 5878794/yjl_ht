@@ -90,6 +90,8 @@ let api = {
 	index_sort_number:{url:'/api/home/getRoleAndRanking',type:'get'},
 		//龙虎榜
 	index_sort_list:{url:'/api/home/rankingList',type:'get'},
+		//菜单
+	get_menu_list:{url:'/api/home/menuList',type:'get'},
 
 
 	//登录
