@@ -4,11 +4,7 @@ TODO
 
 
 汇总数据  无      afterLoan/afterLoan.html
-档案详情  /file/o_info.html    下面的历史记录
 统计模块 所有接口
-权限控制---咋个搞
-
-
 
 new:
 档案新增 一个订单号只能增加一个档案   否则 走流程的时候根据订单号反查档案会有多个

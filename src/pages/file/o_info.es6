@@ -26,7 +26,6 @@ require('./../../es6/customElement/pc/input_money');
 
 
 
-//TODO 下面的历史记录没做
 let Page = {
 	init(){
 		all.showLoadingRun(this,'run');
@@ -43,6 +42,13 @@ let Page = {
 		]);
 		data = data.list || [];
 		data = data[0] || {};
+
+		this.orderNo = data.orderNo;
+		let [history] = await ajax.send([
+			api.file_history({orderNo:this.orderNo})
+		]);
+		this.bindHistoryData(history);
+
 
 		all.setFromVal($('#from'),data);
 
@@ -95,6 +101,32 @@ let Page = {
 
 		await qt.alert('修改成功!');
 		qt.closeWin();
+	},
+	//历史记录绑定
+	bindHistoryData(data){
+		let body = $('#body'),
+			item = $('#item');
+
+		data.map(rs=>{
+			// rs.auditOpinion = '不晓得';
+			// rs.auditUserName ='测试测试'
+
+			let _item = item.clone().removeClass('hidden').attr({id:''});
+			//人 auditUserName
+			_item.find('p').text(rs.auditUserName);
+			//时间  createTime
+			_item.find('span').text(stamp2Date.getDate1(rs.createTime));
+			//事  nodeName
+			//状态 auditStatus
+			//备注 auditOpinion
+			let text = `${rs.nodeName} (${(rs.auditStatus==1)? '通过' : '驳回'})`;
+			if(rs.auditOpinion){
+				text += `<br/>理由:${rs.auditOpinion}`;
+			}
+			_item.find('div').html(text);
+
+			body.append(_item);
+		})
 	}
 
 

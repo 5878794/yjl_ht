@@ -62,7 +62,6 @@ let Page = {
         let myNumber = data.ranking || '';
         $('#number_').text(myNumber);
 
-        //TODO 权限控制 用户信息里面
         this.createNoticeFn();
 
         this.orderStateDist = await selectData('orderState1');
