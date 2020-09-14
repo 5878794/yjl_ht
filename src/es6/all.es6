@@ -32,28 +32,49 @@ let all = {
 			})
 		}else{
 			return new Promise((success,error)=>{
-				//TODO 用户名 密码
-				ajax.send([
-					api.login({
-						userName:'test',
-						password:'123456'
-					})
-				]).then(rs=>{
-					rs = rs[0];
-					window.token = rs.token;
-					window.companyId = rs.companyId;
-					window.userName = rs.userName;
-					//0:无 1:个人权限 2:部门权限 3:公司权限 4:集团权限"
-					window.orderSearchPrivilegeType = rs.orderSearchPrivilegeType;
-					//0:无 1:房抵 2:垫资 3:房抵+垫资"
-					window.orderCreatePrivilegeType = rs.orderCreatePrivilegeType;
-					window.userInfo = rs;
+				let userInfo = window.sessionStorage.getItem('userInfo');
+				let rs = JSON.parse(userInfo);
 
-					success();
-				}).catch(e=>{
-					error('获取用户信息失败');
-				})
+				if(!userInfo){
+					window.location.href = '../login/login.html';
+					return;
+				}
+
+				window.token = rs.token;
+				window.companyId = rs.companyId;
+				window.userName = rs.userName;
+				//0:无 1:个人权限 2:部门权限 3:公司权限 4:集团权限"
+				window.orderSearchPrivilegeType = rs.orderSearchPrivilegeType;
+				//0:无 1:房抵 2:垫资 3:房抵+垫资"
+				window.orderCreatePrivilegeType = rs.orderCreatePrivilegeType;
+				window.userInfo = rs;
+
+				success();
 			});
+
+
+			// return new Promise((success,error)=>{
+			// 	ajax.send([
+			// 		api.login({
+			// 			userName:'test',
+			// 			password:'123456'
+			// 		})
+			// 	]).then(rs=>{
+			// 		rs = rs[0];
+			// 		window.token = rs.token;
+			// 		window.companyId = rs.companyId;
+			// 		window.userName = rs.userName;
+			// 		//0:无 1:个人权限 2:部门权限 3:公司权限 4:集团权限"
+			// 		window.orderSearchPrivilegeType = rs.orderSearchPrivilegeType;
+			// 		//0:无 1:房抵 2:垫资 3:房抵+垫资"
+			// 		window.orderCreatePrivilegeType = rs.orderCreatePrivilegeType;
+			// 		window.userInfo = rs;
+			//
+			// 		success();
+			// 	}).catch(e=>{
+			// 		error('获取用户信息失败');
+			// 	})
+			// });
 		}
 	},
 	//获取通知信息

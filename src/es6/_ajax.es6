@@ -84,6 +84,10 @@ let ajax = {
 };
 
 let api = {
+	//登录
+	login:{url:'/api/user/login',type:'post'},
+
+
 	//首页
 	index_list:{url:'/api/home/searchOrder',type:'get'},
 		//排名、角色权限
