@@ -6,10 +6,14 @@ module.exports = {
 	//手机用
 	phoneInputStyleFn(obj){
 		obj.rowHeight = 36;
-		obj.nameStyle = {width:'60px',color:'#535353',fontSize:'14px',textAlign:'right'};
+		obj.nameStyle = {width:'80px',color:'#535353',fontSize:'14px',textAlign:'right'};
 		obj.rowStyle = {paddingRight:'20px'};
 		obj.unitStyle = {fontSize:'12px'};
-		obj.inputBodyStyle = {background:'#fff'};
+		obj.inputBodyStyle = {background:'none','border-color':'#333','border-radius':'5px'};
+
+		obj.styleText = 'input::-webkit-input-placeholder{\n' +
+			'    color:#999; font-size: 14px;\n' +
+			'}'
 	},
 
 

@@ -1,5 +1,46 @@
 
 
+
 .openWin_main{
     min-width: 100%;
+}
+
+
+
+
+/*客户*/
+.client_top{
+    padding:30px 0;
+    background: #282537;
+}
+.client_bottom{
+    padding:30px;
+    min-height: 400px;
+    background: #fffddc;
+}
+.logo_text{
+    display: block; width: 228px; height: 59px;
+}
+
+
+.client_title{
+    font-size: 20px; text-align: center;
+    padding-bottom: 20px;
+    padding-top:20px;
+}
+.client_info{
+    font-size: 14px; text-indent: 2em;
+    line-height: 22px;
+    padding-bottom: 40px;
+}
+.client_btn{
+    width: 60%; height: 40px; background: #282537;
+    color: #fffddc; font-size: 16px; border-radius: 5px;
+}
+.info_ok{
+    font-size: 30px; color: #333;
+    padding:40px 0;
+}
+.info_text{
+    font-size: 16px; color: #333; text-align: center;
 }
