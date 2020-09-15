@@ -5,15 +5,19 @@ html
         include ./../../pug_include/head
 
         script(data-src='form.min.js?t='+tt)
-
+        style.
+            html,body{
+                overflow: auto;
+                background: #fffddc;
+            }
     body
 
-        div(class='box_sct' style='min-height:100vh;')
+        div(class='box_sct')
             div(class='box_sct client_top' style='width:100%;')
                 //TODO
                 img(src='')
                 img(class='logo_text' src='../res/image/logo_text.png')
-            div(class='boxflex1 box_sct client_bottom openWin_main')
+            div(class='box_sct client_bottom openWin_main')
                 div(id='form' style='padding-top:20px;')
                     b-input(id='userName' type='text' name='姓名' placeholder='请输入您的姓名' rule='must' err='请输入您的姓名')
                     b-input(id='phone' type='tel' name='联系电话' placeholder='请输入您联系电话' rule='must' err='请输入您联系电话')

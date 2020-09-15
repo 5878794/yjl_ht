@@ -15,8 +15,8 @@
 }
 .client_bottom{
     padding:30px;
+    padding-bottom: 100px;
     min-height: 400px;
-    background: #fffddc;
 }
 .logo_text{
     display: block; width: 228px; height: 59px;

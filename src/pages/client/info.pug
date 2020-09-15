@@ -3,17 +3,21 @@ html
     head
         title 金盾时代
         include ./../../pug_include/head
-
+        style.
+            html, body {
+                overflow: auto;
+                background: #fffddc;
+            }
         //script(data-src='form.min.js?t='+tt)
 
     body
 
-        div(class='box_sct' style='min-height:100vh;')
+        div(class='box_sct')
             div(class='box_sct client_top' style='width:100%;')
                 //TODO
                 img(src='')
                 img(class='logo_text' src='../res/image/logo_text.png')
-            div(class='boxflex1 box_sct client_bottom openWin_main' style='display:flex;')
+            div(class='box_sct client_bottom openWin_main' style='display:flex;')
 
 
                 div(class='info_ok') 申请成功
