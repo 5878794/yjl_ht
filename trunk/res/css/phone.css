@@ -21,6 +21,10 @@
 .logo_text{
     display: block; width: 228px; height: 59px;
 }
+.logo{
+    display: block; width: 90px; height: 90px;
+    margin-bottom: 20px;
+}
 
 
 .client_title{

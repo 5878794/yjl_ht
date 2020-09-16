@@ -36,7 +36,7 @@ let Page = {
 		let form = await all.getFromVal($('#form'));
 		console.log(form)
 
-
+		//TODO
 		window.location.href = './info.html';
 	}
 };
