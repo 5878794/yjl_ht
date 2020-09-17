@@ -83,7 +83,8 @@ let Page = {
 			all.showLoadingRun(_this,'submit')
 		});
 		$('#close').click(function(){
-			qt.closeWin();
+			// qt.closeWin();
+			window.history.go(-1);
 		});
 
 	},
