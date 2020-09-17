@@ -20,12 +20,30 @@ let Page = {
 	init(){
 		all.showLoadingRun(this,'run');
 	},
+	getParam(){
+		let userInfo = window.sessionStorage.getItem('userInfo')||'{}';
+		let rs = JSON.parse(userInfo);
+
+		if(!rs.token){
+			window.location.replace('./index.html');
+			return;
+		}
+
+		window.token = rs.token;
+		window.companyId = rs.companyId;
+		window.userName = rs.userName;
+		//0:无 1:个人权限 2:部门权限 3:公司权限 4:集团权限"
+		window.orderSearchPrivilegeType = rs.orderSearchPrivilegeType;
+		//0:无 1:房抵 2:垫资 3:房抵+垫资"
+		window.orderCreatePrivilegeType = rs.orderCreatePrivilegeType;
+		window.userInfo = rs;
+	},
 	async run(){
 		let param = getParamFromUrl();
 		this.id = param.id;
 		this.state = param.state || 0;
 		this.btnEventBind();
-		await all.getUserInfo();
+		this.getParam();
 
 		let [data] = await ajax.send([
 			api.order_get_byId({id:this.id})

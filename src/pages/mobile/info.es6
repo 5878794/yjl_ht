@@ -99,9 +99,10 @@ let Page = {
 			window.location.href = `./order_info.html?id=${id}&state=${state}`;
 		});
 		$$(history).myclickok(function(){
-			let data = $(this).data('data');
+			let data = $(this).data('data'),
+				orderNo = data.orderNo;
 			//打开历史记录页面
-			window.location.href = `./history_info.html?id=`;
+			window.location.href = `./history_info.html?orderNo=${orderNo}`;
 		});
 	}
 };

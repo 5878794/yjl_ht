@@ -1,0 +1,20 @@
+doctype html
+html
+    head
+        title 历史流程
+        include ./../../pug_include/head
+
+        script(data-src='history_info.min.js?t='+tt)
+
+        style.
+            html,body{overflow: auto;background: #fff;}
+
+    body
+
+        div(class='mobile_logo') 金盾时贷
+        div(class='mobile_logo_')
+        div(class='box_slt' id='body' style='background:#fff;')
+
+
+            b-order-history1(id='history')
+
