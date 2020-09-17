@@ -32,10 +32,10 @@ let all = {
 			})
 		}else{
 			return new Promise((success,error)=>{
-				let userInfo = window.sessionStorage.getItem('userInfo');
+				let userInfo = window.sessionStorage.getItem('userInfo')||'{}';
 				let rs = JSON.parse(userInfo);
 
-				if(!userInfo){
+				if(!rs.token){
 					window.location.href = '../login/login.html';
 					return;
 				}

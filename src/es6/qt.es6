@@ -122,6 +122,15 @@ let JD = {
     reLogin(){
         if(window.bridge){
             window.bridge.reload();
+        }else{
+            let pathname = window.location.pathname;
+            if(pathname.indexOf('mobile') > -1){
+                //用户端
+                window.location.replace('./index.html');
+            }else{
+                //pc端 测试
+                window.location.href = '../login/login.html';
+            }
         }
     },
     //下载文件

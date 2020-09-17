@@ -5,7 +5,7 @@
 module.exports = {
 	//手机用
 	phoneInputStyleFn(obj){
-		obj.rowHeight = 36;
+		obj.rowHeight = 46;
 		obj.nameStyle = {width:'80px',color:'#535353',fontSize:'14px',textAlign:'right'};
 		obj.rowStyle = {paddingRight:'20px'};
 		obj.unitStyle = {fontSize:'12px'};
@@ -16,7 +16,7 @@ module.exports = {
 			'}'
 	},
 	phoneInputStyleFn1(obj){
-		obj.rowHeight = 36;
+		obj.rowHeight = 46;
 		obj.nameStyle = {width:'70px',color:'#ccc',fontSize:'14px',textAlign:'center',paddingRight:0};
 		obj.rowStyle = {paddingRight:'20px',border:'1px solid #ccc','border-radius':'5px'};
 		obj.unitStyle = {fontSize:'12px'};
