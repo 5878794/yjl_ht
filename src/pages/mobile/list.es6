@@ -64,8 +64,7 @@ let Page = {
 			api.get_menu_list()
 		]);
 
-		//TODO 临时添加
-		data = [];
+		// data = [];
 
 		//判断是否有权证权限
 		if(data.includes('QUANZHENG_MENU')){
