@@ -7,6 +7,7 @@ let app = require('./../../es6/lib/page'),
 	pageSizeSetting = require('./../../es6/pageSize'),
 	getParamFromUrl = require('./../../es6/lib/fn/getParamFromUrl'),
 	selectData = require('./../../es6/selectData'),
+	moneyFormat = require('./../../es6/lib/fn/number'),
 	winSetting = require('./../../es6/winSetting'),
 	tableSet = require('./../../es6/tableSetting'),
 	stamp2Date = require('./../../es6/lib/fn/timeAndStamp'),
@@ -54,10 +55,17 @@ let Page = {
 		window.orderCreatePrivilegeType = rs.orderCreatePrivilegeType;
 		window.userInfo = rs;
 
+		this.bussinessDist = await selectData('businessType');
+		this.orderStateDist = await selectData('orderState');
+
+
 		//获取菜单权限
 		let [data] = await ajax.send([
 			api.get_menu_list()
 		]);
+
+		//TODO 临时添加
+		data = [];
 
 		//判断是否有权证权限
 		if(data.includes('QUANZHENG_MENU')){
@@ -124,7 +132,7 @@ let Page = {
 		let body = $('#body'),
 			item = $('#item');
 
-		//权证
+		//权证和我的业务需要的字段一样
 		data.map(rs=>{
 			let _item = item.clone().removeClass('hidden').attr({id:''}),
 				a = _item.find('a');
@@ -135,11 +143,14 @@ let Page = {
 			//电话
 			a.eq(1).text(rs.mainApplyPersonMobile);
 			//业务
-			a.eq(2).text(rs.businessKey);
-			//金额
-			a.eq(3).text(rs.applyMoney);
+			a.eq(2).text(this.bussinessDist[rs.businessKey]);
+			//金额 元---转万元
+			let money = rs.applyMoney;
+			money = money/10000;
+			money = moneyFormat(money,2)+'万元';
+			a.eq(3).text(money);
 			//状态
-			a.eq(4).text(rs.orderStatus);
+			a.eq(4).text(this.orderStateDist[rs.orderStatus]);
 			//时间 //TODO
 			a.eq(5).text('差字段');
 
@@ -150,11 +161,17 @@ let Page = {
 
 	},
 	addEvent(dom){
+		let _this = this;
 		$$(dom).myclickok(function(){
-			let data = $(this).data('data');
+			let data = $(this).data('data'),
+				//1 权证   0： 我的业务
+				type = (_this.isWarran)? 1:0,
+				id = data.id,
+				orderNo = data.orderNo,
+				currentNodeKey = data.currentNodeKey;
 
-			//TODO
 			console.log(data);
+			window.location.href = `./info.html?id=${id}&type=${type}&orderNo=${orderNo}&currentNodeKey=${currentNodeKey}`;
 		});
 	}
 };
