@@ -1,0 +1,46 @@
+doctype html
+html
+    head
+        title 订单详情
+        include ./../../pug_include/head
+
+        script(data-src='info.min.js?t='+tt)
+
+        style.
+            html,body{overflow: auto;background: #fff;}
+
+    body
+
+        div(class='mobile_logo') 金盾时贷
+        div(class='mobile_logo_')
+        div(class='box_slt' id='body' style='background:#fff;')
+            div(class='mobile_list_item box_slt' id='item')
+                div(class='mobile_list_row box_hlt')
+                    p(class='mobile_list_row_left')
+                        span 姓名：
+                        a 张三
+                    p(class='mobile_list_row_right')
+                        span 电话：
+                        a 12312312312
+                div(class='mobile_list_row box_hlt')
+                    p(class='mobile_list_row_left')
+                        span 业务：
+                        a 房抵
+                    p(class='mobile_list_row_right')
+                        span 金额：
+                        a 70.00万
+                div(class='mobile_list_row box_hlt')
+                    p(class='mobile_list_row_left')
+                        span 状态：
+                        a 待抵押
+                    p(class='mobile_list_row_right')
+                        span 时间：
+                        a 2011-11-11
+
+            div(class='mobile_btns box_hcc')
+                p 订单详情
+                p 历史流程
+                a(href='tel:12312312312') 联系客户
+
+
+

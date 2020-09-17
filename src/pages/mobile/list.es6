@@ -71,10 +71,12 @@ let Page = {
 		if(data.includes('QUANZHENG_MENU')){
 			console.log('权证列表')
 			//权证列表
+			$('title').text('权证列表');
 			this.isWarran = true;
 		}else{
 			console.log('我的业务')
 			//我的业务
+			$('title').text('我的业务');
 			this.isWarran = false;
 		}
 
