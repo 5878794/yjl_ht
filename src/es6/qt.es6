@@ -142,6 +142,8 @@ let JD = {
         window.bridge = window.bridge ?? top.bridge;
         if (window.bridge) {
             window.bridge.download(url, fileName);
+        }else{
+            window.open(url);
         }
     },
     //获取用户信息

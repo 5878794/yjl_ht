@@ -92,9 +92,11 @@ let Page = {
 			history = $('#history');
 
 		$$(info).myclickok(function(){
-			let data = $(this).data('data');
+			let data = $(this).data('data'),
+				state = 0,
+				id = data.id;
 			//打开订单详情页面
-			window.location.href = `./order_info.html?id=`;
+			window.location.href = `./order_info.html?id=${id}&state=${state}`;
 		});
 		$$(history).myclickok(function(){
 			let data = $(this).data('data');
