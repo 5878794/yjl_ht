@@ -153,8 +153,8 @@ let Page = {
 			a.eq(3).text(money);
 			//状态
 			a.eq(4).text(this.orderStateDist[rs.orderStatus]);
-			//时间 //TODO
-			a.eq(5).text('差字段');
+			//时间
+			a.eq(5).text(stamp2Date.getDate1(rs.flowNodeUpdateTime||''));
 
 			this.addEvent(_item);
 			body.append(_item);
