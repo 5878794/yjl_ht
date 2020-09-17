@@ -15,6 +15,18 @@ module.exports = {
 			'    color:#999; font-size: 14px;\n' +
 			'}'
 	},
+	phoneInputStyleFn1(obj){
+		obj.rowHeight = 36;
+		obj.nameStyle = {width:'70px',color:'#ccc',fontSize:'14px',textAlign:'center',paddingRight:0};
+		obj.rowStyle = {paddingRight:'20px',border:'1px solid #ccc','border-radius':'5px'};
+		obj.unitStyle = {fontSize:'12px'};
+		obj.inputBodyStyle = {background:'none',border:'none'};
+		obj.errStyle = {paddingLeft:'82px'};
+		obj.styleText = 'input::-webkit-input-placeholder{\n' +
+			'    color:#999; font-size: 14px;\n' +
+			'}' +
+			'input{color:#ccc;}'
+	},
 
 
 	//设置输入框样式
@@ -87,6 +99,37 @@ module.exports = {
 		});
 		bSearch.each(function(){
 			_this.phoneInputStyleFn(this);
+		});
+	},
+	phoneSet1(){
+		let bInput = $('b-input'),
+			bFile = $('b-input-file'),
+			bMoney = $('b-input-money'),
+			bDate = $('b-input-date'),
+			bTextarea = $('b-input[type="textarea"]'),
+			bSearch = $('b-input-search'),
+			_this = this;
+
+		bInput.each(function(){
+			if($(this).attr('type') != 'textarea'){
+				_this.phoneInputStyleFn1(this);
+			}
+		});
+		bFile.each(function(){
+			_this.phoneInputStyleFn1(this);
+		});
+		bMoney.each(function(){
+			_this.phoneInputStyleFn1(this);
+		});
+		bDate.each(function(){
+			_this.phoneInputStyleFn1(this);
+			this.inputBodyStyle = {paddingRight:0};
+		});
+		bTextarea.each(function(){
+			_this.phoneInputStyleFn1(this);
+		});
+		bSearch.each(function(){
+			_this.phoneInputStyleFn1(this);
 		});
 	},
 

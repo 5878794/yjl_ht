@@ -1,0 +1,29 @@
+doctype html
+html
+    head
+        title 金盾时代-综合业务系统
+        include ./../../pug_include/head
+
+        script(data-src='index.min.js?t='+tt)
+
+        style.
+            html,body{width:100vw;height:100vh;}
+            body{background:#1d203d;}
+
+    body
+
+        //div(class='mobile_logo') 金盾时贷
+        div(class='box_scc' style='padding-top:100px;')
+            img(class='mobile_index_logo_img' src='../res/image/logo.png')
+            p(class='mobile_index_logo_text') 员工登录
+            div(class='mobile_login_main openWin_main' id='form')
+                b-input(id='userName' type='text' name='用户名' placeholder='请输入用户名' rule='must' err='请输入用户名')
+                b-input(id='password' type='password' name='密码' placeholder='请输入密码' rule='must' err='请输入密码')
+
+
+
+            div(class='openWin_btns box_hcc')
+                div(class='openWin_btn_blue box_hcc hover' id='submit') 登录
+
+
+
