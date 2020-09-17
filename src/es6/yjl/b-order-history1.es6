@@ -75,11 +75,12 @@ class bOrderHistory extends HTMLElement{
 		let body = $('<div class="body"></div>'),
 			noDate = $('<div class="noDate box_hcc">暂无数据</div>'),
 			showMore = $('<div class="showMore hover box_hcc"><span>查看更多</span></div>'),
+			row = $('<div class="box_slt"></div>'),
 			item = $('<div class="item box_hlt"></div>'),
 			no = $('<div class="no box_hct"></div>'),
-			name = $('<div class="name box_hlt"></div>'),
+			name = $('<div class="name box_hlt boxflex1"></div>'),
 			state = $('<div class="state box_hcc"></div>'),
-			info = $('<div class="info box_slt boxflex1"></div>'),
+			info = $('<div class="info box_slt"></div>'),
 			text = $('<div class="text breakall"></div>'),
 			img = $('<div class="img box_hlt box_lines"></div>'),
 			date = $('<div class="date box_sct"></div>'),
@@ -89,34 +90,35 @@ class bOrderHistory extends HTMLElement{
 		item.append(no)
 			.append(name)
 			.append(state)
-			.append(info)
 			.append(date)
 			.append(user);
+		row.append(item).append(info);
 
 		this.noDate = noDate;
 		this.showMore = showMore;
-		this.item = item;
+		this.item = row;
 		this.body = body;
 	}
 	createStyle(){
 		let css = [
-			'.body{min-width:1000px;width:100%;}',
-			'.item{min-height:20px;padding:5px;line-height:20px;background:#e6e7e9;margin-bottom:5px;font-size:12px;color:#333;}',
-			'.no{width:60px;}',
+			'.body{width:100%;}',
+			'.item{width:100%;min-height:20px;padding:5px;line-height:20px;background:#e6e7e9;margin-bottom:5px;font-size:12px;color:#333;}',
+			'.no{width:30px;}',
 			'.noDate{font-size:14px; height:30px;}',
 			'.showMore{margin-bottom: 20px;height:30px;padding-top:10px;font-size:12px;color:#909192;}',
 			'.showMore span{padding:0 20px; position:relative;}',
 			'.showMore span:before{content:"";display:block;position:absolute;left:0;top:50%;width:16px;height:16px;margin-top:-5px;background:url('+arrowImgSrc+') no-repeat center center;background-size:100%;}',
 			'.showMore span:after{content:"";display:block;position:absolute;right:0;top:50%;width:16px;height:16px;margin-top:-5px;background:url('+arrowImgSrc+') no-repeat center center;background-size:100%;}',
 			'.hideMore span:before,.hideMore span:after{transform:rotate(180deg);margin-top:-10px;}',
-			'.name{width:160px;}',
+			'.name{min-width:100px;}',
 			'.state img{display:block;width:14px;height:14px;}',
 			'.text{}',
-			'.state{width:60px; min-height:20px;}',
+			'.state{width:40px; min-height:20px;}',
 			'.img img{display:block;width:100%;height:100%;}',
 			'.img .file{width:40px;height:40px;margin:2px 2px;border:1px solid #ccc;line-height:16px;text-align:center;}',
-			'.date{width:100px;}',
-			'.user{width:100px;}'
+			'.date{width:80px;}',
+			'.user{width:90px;min-height:20px;}',
+			'.info{padding:0 20px; font-size:14px;margin-bottom:20px;}'
 		];
 
 		this.cssText = css.join('');
@@ -180,7 +182,10 @@ class bOrderHistory extends HTMLElement{
 		let stateImg = new Image();
 		stateImg.src = (rs.state)? successImgSrc : errImgSrc;
 		_item.find('.state').append(stateImg);
-		_item.find('.text').text(rs.info);
+		let info = rs.info || '';
+		if(info){
+			_item.find('.text').text('意见:'+info);
+		}
 		let imgs = rs.img || [],
 			imgBody = _item.find('.img');
 		imgs.map(imgSrc=>{

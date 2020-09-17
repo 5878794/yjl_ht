@@ -58,7 +58,10 @@ let Page = {
 
 	},
 	bindBtnEvent(){
-
+		let close = $('#close');
+		$$(close).myclickok(function(){
+			window.history.go(-1);
+		});
 	}
 };
 
