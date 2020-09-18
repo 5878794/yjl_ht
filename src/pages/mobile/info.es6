@@ -13,7 +13,8 @@ let app = require('./../../es6/lib/page'),
 	stamp2Date = require('./../../es6/lib/fn/timeAndStamp'),
 	inputStyle = require('./../../es6/inputStyle');
 
-
+require('./../../es6/customElement/pc/input');
+require('./../../es6/customElement/pc/input_file');
 
 let Page = {
 	isWarran:false,
@@ -49,6 +50,7 @@ let Page = {
 	},
 	async run() {
 		this.getParam();
+		inputStyle.phoneSet1();
 
 		let [data] = await ajax.send([
 			api.order_get_byId({id:this.id})
@@ -60,6 +62,14 @@ let Page = {
 		console.log(data)
 		this.bindData(data);
 		this.bindBtnEvent();
+
+
+		if(!this.isWarran){
+			$('#warran').remove();
+			return;
+		}
+
+
 
 		//TODO 判断是权证的话 增加响应的审核
 		// 核行下户     通用过单
@@ -96,7 +106,9 @@ let Page = {
 	},
 	bindBtnEvent(){
 		let info = $('#info'),
-			history = $('#history');
+			history = $('#history'),
+			close = $('#close'),
+			submit = $('#submit');
 
 		$$(info).myclickok(function(){
 			let data = $(this).data('data'),
@@ -110,6 +122,13 @@ let Page = {
 				orderNo = data.orderNo;
 			//打开历史记录页面
 			window.location.href = `./history_info.html?orderNo=${orderNo}`;
+		});
+
+		$$(close).myclickok(function(){
+			window.history.go(-1);
+		});
+		$$(submit).myclickok(function(){
+
 		});
 	}
 };

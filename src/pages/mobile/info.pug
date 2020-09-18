@@ -8,6 +8,10 @@ html
 
         style.
             html,body{overflow: auto;background: #fff;}
+            .openWin_btn_gray,
+            .openWin_btn_blue{
+                width:40%; margin: 0 5%;
+            }
 
     body
 
@@ -44,3 +48,14 @@ html
 
 
 
+        div(id='warran')
+            div(class='openWin_input_main box_hlt box_lines' id='form')
+                div(class='openWin_input_item1')
+                    b-input(type='textarea' id='auditOpinion' autoHeight='true' name='意见' placeholder='非必填')
+                div(class='openWin_input_item1')
+                    b-input-file(class='__input_file__' type='file' id='attachUrls' unit='非必填' name='附件')
+
+
+            div(class='openWin_btns box_hcc')
+                div(class='openWin_btn_gray box_hcc hover' id='cancel') 关闭
+                div(class='openWin_btn_blue box_hcc hover' id='submit') 保存

@@ -27,6 +27,18 @@ module.exports = {
 			'}' +
 			'input{color:#ccc;}'
 	},
+	phoneInputStyleFn1_textarea(obj){
+		obj.rowHeight = 40;		//textarea 自动*3
+		obj.nameStyle = {width:'60px',color:'#535353',fontSize:'14px',textAlign:'right'};
+		obj.rowStyle = {padding:'10px 20px 10px 0'};
+	},
+	phoneInputStyleFn1_file(obj){
+		obj.rowHeight = 80;
+		obj.nameStyle = {width:'60px',color:'#535353',fontSize:'14px',textAlign:'right'};
+		obj.rowStyle = {padding:'10px 20px 10px 0'};
+		obj.inputBodyStyle = {padding:0};
+		obj.unitStyle = {fontSize:'12px',position:'relative',top:'-10px'};
+	},
 
 
 	//设置输入框样式
@@ -116,7 +128,7 @@ module.exports = {
 			}
 		});
 		bFile.each(function(){
-			_this.phoneInputStyleFn1(this);
+			_this.phoneInputStyleFn1_file(this);
 		});
 		bMoney.each(function(){
 			_this.phoneInputStyleFn1(this);
@@ -126,7 +138,7 @@ module.exports = {
 			this.inputBodyStyle = {paddingRight:0};
 		});
 		bTextarea.each(function(){
-			_this.phoneInputStyleFn1(this);
+			_this.phoneInputStyleFn1_textarea(this);
 		});
 		bSearch.each(function(){
 			_this.phoneInputStyleFn1(this);
