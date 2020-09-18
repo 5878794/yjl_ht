@@ -62,6 +62,13 @@ let Page = {
 		this.bindBtnEvent();
 
 		//TODO 判断是权证的话 增加响应的审核
+		// 核行下户     通用过单
+		// 还款资料确认  通用过单
+		// 还款确认  /warrant/o_warrant_pay_back.html
+		// 取证、解押  通用过单
+		// 过户       通用过单
+		// 取证       通用过单
+		// 抵押       通用过单
 	},
 	bindData(rs){
 		let _item = $('#item'),
