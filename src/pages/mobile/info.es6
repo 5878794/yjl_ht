@@ -67,11 +67,12 @@ let Page = {
 		if(!this.isWarran){
 			$('#warran').remove();
 			return;
+		}else{
+			$('#warran').removeClass('hidden');
 		}
 
 
 
-		//TODO 判断是权证的话 增加响应的审核
 		// 核行下户     通用过单
 		// 还款资料确认  通用过单
 		// 还款确认  /warrant/o_warrant_pay_back.html
@@ -108,7 +109,8 @@ let Page = {
 		let info = $('#info'),
 			history = $('#history'),
 			close = $('#close'),
-			submit = $('#submit');
+			submit = $('#submit'),
+			_this = this;
 
 		$$(info).myclickok(function(){
 			let data = $(this).data('data'),
@@ -128,7 +130,12 @@ let Page = {
 			window.history.go(-1);
 		});
 		$$(submit).myclickok(function(){
-
+			all.showLoadingRun(all,'reviewSubmit',{
+				formDom:$('#form'),
+				orderNo:_this.orderNo,
+				state:1,
+				currentNodeKey:_this.currentNodeKey
+			});
 		});
 	}
 };

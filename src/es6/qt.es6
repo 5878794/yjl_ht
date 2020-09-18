@@ -100,6 +100,8 @@ let JD = {
         window.bridge = window.bridge ?? top.bridge;
         if(window.bridge){
             window.bridge.closeWin();
+        }else{
+            window.history.go(-1);
         }
     },
     //调用父级窗口函数
