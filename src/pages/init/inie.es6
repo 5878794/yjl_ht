@@ -18,6 +18,7 @@ window.iframeOpen = function(url){
 
 window.userLock = function(state){
 	let nav = $('b-win-left').get(0);
+	// nav.userLock = true;
 	nav.userLock = state;
 };
 

@@ -165,6 +165,11 @@ class bWinLeft extends HTMLElement{
 			_this = this;
 
 		item.click(function(){
+			if(_this.canNotClick){
+				qt.alert('您有即将到期的待处理任务未处理!');
+				return;
+			}
+
 			let href = $(this).attr('href');
 			if(href!=''){
 				//打开页面
@@ -206,11 +211,6 @@ class bWinLeft extends HTMLElement{
 
 
 	openIframePage(href){
-		if(this.canNotClick){
-			qt.alert('您有即将到期的待处理任务未处理!');
-			return;
-		}
-
 		let iframe = $(this).parent().parent().find('#win_right');
 		console.log('%c 打开页面:'+href,'color:red;')
 		iframe.get(0).src = href;
