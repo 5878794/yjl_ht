@@ -289,6 +289,10 @@ showPicture.prototype = {
 		this.closeBtn.click(function(){
 			_this.destroy();
 		});
+		this.main.click(function(){
+			_this.destroy();
+		});
+
 
 
 
@@ -330,6 +334,7 @@ showPicture.prototype = {
 		this.leftBtn.unbind("click");
 		this.rightBtn.unbind("click");
 		this.closeBtn.unbind("click");
+		this.main.unbind('click');
 		this.main.remove();
 	},
 
