@@ -22,16 +22,16 @@ html
             //b-win-top
 
         div(class='iframe scroll_style1' style='background:#fff;' id='iframe_body')
-            div(class='page_body')
+            div(class='page_body' style='min-width:800px;')
                 //- 页面主体开始。。。。。。
 
                 b-title(name='机构' id='b_title')
-                b-role-list(name='机构名称' id='list')
+                b-role-list(name='' id='list')
 
                 br
                 //- 列表部分
-                div(style='padding:0 20px;width:100%;' class='hidden' id='list_body')
-                    b-title1(name='中新银行产品')
+                div(style='width:100%;' class='hidden' id='list_body')
+                    b-title(name='')
                     div(class='index_list')
                         b-table-list(id='table_list')
 

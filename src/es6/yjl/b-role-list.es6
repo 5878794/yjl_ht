@@ -76,7 +76,13 @@ class bRoleList extends HTMLElement{
 
 
         item.append(name).append(btn);
-        border.append(title).append(list);
+        if(this.name){
+            border.append(title).append(list);
+        }else{
+            body.css({padding:0});
+            border.append(list);
+        }
+
         body.append(border);
         this.listBody = list;
         this.item = item;

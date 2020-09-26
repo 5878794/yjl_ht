@@ -19,7 +19,6 @@ require('./../../es6/yjl/b-role-list');
 
 
 
-let loading;
 let Page = {
 	init(){
 		all.showLoadingRun(this,'run')
@@ -107,7 +106,7 @@ let Page = {
 		body.html('');
 
 		//创建产品标题
-		let title1 = $('<b-title1 name="'+data.name+'"></b-title1>');
+		let title1 = $('<b-title name="'+data.name+'"></b-title>');
 		body.append(title1);
 		this.createListTitle(title1.get(0),data);
 
@@ -121,7 +120,7 @@ let Page = {
 		]);
 		departmentData = departmentData.list || [];
 
-		let table = $('<b-role-list name="部门名称"></b-role-list>'),
+		let table = $('<b-role-list></b-role-list>'),
 			tableBody = $('<div class="index_list"></div>');
 		tableBody.append(table);
 		body.append(tableBody);

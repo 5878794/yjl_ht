@@ -38,6 +38,16 @@ let settingChannel = {
 	noDataHtml:'<div class="box_hcc" style="width:100%;height:100px;font-size:14px;color:#333;">暂无数据</div>'
 };
 
+let settingProduct = {
+	titleRowStyle:{background:'#efefef',height:'40px',fontSize:'14px'},
+	rowHeight:50,
+	rowStyle:{background:"#fff",'border-bottom':'1px solid #efefef'},
+	celStyle:{padding:'0 10px'},
+	rowHoverStyle:{background:'#fbd6d8'},
+	rowNotHoverStyle:{background:'#fff'},
+	noDataHtml:'<div class="box_hcc" style="width:100%;height:100px;font-size:14px;color:#333;">暂无数据</div>'
+};
+
 
 let setting = {
 	index:{
@@ -1189,7 +1199,7 @@ let setting = {
 		]
 	},
 	setting_product:{
-		setting:settingChannel,
+		setting:settingProduct,
 		data:[
 			{
 				name:'产品名称',

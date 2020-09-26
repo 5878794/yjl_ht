@@ -112,7 +112,7 @@ let Page = {
         body.html('');
 
         //创建产品标题
-        let title1 = $('<b-title1 name="'+data.name+'"></b-title1>');
+        let title1 = $('<b-title name="'+data.name+'"></b-title>');
         body.append(title1);
         this.createListTitle(title1.get(0),data);
 
