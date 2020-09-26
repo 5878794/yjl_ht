@@ -373,6 +373,12 @@ class bInput extends HTMLElement{
 		this.body.find('input').each(function(){
 			this.addEventListener('input',function(){
 				_this.userSetChangeFn(_this.value,childId);
+			},false);
+			this.addEventListener('focus',function(){
+				_this.inputBodyDom.css({border:'1px solid blue'});
+			},false)
+			this.addEventListener('blur',function(){
+				_this.inputBodyDom.css({border:'1px solid rgb(204,204,204)'});
 			},false)
 		});
 		this.body.find('select').each(function(){
@@ -383,8 +389,16 @@ class bInput extends HTMLElement{
 		this.body.find('textarea').each(function(){
 			this.addEventListener('input',function(){
 				_this.userSetChangeFn(_this.value,childId);
+			},false);
+			this.addEventListener('focus',function(){
+				_this.inputBodyDom.css({border:'1px solid blue'});
+			},false)
+			this.addEventListener('blur',function(){
+				_this.inputBodyDom.css({border:'1px solid rgb(204,204,204)'});
 			},false)
 		});
+
+
 	}
 
 
