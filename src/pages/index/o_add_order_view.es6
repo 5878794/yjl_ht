@@ -318,18 +318,14 @@ let Page = {
 			//房抵
 			await ajax.send([
 				api.order_submit({
-					fdZhiXingSubmitOrderRo:{
-						orderNo:this.orderNo
-					}
+					orderNo:this.orderNo
 				})
 			]);
 		}else{
 			//垫资
 			await ajax.send([
 				api.order_submit1({
-					auditOrderRo:{
-						orderNo:this.orderNo
-					}
+					orderNo:this.orderNo
 				})
 			]);
 		}
