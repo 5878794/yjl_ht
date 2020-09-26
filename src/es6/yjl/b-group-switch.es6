@@ -70,7 +70,7 @@ class bGroupSwitch extends HTMLElement{
 			title = $('<div class="title box_hlc"></div>'),
 			titleText = $('<div class="boxflex1">'+this.name+'</div>'),
 			list = $('<div class="list box_slc"></div>'),
-			btn = $('<div class="btn box_hcc gray">提交</div>'),
+			btn = $('<div class="btn box_hcc gray">应用修改</div>'),
 			item = $('<div class="item box_hlc"></div>');
 
 		title.append(titleText).append(btn);
@@ -90,7 +90,7 @@ class bGroupSwitch extends HTMLElement{
 			'.list{width:100%;}',
 			'.item{width:100%; border-top:1px solid #eee; padding:5px 10px;}',
 			'.item b-switch{display:block; width:60px; height:24px; padding-left:20px;}',
-			'.btn{width:20%;height:34px; background:#5576f0;color:#fff;margin-right:5px;}',
+			'.btn{width:80px;height:34px; background:#5576f0;color:#fff;margin-right:5px;}',
 			'.gray{opacity:0}'
 		];
 
