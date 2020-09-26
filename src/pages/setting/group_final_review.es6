@@ -15,7 +15,6 @@ require('./../../es6/yjl/b_title');
 require('./../../es6/customElement/pc/input_money');
 
 
-let loading;
 let Page = {
     init(){
         all.showLoadingRun(this,'run');
@@ -67,6 +66,9 @@ let Page = {
                 _item.find('.btn').click(function(){
                     _this.submit($(this).parent());
                 });
+                _item.find('b-input-money').get(0).change = function(){
+                    $(this).parent().find('.btn').removeClass('hidden');
+                };
                 return _item;
             };
 
@@ -110,7 +112,8 @@ let Page = {
         ]);
 
         qt.alert('修改成功!');
-        qt.refreshPage();
+        dom.find('.btn').addClass('hidden');
+        // qt.refreshPage();
 
     }
 };
