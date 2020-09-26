@@ -67,13 +67,15 @@ class bGroupSwitch extends HTMLElement{
 	createElement(){
 		let body = $('<div class="body box_sct"></div>'),
 			main = $('<div class="main"></div>'),
-			title = $('<div class="title box_hlc">'+this.name+'</div>'),
+			title = $('<div class="title box_hlc"></div>'),
+			titleText = $('<div class="boxflex1">'+this.name+'</div>'),
 			list = $('<div class="list box_slc"></div>'),
 			btn = $('<div class="btn box_hcc gray">提交</div>'),
 			item = $('<div class="item box_hlc"></div>');
 
+		title.append(titleText).append(btn);
 		main.append(title).append(list);
-		body.append(main).append(btn);
+		body.append(main);
 
 		this.listBody = list;
 		this.btn = btn;
@@ -88,8 +90,8 @@ class bGroupSwitch extends HTMLElement{
 			'.list{width:100%;}',
 			'.item{width:100%; border-top:1px solid #eee; padding:5px 10px;}',
 			'.item b-switch{display:block; width:60px; height:24px; padding-left:20px;}',
-			'.btn{width:60%;height:34px; background:#5576f0;color:#fff;margin-top:20px;}',
-			'.gray{background:#eee;}'
+			'.btn{width:20%;height:34px; background:#5576f0;color:#fff;margin-right:5px;}',
+			'.gray{opacity:0}'
 		];
 
 		this.cssText = css.join('');
