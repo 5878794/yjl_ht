@@ -6,9 +6,14 @@
 //number:   number 要格式化的数字
 //digits:   number 小数位数
 
-module.exports = function(number,digits){
+module.exports = function(number,digits,use0){
     digits = (digits || digits==0)? digits : 2;  //小数位数
-    number = number??0;
+    if(!use0){
+        number = number??0;
+    }else{
+        return null;
+    }
+
     let option = {
 //          “ decimal”用于纯数字格式。
 //          “ currency”用于货币格式。        数字前面会显示货币符号

@@ -81,9 +81,9 @@ let Page = {
 			//实际还款时间
 			rs.actualRepaymentTime_ = stamp2Date.getDate1(rs.actualRepaymentTime);
 			//实际还款合计
-			rs.actualRepaymentFeeTotal_ = moneyFormat(rs.actualRepaymentFeeTotal,5);
+			rs.actualRepaymentFeeTotal_ = moneyFormat(rs.actualRepaymentFeeTotal,5,true);
 			//逾期费
-			rs.overdueFee_ = moneyFormat(rs.overdueFee,5);
+			rs.overdueFee_ = moneyFormat(rs.overdueFee,5,true);
 		})
 
 
