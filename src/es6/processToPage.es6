@@ -61,10 +61,10 @@ let key = [
 
 
 
-	{name:'FENQI_HUANKUAN_REPAYMENT_APPLY',value:'..finance/o_installment_mortgage_repayment.html',info:'分期还款申请',api:'/api/fqHkOrderFlow/submitRepaymentApply'},
-	{name:'FENQI_HUANKUAN_REPAYMENT_BOOKING',value:'..finance/o_installment_mortgage_repayment1.html',info:'分期还款记账',api:'/api/fqHkOrderFlow/repaymentBooking'},
-	{name:'HUAN_WEIKUAN_REPAYMENT_APPLY',value:'..finance/o_last_installment_mortgage_repayment.html',info:'还尾款申请',api:'/api/hwkOrderFlow/submitRepaymentApply'},
-	{name:'HUAN_WEIKUAN_RETURN_REPAYMENT_BOOKING',value:'..finance/o_last_installment_mortgage_repayment1.html',info:'还尾款记账',api:'/api/hwkOrderFlow/repaymentBooking'},
+	{name:'FENQI_HUANKUAN_REPAYMENT_APPLY',value:'../finance/o_installment_mortgage_repayment.html',info:'分期还款申请',api:'/api/fqHkOrderFlow/submitRepaymentApply'},
+	{name:'FENQI_HUANKUAN_REPAYMENT_BOOKING',value:'../finance/o_installment_mortgage_repayment1.html',info:'分期还款记账',api:'/api/fqHkOrderFlow/repaymentBooking'},
+	{name:'HUAN_WEIKUAN_REPAYMENT_APPLY',value:'../finance/o_last_installment_mortgage_repayment.html',info:'还尾款申请',api:'/api/hwkOrderFlow/submitRepaymentApply'},
+	{name:'HUAN_WEIKUAN_RETURN_REPAYMENT_BOOKING',value:'../finance/o_last_installment_mortgage_repayment1.html',info:'还尾款记账',api:'/api/hwkOrderFlow/repaymentBooking'},
 
 
 
