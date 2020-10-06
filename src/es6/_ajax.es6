@@ -278,6 +278,32 @@ let api = {
 	fd_fq_pay_back:{url:'/api/fqHkOrderFlow/submitRepaymentApply',type:'post'},
 	//房抵 尾款还款申请
 	fd_wk_pay_back:{url:'/api/hwkOrderFlow/submitRepaymentApply',type:'post'},
+
+
+	//统计
+	//垫资
+	advance1_total_api:{url:'/api/dzOrderStatistics/profitAndLossCount',type:'get'},
+	advance1_list_api:{url:'/api/dzOrderStatistics/profitAndLossDetailList',type:'get'},
+	advance2_total_api:{url:'/api/dzOrderStatistics/dianZiCount',type:'get'},
+	advance2_list_api:{url:'/api/dzOrderStatistics/dianZiDetailList',type:'get'},
+	advance3_total_api:{url:'/api/dzOrderStatistics/waitPrincipalCount',type:'get'},
+	advance3_list_api:{url:'/api/dzOrderStatistics/waitPrincipalDetailList',type:'get'},
+	advance4_total_api:{url:'/api/dzOrderStatistics/waitConsultationFeeCount',type:'get'},
+	advance4_list_api:{url:'/api/dzOrderStatistics/waitConsultationFeeDetailList',type:'get'},
+	advance5_total_api:{url:'/api/dzOrderStatistics/waitServiceFeeCount',type:'get'},
+	advance5_list_api:{url:'/api/dzOrderStatistics/waitServiceFeeDetailList',type:'get'},
+	advance6_total_api:{url:'/api/dzOrderStatistics/comprehensiveCount',type:'get'},
+	advance6_list_api:{url:'/api/dzOrderStatistics/comprehensiveDetailList',type:'get'},
+	//房抵
+	arrival1_total_api:{url:'/api/fdOrderStatistics/profitAndLossCount',type:'get'},
+	arrival1_list_api:{url:'/api/fdOrderStatistics/profitAndLossDetailList',type:'get'},
+	arrival2_total_api:{url:'/api/fdOrderStatistics/repaymentStandingBookCount',type:'get'},
+	arrival2_list_api:{url:'/api/fdOrderStatistics/repaymentStandingBookDetailList',type:'get'},
+	arrival3_total_api:{url:'/api/fdOrderStatistics/overdueCount',type:'get'},
+	arrival3_list_api:{url:'/api/fdOrderStatistics/overdueDetailList',type:'get'},
+	arrival4_total_api:{url:'/api/fdOrderStatistics/loanSummaryCount',type:'get'},
+	arrival4_list_api:{url:'/api/fdOrderStatistics/loanSummaryDetailList',type:'get'}
+
 };
 
 

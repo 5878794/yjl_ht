@@ -59,6 +59,8 @@ const SETTINGDATA = {
 				{name:'后置费',value:'+3,333,333,333.00000'}
 			],
 			table:'advance_type1',
+			listApi:'advance1_list_api',
+			totalApi:'advance1_total_api',
 			width:'1800px',
 			tempData:[
 				{key1:'2011-11-11',key2:'3,333,333,333.00000',key3:'3,333,333,333.00000',
@@ -100,6 +102,8 @@ const SETTINGDATA = {
 		},
 		//汇总垫资
 		type2:{
+			listApi:'advance2_list_api',
+			totalApi:'advance2_total_api',
 			search:[
 				{name:'业务状态:',type:'select',id:'a1',width:'30%',data:[{name:'请选择',value:''}]},
 				{name:'时间:',type:'assDate',id:['a2','a3'],width:'50%'}
@@ -121,6 +125,8 @@ const SETTINGDATA = {
 		},
 		//待收本金明细
 		type3:{
+			listApi:'advance3_list_api',
+			totalApi:'advance3_total_api',
 			search:[
 				{name:'时间:',type:'assDate',id:['a2','a3'],width:'50%'}
 			],
@@ -138,6 +144,8 @@ const SETTINGDATA = {
 		},
 		//待收咨询费明细
 		type4:{
+			listApi:'advance4_list_api',
+			totalApi:'advance4_total_api',
 			search:[
 				{name:'时间:',type:'assDate',id:['a2','a3'],width:'50%'}
 			],
@@ -155,6 +163,8 @@ const SETTINGDATA = {
 		},
 		//待收服务费明细
 		type5:{
+			listApi:'advance5_list_api',
+			totalApi:'advance5_total_api',
 			search:[
 				{name:'时间:',type:'assDate',id:['a2','a3'],width:'50%'}
 			],
@@ -172,6 +182,8 @@ const SETTINGDATA = {
 		},
 		//综合统计
 		type6:{
+			listApi:'advance6_list_api',
+			totalApi:'advance6_total_api',
 			search:[
 				{name:'时间:',type:'assDate',id:['a2','a3'],width:'50%'}
 			],
@@ -202,6 +214,8 @@ const SETTINGDATA = {
 		],
 		//盈亏明细
 		type1:{
+			listApi:'arrival1_list_api',
+			totalApi:'arrival1_total_api',
 			search:[
 				{name:'产品来源:',type:'select',id:'a1',width:'30%',data:[{name:'请选择',value:''}]},
 				{name:'时间:',type:'assDate',id:['a2','a3'],width:'50%'}
@@ -226,6 +240,8 @@ const SETTINGDATA = {
 		},
 		//还款账台
 		type2:{
+			listApi:'arrival2_list_api',
+			totalApi:'arrival2_total_api',
 			search:[
 				{name:'时间:',type:'assDate',id:['a2','a3'],width:'50%'}
 			],
@@ -244,6 +260,8 @@ const SETTINGDATA = {
 		},
 		//逾期明细
 		type3:{
+			listApi:'arrival3_list_api',
+			totalApi:'arrival3_total_api',
 			search:[],
 			summary:[
 				{name:'逾期笔数',value:'2011-11-11 -- 2011-11-11'},
@@ -260,6 +278,8 @@ const SETTINGDATA = {
 		},
 		//借款汇总
 		type4:{
+			listApi:'arrival4_list_api',
+			totalApi:'arrival4_total_api',
 			search:[
 				{name:'时间:',type:'assDate',id:['a2','a3'],width:'50%'},
 				{name:'订单状态:',type:'select',id:'a1',width:'30%',data:[{name:'请选择',value:''}]},
@@ -291,6 +311,7 @@ const SETTINGDATA = {
 
 let Page = {
 	type:1,
+	totalData:null,
 	init(){
 		this.type = urlParam().type || 1;
 		let page = window.location.pathname;
@@ -302,11 +323,13 @@ let Page = {
 		all.showLoadingRun(this,'run');
 	},
 	async run(){
+		await all.getUserInfo();
 		this.createNav();
 		this.createSearch();
-		this.createStatistics();
-		this.createList();
-		this.createPagination();
+
+		await this.getData({pageNum:1});
+		// this.createStatistics();
+		// this.createList();
 
 	},
 	createNav(){
@@ -326,20 +349,62 @@ let Page = {
 		}
 		search.inputData = searchData;
 		search.clickFn = function(rs){
-			console.log(rs);    //返回 对应的 {id:value,...}
+			_this.totalData = null;
+			rs.pageNum = 1;
+			all.showLoadingRun(_this,'getData',rs);
 		};
 
 
 		inputStyle.searchSet(search);
 	},
+	async getData(data){
+		let _this = this;
+
+		data.pageSize = pageSizeSetting.management_notice;
+
+		let newApi = SETTINGDATA[this.page]['type'+this.type],
+			listApi = newApi.listApi,
+			totalApi = newApi.totalApi;
+
+
+		if(!this.totalData){
+			let [total] = await ajax.send([
+				api[totalApi]()
+			]);
+			this.createStatistics(total);
+			this.totalData = true;
+		}
+		let [listData] = await ajax.send([
+			api[listApi](data)
+		]);
+		let listNumber = listData.total;
+		listData = listData.list || [];
+		console.log(listData)
+
+		this.createList(listData);
+		all.createFY({
+			domId:'table_pagination',
+			nowPage:data.pageNum,
+			listLength:listNumber,
+			pageSize:data.pageSize,
+			searchData:data,
+			getDataFn:function(obj){
+				all.showLoadingRun(_this,'getData',obj);
+			}
+		});
+
+	},
 	//汇总
-	createStatistics(){
+	createStatistics(data){
+		console.log(data);
+		//TODO
 		let statistics = $('#statistics').get(0);
 		statistics.data = SETTINGDATA[this.page]['type'+this.type].summary;
 	},
 
 	//列表
-	createList(){
+	createList(data){
+		//TODO
 		let table = $('#table_list').get(0);
 		tableSet.set(table,SETTINGDATA[this.page]['type'+this.type].table);
 		$(table).css({
@@ -359,21 +424,6 @@ let Page = {
 			let data = $(this).parent().data('data');
 			console.log(data);
 		});
-	},
-
-	//分页
-	createPagination(){
-		let fy = $('#table_pagination').get(0);
-		fy.show({
-			nowPage: 10,             //当前页码       默认：1
-			listLength: 149,         //总记录数
-			pageSize: 10             //分页数         默认：10
-		});
-		fy.clickFn = function(n){
-			console.log(n)          //点击事件，返回点击的页码
-		};
-		fy.selectBg = 'rgb(86,123,249)';        //设置当前页码显示的背景色  默认：#cc9800
-
 	}
 };
 
