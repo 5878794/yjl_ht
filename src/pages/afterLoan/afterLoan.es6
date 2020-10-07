@@ -26,6 +26,7 @@ let Page = {
     init(){
         all.showLoadingRun(this,'run');
     },
+    hasTotal:false,
     async run(){
         await all.getUserInfo();
         this.createSearch();
@@ -33,12 +34,20 @@ let Page = {
         this.bussinessTypeDist = await selectData('businessType');
         await selectData($('#b_search').get(0).body);
 
-        //TODO 暂无汇总数据
 
         await this.getData({pageNum:1});
     },
     async getData(data){
         let _this = this;
+
+        if(!this.hasTotal){
+            let [total] = await ajax.send([
+                api.afterLoan_total(data)
+            ]);
+            //TODO
+            console.log(total)
+        }
+
 
         data.pageSize = pageSizeSetting.management_notice;
         let [listData] = await ajax.send([

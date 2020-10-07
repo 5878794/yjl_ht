@@ -217,6 +217,8 @@ let api = {
 
 	//贷后
 	afterLoan_list:{url:'/api/loanAfterOrder/list',type:'get'},
+		//列表上面的汇总
+	afterLoan_total:{url:'/api/loanAfterOrder/getLoanAfterOrderTotalInfo',type:'get'},
 		//客户分类 变更
 	afterLoan_change_user_type:{url:'/api/loanAfterOrder/changeClientCategory',type:'post'},
 		//客户信息 变更
