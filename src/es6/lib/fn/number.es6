@@ -10,8 +10,10 @@ module.exports = function(number,digits,use0){
     digits = (digits || digits==0)? digits : 2;  //小数位数
     if(!use0){
         number = number??0;
-    }else{
-        return null;
+    }
+
+    if(!number){
+        return number;
     }
 
     let option = {

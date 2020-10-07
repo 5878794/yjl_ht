@@ -44,8 +44,8 @@ let Page = {
             let [total] = await ajax.send([
                 api.afterLoan_total(data)
             ]);
-            //TODO
-            console.log(total)
+            this.hasTotal = true;
+            this.bindTotalData(total);
         }
 
 
@@ -83,6 +83,7 @@ let Page = {
 
         ];
         search.clickFn = function(rs){
+            _this.hasTotal = false;
             rs.pageNum = 1;
             all.showLoadingRun(_this,'getData',rs);
         };
@@ -126,14 +127,13 @@ let Page = {
     },
     //汇总数据绑定
     bindTotalData(data={}){
-        //TODO key待定
         let doms = $('#total').find('span');
         //单数
-        dom.eq(0).text(data.ds);
+        doms.eq(0).text(data.orderTotalNums);
         //剩余本金
-        dom.eq(1).text(moneyFormat(data.bj,5));
+        doms.eq(1).text(moneyFormat(data.orderTotalLeftPrincipal,5));
         //剩余利息
-        dom.eq(2).text(moneyFormat(data.lx,5));
+        doms.eq(2).text(moneyFormat(data.orderTotalRemainInterest,5));
     }
 };
 
