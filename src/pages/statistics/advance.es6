@@ -49,8 +49,12 @@ const SETTINGDATA = {
 				{name:'时间:',type:'assDate',id:['a2','a3'],width:'50%'}
 			],
 			summary:[
-				{name:'时间',value:'2011-11-11 -- 2011-11-11',key:''},
-				{name:'出款资金',value:'3,333,333,333.00000',key:''},
+				{name:'时间',value:'2011-11-11 -- 2011-11-11',key:'',fn:function(data){
+					let s = data.startTime??'',
+						e = data.endTime??'';
+						return s.split(' ')[0]+' - ' + e.split(' ')[0]
+					}},
+				{name:'出款资金',value:'3,333,333,333.00000',key:'applyMoney'},
 				{name:'资金成本',value:'3,333,333,333.00000',key:'fundCost'},
 				{name:'出款笔数',value:'3,333,333,333.00000',key:'orderCount'},
 				{name:'退款退费',value:'3,333,333,333.00000',key:'refundMoney'},
@@ -59,14 +63,17 @@ const SETTINGDATA = {
 				{name:'优惠费用',value:'3,333,333,333.00000',key:'preferentialFee'},
 				{name:'权证费',value:'3,333,333,333.00000',key:'warrantFee'},
 				{name:'盈亏',value:'+3,333,333,333.00000',key:'profitAndLoss'},
-				{name:'展期费',value:'+3,333,333,333.00000',key:''},
+				{name:'展期费',value:'+3,333,333,333.00000',key:'exhibitionPayment'},
 				{name:'后置费',value:'+3,333,333,333.00000',key:'postPayment'}
 			],
 			table:'advance_type1',
 			width:'1800px',
 			tempData:[
-				{key:'key1',apiKey:'orderCreateTime',fn:null},
-				{key:'key2',apiKey:'',fn:null},
+				{key:'key1',apiKey:'',fn:function(data){
+					let t = data.orderCreateTime??'';
+						return t.split(' ')[0]
+					}},
+				{key:'key2',apiKey:'applyMoney',fn:null},
 				{key:'key3',apiKey:'fundCost',fn:null},
 				{key:'key4',apiKey:'channelCost',fn:null},
 				{key:'key5',apiKey:'consultationFee',fn:null},
@@ -90,7 +97,7 @@ const SETTINGDATA = {
 				{name:'时间:',type:'assDate',id:['a2','a3'],width:'50%'}
 			],
 			summary:[
-				{name:'出款金额',value:'3,333,333,333.00000',key:''},
+				{name:'出款金额',value:'3,333,333,333.00000',key:'applyMoney'},
 				{name:'出款笔数',value:'3,333,333,333.00000',key:'orderCount'},
 				{name:'咨询费',value:'3,333,333,333.00000',key:'consultationFee'},
 				{name:'服务费',value:'3,333,333,333.00000',key:'serviceFee'},
@@ -100,9 +107,12 @@ const SETTINGDATA = {
 			table:'advance_type2',
 			width:'1400px',
 			tempData: [
-				{key:'key1',apiKey:'orderCreateTime',fn:null},
-				{key:'key2',apiKey:'',fn:null},
-				{key:'key3',apiKey:'orderCount',fn:null},
+				{key:'key1',apiKey:'',fn:function(data){
+					let t = data.orderCreateTime??'';
+					return t.split(' ')[0];
+					}},
+				{key:'key2',apiKey:'applyMoney',fn:null},
+				// {key:'key3',apiKey:'orderCount',fn:null},
 				{key:'key4',apiKey:'consultationFee',fn:null},
 				{key:'key5',apiKey:'serviceFee',fn:null},
 				{key:'key6',apiKey:'warrantFee',fn:null},
@@ -121,19 +131,26 @@ const SETTINGDATA = {
 				{name:'时间:',type:'assDate',id:['a2','a3'],width:'50%'}
 			],
 			summary:[
-				{name:'出款时间',value:'3,333,333,333.00000',key:''},
-				{name:'出款金额',value:'3,333,333,333.00000',key:''},
-				{name:'待回款金额',value:'3,333,333,333.00000',key:''}
+				{name:'出款时间',value:'3,333,333,333.00000',key:'',fn:function(data){
+						let s = data.startTime??'',
+							e = data.endTime??'';
+						return s.split(' ')[0]+' - ' + e.split(' ')[0]
+					}},
+				{name:'出款金额',value:'3,333,333,333.00000',key:'applyMoney'},
+				{name:'待回款金额',value:'3,333,333,333.00000',key:'notReceivedConsultationFee'}
 			],
 			table:'advance_type3',
 			width:'100%',
 			tempData:[
-				{key:'key1',apiKey:'orderCreateTime',fn:null},
+				{key:'key1',apiKey:'orderCreateTime',fn:function(data){
+						let t = data.orderCreateTime;
+						return t.split(' ')[0];
+					}},
 				{key:'key2',apiKey:'orderNo',fn:null},
 				{key:'key3',apiKey:'customerName',fn:null},
-				{key:'key4',apiKey:'',fn:null},
+				{key:'key4',apiKey:'applyMoney',fn:null},
 				{key:'key5',apiKey:'userName',fn:null},
-				{key:'key6',apiKey:'',fn:null},
+				{key:'key6',apiKey:'notReceivedConsultationFee',fn:null},
 				{key:'key7',apiKey:'shouldReturnMoneyTime',fn:null}
 			]
 		},
@@ -147,19 +164,26 @@ const SETTINGDATA = {
 				{name:'时间:',type:'assDate',id:['a2','a3'],width:'50%'}
 			],
 			summary:[
-				{name:'出款时间',value:'3,333,333,333.00000',key:''},
-				{name:'出款金额',value:'3,333,333,333.00000',key:''},
-				{name:'待回款金额',value:'3,333,333,333.00000',key:''}
+				{name:'出款时间',value:'3,333,333,333.00000',key:'',fn:function(data){
+						let s = data.startTime??'',
+							e = data.endTime??'';
+						return s.split(' ')[0]+' - ' + e.split(' ')[0]
+					}},
+				{name:'出款金额',value:'3,333,333,333.00000',key:'applyMoney'},
+				{name:'待回款金额',value:'3,333,333,333.00000',key:'notReceivedConsultationFee'}
 			],
 			table:'advance_type3',
 			width:'100%',
 			tempData:[
-				{key:'key1',apiKey:'orderCreateTime',fn:null},
+				{key:'key1',apiKey:'orderCreateTime',fn:function(data){
+						let t = data.orderCreateTime;
+						return t.split(' ')[0];
+					}},
 				{key:'key2',apiKey:'orderNo',fn:null},
 				{key:'key3',apiKey:'customerName',fn:null},
-				{key:'key4',apiKey:'',fn:null},
+				{key:'key4',apiKey:'applyMoney',fn:null},
 				{key:'key5',apiKey:'userName',fn:null},
-				{key:'key6',apiKey:'',fn:null},
+				{key:'key6',apiKey:'notReceivedConsultationFee',fn:null},
 				{key:'key7',apiKey:'shouldReturnMoneyTime',fn:null}
 			]
 		},
@@ -173,19 +197,26 @@ const SETTINGDATA = {
 				{name:'时间:',type:'assDate',id:['a2','a3'],width:'50%'}
 			],
 			summary:[
-				{name:'出款时间',value:'3,333,333,333.00000',key:''},
-				{name:'出款金额',value:'3,333,333,333.00000',key:''},
-				{name:'待回款金额',value:'3,333,333,333.00000',key:''}
+				{name:'出款时间',value:'3,333,333,333.00000',key:'',fn:function(data){
+						let s = data.startTime??'',
+							e = data.endTime??'';
+						return s.split(' ')[0]+' - ' + e.split(' ')[0]
+					}},
+				{name:'出款金额',value:'3,333,333,333.00000',key:'applyMoney'},
+				{name:'待回款金额',value:'3,333,333,333.00000',key:'notReceivedConsultationFee'}
 			],
 			table:'advance_type3',
 			width:'100%',
 			tempData:[
-				{key:'key1',apiKey:'orderCreateTime',fn:null},
+				{key:'key1',apiKey:'orderCreateTime',fn:function(data){
+						let t = data.orderCreateTime;
+						return t.split(' ')[0];
+					}},
 				{key:'key2',apiKey:'orderNo',fn:null},
 				{key:'key3',apiKey:'customerName',fn:null},
-				{key:'key4',apiKey:'',fn:null},
+				{key:'key4',apiKey:'applyMoney',fn:null},
 				{key:'key5',apiKey:'userName',fn:null},
-				{key:'key6',apiKey:'',fn:null},
+				{key:'key6',apiKey:'notReceivedConsultationFee',fn:null},
 				{key:'key7',apiKey:'shouldReturnMoneyTime',fn:null}
 			]
 		},
@@ -209,16 +240,19 @@ const SETTINGDATA = {
 			table:'advance_type6',
 			width:'1600px',
 			tempData:[
-				{key:'key1',apiKey:'orderCreateTime',fn:null},
+				{key:'key1',apiKey:'orderCreateTime',fn:function(data){
+					let t = data.orderCreateTime??'';
+					return t.split(' ')[0];
+					}},
 				{key:'key2',apiKey:'orderNo',fn:null},
-				{key:'key3',apiKey:'',fn:null},
+				{key:'key3',apiKey:'applyMoney',fn:null},
 				{key:'key4',apiKey:'userName',fn:null},
 				{key:'key5',apiKey:'actualPeriod',fn:null},
 				{key:'key6',apiKey:'consultationFee',fn:null},
 				{key:'key7',apiKey:'serviceFee',fn:null},
 				{key:'key8',apiKey:'warrantFee',fn:null},
 				{key:'key9',apiKey:'preferentialFee',fn:null},
-				{key:'key10',apiKey:'',fn:null}
+				{key:'key10',apiKey:'smallTotal',fn:null}
 			]
 		}
 	},
@@ -241,9 +275,9 @@ const SETTINGDATA = {
 				{name:'时间:',type:'assDate',id:['a2','a3'],width:'50%'}
 			],
 			summary:[
-				{name:'出款金额',value:'2011-11-11 -- 2011-11-11',key:''},
+				{name:'出款金额',value:'2011-11-11 -- 2011-11-11',key:'applyMoney'},
 				{name:'出款笔数',value:'3,333,333,333.00000',key:'orderCount'},
-				{name:'通道费',value:'3,333,333,333.00000',key:''},
+				{name:'通道费',value:'3,333,333,333.00000',key:'channelCost'},
 				{name:'咨询费',value:'3,333,333,333.00000',key:'consultationFee'},
 				{name:'权证费',value:'3,333,333,333.00000',key:'warrantFee'},
 				{name:'优惠费用',value:'3,333,333,333.00000',key:'preferentialFee'},
@@ -255,12 +289,12 @@ const SETTINGDATA = {
 				{key:'key1',apiKey:'orderNo',fn:null},
 				{key:'key2',apiKey:'customerName',fn:null},
 				{key:'key3',apiKey:'userName',fn:null},
-				{key:'key4',apiKey:'',fn:null},
-				{key:'key5',apiKey:'',fn:null},
+				{key:'key4',apiKey:'applyMoney',fn:null},
+				{key:'key5',apiKey:'paidPrincipal',fn:null},
 				{key:'key6',apiKey:'consultationFee',fn:null},
-				{key:'key7',apiKey:'',fn:null},
+				// {key:'key7',apiKey:'',fn:null},
 				{key:'key8',apiKey:'preferentialFee',fn:null},
-				{key:'key9',apiKey:'',fn:null}
+				{key:'key9',apiKey:'smallTotal',fn:null}
 			]
 		},
 		//还款账台
@@ -273,8 +307,8 @@ const SETTINGDATA = {
 				{name:'时间:',type:'assDate',id:['a2','a3'],width:'50%'}
 			],
 			summary:[
-				{name:'还款笔数',value:'2011-11-11 -- 2011-11-11',key:''},
-				{name:'归还本金',value:'3,333,333,333.00000',key:''},
+				{name:'还款笔数',value:'2011-11-11 -- 2011-11-11',key:'paymentCount'},
+				{name:'归还本金',value:'3,333,333,333.00000',key:'paymentPrincipal'},
 				{name:'咨询费',value:'3,333,333,333.00000',key:'consultationFee'}
 			],
 			table:'arrival_type2',
@@ -282,9 +316,12 @@ const SETTINGDATA = {
 			tempData:[
 				{key:'key1',apiKey:'customerName',fn:null},
 				{key:'key2',apiKey:'planNumber',fn:null},
-				{key:'key3',apiKey:'',fn:null},
-				{key:'key4',apiKey:'userName',fn:null},
-				{key:'key5',apiKey:'',fn:null},
+				{key:'key3',apiKey:'',fn:function(data){
+					let t = data.repaymentTime??'';
+					return t.split(' ')[0];
+					}},
+				{key:'key4',apiKey:'createName',fn:null},
+				{key:'key5',apiKey:'actualRepaymentPrincipal',fn:null},
 				{key:'key6',apiKey:'consultationFee',fn:null},
 			]
 		},
@@ -305,10 +342,13 @@ const SETTINGDATA = {
 			tempData:[
 				{key:'key1',apiKey:'customerName',fn:null},
 				{key:'key2',apiKey:'planNumber',fn:null},
-				{key:'key3',apiKey:'',fn:null},
-				{key:'key4',apiKey:'',fn:null},
-				{key:'key5',apiKey:'userName',fn:null},
-				{key:'key6',apiKey:'',fn:null},
+				{key:'key3',apiKey:'',fn:function(data){
+					let t = data.repaymentTime??'';
+					return t.split(' ')[0];
+					}},
+				{key:'key4',apiKey:'overDueDays',fn:null},
+				{key:'key5',apiKey:'createName',fn:null},
+				{key:'key6',apiKey:'repaymentPrincipal',fn:null},
 				{key:'key7',apiKey:'consultationFee',fn:null}
 			]
 		},
@@ -338,15 +378,18 @@ const SETTINGDATA = {
 			tempData:[
 				{key:'key1',apiKey:'customerName',fn:null},
 				{key:'key2',apiKey:'userName',fn:null},
-				{key:'key3',apiKey:'orderCreateTime',fn:null},
+				{key:'key3',apiKey:'orderCreateTime',fn:function (data) {
+					let t = data.orderCreateTime??'';
+					return t.split(' ')[0];
+					}},
 				{key:'key4',apiKey:'orderNo',fn:null},
-				{key:'key5',apiKey:'',fn:null},
-				{key:'key6',apiKey:'actualPeriod',fn:null},
+				{key:'key5',apiKey:'applyMoney',fn:null},
+				{key:'key6',apiKey:'period',fn:null},
 				{key:'key7',apiKey:'consultationFee',fn:null},
 				{key:'key8',apiKey:'serviceFee',fn:null},
 				{key:'key9',apiKey:'warrantFee',fn:null},
 				{key:'key10',apiKey:'preferentialFee',fn:null},
-				{key:'key11',apiKey:'',fn:null}
+				{key:'key11',apiKey:'smallTotal',fn:null}
 			]
 		}
 	}
@@ -452,6 +495,11 @@ let Page = {
 			}else{
 				rs.value = '无字段';
 			}
+
+			if(rs.fn){
+				rs.value = rs.fn(data);
+			}
+
 		});
 		return dist;
 	},
@@ -489,7 +537,7 @@ let Page = {
 				}
 
 				if(fn){
-					value = fn(value);
+					value = fn(rs);
 				}
 
 				rowData[tableKey] = value;

@@ -727,31 +727,25 @@ let setting = {
 			},
 			{
 				name:'出款金额',
-				width:'13.6%',
+				width:'15.6%',
 				style:{color:'#333',fontSize:'14px'},
 				key:'key2'                //数据对应的key
 			},
 			{
-				name:'出款笔数',
-				width:'8%',
-				style:{color:'#333',fontSize:'14px'},
-				key:'key3'                //数据对应的key
-			},
-			{
 				name:'咨询费',
-				width:'13.6%',
+				width:'15.6%',
 				style:{color:'#333',fontSize:'14px'},
 				key:'key4'                //数据对应的key
 			},
 			{
 				name:'服务费',
-				width:'13.6%',
+				width:'15.6%',
 				style:{color:'#333',fontSize:'14px'},
 				key:'key5'                //数据对应的key
 			},
 			{
 				name:'权证费',
-				width:'13.6%',
+				width:'15.6%',
 				style:{color:'#333',fontSize:'14px'},
 				key:'key6'                //数据对应的key
 			},
@@ -898,49 +892,43 @@ let setting = {
 			},
 			{
 				name:'客户姓名',
-				width:'8%',
+				width:'9%',
 				style:{color:'#333',fontSize:'14px'},
 				key:'key2'                //数据对应的key
 			},
 			{
 				name:'经办人',
-				width:'8%',
+				width:'9%',
 				style:{color:'#333',fontSize:'14px'},
 				key:'key3'                //数据对应的key
 			},
 			{
 				name:'出款金额',
-				width:'12%',
+				width:'14%',
 				style:{color:'#333',fontSize:'14px'},
 				key:'key4'                //数据对应的key
 			},
 			{
 				name:'归还本金',
-				width:'12%',
+				width:'14%',
 				style:{color:'#333',fontSize:'14px'},
 				key:'key5'                //数据对应的key
 			},
 			{
 				name:'咨询费',
-				width:'12%',
+				width:'14%',
 				style:{color:'#333',fontSize:'14px'},
 				key:'key6'                //数据对应的key
 			},
 			{
-				name:'居间费',
-				width:'12%',
-				style:{color:'#333',fontSize:'14px'},
-				key:'key7'                //数据对应的key
-			},
-			{
 				name:'优惠费用',
-				width:'12%',
+				width:'14%',
 				style:{color:'#333',fontSize:'14px'},
 				key:'key8'                //数据对应的key
 			},
 			{
 				name:'小计',
-				width:'12%',
+				width:'14%',
 				style:{color:'#333',fontSize:'14px'},
 				key:'key9'                //数据对应的key
 			}
