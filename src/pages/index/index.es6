@@ -243,7 +243,7 @@ let Page = {
                     html = '<span>逾期<a style="color:red;">'+rs.remainTime+'</a>天</span>';
                 }
             }
-            html +=  '<span>(当前'+rs.currentNodeName+')</span>';
+            html +=  '<span>('+rs.currentNodeName+')</span>';
             rs.remainTime_ = html;
 
 
