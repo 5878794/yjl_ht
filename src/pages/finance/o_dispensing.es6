@@ -50,7 +50,7 @@ let Page = {
 
 	},
 	bindData(data){
-		let newData = data.orderRepayment??{};
+		let newData = data.orderClientBankAccount??{};
 		all.setFromVal($('#form'),newData);
 
 		let input1 = $('#loanPassagewayFee').get(0),

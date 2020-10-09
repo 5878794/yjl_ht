@@ -77,8 +77,10 @@ let Page = {
 			all.showLoadingRun(all,'reviewSubmit',{
 				formDom:$('#form'),
 				orderNo:_this.orderNo,
+				addParam:{
+					isYewufeiAfter:1
+				},
 				state:1,
-				isYewufeiAfter:1,
 				currentNodeKey:_this.currentNodeKey
 			});
 			//

@@ -596,7 +596,8 @@ let all = {
 			orderNo = param.orderNo,
 			state = param.state,
 			currentNodeKey = param.currentNodeKey,
-			addFn = param.addFn ||function(){};
+			addFn = param.addFn ||function(){},
+			addParam = param.addParam || {};
 
 		let form = await this.getFromVal(formDom),
 			uploaded = await this.uploadFile(form.attachUrls);
@@ -605,6 +606,10 @@ let all = {
 		form.auditStatus = state;
 		form.orderNo = orderNo;
 		form.currentNodeKey = currentNodeKey;
+
+		for(let [key,val] of Object.entries(addParam)){
+			form[key] = val;
+		}
 
 
 		let {api} = await processToPageDist(currentNodeKey);
