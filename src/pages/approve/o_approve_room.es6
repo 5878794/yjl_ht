@@ -50,11 +50,13 @@ let Page = {
         await all.setOrderHistoryData(history,true);
         this.addBtnEvent();
 
-        if(this.currentNodeKey != 'FANG_DI_JILING_AUDIT'){
-            this.checkNeedProduct();
-        }else{
+
+        //垫资也选择产品咯
+        // if(this.currentNodeKey != 'FANG_DI_JILING_AUDIT'){
+        //     this.checkNeedProduct();
+        // }else{
             this.addChangeEvent();
-        }
+        // }
     },
     checkNeedProduct(){
         $('#choose_product').remove();
