@@ -25,7 +25,7 @@ let key = [
 		{name:'DIAN_ZI_QUANZHENG_GET_NEW',value:'../publish/overSingle.html',info:'权证-取新证',api:'/api/dzOrderFlow/quanZhengGetNew'},
 		{name:'DIAN_ZI_QUANZHENG_AGAIN_DIYA',value:'../publish/overSingle.html',info:'权证-再抵押',api:'/api/dzOrderFlow/quanZhengAgainDiYa'},
 		{name:'DIAN_ZI_DIAN_ZI_CAIWU_HUIKUAN_CONFIRM',value:'../finance/o_advance_payment.html',info:'财务-回款确认',api:'/api/dzOrderFlow/caiWuHuiKuanConfirm'},
-		{name:'DIAN_ZI_CAIWU_YEWUFEI_PAYMENT_CONFIRM',value:'../finance/o_business_fee_payment.html',info:'财务-业务费确认缴纳',api:'/api/dzOrderFlow/caiWuYeWuFeiPaymentConfirm'},
+		{name:'DIAN_ZI_CAIWU_YEWUFEI_PAYMENT_CONFIRM',value:'../finance/o_payment_of_post_operation_fee.html',info:'财务-后置业务费确认缴纳',api:'/api/dzOrderFlow/caiWuYeWuFeiPaymentConfirm'},
 		{name:'DIAN_ZI_QUANZHENG_REPAYMENT_DATA_CONFIRM',value:'../publish/overSingle.html',info:'权证-还款资料确认流程',api:'/api/dzOrderFlow/quanZhengRepaymentDataConfirm'},
 	// {name:'DIAN_ZI_ZILIUCHENG_ZHANQI',value:'',info:'子流程-展期',api:''},
 		// {name:'DIAN_ZI_DINGDAN_FINISH_SYSTEM',value:'',info:'系统-订单完成',api:''},
