@@ -92,10 +92,22 @@ let Page = {
             _this = this;
 
         submit.click(function(){
-            all.showLoadingRun(_this,'submitFn','1');
+            all.showLoadingRun(all,'reviewSubmit',{
+                formDom:$('#form'),
+                orderNo:_this.orderNo,
+                state:1,
+                currentNodeKey:_this.currentNodeKey
+            });
+            // all.showLoadingRun(_this,'submitFn','1');
         });
         back.click(function(){
-            all.showLoadingRun(_this,'submitFn','0');
+            all.showLoadingRun(all,'reviewSubmit',{
+                formDom:$('#form'),
+                orderNo:_this.orderNo,
+                state:0,
+                currentNodeKey:_this.currentNodeKey
+            });
+            // all.showLoadingRun(_this,'submitFn','0');
         });
         cancel.click(function(){
             qt.closeWin();
