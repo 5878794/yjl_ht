@@ -74,10 +74,19 @@ let Page = {
 		});
 
 		back.click(function(){
-			qt.openPage(
-				`../finance/o_payment_of_post_operation_fee.html?id=${_this.id}&orderNo=${_this.orderNo}&currentNodeKey=${_this.currentNodeKey}`,
-				winSetting.o_payment_of_post_operation_fee.width,
-				winSetting.o_payment_of_post_operation_fee.height)
+			all.showLoadingRun(all,'reviewSubmit',{
+				formDom:$('#form'),
+				orderNo:_this.orderNo,
+				state:1,
+				isYewufeiAfter:1,
+				currentNodeKey:_this.currentNodeKey
+			});
+			//
+			//
+			// qt.openPage(
+			// 	`../finance/o_payment_of_post_operation_fee.html?id=${_this.id}&orderNo=${_this.orderNo}&currentNodeKey=${_this.currentNodeKey}`,
+			// 	winSetting.o_payment_of_post_operation_fee.width,
+			// 	winSetting.o_payment_of_post_operation_fee.height)
 		});
 	}
 	// ,
