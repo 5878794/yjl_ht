@@ -61,6 +61,11 @@ let Page = {
 
 	async submit(){
 		let data = await all.getFromVal($('#form'));
+		if(data.password != data.password_){
+			qt.alert('2次输入的密码不一致！');
+			return;
+		}
+		delete data.password_;
 
 		if(this.id){
 			data.id = this.id;
