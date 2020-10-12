@@ -20,6 +20,11 @@ require('./../../es6/customElement/pc/input');
 
 let Page = {
 	init(){
+		let param = getParamFromUrl();
+		this.id = param.id;
+		this.name = param.name;
+
+
 		all.showLoadingRun(this,'run');
 	},
 	async run(){
@@ -34,9 +39,14 @@ let Page = {
 	},
 	async submit(){
 		let form = await all.getFromVal($('#form'));
-		console.log(form)
+		form.createName = this.name;
+		form.createId = this.id;
 
-		//TODO
+
+		await ajax.send([
+			api.client_submit(form)
+		]);
+
 		window.location.href = './info.html';
 	}
 };

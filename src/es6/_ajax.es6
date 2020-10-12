@@ -304,7 +304,13 @@ let api = {
 	// arrival3_total_api:{url:'/api/fdOrderStatistics/overdueCount',type:'get'},
 	arrival3_list_api:{url:'/api/report/overdueDetailVo',type:'post'},
 	// arrival4_total_api:{url:'/api/fdOrderStatistics/loanSummaryCount',type:'get'},
-	arrival4_list_api:{url:'/api/report/allStatisticForFd',type:'post'}
+	arrival4_list_api:{url:'/api/report/allStatisticForFd',type:'post'},
+
+
+
+
+	//客户端提交
+	client_submit:{url:'/api/orderBaseQrCode/saveOrderBaseQrCode',type:'post'}
 
 };
 

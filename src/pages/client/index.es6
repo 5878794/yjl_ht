@@ -20,14 +20,18 @@ require('./../../es6/customElement/pc/input');
 
 let Page = {
 	init(){
+		let param = getParamFromUrl();
+		this.id = param.id;
+		this.name = param.name;
 		all.showLoadingRun(this,'run');
 	},
 	async run(){
 		this.bindEvent();
 	},
 	bindEvent(){
+		let _this = this;
 		$$('#submit').myclickok(function(){
-			window.location.href = './form.html';
+			window.location.href = `./form.html?id=${_this.id}&name=${_this.name}`;
 		})
 	}
 };
