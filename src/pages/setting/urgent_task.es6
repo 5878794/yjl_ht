@@ -85,7 +85,7 @@ let Page = {
             api.setting_config_mdf(data)
         ]);
 
-        qt.alert('修改成功');
+        // qt.alert('修改成功');/**/
 
     }
 };
