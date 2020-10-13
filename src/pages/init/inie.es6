@@ -22,7 +22,7 @@ window.userLock = function(state){
 	nav.userLock = state;
 };
 
-
+// $('iframe').get(0).contentWindow.refreshList()
 
 let navData = [
 	{key:'HOME_MENU',name:'首页',icon:'../res/image/icon1.png',url:'../index/index.html'},

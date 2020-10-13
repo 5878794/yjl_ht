@@ -44,6 +44,7 @@ let Page = {
 	},
 	async getData(data){
 		let _this = this;
+		this.catchListParam = data;
 
 		data.pageSize = pageSizeSetting.management_notice;
 		let [listData] = await ajax.send([
@@ -166,8 +167,15 @@ let Page = {
 		//
 		// await qt.alert('出库申请已提交!');
 		// qt.refreshPage();
+	},
+	refreshList(){
+		let data = this.catchListParam;
+		console.log('refresh')
+		all.showLoadingRun(this,'getData',data);
 	}
 };
-
+window.refreshList = function(){
+	Page.refreshList();
+};
 
 app.run(Page);

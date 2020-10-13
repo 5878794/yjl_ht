@@ -34,6 +34,7 @@ let Page = {
 	},
 	async getData(data){
 		let _this = this;
+		this.catchListParam = data;
 
 		data.broadType = 0;
 		data.pageSize = pageSizeSetting.management_notice;
@@ -124,8 +125,15 @@ let Page = {
 
 		qt.alert('删除成功!');
 		qt.refreshPage();
+	},
+	refreshList(){
+		let data = this.catchListParam;
+		console.log('refresh')
+		all.showLoadingRun(this,'getData',data);
 	}
 };
 
-
+window.refreshList = function(){
+	Page.refreshList();
+};
 app.run(Page);

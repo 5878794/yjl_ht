@@ -71,7 +71,7 @@ let Page = {
 
     },
     async getData(data){
-
+        this.catchListParam = data;
         data.pageSize = 9999999;
         let [listData] = await ajax.send([
             api.index_list(data)
@@ -282,8 +282,16 @@ let Page = {
                 winSetting.publish_review.height)
         });
 
+    },
+    refreshList(){
+        let data = this.catchListParam;
+        console.log('refresh')
+        all.showLoadingRun(this,'getData',data);
     }
 };
 
+window.refreshList = function(){
+    Page.refreshList();
+};
 
 app.run(Page);

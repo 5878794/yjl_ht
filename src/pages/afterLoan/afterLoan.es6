@@ -39,6 +39,7 @@ let Page = {
     },
     async getData(data){
         let _this = this;
+        this.catchListParam = data;
 
         if(!this.hasTotal){
             let [total] = await ajax.send([
@@ -134,8 +135,15 @@ let Page = {
         doms.eq(1).text(moneyFormat(data.orderTotalLeftPrincipal,5));
         //剩余利息
         doms.eq(2).text(moneyFormat(data.orderTotalRemainInterest,5));
+    },
+    refreshList(){
+        let data = this.catchListParam;
+        console.log('refresh')
+        all.showLoadingRun(this,'getData',data);
     }
 };
-
+window.refreshList = function(){
+    Page.refreshList();
+};
 
 app.run(Page);
