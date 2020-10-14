@@ -125,6 +125,9 @@ let Page = {
 		})
 	},
 	addBtnEvent(){
+		if(this.hasBind){return};
+		this.hasBind = true;
+
 		let btn = $('#back_pay'),
 			close = $('#submit'),
 			_this = this;
@@ -139,9 +142,14 @@ let Page = {
 		close.click(function(){
 			qt.closeWin();
 		});
+	},
+	refreshList(){
+		all.showLoadingRun(this,'run');
 	}
 
 };
-
+window.refreshList = function(){
+	Page.refreshList();
+};
 
 app.run(Page);

@@ -38,9 +38,6 @@ let Page = {
         await all.getUserInfo();
 
         let data = await this.getData(this.type);
-
-
-
         this.createPage(data);
 
 
@@ -124,8 +121,18 @@ let Page = {
 
         await qt.alert('删除成功!');
         qt.refreshPage();
+    },
+    refreshList(){
+        all.showLoadingRun(this,'refresh');
+    },
+    async refresh(){
+        let data = await this.getData(this.type),
+            listDom = $('b-role-list');
+        this.createList(data,listDom.get(0));
     }
 };
-
+window.refreshList = function(){
+    Page.refreshList();
+};
 
 app.run(Page);

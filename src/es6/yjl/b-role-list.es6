@@ -104,6 +104,8 @@ class bRoleList extends HTMLElement{
     set data(data){
         data = data || [];
 
+        this.delAll();
+
         if(data.length == 0){
             this.listBody.html(this.noDataHtml);
             return;
@@ -140,6 +142,11 @@ class bRoleList extends HTMLElement{
 
         allItem.css({background:'#fff'});
         item.css({background:'#eee'})
+    }
+
+    delAll(){
+        let body = this.listBody;
+        body.html('');
     }
 
     add(data){

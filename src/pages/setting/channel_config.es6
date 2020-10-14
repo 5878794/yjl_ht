@@ -17,7 +17,6 @@ require('./../../es6/yjl/b_title');
 
 
 
-let loading;
 let Page = {
     init(){
         all.showLoadingRun(this,'run')
@@ -109,8 +108,23 @@ let Page = {
 
         qt.alert('删除成功！');
         qt.refreshPage();
+    },
+
+    refreshList(){
+        all.showLoadingRun(this,'refresh');
+    },
+    async refresh(){
+        let [data] = await ajax.send([
+            api.setting_config_list({type:6})
+        ]);
+        data = data[0]?.children?? [];
+
+
+        this.createList(data);
     }
 };
-
+window.refreshList = function(){
+    Page.refreshList();
+};
 
 app.run(Page);
