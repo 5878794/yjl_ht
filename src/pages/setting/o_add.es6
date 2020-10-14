@@ -22,7 +22,6 @@ require('./../../es6/customElement/pc/input_money');
 
 
 
-let loading;
 let Page = {
     init(){
         all.showLoadingRun(this,'run');

@@ -46,7 +46,7 @@ let Page = {
         let data = [];
         if(type == 1){
             [data] = await ajax.send([
-                api.setting_config_list({type:1})
+                api.setting_config_list({type:1,pageSize:999999})
             ]);
             data = data[0] || {};
             data = data.children?? [];
@@ -79,11 +79,15 @@ let Page = {
         this.createList(data,listDom.get(0));
     },
     addTitleBtn(dom,name){
+        let _this = this;
         dom.btnData = [
             {name:'新增',type:'btn1',style:{color:'#5576f0'}}
         ];
         dom.clickFn = function(){
-            qt.openPage(`../setting/o_add.html?type=6&name=${name}`,
+            //页面type：11 档案室  1 客户来源
+            //传出去   6 档案室    5 客户来源
+            let type = (_this.type==11)? '6' : '5';
+            qt.openPage(`../setting/o_add.html?type=${type}&name=${name}`,
                 winSetting.setting_add_role.width,
                 winSetting.setting_add_role.height)
         }

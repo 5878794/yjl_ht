@@ -37,7 +37,7 @@ let Page = {
 		let search = $('#orderNo').get(0),
 			name = $('#name').get(0),
 			date = $('#createTime').get(0),
-			dateVal = stamp2Date.getDate1(),
+			dateVal = stamp2Date.getDate1(new Date().getTime()),
 			catchData = {};
 
 		date.value = dateVal;
