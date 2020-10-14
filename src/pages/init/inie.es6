@@ -22,6 +22,13 @@ window.userLock = function(state){
 	nav.userLock = state;
 };
 
+window.onChildWinClose = function(){
+	let iframe = 	$('#win_right').get(0).contentWindow;
+	if(iframe.refreshList){
+		iframe.refreshList();
+	}
+};
+
 // $('iframe').get(0).contentWindow.refreshList()
 
 let navData = [

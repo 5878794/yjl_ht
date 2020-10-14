@@ -39,7 +39,10 @@ let Page = {
 			await all.setFromVal($('#form'),data);
 
 			//如果已生成不能修改业务类型
-			$('#businessKey').get(0).disabled = true;
+			//手机端生成的订单可以修改业务类型 订单号是OT开头的
+			if(this.orderNo.substr(0,2) != 'OT') {
+				$('#businessKey').get(0).disabled = true;
+			}
 		}
 
 		this.bindEvent();

@@ -112,3 +112,12 @@
 
 	};
 })();
+
+
+if(!window.onChildWinClose){
+	window.onChildWinClose = function(){
+		if(window.refreshList){
+			window.refreshList();
+		}
+	};
+}
