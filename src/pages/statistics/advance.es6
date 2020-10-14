@@ -45,8 +45,8 @@ const SETTINGDATA = {
 			listKey:'yingkuiDetails',
 			totalKey:'yingkuiSummary',
 			search:[
-				{name:'产品来源:',type:'select',id:'a1',width:'30%',data:[{name:'请选择',value:''}]},
-				{name:'时间:',type:'assDate',id:['a2','a3'],width:'50%'}
+				{name:'产品来源:',type:'select',id:'agencyFrom',width:'30%',bind:'agencyFrom'},
+				{name:'时间:',type:'assDate',id:['startTime','endTime'],width:'50%'}
 			],
 			summary:[
 				{name:'时间',value:'2011-11-11 -- 2011-11-11',key:'',fn:function(data){
@@ -93,8 +93,8 @@ const SETTINGDATA = {
 			listKey:'dianZiDetails',
 			totalKey:'dianZiSummary',
 			search:[
-				{name:'业务状态:',type:'select',id:'a1',width:'30%',data:[{name:'请选择',value:''}]},
-				{name:'时间:',type:'assDate',id:['a2','a3'],width:'50%'}
+				{name:'业务状态:',type:'select',id:'orderStatus',width:'30%',bind:'orderState'},
+				{name:'时间:',type:'assDate',id:['startTime','endTime'],width:'50%'}
 			],
 			summary:[
 				{name:'出款金额',value:'3,333,333,333.00000',key:'applyMoney'},
@@ -128,7 +128,7 @@ const SETTINGDATA = {
 			listKey:'daiShouDetails',
 			totalKey:'daiShouSummary',
 			search:[
-				{name:'时间:',type:'assDate',id:['a2','a3'],width:'50%'}
+				{name:'时间:',type:'assDate',id:['startTime','endTime'],width:'50%'}
 			],
 			summary:[
 				{name:'出款时间',value:'3,333,333,333.00000',key:'',fn:function(data){
@@ -161,7 +161,7 @@ const SETTINGDATA = {
 			listKey:'daiShouDetails',
 			totalKey:'daiShouSummary',
 			search:[
-				{name:'时间:',type:'assDate',id:['a2','a3'],width:'50%'}
+				{name:'时间:',type:'assDate',id:['startTime','endTime'],width:'50%'}
 			],
 			summary:[
 				{name:'出款时间',value:'3,333,333,333.00000',key:'',fn:function(data){
@@ -194,7 +194,7 @@ const SETTINGDATA = {
 			listKey:'daiShouDetails',
 			totalKey:'daiShouSummary',
 			search:[
-				{name:'时间:',type:'assDate',id:['a2','a3'],width:'50%'}
+				{name:'时间:',type:'assDate',id:['startTime','endTime'],width:'50%'}
 			],
 			summary:[
 				{name:'出款时间',value:'3,333,333,333.00000',key:'',fn:function(data){
@@ -227,7 +227,7 @@ const SETTINGDATA = {
 			listKey:'allStatisticDetails',
 			totalKey:'allStatisticSummary',
 			search:[
-				{name:'时间:',type:'assDate',id:['a2','a3'],width:'50%'}
+				{name:'时间:',type:'assDate',id:['startTime','endTime'],width:'50%'}
 			],
 			summary:[
 				{name:'出款金额',value:'3,333,333,333.00000',key:'applyMoney'},
@@ -271,8 +271,8 @@ const SETTINGDATA = {
 			listKey:'yingkuiDetails',
 			totalKey:'yingkuiSummary',
 			search:[
-				{name:'产品来源:',type:'select',id:'a1',width:'30%',data:[{name:'请选择',value:''}]},
-				{name:'时间:',type:'assDate',id:['a2','a3'],width:'50%'}
+				{name:'产品来源:',type:'select',id:'agencyFrom',width:'30%',bind:'agencyFrom'},
+				{name:'时间:',type:'assDate',id:['startTime','endTime'],width:'50%'}
 			],
 			summary:[
 				{name:'出款金额',value:'2011-11-11 -- 2011-11-11',key:'applyMoney'},
@@ -304,7 +304,7 @@ const SETTINGDATA = {
 			listKey:'paymentDetails',
 			totalKey:'paymentSummary',
 			search:[
-				{name:'时间:',type:'assDate',id:['a2','a3'],width:'50%'}
+				{name:'时间:',type:'assDate',id:['startTime','endTime'],width:'50%'}
 			],
 			summary:[
 				{name:'还款笔数',value:'2011-11-11 -- 2011-11-11',key:'paymentCount'},
@@ -359,11 +359,11 @@ const SETTINGDATA = {
 			listKey:'allStatisticDetails',
 			totalKey:'allStatisticSummary',
 			search:[
-				{name:'时间:',type:'assDate',id:['a2','a3'],width:'50%'},
-				{name:'订单状态:',type:'select',id:'a1',width:'30%',data:[{name:'请选择',value:''}]},
-				{name:'来源机构:',type:'select',id:'a1',width:'30%',data:[{name:'请选择',value:''}]},
-				{name:'产品名称:',type:'select',id:'a1',width:'30%',data:[{name:'请选择',value:''}]},
-				{name:'业务来源:',type:'select',id:'a1',width:'30%',data:[{name:'请选择',value:''}]},
+				{name:'时间:',type:'assDate',id:['startTime','endTime'],width:'50%'},
+				{name:'订单状态:',type:'select',id:'orderStatus',width:'30%',bind:'orderState'},
+				{name:'来源机构:',type:'select',id:'agencyFrom',width:'30%',bind:'agencyFrom',child:'productId'},
+				{name:'产品名称:',type:'select',id:'productId',width:'30%',bind:'productList'},
+				{name:'业务来源:',type:'select',id:'businessFrom',width:'30%',bind:'businessFrom'},
 			],
 			summary:[
 				{name:'出款金额',value:'2011-11-11 -- 2011-11-11',key:'applyMoney'},
@@ -412,6 +412,10 @@ let Page = {
 		await all.getUserInfo();
 		this.createNav();
 		this.createSearch();
+		if($('#b_search').length != 0){
+			await selectData($('#b_search').get(0).body);
+		}
+
 
 		await this.getData({pageNum:1});
 		// this.createStatistics();
@@ -433,6 +437,7 @@ let Page = {
 			$(search).remove();
 			return;
 		}
+		console.log(searchData)
 		search.inputData = searchData;
 		search.clickFn = function(rs){
 			rs.pageNum = 1;
