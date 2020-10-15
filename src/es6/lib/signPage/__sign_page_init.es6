@@ -60,9 +60,12 @@ let signPage = {
 		$('script').each(function(){
 			var src = $(this).data('src');
 			if(src){
+				console.log('加载页面js');
 				$.getScript(src);
 			}
 		});
+		console.log('加载qt的js');
+		$.getScript('../qwebchannel.js');
 	}
 };
 
