@@ -212,7 +212,8 @@ class bWinLeft extends HTMLElement{
 
 	openIframePage(href){
 		let iframe = $(this).parent().parent().find('#win_right');
-		console.log('%c 打开页面:'+href,'color:red;')
+		console.log('%c 打开页面:'+href,'color:red;');
+		qt.iframeLoadingShow();
 		iframe.get(0).src = href;
 	}
 

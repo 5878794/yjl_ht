@@ -8,15 +8,40 @@ let loadFn = require('./lib/ui/loading_old'),
 
 let JD = {
     loading:{
+        isFirstRun:true,
         obj:null,
         show(){
-            if(!this.obj){
-                this.obj = new loadFn();
+            // if(!this.obj){
+            //     this.obj = new loadFn();
+            // }
+            // this.obj.show('数据加载中');
+            if(this.isFirstRun){
+
+            }else{
+                if(top.bridge && top.bridge.showTips){
+                    top.bridge.showTips('与服务器通讯中',0,99999);
+                }
             }
-            this.obj.show('数据加载中');
         },
         hide(){
-            this.obj.hide();
+            // this.obj.hide();
+            if(this.isFirstRun){
+                if(top.bridge && top.bridge.hideLoading){
+                    setTimeout(function(){
+                        top.bridge.hideLoading();
+                    },300)
+                }
+                this.isFirstRun = false;
+            }else{
+                if(top.bridge && top.bridge.hideTips){
+                    top.bridge.hideTips(0);
+                }
+            }
+        }
+    },
+    iframeLoadingShow(){
+        if(top.bridge && top.bridge.showLoading){
+            top.bridge.showLoading();
         }
     },
     alert(msg,title){
@@ -78,6 +103,7 @@ let JD = {
     openPage(url,width,height,type){
         //width,height 废弃
         console.log('%c 打开弹窗页面:'+url,'color:red;');
+        //TODO 要改成0
         type = type || 0;
 
         let {newWidth,newHeight} = winSettingSize.publish(url);

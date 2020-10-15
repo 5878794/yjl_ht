@@ -53,12 +53,16 @@ input:-moz-placeholder {
 
 
 
-
+@font-face{
+    font-family: 'my_font';
+    src:url('../FZDHTJW.TTF') format('truetype');
+}
 body{
-    font-family: "微软雅黑", Arial, "宋体";
+    font-family: "my_font";
     /*font-family: 'Open Sans', sans-serif ;*/
     /*color:#fff;*/
     min-width: 320px;
+    font-weight: 200;
     /*background: #000;*/
 }
 
