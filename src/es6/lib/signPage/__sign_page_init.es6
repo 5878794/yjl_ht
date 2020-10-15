@@ -65,8 +65,10 @@ let signPage = {
 			}
 		});
 		if(top===window){
-			console.log('加载qt的js');
-			$.getScript('../qwebchannel1.js');
+			if(window.location.href.indexOf('file:\/\/\/')>-1){
+				console.log('加载qt的js');
+				$.getScript('../qwebchannel1.js');
+			}
 		}
 
 	}

@@ -119,7 +119,7 @@ class bWinLeft extends HTMLElement{
 			'.menu .select{background: #445cb8;}',
 			'.scroll_style1::-webkit-scrollbar {width: 4px;height: 4px;}',
 			'.scroll_style1::-webkit-scrollbar-thumb {border-radius: 10px;background: #999;}',
-			'.scroll_style1::-webkit-scrollbar-track {border-radius: 10px;background: #fff;}'
+			'.scroll_style1::-webkit-scrollbar-track {border-radius: 10px;background: #262642;}'
 		];
 
 
