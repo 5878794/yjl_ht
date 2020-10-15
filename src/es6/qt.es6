@@ -78,8 +78,7 @@ let JD = {
     openPage(url,width,height,type){
         //width,height 废弃
         console.log('%c 打开弹窗页面:'+url,'color:red;');
-        //TODO 要改成0
-        type = type || 1;
+        type = type || 0;
 
         let {newWidth,newHeight} = winSettingSize.publish(url);
         console.log('%c 大小:w:'+newWidth+'  h:'+newHeight,'color:red;');
