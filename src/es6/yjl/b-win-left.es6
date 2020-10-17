@@ -106,7 +106,7 @@ class bWinLeft extends HTMLElement{
 	}
 	createStyle(){
 		let css = [
-			'.logo{width: 100%; height: 80px;font-size: 20px;color: #fff;font-weight: bold;}',
+			'.logo{width: 100%; height: 80px;font-size: 20px;color: #fff;}',
 			'.logo img{display: block;width: 31px;height: 40px;margin-right: 15px;}',
 			'.menu{width: 100%; position: absolute;left:0; top:0; bottom:0;overflow-y: auto;overflow-x: hidden;padding:5px;}',
 			'.menu_item{width: 100%;height: 50px;cursor: pointer;padding-left: 10px;border-radius: 5px;}',

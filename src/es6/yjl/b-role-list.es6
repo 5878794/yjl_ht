@@ -92,7 +92,7 @@ class bRoleList extends HTMLElement{
         let css = [
             '.body{width:100%; padding:20px; box-sizing:border-box;}',
             '.border{border:1px solid rgb(234,243,251);; width:100%;}',
-            '.title{width:100%;height:34px;padding-left:20px;font-weight:bold;font-size:14px;background:rgb(234,243,251);}',
+            '.title{width:100%;height:34px;padding-left:20px;font-size:14px;background:rgb(234,243,251);}',
             '.list{width:100%;}',
             '.item{width:100%; height:40px;padding:10px 20px;border-top:1px solid rgb(234,243,251);font-size:14px;color:#333;}',
             '.btn{width:50px;height:24px;background:red;color:#fff;border-radius:5px;}'

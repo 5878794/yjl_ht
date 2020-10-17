@@ -96,7 +96,7 @@ class bRoleAuthority extends HTMLElement{
 			'.body{width:100%; padding:20px; box-sizing:border-box;}',
 			'.border{border:1px solid rgb(234,243,251);; width:100%;}',
 			'.titleBody{width:100%;height:34px;font-size:14px;background:rgb(234,243,251);}',
-			'.title{font-weight:bold;padding-left:20px;}',
+			'.title{padding-left:20px;}',
 			'.submit{color:#fff; background:#5576f0; width:50px; height:24px; border-radius:5px; margin:0 10px;}',
 			'.listBody{width:100%;position:relative;}',
 			'.cel1{width:100px;background:#f9f9f9;font-size:14px;color:#333;border-right:1px solid rgb(234,243,251);;position:absolute;left:0;top:0;bottom:0;}',

@@ -92,7 +92,7 @@ class bOrderInfo extends HTMLElement{
 			'.row1,.row3{padding-bottom:20px;}',
 			'.row2{padding-bottom:10px;}',
 			'.row1_cel1{width:240px;color:#fdc429;font-size:30px;}',
-			'.row1_cel2{width:200px;font-size:14px;color:#333;font-weight: bold;}',
+			'.row1_cel2{width:200px;font-size:14px;color:#333;}',
 			'.row1_cel2 span{font-size:12px;color:#ccc;}',
 			'.row1_cel3{text-align:right;font-size:12px;color:#ccc;}',
 			'.row3{font-size:16px; color:#0b8700;}',
@@ -104,7 +104,7 @@ class bOrderInfo extends HTMLElement{
 			'.row2_cel1_row1 div{width:120px;}',
 			'.row2_cel1_row1:first-child span{font-size:14px;}',
 			'.row2_cel2{width:30%;font-size:14px;text-align:right;}',
-			'.row2_cel2 p{font-weight: bold;}',
+			'.row2_cel2 p{}',
 			'.row2_cel2 span{font-size:12px;color:#ccc;}'
 		];
 

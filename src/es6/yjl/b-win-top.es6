@@ -60,7 +60,7 @@ class bWinTop extends HTMLElement{
 	}
 	createStyle(){
 		let css = [
-			'.top{width: 100%; height: 80px; overflow: hidden;padding-left: 30px; font-size: 16px;font-weight: bold;color:#000;}',
+			'.top{width: 100%; height: 80px; overflow: hidden;padding-left: 30px; font-size: 16px;color:#000;}',
 			'.top a{padding:0 5px;}',
 			'.top_btn{padding:0 20px;}',
 			'.top_btn span{padding:0 10px;border-right:1px solid #ccc;color:#333;font-size:14px;font-weight: normal;}',

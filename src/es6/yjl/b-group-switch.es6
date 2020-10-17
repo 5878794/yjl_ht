@@ -86,7 +86,7 @@ class bGroupSwitch extends HTMLElement{
 		let css = [
 			'.body{width:100%; padding:20px; box-sizing:border-box;}',
 			'.main{width:100%; font-size:14px; color:#333;border:1px solid #ccc;}',
-			'.title{width:100%; height:40px; padding-left:20px;background:#eee;font-weight:bold}',
+			'.title{width:100%; height:40px; padding-left:20px;background:#eee;}',
 			'.list{width:100%;}',
 			'.item{width:100%; border-top:1px solid #eee; padding:5px 10px;}',
 			'.item b-switch{display:block; width:60px; height:24px; padding-left:20px;}',

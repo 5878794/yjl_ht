@@ -47,7 +47,7 @@ module.exports = function(isAlert,msg,titleMsg='系统提示',iconSrc,width=0,he
 				'font-size':'0.36rem',
 				width:'100%',
 				padding:'0.2rem 0',
-				'font-weight':'bold',
+				// 'font-weight':'bold',
 				'text-align':'center',
 				'border-bottom':'0.01rem dashed #ccc'
 			});
