@@ -134,8 +134,11 @@ let key = [
 	// {name:'CHU_KU_CHUKU_SYSTEM',value:'',info:'系统-出库',api:''}
 
 
-
-
+	// DIAN_ZI_DINGDAN_FINISH_SYSTEM 系统-订单完成
+	// FANG_DI_DINGDAN_FINISH_SYSTEM 系统-订单完成
+	//后面配置的api无效
+	{name:'DIAN_ZI_DINGDAN_FINISH_SYSTEM',value:'../business/business_info.html',info:'系统-订单完成',api:'/api/ckOrderFlow/jiTuanChukuOverOrder'},
+	{name:'FANG_DI_DINGDAN_FINISH_SYSTEM',value:'../business/business_info.html',info:'系统-订单完成',api:'/api/ckOrderFlow/jiTuanChukuOverOrder'},
 ];
 
 let key1 = {};
