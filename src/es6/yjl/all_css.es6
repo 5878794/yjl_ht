@@ -51,7 +51,8 @@ var text = [
 	'.scroll_xy{overflow: auto;-webkit-overflow-scrolling: touch;padding-bottom: 0.2rem;padding-right: 0.2rem;}',
 	'.scroll_xy::-webkit-scrollbar{display: none;}',
 	'.hover{cursor: pointer;}',
-	'.hover:hover{opacity: 0.4;}'
+	'.hover:hover{opacity: 0.4;}',
+	'::-webkit-inner-spin-button { visibility: hidden; }  '
 ];
 
 
