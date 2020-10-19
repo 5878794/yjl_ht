@@ -57,19 +57,32 @@ let signPage = {
 	},
 	//多页面模式 加载本身的js
 	reWriteFn(){
-		$('script').each(function(){
+		var script = $('script[data-src]'),
+			l = script.length,
+			s = 0;
+		var loadOk = function() {
+			s++;
+			console.log(l,s)
+			if (s >= l) {
+				if(top===window){
+					if(window.location.href.indexOf('file:\/\/\/')>-1){
+						console.log('加载qt的js');
+						$.getScript('../qwebchannel1.js');
+					}
+				}
+			}
+		};
+
+		script.each(function(){
 			var src = $(this).data('src');
 			if(src){
 				console.log('加载页面js');
-				$.getScript(src);
+				$.getScript(src,function(){loadOk()});
+			}else{
+				loadOk();
 			}
 		});
-		if(top===window){
-			if(window.location.href.indexOf('file:\/\/\/')>-1){
-				console.log('加载qt的js');
-				$.getScript('../qwebchannel1.js');
-			}
-		}
+
 
 	}
 };
