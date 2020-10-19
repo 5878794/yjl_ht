@@ -68,7 +68,7 @@ let Page = {
         this.businessDist = await selectData('businessType');
 
         await this.getData({pageNum:1});
-
+        this.addEventEnter();
     },
     async getData(data){
         this.catchListParam = data;
@@ -287,6 +287,25 @@ let Page = {
         let data = this.catchListParam;
         console.log('refresh')
         all.showLoadingRun(this,'getData',data);
+    },
+    addEventEnter(){
+        let input = $('#search1').get(0).body.find('b-input').get(0).body.find('input'),
+            focus = false,
+            _this = this;
+        input.focus(function(){focus=true;});
+        input.blur(function(){focus=false;});
+
+        window.addEventListener('keydown',function(e){
+            if(focus && e.code=='Enter'){
+                let rs={
+                    searchKey:input.val(),
+                    pageNum:1
+                };
+                all.showLoadingRun(_this,'getData',rs);
+            }
+        },false)
+
+
     }
 };
 
