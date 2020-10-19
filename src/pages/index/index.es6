@@ -209,7 +209,7 @@ let Page = {
             all.showLoadingRun(_this,'getData',rs);
         };
 
-        inputStyle.searchSet(search);
+        inputStyle.searchSet(search,'search');
     },
     createList(data){
         let table = $('#table_list').get(0);

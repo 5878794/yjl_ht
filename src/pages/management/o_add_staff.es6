@@ -28,7 +28,6 @@ require('./../../es6/customElement/pc/input_file');
 
 
 
-let loading;
 let Page = {
 	init(){
 		all.showLoadingRun(this,'run');
@@ -36,6 +35,9 @@ let Page = {
 	async run(){
 		let param = getParamFromUrl();
 		this.id = param.id;
+
+		//处理界面
+		this.showHideUi();
 
 		inputStyle.set(true,true);
 
@@ -57,6 +59,20 @@ let Page = {
 		$('#submit').click(function(){
 			all.showLoadingRun(_this,'submit');
 		});
+
+		$('#reset_psd').click(function(){
+			all.showLoadingRun(_this,'reset_psd');
+		});
+	},
+	showHideUi(){
+		if(this.id || this.id==0){
+			//修改
+			$('.mdf_remove').remove();
+			$('#change_class').removeClass('openWin_input_item1').addClass('openWin_input_item2_');
+		}else{
+			//添加
+			$('#reset_psd').remove();
+		}
 	},
 
 	async submit(){
@@ -77,6 +93,11 @@ let Page = {
 
 		qt.alert('添加成功!');
 		qt.closeWin();
+	},
+	reset_psd(){
+		//密码改成固定的密码
+		//TODO
+		qt.alert('暂无接口')
 	}
 
 };
