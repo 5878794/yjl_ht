@@ -37,6 +37,7 @@ let Page = {
 		this.state = param.state;
 
 		await all.getUserInfo();
+		await selectData($('#from'));
 		let [data] = await ajax.send([
 			api.file_list({id:this.id})
 		]);
