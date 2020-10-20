@@ -43,6 +43,7 @@ let Page = {
 		}
 
 		await all.getUserInfo();
+		await selectData($('#from'));
 		let [data] = await ajax.send([
 			api.file_list({orderNo:this.orderNo})
 		]);
