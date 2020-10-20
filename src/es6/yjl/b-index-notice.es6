@@ -101,7 +101,7 @@ class bIndexNotice extends HTMLElement{
 	run(val){
 		let _this = this;
 		let width = _this.animateWidth * (1-val) - _this.scrollerWidth;
-		// console.log(val,width)
+		console.log(val,_this.animateWidth,_this.scrollerWidth)
 		_this.scrollDiv.css({
 			transform:'translateX('+width+'px)'
 		});
@@ -162,7 +162,9 @@ class bIndexNotice extends HTMLElement{
 			_this.getAnimateWidth();
 			_this.animateFn.restart();
 		},300);
-
+		setTimeout(function(){
+			_this.getAnimateWidth();
+		},500)
 
 	}
 	set clickFn(fn){
