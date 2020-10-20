@@ -94,10 +94,13 @@ let Page = {
 		qt.alert('添加成功!');
 		qt.closeWin();
 	},
-	reset_psd(){
+	async reset_psd(){
 		//密码改成固定的密码
-		//TODO
-		qt.alert('暂无接口')
+
+		await ajax.send([
+			api.resetPassword({userId:this.id})
+		]);
+		qt.alert('重置密码成功!');
 	}
 
 };

@@ -86,6 +86,8 @@ let ajax = {
 let api = {
 	//登录
 	login:{url:'/api/user/login',type:'post'},
+	//重置密码
+	resetPassword:{url:'/api/user/resetPassword/{userId}',type:'post'},
 
 
 	//首页
