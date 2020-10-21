@@ -65,7 +65,7 @@ let Page = {
 
 		tableSet.set(table,'mortgage_repayment');
 		table.listBody.removeClass('boxflex1');
-		table.rowWidth = 1200;
+		table.rowWidth = 1600;
 
 		data.map(rs=>{
 			//还款时间

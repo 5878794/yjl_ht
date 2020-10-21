@@ -406,7 +406,7 @@ let setting = {
 		data:[
 			{
 				name:'订单号',
-				width:'7%',
+				width:'9%',
 				style:{color:'#333',fontSize:'14px'},
 				key:'orderNo'                //数据对应的key
 			},
@@ -430,7 +430,7 @@ let setting = {
 			},
 			{
 				name:'业务类型',
-				width:'7%',
+				width:'6%',
 				style:{color:'#333',fontSize:'14px'},
 				key:'businessKey_'                //数据对应的key
 			},
@@ -442,13 +442,13 @@ let setting = {
 			},
 			{
 				name:'咨询费',
-				width:'8%',
+				width:'7.5%',
 				style:{color:'#333',fontSize:'14px'},
 				key:'consultationFee_'                //数据对应的key
 			},
 			{
 				name:'服务费',
-				width:'8%',
+				width:'7.5%',
 				style:{color:'#333',fontSize:'14px'},
 				key:'serviceFee_'                //数据对应的key
 			},
