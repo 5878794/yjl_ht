@@ -136,9 +136,19 @@ let key = [
 
 	// DIAN_ZI_DINGDAN_FINISH_SYSTEM 系统-订单完成
 	// FANG_DI_DINGDAN_FINISH_SYSTEM 系统-订单完成
+	// TUI_KUAN_RETURN_MONEY_SYSTEM 系统-退款
+	// HEXIAO_DINGDAN_HEXIAO_SYSTEM 系统-核销
+	// CHU_KU_CHUKU_SYSTEM 系统-出库
+	// TUI_FEI_RETURN_MONEY_SYSTEM 系统-退费
 	//后面配置的api无效
 	{name:'DIAN_ZI_DINGDAN_FINISH_SYSTEM',value:'../business/business_info.html',info:'系统-订单完成',api:'/api/ckOrderFlow/jiTuanChukuOverOrder'},
 	{name:'FANG_DI_DINGDAN_FINISH_SYSTEM',value:'../business/business_info.html',info:'系统-订单完成',api:'/api/ckOrderFlow/jiTuanChukuOverOrder'},
+	{name:'TUI_KUAN_RETURN_MONEY_SYSTEM',value:'../business/business_info.html',info:'系统-退款',api:'/api/ckOrderFlow/jiTuanChukuOverOrder'},
+	{name:'HEXIAO_DINGDAN_HEXIAO_SYSTEM',value:'../business/business_info.html',info:'系统-核销',api:'/api/ckOrderFlow/jiTuanChukuOverOrder'},
+	{name:'CHU_KU_CHUKU_SYSTEM',value:'../business/business_info.html',info:'系统-出库',api:'/api/ckOrderFlow/jiTuanChukuOverOrder'},
+	{name:'TUI_FEI_RETURN_MONEY_SYSTEM',value:'../business/business_info.html',info:'系统-退费',api:'/api/ckOrderFlow/jiTuanChukuOverOrder'},
+
+
 ];
 
 let key1 = {};
