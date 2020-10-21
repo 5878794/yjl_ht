@@ -208,7 +208,8 @@ class bInputFile extends bInput{
 			img = $(`<img class="hover" src="${imgSrc}">`);
 
 		img.css({
-			cursor:'pointer'
+			cursor:'pointer',
+			'max-width':'100%'
 		});
 		img.get(0).onload = function(){
 			let imgW = this.width,
@@ -393,7 +394,8 @@ class bInputFile extends bInput{
 				//是图片
 				let img = $(`<img class="hover" src="${rs}">`);
 				img.css({
-					cursor:'pointer'
+					cursor:'pointer',
+					'max-width':'100%'
 				});
 				img.get(0).onload = function(){
 					let imgW = this.width,
