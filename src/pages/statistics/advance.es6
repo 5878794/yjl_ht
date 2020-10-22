@@ -140,7 +140,7 @@ const SETTINGDATA = {
 				{name:'待回款金额',value:'3,333,333,333.00000',key:'notReceivedConsultationFee'}
 			],
 			table:'advance_type3',
-			width:'100%',
+			width:'1400px',
 			tempData:[
 				{key:'key1',apiKey:'orderCreateTime',fn:function(data){
 						let t = data.orderCreateTime;
@@ -173,7 +173,7 @@ const SETTINGDATA = {
 				{name:'待回款金额',value:'3,333,333,333.00000',key:'notReceivedConsultationFee'}
 			],
 			table:'advance_type3',
-			width:'100%',
+			width:'1400px',
 			tempData:[
 				{key:'key1',apiKey:'orderCreateTime',fn:function(data){
 						let t = data.orderCreateTime;
@@ -206,7 +206,7 @@ const SETTINGDATA = {
 				{name:'待回款金额',value:'3,333,333,333.00000',key:'notReceivedConsultationFee'}
 			],
 			table:'advance_type3',
-			width:'100%',
+			width:'1400px',
 			tempData:[
 				{key:'key1',apiKey:'orderCreateTime',fn:function(data){
 						let t = data.orderCreateTime;
@@ -238,7 +238,7 @@ const SETTINGDATA = {
 				{name:'平均优惠费用',value:'3,333,333,333.00000',key:'avgPreferentialFee'}
 			],
 			table:'advance_type6',
-			width:'1600px',
+			width:'2000px',
 			tempData:[
 				{key:'key1',apiKey:'orderCreateTime',fn:function(data){
 					let t = data.orderCreateTime??'';
@@ -284,7 +284,7 @@ const SETTINGDATA = {
 				{name:'盈亏',value:'3,333,333,333.00000',key:'profitAndLoss'}
 			],
 			table:'arrival_type1',
-			width:'1400px',
+			width:'1800px',
 			tempData:[
 				{key:'key1',apiKey:'orderNo',fn:null},
 				{key:'key2',apiKey:'customerName',fn:null},
@@ -312,7 +312,7 @@ const SETTINGDATA = {
 				{name:'咨询费',value:'3,333,333,333.00000',key:'consultationFee'}
 			],
 			table:'arrival_type2',
-			width:'100%',
+			width:'1400px',
 			tempData:[
 				{key:'key1',apiKey:'customerName',fn:null},
 				{key:'key2',apiKey:'planNumber',fn:null},
@@ -338,7 +338,7 @@ const SETTINGDATA = {
 				{name:'逾期咨询费',value:'3,333,333,333.00000',key:'overdueConsultationFee'}
 			],
 			table:'arrival_type3',
-			width:'100%',
+			width:'1400px',
 			tempData:[
 				{key:'key1',apiKey:'customerName',fn:null},
 				{key:'key2',apiKey:'planNumber',fn:null},
@@ -374,7 +374,7 @@ const SETTINGDATA = {
 				{name:'优惠费用',value:'3,333,333,333.00000',key:'preferentialFee'}
 			],
 			table:'arrival_type4',
-			width:'1600px',
+			width:'2200px',
 			tempData:[
 				{key:'key1',apiKey:'customerName',fn:null},
 				{key:'key2',apiKey:'userName',fn:null},
