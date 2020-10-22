@@ -406,7 +406,7 @@ let setting = {
 		data:[
 			{
 				name:'订单号',
-				width:'9%',
+				width:'11%',
 				style:{color:'#333',fontSize:'14px'},
 				key:'orderNo'                //数据对应的key
 			},
@@ -454,25 +454,25 @@ let setting = {
 			},
 			{
 				name:'权证费',
-				width:'8%',
+				width:'7.5%',
 				style:{color:'#333',fontSize:'14px'},
 				key:'warrantFee_'                //数据对应的key
 			},
 			{
 				name:'优惠费用',
-				width:'8%',
+				width:'7.5%',
 				style:{color:'rgb(198,84,98)',fontSize:'14px'},
 				key:'preferentialFee_'                //数据对应的key
 			},
 			{
 				name:'已收小记',
-				width:'8%',
+				width:'7.5%',
 				style:{color:'#333',fontSize:'14px'},
 				key:'totalCost_'                //数据对应的key
 			},
 			{
 				name:'费用退补',
-				width:'8%',
+				width:'7.5%',
 				style:{color:'rgb(198,84,98)',fontSize:'14px'},
 				key:'compensationRefundFee_'                //数据对应的key
 			},
