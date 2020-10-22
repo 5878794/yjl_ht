@@ -89,7 +89,7 @@ let Page = {
         data.map(rs=>{
             rs.orderStatus_ = this.orderStateDist[rs.orderStatus];
             rs.dealTime_ = stamp2Date.getDate1(rs.dealTime);
-            rs.remainderDays_ = (rs.remainderDays)? rs.remainderDays+'天' : '';
+            rs.remainderDays_ = (rs.remainderDays || rs.remainderDays==0)? rs.remainderDays+'天' : '';
         });
 
         table.show(data);
