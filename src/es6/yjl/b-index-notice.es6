@@ -101,7 +101,6 @@ class bIndexNotice extends HTMLElement{
 	run(val){
 		let _this = this;
 		let width = _this.animateWidth * (1-val) - _this.scrollerWidth;
-		console.log(val,_this.animateWidth,_this.scrollerWidth)
 		_this.scrollDiv.css({
 			transform:'translateX('+width+'px)'
 		});
