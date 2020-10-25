@@ -245,7 +245,8 @@ let api = {
 	afterLoan_pay_info:{url:'/api/loanAfterOrder/getOrderLoanDisburseRecordByOrderNo/{orderNo}',type:'get'},
 		//集团展期审核初始化数据
 	afterLoan_group_rollover_info:{url:'/api/orderExhibitionPeriodRecord/getOrderExhibitionPeriodRecordByOrderNo/{orderNo}',type:'get'},
-
+		//新增贷后支出
+	afterLoan_new_add:{url:'/api/dhZcOrderFlow/daiHouAddZhiChu',type:'post'},
 
 	//财务
 	finance_list:{url:'/api/financeOrder/list',type:'get'},
