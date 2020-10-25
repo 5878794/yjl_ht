@@ -39,7 +39,7 @@ let Page = {
 
         await all.getUserInfo();
         this.clientCategoryDist = await selectData('clientType',true);
-        this.createBTitlesBtn();
+
 
 
         let [data,changeList,record] = await ajax.send([
@@ -52,6 +52,7 @@ let Page = {
                 orderNo:this.orderNo
             })
         ]);
+        let orderType = data.businessKey;
         await all.setOrderTopData(4,data);
         await all.setRecordData(record);
 
@@ -61,6 +62,7 @@ let Page = {
         })
 
         this.addHistory(newChangeList);
+        this.createBTitlesBtn(orderType);
 
     },
     addBtnEvent(){
@@ -80,7 +82,7 @@ let Page = {
             qt.closeWin();
         });
     },
-    createBTitlesBtn(){
+    createBTitlesBtn(order_type){
         let btn = $('#mdf').get(0),
             _this = this;
 
@@ -98,15 +100,27 @@ let Page = {
         });
         newDist.shift();
 
+        //房抵 不显示变更还款账号和展期
+        if(order_type == 1){
+            btn.btnData = [
+                {name:'变更客户资料', type:'btn1', style:{color:'#5576f0'}},
+                // {name:'变更还款账号', type:'btn2', style:{color:'#5576f0'}},
+                {name:'新增贷后支出', type:'btn3', style:{color:'#5576f0'}},
+                {name:'核销', type:'btn4', style:{color:'#5576f0'}},
+                // {name:'展期', type:'btn5', style:{color:'#5576f0'}},
+                {name:'客户分类', style:{color:'#5576f0'},children:newDist}
+            ];
+        }else{
+            btn.btnData = [
+                {name:'变更客户资料', type:'btn1', style:{color:'#5576f0'}},
+                {name:'变更还款账号', type:'btn2', style:{color:'#5576f0'}},
+                {name:'新增贷后支出', type:'btn3', style:{color:'#5576f0'}},
+                {name:'核销', type:'btn4', style:{color:'#5576f0'}},
+                {name:'展期', type:'btn5', style:{color:'#5576f0'}},
+                {name:'客户分类', style:{color:'#5576f0'},children:newDist}
+            ];
+        }
 
-        btn.btnData = [
-            {name:'变更客户资料', type:'btn1', style:{color:'#5576f0'}},
-            {name:'变更还款账号', type:'btn2', style:{color:'#5576f0'}},
-            {name:'新增贷后支出', type:'btn3', style:{color:'#5576f0'}},
-            {name:'核销', type:'btn4', style:{color:'#5576f0'}},
-            {name:'展期', type:'btn5', style:{color:'#5576f0'}},
-            {name:'客户分类', style:{color:'#5576f0'},children:newDist}
-        ];
 
 
 
