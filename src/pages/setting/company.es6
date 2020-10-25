@@ -37,9 +37,21 @@ let Page = {
 
 		//处理公司列表数据
 		companyList = companyList.list || [];
-		companyList.map(rs=>{
+		let jtId = null;
+		companyList.map((rs,i)=>{
+			if(rs.id == 1){     //集团公司id=1
+				jtId = i;
+			}
 			rs.name = rs.companyName;
 		});
+		//删除id=1的集团公司  不显示
+		console.log(jtId)
+		if(jtId || jtId==0){
+			companyList.splice(jtId,1);
+		}
+
+
+		console.log(companyList)
 		this.createList(companyList);
 
 		//获取第一个机构下的产品
