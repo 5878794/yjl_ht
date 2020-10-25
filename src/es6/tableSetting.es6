@@ -1110,7 +1110,7 @@ let setting = {
 			},
 			{
 				name:'住址',
-				width:'45%',
+				width:'40%',
 				style:{color:'#333',fontSize:'14px'},
 				key:'address'                //数据对应的key
 			},
@@ -1121,10 +1121,10 @@ let setting = {
 				key:'inductionTime_'                //数据对应的key
 			},
 			{
-				name:'所属部门',
-				width:'20%',
+				name:'隶属',
+				width:'25%',
 				style:{color:'#333',fontSize:'14px'},
-				key:'deptName'                //数据对应的key
+				key:'_deptName'                //数据对应的key
 			}
 		]
 	},

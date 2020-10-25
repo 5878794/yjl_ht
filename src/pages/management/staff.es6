@@ -88,7 +88,9 @@ let Page = {
 
 		data.map(rs=>{
 			rs.inductionTime_ = stamp2Date.getDate1(rs.inductionTime);
+			rs._deptName = rs.companyName+'-'+rs.deptName;
 		});
+		console.log(data)
 
 		table.show(data);
 
