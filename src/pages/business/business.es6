@@ -130,9 +130,11 @@ let Page = {
            rs.businessKey_ = this.productTypeDist[rs.businessKey];
            rs.applyMoney_ = moneyFormat(rs.applyMoney,5);
            rs.orderStatus_ = this.orderStateDist[rs.orderStatus];
+           rs.ddgs_ = rs.companyName+'-'+rs.deptName;
            rs.key6 = '查看详情';
         });
 
+        console.log(data);
         table.show(data);
 
         table.body.find('.__key6__').each(function(){

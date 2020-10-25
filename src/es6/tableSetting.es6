@@ -147,19 +147,19 @@ let setting = {
 		data:[
 			{
 				name:'订单号',
-				width:'20%',
+				width:'19%',
 				style:{color:'#333',fontSize:'14px'},
 				key:'orderNo'                //数据对应的key
 			},
 			{
 				name:'姓名',
-				width:'15%',
+				width:'10%',
 				style:{color:'#333',fontSize:'14px'},
 				key:'clientName'                //数据对应的key
 			},
 			{
 				name:'产品类型',
-				width:'15%',
+				width:'10%',
 				style:{color:'#333',fontSize:'14px'},
 				key:'businessKey_'                //数据对应的key
 			},
@@ -170,14 +170,20 @@ let setting = {
 				key:'applyMoney_'                //数据对应的key
 			},
 			{
+				name:'订单归属',
+				width:'20%',
+				style:{color:'#333',fontSize:'14px'},
+				key:'ddgs_'                //数据对应的key
+			},
+			{
 				name:'订单状态',
-				width:'15%',
+				width:'8%',
 				style:{color:'#333',fontSize:'14px'},
 				key:'orderStatus_'                //数据对应的key
 			},
 			{
 				name:'操作',
-				width:'10%',
+				width:'8%',
 				style:{color:'rgb(86,123,249)',fontSize:'14px'},
 				key:'key6'                //数据对应的key
 			}
