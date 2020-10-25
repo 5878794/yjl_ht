@@ -3,6 +3,7 @@ let app = require('./../../es6/lib/page'),
 	all = require('./../../es6/all'),
 	{ajax,api} = require('./../../es6/_ajax'),
 	qt = require('./../../es6/qt'),
+	gerParamFromUrl = require('./../../es6/lib/fn/getParamFromUrl'),
 	pageSizeSetting = require('./../../es6/pageSize'),
 	winSetting = require('./../../es6/winSetting'),
 	tableSet = require('./../../es6/tableSetting'),
@@ -26,9 +27,32 @@ let Page = {
 	async run(){
 		await all.getUserInfo();
 
+		let param = gerParamFromUrl();
+		this.orderNo = param.orderNo;
+
 		await selectData($('#form'));
 		this.setInput();
 		this.bindEvent();
+
+
+		if(this.orderNo){
+			await this.initValueSearch(this.orderNo);
+		}
+
+	},
+	//已传入订单编号
+	async initValueSearch(orderNo){
+		let [data] = await ajax.send([
+			api.file_list({orderNo:orderNo})
+		]);
+		data = data.list || [];
+		data = data[0] || {};
+
+		let userName = data.name;
+
+		$('#orderNo').get(0).value = orderNo;
+		$('#orderNo').get(0).disabled = true;
+		$('#name').get(0).value = userName;
 
 	},
 	setInput(){
