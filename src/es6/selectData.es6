@@ -423,28 +423,31 @@ module.exports = async function(dom,needArray){
 	bSelect.each(function(){
 		let type = $(this).data('bind'),
 			child = $(this).data('child'),
+			hasData = this.hasData,
 			data = dist[type] || [],
 			api = distApi[type];
 
-		if(data.length==0 && api){
-			//需要从服务器获取数据
-			serverData.push({dom:this,type,api});
-		}else{
-			//直接赋值
-			this.selectData = data;
-		}
+		if(!hasData){
+			if(data.length==0 && api){
+				//需要从服务器获取数据
+				serverData.push({dom:this,type,api});
+			}else{
+				//直接赋值
+				this.selectData = data;
+			}
 
-		//有级联的select
-		if(child){
-			this.change = function(val,id){
-				qt.loading.show();
-				getChildData(val,id).then(rs=>{
-					qt.loading.hide();
-				}).catch(e=>{
-					qt.loading.hide();
-					qt.alert(e);
-				})
-			};
+			//有级联的select
+			if(child){
+				this.change = function(val,id){
+					qt.loading.show();
+					getChildData(val,id).then(rs=>{
+						qt.loading.hide();
+					}).catch(e=>{
+						qt.loading.hide();
+						qt.alert(e);
+					})
+				};
+			}
 		}
 	});
 

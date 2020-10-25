@@ -32,7 +32,7 @@ let Page = {
     productTypeDist:{},
     async run(){
         await all.getUserInfo();
-        this.createSearch();
+        await this.createSearch();
         await selectData($('#b_search').get(0).body);
 
         let param = getParamFromUrl(),
@@ -83,7 +83,7 @@ let Page = {
         });
 
     },
-    createSearch(){
+    async createSearch(){
         let search = $('#b_search').get(0),
             _this = this;
 
@@ -92,8 +92,6 @@ let Page = {
             userRole = userInfo.orderSearchPrivilegeType,
             searchList;
 
-        //TODO
-        userRole=2;
         if(userRole == 4){
             searchList = [
                 {name:'客户姓名:',type:'text',id:'clientName',width:'25%'},
@@ -114,6 +112,10 @@ let Page = {
             ]
         }
 
+        if(userRole==2 || userRole==3){
+            let [userList] = await this.getSelectData();
+            searchList.push({name:'经办人',type:'select',id:'operationId',width:'25%',data:userList});
+        }
 
 
         search.inputData = searchList;
@@ -125,6 +127,23 @@ let Page = {
 
         inputStyle.searchSet(search);
 
+    },
+    async getSelectData(){
+        let companyId = window.companyId,
+            [userList] = await ajax.send([
+                api.staff_list({companyId:companyId,pageSize:99999}),
+            ]);
+        userList = userList.list || [];
+
+        userList.map(rs=>{
+            rs.name = rs.userName;
+            rs.value = rs.id;
+        });
+        userList.unshift({
+            name:'请选择',value:''
+        });
+
+        return [userList];
     },
     createList(data){
         let table = $('#table_list').get(0);

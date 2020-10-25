@@ -158,6 +158,9 @@ class bSearch extends HTMLElement{
 				input = `<b-input style="width:${rs.width};" ${bind} ${child} type="select" name="${rs.name}" key="${rs.id}" placeholder="${rs.placeholder || ''}"></b-input>`;
 				input = $(input).get(0);
 				input.selectData = rs.data || [];
+				if(rs.data){
+					input.hasData = true;
+				}
 				body.append(input);
 				this.setInputStyle(input,rs.type);
 				break;
