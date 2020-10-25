@@ -45,12 +45,14 @@ let Page = {
 		await all.setOrderTopData(4,data);
 		await all.setOrderHistoryData(history,true);
 
-		this.bindData(data);
+		let type = data.businessKey;
+		this.bindData(data,type);
 		this.addBtnEvent();
 
 	},
-	bindData(data){
-		let newData = data.orderClientBankAccount??{};
+	bindData(data,type){
+		let newData = (type==1)? data.orderClientBankAccount : data.orderReturnRepayment;
+		newData = newData || {};
 		all.setFromVal($('#form'),newData);
 
 		let input1 = $('#loanPassagewayFee').get(0),
