@@ -57,7 +57,7 @@ let Page = {
 			_this = this,
 			fn = function(){
 				let val = bInput.get(0).value,
-					total = $('#total').text(),
+					total = $('#total').text().replace(/,/ig,'')*1,
 					nowValue = total-val;
 
 				sydh.get(0).value = nowValue;
