@@ -111,7 +111,8 @@ class bRoleList extends HTMLElement{
             return;
         }
 
-        data.map(rs=>{
+        data.map((rs,i)=>{
+            rs.i = i;
            this.add(rs);
         });
     }

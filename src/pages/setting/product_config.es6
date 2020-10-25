@@ -19,8 +19,8 @@ require('./../../es6/yjl/b-role-list');
 
 
 
-let loading;
 let Page = {
+    choose:0,
     init(){
         all.showLoadingRun(this,'run');
     },
@@ -48,7 +48,7 @@ let Page = {
         //获取第一个机构下的产品
         if(orgList.length == 0){return;}
         let orglistDom = $('#list').get(0);
-        orglistDom.triggerClick(0);
+        orglistDom.triggerClick(this.choose);
     },
     //产品类型字典
     async setDist(){
@@ -84,6 +84,7 @@ let Page = {
             }
         };
         list.click = function(data){
+            _this.choose = data.i;
             _this.orgData = data;
             qt.loading.show();
             _this.showProduct(data).then(rs=>{
@@ -103,7 +104,8 @@ let Page = {
         ]);
 
         await qt.alert('删除成功');
-        qt.refreshPage();
+        // qt.refreshPage();
+        all.showLoadingRun(this,'run');
     },
 
     //显示机构下的产品
@@ -230,10 +232,12 @@ let Page = {
         ]);
 
         await qt.alert('删除成功');
-        qt.refreshPage();
+        // qt.refreshPage();
+        all.showLoadingRun(this,'run');
     },
     refreshList(){
-        window.location.reload();
+        // window.location.reload();
+        all.showLoadingRun(this,'run');
     }
 };
 window.refreshList = function(){

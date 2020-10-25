@@ -20,6 +20,7 @@ require('./../../es6/yjl/b-role-list');
 
 
 let Page = {
+	choose:0,
 	init(){
 		all.showLoadingRun(this,'run')
 	},
@@ -45,19 +46,17 @@ let Page = {
 			rs.name = rs.companyName;
 		});
 		//删除id=1的集团公司  不显示
-		console.log(jtId)
 		if(jtId || jtId==0){
 			companyList.splice(jtId,1);
 		}
 
 
-		console.log(companyList)
 		this.createList(companyList);
 
 		//获取第一个机构下的产品
 		if(companyList.length == 0){return;}
 		let companyDom = $('#list').get(0);
-		companyDom.triggerClick(0);
+		companyDom.triggerClick(this.choose);
 	},
 	//公司添加
 	bindTitleBtn(){
@@ -89,6 +88,7 @@ let Page = {
 			}
 		};
 		list.click = function(data){
+			_this.choose = data.i;
 			_this.companyData = data;
 			qt.loading.show();
 			_this.showDepartment(data).then(rs=>{
@@ -108,7 +108,8 @@ let Page = {
 		]);
 
 		await qt.alert('删除成功');
-		qt.refreshPage();
+		all.showLoadingRun(this,'run');
+		// qt.refreshPage();
 	},
 
 	//显示公司下的部门
@@ -182,10 +183,11 @@ let Page = {
 		]);
 
 		await qt.alert('删除成功');
-		qt.refreshPage();
+		// qt.refreshPage();
+		all.showLoadingRun(this,'run');
 	},
 	refreshList(){
-		window.location.reload();
+		all.showLoadingRun(this,'run');
 	}
 };
 window.refreshList = function(){

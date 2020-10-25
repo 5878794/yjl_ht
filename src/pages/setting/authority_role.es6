@@ -138,7 +138,7 @@ let Page = {
 		]);
 
 		await qt.alert('删除成功');
-		qt.refreshPage();
+		all.showLoadingRun(this,'run');
 	},
 	refreshList(){
 		all.showLoadingRun(this,'run');
