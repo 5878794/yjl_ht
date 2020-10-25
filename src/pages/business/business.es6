@@ -92,6 +92,8 @@ let Page = {
             userRole = userInfo.orderSearchPrivilegeType,
             searchList;
 
+        //TODO
+        userRole=2;
         if(userRole == 4){
             searchList = [
                 {name:'客户姓名:',type:'text',id:'clientName',width:'25%'},
@@ -111,6 +113,8 @@ let Page = {
                 {name:'日期',type:'assDate',id:['operationStartTime','operationEndTime'],width:'50%'}
             ]
         }
+
+
 
         search.inputData = searchList;
         search.clickFn = function(rs){
@@ -134,7 +138,6 @@ let Page = {
            rs.key6 = '查看详情';
         });
 
-        console.log(data);
         table.show(data);
 
         table.body.find('.__key6__').each(function(){

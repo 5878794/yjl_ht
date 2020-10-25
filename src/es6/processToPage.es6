@@ -4,8 +4,8 @@ let qt = require('./qt');
 
 let key = [
 	// {name:'DIAN_ZI_ZHIXING_SUBMIT_ORDER',value:'',info:'执行-提交订单'},
-		{name:'DIAN_ZI_JILING_AUDIT',value:'../approve/o_approve_room.html',info:'经理-部门初审',api:'/api/dzOrderFlow/auditOrder'},
-		{name:'DIAN_ZI_FENGKONG_AUDIT_1',value:'../publish/review.html',info:'风控-初审',api:'/api/dzOrderFlow/auditOrder'},
+		{name:'DIAN_ZI_JILING_AUDIT',value:'../publish/review.html',info:'经理-部门初审',api:'/api/dzOrderFlow/auditOrder'},
+		{name:'DIAN_ZI_FENGKONG_AUDIT_1',value:'../approve/o_approve_room.html',info:'风控-初审',api:'/api/dzOrderFlow/auditOrder'},
 		{name:'DIAN_ZI_QUANZHENG_AUDIT',value:'../publish/overSingle.html',info:'权证-执行下户',api:'/api/dzOrderFlow/quanZhengZhiXingXiaHu'},
 		{name:'DIAN_ZI_FENGKONG_AUDIT_2',value:'../publish/review.html',info:'风控-复审',api:'/api/dzOrderFlow/auditOrder'},
 		{name:'DIAN_ZI_GONGSI_AUDIT',value:'../publish/review.html',info:'公司-终审',api:'/api/dzOrderFlow/gongSiAudit'},
@@ -37,8 +37,8 @@ let key = [
 
 
 	// {name:'FANG_DI_ZHIXING_SUBMIT_ORDER',value:'',info:'执行-提交订单'},
-		{name:'FANG_DI_JILING_AUDIT',value:'../approve/o_approve_room.html',info:'经理-部门初审',api:'/api/fdOrderFlow/auditOrder'},
-		{name:'FANG_DI_FENGKONG_AUDIT_1',value:'../publish/review.html',info:'风控-初审',api:'/api/fdOrderFlow/auditOrder'},
+		{name:'FANG_DI_JILING_AUDIT',value:'../publish/review.html',info:'经理-部门初审',api:'/api/fdOrderFlow/auditOrder'},
+		{name:'FANG_DI_FENGKONG_AUDIT_1',value:'../approve/o_approve_room.html',info:'风控-初审',api:'/api/fdOrderFlow/auditOrder'},
 		{name:'FANG_DI_QUANZHENG_AUDIT',value:'../warrant/o_warrant_mdf_room.html',info:'权证-下户',api:'/api/fdOrderFlow/quanZhengXiaHu'},
 		{name:'FANG_DI_GONGSI_AUDIT',value:'../publish/review.html',info:'公司-终审',api:'/api/fdOrderFlow/gongSiAudit'},
 		{name:'FANG_DI_JITUAN_AUDIT',value:'../publish/review.html',info:'集团-终审',api:'/api/fdOrderFlow/jiTuanAudit'},
