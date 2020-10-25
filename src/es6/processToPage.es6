@@ -149,6 +149,15 @@ let key = [
 	{name:'TUI_FEI_RETURN_MONEY_SYSTEM',value:'../business/business_info.html',info:'系统-退费',api:'/api/ckOrderFlow/jiTuanChukuOverOrder'},
 
 
+
+	//审核不通过的 到订单修改
+	// DIAN_ZI_ZHIXING_SUBMIT_ORDER  ,
+	// FANG_DI_ZHIXING_SUBMIT_ORDER
+	{name:'DIAN_ZI_ZHIXING_SUBMIT_ORDER',value:'../business/business_info.html',info:'系统-退费',api:'/api/ckOrderFlow/jiTuanChukuOverOrder'},
+	{name:'FANG_DI_ZHIXING_SUBMIT_ORDER',value:'../business/business_info.html',info:'系统-退费',api:'/api/ckOrderFlow/jiTuanChukuOverOrder'},
+
+
+
 ];
 
 let key1 = {};

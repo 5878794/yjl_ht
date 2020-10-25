@@ -1159,7 +1159,7 @@ let setting = {
 				name:'发起人',
 				width:'10%',
 				style:{color:'#333',fontSize:'14px'},
-				key:'broadSignature'                //数据对应的key
+				key:'userName'                //数据对应的key
 			},
 			{
 				name:'操作',
