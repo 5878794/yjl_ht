@@ -41,13 +41,25 @@ let Page = {
 
 
         await all.getUserInfo();
-        await selectData($('#form'));
+
+
+
         let [data,history] = await ajax.send([
             api.order_get_byId({id:this.id}),
             api.order_get_history_byOrderNo({orderNo:this.orderNo})
         ]);
+
         await all.setOrderTopData(4,data);
         await all.setOrderHistoryData(history,true);
+
+        //获取业务类型
+        let businessType = data.businessKey;
+        //额外增加获取产品时候的参数
+        //TODO 业务类型参数key
+        $('#productId').data({addParam:{businessKey:businessType}});
+        //初始化select控件
+        await selectData($('#form'));
+
         this.addBtnEvent();
 
 

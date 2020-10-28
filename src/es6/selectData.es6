@@ -321,6 +321,7 @@ let getChildData = async function(val,id){
 	let	type = $(bSelect).data('bind'),
 		apiParam = distApi[type],
 		apiName = apiParam.api,
+		addParam = $(bSelect).data('addParam') || {},
 		param = apiParam.data || {};
 
 	if(!val){
@@ -331,6 +332,11 @@ let getChildData = async function(val,id){
 	param.pageSize = 9999999;
 	param.pageNum = 1;
 	param[distApiKey[type]] = val;
+
+	for(let [paramKey,paramVal] of Object.entries(addParam)){
+		param[paramKey] = paramVal;
+	}
+
 
 	let [data] = await ajax.send([
 		api[apiName](param)
