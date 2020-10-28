@@ -46,8 +46,17 @@ html
                         b-input(type='select' data-bind='role' name='拥有角色' id='roleId' rule='must' err='不能为空')
                     div(class='openWin_input_item3')
                         b-input(type='select' data-bind='education' name='最高学历' id='highestEducation' rule='must' err='不能为空')
-
-
+                    div(class='openWin_input_item3')
+                        b-input(type='text' name='工资卡开户行' id='a1' rule='must' err='不能为空')
+                    div(class='openWin_input_item3')
+                        b-input(type='text' name='工资卡卡号' id='a2' rule='must' err='不能为空')
+                    div(class='openWin_input_item3')
+                        b-input(type='text' name='社保账号' id='a3' rule='must' err='不能为空')
+                    div(class='openWin_input_item3')
+                        b-input(type='text' name='公积金账号' id='a4' rule='must' err='不能为空')
+                    div(class='openWin_input_item1')
+                        //TODO 上面几个id未写  图片id不是attachUrls要改js
+                        b-input-file(type='text' id='attachUrls' name='员工照片' fileType='image' err='只能上传图片')
 
             div(class='openWin_btns box_hcc')
                 div(class='openWin_btn_blue box_hcc hover' id='reset_psd') 重置密码

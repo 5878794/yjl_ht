@@ -51,7 +51,11 @@ let Page = {
 			data = data.list??[];
 			data = data[0]??{};
 
+			data.attachUrls = data.attachUrls || '';
+
 			all.setFromValAndChildSelect($('#form'),data);
+			let imgs = all.getRealImageSrc(data.attachUrls);
+			$('#attachUrls').get(0).showFiles =imgs;
 		}
 
 
@@ -82,6 +86,13 @@ let Page = {
 			return;
 		}
 		delete data.password_;
+
+
+		let files = data.attachUrls;
+		let filesServerUrl = await all.uploadFile(files);
+		filesServerUrl = filesServerUrl.join(',');
+		data.attachUrls = filesServerUrl;
+
 
 		if(this.id){
 			data.id = this.id;
