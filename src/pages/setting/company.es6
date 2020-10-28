@@ -45,13 +45,11 @@ let Page = {
 			}
 			rs.name = rs.companyName;
 		});
-		//删除id=1的集团公司  不显示
-		if(jtId || jtId==0){
-			companyList.splice(jtId,1);
-		}
 
 
-		this.createList(companyList);
+		this.createList(companyList,jtId);
+
+
 
 		//获取第一个机构下的产品
 		if(companyList.length == 0){return;}
@@ -71,11 +69,19 @@ let Page = {
 		};
 	},
 	//创建公司列表
-	createList(data){
+	createList(data,jtRow){
 		let list = $('#list').get(0),
 			_this = this;
 
 		list.data = data;
+
+		//集团数据不显示删除按钮
+		if(jtRow || jtRow==0){
+			list.body.find('.item').eq(jtRow).find('.btn').remove();
+		}
+
+
+
 		list.del = async function(data){
 			if(await qt.confirm(`您确定要删除公司 ${data.name}?`)){
 				qt.loading.show();
