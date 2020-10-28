@@ -94,7 +94,7 @@ let Page = {
 
         bTitle.btnData = [
             {
-                name:'核行修改',
+                name:'核行确认',
                 type:'mdf',
                 style:{color:'#5576f0'}
             }
