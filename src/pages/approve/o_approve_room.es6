@@ -78,24 +78,24 @@ let Page = {
            dom = $('#productInfo'),
            info = dom.find('span');
 
-       console.log('start')
-        console.log(bSelect);
-       bSelect.change = function(e){
-           let selected = this.body.find('option:selected'),
-               data = selected.data('data');
-           data = data.data?? '';
-           if(data){
-               info.eq(0).text(moneyFormat(data.minMoney,5));
-               info.eq(1).text(moneyFormat(data.maxMoney,5));
-               info.eq(2).text(data.applyTime);
-               info.eq(3).text(moneyFormat(data.castRate,5));
-               info.eq(4).text(moneyFormat(data.castServiceRate,5));
-               dom.removeClass('hidden');
-           }else{
-               dom.addClass('hidden');
-           }
-       };
-       console.log('end')
+       // console.log('start')
+       //  console.log(bSelect);
+       // bSelect.change = function(e){
+       //     let selected = this.body.find('option:selected'),
+       //         data = selected.data('data');
+       //     data = data.data?? '';
+       //     if(data){
+       //         info.eq(0).text(moneyFormat(data.minMoney,5));
+       //         info.eq(1).text(moneyFormat(data.maxMoney,5));
+       //         info.eq(2).text(data.applyTime);
+       //         info.eq(3).text(moneyFormat(data.castRate,5));
+       //         info.eq(4).text(moneyFormat(data.castServiceRate,5));
+       //         dom.removeClass('hidden');
+       //     }else{
+       //         // dom.addClass('hidden');
+       //     }
+       // };
+       // console.log('end')
     },
     addBtnEvent(){
         let submit = $('#submit'),

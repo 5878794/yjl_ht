@@ -135,7 +135,7 @@ class bOrderInfo extends HTMLElement{
 
 		//part2
 		this.body.find('.row2_cel2').find('p').text(data.product);
-		this.body.find('.row2_cel2').find('span').html(data.productInfo);
+		// this.body.find('.row2_cel2').find('span').html(data.productInfo);
 		let body = this.body.find('.row2_cel1'),
 			row1 = this.body.find('.row3').find('.row2_cel1_row1'),
 			row2 = this.body.find('.row3').find('.row2_cel1_row2'),
