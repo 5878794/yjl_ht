@@ -67,6 +67,15 @@ class bIndexNotice extends HTMLElement{
 			scrollerWidth = parseInt(this.scrollDiv.width());
 		this.animateWidth = bodyWidth + scrollerWidth;
 		this.scrollerWidth = scrollerWidth;
+
+
+		let _this = this;
+		if(bodyWidth == 0 || scrollerWidth==0){
+			setTimeout(function(){
+				_this.getAnimateWidth();
+			},500)
+		}else{
+		}
 	}
 
 	createElement(){
@@ -101,6 +110,7 @@ class bIndexNotice extends HTMLElement{
 	run(val){
 		let _this = this;
 		let width = _this.animateWidth * (1-val) - _this.scrollerWidth;
+		console.log(_this.animateWidth,val,_this.scrollerWidth)
 		_this.scrollDiv.css({
 			transform:'translateX('+width+'px)'
 		});
@@ -161,9 +171,6 @@ class bIndexNotice extends HTMLElement{
 			_this.getAnimateWidth();
 			_this.animateFn.restart();
 		},300);
-		setTimeout(function(){
-			_this.getAnimateWidth();
-		},500)
 
 	}
 	set clickFn(fn){

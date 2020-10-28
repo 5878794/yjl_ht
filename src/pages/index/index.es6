@@ -150,8 +150,14 @@ let Page = {
         let showTexts = [],
             nowDataById = {};
         data.map(rs=>{
+            let title = rs.broadTitle;
+            if(rs.broadType == 1){
+                //开单通告
+                title = ' 😊 '+title+' 😊 ';
+            }
+
             showTexts.push({
-                text:rs.broadTitle,
+                text:title,
                 id:rs.id,
                 data:rs
             });
