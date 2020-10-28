@@ -127,6 +127,11 @@ class BInputDate extends BInput{
 		return this.body.find('.__input__').val();
 	}
 
+	focus(){
+		this.inputBodyDom.css({border:'1px solid blue'});
+		this.inputBodyDom.find('input').focus();
+	}
+
 }
 
 

@@ -104,6 +104,11 @@ class BInputNumber extends BInput{
 		this.userSetMoneyChangeFn = fn;
 	}
 
+	focus(){
+		this.inputBodyDom.css({border:'1px solid blue'});
+		this.inputBodyDom.find('input').focus();
+	}
+
 
 }
 

@@ -556,6 +556,11 @@ class bInput extends HTMLElement{
 		this.shadow.appendChild(style);
 	}
 
+	focus(){
+		this.inputBodyDom.css({border:'1px solid blue'});
+		this.inputBodyDom.find('input').focus();
+	}
+
 }
 
 
