@@ -42,6 +42,7 @@ let Page = {
         this.checkType();
 
 
+
         await all.getUserInfo();
         await selectData($('#form'));
 
@@ -67,12 +68,21 @@ let Page = {
         this.inputEventBind2();
         await all.setOrderTopData(2,data);
 
+
+        //判断是否有抵押信息，没有就增加一条
+        let tempBody = $('#mortgage_info_body');
+        if(tempBody.children().length == 0){
+            $('#mortgage_info').get(0).body.find('.btn').trigger('click');
+        }
+
+
     },
     createBTitlesBtn(){
         bTitleBtn.addChildDelFn(
             $('#mortgage_info').get(0),
             $('#mortgage_info_body'),
-            $('#mortgage_info_item')
+            $('#mortgage_info_item'),
+            true
         );
 
         bTitleBtn.addDelFn(

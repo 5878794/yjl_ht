@@ -149,6 +149,7 @@ class bInput extends HTMLElement{
 		this.textareaCss = {};
 
 		this.userSetChangeFn = function(){};
+		this.userSetChangeFn1 = function(){};
 		this.childSelectSetValueFn = function(){};
 
 		//input附加style
@@ -373,6 +374,7 @@ class bInput extends HTMLElement{
 		this.body.find('input').each(function(){
 			this.addEventListener('input',function(){
 				_this.userSetChangeFn(_this.value,childId);
+				_this.userSetChangeFn1(_this.value);
 			},false);
 			this.addEventListener('focus',function(){
 				_this.inputBodyDom.css({border:'1px solid blue'});
@@ -389,6 +391,7 @@ class bInput extends HTMLElement{
 		this.body.find('textarea').each(function(){
 			this.addEventListener('input',function(){
 				_this.userSetChangeFn(_this.value,childId);
+				_this.userSetChangeFn1(_this.value);
 			},false);
 			this.addEventListener('focus',function(){
 				_this.inputBodyDom.css({border:'1px solid blue'});
@@ -543,9 +546,16 @@ class bInput extends HTMLElement{
 		this.nameDom.text(val);
 	}
 
+	//js设置值的时候会触发
 	set change(fn){
 		fn = fn || function(){};
 		this.userSetChangeFn = fn;
+	}
+
+	//只是输入的时候触发
+	set changeOnInput(fn){
+		fn = fn || function(){};
+		this.userSetChangeFn1 = fn;
 	}
 
 	set styleText(text){

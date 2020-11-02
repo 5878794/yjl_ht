@@ -1,6 +1,7 @@
 
 
 let inputStyle = require('./../es6/inputStyle'),
+	qt = require('./qt'),
 	selectData = require('./selectData');
 
 module.exports = {
@@ -33,7 +34,7 @@ module.exports = {
 		};
 	},
 	//添加多个子元素，子元素自身带删除
-	addChildDelFn(btn,body,item){
+	addChildDelFn(btn,body,item,mustOne){
 		btn.btnData = [
 			{
 				name:'添加',
@@ -55,7 +56,16 @@ module.exports = {
 				}
 			];
 			title1.clickFn = function(){
-				body1.remove();
+				if(mustOne){
+					let l = body.children().length;
+					if(l==1){
+						qt.alert('必须保留一条信息');
+					}else{
+						body1.remove();
+					}
+				}else{
+					body1.remove();
+				}
 			};
 
 			selectData(_item);

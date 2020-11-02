@@ -72,6 +72,9 @@ html
                         b-input(id='orderRepayment_bankNo' type='text' name='还款账号' rule='must' err='不能为空')
                     div(class='openWin_input_item3')
                         b-input(id='orderRepayment_openBank' type='text' name='开户行' rule='must' err='不能为空')
+                    div(class='openWin_input_item3')
+                        //TODO id待定
+                        b-input-money(name='还款金额' id='orderRepayment_todo' accuracy='5' rule='must' err='不能为空' unit='万元')
 
             div
                 b-title(name='回款信息')
@@ -236,7 +239,7 @@ html
                     div(class='openWin_input_item3')
                         b-input-money(key='loanPrice' accuracy='5' err='不能为空' rule='must' name='原贷贷款' unit='万元')
                     div(class='openWin_input_item3')
-                        b-input-money(key='mortgagePrice' accuracy='5' err='不能为空' rule='must' name='抵押金额' unit='万元')
+                        b-input-money(key='mortgagePrice' accuracy='5' err='不能为空' rule='must' name='抵押余额' unit='万元')
                     div(class='openWin_input_item1')
                         b-input-file(key='attachUrls' type='file' err='不能为空' rule='must' name='抵押附件')
 
