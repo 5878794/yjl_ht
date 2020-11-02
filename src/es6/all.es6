@@ -439,7 +439,7 @@ let all = {
 				info:rs.auditOpinion,
 				img:this.getRealImageSrc(rs.attachUrls),
 				// img:['../res/image/icon1.png','../res/css/all.css'],
-				date:stamp2Date.getDate1(rs.createTime),
+				date:stamp2Date.getDateTime2(rs.createTime),
 				user:rs.auditUserName
 			})
 		});

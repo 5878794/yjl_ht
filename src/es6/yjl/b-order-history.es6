@@ -115,7 +115,7 @@ class bOrderHistory extends HTMLElement{
 			'.state{width:60px; min-height:20px;}',
 			'.img img{display:block;width:100%;height:100%;}',
 			'.img .file{width:40px;height:40px;margin:2px 2px;border:1px solid #ccc;line-height:16px;text-align:center;}',
-			'.date{width:100px;}',
+			'.date{width:140px;}',
 			'.user{width:100px;}'
 		];
 
