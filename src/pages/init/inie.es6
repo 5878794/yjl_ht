@@ -55,7 +55,7 @@ let navData = [
 	{name:'设置',icon:'../res/image/icon12.png',url:'',children:[
 			{key:'SHIJIAN_MENU',name:'时间流程',url:'../setting/businessTime.html'},
 			{key:'KAIGUAN_MENU',name:'开关设置',url:'../setting/urgent_task.html'},
-			{key:'KEHULAIYUAN_MENU',name:'客户来源',url:'../setting/client_source.html'},
+			// {key:'KEHULAIYUAN_MENU',name:'客户来源',url:'../setting/client_source.html'},
 			{key:'DANGANSHI_MENU',name:'档案室',url:'../setting/client_source.html?type=11'},
 			{key:'BIAOZHUN_MENU',name:'标准设定',url:'../setting/group_final_review.html'},
 			{key:'TONGDAO_MENU',name:'通道配置',url:'../setting/channel_config.html'},

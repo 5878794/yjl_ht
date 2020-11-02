@@ -76,6 +76,26 @@ let Page = {
         }
 
 
+        this.addAutoInputEvent();
+    },
+    addAutoInputEvent(){
+        let input1 = $('#orderReturnRepayment_bankName').get(0),
+            input2 = $('#orderReturnRepayment_bankNo').get(0),
+            input3 = $('#orderReturnRepayment_openBank').get(0),
+            set1 = $('#sellerBankSupervision_bankName').get(0),
+            set2 = $('#sellerBankSupervision_bankNo').get(0),
+            set3 = $('#sellerBankSupervision_openBank').get(0);
+
+        input1.changeOnInput = function(val){
+            set1.value = val;
+        }
+        input2.changeOnInput = function(val){
+            set2.value = val;
+        }
+        input3.changeOnInput = function(val){
+            set3.value = val;
+        }
+
     },
     createBTitlesBtn(){
         bTitleBtn.addChildDelFn(
