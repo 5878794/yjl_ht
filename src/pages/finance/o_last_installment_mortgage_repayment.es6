@@ -45,7 +45,7 @@ let Page = {
 		]);
 
 		all.setFromVal($('#form'),data);
-		$('#total').text(moneyFormat(data.repaymentFeeTotal,5));
+		$('#total').text(moneyFormat(data.repaymentFeeTotal,2));
 
 
 	},

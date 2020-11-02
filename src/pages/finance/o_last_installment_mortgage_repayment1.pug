@@ -20,9 +20,9 @@ html
 			b-title(name='房抵尾款还款')
 			div(class='openWin_input_main box_hlt box_lines')
 				div(class='openWin_input_item2')
-					b-input-money(id='repaymentPrincipal' accuracy='5' disabled='disabled' name='应还本金' unit='元')
+					b-input-money(id='repaymentPrincipal' accuracy='2' disabled='disabled' name='应还本金' unit='元')
 				div(class='openWin_input_item2')
-					b-input-money(id='repaymentInterest' accuracy='5' disabled='disabled' name='应还罚息' unit='元')
+					b-input-money(id='repaymentInterest' accuracy='2' disabled='disabled' name='应还罚息' unit='元')
 				div(class='openWin_input_item2 installment_mortgage_repayment box_hlc' )
 					div 应还合计
 					p(id='total')
@@ -32,7 +32,7 @@ html
 
 			div(class='openWin_input_main box_hlt box_lines')
 				div(class='openWin_input_item2')
-					b-input-money(id='realPayAmount' accuracy='5' disabled='disabled' name='实还金额' rule='must' err='不能为空' unit='元')
+					b-input-money(id='realPayAmount' accuracy='2' disabled='disabled' name='实还金额' rule='must' err='不能为空' unit='元')
 				div(class='openWin_input_item1')
 					b-input(id='auditOpinion_' disabled='disabled' type='textarea' name='备注' autoHeight='true')
 				div(class='openWin_input_item1')

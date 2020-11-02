@@ -19,11 +19,11 @@ html
             b-title(name='确认还款')
             div(class='openWin_input_main box_hlt box_lines')
                 div(class='openWin_input_item3')
-                    b-input-money(id='orderRepaymentRecordInfo_repaymentPrincipal' name='还款本金' accuracy='5' rule='must' err='不能为空' unit='元')
+                    b-input-money(id='orderRepaymentRecordInfo_repaymentPrincipal' name='还款本金' accuracy='2' rule='must' err='不能为空' unit='元')
                 div(class='openWin_input_item3')
-                    b-input-money(id='orderRepaymentRecordInfo_repaymentInterest' name='还款利息' accuracy='5' rule='must' err='不能为空' unit='元')
+                    b-input-money(id='orderRepaymentRecordInfo_repaymentInterest' name='还款利息' accuracy='2' rule='must' err='不能为空' unit='元')
                 div(class='openWin_input_item3')
-                    b-input-money(id='orderRepaymentRecordInfo_repaymentPenaltyInterest' name='罚息' accuracy='5' rule='must' err='不能为空' unit='元')
+                    b-input-money(id='orderRepaymentRecordInfo_repaymentPenaltyInterest' name='罚息' accuracy='2' rule='must' err='不能为空' unit='元')
                 div(class='openWin_input_item1')
                     div(class='box_hlc warrant_pay_back')
                         div 还款合计
@@ -56,4 +56,4 @@ html
                     b-input(id='orderRefundInfo_refundBankName' type='text' name='转回户名')
                 div(class='openWin_input_item3')
                     //TODO
-                    b-input-money(id='todo' name='尾款金额' accuracy='5' rule='must' err='不能为空' unit='元')
+                    b-input-money(id='todo' name='尾款金额' accuracy='2' rule='must' err='不能为空' unit='元')

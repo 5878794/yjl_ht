@@ -151,7 +151,7 @@ let Page = {
 
         data.map(rs=>{
            rs.businessKey_ = this.productTypeDist[rs.businessKey];
-           rs.applyMoney_ = moneyFormat(rs.applyMoney,5);
+           rs.applyMoney_ = moneyFormat(rs.applyMoney,2);
            rs.orderStatus_ = this.orderStateDist[rs.orderStatus];
            rs.ddgs_ = rs.companyName+'-'+rs.deptName;
            rs.key6 = '查看详情';

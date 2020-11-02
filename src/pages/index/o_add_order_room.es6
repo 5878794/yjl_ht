@@ -105,16 +105,16 @@ let Page = {
 
         let fn = function(){
             // 咨询费率（管理员配置，%，只读）
-            dom_zxfl.value = moneyFormat(_this.zxfl,2);
+            dom_zxfl.value = moneyFormat(_this.zxfl,5);
             // 逾期费率（固定0.15%,按日计算当期应还金额）、
             dom_yqfl.value = 0.15;
             // 咨询费（申请金额*用款时间*咨询费率，不低于3000）、
             let advisoryMoney =  applyMoney*dom_date.value*30*dom_zxfl.value/100;
             advisoryMoney = (advisoryMoney<3000)? 3000 : advisoryMoney;
-            dom_zxf.value = moneyFormat(advisoryMoney,5);
+            dom_zxf.value = moneyFormat(advisoryMoney,2);
             // 费用合计、
             let total = dom_zxf.value*1 + dom_qzf.value*1 - dom_yhf.value*1;
-            dom_total.value = moneyFormat(total,5);
+            dom_total.value = moneyFormat(total,2);
         };
         fn();
 

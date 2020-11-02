@@ -99,15 +99,15 @@ let Page = {
         data.map(rs=>{
             rs.key9 = '查看详情';
             //申请金额
-            rs.applyMoney_ = moneyFormat(rs.applyMoney,5);
+            rs.applyMoney_ = moneyFormat(rs.applyMoney,2);
             //业务类型
             rs.businessKey_ = this.bussinessTypeDist[rs.businessKey];
             //出款时间
             rs.outMoneyTime_ = stamp2Date.getDate1(rs.outMoneyTime);
             //剩余本金
-            rs.remainPrincipal_ = moneyFormat(rs.remainPrincipal,5);
+            rs.remainPrincipal_ = moneyFormat(rs.remainPrincipal,2);
             //剩余利息
-            rs.remainInterest_ = moneyFormat(rs.remainInterest,5);
+            rs.remainInterest_ = moneyFormat(rs.remainInterest,2);
         })
         table.show(data);
 

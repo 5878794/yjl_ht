@@ -69,7 +69,7 @@ let Page = {
                 total = val1*1 + val2*1;
             console.log(val1,val2,total)
 
-            $('#sy').text(moneyFormat(total,5));
+            $('#sy').text(moneyFormat(total,2));
         };
 
 

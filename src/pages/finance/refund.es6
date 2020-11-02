@@ -86,7 +86,7 @@ let Page = {
 			//业务类型
 			rs.businessKey_ = this.businessDist[rs.businessKey];
 			//退费金额
-			rs.refundMoney_ = moneyFormat(rs.refundMoney,5);
+			rs.refundMoney_ = moneyFormat(rs.refundMoney,2);
 
 
 			//1-退尾款 2-退服务费

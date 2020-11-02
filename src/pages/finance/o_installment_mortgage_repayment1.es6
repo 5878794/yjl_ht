@@ -58,7 +58,7 @@ let Page = {
 		all.setFromVal($('#form'),data);
 
 		let totalDom = $('#total');
-		totalDom.text(moneyFormat(data.repaymentFeeTotal,5));
+		totalDom.text(moneyFormat(data.repaymentFeeTotal,2));
 
 
 		let files = data.attachUrls_??'';

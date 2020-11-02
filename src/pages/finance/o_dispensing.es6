@@ -64,7 +64,7 @@ let Page = {
 			let val = data.value??'';
 
 			input1.value = val;
-			dom.text(moneyFormat(val,5));
+			dom.text(moneyFormat(val,2));
 		}
 
 	},

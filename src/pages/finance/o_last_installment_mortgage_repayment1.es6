@@ -55,7 +55,7 @@ let Page = {
 		delete data.auditOpinion;
 
 		all.setFromVal($('#form'),data);
-		$('#total').text(moneyFormat(data.repaymentFeeTotal,5));
+		$('#total').text(moneyFormat(data.repaymentFeeTotal,2));
 
 
 		let files = data.attachUrls_??'';

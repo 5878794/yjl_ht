@@ -64,7 +64,7 @@ let Page = {
         data.map(rs=>{
             rs.key6 = '删除';
             rs.createTime_ = stamp2Date.getDate1(rs.createTime);
-            rs.applyMoney_ = moneyFormat(rs.applyMoney,5);
+            rs.applyMoney_ = moneyFormat(rs.applyMoney,2);
             rs.businessKey_ = this.businessDist[rs.businessKey];
             rs.phone_ = rs.mainApplyPersonMobile;
         });

@@ -88,19 +88,19 @@ let Page = {
 			//业务类型
 			rs.businessKey_ = this.businessDist[rs.businessKey];
 			//申请金额
-			rs.applyMoney_ = moneyFormat(rs.applyMoney,5);
+			rs.applyMoney_ = moneyFormat(rs.applyMoney,2);
 			//咨询费
-			rs.consultationFee_ = moneyFormat(rs.consultationFee,5);;
+			rs.consultationFee_ = moneyFormat(rs.consultationFee,2);
 			//服务费
-			rs.serviceFee_ =  moneyFormat(rs.serviceFee,5);;
+			rs.serviceFee_ =  moneyFormat(rs.serviceFee,2);
 			//权证费
-			rs.warrantFee_ = moneyFormat(rs.warrantFee,5);;
+			rs.warrantFee_ = moneyFormat(rs.warrantFee,2);
 			//优惠费用
-			rs.preferentialFee_ = moneyFormat(rs.preferentialFee,5);;
+			rs.preferentialFee_ = moneyFormat(rs.preferentialFee,2);
 			//已收小记
-			rs.totalCost_ = moneyFormat(rs.totalCost,5);;
+			rs.totalCost_ = moneyFormat(rs.totalCost,2);
 			//费用退补
-			rs.compensationRefundFee_ = moneyFormat(rs.compensationRefundFee,5);;
+			rs.compensationRefundFee_ = moneyFormat(rs.compensationRefundFee,2);
 			//业务状态
 			rs.orderStatus_ = this.orderStateDist[rs.orderStatus];
 			//到期时间

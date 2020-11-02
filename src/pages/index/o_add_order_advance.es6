@@ -185,7 +185,7 @@ let Page = {
             val2,
             val3;
 
-        val1Dom.text(moneyFormat(val1,5));     //贷款金额
+        val1Dom.text(moneyFormat(val1,2));     //贷款金额
         // val2Dom.text('0.00000');    //主抵押物品
         // val3Dom.text('0.00000');    //副抵押物品
         // val4Dom.text(moneyFormat(val1/100,5));             //比率
@@ -198,7 +198,7 @@ let Page = {
             //万元转元
             val = val*10000;
             val2 = val;
-            val2Dom.text(moneyFormat(val,5));
+            val2Dom.text(moneyFormat(val,2));
             changeFn2();
         };
 
@@ -212,13 +212,13 @@ let Page = {
             //万元转元
             total = total * 10000;
             val3 = total;
-            val3Dom.text(moneyFormat(total,5));
+            val3Dom.text(moneyFormat(total,2));
             changeFn2();
         };
         //计算平均值
         let changeFn2 = function(){
             let val = val1/(val2+val3)*100 || 0;
-            val4Dom.text(moneyFormat(val,5)+'%');
+            val4Dom.text(moneyFormat(val,5,5)+'%');
         }
 
         changeFn1();
@@ -271,21 +271,21 @@ let Page = {
         let run = function(){
             //费用部分
             // 咨询费率（管理员配置，%，只读）
-            dom_zxfl.value = moneyFormat(_this.zxfl,2);
+            dom_zxfl.value = moneyFormat(_this.zxfl,5);
 
             // 咨询费（申请金额*用款时间*咨询费率，不低于3000）、
             let applicationMoney = _this.orderData?.applyMoney??0,
                 advisoryMoney =  applicationMoney*dom_date.value*dom_zxfl.value/100;
             advisoryMoney = (advisoryMoney<3000)? 3000 : advisoryMoney;
-            dom_zxf.value = moneyFormat(advisoryMoney,5);
+            dom_zxf.value = moneyFormat(advisoryMoney,2);
 
             // 服务费（申请金额*用款时间*服务费率）、
             let serviceFee = applicationMoney*dom_date.value*dom_fwfl.value/100;
-            dom_fwf.value = moneyFormat(serviceFee,5);
+            dom_fwf.value = moneyFormat(serviceFee,2);
 
             //费用合计
             let total = dom_zxf.value*1 + dom_fwf.value*1 + dom_qzf.value*1 - dom_yhf.value*1;
-            dom_total.value = moneyFormat(total,5);
+            dom_total.value = moneyFormat(total,2);
         }
         run();
 

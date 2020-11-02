@@ -79,7 +79,7 @@ let Page = {
                 moneyInput.each(function(){
                     val += this.value*1;
                 });
-                total.text(moneyFormat(val,5));
+                total.text(moneyFormat(val,2));
             };
 
         moneyInput.each(function(){

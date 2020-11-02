@@ -47,7 +47,7 @@ let Page = {
 		await all.setOrderTopData(4,data);
 		await all.setOrderHistoryData(history,true);
 
-		$('#sybj').get(0).value = moneyFormat(money,5);
+		$('#sybj').get(0).value = moneyFormat(money,2);
 
 		this.addBtnEvent();
 

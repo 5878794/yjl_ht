@@ -54,9 +54,9 @@ let Page = {
 			wkDom = dom.find('span'),
 			yqfDom = dom.find('div');
 		//尾款
-		wkDom.text(moneyFormat(data.returnBalanceTotal??0,5));
+		wkDom.text(moneyFormat(data.returnBalanceTotal??0,2));
 		//预期
-		yqfDom.text('('+moneyFormat(data.overdueTotalFee??0,5)+')');
+		yqfDom.text('('+moneyFormat(data.overdueTotalFee??0,2)+')');
 
 	},
 	createList(data){
@@ -71,20 +71,20 @@ let Page = {
 			//还款时间
 			rs.repaymentTime_ = stamp2Date.getDate1(rs.repaymentTime);
 			//归还本金
-			rs.repaymentPrincipal_ = moneyFormat(rs.repaymentPrincipal,5);
+			rs.repaymentPrincipal_ = moneyFormat(rs.repaymentPrincipal,2);
 			//咨询费用
-			rs.consultationFee_ = moneyFormat(rs.consultationFee,5);
+			rs.consultationFee_ = moneyFormat(rs.consultationFee,2);
 			//当期合计
-			rs.actualRepaymentFee_ = moneyFormat(rs.actualRepaymentFee,5);
+			rs.actualRepaymentFee_ = moneyFormat(rs.actualRepaymentFee,2);
 			//剩余本金
-			rs.leftPrincipal_ = moneyFormat(rs.leftPrincipal,5);
+			rs.leftPrincipal_ = moneyFormat(rs.leftPrincipal,2);
 			//实际还款时间
 			rs.actualRepaymentTime_ = stamp2Date.getDate1(rs.actualRepaymentTime);
 			//实际还款合计
 			console.log(rs.actualRepaymentFeeTotal)
-			rs.actualRepaymentFeeTotal_ = moneyFormat(rs.actualRepaymentFeeTotal,5,true);
+			rs.actualRepaymentFeeTotal_ = moneyFormat(rs.actualRepaymentFeeTotal,2,true);
 			//逾期费
-			rs.overdueFee_ = moneyFormat(rs.overdueFee,5,true);
+			rs.overdueFee_ = moneyFormat(rs.overdueFee,2,true);
 		});
 		console.log(data)
 

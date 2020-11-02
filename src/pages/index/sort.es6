@@ -99,7 +99,7 @@ let Page = {
 			rs.name = rs.userName;
 			rs.company = rs.companyName;
 			rs.department = rs.deptName;
-			rs.money = moneyFormat(rs.salePrice,5);
+			rs.money = moneyFormat(rs.salePrice,2);
 
 		});
 

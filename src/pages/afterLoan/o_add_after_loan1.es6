@@ -48,7 +48,7 @@ let Page = {
         this.bindData(info);
     },
     bindData(data){
-        $('#disburseMoney_').get(0).value = moneyFormat(data.disburseMoney,5);
+        $('#disburseMoney_').get(0).value = moneyFormat(data.disburseMoney,2);
         $('#auditOpinion_').get(0).value = data.auditOpinion;
 
 

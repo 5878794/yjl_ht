@@ -239,7 +239,7 @@ let Page = {
             //创建时间
             rs.createTime_ = stamp2Date.getDate1(rs.createTime);
             //申请金额
-            rs.applyMoney_ = moneyFormat(rs.applyMoney,5);
+            rs.applyMoney_ = moneyFormat(rs.applyMoney,2);
             //剩余时间 当前订单流程状态
             let html = '';
             if(rs.remainTime){

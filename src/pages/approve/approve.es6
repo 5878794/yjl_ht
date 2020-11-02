@@ -92,7 +92,7 @@ let Page = {
 
         data.map(rs=>{
             //申请金额
-            rs.applyMoney_ = moneyFormat(rs.applyMoney,5);
+            rs.applyMoney_ = moneyFormat(rs.applyMoney,2);
             //业务类型
             rs.businessKey_ = this.businessDist[rs.businessKey];
             //申请时间
