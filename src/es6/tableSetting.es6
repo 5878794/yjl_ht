@@ -73,13 +73,22 @@ let setting = {
 			},
 			{
 				name:'t1',
-				width:'20%',
+				width:'15%',
 				style:{color:'#333',fontSize:'14px'},
 				key:'phone_'                //数据对应的key
 			},
 			{
 				name:'t1',
-				width:'20%',
+				width:'15%',
+				children:[
+					//TODO  经办人、经办人电话
+					{style:{color:'#333',fontSize:'14px',lineHeight:'20px'},key:'userName'},//该列内显示的子数据，竖向排列
+					{style:{color:'#999',fontSize:'12px',lineHeight:'20px'}, key: 'userPhone'}
+				]
+			},
+			{
+				name:'t1',
+				width:'15%',
 				children:[
 					{style:{color:'#333',fontSize:'14px',lineHeight:'20px'},key:'businessKey_'},//该列内显示的子数据，竖向排列
 					{style:{color:'#999',fontSize:'12px',lineHeight:'20px'}, key: 'createTime_'}
@@ -87,7 +96,7 @@ let setting = {
 			},
 			{
 				name:'t1',
-				width:'30%',
+				width:'25%',
 				children:[
 					{style:{color:'#cc9a4a',fontSize:'14px',lineHeight:'20px'},key:'applyMoney_'},//该列内显示的子数据，竖向排列
 					{style:{color:'#999',fontSize:'12px',lineHeight:'20px'},type:'html', key: 'remainTime_'}
