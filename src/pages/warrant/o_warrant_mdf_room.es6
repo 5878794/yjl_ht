@@ -106,11 +106,11 @@ let Page = {
                 winSetting.publish_review.height)
         };
 
-        bTitleBtn.addDelFn(
-            $('#shimoto').get(0),
-            $('#shimoto_body'),
-            $('#shimoto_item')
-        )
+        // bTitleBtn.addDelFn(
+        //     $('#shimoto').get(0),
+        //     $('#shimoto_body'),
+        //     $('#shimoto_item')
+        // )
     },
     async submitFn(state){
         let form = await all.getFromVal($('#form')),

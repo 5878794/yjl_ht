@@ -29,6 +29,8 @@ let key = [
 		{name:'DIAN_ZI_QUANZHENG_REPAYMENT_DATA_CONFIRM',value:'../publish/overSingle.html',info:'权证-还款资料确认流程',api:'/api/dzOrderFlow/quanZhengRepaymentDataConfirm'},
 	// {name:'DIAN_ZI_ZILIUCHENG_ZHANQI',value:'',info:'子流程-展期',api:''},
 		// {name:'DIAN_ZI_DINGDAN_FINISH_SYSTEM',value:'',info:'系统-订单完成',api:''},
+		{name:'DIAN_ZI_QUANZHENG_HEHANG_AUDIT',value:'../publish/overSingle.html',info:'核行-下户',api:'/api/dzOrderFlow/quanZhengZhiXingHeHang'},
+
 
 
 
@@ -131,6 +133,8 @@ let key = [
 	{name:'CHU_KU_FENGKONG_CHUKU_AUDIT',value:'../file/o_info2.html',info:'风控-出库审核',api:'/api/ckOrderFlow/fengKongChuKuAudit'},
 	{name:'CHU_KU_CAIWU_CHUKU_OVER_ORDER',value:'../publish/overSingle.html',info:'财务-出库过单',api:'/api/ckOrderFlow/caiWuChuKuOverOrder'},
 	{name:'CHU_KU_JITUAN_CHUKU_OVER_ORDER',value:'../publish/overSingle.html',info:'集团-出库过单',api:'/api/ckOrderFlow/jiTuanChukuOverOrder'},
+	{name:'CHU_KU_CONFIRM_CHUKU',value:'../file/o_info3.html',info:'确认出库',api:'api/ckOrderFlow/confirmChuku'},
+
 	// {name:'CHU_KU_CHUKU_SYSTEM',value:'',info:'系统-出库',api:''}
 
 
@@ -159,12 +163,8 @@ let key = [
 
 
 
-	//CHU_KU_CONFIRM_CHUKU
-	// 增加了节点，对应接口：api/ckOrderFlow/confirmChuku，页面要问 杨老板@bens
 
 
-	// 已增加节点：DIAN_ZI_QUANZHENG_HEHANG_AUDIT（权证执行核行），接口api/dzOrderFlow/quanZhengZhiXingHeHang, 流程上
-	// 核行----->下户
 ];
 
 let key1 = {};
