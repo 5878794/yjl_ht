@@ -417,9 +417,13 @@ let all = {
 
 				if(productInfo){
 					backData.product = productInfo.organizationName+'-'+productInfo.productName;
-					backData.productInfo = `最小额度${productInfo.minMoney}元<br/>最大额度${productInfo.maxMoney}元<br/>成本费率${productInfo.castRate}%<br/>服务费${productInfo.castServiceRate}元<br/>可用时间${productInfo.applyTime}天`;
+					// backData.productInfo = `最小额度${productInfo.minMoney}元<br/>最大额度${productInfo.maxMoney}元<br/>成本费率${productInfo.castRate}%<br/>服务费${productInfo.castServiceRate}元<br/>可用时间${productInfo.applyTime}天`;
 				}
 			}
+			if(data.operationName && data.operationMobile){
+				backData.productInfo = `经办人：${data.operationName}<br/>电话：${data.operationMobile}`;
+			}
+
 		}
 
 

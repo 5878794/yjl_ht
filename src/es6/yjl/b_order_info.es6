@@ -76,9 +76,9 @@ class bOrderInfo extends HTMLElement{
 
 		row3.append(row3Cel1).append(row3Cel2);
 		row3.append(row2Cel1Row1).append(row2Cel1Row2);
-		// row2Cel1.append(row2Cel1Row1).append(row2Cel1Row2)
-		// 		.append(row2Cel1Row1.clone()).append(row2Cel1Row2.clone())
-		// 		.append(row2Cel1Row1.clone()).append(row2Cel1Row2.clone());
+		row2Cel1.append(row2Cel1Row1).append(row2Cel1Row2)
+				.append(row2Cel1Row1.clone()).append(row2Cel1Row2.clone())
+				.append(row2Cel1Row1.clone()).append(row2Cel1Row2.clone());
 		row2.append(row2Cel1).append(row2Cel2);
 		row1.append(row1Cel1).append(row1Cel2).append(row1Cel3);
 		body.append(row1).append(row2).append(row3);
@@ -135,7 +135,7 @@ class bOrderInfo extends HTMLElement{
 
 		//part2
 		this.body.find('.row2_cel2').find('p').text(data.product);
-		// this.body.find('.row2_cel2').find('span').html(data.productInfo);
+		this.body.find('.row2_cel2').find('span').html(data.productInfo);
 		let body = this.body.find('.row2_cel1'),
 			row1 = this.body.find('.row3').find('.row2_cel1_row1'),
 			row2 = this.body.find('.row3').find('.row2_cel1_row2'),

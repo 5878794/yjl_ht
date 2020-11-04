@@ -49,6 +49,10 @@ let Page = {
 
 		$('#sybj').get(0).value = moneyFormat(money,2);
 
+		let bankInfo = data.orderReturnRepayment??{};
+		$('#bankName').get(0).value = bankInfo.bankName??'';
+		$('#bankNo').get(0).value = bankInfo.bankNo??'';
+
 		this.addBtnEvent();
 
 	},

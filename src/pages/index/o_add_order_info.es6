@@ -80,8 +80,8 @@ let Page = {
 	btnBindEvent(){
 		let preBtn = $('#pre'),
 			nextBtn = $('#next'),
-			select = $('#businessType').find('b-input'),
-			other = $('#other'),
+			// select = $('#businessType').find('b-input'),
+			// other = $('#other'),
 			_this = this;
 
 		preBtn.click(function(){
@@ -95,14 +95,14 @@ let Page = {
 			all.showLoadingRun(_this,'submitFn');
 		});
 
-		select.get(0).change = function(val){
-			if(val=='-1'){
-				other.removeClass('hidden');
-			}else{
-				other.addClass('hidden');
-				other.find('b-input').get(0).value = '';
-			}
-		}
+		// select.get(0).change = function(val){
+		// 	if(val=='-1'){
+		// 		other.removeClass('hidden');
+		// 	}else{
+		// 		other.addClass('hidden');
+		// 		other.find('b-input').get(0).value = '';
+		// 	}
+		// }
 	},
 
 	//设置标题上的按钮

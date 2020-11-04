@@ -198,12 +198,12 @@ let Page = {
             //万元转元
             val = val*10000;
             val2 = val;
-            val2Dom.text(moneyFormat(val,2));
+            // val2Dom.text(moneyFormat(val,2));
             changeFn2();
-        };
+        // };
 
-        //副抵押物
-        let changeFn = function(){
+            //副抵押物
+        // let changeFn = function(){
             let total = 0;
             listenerDom.find('b-input-money[key="evaluationValue"]').each(function(){
                 let value = this.value * 1;
@@ -212,7 +212,10 @@ let Page = {
             //万元转元
             total = total * 10000;
             val3 = total;
-            val3Dom.text(moneyFormat(total,2));
+
+
+            val2Dom.text(moneyFormat(val+total,2));
+            // val3Dom.text(moneyFormat(total,2));
             changeFn2();
         };
         //计算平均值
@@ -222,7 +225,7 @@ let Page = {
         }
 
         changeFn1();
-        changeFn();
+        // changeFn();
 
 
         //监听 动产 不动产 变动
@@ -235,7 +238,7 @@ let Page = {
                     thisDom = $(thisDom).find('b-input-money[key="evaluationValue"]').eq(0).get(0);
                     if(thisDom){
                         thisDom.change = function(){
-                            changeFn();
+                            changeFn1();
                         }
                     }
                 }

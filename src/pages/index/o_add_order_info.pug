@@ -18,12 +18,18 @@ html
             div
                 b-title(name='业务来源')
                 div(class='openWin_input_main box_hlt box_lines')
-                    div(class='openWin_input_item3' id='businessType')
-                        b-input(type='text' err='请输入业务来源' rule='must' name='业务来源' id='businessSource' placeholder='请输入')
-                        //b-input(type='select' err='请选择业务来源' rule='must' data-bind='businessFrom' name='业务来源' id='businessSourceKey' placeholder='请选择')
-                    div(class='openWin_input_item3 hidden' id='other')
-                        //业务来源是其它时候添加这个
-                        b-input(type='text' err='请输入其它来源' name='其它来源' id='businessSource')
+                    //div(class='openWin_input_item3' id='businessType')
+                    //    b-input(type='text' err='请输入业务来源' rule='must' name='业务来源' id='businessSource' placeholder='请输入')
+                    //    //b-input(type='select' err='请选择业务来源' rule='must' data-bind='businessFrom' name='业务来源' id='businessSourceKey' placeholder='请选择')
+                    //div(class='openWin_input_item3 hidden' id='other')
+                    //    //业务来源是其它时候添加这个
+                    //    b-input(type='text' err='请输入其它来源' name='其它来源' id='businessSource')
+                    div(class='openWin_input_item3')
+                        b-input(id='orderTrade_dealIntermediary' type='text' name='成交中介' rule='must' err='不能为空')
+                    div(class='openWin_input_item3')
+                        b-input(id='orderTrade_contactPerson' type='text' name='中介联系人' rule='must' err='不能为空')
+                    div(class='openWin_input_item3')
+                        b-input(id='orderTrade_contactMobile' type='text' name='中介电话' rule='must' err='不能为空')
 
 
 

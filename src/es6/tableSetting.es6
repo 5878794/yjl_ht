@@ -81,9 +81,8 @@ let setting = {
 				name:'t1',
 				width:'15%',
 				children:[
-					//TODO  经办人、经办人电话
-					{style:{color:'#333',fontSize:'14px',lineHeight:'20px'},key:'userName'},//该列内显示的子数据，竖向排列
-					{style:{color:'#999',fontSize:'12px',lineHeight:'20px'}, key: 'userPhone'}
+					{style:{color:'#333',fontSize:'14px',lineHeight:'20px'},key:'operationName'},//该列内显示的子数据，竖向排列
+					{style:{color:'#999',fontSize:'12px',lineHeight:'20px'}, key: 'operationMobile'}
 				]
 			},
 			{
