@@ -158,6 +158,13 @@ let key = [
 
 
 
+
+	//CHU_KU_CONFIRM_CHUKU
+	// 增加了节点，对应接口：api/ckOrderFlow/confirmChuku，页面要问 杨老板@bens
+
+
+	// 已增加节点：DIAN_ZI_QUANZHENG_HEHANG_AUDIT（权证执行核行），接口api/dzOrderFlow/quanZhengZhiXingHeHang, 流程上
+	// 核行----->下户
 ];
 
 let key1 = {};
