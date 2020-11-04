@@ -39,14 +39,15 @@ let Page = {
 		this.currentNodeKey = param.currentNodeKey;
 
 		await all.getUserInfo();
-		let [data,history,money] = await ajax.send([
+		let [data,history,money,info] = await ajax.send([
 			api.order_get_byId({id:this.id}),
 			api.order_get_history_byOrderNo({orderNo:this.orderNo}),
-			api.finance_get_remaining_principal({orderNo:this.orderNo})
+			api.finance_get_remaining_principal({orderNo:this.orderNo}),
+			api.finance_rear_business_info({orderNo:this.orderNo})
 		]);
 		await all.setOrderTopData(4,data);
 		await all.setOrderHistoryData(history,true);
-
+		all.setFromVal($('#form'),info);
 		$('#sybj').get(0).value = moneyFormat(money,2);
 
 		let bankInfo = data.orderReturnRepayment??{};
