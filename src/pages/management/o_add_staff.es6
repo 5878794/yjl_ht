@@ -51,11 +51,11 @@ let Page = {
 			data = data.list??[];
 			data = data[0]??{};
 
-			data.attachUrls = data.attachUrls || '';
+			data.userAvatar = data.userAvatar || '';
 
 			all.setFromValAndChildSelect($('#form'),data);
-			let imgs = all.getRealImageSrc(data.attachUrls);
-			$('#attachUrls').get(0).showFiles =imgs;
+			let imgs = all.getRealImageSrc(data.userAvatar);
+			$('#userAvatar').get(0).showFiles =imgs;
 		}
 
 
@@ -88,10 +88,10 @@ let Page = {
 		delete data.password_;
 
 
-		let files = data.attachUrls;
+		let files = data.userAvatar;
 		let filesServerUrl = await all.uploadFile(files);
 		filesServerUrl = filesServerUrl.join(',');
-		data.attachUrls = filesServerUrl;
+		data.userAvatar = filesServerUrl;
 
 
 		if(this.id){

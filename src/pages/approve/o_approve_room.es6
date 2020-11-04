@@ -55,8 +55,7 @@ let Page = {
         //获取业务类型
         let businessType = data.businessKey;
         //额外增加获取产品时候的参数
-        //TODO 业务类型参数key
-        $('#productId').data({addParam:{businessKey:businessType}});
+        $('#productId').data({addParam:{productType :businessType}});
         //初始化select控件
         await selectData($('#form'));
 
