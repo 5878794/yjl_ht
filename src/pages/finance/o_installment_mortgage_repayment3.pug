@@ -1,0 +1,56 @@
+doctype html
+html
+	head
+		title 房抵提前还款记账
+		include ./../../pug_include/head_pc
+
+		script(data-src='o_installment_mortgage_repayment3.min.js?t='+tt)
+		style.
+			body,html{overflow:auto;}
+
+
+	body
+		div(class='openWin_main')
+			b-order-info(id='order_info' class='b_order_info')
+			b-title(name='历史流程')
+			b-order-history(id='history' sort='desc' showOne='true')
+
+		div(class='openWin_main' id='form')
+			div(class='openWin_input_main box_hlt box_lines')
+				div(class='openWin_input_item2')
+					b-input(id='orderNo' type='text' disabled='disabled' name='订单编号')
+				div(class='openWin_input_item2')
+					b-input(id='clientName' type='text' disabled='disabled' name='客户姓名')
+				div(class='openWin_input_item2')
+					b-input-money(id='repaymentPrincipal' accuracy='2' disabled='disabled' name='应还本金')
+				div(class='openWin_input_item2')
+					b-input-money(id='repaymentWeiKuan' accuracy='2' disabled='disabled' name='应还尾款')
+				div(class='openWin_input_item2')
+					b-input-money(id='repaymentInterest' accuracy='2' disabled='disabled' name='应还利息')
+				div(class='openWin_input_item2')
+					b-input-money(id='penaltyInterest' accuracy='2' disabled='disabled' name='罚息')
+				div(class='openWin_input_item2 installment_mortgage_repayment box_hlc')
+					div 应还合计
+					p(id='total' tt='repaymentFeeTotal')
+					span 元
+
+				div(class='installment_mortgage_repayment_line')
+
+			div(class='openWin_input_main box_hlt box_lines')
+				div(class='openWin_input_item2')
+					b-input-money(id='actualRepaymentFee' accuracy='2' name='实还金额' disabled='disabled')
+				div(class='openWin_input_item1')
+					b-input(id='auditOpinion_' type='textarea'  name='备注' autoHeight='true'  disabled='disabled')
+				div(class='openWin_input_item1')
+					b-input-file(id='attachUrls_' type='file' name='附件' disabled='disabled')
+
+			div(class='openWin_input_main box_hlt box_lines' id='submitForm')
+				div(class='openWin_input_item1')
+					b-input(id='auditOpinion' type='textarea'  name='备注' autoHeight='true' placeholder='非必填')
+				div(class='openWin_input_item1')
+					b-input-file(id='attachUrls' type='file' name='附件' unit='非必填')
+
+
+			div(class='openWin_btns box_hcc')
+				div(class='openWin_btn_gray box_hcc hover' id='cancel') 取消
+				div(class='openWin_btn_blue box_hcc hover' id='submit') 提交

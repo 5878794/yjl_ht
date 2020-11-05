@@ -272,6 +272,13 @@ let api = {
 	finance_getRePaymentBalanceInfo:{url:'/api/financeOrder/getRePaymentBalanceInfoBooking',type:'get'},
 		//还分期审核 初始数据获取
 	finance_getRepaymentPlanDetailBookingByOrderNo:{url:'/api/financeOrder/getRepaymentPlanDetailBookingByOrderNo',type:'get'},
+		//房抵提前还款信息
+	finance_before_pay_back:{url:'/api/financeOrder/getTiQianHuanKuanInfoByOrderNo/{orderNo}',type:'get'},
+		//房抵提前还款提交
+	finance_before_pay_back_submit:{url:'/api/tqHkOrderFlow/tiqianSubmitRepaymentApply',type:'post'},
+		//房抵提前还款记账信息
+	finance_before_pay_back_jz:{url:'/api/financeOrder/getTiQianHuanKuanInfoBookingByOrderNo/{orderNo}',type:'get'},
+
 
 	//财务 退费退款列表
 	finance_refund_list:{url:'/api/financeOrder/getFinanceOrderRefundlist',type:'get'},

@@ -130,11 +130,19 @@ let Page = {
 
 		let btn = $('#back_pay'),
 			close = $('#submit'),
+			beforeBtn = $('#before_back_pay'),
 			_this = this;
 
 		btn.click(function(){
 			qt.openPage(
 				`../finance/o_last_installment_mortgage_repayment.html?id=${_this.id}&orderNo=${_this.orderNo}&currentNodeKey=${_this.currentNodeKey}`,
+				winSetting.o_last_installment_mortgage_repayment.width,
+				winSetting.o_last_installment_mortgage_repayment.height)
+		});
+
+		beforeBtn.click(function(){
+			qt.openPage(
+				`../finance/o_installment_mortgage_repayment2.html?id=${_this.id}&orderNo=${_this.orderNo}&currentNodeKey=${_this.currentNodeKey}`,
 				winSetting.o_last_installment_mortgage_repayment.width,
 				winSetting.o_last_installment_mortgage_repayment.height)
 		});

@@ -161,7 +161,8 @@ let key = [
 	{name:'FANG_DI_ZHIXING_SUBMIT_ORDER',value:'../business/business_info.html',info:'系统-退费',api:'/api/ckOrderFlow/jiTuanChukuOverOrder'},
 
 
-
+	//提前还款记账
+	{name:'TIQIAN_HUANKUAN_REPAYMENT_BOOKING',value:'../finance/o_installment_mortgage_repayment3.html',info:'提前还款记账',api:'/api/tqHkOrderFlow/tiqianRepaymentBooking'},
 
 
 
