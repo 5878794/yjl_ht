@@ -34,12 +34,7 @@ html
                         b-input(type='text' id='mainMortgagePropertyRight_category' value='0')
 
 
-                b-title1(name='评估信息')
-                div(class='openWin_input_main box_hlt box_lines')
-                    div(class='openWin_input_item3')
-                        b-input-money(name='评估总价' id='orderMortgageExtendAssessment_evaluationPrice' accuracy='2' rule='must' err='不能为空' unit='万元')
-                    div(class='openWin_input_item1')
-                        b-input-file(class='__input_file__' type='file' id='orderMortgageExtendAssessment_attachUrls' name='快销总价' unit='(非必填附件)')
+
 
 
                 b-title1(name='抵押信息' id='mortgage_info' bind-group='orderMortgageExtendMortgageList')
@@ -56,6 +51,13 @@ html
                 b-title(name='附抵押物信息' id='additional_mortgage' bind-group1='additionalMortgagePropertyRightList1' bind-group2='additionalMortgagePropertyRightList2')
                 div(id='additional_mortgage_body')
 
+            div
+                b-title(name='评估信息')
+                div(class='openWin_input_main box_hlt box_lines')
+                    div(class='openWin_input_item3')
+                        b-input-money(name='评估总价' id='orderMortgageExtendAssessment_evaluationPrice' accuracy='2' rule='must' err='不能为空' unit='万元')
+                    div(class='openWin_input_item1')
+                        b-input-file(class='__input_file__' type='file' id='orderMortgageExtendAssessment_attachUrls' name='快销总价' unit='(非必填附件)')
 
             div
                 b-title(name='还款信息')
@@ -260,7 +262,7 @@ html
 
             //附抵押物信息
             div(id='additional_mortgage_item1' group='additionalMortgagePropertyRightList1')
-                b-title1(name='不动产')
+                b-title1(name='不动产' style='display:block;background:#efefef;')
                 div(class='openWin_input_main box_hlt box_lines')
                     div(class='openWin_input_item3')
                         b-input(key='name' type='text' name='名称' err='不能为空' rule='must')
@@ -275,9 +277,12 @@ html
                     div(class='openWin_input_item3 hidden')
                         b-input(key='category' type='text' value='1')
 
+                b-title1(name='抵押信息' class='mortgage_info1_' bind-group='orderMortgageExtendMortgageList_todo')
+                div(class='mortgage_info_body1_' )
+
 
             div(id='additional_mortgage_item2' group='additionalMortgagePropertyRightList2')
-                b-title1(name='动产')
+                b-title1(name='动产' style='display:block;background:#efefef;')
                 div(class='openWin_input_main box_hlt box_lines')
                     div(class='openWin_input_item3')
                         b-input(key='name' type='text' name='名称' err='不能为空' rule='must')

@@ -105,6 +105,8 @@ let Page = {
             true
         );
 
+
+
         bTitleBtn.addDelFn(
             $('#room_info').get(0),
             $('#room_info_body'),
@@ -115,7 +117,17 @@ let Page = {
             $('#additional_mortgage').get(0),
             $('#additional_mortgage_body'),
             $('#additional_mortgage_item1'),
-            $('#additional_mortgage_item2')
+            $('#additional_mortgage_item2'),
+            function(dom){
+                bTitleBtn.addChildDelFn(
+                    dom.find('.mortgage_info1_').get(0),
+                    dom.find('.mortgage_info_body1_'),
+                    $('#mortgage_info_item'),
+                    true
+                );
+                dom.find('.mortgage_info1_').get(0).body.find('.btn').trigger('click');
+            },
+            function(){}
         );
     },
     checkType(){

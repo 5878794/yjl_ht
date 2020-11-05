@@ -77,11 +77,13 @@ module.exports = {
 		};
 	},
 	//添加按钮，按钮带子菜单
-	addLevel2BtnFn(btn,body,item1,item2){
+	addLevel2BtnFn(btn,body,item1,item2,callback1,callback2){
+		callback1 = callback1 || function(){};
+		callback2 = callback2 || function(){};
 		btn.btnData = [
 			{name:'添加',type:'btn5',style:{color:'#5576f0'},children:[                       //鼠标悬浮出2级菜单按钮
-					{name:'动产',type:'btn2'},
-					{name:'不动产',type:'btn1'}
+					{name:'不动产',type:'btn1'},
+					{name:'动产',type:'btn2'}
 				]
 			}
 		];
@@ -112,6 +114,14 @@ module.exports = {
 			selectData(_item);
 			body.append(_item);
 			inputStyle.set(true,true);
+
+
+			if(type=='btn1'){
+				callback1(_item);
+			}else{
+				callback2(_item);
+
+			}
 		};
 	}
 
