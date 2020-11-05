@@ -26,6 +26,7 @@ require('./../../es6/yjl/b_title1');
 require('./../../es6/customElement/pc/input');
 require('./../../es6/customElement/pc/input_money');
 require('./../../es6/customElement/pc/input_date');
+require('./../../es6/customElement/pc/input_file');
 
 
 
