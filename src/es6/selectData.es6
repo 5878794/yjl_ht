@@ -3,6 +3,11 @@ let qt = require('./qt'),
 	{ajax,api} = require('./_ajax');
 
 let dist = {
+	flms:[
+		{name:'请选择',value:''},
+		{name:'定值',value:'1'},
+		{name:'费率',value:'2'}
+	],
 	businessTypeIndex:[],
 	//业务类型、业务方案
 	businessType:[],

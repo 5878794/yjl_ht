@@ -1187,10 +1187,10 @@ let setting = {
 				key:'text'                //数据对应的key
 			},
 			{
-				name:'渠道费(元/次)',
+				// name:'渠道费(元/次)',
 				width:'30%',
 				style:{color:'#333',fontSize:'14px'},
-				key:'value'                //数据对应的key
+				// key:'value'                //数据对应的key
 			},
 			{
 				name:'',

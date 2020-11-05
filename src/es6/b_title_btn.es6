@@ -6,7 +6,8 @@ let inputStyle = require('./../es6/inputStyle'),
 
 module.exports = {
 	//自身点击添加变成删除按钮
-	addDelFn(btn,body,item){
+	addDelFn(btn,body,item,callback){
+		callback = callback || function(){};
 		btn.btnData = [
 			{
 				name:'添加',
@@ -27,6 +28,7 @@ module.exports = {
 				selectData(_item);
 				body.append(_item);
 				inputStyle.set(true,true);
+				callback(_item);
 			}else{
 				//删除
 				body.html('');

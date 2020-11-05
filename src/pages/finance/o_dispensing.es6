@@ -3,6 +3,7 @@ let app = require('./../../es6/lib/page'),
 	all = require('./../../es6/all'),
 	{ajax,api} = require('./../../es6/_ajax'),
 	qt = require('./../../es6/qt'),
+	bTitleBtn = require('./../../es6/b_title_btn'),
 	pageSizeSetting = require('./../../es6/pageSize'),
 	getParamFromUrl = require('./../../es6/lib/fn/getParamFromUrl'),
 	winSetting = require('./../../es6/winSetting'),
@@ -55,17 +56,33 @@ let Page = {
 		newData = newData || {};
 		all.setFromVal($('#form'),newData);
 
-		let input1 = $('#loanPassagewayFee').get(0),
-			dom = $('#loanPassagewayFee_');
-		$('#loanPassageway').get(0).change= function(){
-			let option = this.body.find('option:checked'),
-				data = option.data('data') || {};
-			data = data.data??{};
-			let val = data.value??'';
 
-			input1.value = val;
-			dom.text(moneyFormat(val,2));
-		}
+		let dom1 = $('#outMoneyAmount_'),
+			dom2 = $('#loanPassageFeeRate_');
+		bTitleBtn.addDelFn(
+			$('#tdtt').get(0),
+			$('#form'),
+			$('#tdpz'),
+			function(dom_body){
+				let body = dom_body.find('.change_body');
+				$('#loanPassageType').get(0).change= function(val){
+					body.html('');
+					if(val==1){
+						let dom = dom1.clone().attr({id:'outMoneyAmount'});
+						body.append(dom);
+					}else if(val==2){
+						let dom = dom2.clone().attr({id:'loanPassageFeeRate'});
+						body.append(dom);
+					}else{
+
+					}
+					inputStyle.set(true,true);
+				}
+			}
+		);
+
+
+
 
 	},
 	addBtnEvent(){

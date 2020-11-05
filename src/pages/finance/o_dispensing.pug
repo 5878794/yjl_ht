@@ -19,36 +19,38 @@ html
 
             div
                 b-title(name='出款')
-                div(class='openWin_input_main box_hlt box_lines' id='form')
+                div(class='openWin_input_main box_hlt box_lines')
                     div(class='openWin_input_item3')
                         b-input(id='bankName' type='text' disabled='disabled' name='收款户名')
                     div(class='openWin_input_item3')
                         b-input(id='bankNo' type='text' disabled='disabled' name='收款账号')
                     div(class='openWin_input_item3')
                         b-input(id='openBank' type='text' disabled='disabled' name='开户行')
-                    div(class='openWin_input_item3')
-                        b-input(id='loanPassageway' type='select' name='出款通道' data-bind='payPassage' rule='must' err='不能为空')
-                    div(class='openWin_input_item3')
-                        b-input-money(id='outMoneyAmount' accuracy='2' name='出款金额' rule='must')
-                    div(class='openWin_input_item3')
-                    div(class='hidden')
-                        b-input-money(id='loanPassagewayFee' accuracy='2')
-                    div(class='openWin_input_item3')
-                        div(class='box_hlc o_dispensing_info')
-                            p 通道费:
-                            span(id='loanPassagewayFee_') 0
-                            p 元
-
-                    //@bens 28，29 这里 增加了3个字段 此处增加了3个字段， loanPassageType 财务管理-通道类型(1-定值，2-费率)，loanPassageFeeRate 财务管理-通道费率，outMoneyAmount  财务管理-出款金额
-                    //TODO
+                    //div(class='openWin_input_item3')
+                    //    b-input(id='loanPassageway' type='select' name='出款通道' data-bind='payPassage' rule='must' err='不能为空')
+                    //div(class='openWin_input_item3')
+                    //    b-input-money(id='outMoneyAmount' accuracy='2' name='出款金额' rule='must')
+                    //div(class='openWin_input_item3')
+                    //div(class='hidden')
+                    //    b-input-money(id='loanPassagewayFee' accuracy='2')
+                    //div(class='openWin_input_item3')
+                    //    div(class='box_hlc o_dispensing_info')
+                    //        p 通道费:
+                    //        span(id='loanPassagewayFee_') 0
+                    //        p 元
 
 
+                b-title(name='出款通道' id='tdtt')
+                div(id='form')
 
-                    div(class='openWin_input_main box_hlt box_lines')
-                        div(class='openWin_input_item1')
-                            b-input(id='auditOpinion' type='textarea' name='备注' placeholder='非必填' autoHeight='true')
-                        div(class='openWin_input_item1')
-                            b-input-file(id='attachUrls' type='file' name='附件' unit='非必填')
+
+
+
+                div(class='openWin_input_main box_hlt box_lines')
+                    div(class='openWin_input_item1')
+                        b-input(id='auditOpinion' type='textarea' name='备注' placeholder='非必填' autoHeight='true')
+                    div(class='openWin_input_item1')
+                        b-input-file(id='attachUrls' type='file' name='附件' unit='非必填')
 
 
 
@@ -56,3 +58,17 @@ html
             div(class='openWin_btns box_hcc')
                 div(class='openWin_btn_gray box_hcc hover' id='cancel') 取消
                 div(class='openWin_btn_blue box_hcc hover' id='submit') 提交
+
+
+        div(class='hidden')
+            div(class='openWin_input_main box_hlt box_lines' id='tdpz')
+                div(class='openWin_input_item3')
+                    b-input(id='loanPassageway' type='select' name='出款通道' data-bind='payPassage' rule='must' err='不能为空')
+                div(class='openWin_input_item3')
+                    b-input(id='loanPassageType' type='select' name='费用模式' data-bind='flms' rule='must' err='不能为空')
+                div(class='openWin_input_item3 change_body')
+
+
+        div(class='hidden')
+            b-input-money(id='outMoneyAmount_' name='金额' accuracy='2' unit='元' rule='must' err='不能为空')
+            b-input-money(id='loanPassageFeeRate_' name='费率' unit='%' accuracy='5' rule='must' err='不能为空')
