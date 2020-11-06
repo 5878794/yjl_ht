@@ -324,28 +324,32 @@ let Page = {
     },
     async submitFn(){
         //获取表单数据
-        let form = await all.getFromGroupVal($('#form'));
+        let form = await all.getFromGroupVal_order($('#form'));
         form = all.handlerFromDataByObj(form);
         form.additionalMortgagePropertyRightList1 = form.additionalMortgagePropertyRightList1??[];
         form.additionalMortgagePropertyRightList2 = form.additionalMortgagePropertyRightList2??[];
         form.additionalMortgagePropertyRightList = form.additionalMortgagePropertyRightList1?.concat(form.additionalMortgagePropertyRightList2);
         delete form.additionalMortgagePropertyRightList1;
         delete form.additionalMortgagePropertyRightList2;
+        delete form.additionalMortgagePropertyRightListOrderMortgageExtendMortgageList;
         form.id = this.id;
         form.orderNo = this.orderNo;
 
         //处理文件及上传
         //评估信息文件
-        let pg_files = form.orderMortgageExtendAssessment.attachUrls;
-        pg_files = await all.uploadFile(pg_files);
-        form.orderMortgageExtendAssessment.attachUrls = pg_files.join(',');
-        //抵押 文件
-        form.orderMortgageExtendMortgageList = form.orderMortgageExtendMortgageList??[];
-        for(let i=0,l=form.orderMortgageExtendMortgageList.length;i<l;i++){
-            let this_files = form.orderMortgageExtendMortgageList[i].attachUrls;
-            this_files = await all.uploadFile(this_files);
-            form.orderMortgageExtendMortgageList[i].attachUrls = this_files.join(',');
-        }
+        // let pg_files = form.orderMortgageExtendAssessment.attachUrls;
+        // pg_files = await all.uploadFile(pg_files);
+        // form.orderMortgageExtendAssessment.attachUrls = pg_files.join(',');
+        // //抵押 文件
+        // form.orderMortgageExtendMortgageList = form.orderMortgageExtendMortgageList??[];
+        // for(let i=0,l=form.orderMortgageExtendMortgageList.length;i<l;i++){
+        //     let this_files = form.orderMortgageExtendMortgageList[i].attachUrls;
+        //     this_files = await all.uploadFile(this_files);
+        //     form.orderMortgageExtendMortgageList[i].attachUrls = this_files.join(',');
+        // }
+        //处理文件上传
+        await all.uploadDataOfFiles(form);
+        console.log(form);
 
 
         await ajax.send([

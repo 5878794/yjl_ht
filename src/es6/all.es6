@@ -189,11 +189,9 @@ let all = {
 
 		let checkObj = async function(data){
 			for(let [key,val] of Object.entries(data)){
-				console.log(key,val,keys.includes(key))
 				if(keys.includes(key)){
 					//是文件 上传
 					let files = await _this.uploadFile(val);
-					console.log(files)
 					data[key] = files.join(',');
 				}else{
 					if($.isArray(val)){
