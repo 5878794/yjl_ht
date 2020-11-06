@@ -37,7 +37,7 @@ html
 
 
 
-                b-title1(name='抵押信息' id='mortgage_info' bind-group='orderMortgageExtendMortgageList')
+                b-title1(name='抵押信息' id='mortgage_info' bind-group='mainMortgagePropertyRight_orderMortgageExtendMortgageList')
                 div(id='mortgage_info_body' )
 
 
@@ -227,7 +227,7 @@ html
 
         //克隆部分=====================================================
         div(class='hidden')
-            //抵押信息
+            //抵押信息 附加抵押物的
             div(id='mortgage_info_item' group='additionalMortgagePropertyRightListOrderMortgageExtendMortgageList' group_1='orderMortgageExtendMortgageList')
                 b-title1(name='抵押' nameStyle='color:rgb(83,83,83);font-weight: normal;')
                 div(class='openWin_input_main box_hlt box_lines')
@@ -243,6 +243,23 @@ html
                         b-input-money(key_1='mortgagePrice' accuracy='5' err='不能为空' rule='must' name='抵押余额' unit='万元')
                     div(class='openWin_input_item1')
                         b-input-file(key_1='attachUrls' type='file' err='不能为空' rule='must' name='抵押附件')
+
+            //抵押信息 主抵押物的
+            div(id='mortgage_info_item111' group='mainMortgagePropertyRight_orderMortgageExtendMortgageList')
+                b-title1(name='抵押' nameStyle='color:rgb(83,83,83);font-weight: normal;')
+                div(class='openWin_input_main box_hlt box_lines')
+                    div(class='openWin_input_item3')
+                        b-input-date(key='mortgageTime' type='date' err='不能为空' rule='must' name='抵押时间')
+                    div(class='openWin_input_item3')
+                        b-input(key='mortgageCount' type='text' err='不能为空' rule='must' name='抵押次数')
+                    div(class='openWin_input_item3')
+                        b-input(key='mortgagee' type='text' err='不能为空' rule='must' name='抵押权人')
+                    div(class='openWin_input_item3')
+                        b-input-money(key='loanPrice' accuracy='2' err='不能为空' rule='must' name='原贷贷款' unit='万元')
+                    div(class='openWin_input_item3')
+                        b-input-money(key='mortgagePrice' accuracy='5' err='不能为空' rule='must' name='抵押余额' unit='万元')
+                    div(class='openWin_input_item1')
+                        b-input-file(key='attachUrls' type='file' err='不能为空' rule='must' name='抵押附件')
 
             //房屋信息
             div(class='openWin_input_main box_hlt box_lines' id='room_info_item' group='orderMortgageExtendHouseList')

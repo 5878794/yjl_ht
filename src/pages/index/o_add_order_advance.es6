@@ -101,7 +101,7 @@ let Page = {
         bTitleBtn.addChildDelFn(
             $('#mortgage_info').get(0),
             $('#mortgage_info_body'),
-            $('#mortgage_info_item'),
+            $('#mortgage_info_item111'),
             true
         );
 
@@ -357,12 +357,12 @@ let Page = {
         ]);
 
         await qt.alert('保存成功!');
-        qt.openPage(
-            '../index/o_add_order_view.html?id='+this.id+'&state=1',
-            winSetting.index_add_step4.width,
-            winSetting.index_add_step4.height
-        );
-        qt.closeWin();
+        // qt.openPage(
+        //     '../index/o_add_order_view.html?id='+this.id+'&state=1',
+        //     winSetting.index_add_step4.width,
+        //     winSetting.index_add_step4.height
+        // );
+        // qt.closeWin();
 
     }
 
