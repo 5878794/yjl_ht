@@ -167,7 +167,7 @@ let Page = {
     async submitFn(){
 
         //获取表单数据
-        let form = await all.getFromGroupVal($('#form'));
+        let form = await all.getFromGroupVal_order($('#form'));
         form = all.handlerFromDataByObj(form);
         //用款时间转天
         let number = form.orderRateInfo?.period??0;
@@ -178,8 +178,16 @@ let Page = {
         form.additionalMortgagePropertyRightList = form.additionalMortgagePropertyRightList1?.concat(form.additionalMortgagePropertyRightList2);
         delete form.additionalMortgagePropertyRightList1;
         delete form.additionalMortgagePropertyRightList2;
+        delete form.additionalMortgagePropertyRightListOrderMortgageExtendMortgageList;
         form.id = this.id;
         form.orderNo = this.orderNo;
+
+
+        //处理文件上传
+        await all.uploadDataOfFiles(form);
+        console.log(form);
+
+
 
         await ajax.send([
             api.order_add_step3(form)

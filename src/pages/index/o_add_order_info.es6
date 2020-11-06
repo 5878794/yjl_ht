@@ -133,6 +133,7 @@ let Page = {
 
 	async submitFn() {
 		let form = await all.getFromGroupVal($('#form'));
+		console.log(form)
 
 		form.id = this.id;
 		form.orderNo = this.orderNo;

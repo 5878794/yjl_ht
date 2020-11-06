@@ -148,6 +148,78 @@ let all = {
 			success(backData);
 		});
 	},
+	// 获取dom下的所有input的val并表单验证(含动态添加的)
+	getFromGroupVal_order(dom){
+		return new Promise(async (success,error)=>{
+			//获取非组下面的数据
+			let backData = await this.getFromVal(dom).catch(e=>{error(e)}) || {};
+
+			let groupDom = dom.find('div[group]');
+			for(let i=0,l=groupDom.length;i<l;i++){
+				let thisBody = groupDom.eq(i),
+					groupName = thisBody.attr('group');
+				if(!backData[groupName]){
+					backData[groupName] = [];
+				}
+				let thisData = await this.getFromVal(thisBody,'key').catch(e=>{error(e)});
+
+				let childDom = thisBody.find('div[group_1]');
+				for(let z=0,zl=childDom.length;z<zl;z++){
+					let thisChildDom = childDom.eq(z),
+						thisChildGroupName = thisChildDom.attr('group_1');
+					if(!thisData[thisChildGroupName]){
+						thisData[thisChildGroupName] = [];
+					}
+
+					let thisChildData = await this.getFromVal(thisChildDom,'key_1').catch(e=>{error(e)});
+					thisData[thisChildGroupName].push(thisChildData);
+				}
+
+				backData[groupName].push(thisData);
+			}
+
+			success(backData);
+		});
+	},
+	// 上传数据中的文件对象 第一层是obj
+	async uploadDataOfFiles(data,keys){
+		//分析数据中的文件字段
+		keys = keys || ['attachUrls'];
+		let _this = this;
+
+		let checkObj = async function(data){
+			for(let [key,val] of Object.entries(data)){
+				console.log(key,val,keys.includes(key))
+				if(keys.includes(key)){
+					//是文件 上传
+					let files = await _this.uploadFile(val);
+					console.log(files)
+					data[key] = files.join(',');
+				}else{
+					if($.isArray(val)){
+						await checkArray(val);
+					}
+					if($.isObject(val)){
+						await checkObj(val);
+					}
+				}
+			}
+		};
+		let checkArray = async function(data){
+			for(let i=0,l=data.length;i<l;i++){
+				let val = data[i];
+				if($.isArray(val)){
+					await checkArray(val);
+				}
+				if($.isObject(val)){
+					await checkObj(val);
+				}
+			}
+		};
+
+
+		await checkObj(data);
+	},
 	async setFromGroupVal(dom,data){
 		//写入非数组内的数据
 		this.setFromVal(dom,data);
@@ -359,7 +431,7 @@ let all = {
 			backData.no = data.orderNo;
 		}
 		if(level >= 2){
-			backData.from = '来自'+distForm[data.businessSourceKey];
+			backData.from = '来自'+data.businessSource;
 
 			let //主申请人
 				mainMan = data.mainOrderApplyInfo??{},
