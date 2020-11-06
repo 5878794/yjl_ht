@@ -164,24 +164,24 @@ let Page = {
         data.additionalMortgagePropertyRightList2 = dcData;
 
         //赋值
-        await all.setFromGroupVal($('#form'),data);
+        await all.setFromGroupVal_order($('#form'),data);
 
 
-        //处理文件
-        //评估信息
-        let files = data.orderMortgageExtendAssessment?.attachUrls??'';
-        if(files){
-            files = all.getRealImageSrc(files);
-            $('#orderMortgageExtendAssessment_attachUrls').get(0).showFiles = files;
-        }
-        //抵押信息
-        let dyData = data.orderMortgageExtendMortgageList??[],
-            doms = $('#mortgage_info_body').find('b-input-file');
-        dyData.map((rs,i)=>{
-            let thisFiles = rs.attachUrls??'';
-            thisFiles = all.getRealImageSrc(thisFiles);
-            doms.eq(i).get(0).showFiles = thisFiles;
-        })
+        // //处理文件
+        // //评估信息
+        // let files = data.orderMortgageExtendAssessment?.attachUrls??'';
+        // if(files){
+        //     files = all.getRealImageSrc(files);
+        //     $('#orderMortgageExtendAssessment_attachUrls').get(0).showFiles = files;
+        // }
+        // //抵押信息
+        // let dyData = data.orderMortgageExtendMortgageList??[],
+        //     doms = $('#mortgage_info_body').find('b-input-file');
+        // dyData.map((rs,i)=>{
+        //     let thisFiles = rs.attachUrls??'';
+        //     thisFiles = all.getRealImageSrc(thisFiles);
+        //     doms.eq(i).get(0).showFiles = thisFiles;
+        // })
     },
     //自动计算部分 垫资比例计算
     inputEventBind1(){
@@ -357,12 +357,12 @@ let Page = {
         ]);
 
         await qt.alert('保存成功!');
-        // qt.openPage(
-        //     '../index/o_add_order_view.html?id='+this.id+'&state=1',
-        //     winSetting.index_add_step4.width,
-        //     winSetting.index_add_step4.height
-        // );
-        // qt.closeWin();
+        qt.openPage(
+            '../index/o_add_order_view.html?id='+this.id+'&state=1',
+            winSetting.index_add_step4.width,
+            winSetting.index_add_step4.height
+        );
+        qt.closeWin();
 
     }
 
