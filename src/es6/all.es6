@@ -218,6 +218,43 @@ let all = {
 
 		await checkObj(data);
 	},
+	dataFileToSrc(data,keys){
+		//分析数据中的文件字段
+		keys = keys || ['attachUrls','mortgageReportUrls'];
+		let _this = this;
+
+		let checkObj = function(data){
+			for(let [key,val] of Object.entries(data)){
+				if(keys.includes(key)){
+					//是数组  已处理过
+					if($.isString(val)){
+						data[key] = _this.getRealImageSrc(val);
+					}
+				}else{
+					if($.isArray(val)){
+						checkArray(val);
+					}
+					if($.isObject(val)){
+						checkObj(val);
+					}
+				}
+			}
+		};
+		let checkArray = function(data){
+			for(let i=0,l=data.length;i<l;i++){
+				let val = data[i];
+				if($.isArray(val)){
+					checkArray(val);
+				}
+				if($.isObject(val)){
+					checkObj(val);
+				}
+			}
+		};
+
+
+		checkObj(data);
+	},
 	async setFromGroupVal(dom,data){
 		//写入非数组内的数据
 		this.setFromVal(dom,data);

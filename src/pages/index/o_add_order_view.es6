@@ -46,6 +46,8 @@ let Page = {
 		}else{
 			await this.bindData4(data);
 		}
+
+		this.hideNoDataDom();
 	},
 	showHideDom(){
 		let type = this.type;
@@ -89,9 +91,11 @@ let Page = {
 
 	},
 	bindDataFn(dom,data){
-		let addFile = function(files,data){
+		// console.log(data)
+		let addFile = function(files,data,keyName){
+			keyName = keyName || 'key';
 			files.each(function(){
-				let key = $(this).attr('key'),
+				let key = $(this).attr(keyName),
 					nowData,
 					item = $('<a class="box_hcc"></a>');
 				if(key.indexOf('_')>-1){
@@ -126,7 +130,26 @@ let Page = {
 			});
 		};
 
+		let bindDYXX = function(dom,data){
+			let body = dom,
+				itemId = dom.attr('child_dom'),
+				item = $('#'+itemId);
 
+			data.map(rs=>{
+				let _item = item.clone().attr({id:''}).removeClass('hidden');
+				_item.find('span').each(function(){
+					let key = $(this).attr('key111'),
+						unit = $(this).attr('unit') || '';
+					if($(this).hasClass('_files_')){
+						addFile($(this),rs,'key111');
+					}else{
+						let val = rs[key] || '';
+						$(this).text(val+' '+unit);
+					}
+				});
+				body.append(_item);
+			})
+		};
 
 		//单个的数据
 		dom.find('span').each(function(){
@@ -160,11 +183,11 @@ let Page = {
 				nowData = data[key] || [];
 
 			if(nowData.length == 0){
-				if(item.find('b-title1').length>0){
-					let bTitle = item.find('b-title1').clone();
-					body.append(bTitle);
-				}
-				body.append('<div class="noData">无数据</div>');
+				// if(item.find('b-title1').length>0){
+				// 	let bTitle = item.find('b-title1').clone();
+				// 	body.append(bTitle);
+				// }
+				// body.append('<div class="noData">无数据</div>');
 			}
 			nowData.map(rs=>{
 				let _item = item.clone().attr({id:''}).removeClass('hidden');
@@ -178,9 +201,21 @@ let Page = {
 						$(this).text(val+' '+unit);
 					}
 				});
+
+				//处理抵押信息
+				let dom1 = _item.find('div[bind_child_group]');
+				if(dom1.length >0){
+					let dataKey = dom1.attr('bind_child_group'),
+						thisData = rs[dataKey]??[];
+					bindDYXX(dom1,thisData);
+				}
+
 				body.append(_item);
 			})
 		});
+
+
+
 
 		//文件
 		let files = dom.find('.__files__');
@@ -194,11 +229,11 @@ let Page = {
 		this.bindDataFn($('#part1'),data);
 	},
 	async bindData2(data){
-		let dist = await selectData('businessFrom')??{};
-		if(data.businessSourceKey != -1){
-			$('#part2_qt').remove();
-		}
-		data.businessSourceKey = dist[data.businessSourceKey] || '';
+		// let dist = await selectData('businessFrom')??{};
+		// if(data.businessSourceKey != -1){
+		// 	$('#part2_qt').remove();
+		// }
+		// data.businessSourceKey = dist[data.businessSourceKey] || '';
 
 		let files = data.orderClientMaterialList??[],
 			file1 = [],
@@ -241,7 +276,7 @@ let Page = {
 			}else if(rs.category == 2){
 				data2.push(rs);
 			}
-		})
+		});
 		//不动产
 		data.additionalMortgagePropertyRightList1 = data1;
 		//动产
@@ -252,6 +287,9 @@ let Page = {
 		data.orderRateInfo = data.orderRateInfo??{};
 		data.orderRateInfo.period = parseInt(data.orderRateInfo.period/30);
 
+
+		//data中文件字段转真实地址数组
+		all.dataFileToSrc(data);
 
 		this.bindDataFn($('#part3'),data);
 		this.bindDataFn($('#part4'),data);
@@ -269,6 +307,7 @@ let Page = {
 		data.mainMortgagePropertyRight = data.mainMortgagePropertyRight??{};
 		data.mainMortgagePropertyRight.type = dist[data.mainMortgagePropertyRight.type] || '';
 		data.mainMortgagePropertyRight.getTime = stamp2Date.getDate1(data.mainMortgagePropertyRight.getTime || '');
+		data.mainMortgagePropertyRight_orderMortgageExtendMortgageList = data.mainMortgagePropertyRight.orderMortgageExtendMortgageList??[];
 
 		//垫资
 		//评估信息 快消总价 orderMortgageExtendAssessment_attachUrls
@@ -308,9 +347,33 @@ let Page = {
 		data.orderTrade.paymentMethodType = dist2[data.orderTrade.paymentMethodType];
 
 
-
+		//data中文件字段转真实地址数组
+		all.dataFileToSrc(data);
 		this.bindDataFn($('#part3'),data);
 		this.bindDataFn($('#part4'),data);
+	},
+	//隐藏没有数据的dom
+	hideNoDataDom(){
+		let doms = $('div[bind-group]').parent();
+		doms.each(function(){
+			let bindGroupDom = $(this).find('div[bind-group]');
+			if(bindGroupDom.length==1){
+				if(bindGroupDom.children().length==0){
+					$(this).addClass('hidden');
+				}
+			}else{
+				let show = false;
+				bindGroupDom.each(function(){
+					if($(this).children().length != 0){
+						show = true;
+					}
+				});
+				if(!show){
+					$(this).addClass('hidden');
+				}
+			}
+
+		});
 	},
 	//生成订单
 	async submit(){
