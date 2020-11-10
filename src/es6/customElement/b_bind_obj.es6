@@ -1,6 +1,5 @@
 
 //TODO 初始数据闪
-//TODO 初始数据显示${}
 
 
 
@@ -13,6 +12,7 @@ class bBindObj extends HTMLElement{
 		//挂载css
 		let all = addStyleFile('../res/css/all.css');
 		this.shadow.appendChild(all);
+
 	}
 
 
@@ -43,19 +43,6 @@ class bBindObj extends HTMLElement{
 		this.paramCatch = {};
 		this.checkTree();
 
-	}
-
-	//使不存在的属性返回空
-	addProxy(obj={}){
-		return new Proxy(obj,{
-			get(target,key,receiver){
-				if (key in target) {
-					return Reflect.get(target, key, receiver);
-				}else{
-					return '';
-				}
-			}
-		})
 	}
 
 	checkTree(){
@@ -172,13 +159,15 @@ class bBindObj extends HTMLElement{
 			this.paramCatch[param] = [];
 		}
 		this.paramCatch[param].push(fn);
+
+		let obj = {};
+		obj[param] = '';
+		fn(obj);
 	}
 
 
 
 	set data(data){
-		data = this.addProxy(data);
-
 		let catchFn = this.paramCatch;
 
 		for(let [key,val] of Object.entries(data)){
