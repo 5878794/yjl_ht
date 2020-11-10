@@ -1,0 +1,31 @@
+doctype html
+html
+    head
+        title &nbsp;
+        include ./../../pug_include/head_pc
+
+        script(data-src='test.min.js?t='+tt)
+
+        style.
+            .left{width:100px;background: red;height: 30px;}
+
+    body
+        div(id='aaa')
+
+        b-bind-obj(class='box_hcc' id='a')
+            div(class='left' tt='${rs.a}' data-b='${rs.c}' data-cc='${rs.b}') ${rs.a}
+            div(class='boxflex1' adb='${rs.d}') ${rs.b}
+            div
+                a ${rs.ff}
+                p 123
+            b-input(type='text' class='a' value='${rs.a}')
+
+            b-bind-obj(class='box_hcc' id='b' data-data='${rs.c}')
+                div(class='left') ${rs.a}
+                div(class='boxflex1') ${rs.b}
+
+
+
+
+
+
