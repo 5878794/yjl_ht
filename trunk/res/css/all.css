@@ -9,6 +9,10 @@
 
 }
 
+b-bind-obj{
+    visibility: hidden;
+}
+
 div, p, span, a, ul, li,img{
     -webkit-user-select:none;
     -ms-user-select:none;
