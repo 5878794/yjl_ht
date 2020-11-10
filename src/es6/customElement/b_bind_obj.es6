@@ -54,12 +54,11 @@ class bBindObj extends HTMLElement{
 		super();
 
 		//创建shadow容器
-		this.body = this.attachShadow({mode: 'open'});
+		this.shadow = this.attachShadow({mode: 'open'});
 		let all = addStyleFile('../res/css/all.css');
-		this.body.appendChild(all);
+		this.shadow.appendChild(all);
 
-		let slot = $('<slot></slot>');
-		this.body.appendChild(slot.get(0));
+		this.createDom();
 
 		//分析dom中的变量
 		this.paramCatch = {};
@@ -73,9 +72,18 @@ class bBindObj extends HTMLElement{
 
 	}
 
+	createDom(){
+		let slot = $('<slot></slot>');
+		this.shadow.appendChild(slot.get(0));
+	}
+
 	checkTree(){
 		//slot中的子元素集合 数组
-		let cloneDom = this.body.querySelector('slot').assignedElements();
+		let cloneDom = this.shadow.querySelector('slot').assignedElements();
+
+		//获取html b-bind-array用
+		this.html = this.outerHTML;
+
 		cloneDom.map(rs=>{
 			this.checkDom(rs);
 		});
@@ -213,5 +221,6 @@ class bBindObj extends HTMLElement{
 if(!customElements.get('b-bind-obj')){
 	customElements.define('b-bind-obj', bBindObj);
 }
+
 
 
