@@ -162,7 +162,10 @@ let Page = {
         data.additionalMortgagePropertyRightList2 = dcData;
 
         //赋值
-        await all.setFromGroupVal($('#form'),data);
+        await all.setFromGroupVal_order($('#form'),data);
+
+
+
     },
     async submitFn(){
 

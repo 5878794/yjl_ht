@@ -87,11 +87,22 @@ html
                 b-title 业务来源
                 div(class='openWin_input_main box_hlt box_lines')
                     div(class='openWin_input_item3 box_hlt')
-                        p 业务来源
-                        span(id='businessSourceKey' class='boxflex1')
-                    div(class='openWin_input_item3 box_hlt' id='part2_qt')
-                        p 其它来源
+                        p 成交中介
                         span(id='businessSource' class='boxflex1')
+                    div(class='openWin_input_item3 box_hlt')
+                        p 中介联系人
+                        span(id='businessSourceContact' class='boxflex1')
+                    div(class='openWin_input_item3 box_hlt')
+                        p 中介电话
+                        span(id='businessSourceContactMobile' class='boxflex1')
+
+
+                    //div(class='openWin_input_item3 box_hlt')
+                    //    p 业务来源
+                    //    span(id='businessSourceKey' class='boxflex1')
+                    //div(class='openWin_input_item3 box_hlt' id='part2_qt')
+                    //    p 其它来源
+                    //    span(id='businessSource' class='boxflex1')
 
 
 
@@ -117,19 +128,23 @@ html
 
 
 
-                b-title1 紧急联系人
-                //多个
-                div(id='emergency_contact_body' bind-group="urgentApplyInfoList")
 
 
-                b-title 共同申请人信息
-                //多个
-                div(id='joint_application_body' bind-group="commonOrderApplyInfoList")
 
+                div
+                    b-title1 紧急联系人
+                    //多个
+                    div(id='emergency_contact_body' bind-group="urgentApplyInfoList")
 
-                b-title 担保人信息
-                //多个
-                div(id='guarantor_body' bind-group="guaranteeInfoList")
+                div
+                    b-title 共同申请人信息
+                    //多个
+                    div(id='joint_application_body' bind-group="commonOrderApplyInfoList")
+
+                div
+                    b-title 担保人信息
+                    //多个
+                    div(id='guarantor_body' bind-group="guaranteeInfoList")
 
 
                 b-title 客户资料
@@ -170,8 +185,25 @@ html
                             span(id='mainMortgagePropertyRight_getTime' class='boxflex1')
 
 
+                    div
+                        b-title1 抵押信息
+                        //多个
+                        div(id='mortgage_info_body111' bind-group='mainMortgagePropertyRight_orderMortgageExtendMortgageList')
 
-                    b-title1 评估信息
+
+                    div
+                        b-title1 房屋现状
+                        //多个
+                        div(id='room_info_body' bind-group='orderMortgageExtendHouseList')
+
+
+                    div
+                        b-title(id='additional_mortgage') 附抵押物信息
+                        //多个
+                        div(id='additional_mortgage_body1' bind-group='additionalMortgagePropertyRightList1')
+                        div(id='additional_mortgage_body2' bind-group='additionalMortgagePropertyRightList2')
+
+                    b-title 评估信息
                     div(class='openWin_input_main box_hlt box_lines')
                         div(class='openWin_input_item1 box_hlt')
                             p 评估总价
@@ -179,25 +211,6 @@ html
                         div(class='openWin_input_item1 box_hlt')
                             p 快销总价
                             span(key='orderMortgageExtendAssessment_attachUrls' class='boxflex1 __files__')
-
-
-
-                    b-title1 抵押信息
-                    //多个
-                    div(id='mortgage_info_body' bind-group='orderMortgageExtendMortgageList')
-
-
-                    b-title1 房屋现状
-                    //多个
-                    div(id='room_info_body' bind-group='orderMortgageExtendHouseList')
-
-
-                    b-title(id='additional_mortgage') 附抵押物信息
-                    //多个
-                    div(id='additional_mortgage_body1' bind-group='additionalMortgagePropertyRightList1')
-                    div(id='additional_mortgage_body2' bind-group='additionalMortgagePropertyRightList2')
-
-
 
                     b-title 还款信息
                     div(class='openWin_input_main box_hlt box_lines')
@@ -275,7 +288,7 @@ html
 
                     //- 非垫资业务没有
                     div(class='__fdz_no__')
-                        b-title(id='') 交易信息
+                        b-title 交易信息
                         div(class='openWin_input_main box_hlt box_lines')
                             div(class='openWin_input_item3 box_hlt')
                                 p 成交中介
@@ -389,11 +402,23 @@ html
                             p 取得时间
                             span(id='mainMortgagePropertyRight_getTime' class='boxflex1')
 
+                    div
+                        b-title 附抵押物信息
+                        //多个
+                        div(id='additional_mortgage_body1' bind-group='additionalMortgagePropertyRightList1')
+                        div(id='additional_mortgage_body2' bind-group='additionalMortgagePropertyRightList2')
 
-                    b-title 附抵押物信息
-                    //多个
-                    div(id='additional_mortgage_body1' bind-group='additionalMortgagePropertyRightList1')
-                    div(id='additional_mortgage_body2' bind-group='additionalMortgagePropertyRightList2')
+                    b-title 评估信息
+                    div(class='openWin_input_main box_hlt box_lines')
+                        div(class='openWin_input_item1 box_hlt')
+                            p 评估总价
+                            span(id='orderMortgageExtendAssessment_evaluationPrice' class='boxflex1' unit='万元')
+                        div(class='openWin_input_item1 box_hlt')
+                            p 快销总价
+                            span(key='orderMortgageExtendAssessment_attachUrls' class='boxflex1 __files__')
+                        div(class='openWin_input_item1 box_hlt')
+                            p 评估报告
+                            span(key='orderMortgageExtendAssessment_mortgageReportUrls' class='boxflex1 __files__')
 
 
 
@@ -502,8 +527,10 @@ html
                     span(key='address' class='boxflex1')
 
 
+
+
         div(id='additional_mortgage_body1_item' class='hidden')
-            b-title1 不动产
+            b-title1(name='不动产' style='display:block;background:#efefef;') 不动产
             div(class='openWin_input_main box_hlt box_lines')
                 div(class='openWin_input_item3 box_hlt')
                     p 名称
@@ -520,8 +547,13 @@ html
                 div(class='openWin_input_item3 box_hlt')
                     p 取得时间
                     span(key='getTime' class='boxflex1')
+            b-title1(name='抵押信息' class='mortgage_info1_') 抵押信息
+            div(bind_child_group='orderMortgageExtendMortgageList' child_dom='mortgage_info_body_item')
+
+
+
         div(id='additional_mortgage_body2_item' class='hidden')
-            b-title1 动产
+            b-title1(name='动产' style='display:block;background:#efefef;') 动产
             div(class='openWin_input_main box_hlt box_lines')
                 div(class='openWin_input_item3 box_hlt')
                     p 名称
@@ -533,9 +565,8 @@ html
                     p 评估价值
                     span(key='evaluationValue' class='boxflex1' unit='万元')
 
-
-        div(id='mortgage_info_body_item' class='hidden')
-            b-title1(nameStyle='color:rgb(83,83,83);font-weight: normal;') 抵押
+        div(id='mortgage_info_body111_item' class='hidden')
+            b-title1(name='抵押' nameStyle='color:rgb(83,83,83);font-weight: normal;') 抵押
             div(class='openWin_input_main box_hlt box_lines')
                 div(class='openWin_input_item3 box_hlt')
                     p 抵押时间
@@ -555,6 +586,27 @@ html
                 div(class='openWin_input_item1 box_hlt')
                     p 抵押附件
                     span(key='attachUrls' class='boxflex1 _files_')
+        div(id='mortgage_info_body_item' class='hidden')
+            b-title1(name='抵押' nameStyle='color:rgb(83,83,83);font-weight: normal;') 抵押
+            div(class='openWin_input_main box_hlt box_lines')
+                div(class='openWin_input_item3 box_hlt')
+                    p 抵押时间
+                    span(key111='mortgageTime' class='boxflex1')
+                div(class='openWin_input_item3 box_hlt')
+                    p 抵押次数
+                    span(key111='mortgageCount' class='boxflex1')
+                div(class='openWin_input_item3 box_hlt')
+                    p 抵押权人
+                    span(key111='mortgagee' class='boxflex1')
+                div(class='openWin_input_item3 box_hlt')
+                    p 原贷贷款
+                    span(key111='loanPrice' class='boxflex1' unit='万元')
+                div(class='openWin_input_item3 box_hlt')
+                    p 抵押金额
+                    span(key111='mortgagePrice' class='boxflex1' unit='万元')
+                div(class='openWin_input_item1 box_hlt')
+                    p 抵押附件
+                    span(key111='attachUrls' class='boxflex1 _files_')
         div(id='room_info_body_item' class='hidden')
             div(class='openWin_input_main box_hlt box_lines')
                 div(class='openWin_input_item3 box_hlt')

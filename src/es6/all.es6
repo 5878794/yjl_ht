@@ -184,7 +184,7 @@ let all = {
 	// 上传数据中的文件对象 第一层是obj
 	async uploadDataOfFiles(data,keys){
 		//分析数据中的文件字段
-		keys = keys || ['attachUrls'];
+		keys = keys || ['attachUrls','mortgageReportUrls'];
 		let _this = this;
 
 		let checkObj = async function(data){
@@ -217,6 +217,43 @@ let all = {
 
 
 		await checkObj(data);
+	},
+	dataFileToSrc(data,keys){
+		//分析数据中的文件字段
+		keys = keys || ['attachUrls','mortgageReportUrls'];
+		let _this = this;
+
+		let checkObj = function(data){
+			for(let [key,val] of Object.entries(data)){
+				if(keys.includes(key)){
+					//是数组  已处理过
+					if($.isString(val)){
+						data[key] = _this.getRealImageSrc(val);
+					}
+				}else{
+					if($.isArray(val)){
+						checkArray(val);
+					}
+					if($.isObject(val)){
+						checkObj(val);
+					}
+				}
+			}
+		};
+		let checkArray = function(data){
+			for(let i=0,l=data.length;i<l;i++){
+				let val = data[i];
+				if($.isArray(val)){
+					checkArray(val);
+				}
+				if($.isObject(val)){
+					checkObj(val);
+				}
+			}
+		};
+
+
+		checkObj(data);
 	},
 	async setFromGroupVal(dom,data){
 		//写入非数组内的数据
@@ -272,6 +309,81 @@ let all = {
 		}
 
 	},
+	async setFromGroupVal_order(dom,data){
+		//写入非数组内的数据
+		this.setFromVal_order(dom,data);
+
+		//触发bTitle的点击事件
+		let bTitle = dom.find('b-title[bind-group],b-title1[bind-group],b-title[bind-group1],b-title[bind-group2]');
+		bTitle.each(function(){
+			if($(this).attr('bind-group')){
+				let btn = this.body.find('.btn'),
+					type= $(this).attr('bind-group'),
+					l = data[type]?.length || 0;
+				for(let i=0;i<l;i++){
+					btn.trigger('click');
+				}
+			}
+			if($(this).attr('bind-group1')){
+				let btn = this.body.find('div[type="btn1"]'),
+					type= $(this).attr('bind-group1'),
+					l = data[type]?.length || 0;
+				for(let i=0;i<l;i++){
+					btn.trigger('click');
+
+					//生成内部的子元素  写死的。。。。
+					let childLength = data[type][i].orderMortgageExtendMortgageList?.length??0;
+					let dom = $('div[group="'+type+'"]').eq(i);
+					let btn1 = dom.find('.mortgage_info1_').eq(0).get(0).body.find('.btn');
+					for(let z=0,zl=childLength-1;z<zl;z++){
+						btn1.trigger('click');
+					}
+				}
+
+
+			}
+			if($(this).attr('bind-group2')){
+				let btn = this.body.find('div[type="btn2"]'),
+					type= $(this).attr('bind-group2'),
+					l = data[type]?.length || 0;
+				for(let i=0;i<l;i++){
+					btn.trigger('click');
+				}
+			}
+		});
+
+
+		//获取生成的dom
+		let doms = dom.find('div[group]'),
+			obj = {};
+
+		//分组
+		doms.each(function(){
+			let type = $(this).attr('group');
+			if(!obj[type]){obj[type] = []}
+			obj[type].push(this);
+		});
+
+		let _this = this;
+		//写入数据
+		for(let [key,val] of Object.entries(obj)){
+			let nowData = data[key];
+			val.map((rs,i)=>{
+				let thisData = nowData[i];
+				this.setFromVal_order($(rs),thisData,'key');
+				//写死的
+				let childrenDom = $(rs).find('div[group_1]');
+				childrenDom.each(function(i){
+					let thisDataName = $(this).attr('group_1'),
+						thisData1 = thisData[thisDataName]||[];
+					thisData1 = thisData1[i]??{};
+					_this.setFromVal_order($(this),thisData1,'key_1')
+				});
+
+			});
+		}
+
+	},
 	//dom下的b-input类数据绑定
 	setFromVal(dom,data,key='id'){
 		let inputs = this.getInputDom(dom);
@@ -279,6 +391,22 @@ let all = {
 			let id = $(this).attr(key);
 			if(id){
 				this.value = data[id];
+			}
+		})
+	},
+	setFromVal_order(dom,data,key='id'){
+		let inputs = this.getInputDom(dom);
+		inputs.each(function(){
+			let id = $(this).attr(key);
+			if(id){
+				if(id=='attachUrls' || id.indexOf('_attachUrls')>-1 || id.indexOf('_mortgageReportUrls')>-1){
+					if(data[id]){
+						let thisFiles = all.getRealImageSrc(data[id]);
+						this.showFiles = thisFiles;
+					}
+				}else{
+					this.value = data[id];
+				}
 			}
 		})
 	},
