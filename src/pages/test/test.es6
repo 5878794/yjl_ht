@@ -15,8 +15,20 @@ let Page = {
 
 		// setTimeout(function(){
 			dom.data = [
-				{name:111,arr:[{name:'a11'},{name:'a12'}]},
-				{name:222,arr:[]}
+				{
+					name:'title1',
+					children:[
+						{name:'p1'},
+						{name:'p2'}
+					]
+				},
+				{
+					name:'title2',
+					children:[
+						{name:'a1'},
+						{name:'a2'}
+					]
+				}
 			]
 		// },1000)
 
