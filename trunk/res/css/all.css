@@ -9,7 +9,8 @@
 
 }
 
-b-bind-obj{
+b-bind-obj,
+b-bind-array{
     visibility: hidden;
 }
 

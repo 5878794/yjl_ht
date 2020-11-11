@@ -10,31 +10,37 @@ html
             .left{width:100px;background: red;height: 30px;}
 
     body
-        div(id='aaa')
+        //div(id='aaa')
 
 
-        b-bind-obj(class='box_slt' id='a')
-            div(class='box_hcc' style='width:100%;height:30px;')
-                div(class='left' tt='${rs.a}' data-b='${rs.c}' data-cc='${rs.b}') ${rs.a}
-                div(class='boxflex1' adb='${rs.d}') ${rs.b}
-                div
-                    a ${rs.a}
-                    p ${rs.d}
-                input(type='text' value='${rs.a}')
-                b-input(type='text' class='a' value='${rs.a}')
+        //b-bind-obj(class='box_slt' id='a')
+        //    div(class='box_hcc' style='width:100%;height:30px;')
+        //        div(class='left' tt='${rs.a}' data-b='${rs.c}' data-cc='${rs.b}') ${rs.a}
+        //        div(class='boxflex1' adb='${rs.d}') ${rs.b}
+        //        div
+        //            a ${rs.a}
+        //            p ${rs.d}
+        //        input(type='text' value='${rs.a}')
+        //        b-input(type='text' class='a' value='${rs.a}')
 
-            b-bind-array(class='box_slt' id='c' data-data='${rs.arr}')
-                b-bind-obj(class='box_hcc')
-                    div(style='width:100px;background:green;height:30px;')
-                        p ${rs.a}
-                    div(style='width:100px;background:yellow;height:30px;') ${rs.b}
+        b-bind-array(class='box_slt' id='c')
+            div(class='box_hcc' style='width:100%;')
+                p(style='width:100px;height:30px;background:red;') ${rs.name}
+                b-bind-array(data-data='${rs.arr}' class='boxflex1 box_hcc' style='height:30px;')
+                    p(style='width:100px;height:30px;background:yellow;') ${rs.name}
 
 
-            b-bind-obj(class='box_hcc' id='b' data-data='${rs.c}')
-                div(class='left') ${rs.a}
-                div(class='boxflex1') ${rs.b}
+        //b-bind-array(data-data='${rs.arr2}')
+        //    b-bind-obj ${rs.a}
+        //
+        //
+        //b-bind-obj(class='box_hcc' id='b' data-data='${rs.c}')
+        //    div(class='left') ${rs.a}
+        //    div(class='boxflex1') ${rs.b}
 
-        div 2222
+
+
+
 
 
 

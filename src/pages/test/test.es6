@@ -11,13 +11,14 @@ require('../../es6/customElement/pc/input');
 
 let Page = {
 	init(){
-		let dom = $('#a').eq(0).get(0);
+		let dom = $('#c').eq(0).get(0);
 
-		setTimeout(function(){
-			dom.data = {a:1,b:2,c:{a:222,b:333},d:'哈哈',
-				arr:[{a:1,b:2},{a:3,b:4},{a:5,b:6}]
-			};
-		},1000)
+		// setTimeout(function(){
+			dom.data = [
+				{name:111,arr:[{name:'a11'},{name:'a12'}]},
+				{name:222,arr:[]}
+			]
+		// },1000)
 
 
 
