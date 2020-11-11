@@ -17,6 +17,8 @@
 //删除数据
 // bBindArrayDom.list(n).remove();
 
+//修改数据
+// bBindArrayDom.list(n).data = {name:111};
 
 
 
@@ -133,22 +135,40 @@ class bBIndArray extends bBindObj{
 			dom.remove = function(){
 				_this.createdDoms.splice(param,1);
 				_this.paramCatchs.splice(param,1);
-				dom.map(rs=>{
-					$(rs).remove();
-				})
-			}
-
-			dom.data = function(data){
-				let catchFn = _this.paramCatchs[param]??{};
-
-				for(let [key,val] of Object.entries(data)){
-					if(catchFn[key]){
-						catchFn[key].map(fn=>{
-							fn(data);
-						})
-					}
+				if($.isArray(dom)){
+					dom.map(rs=>{
+						$(rs).remove();
+					})
 				}
 			}
+
+			Object.defineProperty(dom,"data",{
+				set : function (data) {
+					let catchFn = _this.paramCatchs[param]??{};
+
+					for(let [key,val] of Object.entries(data)){
+						if(catchFn[key]){
+							catchFn[key].map(fn=>{
+								fn(data);
+							})
+						}
+					}
+				},
+				configurable : true
+			});
+
+
+			// dom.data = function(data){
+			// 	let catchFn = _this.paramCatchs[param]??{};
+			//
+			// 	for(let [key,val] of Object.entries(data)){
+			// 		if(catchFn[key]){
+			// 			catchFn[key].map(fn=>{
+			// 				fn(data);
+			// 			})
+			// 		}
+			// 	}
+			// }
 
 			return dom;
 		}
