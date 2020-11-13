@@ -182,8 +182,8 @@ class bInput extends HTMLElement{
 			this.disabled = true;
 		}
 
-
-		this[addEvent]();
+		let notUseFocusCss = ($(this).attr('noFocus') == 'yes')? true : false;
+		this[addEvent](notUseFocusCss);
 
 
 		//赋值初始值
@@ -368,7 +368,7 @@ class bInput extends HTMLElement{
 	}
 
 	//事件监听
-	[addEvent](){
+	[addEvent](notUseFocusCss){
 		let _this = this,
 			childId = $(this).data('child');
 		this.body.find('input').each(function(){
@@ -376,12 +376,14 @@ class bInput extends HTMLElement{
 				_this.userSetChangeFn(_this.value,childId);
 				_this.userSetChangeFn1(_this.value);
 			},false);
-			this.addEventListener('focus',function(){
-				_this.inputBodyDom.css({border:'1px solid blue'});
-			},false)
-			this.addEventListener('blur',function(){
-				_this.inputBodyDom.css({border:'1px solid rgb(204,204,204)'});
-			},false)
+			if(!notUseFocusCss){
+				this.addEventListener('focus',function(){
+					_this.inputBodyDom.css({border:'1px solid blue'});
+				},false)
+				this.addEventListener('blur',function(){
+					_this.inputBodyDom.css({border:'1px solid rgb(204,204,204)'});
+				},false)
+			}
 		});
 		this.body.find('select').each(function(){
 			this.addEventListener('change',function(){
@@ -393,12 +395,14 @@ class bInput extends HTMLElement{
 				_this.userSetChangeFn(_this.value,childId);
 				_this.userSetChangeFn1(_this.value);
 			},false);
-			this.addEventListener('focus',function(){
-				_this.inputBodyDom.css({border:'1px solid blue'});
-			},false)
-			this.addEventListener('blur',function(){
-				_this.inputBodyDom.css({border:'1px solid rgb(204,204,204)'});
-			},false)
+			if(!notUseFocusCss){
+				this.addEventListener('focus',function(){
+					_this.inputBodyDom.css({border:'1px solid blue'});
+				},false)
+				this.addEventListener('blur',function(){
+					_this.inputBodyDom.css({border:'1px solid rgb(204,204,204)'});
+				},false)
+			}
 		});
 
 

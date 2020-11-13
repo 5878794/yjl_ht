@@ -17,7 +17,6 @@ require('./../../es6/customElement/pc/input');
 require('./../../es6/customElement/pc/input_file');
 
 let Page = {
-	isWarran:false,
 	init(){
 		all.showLoadingRun(this,'run');
 	},
@@ -28,7 +27,6 @@ let Page = {
 		this.type = param.type;
 		this.currentNodeKey = param.currentNodeKey;
 
-		this.isWarran = (this.type == 1);
 
 
 		let userInfo = window.sessionStorage.getItem('userInfo')||'{}';
@@ -50,7 +48,7 @@ let Page = {
 	},
 	async run() {
 		this.getParam();
-		inputStyle.phoneSet1();
+
 
 		let [data] = await ajax.send([
 			api.order_get_byId({id:this.id})
@@ -60,16 +58,46 @@ let Page = {
 		this.orderStateDist = await selectData('orderState');
 
 		console.log(data)
-		this.bindData(data);
+
+
+		let warran = $('#warran'),
+			order = $('#myorder'),
+			draft = $('#draft');
+		if(this.type == 1){
+			inputStyle.phoneSet1(60);
+			//权证
+			warran.removeClass('hidden');
+			order.remove();
+			draft.remove();
+			this.appendTypeDom('权证','blue');
+			this.bindData(data);
+		}else if(this.type == 2){
+			inputStyle.phoneSet1(60);
+			//订单
+			warran.remove();
+			order.removeClass('hidden');
+			draft.remove();
+			this.bindData(data);
+		}else{
+			inputStyle.phoneSet1(90);
+			//草稿
+			warran.remove();
+			order.remove();
+			draft.removeClass('hidden');
+			this.appendTypeDom('草稿','red');
+			this.bindData1(data);
+		}
+
+
 		this.bindBtnEvent();
 
 
-		if(!this.isWarran){
-			$('#warran').remove();
-			return;
-		}else{
-			$('#warran').removeClass('hidden');
-		}
+		// if(!this.isWarran){
+		// 	$('#warran').remove();
+		// 	return;
+		// }else{
+		// 	$('#warran').removeClass('hidden');
+		// }
 
 
 
@@ -80,6 +108,25 @@ let Page = {
 		// 过户       通用过单
 		// 取证       通用过单
 		// 抵押       通用过单
+	},
+	appendTypeDom(text,color){
+		let dom = $('<div class="box_hcc">'+text+'</div>'),
+			body = $('#item');
+		body.css({position:'relative'});
+		dom.css({
+			position:'absolute',
+			right:'10px',
+			top:'50%',
+			width:'24px',
+			height:'40px',
+			marginTop:'-20px',
+			border:'1px solid '+color,
+			color:color,
+			textAlign:'center'
+		});
+
+		body.append(dom);
+
 	},
 	bindData(rs){
 		let _item = $('#item'),
@@ -105,11 +152,32 @@ let Page = {
 		$('#history').data({data:rs});
 		$('#tel').attr({href:'tel:'+rs.mainOrderApplyInfo?.mobile});
 	},
+	bindData1(rs){
+		let _item = $('#item'),
+			a = _item.find('a');
+
+		//姓名
+		a.eq(0).text(rs.mainOrderApplyInfo?.name);
+		//业务
+		a.eq(2).text(this.bussinessDist[rs.businessKey]);
+		//金额 元---转万元
+		let money = rs.applyMoney;
+		money = money/10000;
+		money = moneyFormat(money,2)+'万元';
+		a.eq(1).text(money);
+		//时间
+		a.eq(3).text(stamp2Date.getDate1(rs.flowNodeUpdateTime||''));
+
+		$('#info').data({data:rs});
+		$('#history').data({data:rs});
+		$('#tel').attr({href:'tel:'+rs.mainOrderApplyInfo?.mobile});
+	},
 	bindBtnEvent(){
 		let info = $('#info'),
 			history = $('#history'),
 			close = $('#close'),
 			submit = $('#submit'),
+			submit1 = $('#submit1'),
 			_this = this;
 
 		$$(info).myclickok(function(){
@@ -137,6 +205,41 @@ let Page = {
 				currentNodeKey:_this.currentNodeKey
 			});
 		});
+
+		$$(submit1).myclickok(function(){
+			all.showLoadingRun(_this,'submitFile');
+		});
+	},
+	async submitFile(){
+		let form = await all.getFromVal($('#form')),
+			uploaded1 = await all.uploadFile(form.attachUrls1),
+			uploaded2 = await all.uploadFile(form.attachUrls2),
+			uploaded3 = await all.uploadFile(form.attachUrls3);
+
+		let data = [
+			{
+				attachUrl:uploaded1.join(','),
+				orderNo:this.orderNo,
+				type:1
+			},
+			{
+				attachUrl:uploaded2.join(','),
+				orderNo:this.orderNo,
+				type:2
+			},
+			{
+				attachUrl:uploaded3.join(','),
+				orderNo:this.orderNo,
+				type:3
+			}
+		];
+
+		await ajax.send([
+			api.mobile_file_submit(data)
+		]);
+
+		await qt.alert('操作成功!');
+		qt.closeWin();
 	}
 };
 

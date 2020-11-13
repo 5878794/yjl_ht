@@ -32,9 +32,9 @@ module.exports = {
 		obj.nameStyle = {width:'60px',color:'#535353',fontSize:'14px',textAlign:'right'};
 		obj.rowStyle = {padding:'10px 20px 10px 0'};
 	},
-	phoneInputStyleFn1_file(obj){
+	phoneInputStyleFn1_file(obj,width){
 		obj.rowHeight = 80;
-		obj.nameStyle = {width:'60px',color:'#535353',fontSize:'14px',textAlign:'right'};
+		obj.nameStyle = {width:width+'px',color:'#535353',fontSize:'14px',textAlign:'right'};
 		obj.rowStyle = {padding:'10px 20px 10px 0'};
 		obj.inputBodyStyle = {padding:0};
 		obj.unitStyle = {fontSize:'12px',position:'relative',top:'-10px'};
@@ -113,7 +113,7 @@ module.exports = {
 			_this.phoneInputStyleFn(this);
 		});
 	},
-	phoneSet1(){
+	phoneSet1(width){
 		let bInput = $('b-input'),
 			bFile = $('b-input-file'),
 			bMoney = $('b-input-money'),
@@ -128,7 +128,7 @@ module.exports = {
 			}
 		});
 		bFile.each(function(){
-			_this.phoneInputStyleFn1_file(this);
+			_this.phoneInputStyleFn1_file(this,width);
 		});
 		bMoney.each(function(){
 			_this.phoneInputStyleFn1(this);

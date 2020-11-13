@@ -317,6 +317,11 @@ let api = {
 	arrival4_list_api:{url:'/api/report/allStatisticForFd',type:'post'},
 
 
+	//手机端列表
+	//是否是权证，isWarrant    0-否 1-是 默认0
+	mobile_list:{url:'/api/myOrder/listMobile',type:'get'},
+	//附件提交
+	mobile_file_submit:{url:'/api/orderBase/addOrderCustomerAttach',type:'post'},
 
 
 	//客户端提交
