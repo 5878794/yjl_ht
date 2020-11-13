@@ -4,6 +4,7 @@ let app = require('./../../es6/lib/page'),
 	all = require('./../../es6/all'),
 	{ajax,api} = require('./../../es6/_ajax'),
 	qt = require('./../../es6/qt'),
+	qt1 = require('./../../es6/qt_phone'),
 	pageSizeSetting = require('./../../es6/pageSize'),
 	getParamFromUrl = require('./../../es6/lib/fn/getParamFromUrl'),
 	selectData = require('./../../es6/selectData'),
@@ -12,6 +13,8 @@ let app = require('./../../es6/lib/page'),
 	tableSet = require('./../../es6/tableSetting'),
 	stamp2Date = require('./../../es6/lib/fn/timeAndStamp'),
 	inputStyle = require('./../../es6/inputStyle');
+qt.loading = qt1.loading;
+
 
 require('./../../es6/customElement/pc/input');
 require('./../../es6/customElement/pc/input_file');
@@ -171,6 +174,27 @@ let Page = {
 		$('#info').data({data:rs});
 		$('#history').data({data:rs});
 		$('#tel').attr({href:'tel:'+rs.mainOrderApplyInfo?.mobile});
+
+
+		//文件绑定
+		let files = rs.orderClientMaterialList || [];
+		files.map(file=>{
+			if(file.attachType == 1){
+				console.log(all.getRealImageSrc(file.attachUrls))
+				// data.attachUrls1 = rs.attachUrls;
+				$('#attachUrls1').get(0).showFiles = all.getRealImageSrc(file.attachUrls);
+			}
+			if(file.attachType == 2){
+				console.log(all.getRealImageSrc(file.attachUrls))
+				// data.attachUrls2 = rs.attachUrls;
+				$('#attachUrls2').get(0).showFiles = all.getRealImageSrc(file.attachUrls);
+			}
+			if(file.attachType == 3){
+				console.log(all.getRealImageSrc(file.attachUrls))
+				// data.attachUrls3 = rs.attachUrls;
+				$('#attachUrls3').get(0).showFiles = all.getRealImageSrc(file.attachUrls);
+			}
+		});
 	},
 	bindBtnEvent(){
 		let info = $('#info'),
@@ -234,6 +258,7 @@ let Page = {
 			}
 		];
 
+		console.log(data);
 		await ajax.send([
 			api.mobile_file_submit(data)
 		]);

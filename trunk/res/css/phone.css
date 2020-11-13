@@ -60,6 +60,7 @@
     background-size: 30px 30px;
     line-height: 60px;
     border-bottom: 1px solid #eee;
+    z-index: 10;
 }
 .mobile_logo_{
     width: 100%; height: 60px;

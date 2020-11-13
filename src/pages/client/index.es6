@@ -21,8 +21,8 @@ require('./../../es6/customElement/pc/input');
 let Page = {
 	init(){
 		let param = getParamFromUrl();
-		this.id = param.id;
-		this.name = param.name;
+		this.id = param.id || param.uid;
+		this.name = param.name || param.uname;
 		all.showLoadingRun(this,'run');
 	},
 	async run(){

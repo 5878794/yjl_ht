@@ -4,6 +4,7 @@ let app = require('./../../es6/lib/page'),
 	all = require('./../../es6/all'),
 	{ajax,api} = require('./../../es6/_ajax'),
 	qt = require('./../../es6/qt'),
+	qt1 = require('./../../es6/qt_phone'),
 	pageSizeSetting = require('./../../es6/pageSize'),
 	getParamFromUrl = require('./../../es6/lib/fn/getParamFromUrl'),
 	selectData = require('./../../es6/selectData'),
@@ -12,7 +13,7 @@ let app = require('./../../es6/lib/page'),
 	tableSet = require('./../../es6/tableSetting'),
 	stamp2Date = require('./../../es6/lib/fn/timeAndStamp'),
 	inputStyle = require('./../../es6/inputStyle');
-
+qt.loading = qt1.loading;
 
 
 require('./../../es6/customElement/phone/b_push_load');
@@ -23,13 +24,16 @@ let Page = {
 	isWarran:false,
 	pageSize:20,
 	getListApi(){
-		let apiName =  (this.isWarran)? 'warrant_list' : 'my_order';
+		let apiName =  'mobile_list';
 		let param = {
 			pageNum:1,
 			pageSize:this.pageSize
 		}
 		if(this.isWarran){
-			param.isDraft = false;
+			// 0-否 1-是 默认0
+			param.isWarrant = 1;
+		}else{
+			param.isWarrant = 0;
 		}
 
 		return {apiName,param}
@@ -155,18 +159,64 @@ let Page = {
 			//时间
 			a.eq(5).text(stamp2Date.getDate1(rs.flowNodeUpdateTime||''));
 
+			//1:权证  2：订单  3：草稿
+			let type,text,color;
+			if(rs.orderStatus == 0 || rs.orderStatus == 3){
+				//orderStatus=0 是 草稿，非0 是 订单
+				type = 3;
+				text ='草稿';
+				color = 'red';
+			}else{
+				if(rs.isWarrant == 1){
+					type = 1;
+					text = '权证';
+					color = 'blue'
+				}else{
+					type = 2;
+					text = '';
+					color = '';
+				}
+			}
+
+
+
+			_item.attr({type:type});
 			this.addEvent(_item);
+
+
+
+			this.appendTypeDom(_item,text,color);
+
 			body.append(_item);
 		});
 
+
+	},
+	appendTypeDom(body,text,color){
+		if(!text){return;}
+		let dom = $('<div class="box_hcc">'+text+'</div>');
+		body.css({position:'relative'});
+		dom.css({
+			position:'absolute',
+			right:'10px',
+			top:'50%',
+			width:'24px',
+			height:'40px',
+			marginTop:'-20px',
+			border:'1px solid '+color,
+			color:color,
+			textAlign:'center'
+		});
+
+		body.append(dom);
 
 	},
 	addEvent(dom){
 		let _this = this;
 		$$(dom).myclickok(function(){
 			let data = $(this).data('data'),
-				//1 权证   0： 我的业务
-				type = (_this.isWarran)? 1:0,
+				//1:权证  2：订单  3：草稿
+				type = $(this).attr('type'),
 				id = data.id,
 				orderNo = data.orderNo,
 				currentNodeKey = data.currentNodeKey;
