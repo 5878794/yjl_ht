@@ -198,7 +198,7 @@ let Page = {
 		body.css({position:'relative'});
 		dom.css({
 			position:'absolute',
-			right:'10px',
+			right:'2px',
 			top:'50%',
 			width:'24px',
 			height:'40px',
