@@ -856,6 +856,7 @@ page[init](function(){
         console.log(e);
         await page.alert("网络连接出现了一点问题，请重新尝试");
     }else{
+        console.log(e);
         await page.alert("网络连接出现了一点问题，请重新尝试;");
         page.goBack();
     }

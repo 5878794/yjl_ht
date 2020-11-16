@@ -64,18 +64,24 @@ class bBIndArray extends bBindObj{
 
 
 	getCloneDom(data){
-		let cloneDom = this.template.innerHTML;
-		cloneDom = $(cloneDom);
+		let dom = this.shadow.querySelector('slot').assignedElements(),
+			fragment = document.createDocumentFragment();
+		dom.map(rs=>{
+			fragment.appendChild(rs.cloneNode(true));
+		});
 
-		//赋值
 		this.paramCatch = {};
-		this.checkTree(cloneDom);
+
+		let childDom = [];
+		for(let i=0,l=fragment.childNodes.length;i<l;i++){
+			childDom.push(fragment.childNodes[i])
+			// console.log(fragment.childNodes[i].outerHTML)
+		}
+		this.checkTree(childDom);
 		super.data = data;
 
-		//缓存
 		this.paramCatchs.push(this.paramCatch);
-
-		return cloneDom;
+		return {fragment,childDom};
 	}
 
 	set data(data){
@@ -86,15 +92,17 @@ class bBIndArray extends bBindObj{
 
 		data.map(rs=>{
 			//获取模版克隆
-			let cloneDom = this.getCloneDom(rs);
-			$(this).append(cloneDom);
-			this.createdDoms.push(cloneDom);
+			let {fragment,childDom} = this.getCloneDom(rs);
+			this.shadow.appendChild(fragment);
+			this.createdDoms.push(childDom);
 		});
 	}
 
 	clearAll(){
 		this.createdDoms.map(rs=>{
-			rs.remove();
+			rs.map(dom=>{
+				$(dom).remove();
+			})
 		})
 		this.createdDoms = [];
 		this.paramCatchs = [];
@@ -104,9 +112,9 @@ class bBIndArray extends bBindObj{
 		data = data??[];
 		data.map(rs=>{
 			//获取模版克隆
-			let cloneDom = this.getCloneDom(rs);
-			$(this).append(cloneDom);
-			this.createdDoms.push(cloneDom);
+			let {fragment,childDom} = this.getCloneDom(rs);
+			this.shadow.appendChild(fragment);
+			this.createdDoms.push(childDom);
 		});
 	}
 
@@ -122,8 +130,10 @@ class bBIndArray extends bBindObj{
 			dom.remove = function(){
 				_this.createdDoms.splice(param,1);
 				_this.paramCatchs.splice(param,1);
-				if(dom.remove){
-					dom.remove();
+				if($.isArray(dom)){
+					dom.map(rs=>{
+						$(rs).remove();
+					})
 				}
 			}
 

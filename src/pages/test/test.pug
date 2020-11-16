@@ -8,6 +8,20 @@ html
 
         style.
             .left{width:100px;background: red;height: 30px;}
+            b-bind-obj{
+                color:red;
+            }
+            b-bind-array{
+                color:blue; width: 100%;
+            }
+            .item{
+                width:50%; text-align: center;
+                height: 30px; line-height: 30px;
+            }
+            div{
+                width:100%; text-align: left;
+                height: 40px; line-height: 40px;
+            }
 
     body
         //div(id='aaa')
@@ -49,8 +63,23 @@ html
         //    p(data-b='${rs.aa}' style='width:100%;background:red;height:30px;') ${rs.aa}
 
 
-        b-bind-array(class='box_scc' id='c')
-            div ${rs.name}
-            b-bind-array(class='box_hlc' data-data='${rs.children}')
-                p ${rs.name}
+        //b-bind-array(class='box_scc' id='c')
+        //    div ${rs.name}
+        //    b-bind-array(class='box_hlc' id='c1' data-data='${rs.children}')
+        //        div(class='item') ${rs.aaa}
+        //
+        //
+        //b-bind-obj(class='box_scc' id='d')
+        //    div ${rs.name}
+        //    div ${rs.age}
+        //    b-bind-obj(class='box_scc' data-data='${rs.ddd}')
+        //        div(class='${rs.c}') ${rs.a}
+        //        div ${rs.b}
 
+
+        b-bind-array(id='a')
+            div ${rs.name}
+            b-bind-obj(data-data='${rs.obj}')
+                div ${rs.name}
+
+        template a123
