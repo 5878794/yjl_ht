@@ -50,13 +50,13 @@ let Page = {
 			{
 				name:'a1',
 				obj:{
-					name:'a11'
+					aaa:'a11'
 				}
 			},
 			{
 				name:'a2',
 				obj:{
-					name:'a22'
+					aaa:'a22'
 				}
 			}
 		]

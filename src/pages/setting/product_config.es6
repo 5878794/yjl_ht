@@ -39,7 +39,7 @@ let Page = {
         ]);
 
         //处理机构列表数据
-        orgList = orgList.list;
+        orgList = orgList.list || [];
         orgList.map(rs=>{
            rs.name = rs.organizationName;
         });
