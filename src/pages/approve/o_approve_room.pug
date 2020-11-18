@@ -19,11 +19,22 @@ html
             b-order-history(id='history' showOne='true' sort='desc')
 
             br
+
+            b-title(name='评估信息')
+            div(class='openWin_input_main box_hlt box_lines')
+                div(class='openWin_input_item3')
+                    b-input-money(name='评估总价' id='orderMortgageExtendAssessment_evaluationPrice' accuracy='2' rule='must' err='不能为空' unit='万元')
+                div(class='openWin_input_item1')
+                    b-input-file(class='__input_file__' type='file' id='orderMortgageExtendAssessment_attachUrls' name='快销总价' rule='must' err='不能为空')
+                div(class='openWin_input_item1')
+                    b-input-file(class='__input_file__' type='file' id='orderMortgageExtendAssessment_mortgageReportUrls' name='评估报告' rule='must' err='不能为空')
+
+            b-title(name='其它信息')
             div(class='openWin_input_main box_hlt box_lines' id='choose_product')
                 div(class='openWin_input_item2')
-                    b-input(type='select' err='不能为空' id='organizationId' name='机构' data-bind='agencyFrom' data-child='productId')
+                    b-input(type='select' err='请选择' rule='must' id='organizationId' name='机构' data-bind='agencyFrom' data-child='productId')
                 div(class='openWin_input_item2')
-                    b-input(type='select' err='不能为空' id='productId' name='产品' data-bind='productList')
+                    b-input(type='select' err='请选择' id='productId' rule='must' name='产品' data-bind='productList')
                 div(class='openWin_input_item2')
 
                 div(class='openWin_input_item2 box_slc hidden' id='productInfo')

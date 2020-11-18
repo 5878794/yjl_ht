@@ -23,6 +23,7 @@ require('./../../es6/yjl/b_order_info');
 require('./../../es6/yjl/b_title');
 require('./../../es6/yjl/b-order-history');
 require('./../../es6/customElement/pc/input');
+require('./../../es6/customElement/pc/input_money');
 require('./../../es6/customElement/pc/input_file');
 
 
@@ -68,6 +69,13 @@ let Page = {
         // }else{
             this.addChangeEvent();
         // }
+
+        //评估总价赋值
+        let money = data.orderMortgageExtendAssessment||{};
+        money = money.evaluationPrice??'';
+        $('#orderMortgageExtendAssessment_evaluationPrice').get(0).value = money;
+
+
     },
     checkNeedProduct(){
         $('#choose_product').remove();
@@ -107,7 +115,20 @@ let Page = {
                 formDom:$('#form'),
                 orderNo:_this.orderNo,
                 state:1,
-                currentNodeKey:_this.currentNodeKey
+                currentNodeKey:_this.currentNodeKey,
+                uploadFile:async function(form){
+                    let uploaded1 = await all.uploadFile(form.orderMortgageExtendAssessment_attachUrls),
+                        uploaded2 = await all.uploadFile(form.orderMortgageExtendAssessment_mortgageReportUrls);
+
+                    form.orderMortgageExtendAssessment = {
+                        attachUrls:uploaded1.join(','),
+                        mortgageReportUrls:uploaded2.join(','),
+                        evaluationPrice:form.orderMortgageExtendAssessment_evaluationPrice
+                    };
+                    delete form.orderMortgageExtendAssessment_attachUrls;
+                    delete form.orderMortgageExtendAssessment_mortgageReportUrls;
+                    delete form.orderMortgageExtendAssessment_evaluationPrice;
+                }
             });
             // all.showLoadingRun(_this,'submitFn','1');
         });
@@ -116,7 +137,20 @@ let Page = {
                 formDom:$('#form'),
                 orderNo:_this.orderNo,
                 state:0,
-                currentNodeKey:_this.currentNodeKey
+                currentNodeKey:_this.currentNodeKey,
+                uploadFile:async function(form){
+                    let uploaded1 = await all.uploadFile(form.orderMortgageExtendAssessment_attachUrls),
+                        uploaded2 = await all.uploadFile(form.orderMortgageExtendAssessment_mortgageReportUrls);
+
+                    form.orderMortgageExtendAssessment = {
+                        attachUrls:uploaded1.join(','),
+                        mortgageReportUrls:uploaded2.join(','),
+                        evaluationPrice:form.orderMortgageExtendAssessment_evaluationPrice
+                    };
+                    delete form.orderMortgageExtendAssessment_attachUrls;
+                    delete form.orderMortgageExtendAssessment_mortgageReportUrls;
+                    delete form.orderMortgageExtendAssessment_evaluationPrice;
+                }
             });
             // all.showLoadingRun(_this,'submitFn','0');
         });
@@ -126,13 +160,18 @@ let Page = {
     },
     async submitFn(state){
         let form = await all.getFromVal($('#form')),
-            uploaded = await all.uploadFile(form.attachUrls);
+            uploaded = await all.uploadFile(form.attachUrls),
+            uploaded1 = await all.uploadFile(form.orderMortgageExtendAssessment_attachUrls),
+            uploaded2 = await all.uploadFile(form.orderMortgageExtendAssessment_mortgageReportUrls);
 
         form.attachUrls = uploaded.join(',');
         form.auditStatus = state;
         form.orderNo = this.orderNo;
         form.currentNodeKey = this.currentNodeKey;
 
+
+
+        console.log(form)
 
         await ajax.send([
             api.approve_room(form)

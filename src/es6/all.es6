@@ -799,7 +799,8 @@ let all = {
 			state = param.state,
 			currentNodeKey = param.currentNodeKey,
 			addFn = param.addFn ||function(){},
-			addParam = param.addParam || {};
+			addParam = param.addParam || {},
+			uploadFile = param.uploadFile || async function(){};
 
 		let form = await this.getFromVal(formDom),
 			uploaded = await this.uploadFile(form.attachUrls);
@@ -808,6 +809,8 @@ let all = {
 		form.auditStatus = state;
 		form.orderNo = orderNo;
 		form.currentNodeKey = currentNodeKey;
+
+		await uploadFile(form);
 
 		for(let [key,val] of Object.entries(addParam)){
 			form[key] = val;

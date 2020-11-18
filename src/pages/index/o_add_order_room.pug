@@ -50,10 +50,10 @@ html
                 div(class='openWin_input_main box_hlt box_lines')
                     div(class='openWin_input_item3')
                         b-input-money(name='评估总价' id='orderMortgageExtendAssessment_evaluationPrice' accuracy='2' rule='must' err='不能为空' unit='万元')
-                    div(class='openWin_input_item1')
-                        b-input-file(class='__input_file__' type='file' id='orderMortgageExtendAssessment_attachUrls' name='快销总价' unit='(非必填附件)')
-                    div(class='openWin_input_item1')
-                        b-input-file(class='__input_file__' type='file' id='orderMortgageExtendAssessment_mortgageReportUrls' name='评估报告' unit='(非必填附件)')
+                    //div(class='openWin_input_item1')
+                    //    b-input-file(class='__input_file__' type='file' id='orderMortgageExtendAssessment_attachUrls' name='快销总价' unit='(非必填附件)')
+                    //div(class='openWin_input_item1')
+                    //    b-input-file(class='__input_file__' type='file' id='orderMortgageExtendAssessment_mortgageReportUrls' name='评估报告' unit='(非必填附件)')
 
             div
                 b-title(name='放款信息' id='')
@@ -72,7 +72,7 @@ html
                     div(class='openWin_input_item3')
                         b-input-money(id='orderRateInfo_period' accuracy='0' xs='0' name='用款时间' unit='期(30天/期)' err='不能为空' rule='must')
                     div(class='openWin_input_item3')
-                        b-input-money(id='orderRateInfo_consultationRate' accuracy='5' name='咨询费率' unit='%' disabled='disabled' xs='5')
+                        b-input-money(id='orderRateInfo_consultationRate' accuracy='5' name='咨询费率' unit='%/日' disabled='disabled' xs='5')
                     div(class='openWin_input_item3')
                         b-input-money(id='orderRateInfo_consultationFee' accuracy='2' name='咨询费用' unit='元' disabled='disabled')
                     div(class='openWin_input_item3')
