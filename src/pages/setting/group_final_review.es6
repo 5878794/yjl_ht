@@ -109,7 +109,7 @@ let Page = {
             body3.append('<br/>');
         });
         this.jkts.map(rs=>{
-            let _item = getItem1(rs,'typeName','天','天数>=');
+            let _item = getItem1(rs,'typeName','天','天数 ≥');
             _item.find('.__input__').attr({err:'请输入整数'});
             body4.append(_item);
             body4.append('<br/>');

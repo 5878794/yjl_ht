@@ -29,7 +29,7 @@ let key = [
 		{name:'DIAN_ZI_QUANZHENG_REPAYMENT_DATA_CONFIRM',value:'../publish/overSingle.html',info:'权证-还款资料确认流程',api:'/api/dzOrderFlow/quanZhengRepaymentDataConfirm'},
 	// {name:'DIAN_ZI_ZILIUCHENG_ZHANQI',value:'',info:'子流程-展期',api:''},
 		// {name:'DIAN_ZI_DINGDAN_FINISH_SYSTEM',value:'',info:'系统-订单完成',api:''},
-		{name:'DIAN_ZI_QUANZHENG_HEHANG_AUDIT',value:'../publish/overSingle.html',info:'核行-下户',api:'/api/dzOrderFlow/quanZhengZhiXingHeHang'},
+		{name:'DIAN_ZI_QUANZHENG_HEHANG_AUDIT',value:'../warrant/o_warrant_mdf_room1.html',info:'权证-核行',api:'/api/dzOrderFlow/quanZhengZhiXingHeHang'},
 
 
 

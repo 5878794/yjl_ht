@@ -52,19 +52,31 @@ let Page = {
         await all.setOrderHistoryData(history,true);
 
 
-        await this.addFFXZ(data);
+        if(this.orderType == 1){
+            //房抵
+
+        }else{
+            //非房抵 显示核行
+            $('#fd_not').removeClass('hidden');
+            let [changeData] = await ajax.send([
+               api.order_change_list({
+                   type:1,      //1-核行修改 2-变更客户资料 3-变更还款账号
+                   orderNo:this.orderNo
+               })
+            ]);
+
+            let newData = [];
+            changeData.map(rs=>{
+                newData.push(rs.changeInfo);
+            })
+            this.addHistory(newData);
+        }
 
 
+        this.createBTitlesBtn();
         this.addBtnEvent();
-
-
-
-
     },
     addBtnEvent(){
-
-
-
         let submit = $('#submit'),
             cancel = $('#cancel'),
             _this = this;
@@ -76,61 +88,42 @@ let Page = {
             qt.closeWin();
         });
     },
-    async addFFXZ(data){
-        //房屋现状 匹配订单中不动产抵押物数量
-        let mainDy  =data.mainMortgagePropertyRight||null,
-            fuDy = data.additionalMortgagePropertyRightList||[],  //category=1
-            newData = [];
-        if(mainDy){
-            newData.push(mainDy);
-        }
-        fuDy.map(rs=>{
-            if(rs.category == 1){
-                newData.push(rs);
+    createBTitlesBtn(){
+        let bTitle = $('#approved').get(0),
+            _this = this;
+
+        bTitle.btnData = [
+            {
+                name:'核行确认',
+                type:'mdf',
+                style:{color:'#5576f0'}
             }
-        });
+        ];
+        bTitle.clickFn = function(){
+            qt.openPage(
+                `../warrant/o_warrant_mdf.html?id=${_this.id}&orderNo=${_this.orderNo}&currentNodeKey=${_this.currentNodeKey}&type=${_this.orderType}`,
+                winSetting.publish_review.width,
+                winSetting.publish_review.height)
+        };
 
-
-        let body = $('#roomState_body'),
-            item = $('#room_info_item');
-
-        if(newData.length == 0){
-            body.append('<br/><div style="font-size:14px;" class="noDate box_hcc">无抵押物</div><br/>');
-        }
-
-        newData.map(rs=>{
-           let _item = item.clone().attr({id:''});
-           _item.find('b-title1').get(0).body.find('.titleName').text('房屋：'+rs.name);
-
-           // 1:房抵
-           if(this.orderType != 1){
-               //非房抵 输入框为非必填
-               _item.find('b-input').each(function(){
-                    this.body.find('input').data({rule:''});
-                    this.body.find('select').data({rule:''});
-               });
-               _item.find('b-input-money').each(function(){
-                   this.body.find('input').data({rule:''});
-               });
-           }
-
-           body.append(_item);
-        });
-
-        inputStyle.set(true,true);
-        await selectData($('#form'));
+        // bTitleBtn.addDelFn(
+        //     $('#shimoto').get(0),
+        //     $('#shimoto_body'),
+        //     $('#shimoto_item')
+        // )
     },
-
     async submitFn(state){
-        let form = await all.getFromGroupVal($('#form')),
-            uploaded = await all.uploadFile(form.attachUrls);
+        let form = await all.getFromVal($('#form')),
+            uploaded = await all.uploadFile(form.attachUrls),
+            uploaded2 = await all.uploadFile(form.attachUrls2);
 
         form.attachUrls = uploaded.join(',');
+        form.attachUrls2 = uploaded2.join(',');
         form.auditStatus = state;
         form.orderNo = this.orderNo;
         form.currentNodeKey = this.currentNodeKey;
 
-        console.log(form)
+
 
         if(this.orderType == 1){
             //房抵
@@ -146,11 +139,25 @@ let Page = {
 
         await qt.alert('提交成功!');
         qt.closeWin();
+    },
+
+    addHistory(data){
+        let body = $('#window_add');
+
+        data.map(rs=>{
+            let item = $('<div class="box_slc approve_room" style="font-size:14px;"></div>');
+            let p = $('<p>'+rs+'</p>');
+            item.append(p);
+            body.append(item);
+        });
     }
 };
 
 
-
+window.showText = function(text){
+    // text = JSON.parse(text);
+    Page.addHistory([text]);
+};
 
 
 app.run(Page);
