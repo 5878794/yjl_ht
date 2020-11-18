@@ -70,10 +70,12 @@ let Page = {
 		let id = data.id;
 
 		await qt.alert('创建订单成功!');
+		console.log(1)
 		qt.openPage(
 			'../index/o_add_order_info.html?id='+id,
 			winSetting.index_add_step2.width,
 			winSetting.index_add_step2.height);
+		console.log(2)
 		qt.closeWin();
 	}
 };

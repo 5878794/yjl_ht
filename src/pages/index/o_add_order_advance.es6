@@ -107,11 +107,11 @@ let Page = {
 
 
 
-        bTitleBtn.addDelFn(
-            $('#room_info').get(0),
-            $('#room_info_body'),
-            $('#room_info_item')
-        );
+        // bTitleBtn.addDelFn(
+        //     $('#room_info').get(0),
+        //     $('#room_info_body'),
+        //     $('#room_info_item')
+        // );
 
         bTitleBtn.addLevel2BtnFn(
             $('#additional_mortgage').get(0),

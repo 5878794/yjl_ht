@@ -2,6 +2,7 @@
 
 
 let loadFn = require('./lib/ui/loading_old'),
+    device = require('./lib/device'),
     winSettingSize = require('./winSetting');
 
 
@@ -127,7 +128,9 @@ let JD = {
         if(window.bridge){
             window.bridge.closeWin();
         }else{
-            window.history.go(-1);
+            if(device.isPhone){
+                window.history.go(-1);
+            }
         }
     },
     //调用父级窗口函数
