@@ -54,7 +54,7 @@ let Page = {
 	bindData(data,type){
 		let newData = (type==1)? data.orderClientBankAccount : data.orderReturnRepayment;
 		newData = newData || {};
-		all.setFromVal($('#form'),newData);
+		all.setFromVal($('#form1'),newData);
 
 
 		let dom1 = $('#outMoneyAmount_'),
