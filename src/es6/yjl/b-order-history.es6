@@ -30,7 +30,8 @@
 
 
 let addStyleFile = require('../customElement/fn/addStyleFile'),
-	addStyleText = require('../customElement/fn/addStyleText');
+	addStyleText = require('../customElement/fn/addStyleText'),
+	all = require('../all');
 
 let errImgSrc = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAACu0lEQVRIia3WXagVVRjG8d/eHeiqunC6KU2IQAQFD3gRaaZYYqCWSYkj0geCQg1iolEWBIXGsYtwvCgjRYmJBCWCAtGIsi9FpIs+FEozFCUHBAOhMuxiZjjjuPaXpwf2xXred63/nsW73rVaF55bBjPxKt7DBwZQlGY9c/IknoJLUZr9PoRVeLuMzcVSbMSPg4A7gNp4AZtwOk/iKW1cbeQ9gh+wfoyw2ThRwuAORG1sxwR835gzgkO4c0BQO0/id/E57intI5gYpdlvQ6VxBsPYh8W1+TPxE5bgYB+wYUUNTKrZ70RptroatBtzHsMbDe9WHNBji/MkXoVjDdiGOiwEhBexJuCPKLY/BNtmtPAqLY/SbEszt1Uei5CewIcB/2M8arTYPlIUWqW/8GCUZl+FFg19YaU9WOD6Kl6E/bgXnzVgFzGjEwyGOgVKfYL78A1aNf+h8lfXRUyP0uxktwW7fWGl7zC9R84JTO0F6xdIUX1341wgdhWLojQ7289C/QLhD/wb8FvYkSfxzf8n8C6cxfgO8Rn4tuydYwaOw1Hc1iNvWB/dqBfwFnyN2xv+PDwTyJ+TJ3HX+6obsIUvXduq4CVFq9uJ3YF5y/IkHrkR4H5Ma3gZNtfGTyoquKn1eRIngwB3uP5gH8fyQO79inbW1NY8ief2A3wNTwf8WaF/FqXZZTwQiuFgnsQTugGfxcuBiQtwocOiojQ7LHzDwKE8iW8KAR/GtsCEtxQ9tauiNNuqKKamJtb9CjiMTwPJP2NtL1hNS3Ap4M/Jk/jNCjhfcbBDWjgATJRmfwqfT1iXJ/HmNh4XLp6N+HUQYAndq3gbNXUFp9pYidcbwZNGn3c3oqfwd22cY3KUZturd+krWFFL6LQtfanc2ufL4WnFXfkL19747+MfxZPhi7EAS+1S9NzVUZqdr8z/AAVPtTTnRsOnAAAAAElFTkSuQmCC';
 let successImgSrc = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAcCAYAAAAAwr0iAAAB1klEQVRIicXWvWsUURQF8J9LBBHRQvCrDBZa2IiVYkCjoJJGQ2RttBO18QOCnZA/IBCxiFVsbERdRYgBUVBiTLRQItZiJRYKFoKFIBZvBsbJvN2d3Z3Nad68O/fec7j3cd9bc37+jFXCOfwZWAXiDbiBcei3gGOYwfZkP1vrI/kE5jLkTzDSjwoM4g6GMrbHOEn1LTiOBtZlbA2MppsqW3AdT3Pkb7PkVFeBKVzO2b7gUN6x1wJqeIbhnP039iXrioBeYQveFZDDYfwoCupVBbZiOVnzqGMpFpivwKkOyHfifYR8GveaBacCBvACD7GAbSXIl7Gj4N8CLrVKUMMIPgp9gv345P/BUYTBhGR9wb+/Sd6WqAm30u6cfTNe4VokbhM+CAevCKP42a6AMfE+TQp9zGItFrExEnNbGLVtIT0DddyP+FwQWpROtCUrK5biKy62S54VAKfxIOK3Ryh5A3ub5KuXIc8LILRjNuK7S3KDRXAT890KIJzeuZJ5fuFKWfKYADiB5yXynO2EvJkAOCoMp1Z4iUdVCIAjeN3CZ6xT8nYEwEHxw3UX36sWQBjLiwX28W7Iywgg3BFvMvtb+NZPAXAAn5PviW7J6exBMoSrIi+csvgHySFIY1XxYyUAAAAASUVORK5CYII=';
@@ -85,7 +86,7 @@ class bOrderHistory extends HTMLElement{
 			date = $('<div class="date box_sct"></div>'),
 			user = $('<div class="user box_sct"></div>');
 
-		info.append(text).append(img);
+		info.append(text).append('<div>附件:</div>').append(img);
 		item.append(no)
 			.append(name)
 			.append(state)
@@ -97,6 +98,9 @@ class bOrderHistory extends HTMLElement{
 		this.showMore = showMore;
 		this.item = item;
 		this.body = body;
+		this.text = text;
+		this.img = img;
+		this.info = info;
 	}
 	createStyle(){
 		let css = [
@@ -113,8 +117,8 @@ class bOrderHistory extends HTMLElement{
 			'.state img{display:block;width:14px;height:14px;}',
 			'.text{}',
 			'.state{width:60px; min-height:20px;}',
-			'.img img{display:block;width:100%;height:100%;}',
-			'.img .file{width:40px;height:40px;margin:2px 2px;border:1px solid #ccc;line-height:16px;text-align:center;}',
+			'.img img,.img1 img{display:block;width:100%;height:100%;}',
+			'.img .file,.img1 .file{width:40px;height:40px;margin:2px 2px;border:1px solid #ccc;line-height:16px;text-align:center;}',
 			'.date{width:140px;}',
 			'.user{width:100px;}'
 		];
@@ -180,9 +184,68 @@ class bOrderHistory extends HTMLElement{
 		let stateImg = new Image();
 		stateImg.src = (rs.state)? successImgSrc : errImgSrc;
 		_item.find('.state').append(stateImg);
-		_item.find('.text').text(rs.info);
+
+		let html = this.getHtml(rs.info);
+		_item.find('.text').html(html);
+
+
 		let imgs = rs.img || [],
 			imgBody = _item.find('.img');
+		this.createImg(imgs,imgBody);
+
+
+		let otherImg = _item.find('.img1'),
+			_this = this;
+		otherImg.each(function(){
+			let otherImg = $(this).data('key');
+			otherImg = all.getRealImageSrc(otherImg);
+			_this.createImg(otherImg,$(this));
+		});
+
+
+		// imgs.map(imgSrc=>{
+		// 	imgSrc = imgSrc.toLowerCase();
+		// 	let fileType = imgSrc.split('.');
+		// 	fileType = fileType[fileType.length-1];
+		//
+		// 	let imgDom = $('<div></div>');
+		// 	imgDom.addClass('hover').addClass('file').attr({src:imgSrc});
+		//
+		//
+		// 	if(imageType.indexOf(fileType) > -1){
+		// 		//图片
+		// 		let imgDom1 = new Image();
+		// 		imgDom1.src = imgSrc;
+		// 		imgDom.append(imgDom1);
+		// 	}else{
+		// 		//其它文件
+		// 		imgDom.addClass('box_hcc');
+		// 		imgDom.html(fileType+'<br/>'+'文件');
+		// 	}
+		// 	imgBody.append(imgDom);
+		// 	let _this = this;
+		// 	$(imgDom).click(function(){
+		// 		let src = $(this).attr('src');
+		// 		_this.imgClickFn(src);
+		// 	});
+		// });
+		_item.find('.date').text(rs.date);
+		_item.find('.user').text(rs.user);
+	}
+
+	getHtml(text){
+		text = text.replace(/\$\${(.+?)}\s*\<br\>/g,function(key){
+			key = key.substr(3);
+			key = key.split('}')[0];
+			// key = key.substr(1,key.length-2);
+			return '<div data-key="'+key+'" class="img1 box_hlt box_lines"></div>';
+		});
+
+		return text;
+	}
+
+	createImg(imgs,imgBody){
+		let _this = this;
 		imgs.map(imgSrc=>{
 			imgSrc = imgSrc.toLowerCase();
 			let fileType = imgSrc.split('.');
@@ -203,14 +266,12 @@ class bOrderHistory extends HTMLElement{
 				imgDom.html(fileType+'<br/>'+'文件');
 			}
 			imgBody.append(imgDom);
-			let _this = this;
+
 			$(imgDom).click(function(){
 				let src = $(this).attr('src');
 				_this.imgClickFn(src);
 			});
 		});
-		_item.find('.date').text(rs.date);
-		_item.find('.user').text(rs.user);
 	}
 
 	set imgClick(fn){
