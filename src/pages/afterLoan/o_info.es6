@@ -52,7 +52,7 @@ let Page = {
                 orderNo:this.orderNo
             })
         ]);
-        let orderType = data.businessKey;
+        this.orderType = data.businessKey;
         await all.setOrderTopData(4,data);
         await all.setRecordData(record);
 
@@ -62,7 +62,7 @@ let Page = {
         })
 
         this.addHistory(newChangeList);
-        this.createBTitlesBtn(orderType);
+        this.createBTitlesBtn(this.orderType);
 
     },
     addBtnEvent(){
@@ -203,7 +203,7 @@ let Page = {
         await qt.alert('操作成功！');
 
         this.clientCategory = type;
-        this.createBTitlesBtn();
+        this.createBTitlesBtn(this.orderType);
     },
     async submitFn(state){
         let form = await all.getFromGroupVal($('#form')),

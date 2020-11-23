@@ -134,23 +134,23 @@ let Page = {
         });
         back.click(function(){
             all.showLoadingRun(all,'reviewSubmit',{
-                formDom:$('#form'),
+                formDom:$('#form_bh'),
                 orderNo:_this.orderNo,
                 state:0,
                 currentNodeKey:_this.currentNodeKey,
-                uploadFile:async function(form){
-                    let uploaded1 = await all.uploadFile(form.orderMortgageExtendAssessment_attachUrls),
-                        uploaded2 = await all.uploadFile(form.orderMortgageExtendAssessment_mortgageReportUrls);
-
-                    form.orderMortgageExtendAssessment = {
-                        attachUrls:uploaded1.join(','),
-                        mortgageReportUrls:uploaded2.join(','),
-                        evaluationPrice:form.orderMortgageExtendAssessment_evaluationPrice
-                    };
-                    delete form.orderMortgageExtendAssessment_attachUrls;
-                    delete form.orderMortgageExtendAssessment_mortgageReportUrls;
-                    delete form.orderMortgageExtendAssessment_evaluationPrice;
-                }
+                // uploadFile:async function(form){
+                //     let uploaded1 = await all.uploadFile(form.orderMortgageExtendAssessment_attachUrls),
+                //         uploaded2 = await all.uploadFile(form.orderMortgageExtendAssessment_mortgageReportUrls);
+                //
+                //     form.orderMortgageExtendAssessment = {
+                //         attachUrls:uploaded1.join(','),
+                //         mortgageReportUrls:uploaded2.join(','),
+                //         evaluationPrice:form.orderMortgageExtendAssessment_evaluationPrice
+                //     };
+                //     delete form.orderMortgageExtendAssessment_attachUrls;
+                //     delete form.orderMortgageExtendAssessment_mortgageReportUrls;
+                //     delete form.orderMortgageExtendAssessment_evaluationPrice;
+                // }
             });
             // all.showLoadingRun(_this,'submitFn','0');
         });
