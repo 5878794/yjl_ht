@@ -234,7 +234,7 @@ class bOrderHistory extends HTMLElement{
 	}
 
 	getHtml(text){
-		text = text.replace(/\$\${(.+?)}\s*\<br\>/g,function(key){
+		text = text.replace(/\$\${(.+?)}/g,function(key){
 			key = key.substr(3);
 			key = key.split('}')[0];
 			// key = key.substr(1,key.length-2);
