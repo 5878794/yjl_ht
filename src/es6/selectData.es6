@@ -342,7 +342,6 @@ let getChildData = async function(val,id){
 		param[paramKey] = paramVal;
 	}
 
-
 	let [data] = await ajax.send([
 		api[apiName](param)
 	]);

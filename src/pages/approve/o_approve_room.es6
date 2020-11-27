@@ -55,6 +55,9 @@ let Page = {
 
         //获取业务类型
         let businessType = data.businessKey;
+        //订单类型转产品的类型   0-房抵 1-垫资
+	    businessType = (businessType == 1)? 0 : 1;
+
         //额外增加获取产品时候的参数
         $('#productId').data({addParam:{productType :businessType}});
         //初始化select控件
