@@ -68,7 +68,7 @@ let Page = {
 				$('#loanPassageType').get(0).change= function(val){
 					body.html('');
 					if(val==1){
-						let dom = dom1.clone().attr({id:'outMoneyAmount'});
+						let dom = dom1.clone().attr({id:'loanPassagewayFee'});
 						body.append(dom);
 					}else if(val==2){
 						let dom = dom2.clone().attr({id:'loanPassageFeeRate'});
@@ -92,7 +92,7 @@ let Page = {
 
 		submit.click(function(){
 			all.showLoadingRun(all,'reviewSubmit',{
-				formDom:$('#form'),
+				formDom:$('#form2'),
 				orderNo:_this.orderNo,
 				state:1,
 				currentNodeKey:_this.currentNodeKey
