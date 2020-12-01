@@ -40,7 +40,9 @@ let icon = {
     CHU:'../res/image/index/ck.png',
     //还款（房抵撤分出来的）
     FENQI:'../res/image/index/fd.png',
-    HUAN:'../res/image/index/fd.png'
+    HUAN:'../res/image/index/fd.png',
+	//提前还款
+	TIQIAN:'../res/image/index/fd.png'
 };
 
 

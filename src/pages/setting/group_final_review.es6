@@ -99,7 +99,8 @@ let Page = {
             body1.append('<br/>');
         })
         this.businessData.map(rs=>{
-            let _item = getItem(rs,'text','元/次','');
+        	let unit = (rs.text == "房抵提前还款罚息")? '%/次' : '元/次';
+            let _item = getItem(rs,'text',unit,'');
             body2.append(_item);
             body2.append('<br/>');
         });

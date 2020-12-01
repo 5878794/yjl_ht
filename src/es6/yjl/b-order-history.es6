@@ -86,7 +86,7 @@ class bOrderHistory extends HTMLElement{
 			date = $('<div class="date box_sct"></div>'),
 			user = $('<div class="user box_sct"></div>');
 
-		info.append(text).append('<div>附件:</div>').append(img);
+		info.append(text).append('<div class="__fj__">附件:</div>').append(img);
 		item.append(no)
 			.append(name)
 			.append(state)
@@ -192,6 +192,9 @@ class bOrderHistory extends HTMLElement{
 		let imgs = rs.img || [],
 			imgBody = _item.find('.img');
 		this.createImg(imgs,imgBody);
+		if(imgs.length == 0){
+			imgBody.parent().find('.__fj__').text('');
+		}
 
 
 		let otherImg = _item.find('.img1'),

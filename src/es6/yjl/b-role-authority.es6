@@ -90,6 +90,7 @@ class bRoleAuthority extends HTMLElement{
 		this.item1 = item1;
 		this.item2 = item2;
 		this.body = body;
+		this.titleDom = title;
 	}
 	createStyle(){
 		let css = [
@@ -238,6 +239,10 @@ class bRoleAuthority extends HTMLElement{
 			rightHeight = right.height(),
 			bodyHeight = (leftHeight>rightHeight)? leftHeight : rightHeight;
 		body.css({height:bodyHeight+'px'});
+	}
+
+	set title(text){
+		this.titleDom.text(text);
 	}
 }
 

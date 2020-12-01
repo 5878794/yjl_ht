@@ -43,13 +43,14 @@ let Page = {
 
 		//创建权限列表
 		this.nowRoleId = roleList[0]?.id;
-		let roleDom = $('#list').get(0);
+		let roleDom = $('#list').get(0),
+			titleName = roleList[0]?.roleName;
 		roleDom.chooseRowNumber(0);
-		await this.createPrivilegeList();
+		await this.createPrivilegeList(titleName);
 
 	},
 	//生成权限列表
-	async createPrivilegeList(){
+	async createPrivilegeList(titleName){
 		let roleId = this.nowRoleId;
 		if(!roleId){
 			return;
@@ -60,7 +61,7 @@ let Page = {
 			api.privilege_list({roleId:roleId})
 		]);
 
-		this.createRole(privilege);
+		this.createRole(privilege,titleName);
 	},
 
 	//标题添加
@@ -94,17 +95,20 @@ let Page = {
 		};
 		list.click = function(data){
 			_this.nowRoleId = data.id;
-			all.showLoadingRun(_this,'createPrivilegeList')
+
+			let title = data.roleName || '';
+			all.showLoadingRun(_this,'createPrivilegeList',title)
 
 		};
 
 	},
 	//创建角色权限列表
-	createRole(data){
+	createRole(data,titleName){
 		let role = $('#role').get(0),
 			_this = this;
 
 		role.data = data;
+		role.title = titleName+' -权限列表';
 		role.submit = function(data,switchDom){
 			qt.loading.show();
 			_this.mdfUserRole(data).then(rs=>{
