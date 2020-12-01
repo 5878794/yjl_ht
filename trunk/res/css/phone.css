@@ -15,7 +15,7 @@
 }
 .client_bottom{
     padding:30px;
-    padding-bottom: 100px;
+    /*padding-bottom: 100px;*/
     min-height: 400px;
 }
 .logo_text{
@@ -36,6 +36,9 @@
     font-size: 14px; text-indent: 2em;
     line-height: 22px;
     padding-bottom: 40px;
+}
+.client_info div{
+    text-indent: 0;
 }
 .client_btn{
     width: 60%; height: 40px; background: #282537;
