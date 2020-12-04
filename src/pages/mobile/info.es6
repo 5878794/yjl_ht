@@ -293,8 +293,10 @@ let Page = {
 			window.history.go(-1);
 		});
 		$$(submit).myclickok(async function(){
-			let param = await all.getFromGroupVal($('#form'));
-			param = param.orderMortgageExtendHouseList;
+			let param = await all.getFromGroupVal($('#form')),
+				temp = {};
+			temp.orderMortgageExtendHouseList = param.orderMortgageExtendHouseList;
+			param = temp;
 			console.log(param)
 
 			all.showLoadingRun(all,'reviewSubmit',{
