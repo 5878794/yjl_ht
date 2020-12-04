@@ -53,6 +53,7 @@
 
 
 let addStyleFile = require('../fn/addStyleFile');
+require('../../lib/jq/extend');
 require('../../lib/jq/check_from');
 
 

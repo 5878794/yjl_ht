@@ -58,6 +58,7 @@ let Page = {
 		let [data] = await ajax.send([
 			api.order_get_byId({id:this.id})
 		]);
+		this.orderType = data.businessKey;
 
 		this.bussinessDist = await selectData('businessType');
 		this.orderStateDist = await selectData('orderState');
@@ -163,6 +164,9 @@ let Page = {
 		inputStyle.set();
 		$('b-input[type="textarea"]').get(0).nameDom.css({width:'110px'});
 		$('b-input-file').get(0).nameDom.css({width:'90px'});
+
+
+
 		await selectData($('#form'));
 	},
 	appendTypeDom(text,color){
