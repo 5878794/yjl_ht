@@ -294,6 +294,7 @@ let Page = {
 		});
 		$$(submit).myclickok(async function(){
 			let param = await all.getFromGroupVal($('#form'));
+			param = param.orderMortgageExtendHouseList;
 			console.log(param)
 
 			all.showLoadingRun(all,'reviewSubmit',{

@@ -137,6 +137,10 @@ let Page = {
 		let body = $('#body'),
 			item = $('#item');
 
+		if(data.length == 0){
+			body.append('<div class="box_hcc" style="width:100%;height: 100px;">暂无数据</div>')
+		}
+
 		//权证和我的业务需要的字段一样
 		data.map(rs=>{
 			let _item = item.clone().removeClass('hidden').attr({id:''}),
