@@ -133,7 +133,7 @@ let key = [
 	{name:'CHU_KU_FENGKONG_CHUKU_AUDIT',value:'../file/o_info2.html',info:'风控-出库审核',api:'/api/ckOrderFlow/fengKongChuKuAudit'},
 	{name:'CHU_KU_CAIWU_CHUKU_OVER_ORDER',value:'../publish/overSingle.html',info:'财务-出库过单',api:'/api/ckOrderFlow/caiWuChuKuOverOrder'},
 	{name:'CHU_KU_JITUAN_CHUKU_OVER_ORDER',value:'../publish/overSingle.html',info:'集团-出库过单',api:'/api/ckOrderFlow/jiTuanChukuOverOrder'},
-	{name:'CHU_KU_CONFIRM_CHUKU',value:'../file/o_info3.html',info:'确认出库',api:'api/ckOrderFlow/confirmChuku'},
+	{name:'CHU_KU_CONFIRM_CHUKU',value:'../file/o_info3.html',info:'确认出库',api:'/api/ckOrderFlow/confirmChuku'},
 
 	// {name:'CHU_KU_CHUKU_SYSTEM',value:'',info:'系统-出库',api:''}
 

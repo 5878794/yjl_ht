@@ -471,6 +471,7 @@ class bInput extends HTMLElement{
 		return new Promise((success,error)=>{
 			this.errDom.css({display:'none'});
 
+
 			if(this.body.checkFrom().errorDom.length == 0){
 				success(this.value);
 			}else{

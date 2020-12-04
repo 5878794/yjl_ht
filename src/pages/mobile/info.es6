@@ -17,7 +17,9 @@ qt.loading = qt1.loading;
 
 
 require('./../../es6/customElement/pc/input');
+require('./../../es6/yjl/b_title1');
 require('./../../es6/customElement/pc/input_file');
+require('./../../es6/customElement/pc/input_money');
 
 let Page = {
 	init(){
@@ -74,6 +76,7 @@ let Page = {
 			draft.remove();
 			this.appendTypeDom('权证','blue');
 			this.bindData(data);
+			await this.addFFXZ(data);
 		}else if(this.type == 2){
 			inputStyle.phoneSet1(60);
 			//订单
@@ -111,6 +114,56 @@ let Page = {
 		// 过户       通用过单
 		// 取证       通用过单
 		// 抵押       通用过单
+	},
+	async addFFXZ(data){
+		//房屋现状 匹配订单中不动产抵押物数量
+		let mainDy  =data.mainMortgagePropertyRight||null,
+			fuDy = data.additionalMortgagePropertyRightList||[],  //category=1
+			newData = [];
+		if(mainDy){
+			newData.push(mainDy);
+		}
+		fuDy.map(rs=>{
+			if(rs.category == 1){
+				newData.push(rs);
+			}
+		});
+
+
+		let body = $('#fwxz'),
+			item = $('#room_info_item');
+
+		if(newData.length == 0){
+			body.append('<br/><div style="font-size:14px;" class="noDate box_hcc">无抵押物</div><br/>');
+		}
+
+		newData.map(rs=>{
+			let _item = item.clone().attr({id:''});
+			_item.find('b-title1').get(0).body.css({margin:0});
+			_item.find('b-title1').get(0).body.find('.titleName').css({width:'100%'});
+			$('b-title1').get(0).body.find('.titleName').css({width:'100%'});
+			$('b-title1').get(0).body.css({margin:0});
+			_item.find('b-title1').get(0).body.find('.titleName').text('房屋：'+rs.name);
+
+			// 1:房抵
+			if(this.orderType != 1){
+				//非房抵 输入框为非必填
+				_item.find('b-input').each(function(){
+					this.body.find('input').data({rule:''});
+					this.body.find('select').data({rule:''});
+				});
+				_item.find('b-input-money').each(function(){
+					this.body.find('input').data({rule:''});
+				});
+			}
+
+			body.append(_item);
+		});
+
+		inputStyle.set();
+		$('b-input[type="textarea"]').get(0).nameDom.css({width:'110px'});
+		$('b-input-file').get(0).nameDom.css({width:'90px'});
+		await selectData($('#form'));
 	},
 	appendTypeDom(text,color){
 		let dom = $('<div class="box_hcc">'+text+'</div>'),
@@ -221,11 +274,15 @@ let Page = {
 		$$(close).myclickok(function(){
 			window.history.go(-1);
 		});
-		$$(submit).myclickok(function(){
+		$$(submit).myclickok(async function(){
+			let param = await all.getFromGroupVal($('#form'));
+			console.log(param)
+
 			all.showLoadingRun(all,'reviewSubmit',{
 				formDom:$('#form'),
 				orderNo:_this.orderNo,
 				state:1,
+				addParam:param,
 				currentNodeKey:_this.currentNodeKey
 			});
 		});

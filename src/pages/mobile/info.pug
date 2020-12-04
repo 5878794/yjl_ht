@@ -12,6 +12,18 @@ html
             .openWin_btn_blue{
                 width:40%; margin: 0 5%;
             }
+            b-title1{
+                display: block; width: 100%;
+                overflow: hidden;
+                background: #eee;
+                line-height: 40px;
+            }
+            #fwxz .openWin_input_item1{
+                margin: 10px 0;
+            }
+            .openWin_input_main{
+                padding-right: 0;
+            }
 
     body
 
@@ -51,6 +63,9 @@ html
 
 
             div(class='openWin_input_main box_hlt box_lines' id='form')
+                div(id='fwxz' style='width:100%;overflow:hidden;')
+
+                b-title1(name='意见')
                 div(class='openWin_input_item1')
                     b-input(type='textarea' id='auditOpinion' autoHeight='true' name='意见' placeholder='非必填')
                 div(class='openWin_input_item1')
@@ -128,3 +143,19 @@ html
                 div(class='openWin_btn_gray box_hcc hover' id='close') 关闭
                 div(class='openWin_btn_blue box_hcc hover' id='submit1') 保存
 
+        div(class='hidden')
+            div(id='room_info_item')
+                b-title1(name='')
+                div(class='openWin_input_main box_hlt box_lines' group='orderMortgageExtendHouseList')
+                    div(class='openWin_input_item1')
+                        b-input-money(key='age' accuracy='0' xs='0'  err='输入的数据格式有误' rule='must' name='房龄' unit='年')
+                    div(class='openWin_input_item1')
+                        b-input(key='direct' type='select' err='输入的数据格式有误' data-bind='houseOrientation' rule='must' name='朝向')
+                    div(class='openWin_input_item1')
+                        b-input(key='decoration' type='select' err='输入的数据格式有误' data-bind='decorationState' rule='must' name='装修情况')
+                    div(class='openWin_input_item1')
+                        b-input(key='useCase' type='select' err='输入的数据格式有误' data-bind='houseUseState' rule='must' name='使用情况')
+                    div(class='openWin_input_item1')
+                        b-input(key='elevator' type='select' err='输入的数据格式有误' data-bind='hasElevator' rule='must' name='有无电梯')
+                    div(class='openWin_input_item1')
+                        b-input(key='floor' type='text' err='输入的数据格式有误' rule='must' name='总楼层')
