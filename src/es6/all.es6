@@ -6,7 +6,8 @@ let {ajax,api,nodeKeySubmit} = require('./_ajax'),
 	stamp2Date = require('./../es6/lib/fn/timeAndStamp'),
 	showBigImg = require('./../es6/lib/ui/showBigPicture'),
 	processToPageDist = require('./../es6/processToPage'),
-	selectData = require('./../es6/selectData');
+	selectData = require('./../es6/selectData'),
+	imgZip = require('./../es6/yjl/imgZip');
 
 window.bridge = window.bridge ?? top.bridge;
 
@@ -436,23 +437,27 @@ let all = {
 	//上传文件
 	uploadFile(files){
 		let serverUrl = SETTING.serverUrl + '/api/file/upload';
-		return new Promise((success,error)=>{
+		return new Promise(async (success,error)=>{
 			if(!files || files.length == 0){
 				success([]);
 				return;
 			}
 
+
+
 			let form = new FormData(),
 				xhr = new XMLHttpRequest();
 
 			let uploaded = [];
-			files.map(file=>{
+			for(let i=0,l=files.length;i<l;i++){
+				let file = files[i];
 				if(typeof file == 'string'){
 					uploaded.push(file);
 				}else{
+					file = await imgZip(file);
 					form.append('files',file);
 				}
-			});
+			}
 			uploaded = this.getServerFilename(uploaded);
 
 			xhr.onload =  function(e){

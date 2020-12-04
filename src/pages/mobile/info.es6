@@ -16,6 +16,7 @@ let app = require('./../../es6/lib/page'),
 qt.loading = qt1.loading;
 
 
+
 require('./../../es6/customElement/pc/input');
 require('./../../es6/yjl/b_title1');
 require('./../../es6/customElement/pc/input_file');
@@ -63,7 +64,6 @@ let Page = {
 		this.bussinessDist = await selectData('businessType');
 		this.orderStateDist = await selectData('orderState');
 
-		console.log(data)
 
 
 		let warran = $('#warran'),
@@ -105,6 +105,20 @@ let Page = {
 		// }else{
 		// 	$('#warran').removeClass('hidden');
 		// }
+
+
+		// let file = $('b-input-file').get(0).body.find('input').get(0);
+		// file.addEventListener('change',function(e){
+		// 	let file = this.files[0];
+		//
+		// 	new imgZip(file,{maxWidth:1000, maxHeight:1000, quality: 0.7}).then(function(data){
+		// 		//这里写回调函数，data会传入两个属性，url:压缩后图片url，blob：压缩后图片blob值
+		// 		console.log(data)
+		// 	},function(err){
+		// 		//这里写异常处理
+		// 		console.log(err);
+		// 	})
+		// },false);
 
 
 
