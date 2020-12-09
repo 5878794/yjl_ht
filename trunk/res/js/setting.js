@@ -6,7 +6,7 @@
 (function(){
 	//服务器地址
 	//开发
-	var serverUrl = 'http://47.108.20.238:8089',
+	var serverUrl = 'http://47.105.184.219:8089',
 		downloadFileUrl = 'https://golden-system.oss-cn-beijing.aliyuncs.com/';
 
 
