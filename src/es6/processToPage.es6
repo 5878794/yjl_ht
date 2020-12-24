@@ -157,8 +157,8 @@ let key = [
 	//审核不通过的 到订单修改
 	// DIAN_ZI_ZHIXING_SUBMIT_ORDER  ,
 	// FANG_DI_ZHIXING_SUBMIT_ORDER
-	{name:'DIAN_ZI_ZHIXING_SUBMIT_ORDER',value:'../business/business_info.html',info:'系统-退费',api:'/api/ckOrderFlow/jiTuanChukuOverOrder'},
-	{name:'FANG_DI_ZHIXING_SUBMIT_ORDER',value:'../business/business_info.html',info:'系统-退费',api:'/api/ckOrderFlow/jiTuanChukuOverOrder'},
+	{name:'DIAN_ZI_ZHIXING_SUBMIT_ORDER',value:'../index/o_add_order.html',info:'系统-退费',api:'/api/ckOrderFlow/jiTuanChukuOverOrder'},
+	{name:'FANG_DI_ZHIXING_SUBMIT_ORDER',value:'../index/o_add_order.html',info:'系统-退费',api:'/api/ckOrderFlow/jiTuanChukuOverOrder'},
 
 
 	//提前还款记账
