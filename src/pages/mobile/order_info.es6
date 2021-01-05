@@ -328,7 +328,9 @@ let Page = {
 		data.mainMortgagePropertyRight.type = dist[data.mainMortgagePropertyRight.type] || '';
 		data.mainMortgagePropertyRight.getTime = stamp2Date.getDate1(data.mainMortgagePropertyRight.getTime || '');
 		data.mainMortgagePropertyRight_orderMortgageExtendMortgageList = data.mainMortgagePropertyRight.orderMortgageExtendMortgageList??[];
-
+		data.mainMortgagePropertyRight_orderMortgageExtendMortgageList.map(rs=>{
+			rs.mortgageTime = stamp2Date.getDate1(rs.mortgageTime);
+		})
 		//垫资
 		//评估信息 快消总价 orderMortgageExtendAssessment_attachUrls
 		data.orderMortgageExtendAssessment = data.orderMortgageExtendAssessment??{};
